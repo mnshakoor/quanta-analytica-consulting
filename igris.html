@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>IGRIS™ | Integrated Geo-Risk Intelligence System | Quanta Analytica</title>
+  <meta name="description" content="IGRIS™ — the Integrated Geo-Risk Intelligence System by MNS Consulting. A five-phase closed-loop intelligence engine fusing SATCON-X structured analytics, CARVER-ECO prioritization, and Monte Carlo probabilistic simulation into a living decision architecture for GSOCs, boards, and national security councils." />
+  <meta name="keywords" content="IGRIS, Integrated Geo-Risk Intelligence System, Integrated Geopolitical Risk Intelligence System, Monte Carlo risk, CARVER-ECO, SATCON-X, geopolitical risk, GSOC, MNS Consulting, Quanta Analytica, country risk, probabilistic forecasting, national security" />
+  <meta name="author" content="M. Nuri Shakoor, MNS Consulting" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://quanta-analytica.com/igris.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://quanta-analytica.com/igris.html" />
+  <meta property="og:title" content="IGRIS™ | Integrated Geo-Risk Intelligence System" />
+  <meta property="og:description" content="Five-phase closed-loop intelligence engine fusing structured analytics, CARVER prioritization, and Monte Carlo simulation into a living decision architecture." />
+  <meta property="og:image" content="https://quanta-analytica.com/og-image.png" />
+  <meta property="og:site_name" content="Quanta Analytica" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="IGRIS™ | Integrated Geo-Risk Intelligence System" />
+  <meta name="twitter:description" content="Five-phase closed-loop intelligence engine — SATCON-X, CARVER-ECO, Monte Carlo simulation." />
+  <meta name="twitter:image" content="https://quanta-analytica.com/og-image.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "name": "IGRIS™ — Integrated Geo-Risk Intelligence System",
+    "description": "MNS Consulting's five-phase intelligence engine fusing SATCON-X, CARVER-ECO, and Monte Carlo probabilistic simulation for boards, GSOCs, and policy principals.",
+    "author": { "@type": "Person", "name": "M. Nuri Shakoor" },
+    "publisher": { "@type": "Organization", "name": "MNS Consulting", "url": "https://quanta-analytica.com" },
+    "url": "https://quanta-analytica.com/igris.html"
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow+Condensed:wght@300;400;500;600&family=Barlow:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --obsidian:   #0a0c10;
+      --deep-navy:  #0d1220;
+      --midnight:   #111827;
+      --panel:      rgba(255,255,255,0.04);
+      --panel2:     rgba(255,255,255,0.07);
+      --gold:       #c8a96e;
+      --gold-light: #e2c98a;
+      --gold-dim:   rgba(200,169,110,0.12);
+      --gold-line:  rgba(200,169,110,0.28);
+      --text:       rgba(245,242,236,0.95);
+      --muted:      rgba(245,242,236,0.68);
+      --muted2:     rgba(245,242,236,0.40);
+      --border:     rgba(200,169,110,0.14);
+      --border-soft:rgba(255,255,255,0.07);
+      --shadow:     0 16px 56px rgba(0,0,0,0.5);
+      /* phase accents */
+      --a1: rgba(168,216,234,0.15); --a1t: rgba(168,216,234,0.85);
+      --a2: rgba(250,186,100,0.14); --a2t: rgba(250,186,100,0.85);
+      --a3: rgba(130,185,235,0.14); --a3t: rgba(130,185,235,0.85);
+      --a4: rgba(100,210,170,0.14); --a4t: rgba(100,210,170,0.85);
+      --a5: rgba(190,170,255,0.14); --a5t: rgba(190,170,255,0.85);
+      /* country accents */
+      --drc: rgba(252,165,100,0.18);
+      --moz: rgba(100,210,170,0.18);
+      --sud: rgba(252,100,100,0.18);
+      --mau: rgba(168,216,234,0.18);
+      --ben: rgba(250,186,100,0.18);
+      --tog: rgba(190,170,255,0.18);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-ui:      'Barlow Condensed', sans-serif;
+      --font-body:    'Barlow', sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+      --max: 1200px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--obsidian); color: var(--text); font-family: var(--font-body); font-weight: 300; line-height: 1.7; overflow-x: hidden; cursor: crosshair; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:999; opacity:0.55; }
+
+    a { color:inherit; text-decoration:none; }
+    a:hover { text-decoration:underline; text-underline-offset:3px; }
+    .skip-link { position:absolute; left:-999px; top:10px; background:var(--panel2); padding:10px 12px; border:1px solid var(--border); z-index:9999; font-family:var(--font-ui); }
+    .skip-link:focus { left:12px; }
+    .container { width:min(var(--max),calc(100% - 32px)); margin:0 auto; }
+
+    /* ── NAV ── */
+    header { position:sticky; top:0; z-index:100; backdrop-filter:blur(14px); background:linear-gradient(to bottom,rgba(10,12,16,.95),rgba(10,12,16,.72)); border-bottom:1px solid var(--border); }
+    .nav { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:14px 0; }
+    .brand { display:flex; align-items:center; gap:12px; flex-shrink:0; }
+    .brand:hover { text-decoration:none; }
+    .brand-name { display:flex; flex-direction:column; line-height:1.15; }
+    .brand-name strong { font-family:var(--font-ui); font-size:.92rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase; color:var(--text); }
+    .brand-name span { font-family:var(--font-ui); font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); }
+    .nav-links { display:flex; align-items:center; gap:4px; flex-wrap:wrap; }
+    .nav-links a { padding:7px 11px; font-family:var(--font-ui); font-size:.7rem; font-weight:400; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); border:1px solid transparent; transition:color .25s,border-color .25s,background .25s; }
+    .nav-links a:hover, .nav-links a.current { color:var(--gold); border-color:var(--gold-line); background:var(--gold-dim); text-decoration:none; }
+    .nav-right { display:flex; align-items:center; gap:10px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:9px 16px; border:1px solid var(--gold-line); background:var(--gold-dim); color:var(--gold); cursor:pointer; font-family:var(--font-ui); font-weight:500; font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; transition:background .2s,border-color .2s,transform .1s; user-select:none; text-decoration:none; }
+    .btn:hover { background:rgba(200,169,110,.22); border-color:var(--gold); text-decoration:none; }
+    .btn:active { transform:translateY(1px); }
+    .btn.primary { background:var(--gold); color:var(--obsidian); border-color:var(--gold); }
+    .btn.primary:hover { background:var(--gold-light); border-color:var(--gold-light); }
+    .btn.ghost { background:transparent; color:var(--muted); border-color:var(--border-soft); }
+    .btn.ghost:hover { background:var(--panel); color:var(--text); border-color:var(--border); }
+    .btn.small { padding:6px 12px; font-size:.66rem; }
+
+    /* ── LAYOUT ── */
+    main { padding:36px 0 80px; }
+    section { padding:52px 0; }
+    h1,h2,h3,h4 { margin:0; }
+    h1 { font-family:var(--font-display); font-size:clamp(2.8rem,5.5vw,6.5rem); font-weight:300; line-height:.93; letter-spacing:-.01em; }
+    h2 { font-family:var(--font-display); font-size:clamp(1.7rem,2.8vw,2.8rem); font-weight:300; line-height:1.05; }
+    h3 { font-family:var(--font-ui); font-size:.78rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); }
+    h4 { font-family:var(--font-display); font-size:1.2rem; font-weight:400; }
+    em { font-style:italic; color:var(--gold-light); }
+    p { margin:10px 0 0; color:var(--muted); }
+
+    .divider { display:flex; align-items:center; gap:1.2rem; margin-bottom:1.4rem; }
+    .divider-num { font-family:var(--font-ui); font-size:.63rem; letter-spacing:.28em; color:var(--gold); opacity:.55; }
+    .divider-rule { width:48px; height:1px; background:var(--gold-line); flex-shrink:0; }
+    .divider-label { font-family:var(--font-ui); font-size:.68rem; font-weight:600; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); }
+
+    .kicker { font-family:var(--font-ui); font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+    .pill { display:inline-flex; align-items:center; gap:7px; padding:5px 11px; border:1px solid var(--gold-line); background:var(--gold-dim); color:var(--muted); font-family:var(--font-ui); font-size:.66rem; letter-spacing:.15em; text-transform:uppercase; }
+    .dot { width:6px; height:6px; background:var(--gold); border-radius:50%; box-shadow:0 0 0 4px rgba(200,169,110,.14); animation:pulse 3s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:.35;transform:scale(1)} 50%{opacity:1;transform:scale(1.4)} }
+
+    .grid { display:grid; gap:14px; }
+    .cols-2 { grid-template-columns:repeat(2,1fr); }
+    .cols-3 { grid-template-columns:repeat(3,1fr); }
+    .cols-4 { grid-template-columns:repeat(4,1fr); }
+    @media(max-width:980px){ .cols-3,.cols-4{ grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:620px){ .cols-2,.cols-3,.cols-4{ grid-template-columns:1fr; } }
+
+    .card { background:var(--panel); border:1px solid var(--border); padding:22px; position:relative; transition:background .3s; }
+    .card::before { content:''; position:absolute; top:0; left:0; width:0; height:2px; background:var(--gold); transition:width .4s ease; }
+    .card:hover { background:var(--panel2); }
+    .card:hover::before { width:100%; }
+    .list { margin:10px 0 0; padding:0 0 0 18px; color:var(--muted); }
+    .list li { margin:5px 0; font-size:.91rem; }
+    .note { font-family:var(--font-ui); font-size:.68rem; letter-spacing:.1em; color:var(--muted2); margin-top:6px; }
+
+    /* ── HERO ── */
+    #hero { position:relative; min-height:86vh; display:flex; flex-direction:column; justify-content:center; padding:6rem 0 4rem; overflow:hidden; }
+    .hero-geo { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+    .bg-hex { position:absolute; right:-6vw; top:50%; transform:translateY(-50%); width:52vw; max-width:740px; opacity:.05; animation:spin 100s linear infinite; }
+    @keyframes spin { from{transform:translateY(-50%) rotate(0deg)} to{transform:translateY(-50%) rotate(360deg)} }
+    .scan { position:absolute; left:0; right:0; height:1px; background:linear-gradient(to right,transparent,var(--gold-line),transparent); }
+    .scan.t{top:15%;} .scan.b{top:83%;}
+
+    .hero-eyebrow { font-family:var(--font-ui); font-size:.7rem; font-weight:500; letter-spacing:.38em; text-transform:uppercase; color:var(--gold); margin-bottom:1.4rem; opacity:0; animation:slideUp .8s ease .15s forwards; }
+    .hero-title { opacity:0; animation:slideUp .9s ease .3s forwards; margin-bottom:.8rem; }
+    .hero-trademark { font-family:var(--font-ui); font-size:.7rem; letter-spacing:.28em; text-transform:uppercase; color:rgba(200,169,110,.5); margin-bottom:1.8rem; opacity:0; animation:slideUp .9s ease .44s forwards; }
+    .hero-sub { max-width:640px; font-size:1.02rem; line-height:1.88; color:var(--muted); margin-bottom:2.2rem; opacity:0; animation:slideUp .9s ease .56s forwards; }
+    .hero-pills { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:2rem; opacity:0; animation:slideUp .9s ease .68s forwards; }
+    .hero-ctas { display:flex; gap:12px; flex-wrap:wrap; opacity:0; animation:slideUp .9s ease .80s forwards; }
+    @keyframes slideUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+
+    /* ── FLOW DIAGRAM ── */
+    .flow-diagram { background:var(--deep-navy); border:1px solid var(--border); padding:32px; overflow-x:auto; margin-bottom:14px; }
+    .flow-diagram svg { display:block; max-width:100%; height:auto; }
+
+    /* ── PHASE CARDS ── */
+    .phase { display:grid; grid-template-columns:64px 1fr; gap:0; border:1px solid var(--border); position:relative; overflow:hidden; transition:background .3s; background:var(--panel); margin-bottom:10px; }
+    .phase::before { content:''; position:absolute; top:0; left:0; width:0; height:2px; background:var(--gold); transition:width .4s ease; }
+    .phase:hover { background:var(--panel2); }
+    .phase:hover::before { width:100%; }
+    .ph-accent { display:flex; align-items:center; justify-content:center; border-right:1px solid var(--border); padding:24px 0; flex-direction:column; gap:6px; }
+    .ph-num { font-family:var(--font-display); font-size:2.2rem; font-weight:300; line-height:1; }
+    .ph-roman { font-family:var(--font-ui); font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; }
+    .ph-body { padding:20px 26px; }
+    .ph-title { font-family:var(--font-ui); font-size:.8rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; margin-bottom:6px; }
+    .ph-sub { font-family:var(--font-ui); font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted2); margin-bottom:12px; }
+    .ph-desc { font-size:.92rem; color:var(--muted); line-height:1.78; }
+    .ph-steps { margin:12px 0 0; padding:0 0 0 18px; color:var(--muted); }
+    .ph-steps li { margin:5px 0; font-size:.9rem; }
+    .ph-badge { display:inline-block; margin-top:10px; font-family:var(--mono); font-size:.63rem; color:var(--gold); border:1px solid var(--gold-line); background:var(--panel); padding:3px 9px; letter-spacing:.06em; }
+
+    .ph1 .ph-accent{background:var(--a1);} .ph1 .ph-num,.ph1 .ph-roman{color:var(--a1t);} .ph1 .ph-title{color:var(--a1t);}
+    .ph2 .ph-accent{background:var(--a2);} .ph2 .ph-num,.ph2 .ph-roman{color:var(--a2t);} .ph2 .ph-title{color:var(--a2t);}
+    .ph3 .ph-accent{background:var(--a3);} .ph3 .ph-num,.ph3 .ph-roman{color:var(--a3t);} .ph3 .ph-title{color:var(--a3t);}
+    .ph4 .ph-accent{background:var(--a4);} .ph4 .ph-num,.ph4 .ph-roman{color:var(--a4t);} .ph4 .ph-title{color:var(--a4t);}
+    .ph5 .ph-accent{background:var(--a5);} .ph5 .ph-num,.ph5 .ph-roman{color:var(--a5t);} .ph5 .ph-title{color:var(--a5t);}
+
+    /* ── PARENT METHODS ── */
+    .method-card { background:var(--panel); border:1px solid var(--border); padding:26px; position:relative; transition:background .3s; }
+    .method-card::before { content:''; position:absolute; top:0; left:0; width:0; height:3px; background:var(--gold); transition:width .5s ease; }
+    .method-card:hover { background:var(--panel2); }
+    .method-card:hover::before { width:100%; }
+    .method-code { font-family:var(--mono); font-size:1.1rem; color:var(--gold); letter-spacing:.06em; margin-bottom:6px; display:block; }
+    .method-name { font-family:var(--font-ui); font-size:.72rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; display:block; }
+
+    /* ── COUNTRY DASHBOARD ── */
+    .country-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    @media(max-width:900px){ .country-grid{ grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:580px){ .country-grid{ grid-template-columns:1fr; } }
+
+    .country-card { border:1px solid var(--border); position:relative; overflow:hidden; transition:background .3s; }
+    .country-card::before { content:''; position:absolute; top:0; left:0; width:0; height:2px; background:var(--gold); transition:width .4s ease; }
+    .country-card:hover { background:rgba(255,255,255,.03); }
+    .country-card:hover::before { width:100%; }
+
+    .cc-header { padding:14px 18px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
+    .cc-name { font-family:var(--font-ui); font-size:.82rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; }
+    .cc-horizon { font-family:var(--mono); font-size:.62rem; color:var(--muted2); }
+    .cc-body { padding:14px 18px; }
+
+    .risk-row { display:flex; justify-content:space-between; align-items:center; gap:8px; padding:7px 0; border-bottom:1px solid var(--border-soft); }
+    .risk-row:last-child { border-bottom:none; }
+    .risk-label { font-size:.82rem; color:var(--muted); flex:1; }
+    .risk-bar-wrap { flex-shrink:0; display:flex; align-items:center; gap:8px; }
+    .risk-bar { height:4px; background:var(--border-soft); border-radius:2px; width:80px; position:relative; overflow:hidden; }
+    .risk-bar-fill { position:absolute; left:0; top:0; height:100%; border-radius:2px; }
+    .risk-pct { font-family:var(--mono); font-size:.68rem; color:var(--muted2); min-width:32px; text-align:right; }
+
+    .cc-scenarios { margin-top:12px; padding-top:12px; border-top:1px solid var(--border); }
+    .scenario-item { display:flex; justify-content:space-between; align-items:baseline; gap:6px; margin-bottom:6px; }
+    .scenario-item:last-child { margin-bottom:0; }
+    .scen-name { font-family:var(--font-ui); font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); flex:1; }
+    .scen-pct { font-family:var(--mono); font-size:.72rem; color:var(--gold); }
+
+    .cc-footer { padding:10px 18px; border-top:1px solid var(--border); background:var(--panel); }
+    .cc-bluf { font-size:.82rem; color:var(--muted); line-height:1.6; }
+
+    /* DRC amber, MOZ teal, SUD danger-red, MAU steel, BEN gold, TOG violet */
+    .cc-drc .cc-header { background:var(--drc); } .cc-drc .cc-name { color:rgba(252,165,100,.95); }
+    .cc-moz .cc-header { background:var(--moz); } .cc-moz .cc-name { color:rgba(100,210,170,.95); }
+    .cc-sud .cc-header { background:var(--sud); } .cc-sud .cc-name { color:rgba(252,130,130,.95); }
+    .cc-mau .cc-header { background:var(--mau); } .cc-mau .cc-name { color:rgba(168,216,234,.95); }
+    .cc-ben .cc-header { background:var(--ben); } .cc-ben .cc-name { color:rgba(250,186,100,.95); }
+    .cc-tog .cc-header { background:var(--tog); } .cc-tog .cc-name { color:rgba(190,170,255,.95); }
+
+    /* ── CARVER TABLE ── */
+    .carver-table { width:100%; border-collapse:collapse; border:1px solid var(--border); overflow-x:auto; }
+    .carver-table th { font-family:var(--font-ui); font-size:.68rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); padding:11px 14px; border-bottom:1px solid var(--border); background:var(--gold-dim); text-align:center; }
+    .carver-table th:first-child { text-align:left; }
+    .carver-table td { padding:10px 14px; border-bottom:1px solid var(--border-soft); font-size:.88rem; color:var(--muted); text-align:center; vertical-align:top; }
+    .carver-table td:first-child { text-align:left; font-family:var(--font-ui); font-size:.72rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--text); }
+    .carver-table tr:last-child td { border-bottom:none; }
+    .carver-table tr:hover td { background:rgba(200,169,110,.03); }
+    .score-hi { color:rgba(252,130,130,.9); }
+    .score-md { color:rgba(250,186,100,.9); }
+    .score-lo { color:rgba(100,210,170,.9); }
+
+    /* ── CAPABILITIES TABLE ── */
+    .cap-table { width:100%; border-collapse:collapse; border:1px solid var(--border); }
+    .cap-table th { font-family:var(--font-ui); font-size:.68rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); padding:11px 16px; border-bottom:1px solid var(--border); background:var(--gold-dim); text-align:left; }
+    .cap-table td { padding:11px 16px; border-bottom:1px solid var(--border-soft); font-size:.9rem; color:var(--muted); vertical-align:top; }
+    .cap-table tr:last-child td { border-bottom:none; }
+    .cap-table tr:hover td { background:rgba(200,169,110,.03); }
+    .cap-table td:first-child { font-family:var(--font-ui); font-size:.7rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase; color:var(--text); white-space:nowrap; }
+    .check { color:var(--gold); }
+
+    /* ── CODE BLOCK ── */
+    .code-wrap { background:var(--deep-navy); border:1px solid var(--border); overflow:hidden; }
+    .code-header { display:flex; align-items:center; justify-content:space-between; padding:10px 18px; border-bottom:1px solid var(--border); background:var(--gold-dim); }
+    .code-lang { font-family:var(--mono); font-size:.68rem; color:var(--gold); letter-spacing:.1em; }
+    .code-desc { font-family:var(--font-ui); font-size:.66rem; letter-spacing:.15em; text-transform:uppercase; color:var(--muted2); }
+    .code-block { margin:0; padding:20px; overflow:auto; max-height:420px; }
+    .code-block code { font-family:var(--mono); font-size:.78rem; line-height:1.55; color:rgba(245,242,236,.8); display:block; white-space:pre; }
+
+    /* syntax highlights */
+    .kw  { color:rgba(190,170,255,.9); }
+    .fn  { color:rgba(168,216,234,.9); }
+    .st  { color:rgba(100,210,170,.9); }
+    .cm  { color:rgba(245,242,236,.32); font-style:italic; }
+    .nm  { color:rgba(250,186,100,.9); }
+
+    /* ── QUOTE BLOCK ── */
+    .pullquote { padding:28px 32px; border-left:3px solid var(--gold); background:var(--gold-dim); position:relative; }
+    .pullquote blockquote { font-family:var(--font-display); font-size:1.4rem; font-style:italic; font-weight:300; line-height:1.65; color:var(--text); }
+    .pullquote cite { display:block; margin-top:14px; font-family:var(--font-ui); font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); }
+
+    /* ── CALLOUT ── */
+    .callout { padding:30px; border:1px solid var(--gold-line); background:linear-gradient(135deg,rgba(200,169,110,.07),rgba(10,12,16,.6)); position:relative; overflow:hidden; }
+    .callout::after { content:''; position:absolute; top:-80px; right:-80px; width:220px; height:220px; border-radius:50%; background:radial-gradient(circle,rgba(200,169,110,.1),transparent 70%); pointer-events:none; }
+
+    /* ── FOOTER ── */
+    .footer { padding:28px 0 38px; border-top:1px solid var(--border); }
+    .footer .row { display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; }
+    .footer-brand { font-family:var(--font-ui); font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
+    .footer-brand .gold { color:var(--gold); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity:0; transform:translateY(18px); transition:opacity .75s ease,transform .75s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .d1{transition-delay:.08s} .d2{transition-delay:.16s} .d3{transition-delay:.24s}
+    .d4{transition-delay:.32s} .d5{transition-delay:.40s} .d6{transition-delay:.48s}
+
+    @media(max-width:900px){ .nav-links{display:none;} }
+    @media(max-width:760px){ section>div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;} }
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="container">
+    <div class="nav" role="navigation" aria-label="Primary">
+      <a class="brand" href="index.html" aria-label="Quanta Analytica home">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <polygon points="18,2 32,10 32,26 18,34 4,26 4,10" fill="none" stroke="#c8a96e" stroke-width="1.2"/>
+          <circle cx="18" cy="18" r="4" fill="#c8a96e" opacity="0.75"/>
+        </svg>
+        <div class="brand-name">
+          <strong>Quanta Analytica</strong>
+          <span>MNS Consulting</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Site pages">
+        <a href="index.html">Home</a>
+        <a href="mns-lbs.html">MNS · LBS Advisory</a>
+        <a href="qa-process.html">QA Process™</a>
+        <a href="cognition-model.html">Cognition Model</a>
+        <a href="qa-csrf.html">QA-CSRF™</a>
+        <a href="igris.html" class="current" aria-current="page">IGRIS™</a>
+        <a href="#phases">Phases</a>
+        <a href="#dashboard">Dashboard</a>
+      </nav>
+
+      <div class="nav-right">
+        <a class="btn ghost small" href="mns-lbs.html">Advisory</a>
+        <a class="btn primary small" href="mns-lbs.html#contact">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ── MAIN ── -->
+<main id="content">
+  <div class="container">
+
+    <!-- ── HERO ── -->
+    <section id="hero" aria-label="IGRIS hero">
+      <div class="hero-geo" aria-hidden="true">
+        <svg class="bg-hex" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="250,20 460,140 460,360 250,480 40,360 40,140" fill="none" stroke="#c8a96e" stroke-width="1"/>
+          <polygon points="250,60 430,158 430,342 250,440 70,342 70,158" fill="none" stroke="#c8a96e" stroke-width="0.5"/>
+          <polygon points="250,95 400,176 400,324 250,405 100,324 100,176" fill="none" stroke="#c8a96e" stroke-width="0.3"/>
+          <circle cx="250" cy="250" r="3" fill="#c8a96e" opacity="0.9"/>
+          <line x1="250" y1="20" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.28"/>
+          <line x1="460" y1="140" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.28"/>
+          <line x1="460" y1="360" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.28"/>
+          <line x1="250" y1="480" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.28"/>
+          <line x1="40"  y1="360" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.28"/>
+          <line x1="40"  y1="140" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.28"/>
+        </svg>
+        <div class="scan t"></div>
+        <div class="scan b"></div>
+      </div>
+
+      <div style="position:relative;z-index:2;">
+        <p class="hero-eyebrow">Proprietary Framework · MNS Consulting × Lladner Business Solutions</p>
+        <h1 class="hero-title">IGRIS™<br /><em>Integrated<br />Geo-Risk<br />Intelligence</em></h1>
+        <p class="hero-trademark">Integrated Geo-Risk Intelligence System™ · Integrated Geopolitical Risk Intelligence System™</p>
+        <p class="hero-sub">
+          A five-phase closed-loop intelligence engine that fuses structured analytic tradecraft (SATCON-X), contextual vulnerability quantification (CARVER-ECO), and correlated probabilistic simulation (Monte Carlo / Gaussian copula) into a living decision architecture — purpose-built for corporate boards, GSOCs, and national security councils operating in volatile theaters.
+        </p>
+        <div class="hero-pills">
+          <span class="pill"><span class="dot" aria-hidden="true"></span> SATCON-X structured analytics</span>
+          <span class="pill">CARVER-ECO prioritization</span>
+          <span class="pill">Monte Carlo · Gaussian copula</span>
+          <span class="pill">Go / Stage-Gate / Pause thresholds</span>
+          <span class="pill">Living risk intelligence engine</span>
+        </div>
+        <div class="hero-ctas">
+          <a class="btn primary" href="#phases">Explore the Framework</a>
+          <a class="btn" href="#dashboard">Country Dashboard</a>
+          <a class="btn ghost" href="#code">Monte Carlo Engine</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── GENESIS ── -->
+    <section aria-label="Origins and purpose">
+      <div class="divider reveal">
+        <span class="divider-num">00</span>
+        <div class="divider-rule"></div>
+        <span class="divider-label">Genesis</span>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;" class="reveal">
+        <div>
+          <h2>Built as an<br /><em>Operational Engine</em></h2>
+          <p style="margin-top:1.4rem;font-size:1rem;line-height:1.9;">IGRIS™ was conceived by Quanta Analytica MNS Consulting and developed in partnership with Lladner Business Solutions' Risk Management &amp; GSOC Services Division. It emerged from over a decade of field intelligence analysis, strategic security consulting, and corporate risk governance — not as a theoretical framework, but as an operational engine built to solve real failure modes in global risk analysis.</p>
+          <p style="font-size:1rem;line-height:1.9;">Traditional risk matrices assume linearity and understate tail-risk events that define real crises. IGRIS was built to replace them with a system that treats uncertainty as measurable data, bias as a structural problem to be engineered out, and decision thresholds as pre-modeled before a crisis — not improvised during one.</p>
+          <div style="margin-top:1.8rem;display:flex;gap:10px;flex-wrap:wrap;">
+            <a class="btn" href="mns-lbs.html">MNS · LBS Partnership</a>
+            <a class="btn ghost" href="qa-process.html">QA Process™ Parent</a>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div class="card">
+            <h3>The Four Problems IGRIS Solves</h3>
+            <ul class="list" style="margin-top:10px;">
+              <li><strong style="color:var(--text);font-weight:400;">Static thinking</strong> — analysts treating risk as fixed, not evolving with the intelligence environment</li>
+              <li><strong style="color:var(--text);font-weight:400;">Cognitive bias</strong> — over-reliance on expert intuition without structured challenge mechanisms</li>
+              <li><strong style="color:var(--text);font-weight:400;">False precision</strong> — deterministic single-point forecasts that ignore the distribution of possible futures</li>
+              <li><strong style="color:var(--text);font-weight:400;">Siloed data</strong> — economic, security, cyber, and reputational indicators not fused into a single model</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Who IGRIS Serves</h3>
+            <ul class="list" style="margin-top:10px;">
+              <li>Corporate boards and C-suite risk principals</li>
+              <li>Global Security Operations Centers (GSOCs)</li>
+              <li>National security councils and policy intelligence units</li>
+              <li>Interagency task forces and joint intelligence centers</li>
+              <li>Institutional investors and sovereign fund risk teams</li>
+              <li>Humanitarian and development organizations in volatile theaters</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>What IGRIS Produces</h3>
+            <ul class="list" style="margin-top:10px;">
+              <li>Probabilistic country &amp; sector risk forecasts with confidence bands</li>
+              <li>CARVER-weighted vulnerability scores for GSOC dashboards</li>
+              <li>Tripwire-based decision triggers (Go / Stage-Gate / Pause)</li>
+              <li>Scenario clusters with named likelihoods and narrative intelligence</li>
+              <li>Monte Carlo probability distributions with correlated risk events</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FLOW DIAGRAM ── -->
+    <section aria-label="IGRIS flow diagram">
+      <div class="divider reveal">
+        <span class="divider-num">01</span>
+        <div class="divider-rule"></div>
+        <span class="divider-label">System Architecture</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:1.4rem;" class="reveal">
+        <h2>The <em>Closed-Loop</em> Intelligence Cycle</h2>
+        <span class="kicker">Five phases · continuous reassessment</span>
+      </div>
+
+      <div class="flow-diagram reveal">
+        <svg width="100%" viewBox="0 0 820 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="IGRIS five-phase flow diagram">
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M2 1L8 5L2 9" fill="none" stroke="rgba(200,169,110,0.55)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </marker>
+          </defs>
+
+          <!-- Data Collection box -->
+          <rect x="30" y="30" width="760" height="46" rx="3" fill="rgba(200,169,110,0.08)" stroke="rgba(200,169,110,0.30)" stroke-width="1"/>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="11" font-weight="600" letter-spacing="2" fill="rgba(200,169,110,0.75)" x="410" y="53" text-anchor="middle" dominant-baseline="central">DATA COLLECTION · GCAR INPUTS · OSINT / HUMINT / SIGINT / ECONOMIC TELEMETRY</text>
+
+          <line x1="410" y1="76" x2="410" y2="94" stroke="rgba(200,169,110,0.45)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <!-- Phase 1 -->
+          <rect x="30" y="94" width="148" height="52" rx="3" fill="rgba(168,216,234,0.12)" stroke="rgba(168,216,234,0.40)" stroke-width="1"/>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="10" font-weight="600" letter-spacing="1.5" fill="rgba(168,216,234,0.9)" x="104" y="114" text-anchor="middle">PHASE 1</text>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="9" fill="rgba(168,216,234,0.6)" x="104" y="130" text-anchor="middle">SATs · SATCON-X</text>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="9" fill="rgba(245,242,236,0.4)" x="104" y="142" text-anchor="middle">Frame &amp; hypothesize</text>
+
+          <line x1="178" y1="120" x2="194" y2="120" stroke="rgba(200,169,110,0.45)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <!-- Phase 2 -->
+          <rect x="194" y="94" width="148" height="52" rx="3" fill="rgba(250,186,100,0.12)" stroke="rgba(250,186,100,0.40)" stroke-width="1"/>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="10" font-weight="600" letter-spacing="1.5" fill="rgba(250,186,100,0.9)" x="268" y="114" text-anchor="middle">PHASE 2</text>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="9" fill="rgba(250,186,100,0.6)" x="268" y="130" text-anchor="middle">CARVER-ECO</text>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="9" fill="rgba(245,242,236,0.4)" x="268" y="142" text-anchor="middle">Prioritize &amp; score</text>
+
+          <line x1="342" y1="120" x2="358" y2="120" stroke="rgba(200,169,110,0.45)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <!-- Phase 3 -->
+          <rect x="358" y="94" width="148" height="52" rx="3" fill="rgba(130,185,235,0.12)" stroke="rgba(130,185,235,0.40)" stroke-width="1"/>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="10" font-weight="600" letter-spacing="1.5" fill="rgba(130,185,235,0.9)" x="432" y="114" text-anchor="middle">PHASE 3</text>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="9" fill="rgba(130,185,235,0.6)" x="432" y="130" text-anchor="middle">Monte Carlo</text>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="9" fill="rgba(245,242,236,0.4)" x="432" y="142" text-anchor="middle">Simulate &amp; quantify</text>
+
+          <line x1="506" y1="120" x2="522" y2="120" stroke="rgba(200,169,110,0.45)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <!-- Phase 4 -->
+          <rect x="522" y="94" width="148" height="52" rx="3" fill="rgba(100,210,170,0.12)" stroke="rgba(100,210,170,0.40)" stroke-width="1"/>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="10" font-weight="600" letter-spacing="1.5" fill="rgba(100,210,170,0.9)" x="596" y="114" text-anchor="middle">PHASE 4</text>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="9" fill="rgba(100,210,170,0.6)" x="596" y="130" text-anchor="middle">Decision Interface</text>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="9" fill="rgba(245,242,236,0.4)" x="596" y="142" text-anchor="middle">Thresholds &amp; action</text>
+
+          <line x1="670" y1="120" x2="686" y2="120" stroke="rgba(200,169,110,0.45)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <!-- Phase 5 -->
+          <rect x="686" y="94" width="104" height="52" rx="3" fill="rgba(190,170,255,0.12)" stroke="rgba(190,170,255,0.40)" stroke-width="1"/>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="10" font-weight="600" letter-spacing="1.5" fill="rgba(190,170,255,0.9)" x="738" y="114" text-anchor="middle">PHASE 5</text>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="9" fill="rgba(190,170,255,0.6)" x="738" y="130" text-anchor="middle">Feedback Loop</text>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="9" fill="rgba(245,242,236,0.4)" x="738" y="142" text-anchor="middle">Reassess &amp; adapt</text>
+
+          <!-- Feedback arrow back -->
+          <path d="M790 170 L790 210 L30 210 L30 120 L28 120" fill="none" stroke="rgba(190,170,255,0.30)" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="9" letter-spacing="1.5" fill="rgba(190,170,255,0.40)" x="410" y="225" text-anchor="middle">CONTINUOUS FEEDBACK · NEW INTEL → RE-SCORE → RE-RUN → UPDATED POSTURE</text>
+
+          <!-- Output row -->
+          <line x1="410" y1="234" x2="410" y2="252" stroke="rgba(200,169,110,0.45)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <rect x="30" y="252" width="760" height="52" rx="3" fill="rgba(100,210,170,0.08)" stroke="rgba(100,210,170,0.28)" stroke-width="1"/>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="11" font-weight="600" letter-spacing="2" fill="rgba(100,210,170,0.75)" x="410" y="274" text-anchor="middle" dominant-baseline="central">DECISION-GRADE OUTPUTS</text>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="10" fill="rgba(245,242,236,0.40)" x="410" y="292" text-anchor="middle">Probability curves · CARVER scores · Scenario clusters · Tripwire matrix · GSOC dashboards · Board briefs</text>
+
+          <!-- Capability labels row -->
+          <text font-family="'Barlow Condensed',sans-serif" font-size="9" letter-spacing="1" fill="rgba(168,216,234,0.50)" x="104" y="360" text-anchor="middle">Removes bias · expands</text>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="9" letter-spacing="1" fill="rgba(168,216,234,0.50)" x="104" y="372" text-anchor="middle">hypothesis space</text>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="9" letter-spacing="1" fill="rgba(250,186,100,0.50)" x="268" y="360" text-anchor="middle">Objectively ranks priorities</text>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="9" letter-spacing="1" fill="rgba(250,186,100,0.50)" x="268" y="372" text-anchor="middle">across domains</text>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="9" letter-spacing="1" fill="rgba(130,185,235,0.50)" x="432" y="360" text-anchor="middle">Converts uncertainty into</text>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="9" letter-spacing="1" fill="rgba(130,185,235,0.50)" x="432" y="372" text-anchor="middle">quantified intelligence</text>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="9" letter-spacing="1" fill="rgba(100,210,170,0.50)" x="596" y="360" text-anchor="middle">Defensible, transparent</text>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="9" letter-spacing="1" fill="rgba(100,210,170,0.50)" x="596" y="372" text-anchor="middle">strategic action</text>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="9" letter-spacing="1" fill="rgba(190,170,255,0.50)" x="738" y="360" text-anchor="middle">Adaptive real-time</text>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="9" letter-spacing="1" fill="rgba(190,170,255,0.50)" x="738" y="372" text-anchor="middle">situational awareness</text>
+        </svg>
+      </div>
+      <p class="note reveal">The IGRIS cycle does not terminate. Phase 5 feeds updated intelligence back into Phase 1, making the model a living risk intelligence engine — mirroring the continuous assessment cycle used in modern Joint Intelligence Centers and corporate war rooms.</p>
+    </section>
+
+    <!-- ── FIVE PHASES ── -->
+    <section id="phases" aria-label="Five phases of IGRIS">
+      <div class="divider reveal">
+        <span class="divider-num">02</span>
+        <div class="divider-rule"></div>
+        <span class="divider-label">Five Phases</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:1.4rem;" class="reveal">
+        <h2>The Five <em>Operating Layers</em></h2>
+        <span class="kicker">From framing to action to reassessment</span>
+      </div>
+      <p class="reveal" style="max-width:620px;margin-bottom:2rem;font-size:.97rem;line-height:1.88;">Each phase has a defined objective, inputs, process flow, and strategic result. The phases are sequential in their first execution and continuously iterative thereafter — with Phase 5 feeding back into Phase 1 as new intelligence arrives.</p>
+
+      <div class="phase ph1 reveal d1">
+        <div class="ph-accent"><span class="ph-num">1</span><span class="ph-roman">Phase I</span></div>
+        <div class="ph-body">
+          <div class="ph-title">Intelligence Framing — SATCON-X</div>
+          <div class="ph-sub">Structured Analytic Techniques · Key Assumptions Check · ACH · Red-team challenge</div>
+          <div class="ph-desc">Phase 1 defines the problem space without bias. Before any number is produced, SATCON-X (Structured Analytic Convergence Method) forces analysts to surface hidden assumptions, articulate competing hypotheses, and challenge the analytical baseline. This is not a box-ticking exercise — it is a structured interrogation of what the analyst believes to be true and why. The Key Assumptions Check identifies embedded biases in political, economic, and security indicators. Analysis of Competing Hypotheses (ACH) tests plausible outcomes — regime reform versus collapse, escalation versus de-escalation — against each other rather than in isolation. What-If analysis explores low-probability, high-impact shocks. The output is a validated hypothesis matrix that defines the key variables entering the quantitative model.</div>
+          <ul class="ph-steps">
+            <li>Key Assumptions Check — surface hidden biases in indicators</li>
+            <li>Analysis of Competing Hypotheses (ACH) — compare plausible outcomes</li>
+            <li>What-If / HI-LO shock analysis — map low-probability, high-impact events</li>
+            <li>Red-team challenge sessions — independent hypothesis stress-testing</li>
+          </ul>
+          <span class="ph-badge">Output: Validated hypothesis matrix · red-teamed analytic baseline</span>
+        </div>
+      </div>
+
+      <div class="phase ph2 reveal d2">
+        <div class="ph-accent"><span class="ph-num">2</span><span class="ph-roman">Phase II</span></div>
+        <div class="ph-body">
+          <div class="ph-title">Risk Prioritization — CARVER-ECO</div>
+          <div class="ph-sub">CARVER Extended Contextual Optimization · vulnerability quantification · heatmap generation</div>
+          <div class="ph-desc">Phase 2 quantifies qualitative risks and focuses simulation resources on the variables that matter most. CARVER-ECO is an evolved version of the classic CARVER matrix — re-engineered to incorporate modern risk dimensions including Economic Exposure, Cyber Vulnerability, and Operational Recoverability alongside the traditional six dimensions (Criticality, Accessibility, Recuperability, Vulnerability, Effect, Recognizability). Each major risk or threat vector is scored 1–5 across these dimensions. Scores are dynamically weighted based on geopolitical context — in hybrid war zones, for example, cyber risk may outweigh kinetic risk and weights are adjusted accordingly. The output is a ranked risk map and CARVER heatmap that tells analysts and decision-makers exactly where to focus the simulation engine.</div>
+          <ul class="ph-steps">
+            <li>Assign CARVER-ECO scores for each threat vector (1–5 per dimension)</li>
+            <li>Generate CARVER heatmap — ranked assets and threats by composite score</li>
+            <li>Dynamic weight adjustment based on geopolitical context</li>
+            <li>Translate subjective analyst judgement into semi-quantitative parameters</li>
+          </ul>
+          <span class="ph-badge">Output: Ranked risk register · CARVER heatmap · collection priorities</span>
+        </div>
+      </div>
+
+      <div class="phase ph3 reveal d3">
+        <div class="ph-accent"><span class="ph-num">3</span><span class="ph-roman">Phase III</span></div>
+        <div class="ph-body">
+          <div class="ph-title">Probabilistic Simulation — Monte Carlo / Gaussian Copula</div>
+          <div class="ph-sub">IGRIS Core Engine · correlated Bernoulli events · 10,000+ simulated futures</div>
+          <div class="ph-desc">Phase 3 converts uncertainty into quantified, decision-grade intelligence. The IGRIS Core Engine runs Monte Carlo simulations — typically 10,000 to 20,000 iterations — across the CARVER-ECO weighted risk variables. Critically, IGRIS does not treat risks as independent events. A Gaussian copula models the correlations between risks: a militant raid and a corridor disruption are correlated because they share common drivers. Running independent simulations would systematically underestimate compound risk. The output is a full probability distribution of futures — not a single forecast — organized into scenario clusters (Most Likely, Worst-Case, Best-Case) with named probability bands. The engine also generates CARVER-weighted annual severity scores that translate event occurrence into impact magnitude.</div>
+          <ul class="ph-steps">
+            <li>Define variable ranges and monthly event probabilities from CARVER-ECO</li>
+            <li>Model risk correlations via Gaussian copula (Cholesky decomposition)</li>
+            <li>Run 10,000–20,000 Monte Carlo iterations across correlated Bernoulli events</li>
+            <li>Cluster output into scenario likelihoods with named narrative descriptions</li>
+            <li>Generate CARVER-weighted severity score distribution per trial</li>
+          </ul>
+          <span class="ph-badge">Output: Probability curves · scenario clusters · CARVER severity scores</span>
+        </div>
+      </div>
+
+      <div class="phase ph4 reveal d4">
+        <div class="ph-accent"><span class="ph-num">4</span><span class="ph-roman">Phase IV</span></div>
+        <div class="ph-body">
+          <div class="ph-title">Strategic Decision Interface</div>
+          <div class="ph-sub">Go / Stage-Gate / Pause thresholds · visualization dashboards · board-level communications</div>
+          <div class="ph-desc">Phase 4 translates probabilistic analytics into actionable decisions. The simulation output is rendered as a visualization dashboard — probability distribution graphs for key risks, geo-mapped CARVER threat overlays, and scenario count summaries. Decision Threshold Mapping defines the measurable conditions under which specific strategic actions are triggered: a Go decision if instability probability remains below a defined threshold, a Stage-Gate if it crosses an intermediate level, a Pause and Business Continuity Plan activation if it exceeds the critical level. These thresholds are pre-agreed with the risk committee before a crisis — not improvised during one. Communications templates are pre-approved for board, CFO, or national council presentation, providing data-driven justification for strategic decisions.</div>
+          <ul class="ph-steps">
+            <li>Probability distribution visualization for each priority risk</li>
+            <li>Geo-mapped CARVER threat overlays (red = high effect + accessibility)</li>
+            <li>Decision threshold mapping — Go / Stage-Gate / Pause with measurable indicators</li>
+            <li>Pre-approved communications templates for CFO, board, or national council</li>
+          </ul>
+          <span class="ph-badge">Output: Action thresholds · tripwire matrix · GSOC dashboards · board briefs</span>
+        </div>
+      </div>
+
+      <div class="phase ph5 reveal d5">
+        <div class="ph-accent"><span class="ph-num">5</span><span class="ph-roman">Phase V</span></div>
+        <div class="ph-body">
+          <div class="ph-title">Continuous Feedback Loop — Dynamic Reassessment</div>
+          <div class="ph-sub">New OSINT / HUMINT / SIGINT · re-score · re-run · back-test calibration</div>
+          <div class="ph-desc">Phase 5 is what transforms IGRIS from a static assessment into a living intelligence engine. New intelligence — OSINT, HUMINT, SIGINT, operational telemetry including dwell times, insurance premiums, and incident rates — is ingested and evaluated against prior forecasts. CARVER-ECO weights are re-scored where the threat or mission profile has changed. Simulations are re-run with updated parameters. Deviation from prior forecasts is captured and used to back-test model calibration — measured using Brier scores or proper scoring rules. This phase mirrors the continuous assessment cycle used in modern Joint Intelligence Centers (JIC) and corporate war rooms. The model's value compounds over time as calibration improves with each cycle.</div>
+          <ul class="ph-steps">
+            <li>Ingest new OSINT / HUMINT / SIGINT and operational telemetry</li>
+            <li>Re-score CARVER-ECO where threat or mission profile has changed</li>
+            <li>Re-run Monte Carlo simulations with updated parameters</li>
+            <li>Capture forecast deviation and update probability curves</li>
+            <li>Back-test model calibration using Brier / proper scoring rules</li>
+            <li>Archive decisions and parameter logs for audit trail</li>
+          </ul>
+          <span class="ph-badge">Output: Revised forecasts · adaptive posture · calibration record</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PARENT METHODS ── -->
+    <section id="methods" aria-label="Parent methodologies">
+      <div class="divider reveal">
+        <span class="divider-num">03</span>
+        <div class="divider-rule"></div>
+        <span class="divider-label">Parent Methodologies</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:1.4rem;" class="reveal">
+        <h2>The Two <em>Founding Methods</em></h2>
+        <span class="kicker">Intelligence tradecraft + vulnerability science</span>
+      </div>
+      <p class="reveal" style="max-width:620px;margin-bottom:2rem;font-size:.97rem;line-height:1.88;">IGRIS draws from three foundational QA-MNS methodologies that were field-tested across multiple regions and sectors before being fused into the closed-loop system. Two parent methods are the primary contributors — SATCON-X and CARVER-ECO — each addressing a distinct analytical failure mode.</p>
+
+      <div class="grid cols-2">
+        <div class="method-card reveal d1">
+          <span class="method-code">SATCON-X</span>
+          <span class="method-name">Structured Analytic Convergence Method</span>
+          <p style="font-size:.95rem;line-height:1.85;">A proprietary adaptation of Intelligence Community Structured Analytic Techniques (SATs) — including Key Assumptions Check, Analysis of Competing Hypotheses, and What-If analysis — merged with corporate red-team protocols. SATCON-X forces analysts to articulate why a risk matters and how it interacts with other risks before any quantification begins. It provides IGRIS with the hypothesis space and bias-checked variable set that feed the model. Without SATCON-X, the simulation engine operates on assumptions that have never been challenged — and garbage in produces garbage out at 10,000 iterations per run.</p>
+          <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:6px;">
+            <span style="font-family:var(--mono);font-size:.63rem;color:var(--muted2);border:1px solid var(--border);padding:3px 9px;background:var(--panel);">Key Assumptions Check</span>
+            <span style="font-family:var(--mono);font-size:.63rem;color:var(--muted2);border:1px solid var(--border);padding:3px 9px;background:var(--panel);">ACH</span>
+            <span style="font-family:var(--mono);font-size:.63rem;color:var(--muted2);border:1px solid var(--border);padding:3px 9px;background:var(--panel);">What-If · HI-LO</span>
+            <span style="font-family:var(--mono);font-size:.63rem;color:var(--muted2);border:1px solid var(--border);padding:3px 9px;background:var(--panel);">Red-team sessions</span>
+          </div>
+        </div>
+
+        <div class="method-card reveal d2">
+          <span class="method-code">CARVER-ECO</span>
+          <span class="method-name">CARVER Extended Contextual Optimization</span>
+          <p style="font-size:.95rem;line-height:1.85;">An evolved version of the classic CARVER matrix — originally a military targeting tool — re-engineered to assess interdependencies across economic, political, cyber, and reputational dimensions alongside the traditional six. CARVER-ECO converts subjective analyst judgement into semi-quantitative weights, creating a structured bridge between human intelligence insight and the simulation engine. It supplies IGRIS with the weighted parameters that define what is "critical" or "vulnerable" in the Monte Carlo model. The ECO suffix reflects the expanded contextual weighting — a CARVER score in a hybrid warfare zone weights cyber and reputational exposure differently than the same score in a conventional conflict environment.</p>
+          <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:6px;">
+            <span style="font-family:var(--mono);font-size:.63rem;color:var(--muted2);border:1px solid var(--border);padding:3px 9px;background:var(--panel);">Criticality · Accessibility</span>
+            <span style="font-family:var(--mono);font-size:.63rem;color:var(--muted2);border:1px solid var(--border);padding:3px 9px;background:var(--panel);">Recuperability · Vulnerability</span>
+            <span style="font-family:var(--mono);font-size:.63rem;color:var(--muted2);border:1px solid var(--border);padding:3px 9px;background:var(--panel);">Effect · Recognizability</span>
+            <span style="font-family:var(--mono);font-size:.63rem;color:var(--muted2);border:1px solid var(--border);padding:3px 9px;background:var(--panel);">+ Economic · Cyber · Reputation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- capabilities table -->
+      <div class="reveal" style="overflow-x:auto;margin-top:24px;">
+        <table class="cap-table" aria-label="IGRIS intelligence advantages">
+          <thead>
+            <tr><th>Capability</th><th>Mechanism</th><th>Strategic Benefit</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>SATs Integration</td><td>Key Assumptions Check, ACH, red-team</td><td>Removes bias and expands hypothesis space before quantification</td></tr>
+            <tr><td>CARVER-ECO Quantification</td><td>Semi-quantitative 1–5 scoring + context weights</td><td>Objectively ranks priorities across national, corporate, and sectoral lines</td></tr>
+            <tr><td>Monte Carlo Forecasting</td><td>Gaussian copula · 10,000+ iterations</td><td>Adds probabilistic depth and correlation modeling to qualitative intelligence</td></tr>
+            <tr><td>Dynamic Feedback Loop</td><td>Re-score · re-run · back-test calibration</td><td>Enables adaptive, real-time situational awareness that compounds in value</td></tr>
+            <tr><td>Cross-Domain Fusion</td><td>Geopolitical + cyber + financial risk in one model</td><td>Bridges traditionally siloed intelligence domains into a single decision engine</td></tr>
+            <tr><td>Pre-agreed Thresholds</td><td>Go / Stage-Gate / Pause mapped to indicators</td><td>Decisions are made by the model architecture, not improvised under pressure</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── COUNTRY DASHBOARD ── -->
+    <section id="dashboard" aria-label="Six-country geo-risk dashboard">
+      <div class="divider reveal">
+        <span class="divider-num">04</span>
+        <div class="divider-rule"></div>
+        <span class="divider-label">Applied Intelligence · Africa Portfolio</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:1.4rem;" class="reveal">
+        <h2>Six-Country <em>Geo-Risk Dashboard</em></h2>
+        <span class="kicker">6–12 month horizon · CARVER + Monte Carlo</span>
+      </div>
+      <p class="reveal" style="max-width:660px;margin-bottom:2rem;font-size:.97rem;line-height:1.88;">The following represents IGRIS applied across six African theaters actively monitored by MNS Consulting. Each country cut runs the full five-phase IGRIS cycle — SATCON-X framing, CARVER-ECO scoring, Monte Carlo probabilistic simulation, decision thresholds, and collection priorities. These are illustrative planning probabilities derived from current intelligence baselines; they are not a substitute for a full coded model run against your organization's specific exposure profile.</p>
+
+      <div class="country-grid">
+
+        <!-- DRC -->
+        <div class="country-card cc-drc reveal d1">
+          <div class="cc-header">
+            <div><div class="cc-name">DRC</div><div style="font-family:var(--font-ui);font-size:.62rem;letter-spacing:.12em;color:var(--muted2);margin-top:3px;">Democratic Republic of the Congo</div></div>
+            <div class="cc-horizon">6–12 mo.</div>
+          </div>
+          <div class="cc-body">
+            <div style="font-family:var(--font-ui);font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted2);margin-bottom:8px;">CARVER-ranked risks</div>
+            <div class="risk-row"><span class="risk-label">Cobalt export quota tightening</span><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-bar-fill" style="width:62%;background:rgba(252,165,100,.7);"></div></div><span class="risk-pct">62%</span></div></div>
+            <div class="risk-row"><span class="risk-label">M23 / Rwanda–DRC escalation</span><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-bar-fill" style="width:48%;background:rgba(252,165,100,.5);"></div></div><span class="risk-pct">48%</span></div></div>
+            <div class="risk-row"><span class="risk-label">ADF/ISIS mass-casualty attacks</span><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-bar-fill" style="width:58%;background:rgba(252,165,100,.45);"></div></div><span class="risk-pct">58%</span></div></div>
+            <div class="risk-row"><span class="risk-label">Logistics corridor friction</span><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-bar-fill" style="width:38%;background:rgba(252,165,100,.35);"></div></div><span class="risk-pct">38%</span></div></div>
+            <div class="cc-scenarios">
+              <div style="font-family:var(--font-ui);font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted2);margin-bottom:6px;">Scenario clusters</div>
+              <div class="scenario-item"><span class="scen-name">Regulated Tightness</span><span class="scen-pct">~45%</span></div>
+              <div class="scenario-item"><span class="scen-name">Security-Led Shock</span><span class="scen-pct">~30%</span></div>
+              <div class="scenario-item"><span class="scen-name">Policy Easing / Quiet</span><span class="scen-pct">~15%</span></div>
+            </div>
+          </div>
+          <div class="cc-footer"><div class="cc-bluf"><strong style="color:var(--text);font-weight:400;">BLUF:</strong> Policy risk on cobalt quotas dominates. Most likely: tight but investable if firms pre-hedge volume and harden traceability.</div></div>
+        </div>
+
+        <!-- MOZAMBIQUE -->
+        <div class="country-card cc-moz reveal d2">
+          <div class="cc-header">
+            <div><div class="cc-name">Mozambique</div><div style="font-family:var(--font-ui);font-size:.62rem;letter-spacing:.12em;color:var(--muted2);margin-top:3px;">Cabo Delgado / LNG portfolio</div></div>
+            <div class="cc-horizon">6–12 mo.</div>
+          </div>
+          <div class="cc-body">
+            <div style="font-family:var(--font-ui);font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted2);margin-bottom:8px;">CARVER-ranked risks</div>
+            <div class="risk-row"><span class="risk-label">Onshore LNG restart risk</span><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-bar-fill" style="width:67%;background:rgba(100,210,170,.7);"></div></div><span class="risk-pct">67%</span></div></div>
+            <div class="risk-row"><span class="risk-label">ISM raids — Mocímboa/Palma</span><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-bar-fill" style="width:52%;background:rgba(100,210,170,.5);"></div></div><span class="risk-pct">52%</span></div></div>
+            <div class="risk-row"><span class="risk-label">Civilian displacement surges</span><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-bar-fill" style="width:42%;background:rgba(100,210,170,.4);"></div></div><span class="risk-pct">42%</span></div></div>
+            <div class="risk-row"><span class="risk-label">Offshore LNG disruption</span><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-bar-fill" style="width:15%;background:rgba(100,210,170,.3);"></div></div><span class="risk-pct">15%</span></div></div>
+            <div class="cc-scenarios">
+              <div style="font-family:var(--font-ui);font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted2);margin-bottom:6px;">Scenario clusters</div>
+              <div class="scenario-item"><span class="scen-name">Contained Instability, Offshore Momentum</span><span class="scen-pct">~45%</span></div>
+              <div class="scenario-item"><span class="scen-name">Shock Reversals</span><span class="scen-pct">~30%</span></div>
+              <div class="scenario-item"><span class="scen-name">Security gains enabling onshore</span><span class="scen-pct">~15%</span></div>
+            </div>
+          </div>
+          <div class="cc-footer"><div class="cc-bluf"><strong style="color:var(--text);font-weight:400;">BLUF:</strong> Offshore LNG advancing; onshore security-conditioned. Stage-gate onshore, lean offshore, track ISM telemetry.</div></div>
+        </div>
+
+        <!-- SUDAN -->
+        <div class="country-card cc-sud reveal d3">
+          <div class="cc-header">
+            <div><div class="cc-name">Sudan</div><div style="font-family:var(--font-ui);font-size:.62rem;letter-spacing:.12em;color:var(--muted2);margin-top:3px;">El Fasher / Darfur / SAF–RSF</div></div>
+            <div class="cc-horizon">6–12 mo.</div>
+          </div>
+          <div class="cc-body">
+            <div style="font-family:var(--font-ui);font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted2);margin-bottom:8px;">CARVER-ranked risks</div>
+            <div class="risk-row"><span class="risk-label">El Fasher siege / civilian harm</span><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-bar-fill" style="width:62%;background:rgba(252,100,100,.7);"></div></div><span class="risk-pct">62%</span></div></div>
+            <div class="risk-row"><span class="risk-label">Humanitarian access collapse</span><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-bar-fill" style="width:58%;background:rgba(252,100,100,.55);"></div></div><span class="risk-pct">58%</span></div></div>
+            <div class="risk-row"><span class="risk-label">Advanced weapons / air-op risk</span><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-bar-fill" style="width:43%;background:rgba(252,100,100,.45);"></div></div><span class="risk-pct">43%</span></div></div>
+            <div class="risk-row"><span class="risk-label">Oil/pipeline disruption</span><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-bar-fill" style="width:38%;background:rgba(252,100,100,.35);"></div></div><span class="risk-pct">38%</span></div></div>
+            <div class="cc-scenarios">
+              <div style="font-family:var(--font-ui);font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted2);margin-bottom:6px;">Scenario clusters</div>
+              <div class="scenario-item"><span class="scen-name">Attritional Siege &amp; Fragmented Access</span><span class="scen-pct">~45%</span></div>
+              <div class="scenario-item"><span class="scen-name">Arms-Sustained Stalemate</span><span class="scen-pct">~30%</span></div>
+              <div class="scenario-item"><span class="scen-name">Localized ceasefire traction</span><span class="scen-pct">~15%</span></div>
+            </div>
+          </div>
+          <div class="cc-footer"><div class="cc-bluf"><strong style="color:var(--text);font-weight:400;">BLUF:</strong> Acute emergency. Corridor diversification, air-risk controls, pre-stocked surge capacity, SAM/drone monitoring required.</div></div>
+        </div>
+
+        <!-- MAURITANIA -->
+        <div class="country-card cc-mau reveal d1">
+          <div class="cc-header">
+            <div><div class="cc-name">Mauritania</div><div style="font-family:var(--font-ui);font-size:.62rem;letter-spacing:.12em;color:var(--muted2);margin-top:3px;">GTA / Tasiast / Sahel border</div></div>
+            <div class="cc-horizon">6–12 mo.</div>
+          </div>
+          <div class="cc-body">
+            <div style="font-family:var(--font-ui);font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted2);margin-bottom:8px;">CARVER-ranked risks</div>
+            <div class="risk-row"><span class="risk-label">Cross-border militant spillover</span><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-bar-fill" style="width:32%;background:rgba(168,216,234,.6);"></div></div><span class="risk-pct">32%</span></div></div>
+            <div class="risk-row"><span class="risk-label">Migration-policing controversy</span><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-bar-fill" style="width:52%;background:rgba(168,216,234,.5);"></div></div><span class="risk-pct">52%</span></div></div>
+            <div class="risk-row"><span class="risk-label">GTA offshore HSE incident</span><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-bar-fill" style="width:15%;background:rgba(168,216,234,.35);"></div></div><span class="risk-pct">15%</span></div></div>
+            <div class="risk-row"><span class="risk-label">Tasiast industrial disruption</span><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-bar-fill" style="width:27%;background:rgba(168,216,234,.3);"></div></div><span class="risk-pct">27%</span></div></div>
+            <div class="cc-scenarios">
+              <div style="font-family:var(--font-ui);font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted2);margin-bottom:6px;">Scenario clusters</div>
+              <div class="scenario-item"><span class="scen-name">Buffered Stability, Reputational Churn</span><span class="scen-pct">~45%</span></div>
+              <div class="scenario-item"><span class="scen-name">Border Shock Lite</span><span class="scen-pct">~25%</span></div>
+              <div class="scenario-item"><span class="scen-name">Dual industrial hits</span><span class="scen-pct">&lt;15%</span></div>
+            </div>
+          </div>
+          <div class="cc-footer"><div class="cc-bluf"><strong style="color:var(--text);font-weight:400;">BLUF:</strong> Comparatively stable. Border-zone spillover and ESG/migration optics are near-term risk multipliers. Alert posture east.</div></div>
+        </div>
+
+        <!-- BENIN -->
+        <div class="country-card cc-ben reveal d2">
+          <div class="cc-header">
+            <div><div class="cc-name">Benin</div><div style="font-family:var(--font-ui);font-size:.62rem;letter-spacing:.12em;color:var(--muted2);margin-top:3px;">W–Pendjari / Niger corridor</div></div>
+            <div class="cc-horizon">6–12 mo.</div>
+          </div>
+          <div class="cc-body">
+            <div style="font-family:var(--font-ui);font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted2);margin-bottom:8px;">CARVER-ranked risks</div>
+            <div class="risk-row"><span class="risk-label">Complex attacks on northern posts</span><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-bar-fill" style="width:52%;background:rgba(250,186,100,.65);"></div></div><span class="risk-pct">52%</span></div></div>
+            <div class="risk-row"><span class="risk-label">IED / kidnap — W–Pendjari</span><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-bar-fill" style="width:45%;background:rgba(250,186,100,.5);"></div></div><span class="risk-pct">45%</span></div></div>
+            <div class="risk-row"><span class="risk-label">Niger corridor/pipeline shock</span><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-bar-fill" style="width:38%;background:rgba(250,186,100,.4);"></div></div><span class="risk-pct">38%</span></div></div>
+            <div class="risk-row"><span class="risk-label">Maritime incident — GoG</span><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-bar-fill" style="width:20%;background:rgba(250,186,100,.3);"></div></div><span class="risk-pct">20%</span></div></div>
+            <div class="cc-scenarios">
+              <div style="font-family:var(--font-ui);font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted2);margin-bottom:6px;">Scenario clusters</div>
+              <div class="scenario-item"><span class="scen-name">Northern Grind</span><span class="scen-pct">~45%</span></div>
+              <div class="scenario-item"><span class="scen-name">Corridor Shock</span><span class="scen-pct">~25%</span></div>
+              <div class="scenario-item"><span class="scen-name">Security gains via external support</span><span class="scen-pct">~15%</span></div>
+            </div>
+          </div>
+          <div class="cc-footer"><div class="cc-bluf"><strong style="color:var(--text);font-weight:400;">BLUF:</strong> Northern grind is the baseline. Stage-gate exposure, hardened movement, corridor hedges via Lomé/Abidjan.</div></div>
+        </div>
+
+        <!-- TOGO -->
+        <div class="country-card cc-tog reveal d3">
+          <div class="cc-header">
+            <div><div class="cc-name">Togo</div><div style="font-family:var(--font-ui);font-size:.62rem;letter-spacing:.12em;color:var(--muted2);margin-top:3px;">Savanes / Port of Lomé</div></div>
+            <div class="cc-horizon">6–12 mo.</div>
+          </div>
+          <div class="cc-body">
+            <div style="font-family:var(--font-ui);font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted2);margin-bottom:8px;">CARVER-ranked risks</div>
+            <div class="risk-row"><span class="risk-label">Cross-border raids / IEDs (Savanes)</span><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-bar-fill" style="width:52%;background:rgba(190,170,255,.65);"></div></div><span class="risk-pct">52%</span></div></div>
+            <div class="risk-row"><span class="risk-label">Lomé anchorage incident</span><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-bar-fill" style="width:32%;background:rgba(190,170,255,.5);"></div></div><span class="risk-pct">32%</span></div></div>
+            <div class="risk-row"><span class="risk-label">Rights / political controversy</span><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-bar-fill" style="width:45%;background:rgba(190,170,255,.4);"></div></div><span class="risk-pct">45%</span></div></div>
+            <div class="risk-row"><span class="risk-label">Port / logistics disruption</span><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-bar-fill" style="width:20%;background:rgba(190,170,255,.3);"></div></div><span class="risk-pct">20%</span></div></div>
+            <div class="cc-scenarios">
+              <div style="font-family:var(--font-ui);font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted2);margin-bottom:6px;">Scenario clusters</div>
+              <div class="scenario-item"><span class="scen-name">Northern Grind, Coastal Control</span><span class="scen-pct">~45%</span></div>
+              <div class="scenario-item"><span class="scen-name">Offshore Scare</span><span class="scen-pct">~25%</span></div>
+              <div class="scenario-item"><span class="scen-name">Rights Flashpoint</span><span class="scen-pct">~15%</span></div>
+            </div>
+          </div>
+          <div class="cc-footer"><div class="cc-bluf"><strong style="color:var(--text);font-weight:400;">BLUF:</strong> Lomé remains a high-throughput hub. Persistent Savanes attacks under extended emergency + episodic offshore risk.</div></div>
+        </div>
+
+      </div>
+
+      <!-- Cross-cutting portfolio summary -->
+      <div class="card reveal" style="margin-top:18px;border-color:var(--gold-line);">
+        <h3>Portfolio Bottom Line — Cross-Cutting Risk Summary</h3>
+        <p style="margin-top:12px;font-size:.93rem;line-height:1.85;max-width:900px;">The heaviest systemic risk across the six theaters is <strong style="color:var(--text);font-weight:400;">DRC's cobalt quota regime</strong> — a global supply chain impact that extends far beyond the country's borders. The most acute humanitarian and security emergencies are <strong style="color:var(--text);font-weight:400;">Sudan (Darfur)</strong> and <strong style="color:var(--text);font-weight:400;">northern Benin and Togo</strong>. Mozambique's offshore gas trajectory is positive but onshore remains security-conditioned. Mauritania maintains comparative stability with risk concentrated in border spillover and ESG optics around migration controls.</p>
+        <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="pill" style="color:rgba(252,165,100,.85);border-color:rgba(252,165,100,.3);">DRC — Policy High</span>
+          <span class="pill" style="color:rgba(100,210,170,.85);border-color:rgba(100,210,170,.3);">MOZ — Offshore High / Onshore Security-Conditional</span>
+          <span class="pill" style="color:rgba(252,100,100,.85);border-color:rgba(252,100,100,.3);">Sudan — Attritional Violence High</span>
+          <span class="pill" style="color:rgba(168,216,234,.85);border-color:rgba(168,216,234,.3);">Mauritania — Stable, Alert Posture</span>
+          <span class="pill" style="color:rgba(250,186,100,.85);border-color:rgba(250,186,100,.3);">Benin — Northern Grind Medium-High</span>
+          <span class="pill" style="color:rgba(190,170,255,.85);border-color:rgba(190,170,255,.3);">Togo — Savanes Medium, Lomé Alert</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MONTE CARLO ENGINE ── -->
+    <section id="code" aria-label="Monte Carlo Python engine">
+      <div class="divider reveal">
+        <span class="divider-num">05</span>
+        <div class="divider-rule"></div>
+        <span class="divider-label">Monte Carlo Engine</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:1.4rem;" class="reveal">
+        <h2>The <em>Simulation Engine</em></h2>
+        <span class="kicker">Python · Gaussian copula · correlated Bernoulli events</span>
+      </div>
+      <p class="reveal" style="max-width:660px;margin-bottom:1.4rem;font-size:.97rem;line-height:1.88;">The IGRIS Monte Carlo engine models correlated risk events using a Gaussian copula — ensuring that related risks move together realistically rather than as independent coin flips. The Benin example below demonstrates the engine with illustrative monthly probabilities. Replace the risk configuration and correlation matrix with your country-specific parameters to run a live IGRIS assessment.</p>
+
+      <div class="grid cols-3 reveal" style="margin-bottom:14px;">
+        <div class="card">
+          <h3>Step 1 — Define Probabilities</h3>
+          <p style="font-size:.91rem;">Set a monthly event probability for each risk (e.g., 0.20 = 20% chance per month) derived from your CARVER-ECO scoring and intelligence baseline.</p>
+        </div>
+        <div class="card">
+          <h3>Step 2 — Set Correlations</h3>
+          <p style="font-size:.91rem;">Build a correlation matrix capturing how risks co-move (e.g., militant raids and corridor shocks share causal drivers — a correlation of 0.35 models that relationship).</p>
+        </div>
+        <div class="card">
+          <h3>Step 3 — Run &amp; Interpret</h3>
+          <p style="font-size:.91rem;">Run <code style="font-family:var(--mono);font-size:.85em;color:var(--gold);">run_igris_monte_carlo()</code> for scenario probabilities. Add CARVER weights via <code style="font-family:var(--mono);font-size:.85em;color:var(--gold);">carver_weighted_scores()</code> for annual severity distribution.</p>
+        </div>
+      </div>
+
+      <div class="code-wrap reveal">
+        <div class="code-header">
+          <span class="code-lang">Python 3 · NumPy · Pandas</span>
+          <span class="code-desc">IGRIS Monte Carlo Engine — Gaussian Copula for Correlated Bernoulli Events</span>
+        </div>
+        <pre class="code-block"><code><span class="cm"># IGRIS Monte Carlo Engine (Gaussian Copula for Correlated Bernoulli Events)</span>
+<span class="cm"># M. Nuri Shakoor, SRMP — Quanta Analytica MNS Consulting</span>
+<span class="cm"># In partnership with Lladner Business Solutions, Risk Management &amp; GSOC Services Division</span>
+
+<span class="kw">import</span> numpy <span class="kw">as</span> np
+<span class="kw">import</span> pandas <span class="kw">as</span> pd
+
+<span class="kw">def</span> <span class="fn">gaussian_copula_bernoulli</span>(P, corr, trials=<span class="nm">10000</span>, months=<span class="nm">12</span>, seed=<span class="nm">42</span>):
+    <span class="st">"""Generate correlated Bernoulli outcomes over months for multiple risk factors.
+    P     : (k,) array of monthly event probabilities
+    corr  : (k,k) PSD correlation matrix between factors
+    Returns: (trials, months, k) boolean array"""</span>
+    rng = np.random.default_rng(seed)
+    P = np.asarray(P, dtype=<span class="nm">float</span>)
+    k = P.shape[<span class="nm">0</span>]
+    corr = np.asarray(corr, dtype=<span class="nm">float</span>)
+    eps = <span class="nm">1e-10</span>
+    <span class="kw">try</span>:
+        L = np.linalg.cholesky(corr)
+    <span class="kw">except</span> np.linalg.LinAlgError:
+        L = np.linalg.cholesky(corr + np.eye(k) * eps)
+
+    <span class="kw">def</span> <span class="fn">norm_ppf</span>(u):  <span class="cm"># Acklam inverse normal CDF (no scipy dependency)</span>
+        u = np.asarray(u)
+        a = [-<span class="nm">3.969683028665376e+01</span>, <span class="nm">2.209460984245205e+02</span>, -<span class="nm">2.759285104469687e+02</span>,
+              <span class="nm">1.383577518672690e+02</span>, -<span class="nm">3.066479806614716e+01</span>, <span class="nm">2.506628277459239e+00</span>]
+        b = [-<span class="nm">5.447609879822406e+01</span>, <span class="nm">1.615858368580409e+02</span>, -<span class="nm">1.556989798598866e+02</span>,
+              <span class="nm">6.680131188771972e+01</span>, -<span class="nm">1.328068155288572e+01</span>]
+        c = [-<span class="nm">7.784894002430293e-03</span>, -<span class="nm">3.223964580411365e-01</span>, -<span class="nm">2.400758277161838e+00</span>,
+             -<span class="nm">2.549732539343734e+00</span>, <span class="nm">4.374664141464968e+00</span>, <span class="nm">2.938163982698783e+00</span>]
+        d = [<span class="nm">7.784695709041462e-03</span>, <span class="nm">3.224671290700398e-01</span>, <span class="nm">2.445134137142996e+00</span>,
+             <span class="nm">3.754408661907416e+00</span>]
+        plow, phigh = <span class="nm">0.02425</span>, <span class="nm">1</span> - <span class="nm">0.02425</span>
+        x = np.empty_like(u, dtype=<span class="nm">float</span>)
+        mask = u &lt; plow
+        q = np.sqrt(-<span class="nm">2</span>*np.log(u[mask]))
+        x[mask] = (((((c[<span class="nm">0</span>]*q+c[<span class="nm">1</span>])*q+c[<span class="nm">2</span>])*q+c[<span class="nm">3</span>])*q+c[<span class="nm">4</span>])*q+c[<span class="nm">5</span>]) / \
+                  ((((d[<span class="nm">0</span>]*q+d[<span class="nm">1</span>])*q+d[<span class="nm">2</span>])*q+d[<span class="nm">3</span>])*q+<span class="nm">1</span>)
+        mask = u &gt; phigh
+        q = np.sqrt(-<span class="nm">2</span>*np.log(<span class="nm">1</span>-u[mask]))
+        x[mask] = -(((((c[<span class="nm">0</span>]*q+c[<span class="nm">1</span>])*q+c[<span class="nm">2</span>])*q+c[<span class="nm">3</span>])*q+c[<span class="nm">4</span>])*q+c[<span class="nm">5</span>]) / \
+                   ((((d[<span class="nm">0</span>]*q+d[<span class="nm">1</span>])*q+d[<span class="nm">2</span>])*q+d[<span class="nm">3</span>])*q+<span class="nm">1</span>)
+        mask = (u &gt;= plow) &amp; (u &lt;= phigh)
+        q = u[mask] - <span class="nm">0.5</span>
+        r = q*q
+        x[mask] = (((((a[<span class="nm">0</span>]*r+a[<span class="nm">1</span>])*r+a[<span class="nm">2</span>])*r+a[<span class="nm">3</span>])*r+a[<span class="nm">4</span>])*r+a[<span class="nm">5</span>]) * q / \
+                  (((((b[<span class="nm">0</span>]*r+b[<span class="nm">1</span>])*r+b[<span class="nm">2</span>])*r+b[<span class="nm">3</span>])*r+b[<span class="nm">4</span>])*r+<span class="nm">1</span>)
+        <span class="kw">return</span> x
+
+    thresholds = norm_ppf(P)
+    outcomes = np.zeros((trials, months, k), dtype=<span class="nm">bool</span>)
+    <span class="kw">for</span> t <span class="kw">in</span> range(trials):
+        Z = rng.standard_normal(size=(months, k))
+        Y = Z @ L.T
+        outcomes[t] = (Y &lt; thresholds)
+    <span class="kw">return</span> outcomes
+
+<span class="kw">def</span> <span class="fn">run_igris_monte_carlo</span>(risk_config, corr, months=<span class="nm">12</span>, trials=<span class="nm">10000</span>, seed=<span class="nm">42</span>):
+    <span class="st">"""risk_config: {risk_name: monthly_probability}
+    Returns: (summary_dict, details_df, outcomes)"""</span>
+    risk_names = list(risk_config.keys())
+    probs = np.array([risk_config[r] <span class="kw">for</span> r <span class="kw">in</span> risk_names], dtype=<span class="nm">float</span>)
+    outcomes = gaussian_copula_bernoulli(probs, corr, trials=trials, months=months, seed=seed)
+    tags = []
+    <span class="kw">for</span> rn <span class="kw">in</span> risk_names:
+        l = rn.lower()
+        <span class="kw">if</span> any(x <span class="kw">in</span> l <span class="kw">for</span> x <span class="kw">in</span> [<span class="st">"raid"</span>,<span class="st">"ied"</span>,<span class="st">"attack"</span>,<span class="st">"insurg"</span>,<span class="st">"militant"</span>]): tags.append(<span class="st">"SECURITY"</span>)
+        <span class="kw">elif</span> any(x <span class="kw">in</span> l <span class="kw">for</span> x <span class="kw">in</span> [<span class="st">"maritime"</span>,<span class="st">"anchorage"</span>,<span class="st">"piracy"</span>,<span class="st">"offshore"</span>]): tags.append(<span class="st">"MARITIME"</span>)
+        <span class="kw">elif</span> any(x <span class="kw">in</span> l <span class="kw">for</span> x <span class="kw">in</span> [<span class="st">"policy"</span>,<span class="st">"quota"</span>,<span class="st">"rights"</span>,<span class="st">"corridor"</span>,<span class="st">"pipeline"</span>]): tags.append(<span class="st">"POLICY"</span>)
+        <span class="kw">else</span>: tags.append(<span class="st">"OTHER"</span>)
+    tags = np.array(tags)
+    trial_flags = {<span class="st">"SECURITY_SHOCK"</span>:[], <span class="st">"POLICY_SHOCK"</span>:[], <span class="st">"MARITIME_SHOCK"</span>:[]}
+    <span class="kw">for</span> t <span class="kw">in</span> range(outcomes.shape[<span class="nm">0</span>]):
+        tr = outcomes[t]
+        sec_m = tr[:,tags==<span class="st">"SECURITY"</span>].any(axis=<span class="nm">1</span>).sum() <span class="kw">if</span> np.any(tags==<span class="st">"SECURITY"</span>) <span class="kw">else</span> <span class="nm">0</span>
+        pol_m = tr[:,tags==<span class="st">"POLICY"</span>].any(axis=<span class="nm">1</span>).sum() <span class="kw">if</span> np.any(tags==<span class="st">"POLICY"</span>) <span class="kw">else</span> <span class="nm">0</span>
+        mar_m = tr[:,tags==<span class="st">"MARITIME"</span>].any(axis=<span class="nm">1</span>).sum() <span class="kw">if</span> np.any(tags==<span class="st">"MARITIME"</span>) <span class="kw">else</span> <span class="nm">0</span>
+        trial_flags[<span class="st">"SECURITY_SHOCK"</span>].append(sec_m >= <span class="nm">2</span>)
+        trial_flags[<span class="st">"POLICY_SHOCK"</span>].append(pol_m >= <span class="nm">1</span>)
+        trial_flags[<span class="st">"MARITIME_SHOCK"</span>].append(mar_m >= <span class="nm">1</span>)
+    trial_flags = {k: np.array(v) <span class="kw">for</span> k,v <span class="kw">in</span> trial_flags.items()}
+    dual    = trial_flags[<span class="st">"SECURITY_SHOCK"</span>] &amp; trial_flags[<span class="st">"POLICY_SHOCK"</span>]
+    sec_only = trial_flags[<span class="st">"SECURITY_SHOCK"</span>] &amp; ~trial_flags[<span class="st">"POLICY_SHOCK"</span>]
+    pol_only = ~trial_flags[<span class="st">"SECURITY_SHOCK"</span>] &amp; trial_flags[<span class="st">"POLICY_SHOCK"</span>]
+    quiet   = ~trial_flags[<span class="st">"SECURITY_SHOCK"</span>] &amp; ~trial_flags[<span class="st">"POLICY_SHOCK"</span>]
+    summary = {<span class="st">"p_dual_shock"</span>: dual.mean(), <span class="st">"p_security_only"</span>: sec_only.mean(),
+               <span class="st">"p_policy_only"</span>: pol_only.mean(), <span class="st">"p_quiet"</span>: quiet.mean(),
+               <span class="st">"p_any_maritime"</span>: trial_flags[<span class="st">"MARITIME_SHOCK"</span>].mean()}
+    details = pd.DataFrame({<span class="st">"risk"</span>: risk_names,
+                            <span class="st">"monthly_prob"</span>: [risk_config[r] <span class="kw">for</span> r <span class="kw">in</span> risk_names],
+                            <span class="st">"tag"</span>: tags})
+    <span class="kw">return</span> summary, details, outcomes
+
+<span class="kw">def</span> <span class="fn">carver_weighted_scores</span>(outcomes, carver_weights, risk_names):
+    <span class="st">"""Compute CARVER-weighted annual severity score per trial.
+    carver_weights: {risk_name: {C,A,R,V,E,Rz}} — returns 1D array per trial"""</span>
+    occurred = outcomes.any(axis=<span class="nm">1</span>)
+    weights = np.array([sum(carver_weights[rn].values()) <span class="kw">for</span> rn <span class="kw">in</span> risk_names], dtype=<span class="nm">float</span>)
+    <span class="kw">return</span> (occurred * weights).sum(axis=<span class="nm">1</span>)
+
+<span class="cm"># ---- Example: Benin (replace with your country parameters) ----</span>
+benin_config = {
+    <span class="st">"northern_complex_attack"</span>: <span class="nm">0.20</span>,
+    <span class="st">"IED_or_kidnap_event"</span>:     <span class="nm">0.15</span>,
+    <span class="st">"corridor_pipeline_shock"</span>: <span class="nm">0.10</span>,
+    <span class="st">"maritime_anchor_incident"</span>:<span class="nm">0.03</span>,
+    <span class="st">"rights_or_local_unrest"</span>:  <span class="nm">0.08</span>
+}
+risk_names = list(benin_config.keys())
+k = len(risk_names)
+corr = np.eye(k)
+<span class="kw">def</span> <span class="fn">idx</span>(name): <span class="kw">return</span> risk_names.index(name)
+corr[idx(<span class="st">"northern_complex_attack"</span>), idx(<span class="st">"IED_or_kidnap_event"</span>)]    = <span class="nm">0.35</span>
+corr[idx(<span class="st">"IED_or_kidnap_event"</span>),     idx(<span class="st">"northern_complex_attack"</span>)] = <span class="nm">0.35</span>
+corr[idx(<span class="st">"northern_complex_attack"</span>), idx(<span class="st">"corridor_pipeline_shock"</span>)] = <span class="nm">0.20</span>
+corr[idx(<span class="st">"rights_or_local_unrest"</span>),  idx(<span class="st">"corridor_pipeline_shock"</span>)] = <span class="nm">0.20</span>
+corr[idx(<span class="st">"corridor_pipeline_shock"</span>), idx(<span class="st">"rights_or_local_unrest"</span>)]  = <span class="nm">0.20</span>
+
+summary, details, outcomes = run_igris_monte_carlo(benin_config, corr, months=<span class="nm">12</span>, trials=<span class="nm">20000</span>, seed=<span class="nm">7</span>)
+
+benin_carver = {
+    <span class="st">"northern_complex_attack"</span>: {<span class="st">"C"</span>:<span class="nm">5</span>,<span class="st">"A"</span>:<span class="nm">3</span>,<span class="st">"R"</span>:<span class="nm">2</span>,<span class="st">"V"</span>:<span class="nm">4</span>,<span class="st">"E"</span>:<span class="nm">5</span>,<span class="st">"Rz"</span>:<span class="nm">5</span>},
+    <span class="st">"IED_or_kidnap_event"</span>:     {<span class="st">"C"</span>:<span class="nm">4</span>,<span class="st">"A"</span>:<span class="nm">3</span>,<span class="st">"R"</span>:<span class="nm">3</span>,<span class="st">"V"</span>:<span class="nm">3</span>,<span class="st">"E"</span>:<span class="nm">4</span>,<span class="st">"Rz"</span>:<span class="nm">5</span>},
+    <span class="st">"corridor_pipeline_shock"</span>: {<span class="st">"C"</span>:<span class="nm">4</span>,<span class="st">"A"</span>:<span class="nm">3</span>,<span class="st">"R"</span>:<span class="nm">3</span>,<span class="st">"V"</span>:<span class="nm">3</span>,<span class="st">"E"</span>:<span class="nm">4</span>,<span class="st">"Rz"</span>:<span class="nm">4</span>},
+    <span class="st">"maritime_anchor_incident"</span>:{<span class="st">"C"</span>:<span class="nm">3</span>,<span class="st">"A"</span>:<span class="nm">2</span>,<span class="st">"R"</span>:<span class="nm">4</span>,<span class="st">"V"</span>:<span class="nm">2</span>,<span class="st">"E"</span>:<span class="nm">3</span>,<span class="st">"Rz"</span>:<span class="nm">3</span>},
+    <span class="st">"rights_or_local_unrest"</span>:  {<span class="st">"C"</span>:<span class="nm">3</span>,<span class="st">"A"</span>:<span class="nm">3</span>,<span class="st">"R"</span>:<span class="nm">3</span>,<span class="st">"V"</span>:<span class="nm">3</span>,<span class="st">"E"</span>:<span class="nm">3</span>,<span class="st">"Rz"</span>:<span class="nm">4</span>}
+}
+scores = carver_weighted_scores(outcomes, benin_carver, risk_names=list(benin_config.keys()))
+score_summary = {
+    <span class="st">"mean_score"</span>: float(np.mean(scores)),
+    <span class="st">"p90_score"</span>:  float(np.quantile(scores, <span class="nm">0.90</span>)),
+    <span class="st">"p95_score"</span>:  float(np.quantile(scores, <span class="nm">0.95</span>)),
+    <span class="st">"p99_score"</span>:  float(np.quantile(scores, <span class="nm">0.99</span>))
+}
+print(<span class="st">"=== IGRIS Monte Carlo (Benin demo) ==="</span>)
+print(<span class="st">"Scenario probabilities:"</span>, summary)
+print(<span class="st">"CARVER-weighted severity (annual):"</span>, score_summary)
+print(<span class="st">"\nRisk config &amp; tags:\n"</span>, details)</code></pre>
+      </div>
+      <p class="note reveal" style="margin-top:8px;">The engine uses a Gaussian copula via Cholesky decomposition — no scipy dependency. Drop into any Python 3 environment with NumPy and Pandas. Replace <code style="font-family:var(--mono);font-size:.85em;color:var(--gold);">benin_config</code> and the correlation matrix with your country's parameters to run a live IGRIS assessment.</p>
+    </section>
+
+    <!-- ── PULLQUOTE ── -->
+    <section aria-label="Defining principle">
+      <div class="pullquote reveal">
+        <blockquote>"IGRIS doesn't eliminate uncertainty — it quantifies it."</blockquote>
+        <cite>M. Nuri Shakoor, SRMP — Quanta Analytica MNS Consulting</cite>
+      </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section aria-label="Engagement">
+      <div class="callout reveal">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:12px;">
+          <h2>Deploy <em>IGRIS™</em></h2>
+          <span class="kicker">Boards · GSOCs · Policy councils</span>
+        </div>
+        <p style="max-width:580px;font-size:.97rem;line-height:1.88;margin-top:10px;">IGRIS™ is deployed through MNS Consulting engagements — scoped to your organization's specific theaters, risk profile, and decision tempo. Whether you need a single-country CARVER + Monte Carlo cut or a full multi-theater living risk intelligence system, the starting point is an advisory intake.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;">
+          <a class="btn primary" href="mns-lbs.html#contact">Start Advisory Intake</a>
+          <a class="btn" href="qa-process.html">Full QA Process™</a>
+          <a class="btn" href="qa-csrf.html">QA-CSRF™ Framework</a>
+          <a class="btn ghost" href="index.html">Quanta Analytica Home</a>
+        </div>
+        <p class="note" style="margin-top:16px;">IGRIS™, SATCON-X, CARVER-ECO, and the IGRIS Monte Carlo Engine are proprietary methodologies of MNS Consulting. Developed in partnership with Lladner Business Solutions, Risk Management &amp; GSOC Services Division. M. Nuri Shakoor, SRMP. All rights reserved.</p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="footer" role="contentinfo">
+      <div class="row">
+        <div class="footer-brand">
+          <span class="gold">Quanta Analytica</span> &nbsp;·&nbsp; IGRIS™ &nbsp;·&nbsp; MNS Consulting &nbsp;·&nbsp; &copy; <span id="year"></span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+          <a class="pill" href="index.html" style="color:var(--gold);border-color:var(--gold-line);">Home</a>
+          <a class="pill" href="mns-lbs.html" style="color:var(--gold);border-color:var(--gold-line);">MNS · LBS Advisory</a>
+          <a class="pill" href="qa-process.html" style="color:var(--gold);border-color:var(--gold-line);">QA Process™</a>
+          <a class="pill" href="cognition-model.html" style="color:var(--gold);border-color:var(--gold-line);">Cognition Model</a>
+          <a class="pill" href="qa-csrf.html" style="color:var(--gold);border-color:var(--gold-line);">QA-CSRF™</a>
+          <a class="pill" href="https://insights.quanta-analytica.com" target="_blank" rel="noopener" style="color:var(--gold);border-color:var(--gold-line);">Insights ↗</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  reveals.forEach(el => obs.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener("click", e => {
+      const id = a.getAttribute("href");
+      if (!id || id === "#") return;
+      const el = document.querySelector(id);
+      if (!el) return;
+      e.preventDefault();
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      history.replaceState(null, "", id);
+    });
+  });
+
+  const sections = ["#phases","#methods","#dashboard","#code"]
+    .map(s => document.querySelector(s)).filter(Boolean);
+  const navLinks = Array.from(document.querySelectorAll(".nav-links a"));
+  const navObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => {
+          const href = l.getAttribute("href");
+          if (href && href.startsWith("#"))
+            l.classList.toggle("active", href === "#" + entry.target.id);
+        });
+      }
+    });
+  }, { rootMargin: "-42% 0px -52% 0px", threshold: 0.01 });
+  sections.forEach(s => navObs.observe(s));
+</script>
+</body>
+</html>
