@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chad-Sudan Border Crisis | Quanta Analytica Process™ | 19 MAR 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:           #0A0E17;
+  --bg-panel:     #0F1520;
+  --bg-card:      #131B2A;
+  --bg-card-alt:  #0D1421;
+  --amber:        #E8A020;
+  --amber-dim:    #9B6A14;
+  --amber-glow:   rgba(232,160,32,0.12);
+  --amber-pale:   rgba(232,160,32,0.06);
+  --red:          #D94040;
+  --red-dim:      rgba(217,64,64,0.15);
+  --green:        #2EA86A;
+  --green-dim:    rgba(46,168,106,0.15);
+  --yellow:       #D4B84A;
+  --blue-steel:   #3A6EA8;
+  --text-primary: #E8E2D4;
+  --text-body:    #B8B0A0;
+  --text-muted:   #6A6258;
+  --text-mono:    #8FA8C8;
+  --border:       rgba(232,160,32,0.18);
+  --border-dim:   rgba(255,255,255,0.06);
+  --scan-line:    rgba(0,0,0,0.12);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background: repeating-linear-gradient(0deg, var(--scan-line) 0px, transparent 1px, transparent 3px);
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.35;
+}
+
+/* ── PROGRESS ── */
+#progress {
+  position: fixed; top: 0; left: 0;
+  height: 2px; width: 0%;
+  background: var(--amber);
+  z-index: 10000;
+  box-shadow: 0 0 12px var(--amber);
+  transition: width 0.08s linear;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 900;
+  background: rgba(10,14,23,0.96);
+  border-bottom: 1px solid var(--border);
+  height: 52px;
+  display: flex; align-items: center;
+  padding: 0 2rem; gap: 1.5rem;
+  backdrop-filter: blur(16px);
+}
+.nav-classify {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--amber);
+  padding: 0.2rem 0.7rem;
+  border: 1px solid var(--amber-dim);
+  border-radius: 2px;
+}
+.nav-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.06em; flex: 1;
+}
+.nav-date {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding: 9rem 3rem 5rem;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 15% 50%, rgba(232,160,32,0.05) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 70% at 85% 20%, rgba(217,64,64,0.04) 0%, transparent 60%);
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(232,160,32,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232,160,32,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: gridPulse 8s ease-in-out infinite;
+}
+@keyframes gridPulse { 0%,100%{opacity:0.5} 50%{opacity:1} }
+
+.hero-inner { position: relative; z-index: 2; max-width: 900px; }
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 1.8rem;
+  opacity: 0; animation: fadeIn 0.7s 0.2s ease forwards;
+}
+.hero-tag::before { content:''; width:20px; height:1px; background:var(--amber); }
+
+.hero-domain {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem; letter-spacing: 0.18em;
+  color: var(--blue-steel); text-transform: uppercase;
+  margin-bottom: 1rem;
+  opacity: 0; animation: fadeIn 0.7s 0.35s ease forwards;
+}
+.hero-title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 700; line-height: 1.12;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+  opacity: 0; animation: fadeIn 0.8s 0.45s ease forwards;
+}
+.hero-title span { color: var(--amber); }
+.hero-subtitle {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1rem; font-weight: 300;
+  color: var(--text-body); max-width: 580px; line-height: 1.6;
+  margin-bottom: 3rem;
+  opacity: 0; animation: fadeIn 0.8s 0.55s ease forwards;
+}
+.hero-meta {
+  display: flex; flex-wrap: wrap; gap: 0;
+  border: 1px solid var(--border); border-radius: 3px;
+  overflow: hidden; max-width: 760px;
+  opacity: 0; animation: fadeIn 0.8s 0.7s ease forwards;
+}
+.meta-cell {
+  flex: 1; min-width: 120px;
+  padding: 0.85rem 1.2rem;
+  border-right: 1px solid var(--border);
+  background: var(--bg-card);
+}
+.meta-cell:last-child { border-right: none; }
+.meta-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.55rem; letter-spacing: 0.2em;
+  color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.3rem;
+}
+.meta-value {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem; font-weight: 600; color: var(--amber);
+}
+.meta-value.red { color: var(--red); }
+.meta-value.yellow { color: var(--yellow); }
+
+.threat-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(217,64,64,0.1);
+  border: 1px solid rgba(217,64,64,0.3);
+  border-radius: 2px; padding: 0.25rem 0.7rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.18em; color: var(--red); text-transform: uppercase;
+  margin-top: 1.5rem;
+  opacity: 0; animation: fadeIn 0.8s 0.85s ease forwards;
+}
+.threat-dot {
+  width: 6px; height: 6px;
+  background: var(--red); border-radius: 50%;
+  animation: blink 1.8s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+/* ── MAIN ── */
+main { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+
+/* ── SECTION ── */
+.section {
+  margin-bottom: 5rem;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.section.visible { opacity: 1; transform: translateY(0); }
+.section-header {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 2rem; padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-dim);
+}
+.section-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--amber); background: var(--amber-pale);
+  border: 1px solid var(--amber-dim);
+  padding: 0.2rem 0.65rem; border-radius: 2px; white-space: nowrap;
+}
+.section-title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.45rem; font-weight: 700;
+  color: var(--text-primary); letter-spacing: 0.01em;
+}
+
+/* ── CITE ── */
+cite {
+  font-style: normal;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem; font-weight: 600;
+  color: var(--blue-steel);
+  vertical-align: super;
+  line-height: 0;
+  letter-spacing: 0;
+}
+
+/* ── BLUF ── */
+.bluf-grid {
+  display: flex; flex-direction: column; gap: 0;
+  border: 1px solid var(--border); border-radius: 4px; overflow: hidden;
+}
+.bluf-item {
+  display: flex; gap: 0;
+  border-bottom: 1px solid var(--border-dim);
+  background: var(--bg-card);
+  transition: background 0.2s;
+}
+.bluf-item:last-child { border-bottom: none; }
+.bluf-item:hover { background: var(--bg-card-alt); }
+.bluf-index {
+  width: 44px; min-width: 44px;
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 1.1rem 0;
+  border-right: 1px solid var(--border-dim);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem; font-weight: 600;
+  color: var(--amber); background: var(--amber-pale);
+}
+.bluf-text {
+  padding: 0.9rem 1.3rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.9rem; line-height: 1.65; color: var(--text-body);
+}
+.bluf-text strong { color: var(--text-primary); font-weight: 600; }
+
+/* ── SNAPSHOT TABLE ── */
+.snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: 4px; overflow: hidden;
+  margin-bottom: 2rem;
+}
+.snapshot-cell { background: var(--bg-card); padding: 1.1rem 1.3rem; }
+.snapshot-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--amber-dim); margin-bottom: 0.4rem;
+}
+.snapshot-content {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.85rem; color: var(--text-body); line-height: 1.5;
+}
+.snapshot-content strong { color: var(--text-primary); }
+
+/* ── KEY JUDGMENTS ── */
+.kj-list { display: flex; flex-direction: column; gap: 1rem; }
+.kj-item {
+  display: flex; gap: 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-left: 3px solid var(--amber-dim);
+  border-radius: 0 3px 3px 0;
+  padding: 1.1rem 1.3rem;
+  transition: border-left-color 0.2s;
+}
+.kj-item:hover { border-left-color: var(--amber); }
+.kj-item.high { border-left-color: var(--amber); }
+.kj-item.moderate { border-left-color: var(--blue-steel); }
+.kj-item.low { border-left-color: var(--text-muted); }
+.kj-conf { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; min-width: 60px; }
+.kj-conf-badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.5rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.18rem 0.4rem; border-radius: 2px; white-space: nowrap;
+}
+.kj-conf-badge.high    { color:var(--amber);      background:var(--amber-pale);             border:1px solid var(--amber-dim); }
+.kj-conf-badge.moderate{ color:var(--blue-steel);  background:rgba(58,110,168,0.08);          border:1px solid rgba(58,110,168,0.25); }
+.kj-conf-badge.low     { color:var(--text-muted);  background:rgba(106,98,88,0.12);           border:1px solid rgba(106,98,88,0.25); }
+.kj-id { font-family:'IBM Plex Mono',monospace; font-size:0.6rem; color:var(--text-muted); margin-top:0.2rem; }
+.kj-body { font-family:'IBM Plex Sans',sans-serif; font-size:0.88rem; line-height:1.65; color:var(--text-body); }
+.kj-body strong { color: var(--text-primary); }
+
+/* ── EVIDENCE BOXES ── */
+.evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem; margin-bottom: 1.5rem;
+}
+.evidence-box { border: 1px solid var(--border-dim); border-radius: 3px; overflow: hidden; }
+.evidence-box-header {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.65rem 1rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+}
+.evidence-box-header.know   { background:var(--green-dim); color:var(--green); border-bottom:1px solid rgba(46,168,106,0.15); }
+.evidence-box-header.assess { background:var(--amber-pale); color:var(--amber); border-bottom:1px solid var(--amber-dim); }
+.evidence-box-header.gap    { background:var(--red-dim); color:var(--red); border-bottom:1px solid rgba(217,64,64,0.2); }
+.evidence-box ul { list-style:none; padding:0.8rem 1rem; background:var(--bg-card); }
+.evidence-box li {
+  font-family:'IBM Plex Sans',sans-serif; font-size:0.82rem; color:var(--text-body);
+  line-height:1.6; padding:0.35rem 0 0.35rem 1rem;
+  border-bottom:1px solid var(--border-dim); position:relative;
+}
+.evidence-box li:last-child { border-bottom:none; }
+.evidence-box li::before { content:'›'; position:absolute; left:0; color:var(--amber-dim); font-weight:600; }
+.evidence-box li strong { color:var(--text-primary); }
+
+/* ── WSI TABLE ── */
+.wsi-note {
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-left: 3px solid var(--blue-steel);
+  border-radius: 0 3px 3px 0;
+  padding: 1rem 1.3rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.82rem; color: var(--text-body); line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+.wsi-note strong { color: var(--text-mono); }
+
+/* ── GENERAL TABLE ── */
+.iw-table, .ach-table, .assumption-table {
+  width: 100%; border-collapse: collapse;
+  border: 1px solid var(--border); border-radius: 3px; overflow: hidden;
+  font-family: 'IBM Plex Sans', sans-serif; font-size: 0.82rem;
+}
+.iw-table thead tr, .ach-table thead tr, .assumption-table thead tr {
+  background: var(--bg-card-alt);
+  border-bottom: 1px solid var(--border);
+}
+.iw-table th, .ach-table th, .assumption-table th {
+  padding: 0.75rem 1rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--amber); text-align: left;
+  border-right: 1px solid var(--border-dim);
+}
+.iw-table th:last-child, .ach-table th:last-child, .assumption-table th:last-child { border-right: none; }
+.iw-table tbody tr, .ach-table tbody tr, .assumption-table tbody tr {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-dim);
+  transition: background 0.15s;
+}
+.iw-table tbody tr:last-child, .ach-table tbody tr:last-child, .assumption-table tbody tr:last-child { border-bottom: none; }
+.iw-table tbody tr:hover, .ach-table tbody tr:hover, .assumption-table tbody tr:hover { background: var(--bg-card-alt); }
+.iw-table td, .ach-table td, .assumption-table td {
+  padding: 0.8rem 1rem; color: var(--text-body);
+  border-right: 1px solid var(--border-dim);
+  vertical-align: top; line-height: 1.5;
+}
+.iw-table td:last-child, .ach-table td:last-child, .assumption-table td:last-child { border-right: none; }
+.iw-table td:first-child { color: var(--text-primary); font-weight: 600; }
+.assumption-table td strong { color: var(--text-primary); }
+
+.status-pill {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.55rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.15rem 0.55rem; border-radius: 20px;
+}
+.status-pill.red    { background:var(--red-dim);   color:var(--red);   border:1px solid rgba(217,64,64,0.25); }
+.status-pill.amber  { background:var(--amber-pale); color:var(--amber); border:1px solid var(--amber-dim); }
+.status-pill.green  { background:var(--green-dim);  color:var(--green); border:1px solid rgba(46,168,106,0.25); }
+.status-pill.blue   { background:rgba(58,110,168,0.1); color:var(--blue-steel); border:1px solid rgba(58,110,168,0.25); }
+
+/* ── SCENARIO CARDS ── */
+.scenario-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+.scenario-card { background:var(--bg-card); border:1px solid var(--border-dim); border-radius:3px; overflow:hidden; }
+.scenario-header { padding:0.8rem 1.2rem; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--border-dim); }
+.scenario-label { font-family:'IBM Plex Mono',monospace; font-size:0.6rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; }
+.scenario-prob  { font-family:'IBM Plex Mono',monospace; font-size:0.6rem; color:var(--text-muted); }
+.scenario-card.best  .scenario-header { background:var(--green-dim); }
+.scenario-card.best  .scenario-label  { color:var(--green); }
+.scenario-card.base  .scenario-header { background:var(--amber-pale); }
+.scenario-card.base  .scenario-label  { color:var(--amber); }
+.scenario-card.worst .scenario-header { background:var(--red-dim); }
+.scenario-card.worst .scenario-label  { color:var(--red); }
+.scenario-title { font-family:'Libre Baskerville',serif; font-size:0.92rem; font-weight:700; color:var(--text-primary); padding:0.9rem 1.2rem 0.4rem; }
+.scenario-body  { font-family:'IBM Plex Sans',sans-serif; font-size:0.82rem; color:var(--text-body); line-height:1.65; padding:0 1.2rem 1rem; }
+.scenario-triggers { padding: 0 1.2rem 1rem; }
+.scenario-triggers-label { font-family:'IBM Plex Mono',monospace; font-size:0.55rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-muted); margin-bottom:0.4rem; }
+.scenario-trigger-item { font-family:'IBM Plex Sans',sans-serif; font-size:0.78rem; color:var(--text-body); line-height:1.5; padding:0.2rem 0 0.2rem 0.8rem; position:relative; }
+.scenario-trigger-item::before { content:'—'; position:absolute; left:0; color:var(--amber-dim); font-size:0.7rem; }
+
+/* ── BEHAVIORAL ── */
+.behavioral-grid { display: flex; flex-direction: column; gap: 1rem; }
+.behavioral-item {
+  background: var(--bg-card); border: 1px solid var(--border-dim);
+  border-left: 3px solid var(--blue-steel);
+  border-radius: 0 3px 3px 0; overflow: hidden;
+}
+.behavioral-header {
+  padding: 0.7rem 1.2rem;
+  background: rgba(58,110,168,0.06);
+  border-bottom: 1px solid var(--border-dim);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-mono);
+}
+.behavioral-body {
+  padding: 0.9rem 1.2rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.85rem; color: var(--text-body); line-height: 1.65;
+}
+.behavioral-body strong { color: var(--text-primary); }
+
+/* ── RECOMMENDATIONS ── */
+.rec-timeline { display:flex; flex-direction:column; gap:0; position:relative; }
+.rec-timeline::before {
+  content:''; position:absolute; left:79px; top:0; bottom:0;
+  width:1px; background:linear-gradient(to bottom,var(--amber),transparent); opacity:0.3;
+}
+.rec-block { display:flex; gap:0; margin-bottom:1.5rem; }
+.rec-time { width:80px; min-width:80px; padding-top:0.1rem; }
+.rec-time-label {
+  font-family:'IBM Plex Mono',monospace; font-size:0.55rem; font-weight:600;
+  letter-spacing:0.14em; text-transform:uppercase;
+  padding:0.2rem 0.5rem; border-radius:2px; white-space:nowrap; display:inline-block;
+}
+.rec-time-label.immediate { background:var(--red-dim);   color:var(--red);   border:1px solid rgba(217,64,64,0.2); }
+.rec-time-label.near      { background:var(--amber-pale); color:var(--amber); border:1px solid var(--amber-dim); }
+.rec-time-label.medium    { background:var(--green-dim);  color:var(--green); border:1px solid rgba(46,168,106,0.2); }
+.rec-content { flex:1; padding-left:1.5rem; }
+.rec-items { display:flex; flex-direction:column; gap:0.6rem; }
+.rec-item {
+  background:var(--bg-card); border:1px solid var(--border-dim); border-radius:3px;
+  padding:0.9rem 1.1rem;
+  font-family:'IBM Plex Sans',sans-serif; font-size:0.85rem; color:var(--text-body); line-height:1.6;
+}
+.rec-item strong { color:var(--text-primary); }
+
+/* ── CONFIDENCE ── */
+.conf-panel { background:var(--bg-card); border:1px solid var(--border); border-radius:4px; overflow:hidden; }
+.conf-header { display:flex; align-items:center; justify-content:space-between; padding:1rem 1.5rem; background:var(--bg-card-alt); border-bottom:1px solid var(--border); }
+.conf-title { font-family:'IBM Plex Mono',monospace; font-size:0.62rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--amber); }
+.conf-level { font-family:'IBM Plex Mono',monospace; font-size:0.72rem; font-weight:600; color:var(--yellow); background:rgba(212,184,74,0.1); border:1px solid rgba(212,184,74,0.25); padding:0.2rem 0.7rem; border-radius:2px; }
+.conf-body { padding:1.2rem 1.5rem; }
+.conf-row { display:flex; gap:0.8rem; margin-bottom:0.65rem; font-family:'IBM Plex Sans',sans-serif; font-size:0.83rem; color:var(--text-body); line-height:1.55; }
+.conf-row::before { content:'›'; color:var(--amber-dim); font-weight:700; flex-shrink:0; margin-top:0.05em; }
+.conf-divider { border:none; border-top:1px solid var(--border-dim); margin:1rem 0; }
+.uncertainty-list { display:flex; flex-direction:column; gap:0.6rem; }
+.uncertainty-item {
+  display:flex; gap:0.8rem;
+  background:var(--bg-card-alt); border:1px solid var(--border-dim);
+  border-left:3px solid rgba(217,64,64,0.4); border-radius:0 3px 3px 0;
+  padding:0.75rem 1rem;
+  font-family:'IBM Plex Sans',sans-serif; font-size:0.82rem; color:var(--text-body); line-height:1.55;
+}
+.uncertainty-item strong { color:var(--text-primary); }
+
+/* ── ASSUMPTION FAILURE DRILL ── */
+.assumption-table td:first-child { color: var(--text-primary); font-weight: 600; font-size: 0.82rem; }
+
+/* ── PIG TABLE ── */
+.pig-table { width:100%; border-collapse:collapse; border:1px solid var(--border); overflow:hidden; font-family:'IBM Plex Sans',sans-serif; font-size:0.82rem; }
+.pig-table thead tr { background:var(--bg-card-alt); border-bottom:1px solid var(--border); }
+.pig-table th { padding:0.75rem 1rem; font-family:'IBM Plex Mono',monospace; font-size:0.58rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:var(--amber); text-align:left; border-right:1px solid var(--border-dim); }
+.pig-table th:last-child { border-right:none; }
+.pig-table tbody tr { background:var(--bg-card); border-bottom:1px solid var(--border-dim); transition:background 0.15s; }
+.pig-table tbody tr:last-child { border-bottom:none; }
+.pig-table tbody tr:hover { background:var(--bg-card-alt); }
+.pig-table td { padding:0.8rem 1rem; color:var(--text-body); border-right:1px solid var(--border-dim); vertical-align:top; line-height:1.5; }
+.pig-table td:last-child { border-right:none; }
+.pig-table td:first-child { font-family:'IBM Plex Mono',monospace; font-size:0.7rem; font-weight:600; color:var(--amber); }
+
+/* ── ACTION THRESHOLDS ── */
+.threshold-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1rem; }
+.threshold-cell { border-radius:3px; overflow:hidden; border:1px solid var(--border-dim); }
+.threshold-dot-header { display:flex; align-items:center; gap:0.6rem; padding:0.75rem 1rem; border-bottom:1px solid var(--border-dim); }
+.threshold-label-text { font-family:'IBM Plex Mono',monospace; font-size:0.62rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; }
+.threshold-dot2 { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+.green-zone .threshold-dot-header { background:var(--green-dim); }
+.green-zone .threshold-label-text { color:var(--green); }
+.green-zone .threshold-dot2       { background:var(--green); }
+.amber-zone .threshold-dot-header { background:var(--amber-pale); }
+.amber-zone .threshold-label-text { color:var(--amber); }
+.amber-zone .threshold-dot2       { background:var(--amber); animation:blink 2s ease-in-out infinite; }
+.red-zone   .threshold-dot-header { background:var(--red-dim); }
+.red-zone   .threshold-label-text { color:var(--red); }
+.red-zone   .threshold-dot2       { background:var(--red); animation:blink 1.4s ease-in-out infinite; }
+.threshold-body { font-family:'IBM Plex Sans',sans-serif; font-size:0.82rem; color:var(--text-body); line-height:1.6; padding:0.9rem 1rem; background:var(--bg-card); }
+
+/* ── REFERENCES ── */
+.ref-table { width:100%; border-collapse:collapse; font-family:'IBM Plex Sans',sans-serif; font-size:0.8rem; }
+.ref-table thead tr { background:var(--bg-card-alt); border-bottom:1px solid var(--border); }
+.ref-table th { padding:0.65rem 0.9rem; font-family:'IBM Plex Mono',monospace; font-size:0.55rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:var(--amber-dim); text-align:left; border-right:1px solid var(--border-dim); }
+.ref-table th:last-child { border-right:none; }
+.ref-table tbody tr { border-bottom:1px solid var(--border-dim); background:var(--bg-card); transition:background 0.15s; }
+.ref-table tbody tr:hover { background:var(--bg-card-alt); }
+.ref-table tbody tr:last-child { border-bottom:none; }
+.ref-table td { padding:0.7rem 0.9rem; color:var(--text-body); border-right:1px solid var(--border-dim); vertical-align:top; }
+.ref-table td:last-child { border-right:none; }
+.ref-table td:first-child { color:var(--amber); font-family:'IBM Plex Mono',monospace; font-size:0.72rem; }
+.band-pill { display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:0.55rem; font-weight:600; padding:0.12rem 0.45rem; border-radius:2px; letter-spacing:0.1em; }
+.band-pill.green  { background:var(--green-dim); color:var(--green); border:1px solid rgba(46,168,106,0.25); }
+.band-pill.amber  { background:var(--amber-pale); color:var(--amber); border:1px solid var(--amber-dim); }
+.band-pill.red    { background:var(--red-dim);   color:var(--red);   border:1px solid rgba(217,64,64,0.25); }
+
+/* ── PROSE / SUB ── */
+.prose { font-family:'IBM Plex Sans',sans-serif; font-size:0.9rem; color:var(--text-body); line-height:1.8; }
+.prose p { margin-bottom:1rem; }
+.prose p:last-child { margin-bottom:0; }
+.prose strong { color:var(--text-primary); }
+.sub-section {
+  margin-top:2.2rem; margin-bottom:1.2rem;
+  font-family:'IBM Plex Mono',monospace; font-size:0.65rem; font-weight:600;
+  letter-spacing:0.2em; text-transform:uppercase; color:var(--text-mono);
+  display:flex; align-items:center; gap:0.8rem;
+}
+.sub-section::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,var(--border-dim),transparent); }
+
+/* ── FOOTER ── */
+footer { background:var(--bg-panel); border-top:1px solid var(--border); padding:3rem 2rem; text-align:center; }
+.footer-qa { font-family:'IBM Plex Mono',monospace; font-size:0.72rem; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:var(--amber); margin-bottom:0.5rem; }
+.footer-sub { font-family:'IBM Plex Sans',sans-serif; font-size:0.75rem; color:var(--text-muted); margin-bottom:1rem; }
+.footer-copy { font-family:'IBM Plex Mono',monospace; font-size:0.58rem; letter-spacing:0.12em; color:var(--text-muted); opacity:0.5; }
+
+@keyframes fadeIn { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+
+@media (max-width:640px) {
+  .hero { padding:7rem 1.4rem 4rem; }
+  main  { padding:3rem 1.2rem 4rem; }
+  nav   { padding:0 1rem; }
+  .nav-title,.nav-date { display:none; }
+  .iw-table,.ref-table { font-size:0.75rem; }
+  .iw-table th,.iw-table td,.ref-table th,.ref-table td { padding:0.6rem 0.7rem; }
+  .snapshot-grid { grid-template-columns:1fr 1fr; }
+  .scenario-grid { grid-template-columns:1fr; }
+  .threshold-grid { grid-template-columns:1fr; }
+}
+@media print {
+  nav,#progress,body::before { display:none; }
+  .section { opacity:1; transform:none; }
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-classify">Open Source</div>
+  <div class="nav-title">QAP // Conflict Systems Analysis // Chad-Sudan Border Crisis</div>
+  <div class="nav-date">19 March 2026</div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Intelligence Assessment</div>
+    <div class="hero-domain">Domain: Conflict Systems Analysis</div>
+    <h1 class="hero-title">Chad-Sudan Border Crisis<br><span>Drone Strike, Closure & Escalation Risk</span></h1>
+    <p class="hero-subtitle">A QAP-compliant structured intelligence assessment of the March 2026 drone strike, President Déby's border closure and retaliatory authorization, and the scenario pathways that will determine whether Chad slides from defensive posture into cross-border conflict.</p>
+    <div class="hero-meta">
+      <div class="meta-cell"><div class="meta-label">Date</div><div class="meta-value">19 MAR 2026</div></div>
+      <div class="meta-cell"><div class="meta-label">Classification</div><div class="meta-value">Unclassified / Open Source</div></div>
+      <div class="meta-cell"><div class="meta-label">Confidence</div><div class="meta-value yellow">Moderate</div></div>
+      <div class="meta-cell"><div class="meta-label">Scope</div><div class="meta-value">Chad-Sudan | 6–12 Months</div></div>
+      <div class="meta-cell"><div class="meta-label">Framework</div><div class="meta-value">QAP v1.0</div></div>
+    </div>
+    <div class="threat-badge"><div class="threat-dot"></div>Threat Status: Amber-Red Boundary</div>
+  </div>
+</header>
+
+<main>
+
+<!-- SECTION 1: BLUF -->
+<section class="section" id="s1">
+  <div class="section-header">
+    <span class="section-num">01 // BLUF</span>
+    <div class="section-title">Bottom Line Up Front</div>
+  </div>
+  <div class="bluf-grid">
+    <div class="bluf-item">
+      <div class="bluf-index">01</div>
+      <div class="bluf-text"><strong>Trigger event:</strong> A drone strike launched from Sudanese territory struck eastern Chad on or around 18–19 March 2026, killing approximately 17 people per Chadian government statements.<cite>[2,4]</cite> Independent forensic verification is pending; corroboration rests on two independent streams, with additional outlets confirmed as syndicated from the same upstream source.<cite>[1,3]</cite></div>
+    </div>
+    <div class="bluf-item">
+      <div class="bluf-index">02</div>
+      <div class="bluf-text"><strong>Presidential response:</strong> President Mahamat Idriss Déby Itno has ordered a complete closure of Chad's border with Sudan until further notice, convened an emergency security meeting, dispatched a high-level delegation to assess damage, and issued a standing retaliatory authorization for the Chadian National Army to strike any attack originating from Sudanese territory.<cite>[1,2,4,8]</cite></div>
+    </div>
+    <div class="bluf-item">
+      <div class="bluf-index">03</div>
+      <div class="bluf-text"><strong>Pattern, not anomaly:</strong> This event follows a February 2026 border closure triggered by clashes that killed five Chadian soldiers.<cite>[5,6]</cite> The trajectory shows escalating lethality and increasing use of drone systems — a qualitative shift in cross-border threat complexity.<cite>[2,4,7]</cite></div>
+    </div>
+    <div class="bluf-item">
+      <div class="bluf-index">04</div>
+      <div class="bluf-text"><strong>Primary analytic judgment:</strong> The available evidence best supports a combination of genuine border security deterrence and domestic political signaling as Déby's core motivation. Preparation for deeper involvement in Sudan's war remains a watchpoint, not a leading explanation at this stage.</div>
+    </div>
+    <div class="bluf-item">
+      <div class="bluf-index">05</div>
+      <div class="bluf-text"><strong>Key risk:</strong> The combination of a complete border closure and a standing retaliatory order materially reduces the margin for miscalculation.<cite>[1,2,4,5,6]</cite> A small number of additional incidents could tip the situation from managed containment toward entrenched cross-border conflict.</div>
+    </div>
+    <div class="bluf-item">
+      <div class="bluf-index">06</div>
+      <div class="bluf-text"><strong>Highest-priority intelligence gap:</strong> Technical attribution of the drone system — platform type, operator identity, and chain of command — remains unresolved and is a confidence ceiling for all scenario assessments.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: SITUATION SNAPSHOT -->
+<section class="section" id="s2">
+  <div class="section-header">
+    <span class="section-num">02 // SNAPSHOT</span>
+    <div class="section-title">Situation Snapshot</div>
+  </div>
+  <div class="snapshot-grid">
+    <div class="snapshot-cell"><div class="snapshot-label">Who</div><div class="snapshot-content">President Déby (Chad); SAF &amp; RSF as suspected origin actors; Chadian National Army; eastern border communities; refugee populations</div></div>
+    <div class="snapshot-cell"><div class="snapshot-label">What</div><div class="snapshot-content">Drone strike from Sudanese territory kills ~17 in eastern Chad.<cite>[2,4]</cite> Presidential orders: complete border closure, standing retaliation authorization, damage assessment delegation<cite>[1,2,4]</cite></div></div>
+    <div class="snapshot-cell"><div class="snapshot-label">Where</div><div class="snapshot-content">Eastern Chad border region; Sudanese territory (exact launch site unconfirmed); vicinity of key crossings including El Tina/Tine<cite>[7]</cite></div></div>
+    <div class="snapshot-cell"><div class="snapshot-label">When</div><div class="snapshot-content">Strike: ~18–19 March 2026. Presidential orders: 19 March 2026. Preceded by February 2026 closure (five soldiers killed)<cite>[5,6]</cite></div></div>
+    <div class="snapshot-cell"><div class="snapshot-label">Why</div><div class="snapshot-content">Immediate: lethal drone attack and pattern of repeated incursions.<cite>[5,6]</cite> Structural: spillover from Sudan's SAF vs. RSF civil war, ongoing since April 2023<cite>[5,6,7]</cite></div></div>
+    <div class="snapshot-cell"><div class="snapshot-label">How</div><div class="snapshot-content">Drone system of unconfirmed type and operator. No forensic attribution available in open-source reporting at time of writing</div></div>
+  </div>
+</section>
+
+<!-- SECTION 3: KEY JUDGMENTS -->
+<section class="section" id="s3">
+  <div class="section-header">
+    <span class="section-num">03 // KEY JUDGMENTS</span>
+    <div class="section-title">Key Judgments</div>
+  </div>
+  <div class="kj-list">
+    <div class="kj-item high">
+      <div class="kj-conf"><div class="kj-conf-badge high">High</div><div class="kj-id">KJ-1</div></div>
+      <div class="kj-body">Sudan's civil war has crossed a qualitative threshold in its spillover into Chad.<cite>[2,4,5,6]</cite> The shift from infantry clashes to drone strikes represents a materially different threat that Chad's existing border posture was not designed to absorb.</div>
+    </div>
+    <div class="kj-item moderate">
+      <div class="kj-conf"><div class="kj-conf-badge moderate">Moderate</div><div class="kj-id">KJ-2</div></div>
+      <div class="kj-body">Déby's closure and retaliation orders reflect a genuine security imperative combined with domestic political signaling.<cite>[1,2,4]</cite> Language is reactive and conditional rather than offensive, making deep Chad intervention in Sudan's war unlikely in the near term.</div>
+    </div>
+    <div class="kj-item moderate">
+      <div class="kj-conf"><div class="kj-conf-badge moderate">Moderate</div><div class="kj-id">KJ-3</div></div>
+      <div class="kj-body">The standing retaliatory authorization creates a permissive environment for tactical-level escalation.<cite>[1,2,8]</cite> Field commanders may act without centralized authorization if another incident occurs, increasing the risk of an escalatory spiral <strong>independent of Déby's strategic intent</strong>.</div>
+    </div>
+    <div class="kj-item moderate">
+      <div class="kj-conf"><div class="kj-conf-badge moderate">Low–Mod</div><div class="kj-id">KJ-4</div></div>
+      <div class="kj-body">The complete border closure will be imperfectly enforced. Formal crossings will close but informal movement and smuggling will continue,<cite>[5,6,7]</cite> limiting the closure's effectiveness as a security measure while maximizing its economic and humanitarian cost.</div>
+    </div>
+    <div class="kj-item low">
+      <div class="kj-conf"><div class="kj-conf-badge low">Low / Watch</div><div class="kj-id">KJ-5</div></div>
+      <div class="kj-body">Allegations that Chad serves as a transit route for RSF-linked supplies remain unverified<cite>[6]</cite> but could become a significant escalation driver if externally amplified or acted upon by SAF-aligned actors.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: EVIDENCE SUMMARY -->
+<section class="section" id="s4">
+  <div class="section-header">
+    <span class="section-num">04 // EVIDENCE</span>
+    <div class="section-title">Evidence Summary</div>
+  </div>
+  <div class="evidence-grid">
+    <div class="evidence-box">
+      <div class="evidence-box-header know">&#10003; &nbsp;What We Know — Verified Facts</div>
+      <ul>
+        <li>A drone was launched from Sudanese territory and struck inside Chad near the border.<cite>[2,4,5]</cite></li>
+        <li>Chadian government statements cite approximately 17 fatalities.<cite>[3,4]</cite> After applying the independence test, this rests on two independent corroborating streams.</li>
+        <li>President Déby issued three formal orders: complete border closure, standing retaliatory authorization, high-level damage assessment delegation.<cite>[1,2,4]</cite></li>
+        <li>A prior border closure occurred in February 2026 following clashes that killed five Chadian soldiers.<cite>[5,6]</cite></li>
+        <li>Sudan's SAF vs. RSF civil war has been ongoing since April 2023, producing large refugee flows and weapons circulation near the frontier.<cite>[5,6,7]</cite></li>
+      </ul>
+    </div>
+    <div class="evidence-box">
+      <div class="evidence-box-header assess">&#9670; &nbsp;What We Assess — Analyst Inferences</div>
+      <ul>
+        <li><strong>[Inference]</strong> The drone strike reflects either deliberate escalation by a Sudanese actor or loss of operational control near the border — both are destabilizing.</li>
+        <li><strong>[Inference]</strong> The retaliatory authorization is primarily deterrent signaling, but creates structural conditions for autonomous tactical escalation by forward units.</li>
+        <li><strong>[Inference]</strong> The border closure serves as security barrier, domestic political signal, and coercive lever in any forthcoming diplomatic engagement.</li>
+      </ul>
+    </div>
+    <div class="evidence-box">
+      <div class="evidence-box-header gap">&#9650; &nbsp;What We Do Not Know — Intelligence Gaps</div>
+      <ul>
+        <li><strong>[GAP-1 CRITICAL]</strong> Technical attribution of drone system: platform type, operator identity, and chain of command.</li>
+        <li><strong>[GAP-2 HIGH]</strong> Whether Chadian forces have begun operational preparation for cross-border strikes.</li>
+        <li><strong>[GAP-3 HIGH]</strong> Internal Chadian elite attitudes toward further escalation.</li>
+        <li><strong>[GAP-4 MOD]</strong> Economic and social impact of the closure on eastern border communities.</li>
+        <li><strong>[GAP-5 MOD]</strong> Concrete evidence of operational cooperation between Chadian forces and specific Sudanese factions.<cite>[6]</cite></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sub-section">WSI Source Credibility Audit</div>
+  <div class="wsi-note"><strong>Independence test applied:</strong> Capital FM Kenya and Yahoo News are syndicated from the same upstream source as Xinhua/agency feeds — they are counted as ONE stream, not independent corroboration. The death toll figure rests on two independent streams: APA News and Chadian government statements. Sudan Tribune (X post) is classified RED/lead-only and non-evidentiary; the retaliation order claim was corroborated by Xinhua<cite>[2]</cite> and APA News<cite>[4]</cite> before inclusion. No single-source key judgment is present without explicit caveat.</div>
+  <div style="overflow-x:auto;">
+  <table class="ref-table">
+    <thead><tr><th>#</th><th>Source</th><th>Type</th><th>Band</th><th>Independence Note</th></tr></thead>
+    <tbody>
+      <tr><td>[1]</td><td>Capital FM Kenya (syndicated)</td><td>News Aggregator</td><td><span class="band-pill amber">Amber</span></td><td>Same upstream as [2]; counted as ONE stream</td></tr>
+      <tr><td>[2]</td><td>Xinhua (English service)</td><td>State-Owned Wire</td><td><span class="band-pill amber">Amber</span></td><td>State editorial framing risk; content cross-checked</td></tr>
+      <tr><td>[3]</td><td>Yahoo News (aggregated)</td><td>News Aggregator</td><td><span class="band-pill amber">Amber</span></td><td>Syndicated; not counted as independent stream</td></tr>
+      <tr><td>[4]</td><td>APA News</td><td>Regional Outlet</td><td><span class="band-pill green">Green</span></td><td>Independent stream on death toll</td></tr>
+      <tr><td>[5]</td><td>Reuters</td><td>Tier A Wire Service</td><td><span class="band-pill green">Green</span></td><td>Independent stream</td></tr>
+      <tr><td>[6]</td><td>Al Jazeera</td><td>Tier A Broadcaster</td><td><span class="band-pill green">Green</span></td><td>Independent stream</td></tr>
+      <tr><td>[7]</td><td>Radio Dabanga / Dabanga Sudan</td><td>Regional Specialist</td><td><span class="band-pill green">Green</span></td><td>Independent stream on February closure context</td></tr>
+      <tr><td>[8]</td><td>Sudan Tribune (X post)</td><td>Social Media</td><td><span class="band-pill red">Red</span></td><td>Lead-only / non-evidentiary per WSI policy</td></tr>
+      <tr><td>[9]</td><td>Addis Standard (Facebook)</td><td>Social Media</td><td><span class="band-pill amber">Amber</span></td><td>Not used as evidentiary source</td></tr>
+      <tr><td>[10]</td><td>Washington Post</td><td>Tier A Print</td><td><span class="band-pill green">Green</span></td><td>Independent stream</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- SECTION 5: ANALYSIS -->
+<section class="section" id="s5">
+  <div class="section-header">
+    <span class="section-num">05 // ANALYSIS</span>
+    <div class="section-title">Structured Analytic Tradecraft</div>
+  </div>
+
+  <div class="sub-section">5.1 — Key Assumptions Check</div>
+  <div style="overflow-x:auto;">
+  <table class="assumption-table">
+    <thead><tr><th>Assumption</th><th>Basis</th><th>Vulnerability</th><th>Risk if Wrong</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>A1:</strong> Drone launched by a Sudan civil-war actor (SAF, RSF, or allied militia)</td>
+        <td>Official Chadian attribution;<cite>[2,6]</cite> consistent with prior cross-border incident pattern<cite>[5,6]</cite></td>
+        <td>Attribution may be politically convenient; no forensic confirmation in open source<cite>[3,2]</cite></td>
+        <td><span class="status-pill red">HIGH</span> — Changes scenario probabilities and retaliatory target set</td>
+      </tr>
+      <tr>
+        <td><strong>A2:</strong> Border closure enforced at checkpoints but porous informally</td>
+        <td>February 2026 precedent;<cite>[5,6]</cite> acknowledged border porosity in prior reporting<cite>[7]</cite></td>
+        <td>Local commanders or allied militias may selectively permit movement</td>
+        <td><span class="status-pill amber">MODERATE</span> — Undermines deterrence and economic impact calculations</td>
+      </tr>
+      <tr>
+        <td><strong>A3:</strong> Retaliation order is primarily deterrent signaling, not a standing offensive mandate</td>
+        <td>Conditional language ("any attack originating from Sudan");<cite>[1,2]</cite> internal resource constraints</td>
+        <td>Permissive ROE may enable autonomous tactical escalation by forward units <em>independently</em> of Déby's intent — a distinct mechanism from strategic intent</td>
+        <td><span class="status-pill red">HIGH</span> — Escalatory spiral risk independent of leadership intent</td>
+      </tr>
+      <tr>
+        <td><strong>A4:</strong> International actors prefer Chad out of direct Sudan involvement but have limited leverage</td>
+        <td>Prior regional diplomacy pattern;<cite>[5,6]</cite> absence of robust security guarantees for Chad</td>
+        <td>External actors may quietly accept Chadian cross-border action if it serves their interests</td>
+        <td><span class="status-pill amber">MODERATE</span> — Affects Scenario 2 likelihood</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="sub-section">5.2 — Analysis of Competing Hypotheses (ACH)</div>
+  <div class="prose" style="margin-bottom:1rem;"><p><strong>Question:</strong> What is Déby primarily trying to achieve with the complete closure and retaliation order?</p></div>
+  <div style="overflow-x:auto;">
+  <table class="ach-table">
+    <thead><tr><th>Hypothesis</th><th>Supporting Evidence</th><th>Evidence Against / Gaps</th><th>Assessment</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>H-A:</strong> Genuine border security and deterrence</td>
+        <td>Official statements emphasize territorial integrity and citizen protection;<cite>[2,5,6]</cite> pattern of repeated incursions provides real security rationale; resource constraints make deep intervention costly</td>
+        <td>None significant — consistent with all available evidence</td>
+        <td><span class="status-pill green">Leading</span></td>
+      </tr>
+      <tr>
+        <td><strong>H-B:</strong> Domestic political signaling and authority consolidation</td>
+        <td>Dramatic language, publicized emergency meeting, and immediate public orders are visible to domestic audiences;<cite>[1,2,4]</cite> demonstrates control after an embarrassing lethal breach</td>
+        <td>Cannot be isolated from H-A; likely co-present rather than exclusive</td>
+        <td><span class="status-pill green">Co-present</span></td>
+      </tr>
+      <tr>
+        <td><strong>H-C:</strong> Preparation for deeper involvement in Sudan's war</td>
+        <td>Retaliation authorization and unverified allegations of Chad as RSF supply transit<cite>[6]</cite></td>
+        <td>No evidence of commitment to specific Sudanese faction; language remains reactive not offensive<cite>[1,2,4]</cite></td>
+        <td><span class="status-pill amber">Watchpoint</span></td>
+      </tr>
+      <tr>
+        <td><strong>H-D:</strong> Performative domestic theater — no genuine operational follow-through</td>
+        <td>Possible given resource constraints and some Sahelian security announcements that remain declaratory</td>
+        <td>February closure was enforced at formal crossings;<cite>[5,6]</cite> some follow-through does occur</td>
+        <td><span class="status-pill amber">Low / Calibration</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="prose" style="margin-top:1rem;"><p><strong>Provisional judgment:</strong> H-A and H-B are co-present and mutually reinforcing. H-C remains a watchpoint. H-D is retained as a calibration check against over-confidence in enforcement effectiveness.</p></div>
+
+  <div class="sub-section">5.3 — Scenario Analysis</div>
+  <div class="scenario-grid" style="margin-bottom:2rem;">
+    <div class="scenario-card best">
+      <div class="scenario-header">
+        <span class="scenario-label">Scenario 1 — Managed Containment</span>
+        <span class="scenario-prob">Likelihood: Moderate (Baseline)</span>
+      </div>
+      <div class="scenario-title">Chad deters cross-border strikes without deep entanglement</div>
+      <div class="scenario-body">Border formally closed but selectively relaxed for humanitarian corridors under international pressure.<cite>[5,6,7]</cite> One to two additional minor incidents. Limited retaliatory strikes against identified launch sites followed by de-escalation.</div>
+      <div class="scenario-triggers"><div class="scenario-triggers-label">Key Indicators</div>
+        <div class="scenario-trigger-item">Public messaging stresses "defensive measures" and AU/regional cooperation</div>
+        <div class="scenario-trigger-item">Humanitarian carve-outs negotiated despite formal closure<cite>[7]</cite></div>
+        <div class="scenario-trigger-item">No Chadian forces deployed beyond border positions</div>
+      </div>
+    </div>
+    <div class="scenario-card base">
+      <div class="scenario-header">
+        <span class="scenario-label">Scenario 2 — Incremental Escalation</span>
+        <span class="scenario-prob">Likelihood: Moderate–High</span>
+      </div>
+      <div class="scenario-title">Proxy entanglement — Chad becomes a de facto co-belligerent</div>
+      <div class="scenario-body">Further drone or artillery attacks cause additional Chadian casualties.<cite>[2,4,5,6]</cite> Chadian forces begin pre-emptive strikes near the border. Allegations about Chad facilitating RSF supplies gain traction.<cite>[6]</cite></div>
+      <div class="scenario-triggers"><div class="scenario-triggers-label">Key Indicators</div>
+        <div class="scenario-trigger-item">Chadian rhetoric naming specific Sudanese factions (RSF/SAF) as enemies</div>
+        <div class="scenario-trigger-item">Sustained cross-border deployments or artillery positioning inside Sudan</div>
+        <div class="scenario-trigger-item">Coordinated media campaigns from Sudanese factions blaming Chad</div>
+      </div>
+    </div>
+    <div class="scenario-card worst">
+      <div class="scenario-header">
+        <span class="scenario-label">Scenario 3 — Internal Destabilization</span>
+        <span class="scenario-prob">Likelihood: Low (High Impact)</span>
+      </div>
+      <div class="scenario-title">Sudan spillover combines with domestic pressures to destabilize Déby's regime</div>
+      <div class="scenario-body">Border closure disrupts eastern Chad economies, aggravating community grievances.<cite>[5,6,7]</cite> Refugee management strains resources. Opposition or armed groups exploit the security diversion.</div>
+      <div class="scenario-triggers"><div class="scenario-triggers-label">Key Indicators</div>
+        <div class="scenario-trigger-item">Growing reports of protests or security-community clashes in eastern Chad</div>
+        <div class="scenario-trigger-item">Fractures within Chadian security apparatus over escalation posture</div>
+        <div class="scenario-trigger-item">External actors increasing activity in northern/eastern Chad</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-section">5.4 — Indicators &amp; Warnings Table</div>
+  <div style="overflow-x:auto;">
+  <table class="iw-table">
+    <thead><tr><th>Indicator</th><th>Direction</th><th>Threshold</th><th>Cadence</th></tr></thead>
+    <tbody>
+      <tr><td>Chadian official rhetoric naming RSF/SAF as enemies</td><td><span class="status-pill red">Escalation Sc.2</span></td><td>Any single public statement naming a specific faction as enemy of Chad</td><td>Weekly — official communications</td></tr>
+      <tr><td>Confirmed Chadian cross-border deployments or artillery positioning inside Sudan</td><td><span class="status-pill red">Escalation Sc.2</span></td><td>Any confirmed report from two independent Tier A sources</td><td>Bi-weekly OSINT / satellite imagery</td></tr>
+      <tr><td>Humanitarian carve-outs negotiated despite formal closure</td><td><span class="status-pill green">Containment Sc.1</span></td><td>Formal announcement of humanitarian exemptions</td><td>Weekly — OCHA, UNHCR, NGO field reporting</td></tr>
+      <tr><td>Protests, localized violence, or security-community clashes in eastern Chad</td><td><span class="status-pill amber">Destab. Sc.3</span></td><td>Three or more separate incident reports within 30 days</td><td>Weekly — regional media and NGO security</td></tr>
+      <tr><td>External actors increasing activity in northern/eastern Chad</td><td><span class="status-pill amber">Destab. Sc.3</span></td><td>Any corroborated report from two independent Tier A/B sources</td><td>Monthly; weekly if Sc.2 indicators activate</td></tr>
+      <tr><td>Technical identification of drone platform and operator</td><td><span class="status-pill blue">Attribution — All Scenarios</span></td><td>Any forensic/technical attribution from credible government or independent source</td><td>Immediate priority intelligence trigger</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- SECTION 6: BEHAVIORAL TRADECRAFT -->
+<section class="section" id="s6">
+  <div class="section-header">
+    <span class="section-num">06 // BEHAVIORAL</span>
+    <div class="section-title">Applied Behavioral Tradecraft</div>
+  </div>
+  <div class="prose" style="margin-bottom:1.5rem;"><p>Applied where it improves risk modeling. Three behavioral dynamics are assessed as analytically load-bearing.</p></div>
+  <div class="behavioral-grid">
+    <div class="behavioral-item">
+      <div class="behavioral-header">01 — Authority Signaling &amp; Legitimacy Maintenance</div>
+      <div class="behavioral-body">Déby faces dual legitimacy pressure as head of state following a contested transition. The rapid, dramatic, and public response — complete closure, emergency council, standing retaliation order — is consistent with authority cue activation: the need to project unambiguous command authority to domestic audiences and Sudanese actors.<cite>[1,2,4]</cite> This behavioral dynamic reinforces H-A/H-B and makes de-escalatory reversal politically costly even if strategically advisable.</div>
+    </div>
+    <div class="behavioral-item">
+      <div class="behavioral-header">02 — Escalation Ladder &amp; Loss Aversion</div>
+      <div class="behavioral-body">The standing retaliatory authorization creates an asymmetric incentive structure at the tactical level.<cite>[1,2,8]</cite> Field commanders under permissive rules of engagement in a tense border environment are more likely to act on ambiguous threat signals. <strong>Loss aversion</strong> — weighting prevention of further Chadian casualties more heavily than avoiding gains — will bias field-level decisions toward pre-emptive or retaliatory action, <strong>independent of Déby's strategic calculations</strong>. This is a primary driver of Scenario 2 risk.</div>
+    </div>
+    <div class="behavioral-item">
+      <div class="behavioral-header">03 — Narrative Framing &amp; Mutual Attribution</div>
+      <div class="behavioral-body">Both Chadian officials and Sudanese actors — particularly those alleging Chad facilitates RSF supplies — are engaged in parallel attribution narratives.<cite>[6]</cite> Each side's public framing makes concession harder and external pressure more necessary to create off-ramps. The information environment is susceptible to coordinated media campaigns from Sudanese factions (see Sc.2 indicators), which could accelerate escalation by constraining Déby's diplomatic flexibility.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: RECOMMENDATIONS -->
+<section class="section" id="s7">
+  <div class="section-header">
+    <span class="section-num">07 // RECOMMENDATIONS</span>
+    <div class="section-title">Recommendations</div>
+  </div>
+  <div class="rec-timeline">
+    <div class="rec-block">
+      <div class="rec-time"><div class="rec-time-label immediate">0–72h</div></div>
+      <div class="rec-content"><div class="rec-items">
+        <div class="rec-item"><strong>Activate drone attribution collection.</strong> Platform identification and operator chain of command is the single highest-value intelligence action available. Without it, all response options carry unacceptable attribution uncertainty.</div>
+        <div class="rec-item"><strong>Engage international partners.</strong> Communicate to France, AU, and ECOWAS that Chad is open to diplomatic channels while the retaliation authorization remains in effect. Prevents premature unilateral action.</div>
+        <div class="rec-item"><strong>Assess humanitarian exemption requirements.</strong> Carving out corridors early with UNHCR and OCHA reduces pressure for blanket reversal and limits humanitarian deterioration.</div>
+      </div></div>
+    </div>
+    <div class="rec-block">
+      <div class="rec-time"><div class="rec-time-label near">3–30 days</div></div>
+      <div class="rec-content"><div class="rec-items">
+        <div class="rec-item"><strong>Establish command-and-control protocols.</strong> Define when forward units may act under the retaliatory authorization vs. when they must seek centralized approval. Directly mitigates the autonomous tactical escalation risk (KJ-3, A3).</div>
+        <div class="rec-item"><strong>Commission economic impact assessment.</strong> Formal assessment of the closure's effect on eastern Chadian border communities. Early identification of grievance vectors reduces Scenario 3 risk.</div>
+        <div class="rec-item"><strong>Pursue attribution diplomacy.</strong> Engage Sudan's competing factions to probe whether the drone strike was authorized, rogue, or operational confusion. Distinct from and more achievable than technical attribution.</div>
+      </div></div>
+    </div>
+    <div class="rec-block">
+      <div class="rec-time"><div class="rec-time-label medium">30–180 days</div></div>
+      <div class="rec-content"><div class="rec-items">
+        <div class="rec-item"><strong>Develop graduated border reopening framework</strong> tied to measurable security benchmarks, to avoid indefinite closure becoming a driver of internal instability.</div>
+        <div class="rec-item"><strong>Pursue multilateral border monitoring mechanism</strong> with AU or ECOWAS participation to internationalize the security burden and reduce sole reliance on Chadian deterrence.</div>
+        <div class="rec-item"><strong>Narrative containment.</strong> Monitor and rebut (through appropriate channels) any disinformation alleging Chadian facilitation of Sudanese faction resupply. Critical to preserving Déby's diplomatic flexibility and preventing Scenario 2 acceleration.</div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 8: CONFIDENCE -->
+<section class="section" id="s8">
+  <div class="section-header">
+    <span class="section-num">08 // CONFIDENCE</span>
+    <div class="section-title">Confidence &amp; Uncertainties</div>
+  </div>
+  <div class="conf-panel">
+    <div class="conf-header">
+      <div class="conf-title">Overall Confidence Assessment</div>
+      <div class="conf-level">MODERATE</div>
+    </div>
+    <div class="conf-body">
+      <div class="conf-row">Primary load-bearing claims rest on Chadian government statements corroborated by two independent media streams. No independent technical verification of death toll, drone attribution, or specific presidential order content beyond official and state-adjacent reporting.</div>
+      <div class="conf-row">The drone attribution gap is a confidence <strong>ceiling</strong>, not merely a gap. Without knowing who launched the drone (SAF, RSF, allied militia, or another actor), scenario probability assessments cannot be stated with high precision.</div>
+      <div class="conf-row">Behavioral tradecraft assessments are inferences from pattern and structural incentives, not direct observation of decision-making processes. They improve risk modeling but do not constitute evidentiary facts.</div>
+      <hr class="conf-divider">
+      <div class="sub-section">Three Uncertainties That Could Flip This Assessment</div>
+      <div class="uncertainty-list">
+        <div class="uncertainty-item"><strong>Flip Risk 1 — Attribution reversal:</strong> If the drone strike is attributed to a non-Sudan-civil-war actor (e.g., third-party state, Chad-based dissident group using captured equipment), the entire conflict escalation framing shifts.<cite>[2,3,4]</cite> The border closure and retaliation order would represent a counterproductive response to a misidentified threat.</div>
+        <div class="uncertainty-item"><strong>Flip Risk 2 — Chadian factional realignment:</strong> If evidence emerges of tacit or active Chadian coordination with SAF against RSF, Hypothesis C becomes the leading explanation rather than a watchpoint.<cite>[6]</cite> Scenario 2 probability rises materially; Scenario 1 reduced to a residual.</div>
+        <div class="uncertainty-item"><strong>Flip Risk 3 — Rapid internal destabilization:</strong> If eastern Chadian community grievances over the closure combine with pre-existing political tensions to trigger visible unrest within 30 days,<cite>[5,6,7]</cite> Scenario 3 accelerates and displaces the external escalation focus.</div>
+      </div>
+      <hr class="conf-divider">
+      <div class="sub-section">Assumption Failure Drill — Top 2</div>
+      <div style="overflow-x:auto;">
+      <table class="assumption-table">
+        <thead><tr><th>Assumption</th><th>Failure Signal</th><th>Consequence</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>A1:</strong> Drone launched by Sudan civil-war actor</td>
+            <td>Technical attribution identifies different actor; Sudanese factions deny with credible evidence; forensic analysis inconsistent with known Sudanese inventory</td>
+            <td>All retaliatory and diplomatic responses directed at wrong target set; escalation with Sudan becomes counterproductive; domestic legitimacy narrative collapses</td>
+          </tr>
+          <tr>
+            <td><strong>A3:</strong> Retaliation order is deterrent signaling, not offensive mandate</td>
+            <td>Reports of Chadian units crossing border or conducting strikes inside Sudan without confirmed incoming attack; Chadian aircraft or artillery deployed forward of border positions</td>
+            <td>Chad becomes de facto co-belligerent in Sudan's war; triggers Scenario 2 rapidly; invites retaliatory escalation on Chadian soil; erodes international support</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 9: PRIORITY INTELLIGENCE GAPS -->
+<section class="section" id="s9">
+  <div class="section-header">
+    <span class="section-num">09 // INTEL GAPS</span>
+    <div class="section-title">Priority Intelligence Gaps</div>
+  </div>
+  <div style="overflow-x:auto;">
+  <table class="pig-table">
+    <thead><tr><th>Gap</th><th>Description</th><th>Priority</th><th>Scenario Impact</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>GAP-1</td>
+        <td>Technical attribution of drone system: platform type, operator identity, chain of command, and acquisition pathway</td>
+        <td><span class="status-pill red">Critical</span></td>
+        <td>Affects all scenario probabilities. Is a confidence ceiling, not merely a gap.</td>
+      </tr>
+      <tr>
+        <td>GAP-2</td>
+        <td>Operational preparation: Are Chadian forces positioning for cross-border strikes, or does the retaliation order remain purely declaratory?</td>
+        <td><span class="status-pill red">High</span></td>
+        <td>Determines whether Scenario 2 is imminent or medium-term risk</td>
+      </tr>
+      <tr>
+        <td>GAP-3</td>
+        <td>Internal Chadian elite attitudes toward escalation, including military leadership and political figures outside Déby's immediate circle</td>
+        <td><span class="status-pill red">High</span></td>
+        <td>Affects A3 assumption validity and Sc.1 vs. Sc.2 bifurcation</td>
+      </tr>
+      <tr>
+        <td>GAP-4</td>
+        <td>Economic and social impact of the closure on eastern Chadian border communities and community-security force relations</td>
+        <td><span class="status-pill amber">Moderate</span></td>
+        <td>Determines speed of Scenario 3 risk materialisation</td>
+      </tr>
+      <tr>
+        <td>GAP-5</td>
+        <td>Concrete evidence of operational cooperation or tacit alignment between Chadian forces and specific Sudanese factions (SAF or RSF)<cite>[6]</cite></td>
+        <td><span class="status-pill amber">Moderate</span></td>
+        <td>Would promote H-C from watchpoint to leading explanation</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- SECTION 10: ACTION THRESHOLDS -->
+<section class="section" id="s10">
+  <div class="section-header">
+    <span class="section-num">10 // THRESHOLDS</span>
+    <div class="section-title">Action Thresholds</div>
+  </div>
+  <div class="threshold-grid">
+    <div class="threshold-cell green-zone">
+      <div class="threshold-dot-header"><div class="threshold-dot2"></div><div class="threshold-label-text">Green — Monitor</div></div>
+      <div class="threshold-body">Situation stable; no additional cross-border incidents; humanitarian corridors negotiated; no I&amp;W indicators activated. Continue attribution collection effort at standard cadence.</div>
+    </div>
+    <div class="threshold-cell amber-zone">
+      <div class="threshold-dot-header"><div class="threshold-dot2"></div><div class="threshold-label-text">Amber — Act</div></div>
+      <div class="threshold-body">One additional cross-border incident (any type); OR any Scenario 2 indicator activates; OR closure economic impact triggers community tension reports. Escalate reporting cadence; brief decision-makers; activate diplomatic engagement track; reassess assumption register.</div>
+    </div>
+    <div class="threshold-cell red-zone">
+      <div class="threshold-dot-header"><div class="threshold-dot2"></div><div class="threshold-label-text">Red — Emergency Response</div></div>
+      <div class="threshold-body">Confirmed Chadian cross-border strike inside Sudan; OR mass-casualty event in eastern Chad; OR two or more Scenario 3 indicators activate simultaneously. Immediate executive brief; convene crisis response group; engage international partners; updated assessment within 24 hours.</div>
+    </div>
+  </div>
+  <p style="margin-top:1rem; font-family:'IBM Plex Mono',monospace; font-size:0.68rem; color:var(--text-muted);">Current Status Assessment: <strong style="color:var(--amber);">AMBER — Multiple indicators on watch. Attribution gap unresolved.</strong></p>
+</section>
+
+<!-- SECTION 11: REFERENCES -->
+<section class="section" id="s11">
+  <div class="section-header">
+    <span class="section-num">11 // REFERENCES</span>
+    <div class="section-title">Source Register &amp; WSI Audit</div>
+  </div>
+  <div style="overflow-x:auto;">
+  <table class="ref-table">
+    <thead><tr><th>#</th><th>Source</th><th>Type</th><th>Band</th></tr></thead>
+    <tbody>
+      <tr><td>[1]</td><td>Capital FM Kenya / Capital News — "Chadian president orders 'complete closure' of border with Sudan after deadly drone attack." 19 March 2026.</td><td>Syndicated Aggregator</td><td><span class="band-pill amber">Amber</span></td></tr>
+      <tr><td>[2]</td><td>Xinhua (English service) — "Chadian president orders 'complete closure' of border with Sudan after deadly drone attack." 19 March 2026.</td><td>State-Owned Wire</td><td><span class="band-pill amber">Amber</span></td></tr>
+      <tr><td>[3]</td><td>Yahoo News — "Drone attack from Sudan kills 17 in Chad, Chadian government says." 19 March 2026.</td><td>News Aggregator</td><td><span class="band-pill amber">Amber</span></td></tr>
+      <tr><td>[4]</td><td>APA News — "Chad on high alert after Sudan drone strike kills 17." 19 March 2026.</td><td>Regional News Outlet</td><td><span class="band-pill green">Green</span></td></tr>
+      <tr><td>[5]</td><td>Reuters — "Chad closes border with Sudan after clashes kill five soldiers." 23 February 2026.</td><td>Tier A Wire Service</td><td><span class="band-pill green">Green</span></td></tr>
+      <tr><td>[6]</td><td>Al Jazeera — "Chad shuts border with Sudan after cross-border incursion kills five troops." 23 February 2026.</td><td>Tier A Broadcaster</td><td><span class="band-pill green">Green</span></td></tr>
+      <tr><td>[7]</td><td>Radio Dabanga — "Chad closes border with Sudan after clashes, drone strikes in North Darfur hit Musa Hilal's HQ." February 2026.</td><td>Regional Specialist Outlet</td><td><span class="band-pill green">Green</span></td></tr>
+      <tr><td>[8]</td><td>Sudan Tribune (X post) — Noting Déby's order to hit Sudan-based attack sources. March 2026.</td><td>Social Media / Lead-Only</td><td><span class="band-pill red">Red</span></td></tr>
+      <tr><td>[9]</td><td>Addis Standard (Facebook) — Chadian president orders complete closure. March 2026.</td><td>Social Media Aggregation</td><td><span class="band-pill amber">Amber</span></td></tr>
+      <tr><td>[10]</td><td>Washington Post — "Sudan-Chad border attacks." 18 March 2026.</td><td>Tier A Print</td><td><span class="band-pill green">Green</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="prose" style="margin-top:1.2rem;">
+    <p><strong>Band key:</strong> Green = high credibility, independent stream. Amber = use with caveat (state-owned, syndicated, or secondary). Red = lead-only, non-evidentiary per WSI policy.</p>
+    <p><strong>Independence test applied:</strong> Sources [1], [3] are syndicated from the same upstream as [2] and are counted as ONE stream. The death toll figure rests on two independent corroborating streams: [4] APA News and Chadian government statements. Source [8] is non-evidentiary; the retaliation order claim was corroborated by [2] and [4] before inclusion. No single-source key judgment is present without explicit caveat.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-qa">Quanta Analytica Process™</div>
+  <div class="footer-sub">Framework-Governed Intelligence &middot; Conflict Systems Analysis &middot; Decision-Ready Assessment</div>
+  <div class="footer-copy">QAP-CSA-TCD-SDN-2026-0319 &nbsp;|&nbsp; 19 March 2026 &nbsp;|&nbsp; All claims traced to open-source evidence or labelled as analyst inference &nbsp;|&nbsp; Verify all figures with primary sources before operational decision-making</div>
+</footer>
+
+<script>
+  // Progress bar
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    const p = h > 0 ? (window.scrollY / h) * 100 : 0;
+    document.getElementById('progress').style.width = p + '%';
+  });
+
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+
+  document.querySelectorAll('.section').forEach(s => obs.observe(s));
+</script>
+
+</body>
+</html>
