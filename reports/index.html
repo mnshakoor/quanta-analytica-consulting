@@ -1,1 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- SEO -->
+  <title>Featured Reports | Quanta Analytica Intelligence</title>
+  <meta name="description" content="Featured intelligence reports and assessments produced by Quanta Analytica MNS Consulting. Decision-grade analysis across geopolitical risk, conflict systems, humanitarian security, and strategic intelligence domains." />
+  <meta name="keywords" content="Quanta Analytica reports, intelligence assessments, geopolitical risk reports, conflict analysis, MNS Consulting, IGRIS, QA-CSRF, decision-grade intelligence" />
+  <meta name="author" content="M. Nuri Shakoor, MNS Consulting" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://quanta-analytica.com/reports/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://quanta-analytica.com/reports/" />
+  <meta property="og:title" content="Featured Reports | Quanta Analytica Intelligence" />
+  <meta property="og:description" content="Decision-grade intelligence reports and assessments produced by Quanta Analytica MNS Consulting." />
+  <meta property="og:image" content="https://quanta-analytica.com/og-image.png" />
+  <meta property="og:site_name" content="Quanta Analytica" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Featured Reports | Quanta Analytica Intelligence" />
+  <meta name="twitter:description" content="Decision-grade intelligence reports and assessments produced by Quanta Analytica MNS Consulting." />
+  <meta name="twitter:image" content="https://quanta-analytica.com/og-image.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Featured Reports — Quanta Analytica",
+    "description": "Featured intelligence reports and assessments produced by Quanta Analytica MNS Consulting.",
+    "url": "https://quanta-analytica.com/reports/",
+    "publisher": { "@type": "Organization", "name": "MNS Consulting", "url": "https://quanta-analytica.com" }
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow+Condensed:wght@300;400;500;600&family=Barlow:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --obsidian:   #0a0c10;
+      --deep-navy:  #0d1220;
+      --midnight:   #111827;
+      --panel:      rgba(255,255,255,0.04);
+      --panel2:     rgba(255,255,255,0.07);
+      --gold:       #c8a96e;
+      --gold-light: #e2c98a;
+      --gold-dim:   rgba(200,169,110,0.12);
+      --gold-line:  rgba(200,169,110,0.28);
+      --text:       rgba(245,242,236,0.95);
+      --muted:      rgba(245,242,236,0.68);
+      --muted2:     rgba(245,242,236,0.38);
+      --border:     rgba(200,169,110,0.14);
+      --border-soft:rgba(255,255,255,0.07);
+      --shadow:     0 16px 56px rgba(0,0,0,0.5);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-ui:      'Barlow Condensed', sans-serif;
+      --font-body:    'Barlow', sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+      --max: 1160px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--obsidian);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+      cursor: crosshair;
+      min-height: 100vh;
+    }
+
+    /* noise texture */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 999; opacity: 0.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    .skip-link {
+      position: absolute; left: -999px; top: 10px;
+      background: var(--panel2); padding: 10px 12px;
+      border: 1px solid var(--border); z-index: 9999;
+      font-family: var(--font-ui); font-size: 0.7rem; letter-spacing: 0.15em;
+    }
+    .skip-link:focus { left: 12px; }
+
+    .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+
+    /* ── NAV ── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(10,12,16,0.95), rgba(10,12,16,0.72));
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 16px; padding: 14px 0;
+    }
+
+    /* brand */
+    .brand { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .brand:hover { text-decoration: none; }
+    .brand-name { display: flex; flex-direction: column; line-height: 1.15; }
+    .brand-name strong {
+      font-family: var(--font-ui); font-size: 0.92rem; font-weight: 600;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--text);
+    }
+    .brand-name span {
+      font-family: var(--font-ui); font-size: 0.68rem;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);
+    }
+
+    /* nav links — intentionally minimal: only the three required destinations */
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      padding: 7px 13px;
+      font-family: var(--font-ui); font-size: 0.7rem;
+      font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted); border: 1px solid transparent;
+      transition: color .25s, border-color .25s, background .25s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover {
+      color: var(--gold); border-color: var(--gold-line);
+      background: var(--gold-dim); text-decoration: none;
+    }
+
+    /* Insights / Patreon CTA button */
+    .btn-insights {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 18px;
+      font-family: var(--font-ui); font-size: 0.7rem;
+      font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--obsidian); background: var(--gold); border: 1px solid var(--gold);
+      transition: background .2s, border-color .2s, transform .1s;
+      white-space: nowrap; cursor: pointer; text-decoration: none;
+    }
+    .btn-insights:hover {
+      background: var(--gold-light); border-color: var(--gold-light);
+      text-decoration: none; transform: translateY(-1px);
+    }
+    .btn-insights:active { transform: translateY(0); }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 64px 0 48px;
+      border-bottom: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+
+    /* subtle geometric accent */
+    .page-header::before {
+      content: '';
+      position: absolute; right: -120px; top: -120px;
+      width: 420px; height: 420px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,169,110,0.06), transparent 70%);
+      pointer-events: none;
+    }
+
+    .ph-eyebrow {
+      font-family: var(--font-ui); font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.38em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1.2rem;
+      opacity: 0; animation: slideUp 0.8s ease 0.1s forwards;
+    }
+
+    .ph-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4.5vw, 5rem);
+      font-weight: 300; line-height: 0.95; letter-spacing: -0.01em;
+      margin-bottom: 1.4rem;
+      opacity: 0; animation: slideUp 0.9s ease 0.25s forwards;
+    }
+
+    .ph-title em { font-style: italic; color: var(--gold-light); }
+
+    .ph-sub {
+      max-width: 560px; font-size: 0.98rem; line-height: 1.88; color: var(--muted);
+      opacity: 0; animation: slideUp 0.9s ease 0.4s forwards;
+    }
+
+    .ph-meta {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      margin-top: 1.8rem;
+      opacity: 0; animation: slideUp 0.9s ease 0.52s forwards;
+    }
+
+    .ph-meta-item {
+      font-family: var(--font-ui); font-size: 0.68rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--muted2);
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    .ph-meta-item::before {
+      content: ''; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--gold); opacity: 0.5; flex-shrink: 0;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── MAIN ── */
+    main { padding: 52px 0 80px; }
+
+    /* section divider row */
+    .divider { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 2rem; }
+    .divider-rule { flex: 1; height: 1px; background: var(--border); }
+    .divider-label {
+      font-family: var(--font-ui); font-size: 0.66rem; font-weight: 600;
+      letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold);
+      white-space: nowrap;
+    }
+    .divider-count {
+      font-family: var(--mono); font-size: 0.66rem;
+      color: var(--muted2); white-space: nowrap;
+    }
+
+    /* ── REPORT CARDS ── */
+    .reports-grid {
+      display: flex; flex-direction: column; gap: 0;
+      border: 1px solid var(--border);
+    }
+
+    .report-card {
+      display: grid;
+      grid-template-columns: 72px 1fr auto;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+      position: relative; overflow: hidden;
+      transition: background 0.3s;
+      background: var(--panel);
+      text-decoration: none; color: inherit;
+    }
+    .report-card:last-child { border-bottom: none; }
+    .report-card:hover { background: var(--panel2); text-decoration: none; }
+
+    /* gold left-border reveal on hover */
+    .report-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; bottom: 0;
+      width: 0; border-left: 3px solid var(--gold);
+      transition: width 0s;
+    }
+    .report-card:hover::before { width: 3px; }
+
+    /* placeholder state — dimmer, no pointer */
+    .report-card.placeholder {
+      opacity: 0.42; cursor: default; pointer-events: none;
+    }
+    .report-card.placeholder:hover { background: var(--panel); }
+    .report-card.placeholder::before { display: none; }
+
+    /* report number column */
+    .rc-num {
+      display: flex; align-items: center; justify-content: center;
+      border-right: 1px solid var(--border);
+      padding: 24px 0;
+    }
+    .rc-num span {
+      font-family: var(--font-display); font-size: 1.8rem;
+      font-weight: 300; color: var(--gold); opacity: 0.28; line-height: 1;
+    }
+
+    /* main content column */
+    .rc-body { padding: 22px 28px; }
+
+    .rc-meta {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .rc-type {
+      font-family: var(--font-ui); font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+    }
+
+    .rc-date {
+      font-family: var(--mono); font-size: 0.62rem; color: var(--muted2);
+    }
+
+    .rc-tag {
+      font-family: var(--font-ui); font-size: 0.6rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--muted2);
+      border: 1px solid var(--border); padding: 2px 7px;
+      background: transparent;
+    }
+
+    .rc-title {
+      font-family: var(--font-display); font-size: 1.3rem;
+      font-weight: 400; line-height: 1.2; color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .report-card:hover .rc-title { color: var(--gold-light); }
+
+    .rc-abstract {
+      font-size: 0.9rem; color: var(--muted); line-height: 1.78;
+      max-width: 680px;
+    }
+
+    .rc-bluf {
+      margin-top: 10px;
+      padding: 10px 14px;
+      border-left: 2px solid var(--gold-line);
+      background: var(--gold-dim);
+    }
+
+    .rc-bluf-label {
+      font-family: var(--font-ui); font-size: 0.6rem; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .rc-bluf-text {
+      font-size: 0.86rem; color: var(--muted); line-height: 1.65;
+      font-style: italic;
+    }
+
+    /* placeholder text styling */
+    .rc-title.ph-text,
+    .rc-abstract.ph-text,
+    .rc-bluf-text.ph-text {
+      color: var(--muted2);
+      font-style: italic;
+    }
+
+    /* arrow column */
+    .rc-arrow {
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px 22px;
+      border-left: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .rc-arrow svg { opacity: 0.25; transition: opacity 0.3s, transform 0.3s; }
+    .report-card:hover .rc-arrow svg { opacity: 0.7; transform: translateX(3px); }
+    .report-card.placeholder .rc-arrow svg { opacity: 0.12; }
+
+    /* ── NOTICE CARD ── */
+    .notice {
+      margin-top: 28px;
+      padding: 20px 24px;
+      border: 1px solid var(--border-soft);
+      background: var(--panel);
+      display: flex; align-items: center; gap: 16px;
+    }
+
+    .notice-icon { flex-shrink: 0; opacity: 0.4; }
+
+    .notice-text {
+      font-family: var(--font-ui); font-size: 0.7rem;
+      letter-spacing: 0.12em; color: var(--muted2); line-height: 1.6;
+    }
+
+    .notice-text strong { color: var(--muted); font-weight: 500; }
+
+    /* ── FOOTER ── */
+    .footer { padding: 28px 0 36px; border-top: 1px solid var(--border); }
+    .footer .row {
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 14px; flex-wrap: wrap;
+    }
+    .footer-brand {
+      font-family: var(--font-ui); font-size: 0.7rem;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+    }
+    .footer-brand .gold { color: var(--gold); }
+
+    .pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 5px 11px; border: 1px solid var(--gold-line);
+      background: var(--gold-dim); color: var(--muted);
+      font-family: var(--font-ui); font-size: 0.66rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+    }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .d1{transition-delay:.05s} .d2{transition-delay:.10s} .d3{transition-delay:.15s}
+    .d4{transition-delay:.20s} .d5{transition-delay:.25s} .d6{transition-delay:.30s}
+    .d7{transition-delay:.35s} .d8{transition-delay:.40s} .d9{transition-delay:.45s}
+    .d10{transition-delay:.50s}
+
+    @media(max-width:780px){
+      .report-card { grid-template-columns: 52px 1fr; }
+      .rc-arrow { display: none; }
+      .rc-body { padding: 18px; }
+    }
+
+    @media(max-width:500px){
+      .report-card { grid-template-columns: 1fr; }
+      .rc-num { display: none; }
+    }
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="container">
+    <div class="nav" role="navigation" aria-label="Primary">
+
+      <!-- Brand -->
+      <a class="brand" href="../index.html" aria-label="Quanta Analytica home">
+        <svg width="34" height="34" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <polygon points="18,2 32,10 32,26 18,34 4,26 4,10" fill="none" stroke="#c8a96e" stroke-width="1.2"/>
+          <circle cx="18" cy="18" r="4" fill="#c8a96e" opacity="0.75"/>
+        </svg>
+        <div class="brand-name">
+          <strong>Quanta Analytica</strong>
+          <span>Featured Reports</span>
+        </div>
+      </a>
+
+      <!-- Minimal nav — three destinations only -->
+      <nav class="nav-links" aria-label="Site navigation">
+        <a href="../index.html">Home</a>
+        <a href="../mns-lbs.html">MNS · LBS Advisory</a>
+      </nav>
+
+      <!-- Insights CTA -->
+      <a class="btn-insights"
+         href="https://insights.quanta-analytica.com"
+         target="_blank"
+         rel="noopener"
+         aria-label="Insights and Research on Patreon">
+        Insights &amp; Research ↗
+      </a>
+
+    </div>
+  </div>
+</header>
+
+<!-- ── PAGE HEADER ── -->
+<div class="page-header">
+  <div class="container">
+    <p class="ph-eyebrow">MNS Consulting · Quanta Analytica · Intelligence Products</p>
+    <h1 class="ph-title">Featured<br /><em>Intelligence<br />Reports</em></h1>
+    <p class="ph-sub">
+      A curated selection of decision-grade intelligence reports, risk assessments, and structured analytic products produced by Quanta Analytica MNS Consulting. Reports are produced using the QA Process™, QA-CSRF™, and IGRIS™ frameworks and represent applied intelligence across geopolitical, humanitarian, and strategic risk domains.
+    </p>
+    <div class="ph-meta">
+      <span class="ph-meta-item">Up to 10 featured reports at any time</span>
+      <span class="ph-meta-item">QA Process™ · QA-CSRF™ · IGRIS™</span>
+      <span class="ph-meta-item">Decision-Grade Intelligence</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── MAIN ── -->
+<main id="content">
+  <div class="container">
+
+    <div class="divider reveal">
+      <div class="divider-rule"></div>
+      <span class="divider-label">Featured Reports</span>
+      <div class="divider-rule" style="max-width:40px;"></div>
+      <span class="divider-count">0 of 10 published</span>
+      <div class="divider-rule" style="max-width:40px;"></div>
+    </div>
+
+    <div class="reports-grid" role="list">
+
+      <!-- ── REPORT 1 ── PLACEHOLDER ── -->
+      <div class="report-card placeholder" role="listitem" aria-label="Report 1 — forthcoming">
+        <div class="rc-num"><span>1</span></div>
+        <div class="rc-body">
+          <div class="rc-meta">
+            <span class="rc-type">Forthcoming</span>
+            <span class="rc-date">—</span>
+            <span class="rc-tag">Report 01</span>
+          </div>
+          <div class="rc-title ph-text">Report Title Placeholder</div>
+          <div class="rc-abstract ph-text">
+            A brief description, abstract, or executive summary will appear here once this report is published. This may take the form of a BLUF, takeaway, or thematic overview depending on the nature and style of the report.
+          </div>
+          <div class="rc-bluf">
+            <div class="rc-bluf-label">BLUF / Takeaway</div>
+            <div class="rc-bluf-text ph-text">The core finding or bottom-line-up-front statement will appear here.</div>
+          </div>
+        </div>
+        <div class="rc-arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 9h10M10 5l4 4-4 4" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <!-- ── REPORT 2 ── PLACEHOLDER ── -->
+      <div class="report-card placeholder" role="listitem" aria-label="Report 2 — forthcoming">
+        <div class="rc-num"><span>2</span></div>
+        <div class="rc-body">
+          <div class="rc-meta">
+            <span class="rc-type">Forthcoming</span>
+            <span class="rc-date">—</span>
+            <span class="rc-tag">Report 02</span>
+          </div>
+          <div class="rc-title ph-text">Report Title Placeholder</div>
+          <div class="rc-abstract ph-text">
+            A brief description, abstract, or executive summary will appear here once this report is published. This may take the form of a BLUF, takeaway, or thematic overview depending on the nature and style of the report.
+          </div>
+          <div class="rc-bluf">
+            <div class="rc-bluf-label">BLUF / Takeaway</div>
+            <div class="rc-bluf-text ph-text">The core finding or bottom-line-up-front statement will appear here.</div>
+          </div>
+        </div>
+        <div class="rc-arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 9h10M10 5l4 4-4 4" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <!-- ── REPORT 3 ── PLACEHOLDER ── -->
+      <div class="report-card placeholder" role="listitem" aria-label="Report 3 — forthcoming">
+        <div class="rc-num"><span>3</span></div>
+        <div class="rc-body">
+          <div class="rc-meta">
+            <span class="rc-type">Forthcoming</span>
+            <span class="rc-date">—</span>
+            <span class="rc-tag">Report 03</span>
+          </div>
+          <div class="rc-title ph-text">Report Title Placeholder</div>
+          <div class="rc-abstract ph-text">
+            A brief description, abstract, or executive summary will appear here once this report is published. This may take the form of a BLUF, takeaway, or thematic overview depending on the nature and style of the report.
+          </div>
+          <div class="rc-bluf">
+            <div class="rc-bluf-label">BLUF / Takeaway</div>
+            <div class="rc-bluf-text ph-text">The core finding or bottom-line-up-front statement will appear here.</div>
+          </div>
+        </div>
+        <div class="rc-arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 9h10M10 5l4 4-4 4" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <!-- ── REPORT 4 ── PLACEHOLDER ── -->
+      <div class="report-card placeholder" role="listitem" aria-label="Report 4 — forthcoming">
+        <div class="rc-num"><span>4</span></div>
+        <div class="rc-body">
+          <div class="rc-meta">
+            <span class="rc-type">Forthcoming</span>
+            <span class="rc-date">—</span>
+            <span class="rc-tag">Report 04</span>
+          </div>
+          <div class="rc-title ph-text">Report Title Placeholder</div>
+          <div class="rc-abstract ph-text">
+            A brief description, abstract, or executive summary will appear here once this report is published. This may take the form of a BLUF, takeaway, or thematic overview depending on the nature and style of the report.
+          </div>
+          <div class="rc-bluf">
+            <div class="rc-bluf-label">BLUF / Takeaway</div>
+            <div class="rc-bluf-text ph-text">The core finding or bottom-line-up-front statement will appear here.</div>
+          </div>
+        </div>
+        <div class="rc-arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 9h10M10 5l4 4-4 4" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <!-- ── REPORT 5 ── PLACEHOLDER ── -->
+      <div class="report-card placeholder" role="listitem" aria-label="Report 5 — forthcoming">
+        <div class="rc-num"><span>5</span></div>
+        <div class="rc-body">
+          <div class="rc-meta">
+            <span class="rc-type">Forthcoming</span>
+            <span class="rc-date">—</span>
+            <span class="rc-tag">Report 05</span>
+          </div>
+          <div class="rc-title ph-text">Report Title Placeholder</div>
+          <div class="rc-abstract ph-text">
+            A brief description, abstract, or executive summary will appear here once this report is published. This may take the form of a BLUF, takeaway, or thematic overview depending on the nature and style of the report.
+          </div>
+          <div class="rc-bluf">
+            <div class="rc-bluf-label">BLUF / Takeaway</div>
+            <div class="rc-bluf-text ph-text">The core finding or bottom-line-up-front statement will appear here.</div>
+          </div>
+        </div>
+        <div class="rc-arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 9h10M10 5l4 4-4 4" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <!-- ── REPORT 6 ── PLACEHOLDER ── -->
+      <div class="report-card placeholder" role="listitem" aria-label="Report 6 — forthcoming">
+        <div class="rc-num"><span>6</span></div>
+        <div class="rc-body">
+          <div class="rc-meta">
+            <span class="rc-type">Forthcoming</span>
+            <span class="rc-date">—</span>
+            <span class="rc-tag">Report 06</span>
+          </div>
+          <div class="rc-title ph-text">Report Title Placeholder</div>
+          <div class="rc-abstract ph-text">
+            A brief description, abstract, or executive summary will appear here once this report is published. This may take the form of a BLUF, takeaway, or thematic overview depending on the nature and style of the report.
+          </div>
+          <div class="rc-bluf">
+            <div class="rc-bluf-label">BLUF / Takeaway</div>
+            <div class="rc-bluf-text ph-text">The core finding or bottom-line-up-front statement will appear here.</div>
+          </div>
+        </div>
+        <div class="rc-arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 9h10M10 5l4 4-4 4" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <!-- ── REPORT 7 ── PLACEHOLDER ── -->
+      <div class="report-card placeholder" role="listitem" aria-label="Report 7 — forthcoming">
+        <div class="rc-num"><span>7</span></div>
+        <div class="rc-body">
+          <div class="rc-meta">
+            <span class="rc-type">Forthcoming</span>
+            <span class="rc-date">—</span>
+            <span class="rc-tag">Report 07</span>
+          </div>
+          <div class="rc-title ph-text">Report Title Placeholder</div>
+          <div class="rc-abstract ph-text">
+            A brief description, abstract, or executive summary will appear here once this report is published. This may take the form of a BLUF, takeaway, or thematic overview depending on the nature and style of the report.
+          </div>
+          <div class="rc-bluf">
+            <div class="rc-bluf-label">BLUF / Takeaway</div>
+            <div class="rc-bluf-text ph-text">The core finding or bottom-line-up-front statement will appear here.</div>
+          </div>
+        </div>
+        <div class="rc-arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 9h10M10 5l4 4-4 4" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <!-- ── REPORT 8 ── PLACEHOLDER ── -->
+      <div class="report-card placeholder" role="listitem" aria-label="Report 8 — forthcoming">
+        <div class="rc-num"><span>8</span></div>
+        <div class="rc-body">
+          <div class="rc-meta">
+            <span class="rc-type">Forthcoming</span>
+            <span class="rc-date">—</span>
+            <span class="rc-tag">Report 08</span>
+          </div>
+          <div class="rc-title ph-text">Report Title Placeholder</div>
+          <div class="rc-abstract ph-text">
+            A brief description, abstract, or executive summary will appear here once this report is published. This may take the form of a BLUF, takeaway, or thematic overview depending on the nature and style of the report.
+          </div>
+          <div class="rc-bluf">
+            <div class="rc-bluf-label">BLUF / Takeaway</div>
+            <div class="rc-bluf-text ph-text">The core finding or bottom-line-up-front statement will appear here.</div>
+          </div>
+        </div>
+        <div class="rc-arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 9h10M10 5l4 4-4 4" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <!-- ── REPORT 9 ── PLACEHOLDER ── -->
+      <div class="report-card placeholder" role="listitem" aria-label="Report 9 — forthcoming">
+        <div class="rc-num"><span>9</span></div>
+        <div class="rc-body">
+          <div class="rc-meta">
+            <span class="rc-type">Forthcoming</span>
+            <span class="rc-date">—</span>
+            <span class="rc-tag">Report 09</span>
+          </div>
+          <div class="rc-title ph-text">Report Title Placeholder</div>
+          <div class="rc-abstract ph-text">
+            A brief description, abstract, or executive summary will appear here once this report is published. This may take the form of a BLUF, takeaway, or thematic overview depending on the nature and style of the report.
+          </div>
+          <div class="rc-bluf">
+            <div class="rc-bluf-label">BLUF / Takeaway</div>
+            <div class="rc-bluf-text ph-text">The core finding or bottom-line-up-front statement will appear here.</div>
+          </div>
+        </div>
+        <div class="rc-arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 9h10M10 5l4 4-4 4" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <!-- ── REPORT 10 ── PLACEHOLDER ── -->
+      <div class="report-card placeholder" role="listitem" aria-label="Report 10 — forthcoming">
+        <div class="rc-num"><span>10</span></div>
+        <div class="rc-body">
+          <div class="rc-meta">
+            <span class="rc-type">Forthcoming</span>
+            <span class="rc-date">—</span>
+            <span class="rc-tag">Report 10</span>
+          </div>
+          <div class="rc-title ph-text">Report Title Placeholder</div>
+          <div class="rc-abstract ph-text">
+            A brief description, abstract, or executive summary will appear here once this report is published. This may take the form of a BLUF, takeaway, or thematic overview depending on the nature and style of the report.
+          </div>
+          <div class="rc-bluf">
+            <div class="rc-bluf-label">BLUF / Takeaway</div>
+            <div class="rc-bluf-text ph-text">The core finding or bottom-line-up-front statement will appear here.</div>
+          </div>
+        </div>
+        <div class="rc-arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 9h10M10 5l4 4-4 4" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+    </div><!-- /.reports-grid -->
+
+    <!-- notice -->
+    <div class="notice reveal">
+      <div class="notice-icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <polygon points="10,2 18,6 18,14 10,18 2,14 2,6" fill="none" stroke="#c8a96e" stroke-width="1"/>
+          <circle cx="10" cy="10" r="2" fill="#c8a96e" opacity="0.5"/>
+        </svg>
+      </div>
+      <p class="notice-text">
+        <strong>Reports are published as assessments are completed.</strong> Each report is produced using the QA Process™, QA-CSRF™, or IGRIS™ framework and undergoes human-in-the-loop validation before publication. For early access to intelligence reports and research, visit <a href="https://insights.quanta-analytica.com" target="_blank" rel="noopener" style="color:var(--gold); border-bottom:1px solid var(--gold-line);">Insights &amp; Research on Patreon</a>.
+      </p>
+    </div>
+
+    <!-- footer -->
+    <div class="footer" style="margin-top:48px;">
+      <div class="row">
+        <div class="footer-brand">
+          <span class="gold">Quanta Analytica</span> &nbsp;·&nbsp;
+          Featured Reports &nbsp;·&nbsp;
+          MNS Consulting &nbsp;·&nbsp;
+          &copy; <span id="year"></span>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+          <a class="pill" href="../index.html" style="color:var(--gold); border-color:var(--gold-line);">Home</a>
+          <a class="pill" href="../mns-lbs.html" style="color:var(--gold); border-color:var(--gold-line);">MNS · LBS Advisory</a>
+          <a class="pill" href="https://insights.quanta-analytica.com" target="_blank" rel="noopener" style="color:var(--gold); border-color:var(--gold-line);">Insights ↗</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.container -->
+</main>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.06 });
+  reveals.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
