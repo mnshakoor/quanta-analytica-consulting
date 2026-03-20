@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sudan Conflict Assessment | Quanta Analytica Process™ | 13 MAR 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0f;
+    --paper: #f5f0e8;
+    --paper-dark: #ede7d5;
+    --red: #c0392b;
+    --red-dark: #922b21;
+    --amber: #d35400;
+    --green: #1a6b3a;
+    --blue: #1a3a6b;
+    --blue-mid: #2563a8;
+    --rule: #8a7f70;
+    --rule-light: #c8bfaf;
+    --ghost: rgba(10,10,15,0.06);
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+    --serif: 'IBM Plex Serif', serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HEADER MASTHEAD ── */
+  .masthead {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .masthead-noise {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .masthead-inner {
+    position: relative;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 40px 28px;
+  }
+  .masthead-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(245,240,232,0.15);
+  }
+  .qa-brand {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.5);
+  }
+  .qa-brand span { color: var(--paper); font-weight: 600; }
+  .doc-id {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: rgba(245,240,232,0.4);
+    letter-spacing: 0.1em;
+    text-align: right;
+  }
+  .masthead h1 {
+    font-family: var(--serif);
+    font-size: clamp(22px, 3.5vw, 36px);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--paper);
+    margin-bottom: 10px;
+  }
+  .masthead h1 em {
+    font-style: italic;
+    color: rgba(245,240,232,0.65);
+  }
+  .masthead-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+  }
+  .tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border: 1px solid rgba(245,240,232,0.2);
+    color: rgba(245,240,232,0.6);
+  }
+  .tag.red { border-color: #c0392b; color: #e57373; background: rgba(192,57,43,0.12); }
+  .tag.amber { border-color: #d35400; color: #f39c12; background: rgba(211,84,0,0.12); }
+
+  /* ── THREAT BANNER ── */
+  .threat-banner {
+    background: var(--red);
+    color: white;
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 100%;
+  }
+  .threat-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    white-space: nowrap;
+  }
+  .threat-score {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+  .threat-pip {
+    width: 14px; height: 14px;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.2);
+  }
+  .threat-pip.active { background: white; }
+  .threat-text {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    opacity: 0.9;
+    margin-left: auto;
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 40px 60px;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    margin-top: 48px;
+    padding-top: 48px;
+    border-top: 2px solid var(--ink);
+  }
+  .section:first-child { border-top: none; margin-top: 40px; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .section-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--rule);
+    text-transform: uppercase;
+    min-width: 32px;
+  }
+  .section-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .section-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--rule-light);
+  }
+
+  /* ── BLUF ── */
+  .bluf-grid {
+    display: grid;
+    gap: 12px;
+  }
+  .bluf-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background: var(--ghost);
+    padding: 14px 18px;
+    border-left: 3px solid var(--ink);
+  }
+  .bluf-item.critical { border-left-color: var(--red); background: rgba(192,57,43,0.05); }
+  .bluf-item.high { border-left-color: var(--amber); background: rgba(211,84,0,0.05); }
+  .bluf-item.medium { border-left-color: var(--blue); background: rgba(26,58,107,0.05); }
+  .bluf-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--rule);
+    min-width: 20px;
+    padding-top: 2px;
+  }
+  .bluf-text {
+    font-family: var(--serif);
+    font-size: 14.5px;
+    line-height: 1.6;
+  }
+
+  /* ── PROSE ── */
+  p {
+    font-family: var(--serif);
+    font-size: 14px;
+    line-height: 1.78;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  p:last-child { margin-bottom: 0; }
+
+  /* ── SITREP GRID ── */
+  .sitrep-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule-light);
+    border: 1px solid var(--rule-light);
+    margin-bottom: 24px;
+  }
+  .sitrep-cell {
+    background: var(--paper);
+    padding: 16px 20px;
+  }
+  .sitrep-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rule);
+    margin-bottom: 6px;
+  }
+  .sitrep-value {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  /* ── KEY JUDGMENTS ── */
+  .judgment {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 16px;
+    align-items: start;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule-light);
+  }
+  .judgment:first-child { border-top: 1px solid var(--rule-light); }
+  .judgment-rank {
+    font-family: var(--mono);
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--rule-light);
+    line-height: 1;
+    padding-top: 2px;
+    min-width: 28px;
+  }
+  .judgment-body {}
+  .judgment-headline {
+    font-family: var(--sans);
+    font-size: 13.5px;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  .judgment-detail {
+    font-family: var(--serif);
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: rgba(10,10,15,0.8);
+  }
+  .conf-badge {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    white-space: nowrap;
+    align-self: flex-start;
+    margin-top: 2px;
+  }
+  .conf-high { background: rgba(26,107,58,0.12); color: var(--green); border: 1px solid rgba(26,107,58,0.25); }
+  .conf-mod { background: rgba(211,84,0,0.1); color: var(--amber); border: 1px solid rgba(211,84,0,0.25); }
+  .conf-low { background: rgba(192,57,43,0.1); color: var(--red); border: 1px solid rgba(192,57,43,0.25); }
+
+  /* ── EVIDENCE TABLE ── */
+  .evidence-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--rule-light);
+    border: 1px solid var(--rule-light);
+  }
+  .ev-col { background: var(--paper); padding: 20px; }
+  .ev-col-header {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid;
+  }
+  .ev-col:nth-child(1) .ev-col-header { color: var(--green); border-color: var(--green); }
+  .ev-col:nth-child(2) .ev-col-header { color: var(--amber); border-color: var(--amber); }
+  .ev-col:nth-child(3) .ev-col-header { color: var(--red); border-color: var(--red); }
+  .ev-item {
+    font-family: var(--serif);
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--ghost);
+  }
+  .ev-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  /* ── I&W TABLE ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 12.5px;
+  }
+  thead {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  th {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 11px 14px;
+    text-align: left;
+    font-weight: 500;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--rule-light);
+    vertical-align: top;
+    font-family: var(--serif);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  tr:nth-child(even) td { background: var(--ghost); }
+  .iw-dir {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+  .iw-up { color: var(--red); }
+  .iw-down { color: var(--green); }
+  .iw-stable { color: var(--amber); }
+
+  /* ── SCENARIOS ── */
+  .scenarios {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .scenario-card {
+    padding: 20px;
+    border-top: 4px solid;
+    background: var(--paper-dark);
+  }
+  .scenario-card.best { border-color: var(--green); }
+  .scenario-card.base { border-color: var(--amber); }
+  .scenario-card.worst { border-color: var(--red); }
+  .scenario-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    opacity: 0.6;
+  }
+  .scenario-name {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .scenario-prob {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    opacity: 0.7;
+  }
+  .scenario-body {
+    font-family: var(--serif);
+    font-size: 12.5px;
+    line-height: 1.6;
+  }
+  .scenario-trigger {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--rule-light);
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--rule);
+  }
+  .scenario-trigger strong { color: var(--ink); }
+
+  /* ── ACTOR MAP ── */
+  .actor-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .actor-card {
+    border: 1px solid var(--rule-light);
+    padding: 18px;
+    background: var(--paper);
+  }
+  .actor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+  .actor-name {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .actor-align {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 2px;
+  }
+  .align-saf { background: rgba(26,58,107,0.1); color: var(--blue); border: 1px solid rgba(26,58,107,0.3); }
+  .align-rsf { background: rgba(192,57,43,0.1); color: var(--red-dark); border: 1px solid rgba(192,57,43,0.3); }
+  .align-neutral { background: rgba(138,127,112,0.1); color: var(--rule); border: 1px solid var(--rule-light); }
+  .actor-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 5px;
+    font-size: 12.5px;
+    font-family: var(--serif);
+  }
+  .actor-row-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--rule);
+    min-width: 70px;
+    padding-top: 2px;
+  }
+
+  /* ── TRAFFIC LIGHTS ── */
+  .threshold-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--rule-light);
+    border: 1px solid var(--rule-light);
+    margin: 20px 0;
+  }
+  .threshold-cell {
+    padding: 18px 20px;
+  }
+  .threshold-cell.green-zone { background: rgba(26,107,58,0.06); }
+  .threshold-cell.amber-zone { background: rgba(211,84,0,0.06); }
+  .threshold-cell.red-zone { background: rgba(192,57,43,0.07); }
+  .threshold-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  .green-zone .threshold-dot { background: var(--green); }
+  .amber-zone .threshold-dot { background: var(--amber); }
+  .red-zone .threshold-dot { background: var(--red); }
+  .threshold-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .green-zone .threshold-label { color: var(--green); }
+  .amber-zone .threshold-label { color: var(--amber); }
+  .red-zone .threshold-label { color: var(--red); }
+  .threshold-body {
+    font-family: var(--serif);
+    font-size: 12.5px;
+    line-height: 1.6;
+  }
+
+  /* ── RECOMMENDATIONS ── */
+  .rec-tier {
+    margin-bottom: 20px;
+  }
+  .rec-tier-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .rec-tier-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule-light);
+  }
+  .rec-list {
+    list-style: none;
+    padding: 0;
+  }
+  .rec-list li {
+    padding: 10px 0 10px 20px;
+    border-bottom: 1px solid var(--rule-light);
+    font-family: var(--serif);
+    font-size: 13.5px;
+    line-height: 1.65;
+    position: relative;
+  }
+  .rec-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 18px;
+    width: 8px;
+    height: 2px;
+    background: var(--ink);
+  }
+  .rec-list li:last-child { border-bottom: none; }
+  .rec-owner {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--rule);
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  /* ── CONFIDENCE BLOCK ── */
+  .confidence-block {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 28px 32px;
+    margin: 24px 0;
+  }
+  .confidence-header {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.5);
+    margin-bottom: 8px;
+  }
+  .confidence-level {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--paper);
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(245,240,232,0.15);
+  }
+  .confidence-reasons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+  .conf-reason {
+    font-family: var(--serif);
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: rgba(245,240,232,0.8);
+  }
+  .conf-reason-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    margin-bottom: 6px;
+  }
+
+  /* ── FLIP FACTORS ── */
+  .flip-list {
+    list-style: none;
+    counter-reset: flip;
+  }
+  .flip-list li {
+    counter-increment: flip;
+    padding: 14px 0 14px 52px;
+    border-bottom: 1px solid var(--rule-light);
+    position: relative;
+    font-family: var(--serif);
+    font-size: 13.5px;
+    line-height: 1.65;
+  }
+  .flip-list li::before {
+    content: counter(flip, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 14px;
+    font-family: var(--mono);
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--rule-light);
+    line-height: 1;
+  }
+  .flip-list li:last-child { border-bottom: none; }
+
+  /* ── FOOTER ── */
+  .report-footer {
+    margin-top: 60px;
+    padding: 28px 0;
+    border-top: 2px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-brand {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--rule);
+  }
+  .footer-caveat {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    color: var(--rule);
+    text-align: right;
+    max-width: 380px;
+    line-height: 1.5;
+  }
+
+  /* ── PULL QUOTES / CALLOUTS ── */
+  .callout {
+    border-left: 4px solid var(--red);
+    margin: 20px 0;
+    padding: 14px 20px;
+    background: rgba(192,57,43,0.04);
+  }
+  .callout-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 6px;
+  }
+  .callout-body {
+    font-family: var(--serif);
+    font-size: 13.5px;
+    line-height: 1.65;
+  }
+
+  /* ── ASSUMPTION TABLE ── */
+  .assumption-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+  }
+  .assumption-table th {
+    background: var(--paper-dark);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    border-bottom: 2px solid var(--rule-light);
+  }
+  .assumption-table td {
+    font-family: var(--serif);
+    font-size: 12.5px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--rule-light);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 680px) {
+    .masthead-inner, .container { padding-left: 20px; padding-right: 20px; }
+    .threat-banner { padding-left: 20px; padding-right: 20px; }
+    .sitrep-grid, .evidence-columns, .scenarios, .actor-grid,
+    .threshold-grid, .confidence-reasons { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="masthead-noise"></div>
+  <div class="masthead-inner">
+    <div class="masthead-meta">
+      <div class="qa-brand">Quanta Analytica Process™ &nbsp;|&nbsp; <span>Conflict Systems Analysis</span></div>
+      <div class="doc-id">
+        REF: QAP-CSA-SDN-2026-0313<br>
+        CLASSIFICATION: UNCLASSIFIED / FOR POLICY USE<br>
+        DATE: 13 MARCH 2026
+      </div>
+    </div>
+    <h1>Sudan Conflict &amp; Humanitarian Crisis<br><em>Current Assessment — Q1 2026</em></h1>
+    <div class="masthead-tags">
+      <span class="tag red">CONFLICT ACTIVE — YEAR 3</span>
+      <span class="tag amber">FAMINE CONFIRMED: 2+ LOCALES</span>
+      <span class="tag">PROXY WAR: UAE vs SAUDI</span>
+      <span class="tag">WORLD'S LARGEST DISPLACEMENT CRISIS</span>
+      <span class="tag">RISK: REGIONAL SPILLOVER</span>
+    </div>
+  </div>
+</div>
+
+<!-- THREAT BANNER -->
+<div class="threat-banner">
+  <span class="threat-label">Overall Threat Level</span>
+  <div class="threat-score">
+    <div class="threat-pip active"></div>
+    <div class="threat-pip active"></div>
+    <div class="threat-pip active"></div>
+    <div class="threat-pip active"></div>
+    <div class="threat-pip active"></div>
+    <div class="threat-pip active"></div>
+    <div class="threat-pip active"></div>
+    <div class="threat-pip active"></div>
+    <div class="threat-pip active"></div>
+    <div class="threat-pip"></div>
+  </div>
+  <span class="threat-text">9 / 10 &nbsp;&bull;&nbsp; CRITICAL &nbsp;&bull;&nbsp; No ceasefire in effect &nbsp;&bull;&nbsp; WFP food stocks to be depleted by end of March 2026</span>
+</div>
+
+<div class="container">
+
+  <!-- SECTION 1: BLUF -->
+  <div class="section" id="bluf">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-title">BLUF — Bottom Line Up Front</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="bluf-grid">
+      <div class="bluf-item critical">
+        <span class="bluf-num">B1</span>
+        <span class="bluf-text">Sudan's civil war has entered a strategically decisive phase: the SAF has recaptured Khartoum and key Kordofan cities while the RSF holds Darfur and its parallel government. De facto partition is now operationally real, not merely theoretical.</span>
+      </div>
+      <div class="bluf-item critical">
+        <span class="bluf-num">B2</span>
+        <span class="bluf-text">Famine is confirmed in Al Fasher and Kadugli and at famine-threshold malnutrition levels in at least two additional North Darfur localities. The WFP will exhaust food stocks in Sudan by end of March 2026. This constitutes an acute mass-casualty risk within weeks, not months.</span>
+      </div>
+      <div class="bluf-item high">
+        <span class="bluf-num">B3</span>
+        <span class="bluf-text">The conflict has fully regionalised: Egypt conducts airstrikes in support of the SAF; the UAE finances and arms the RSF; a Reuters-confirmed Ethiopian training camp hosts approximately 4,300 RSF-aligned fighters; Saudi Arabia has abandoned its mediator role and is now backing the SAF. The Saudi-UAE proxy rift structurally reduces ceasefire probability.</span>
+      </div>
+      <div class="bluf-item high">
+        <span class="bluf-num">B4</span>
+        <span class="bluf-text">The Kordofan front is the current operational center of gravity. RSF drone strikes on civilian markets and health facilities are near-daily. SAF advances are creating displacement cascades of hundreds of thousands; both dynamics accelerate famine spread into Greater Kordofan.</span>
+      </div>
+      <div class="bluf-item medium">
+        <span class="bluf-num">B5</span>
+        <span class="bluf-text">The 2026 Sudan humanitarian response plan requires $2.9 billion and has received only 5.5% of required funding. US USAID capacity reductions, combined with UAE and Saudi pledges, create a structurally mismatched response architecture that favors political leverage over humanitarian need.</span>
+      </div>
+      <div class="bluf-item medium">
+        <span class="bluf-num">B6</span>
+        <span class="bluf-text">No credible ceasefire mechanism exists. The Quad format (US, Saudi Arabia, UAE, Egypt) is now fractured by the Saudi-UAE rupture. Diplomatic momentum is at its lowest point since the war began.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: SITUATION SNAPSHOT -->
+  <div class="section" id="sitrep">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <span class="section-title">Situation Snapshot</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="sitrep-grid">
+      <div class="sitrep-cell">
+        <div class="sitrep-label">Who</div>
+        <div class="sitrep-value">SAF (Gen. al-Burhan) vs. RSF (Gen. Hemedti / Dagalo); allied proxy networks including Egypt, Iran, Eritrea, Turkey, Qatar, Saudi Arabia (SAF side); UAE, Ethiopia (RSF side). Civilian population: ~48 million.</div>
+      </div>
+      <div class="sitrep-cell">
+        <div class="sitrep-label">What</div>
+        <div class="sitrep-value">Full-scale civil war, now in Year 3, involving ground offensives, drone campaigns, aerial bombardment, proxy arms flows, parallel governance structures, deliberate aid obstruction, and confirmed famine.</div>
+      </div>
+      <div class="sitrep-cell">
+        <div class="sitrep-label">Where (Active Fronts)</div>
+        <div class="sitrep-value">Primary: Kordofan region (North and South). Secondary: Darfur consolidation (RSF holds El Fasher since Oct 2025). Tertiary: Khartoum stabilization (SAF, post-recapture March 2025), Gezira State, Blue Nile. Cross-border: Ethiopian border (Al-Fashaga), Chadian border (displacement corridors), Libyan border (weapons transit).</div>
+      </div>
+      <div class="sitrep-cell">
+        <div class="sitrep-label">When</div>
+        <div class="sitrep-value">War began 15 April 2023 (Day 1,063 as of 13 Mar 2026). Current assessment window: October 2025 – March 2026. Critical near-term threshold: end of March 2026 (WFP stock depletion).</div>
+      </div>
+      <div class="sitrep-cell">
+        <div class="sitrep-label">Why (Root Drivers)</div>
+        <div class="sitrep-value">RSF-SAF integration dispute; control of Sudan's gold economy; competing legitimacy claims post-2021 coup; external patron interests in Red Sea access, gold flows, and regional influence projection.</div>
+      </div>
+      <div class="sitrep-cell">
+        <div class="sitrep-label">How (Current Modalities)</div>
+        <div class="sitrep-value">Near-daily drone strikes on civilian infrastructure; ground offensives in Kordofan; continued RSF predation and looting in Darfur; both sides blocking aid access; parallel administration structures sustaining war economies.</div>
+      </div>
+    </div>
+
+    <p>As of 13 March 2026, Sudan is approaching a strategic inflection point. The SAF's recapture of Khartoum (March 2025) and the RSF's seizure and consolidation of El Fasher (October 2025) have produced a <strong>de facto territorial partition</strong>: the SAF controls the east, the capital corridor, and is advancing in Kordofan; the RSF controls a broad western arc from Darfur into West Kordofan. Neither side is close to decisive military victory. Both are prosecuting campaigns that systematically destroy the civilian support base needed for any future state.</p>
+  </div>
+
+  <!-- SECTION 3: KEY JUDGMENTS -->
+  <div class="section" id="judgments">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-title">Key Judgments</span>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="judgment">
+      <div class="judgment-rank">01</div>
+      <div class="judgment-body">
+        <div class="judgment-headline">Sudan is experiencing active genocide-risk conditions in Darfur; RSF atrocities post-El Fasher meet multiple threshold criteria</div>
+        <div class="judgment-detail">The RSF seizure of El Fasher (Oct 2025) was followed by mass killings of fleeing civilians, ethnically motivated displacement, and famine-as-weapon conditions confirmed by the IPC in El Fasher localities. The UN described El Fasher as a "crime scene." The combination of ethnic targeting (Fur, Masalit, Zaghawa populations), systematic sexual violence, and deliberate destruction of food and water systems exceeds conflict collateral damage and constitutes likely atrocity crimes under international law. ICC investigations are active but enforcement capacity is absent.</div>
+      </div>
+      <span class="conf-badge conf-high">High Confidence</span>
+    </div>
+
+    <div class="judgment">
+      <div class="judgment-rank">02</div>
+      <div class="judgment-body">
+        <div class="judgment-headline">Famine will spread significantly before end of Q2 2026 without immediate ceasefire and mass aid delivery</div>
+        <div class="judgment-detail">IPC famine confirmed in Al Fasher and Kadugli. Famine-threshold malnutrition surpassed in Um Baru (52.9% child acute malnutrition, nearly twice famine threshold) and Kernoi (34%) in North Darfur. Greater Kordofan conditions are rapidly deteriorating. WFP food stocks will be exhausted by end of March 2026. The 2026 humanitarian response plan is only 5.5% funded. The lean season and rainy season beginning April-June will structurally worsen access and food production. Analyst inference: absent a ceasefire or a dramatic funding and access shift, famine-related mortality will measurably increase in Q2 2026.</div>
+      </div>
+      <span class="conf-badge conf-high">High Confidence</span>
+    </div>
+
+    <div class="judgment">
+      <div class="judgment-rank">03</div>
+      <div class="judgment-body">
+        <div class="judgment-headline">The Saudi-UAE proxy rupture is the single most structurally destabilizing diplomatic development of the past six months</div>
+        <div class="judgment-detail">Saudi Arabia's shift from nominal mediator to active SAF backer, driven by the broader Gulf rift over Yemen, has collapsed the Quad format as a functional mechanism. Saudi-aligned media now openly names UAE as conflict enabler. UAE formally denies all RSF support, but Reuters confirmed UAE-financed Ethiopian training camps for RSF-aligned fighters. The proxy competition now tracks the Gulf rift dynamic, meaning external de-escalation pressure is effectively zero absent US intervention — which itself faces internal credibility questions under the current administration.</div>
+      </div>
+      <span class="conf-badge conf-high">High Confidence</span>
+    </div>
+
+    <div class="judgment">
+      <div class="judgment-rank">04</div>
+      <div class="judgment-body">
+        <div class="judgment-headline">A decisive SAF military victory in Kordofan is possible but not probable within the next 90 days</div>
+        <div class="judgment-detail">The SAF has reorganized, redeployed forces, and achieved the Kadugli siege break. Al Jazeera reported SAF statements that any Kordofan operation would exceed the scale of the Khartoum recapture. The RSF is simultaneously intensifying attacks on El Obeid (North Kordofan capital). Momentum favors SAF in central Sudan but RSF drone capabilities and Darfur consolidation mean the RSF retains asymmetric disruption capacity. Full Kordofan control within 90 days is assessed as possible (30-35%) but not probable — the more likely outcome is a protracted Kordofan campaign extending through mid-2026 with significant civilian cost.</div>
+      </div>
+      <span class="conf-badge conf-mod">Moderate Confidence</span>
+    </div>
+
+    <div class="judgment">
+      <div class="judgment-rank">05</div>
+      <div class="judgment-body">
+        <div class="judgment-headline">The conflict's regionalization creates meaningful risk of a wider Horn of Africa destabilization cascade</div>
+        <div class="judgment-detail">Ethiopia's border incursions, Egyptian airstrikes, the Chad displacement corridor absorbing 4+ million refugees, and South Sudan's own food security deterioration (driven partly by Sudanese displacement) are accumulating into a multi-state fragility cluster. Crisis Group's Sudan analysts describe the conflict as "steadily regionalising into the Horn of Africa and the Red Sea." The risk of multiple regional conflict systems merging — with Sudan as epicenter — is assessed as a non-negligible tail risk (15-20% probability within 18 months) if fighting extends at current intensity.</div>
+      </div>
+      <span class="conf-badge conf-mod">Moderate Confidence</span>
+    </div>
+  </div>
+
+  <!-- SECTION 4: EVIDENCE SUMMARY -->
+  <div class="section" id="evidence">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <span class="section-title">Evidence Summary</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="evidence-columns">
+      <div class="ev-col">
+        <div class="ev-col-header">What We Know (Facts)</div>
+        <div class="ev-item">SAF recaptured Khartoum (March 2025); government returned to capital January 2026.</div>
+        <div class="ev-item">RSF seized El Fasher (Oct 26, 2025) following 18-month siege; 100,000+ fled; mass killings documented by UN.</div>
+        <div class="ev-item">SAF broke Kadugli siege and captured Dilling, South Kordofan, early 2026.</div>
+        <div class="ev-item">IPC confirmed famine in El Fasher and Kadugli; acute malnutrition in Um Baru at 52.9% (nearly double famine threshold).</div>
+        <div class="ev-item">WFP: will exhaust Sudan food stocks by end of March 2026. Requires $700M for January-June operations. Currently reaching ~4M people per month.</div>
+        <div class="ev-item">33+ million people face urgent humanitarian need; 29 million acutely food insecure (61.7% of population).</div>
+        <div class="ev-item">12+ million displaced total; 9M internally, 3.5M+ in neighboring countries — world's largest displacement crisis.</div>
+        <div class="ev-item">Reuters confirmed UAE-financed training camp in Ethiopia hosting ~4,300 RSF-aligned fighters as of January 2026.</div>
+        <div class="ev-item">Egypt confirmed to operate airbase on Sudan border and conduct airstrikes against RSF convoys.</div>
+        <div class="ev-item">2026 Sudan humanitarian response plan requires $2.9B; has received only 5.5% of funds.</div>
+        <div class="ev-item">Over 150,000 estimated civilian deaths through combined bombardment, massacre, starvation, and disease (Le Monde / ACLED estimates).</div>
+      </div>
+      <div class="ev-col">
+        <div class="ev-col-header">What We Assess (Inferences)</div>
+        <div class="ev-item"><em>Analyst inference:</em> The RSF's deliberate destruction of food systems, water infrastructure, and medical facilities in areas under its control constitutes a strategy of governance-through-denial designed to create humanitarian dependency, not accidental collateral damage.</div>
+        <div class="ev-item"><em>Analyst inference:</em> The UAE's denial of RSF support is not credible given Reuters corroboration and battlefield evidence of UAE-sourced drones. The denial is a diplomatic positioning strategy.</div>
+        <div class="ev-item"><em>Analyst inference:</em> Saudi Arabia's shift to active SAF backing is primarily driven by the Yemen-Sudan proxy dynamic and broader Gulf competition, not by principled commitment to civilian protection.</div>
+        <div class="ev-item"><em>Analyst inference:</em> Both the SAF and RSF have structural incentives to maintain the war economy. Gold resource competition, patronage networks, and war profiteering are significant impediments to any negotiated settlement.</div>
+        <div class="ev-item"><em>Analyst inference:</em> WFP's projected stock depletion by March 2026 end creates a hard humanitarian cliff. The funding gap is not administrative — it reflects donor political fatigue and competing global crises, not logistical failure.</div>
+        <div class="ev-item"><em>Analyst inference:</em> The RSF's parallel government (Nyala, South Darfur) represents a move toward formalizing partition, reducing RSF incentive to negotiate reintegration with the SAF-led state.</div>
+      </div>
+      <div class="ev-col">
+        <div class="ev-col-header">What We Do Not Know (Gaps)</div>
+        <div class="ev-item"><em>Unknown:</em> True casualty figures. The 150,000 estimate is widely cited but poorly verified. Actual mortality including starvation and disease may be 2-3x higher. No systematic census is possible.</div>
+        <div class="ev-item"><em>Unknown:</em> RSF internal command coherence. Whether Hemedti maintains full command authority over all RSF factions operating in Darfur, or whether sub-commanders are acting with increasing autonomy, is not established.</div>
+        <div class="ev-item"><em>Unknown:</em> The scale and nature of Turkish arms transfers, reported to have reached both sides in violation of EU/US sanctions.</div>
+        <div class="ev-item"><em>Unknown:</em> Trump administration's actual prioritization of Sudan — whether current diplomatic posture reflects strategic deprioritization or transitional policy gap.</div>
+        <div class="ev-item"><em>Unknown:</em> SAF Islamist faction strength. Washington has urged the SAF to purge Islamist hardliners; the degree to which such factions constrain SAF leadership flexibility on negotiations is not publicly established.</div>
+        <div class="ev-item"><em>Unknown:</em> Actual humanitarian access in RSF-held territory. Assessment conditions there are severely constrained. IPC itself notes that documented famine areas likely underrepresent actual conditions.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: ANALYSIS -->
+  <div class="section" id="analysis">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <span class="section-title">Analysis — Tradecraft Applied</span>
+      <div class="section-rule"></div>
+    </div>
+
+    <p><strong>Tradecraft applied in this assessment:</strong> Indicators &amp; Warnings (I&amp;W) Table; Scenario Modeling (Best/Base/Worst); Armed Actor Capability-Intent Matrix; Proxy Alignment Mapping; ACH fragments on key contested hypotheses.</p>
+
+    <!-- ACH note -->
+    <div class="callout">
+      <div class="callout-label">ACH Note — Key Contested Hypothesis</div>
+      <div class="callout-body">Hypothesis A: RSF famine conditions are deliberate weapon-of-war strategy. Hypothesis B: They are incidental consequence of conflict and supply disruption. Evidence assessment: The systematic destruction of water infrastructure, deliberate convoy blockades, occupation of health facilities, and the spatial correlation between RSF control and IPC famine confirmation strongly support Hypothesis A over Hypothesis B. Confidence: Moderate-High. This distinction has significant implications for accountability and sanctions strategy.</div>
+    </div>
+
+    <!-- ACTOR MATRIX -->
+    <p><strong>Armed Actor Capability-Intent Matrix</strong></p>
+    <div class="actor-grid">
+      <div class="actor-card">
+        <div class="actor-header">
+          <div class="actor-name">Sudanese Armed Forces (SAF)</div>
+          <span class="actor-align align-saf">Gov't</span>
+        </div>
+        <div class="actor-row"><span class="actor-row-label">Capability</span> High conventional; expanding drone capacity; Egyptian air support</div>
+        <div class="actor-row"><span class="actor-row-label">Intent</span> Total military victory; recapture Kordofan and Darfur; reject negotiated partition</div>
+        <div class="actor-row"><span class="actor-row-label">Trend</span> Gaining momentum in central Sudan; planning large Kordofan offensive</div>
+        <div class="actor-row"><span class="actor-row-label">Risk</span> Indiscriminate airstrikes on civilian areas; Islamist faction internal leverage</div>
+      </div>
+      <div class="actor-card">
+        <div class="actor-header">
+          <div class="actor-name">Rapid Support Forces (RSF)</div>
+          <span class="actor-align align-rsf">Paramilitary</span>
+        </div>
+        <div class="actor-row"><span class="actor-row-label">Capability</span> Strong asymmetric/drone; Darfur territorial control; external arms pipeline active</div>
+        <div class="actor-row"><span class="actor-row-label">Intent</span> Consolidate Darfur partition; hold Kordofan corridor; formalize parallel state</div>
+        <div class="actor-row"><span class="actor-row-label">Trend</span> Losing Kordofan ground; consolidated Darfur; increasing civilian predation</div>
+        <div class="actor-row"><span class="actor-row-label">Risk</span> Atrocity crimes; deliberate famine conditions; civilian targeting as strategy</div>
+      </div>
+      <div class="actor-card">
+        <div class="actor-header">
+          <div class="actor-name">UAE</div>
+          <span class="actor-align align-rsf">RSF Patron</span>
+        </div>
+        <div class="actor-row"><span class="actor-row-label">Capability</span> Primary financial/logistics backer; drone supply; Ethiopian proxy camp financing</div>
+        <div class="actor-row"><span class="actor-row-label">Intent</span> Preserve RSF as strategic partner; secure Red Sea/Horn influence; counter Saudi dominance</div>
+        <div class="actor-row"><span class="actor-row-label">Trend</span> Escalating covert support; deniability posture publicly maintained</div>
+        <div class="actor-row"><span class="actor-row-label">Risk</span> Key driver prolonging conflict; sanctions exposure increasing</div>
+      </div>
+      <div class="actor-card">
+        <div class="actor-header">
+          <div class="actor-name">Egypt</div>
+          <span class="actor-align align-saf">SAF Patron</span>
+        </div>
+        <div class="actor-row"><span class="actor-row-label">Capability</span> Active military: confirmed border airbase, airstrikes on RSF convoys</div>
+        <div class="actor-row"><span class="actor-row-label">Intent</span> SAF victory; prevent RSF state; secure Nile water; border stability</div>
+        <div class="actor-row"><span class="actor-row-label">Trend</span> Escalating direct intervention in past 6 months</div>
+        <div class="actor-row"><span class="actor-row-label">Risk</span> Direct foreign military intervention; escalation potential if Egyptian forces take casualties</div>
+      </div>
+      <div class="actor-card">
+        <div class="actor-header">
+          <div class="actor-name">Saudi Arabia</div>
+          <span class="actor-align align-saf">Shifting to SAF</span>
+        </div>
+        <div class="actor-row"><span class="actor-row-label">Capability</span> Financial mobilization; multilateral leverage; media influence</div>
+        <div class="actor-row"><span class="actor-row-label">Intent</span> Formerly: mediation. Now: SAF backing, countering UAE influence</div>
+        <div class="actor-row"><span class="actor-row-label">Trend</span> Openly condemning UAE "interference"; no longer functioning as neutral mediator</div>
+        <div class="actor-row"><span class="actor-row-label">Risk</span> Collapse of Quad format; no remaining neutral regional mediator</div>
+      </div>
+      <div class="actor-card">
+        <div class="actor-header">
+          <div class="actor-name">Ethiopia</div>
+          <span class="actor-align align-rsf">RSF-Adjacent</span>
+        </div>
+        <div class="actor-row"><span class="actor-row-label">Capability</span> Hosting UAE-financed RSF training camp; border militia activity; Al-Fashaga incursions</div>
+        <div class="actor-row"><span class="actor-row-label">Intent</span> Ambiguous — territorial opportunism in Al-Fashaga; leveraging conflict for border gains</div>
+        <div class="actor-row"><span class="actor-row-label">Trend</span> Increasing involvement; now confirmed by Reuters (Feb 2026) as direct participant</div>
+        <div class="actor-row"><span class="actor-row-label">Risk</span> Ethiopia-Sudan military confrontation; Sudan-Ethiopia war risk non-negligible</div>
+      </div>
+    </div>
+
+    <!-- I&W TABLE -->
+    <p style="margin-top: 24px;"><strong>Indicators &amp; Warnings Table</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Indicator</th>
+          <th>Direction</th>
+          <th>Current Status</th>
+          <th>Threshold</th>
+          <th>Monitoring Cadence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>WFP food stock level in Sudan</td>
+          <td><span class="iw-dir iw-up">CRITICAL DECLINE</span></td>
+          <td>Depleted to minimum survival rations; projected exhaustion end of March 2026</td>
+          <td>Stock depletion = famine mortality acceleration</td>
+          <td>Weekly / WFP statements</td>
+        </tr>
+        <tr>
+          <td>IPC acute malnutrition phase declarations</td>
+          <td><span class="iw-dir iw-up">WORSENING</span></td>
+          <td>Famine confirmed in 2 locales; famine-threshold in 2 more; 20 areas at risk</td>
+          <td>Any additional famine confirmation = humanitarian system failure</td>
+          <td>Monthly / IPC releases</td>
+        </tr>
+        <tr>
+          <td>RSF drone strike frequency on civilian infrastructure</td>
+          <td><span class="iw-dir iw-up">INCREASING</span></td>
+          <td>"Near-daily" strikes on markets, hospitals in Kordofan (ACLED, early 2026)</td>
+          <td>Sustained daily strikes = deliberate attrition strategy</td>
+          <td>Weekly / ACLED</td>
+        </tr>
+        <tr>
+          <td>SAF Kordofan offensive progress</td>
+          <td><span class="iw-dir iw-stable">ADVANCING</span></td>
+          <td>Kadugli and Dilling taken; El Obeid under RSF pressure; major offensive planned</td>
+          <td>SAF capture El Obeid = potential Kordofan turning point</td>
+          <td>Weekly / Al Jazeera, Reuters</td>
+        </tr>
+        <tr>
+          <td>Saudi-UAE diplomatic relationship</td>
+          <td><span class="iw-dir iw-up">DETERIORATING</span></td>
+          <td>Open rupture post-Yemen STC offensive; Saudi media openly blaming UAE on Sudan</td>
+          <td>Any rapprochement = increased ceasefire pressure on both SAF/RSF</td>
+          <td>Bi-weekly / Gulf media monitoring</td>
+        </tr>
+        <tr>
+          <td>Humanitarian access conditions (visas, convoy clearances)</td>
+          <td><span class="iw-dir iw-up">WORSENING</span></td>
+          <td>OCHA: May 2025 — only 110 of 355 pending visa requests approved; backlog growing</td>
+          <td>Below 40% visa approval rate = systemic access denial</td>
+          <td>Monthly / OCHA access monitoring</td>
+        </tr>
+        <tr>
+          <td>Sudan humanitarian response plan funding %</td>
+          <td><span class="iw-dir iw-up">CRITICALLY LOW</span></td>
+          <td>5.5% funded of $2.9B required (as of March 2026)</td>
+          <td>Below 15% = response system collapse likely by lean season</td>
+          <td>Monthly / OCHA Financial Tracking Service</td>
+        </tr>
+        <tr>
+          <td>Ethiopia-Sudan border military activity</td>
+          <td><span class="iw-dir iw-up">ESCALATING</span></td>
+          <td>4,300 RSF-aligned fighters training at UAE-financed Ethiopian camp; border militia incursions active</td>
+          <td>Ethiopian regular force engagement = potential bilateral conflict trigger</td>
+          <td>Bi-weekly / Reuters, regional monitoring</td>
+        </tr>
+        <tr>
+          <td>RSF governance consolidation in Darfur</td>
+          <td><span class="iw-dir iw-up">DEEPENING</span></td>
+          <td>Parallel government (Nyala) operational since July 2025; administrative structures developing</td>
+          <td>Formal international recognition request = partition formalization bid</td>
+          <td>Monthly</td>
+        </tr>
+        <tr>
+          <td>UN Security Council Sudan action</td>
+          <td><span class="iw-dir iw-stable">STALLED</span></td>
+          <td>Sanctions regime renewed Sept 2025; not expanded. P5 split: China/Russia vs P3 on SAF/RSF culpability</td>
+          <td>Any binding UNSC resolution = rare diplomatic escalation signal</td>
+          <td>Monthly / UNSC records</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- SCENARIOS -->
+    <p><strong>Scenario Modeling — 90-Day Horizon</strong></p>
+    <div class="scenarios">
+      <div class="scenario-card best">
+        <div class="scenario-label">Scenario A</div>
+        <div class="scenario-name">Negotiated Pause</div>
+        <div class="scenario-prob">Probability: 10-15%</div>
+        <div class="scenario-body">US applies significant diplomatic pressure on Saudi Arabia and UAE simultaneously, triggering a temporary ceasefire framework. Emergency funding closes the WFP gap before end of March. Limited humanitarian corridors open into Darfur and Kordofan. Famine mortality is contained but not reversed. No political settlement — conflict pauses, not ends.</div>
+        <div class="scenario-trigger"><strong>Triggers:</strong> US-Saudi-UAE trilateral pressure alignment; emergency UNSC action; donor emergency funding surge of $500M+</div>
+      </div>
+      <div class="scenario-card base">
+        <div class="scenario-label">Scenario B (Base Case)</div>
+        <div class="scenario-name">Protracted Kordofan Campaign</div>
+        <div class="scenario-prob">Probability: 55-60%</div>
+        <div class="scenario-body">SAF advances in Kordofan continue through Q2 2026, achieving partial territorial gains but no decisive victory. RSF sustains Darfur control and drone harassment. WFP food stocks collapse; significant famine-related mortality increase occurs in Darfur and Kordofan. Proxy competition continues. No ceasefire. Humanitarian response operates below 20% of required capacity. Regional spillover risks increase but no new bilateral conflict.</div>
+        <div class="scenario-trigger"><strong>Triggers:</strong> No new major diplomatic initiative; continued UAE-Saudi rift; SAF gains El Obeid but fails to consolidate Kordofan fully</div>
+      </div>
+      <div class="scenario-card worst">
+        <div class="scenario-label">Scenario C</div>
+        <div class="scenario-name">Humanitarian Collapse and Regional Escalation</div>
+        <div class="scenario-prob">Probability: 25-30%</div>
+        <div class="scenario-body">WFP stock depletion triggers famine mortality spike across Darfur and Kordofan in April-June. SAF launches its large Kordofan offensive; RSF responds with intensified strikes on civilian areas. Displacement reaches 15M+. Ethiopia border tensions escalate into armed exchange. Egypt increases airstrikes. South Sudan faces renewed instability from Sudanese displacement pressure. Sudan becomes a multi-actor hot war with no functional ceasefire mechanism.</div>
+        <div class="scenario-trigger"><strong>Triggers:</strong> WFP operational collapse; SAF full Kordofan offensive launch; Ethiopian military incident; donor funding fails to materialize</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6: BEHAVIORAL TRADECRAFT -->
+  <div class="section" id="behavioral">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <span class="section-title">Applied Behavioral Tradecraft</span>
+      <div class="section-rule"></div>
+    </div>
+    <p>Behavioral tradecraft is applied here to illuminate armed actor decision-making, legitimacy narratives, and the structural dynamics that make negotiation structurally irrational for both principals.</p>
+
+    <div class="judgment">
+      <div class="judgment-rank">B1</div>
+      <div class="judgment-body">
+        <div class="judgment-headline">Legitimacy Contestation: Both actors are engaged in competing state-formation narratives</div>
+        <div class="judgment-detail">Al-Burhan frames the conflict as a war against "foreign interference" and "mercenaries" — repositioning the SAF as defender of Sudanese sovereignty and African territorial integrity. Hemedti and the RSF frame their parallel government as a "Government of Peace and Unity," projecting civilian governance credentials. Both narratives are designed for international consumption (donor recognition, sanctions protection) and domestic mobilization. Neither narrative creates incentive structures conducive to compromise. Each framing treats negotiation as legitimacy loss.</div>
+      </div>
+    </div>
+
+    <div class="judgment">
+      <div class="judgment-rank">B2</div>
+      <div class="judgment-body">
+        <div class="judgment-headline">War Economy Lock-in: Both actors have constructed patronage networks that require continued conflict to sustain</div>
+        <div class="judgment-detail">RSF gold mining and looting operations in Darfur fund a patronage structure dependent on continued RSF territorial control. SAF officers and allied Islamist networks have interests in maintaining military budget priority and resisting civilian governance re-emergence. Peace creates institutional risk for both actor-networks. This is not a misperception problem amenable to dialogue facilitation — it is a structural incentive problem requiring either external coercion or internal actor displacement.</div>
+      </div>
+    </div>
+
+    <div class="judgment">
+      <div class="judgment-rank">B3</div>
+      <div class="judgment-body">
+        <div class="judgment-headline">Identity Mobilization: RSF atrocities in Darfur reflect deliberately ethnically targeted strategy, not battlefield indiscipline</div>
+        <div class="judgment-detail">The spatial correlation between Fur, Masalit, and Zaghawa population centers and the highest-intensity RSF atrocity incidents is consistent with ethnically driven targeting — not random or incidental violence. This mirrors RSF/Janjaweed behavioral patterns from the 2003-04 Darfur genocide. The identity-based mobilization creates recruitment and cohesion logic for RSF cadres; it also hardens victim community resistance, reducing any possibility of RSF governance legitimacy over Darfur populations. This dynamic reduces long-term RSF viability as a governance actor even if military control is maintained.</div>
+      </div>
+    </div>
+
+    <div class="judgment">
+      <div class="judgment-rank">B4</div>
+      <div class="judgment-body">
+        <div class="judgment-headline">External patron susceptibility: UAE and Saudi behavior is driven by competitive signaling, not Sudan policy objectives</div>
+        <div class="judgment-detail">The escalation of both Gulf powers' involvement in Sudan tracks the Gulf rift timeline, not Sudan battlefield developments. This means Sudan policy is a function of Gulf rivalry management, not independent Sudan strategic calculation. Behavioral implication: pressure on either actor exclusively (e.g., sanctioning UAE without Saudi engagement) will likely produce defensive escalation rather than de-escalation. Effective pressure requires a format that addresses both actors' core Gulf competition anxieties — which the Quad failed to do.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7: RECOMMENDATIONS -->
+  <div class="section" id="recommendations">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <span class="section-title">Recommendations</span>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="rec-tier">
+      <div class="rec-tier-header">Immediate — 0 to 72 Hours</div>
+      <ul class="rec-list">
+        <li>Activate emergency donor pledging mechanism to address WFP stock depletion before end-of-March cliff. Minimum target: $300M in bridging commitment. <span class="rec-owner">Donor Govts / OCHA</span></li>
+        <li>Issue formal UNSC Presidential Statement demanding unimpeded humanitarian access to Darfur and Kordofan famine zones. Even non-binding statements carry diplomatic signaling value in access negotiations. <span class="rec-owner">P3 / UK UNSC Presidency</span></li>
+        <li>Publish humanitarian access denial scorecard for both SAF and RSF territories to generate accountability pressure on aid obstruction — particularly visa denial data. <span class="rec-owner">OCHA / NGO coalition</span></li>
+      </ul>
+    </div>
+
+    <div class="rec-tier">
+      <div class="rec-tier-header">Near-Term — 3 to 30 Days</div>
+      <ul class="rec-list">
+        <li>Design a replacement diplomatic format for the failed Quad. A format that separates humanitarian access negotiations from political/military talks, with AU and UN co-convening, has higher neutrality credibility than a Saudi-UAE format now openly contaminated by proxy interests. <span class="rec-owner">AU PSC / UN OCHA</span></li>
+        <li>Expand targeted sanctions on UAE-linked RSF arms supply chains. The Reuters-confirmed Ethiopian training camp provides specific, actionable targeting data for sanctions designation. <span class="rec-owner">US Treasury / EU</span></li>
+        <li>Establish a cross-border access protocol via Chad-Darfur corridor as an alternative to SAF/RSF consent-dependent access routes. The IOM Farchana Humanitarian Hub in Chad provides an operational anchor for this approach. <span class="rec-owner">IOM / UNHCR / Chad Government</span></li>
+        <li>Engage Turkey directly on arms transfer violations (both sides) — Ankara is a NATO partner with exposure to US/EU sanction pressure and has demonstrated susceptibility to reputational signaling in comparable contexts. <span class="rec-owner">US State / EU External Action Service</span></li>
+      </ul>
+    </div>
+
+    <div class="rec-tier">
+      <div class="rec-tier-header">Medium-Term — 30 to 180 Days</div>
+      <ul class="rec-list">
+        <li>Support an ICC referral expansion to cover the full conflict (not only historical Darfur cases) and advocate for a dedicated Special Tribunal mechanism that can operate outside RSF/SAF territory jurisdiction. <span class="rec-owner">ICC / UNSC / HRC</span></li>
+        <li>Develop a Sudan partition contingency framework — not to endorse partition, but to have policy-ready options if de facto partition becomes permanent. Current policy vacuum on this question will produce reactive crisis management when the political moment forces the question. <span class="rec-owner">US NSC / EU Policy Planning</span></li>
+        <li>Address the structural funding architecture problem: the mismatch between UAE/Saudi political pledges ($500M UAE pledge in Feb 2026) and operational humanitarian need requires monitoring to ensure pledges translate to accessible, principled aid delivery and not politically conditioned supply. <span class="rec-owner">OCHA Financial Tracking / Humanitarian donors</span></li>
+        <li>Invest in Sudanese civil society and local responder capacity as the primary humanitarian delivery mechanism. Local actors currently represent over 1.9M people assisted via IOM's community-based approach — they are under-resourced and represent the most access-resilient delivery modality. <span class="rec-owner">IOM / UNHCR / USAID / EU ECHO</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SECTION 8: CONFIDENCE & UNCERTAINTIES -->
+  <div class="section" id="confidence">
+    <div class="section-header">
+      <span class="section-num">08</span>
+      <span class="section-title">Confidence &amp; Uncertainties</span>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="confidence-block">
+      <div class="confidence-header">Overall Assessment Confidence</div>
+      <div class="confidence-level">MODERATE-HIGH — with caveats on ground-truth access and RSF internal dynamics</div>
+      <div class="confidence-reasons">
+        <div class="conf-reason">
+          <div class="conf-reason-label">Reason 1: Source quality</div>
+          Multiple corroborating high-quality sources: ACLED conflict data, IPC famine assessments, UN FFM reports, Reuters ground reporting, HRW documentation. Core facts are robustly sourced.
+        </div>
+        <div class="conf-reason">
+          <div class="conf-reason-label">Reason 2: Access constraints</div>
+          Confidence is moderated by severe access restrictions in RSF-held territories. IPC itself acknowledges documented famine areas are likely a subset of actual conditions. Ground truth in Darfur is structurally unavailable.
+        </div>
+        <div class="conf-reason">
+          <div class="conf-reason-label">Reason 3: Intent opacity</div>
+          External actor intent — particularly UAE, Ethiopia, and Trump administration posture on Sudan — is assessed from behavioral signals, not confirmed policy documents. Intent assessments carry inherently lower confidence.
+        </div>
+      </div>
+    </div>
+
+    <p><strong>Three Uncertainties That Could Flip This Assessment:</strong></p>
+    <ol class="flip-list">
+      <li><strong>Saudi-UAE rapprochement on Sudan:</strong> If the Gulf rift narrows — for example, through a Yemen-linked deal — both powers could jointly pressure their respective clients toward a ceasefire. This would dramatically change the diplomatic landscape and shift the scenario distribution toward Scenario A. Current assessment considers this unlikely but non-negligible (15-20%) within 90 days.</li>
+      <li><strong>RSF internal fracture or command collapse:</strong> If Hemedti loses meaningful command authority over Darfur-based RSF factions — which are showing increased autonomy in atrocity patterns — the conflict could fragment into an ungovernable multi-actor war even harder to negotiate. Alternatively, a coup-within-coup scenario could produce a new RSF leadership more willing to negotiate. Either direction would invalidate current scenario probabilities.</li>
+      <li><strong>US strategic re-engagement at high level:</strong> The Trump administration's actual Sudan posture remains ambiguous. If the US decides Sudan is a strategic priority — for Red Sea access, counter-Iran positioning, or regional stability — a shift toward assertive diplomacy and targeted coercion could rapidly alter the diplomatic landscape. Absence of this engagement is currently a structural assumption. If wrong, Scenario A probability rises significantly.</li>
+    </ol>
+
+    <p style="margin-top: 24px;"><strong>Assumption Failure Drill — Top 2 Assumptions and Failure Signals:</strong></p>
+    <table class="assumption-table">
+      <thead>
+        <tr>
+          <th>Assumption</th>
+          <th>Why It Matters</th>
+          <th>Failure Signal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>The Saudi-UAE proxy rift will persist and prevent effective ceasefire pressure on both belligerents.</td>
+          <td>This is the primary reason Scenario A is assessed at only 10-15%. If the rift closes, ceasefire probability rises dramatically.</td>
+          <td>Joint Saudi-UAE diplomatic statement on Sudan; suspension of UAE arms flows confirmed by third-party monitoring; Saudi-UAE bilateral summit that addresses Sudan explicitly.</td>
+        </tr>
+        <tr>
+          <td>WFP operational collapse (end-March stock depletion) will not be prevented by emergency donor action.</td>
+          <td>Drives the humanitarian mortality timeline and Scenario C probability. If donors surge funding in March, the cliff is pushed back and humanitarian system partially stabilizes.</td>
+          <td>Emergency OCHA Flash Appeal achieving $500M+ within 14 days; WFP confirms new donor commitments covering Q2 operations; UAE or US translates pledges to immediately deployable WFP transfers.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 9: REFERENCES -->
+  <div class="section" id="references">
+    <div class="section-header">
+      <span class="section-num">09</span>
+      <span class="section-title">References</span>
+      <div class="section-rule"></div>
+    </div>
+    <p style="font-family: var(--mono); font-size: 11.5px; line-height: 2; color: var(--rule);">
+      [1] Wikipedia — Sudanese Civil War (2023-present), accessed 13 March 2026. Covers early 2026 Kordofan fighting, drone strikes, SAF-Khartoum recapture, Ethiopia camp reporting.<br>
+      [2] Human Rights Watch — World Report 2026: Sudan, published February 4, 2026. War crimes documentation, sexual violence, SAF/RSF detention, ICC developments, sanction status.<br>
+      [3] Security Council Report — Sudan, February 2026 Monthly Forecast, published February 1, 2026. UNSC dynamics, P5 divisions, SAF/RSF ceasefire posture.<br>
+      [4] Amani Africa — Briefing on the Situation in Sudan, February 12, 2026. El Fasher fall, Kordofan front, proxy competition, Egyptian intervention, AU PSC dynamics.<br>
+      [5] Al Jazeera — Sudan army renewing military effort to retake Kordofan, Darfur, January 12, 2026. SAF offensive planning, RSF El Obeid attacks, 1,000-day conflict milestone.<br>
+      [6] Al Jazeera — Sudan's devastating war rages on as regional rivalries deepen, March 11, 2026. Crisis Group analysis; Saudi-UAE rift; Kordofan front lines; diplomatic landscape.<br>
+      [7] Council on Foreign Relations — Global Conflict Tracker: Civil War in Sudan, accessed March 2026. Background and current status summary.<br>
+      [8] Al Jazeera — Sudan protecting Africa from foreign interference, February 13, 2026. SAF FM statements at AU PSC; UAE denial; Saudi condemnation of foreign interference; AU membership status.<br>
+      [9] Arab Center DC — Sudan's War: The Failure of Mediation and the Struggle for Civilian Rule, November 17, 2025. Dual-government structure; gold economy; partition dynamics; UN FFM findings.<br>
+      [10] Foundation for Defense of Democracies — Sudanese Army Breaks Key Siege, February 5, 2026. Kadugli siege break; Egyptian military role; Turkish arms transfers; US strategy analysis.<br>
+      [11] IOM — Sudan Crisis Response Plan 2026, accessed March 4, 2026. IDP figures; IOM operational capacity; local partner reach.<br>
+      [12] IPS News — Sudan: World's Worst Humanitarian Crisis, March 4, 2026. UNICEF child malnutrition data; 1.3M children in famine zones; 770,000 expected severe acute malnutrition.<br>
+      [13] CARE — Deepening Starvation in Sudan, February 5, 2026. IPC famine alert Um Baru and Kernoi; 33M in urgent need; 29M acutely food insecure; gender dimensions; funding gap (5.5% of $2.9B).<br>
+      [14] UN News — Child malnutrition hits catastrophic levels in parts of Sudan, February 5, 2026. IPC assessment details; Greater Kordofan conditions; displacement figures.<br>
+      [15] World Food Programme — Families in Sudan pushed to the brink, January 2026. WFP $700M requirement; food stock depletion timeline; 4M people reached monthly.<br>
+      [16] World Food Programme — Famine in Sudan (emergency page), accessed March 2026. Confirmed famine locales; 20 additional at-risk areas; WFP operational scope.<br>
+      [17] Action Against Hunger — Sudan Becomes the World's Hungriest Country, February 5, 2026. 5.5% funding figure; families eating once daily; access restrictions; lean season warning.
+    </p>
+  </div>
+
+  <!-- THRESHOLD / ACTION LEVELS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">—</span>
+      <span class="section-title">Action Thresholds</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="threshold-grid">
+      <div class="threshold-cell green-zone">
+        <div class="threshold-dot"></div>
+        <div class="threshold-label">Green — Monitor</div>
+        <div class="threshold-body">Humanitarian response plan funding reaches 20%+. WFP stock depletion crisis bridged. Any confirmed ceasefire mechanism, even partial, takes effect. Saudi-UAE rift shows tangible signs of narrowing.</div>
+      </div>
+      <div class="threshold-cell amber-zone">
+        <div class="threshold-dot"></div>
+        <div class="threshold-label">Amber — Act</div>
+        <div class="threshold-body">WFP Q2 operations confirmed underfunded. SAF launches major Kordofan offensive with high civilian impact. New IPC famine confirmation in additional locales. Ethiopian-Sudanese border incident involving regular forces. Humanitarian worker attacks continue at current rate.</div>
+      </div>
+      <div class="threshold-cell red-zone">
+        <div class="threshold-dot"></div>
+        <div class="threshold-label">Red — Emergency Response</div>
+        <div class="threshold-body">WFP operational collapse confirmed. Famine-related mortality spike detected in Q2 reporting. RSF attacks on Khartoum or major eastern cities. Ethiopia-Sudan armed exchange. Any further expansion of confirmed genocide conditions. Displacement exceeds 15 million total.</div>
+      </div>
+    </div>
+    <p style="margin-top: 16px; font-family: var(--mono); font-size: 11px; color: var(--rule);">Current Status Assessment: <strong style="color: var(--red);">AMBER-RED BOUNDARY</strong> &nbsp;&bull;&nbsp; Multiple Amber indicators have already triggered. Red threshold on WFP collapse is days-to-weeks away without emergency action.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="report-footer">
+    <div class="footer-brand">
+      Quanta Analytica Process™<br>
+      QAP-CSA-SDN-2026-0313<br>
+      Produced: 13 March 2026
+    </div>
+    <div class="footer-caveat">
+      This assessment is produced using the Quanta Analytica Process™ framework with AI-assisted synthesis of open-source intelligence. All factual claims are sourced and cited. Inferences and analyst judgments are explicitly labeled as such. This document does not constitute classified intelligence analysis. Verify all figures with primary sources before operational decision-making.
+    </div>
+  </div>
+
+</div><!-- /container -->
+</body>
+</html>
