@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>QA-CSRF™ | Conflict &amp; Security Risk Framework | Quanta Analytica</title>
+  <meta name="description" content="QA-CSRF™ — the Quanta Analytica Conflict Systems Research Framework. MNS Consulting's operational framework for NGO security risk management in volatile, fragile, and high-risk environments. ISO 31000-aligned, GISF/INSSA compliant." />
+  <meta name="keywords" content="QA-CSRF, Conflict Systems Research Framework, NGO security risk management, ISO 31000, CARVER, PESTELS, CAF 2.0, MNS Consulting, Quanta Analytica, NGO safety, humanitarian risk, conflict analysis" />
+  <meta name="author" content="M. Nuri Shakoor, MNS Consulting" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://quanta-analytica.com/qa-csrf.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://quanta-analytica.com/qa-csrf.html" />
+  <meta property="og:title" content="QA-CSRF™ | Conflict &amp; Security Risk Framework" />
+  <meta property="og:description" content="MNS Consulting's operational framework for NGO security risk management. ISO 31000-aligned, GISF/INSSA SRM compliant, built for volatile and fragile environments." />
+  <meta property="og:image" content="https://quanta-analytica.com/og-image.png" />
+  <meta property="og:site_name" content="Quanta Analytica" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="QA-CSRF™ | Conflict &amp; Security Risk Framework" />
+  <meta name="twitter:description" content="Operational framework for NGO security risk management in high-risk environments." />
+  <meta name="twitter:image" content="https://quanta-analytica.com/og-image.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "name": "QA-CSRF™ — Quanta Analytica Conflict Systems Research Framework",
+    "description": "MNS Consulting's operational framework for conflict systems research and NGO security risk management, integrating ISO 31000, GISF/INSSA SRM, CARVER, PESTELS, and CAF 2.0.",
+    "author": { "@type": "Person", "name": "M. Nuri Shakoor" },
+    "publisher": { "@type": "Organization", "name": "MNS Consulting", "url": "https://quanta-analytica.com" },
+    "url": "https://quanta-analytica.com/qa-csrf.html"
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow+Condensed:wght@300;400;500;600&family=Barlow:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --obsidian:   #0a0c10;
+      --deep-navy:  #0d1220;
+      --midnight:   #111827;
+      --panel:      rgba(255,255,255,0.04);
+      --panel2:     rgba(255,255,255,0.07);
+      --gold:       #c8a96e;
+      --gold-light: #e2c98a;
+      --gold-dim:   rgba(200,169,110,0.12);
+      --gold-line:  rgba(200,169,110,0.28);
+      --text:       rgba(245,242,236,0.95);
+      --muted:      rgba(245,242,236,0.68);
+      --muted2:     rgba(245,242,236,0.40);
+      --border:     rgba(200,169,110,0.14);
+      --border-soft:rgba(255,255,255,0.07);
+      --shadow:     0 16px 56px rgba(0,0,0,0.5);
+      /* phase accent colours */
+      --ph1: rgba(168,216,234,0.15); --ph1b: rgba(168,216,234,0.50);
+      --ph2: rgba(250,186,100,0.14); --ph2b: rgba(250,186,100,0.50);
+      --ph3: rgba(130,185,235,0.14); --ph3b: rgba(130,185,235,0.50);
+      --ph4: rgba(252,165,100,0.14); --ph4b: rgba(252,165,100,0.50);
+      --ph5: rgba(100,210,170,0.14); --ph5b: rgba(100,210,170,0.50);
+      --ph6: rgba(190,170,255,0.14); --ph6b: rgba(190,170,255,0.50);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-ui:      'Barlow Condensed', sans-serif;
+      --font-body:    'Barlow', sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+      --max: 1160px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--obsidian); color: var(--text);
+      font-family: var(--font-body); font-weight: 300;
+      line-height: 1.7; overflow-x: hidden; cursor: crosshair;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 999; opacity: 0.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    .skip-link { position: absolute; left: -999px; top: 10px; background: var(--panel2); padding: 10px 12px; border: 1px solid var(--border); z-index: 9999; font-family: var(--font-ui); }
+    .skip-link:focus { left: 12px; }
+
+    .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+
+    /* ── NAV ── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(10,12,16,0.95), rgba(10,12,16,0.72));
+      border-bottom: 1px solid var(--border);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 14px 0; }
+    .brand { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .brand:hover { text-decoration: none; }
+    .brand-name { display: flex; flex-direction: column; line-height: 1.15; }
+    .brand-name strong { font-family: var(--font-ui); font-size: 0.92rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text); }
+    .brand-name span { font-family: var(--font-ui); font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+
+    .nav-links { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+    .nav-links a { padding: 7px 11px; font-family: var(--font-ui); font-size: 0.7rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); border: 1px solid transparent; transition: color .25s, border-color .25s, background .25s; }
+    .nav-links a:hover, .nav-links a.current { color: var(--gold); border-color: var(--gold-line); background: var(--gold-dim); text-decoration: none; }
+
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 9px 16px; border: 1px solid var(--gold-line); background: var(--gold-dim); color: var(--gold); cursor: pointer; font-family: var(--font-ui); font-weight: 500; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; transition: background .2s, border-color .2s, transform .1s; user-select: none; text-decoration: none; }
+    .btn:hover { background: rgba(200,169,110,0.22); border-color: var(--gold); text-decoration: none; }
+    .btn:active { transform: translateY(1px); }
+    .btn.primary { background: var(--gold); color: var(--obsidian); border-color: var(--gold); }
+    .btn.primary:hover { background: var(--gold-light); border-color: var(--gold-light); }
+    .btn.ghost { background: transparent; color: var(--muted); border-color: var(--border-soft); }
+    .btn.ghost:hover { background: var(--panel); color: var(--text); border-color: var(--border); }
+    .btn.small { padding: 6px 12px; font-size: 0.66rem; }
+
+    /* ── LAYOUT ── */
+    main { padding: 36px 0 80px; }
+    section { padding: 52px 0; }
+
+    h1, h2, h3, h4 { margin: 0; }
+    h1 { font-family: var(--font-display); font-size: clamp(2.8rem, 5.5vw, 6rem); font-weight: 300; line-height: 0.95; letter-spacing: -0.01em; }
+    h2 { font-family: var(--font-display); font-size: clamp(1.7rem, 2.8vw, 2.8rem); font-weight: 300; line-height: 1.05; }
+    h3 { font-family: var(--font-ui); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+    h4 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 400; }
+    em { font-style: italic; color: var(--gold-light); }
+    p { margin: 10px 0 0; color: var(--muted); }
+
+    .divider { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.4rem; }
+    .divider-num { font-family: var(--font-ui); font-size: 0.63rem; letter-spacing: 0.28em; color: var(--gold); opacity: 0.55; }
+    .divider-rule { width: 48px; height: 1px; background: var(--gold-line); flex-shrink: 0; }
+    .divider-label { font-family: var(--font-ui); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); }
+
+    .kicker { font-family: var(--font-ui); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+    .pill { display: inline-flex; align-items: center; gap: 7px; padding: 5px 11px; border: 1px solid var(--gold-line); background: var(--gold-dim); color: var(--muted); font-family: var(--font-ui); font-size: 0.66rem; letter-spacing: 0.15em; text-transform: uppercase; }
+    .dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 0 4px rgba(200,169,110,0.14); animation: pulse 3s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:.35;transform:scale(1)} 50%{opacity:1;transform:scale(1.4)} }
+
+    .grid { display: grid; gap: 14px; }
+    .cols-2 { grid-template-columns: repeat(2,1fr); }
+    .cols-3 { grid-template-columns: repeat(3,1fr); }
+    .cols-4 { grid-template-columns: repeat(4,1fr); }
+    @media(max-width:980px){ .cols-3,.cols-4{ grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:620px){ .cols-2,.cols-3,.cols-4{ grid-template-columns:1fr; } }
+
+    .card { background: var(--panel); border: 1px solid var(--border); padding: 22px; position: relative; transition: background .3s; }
+    .card::before { content:''; position:absolute; top:0; left:0; width:0; height:2px; background:var(--gold); transition:width .4s ease; }
+    .card:hover { background: var(--panel2); }
+    .card:hover::before { width:100%; }
+    .list { margin: 10px 0 0; padding: 0 0 0 18px; color: var(--muted); }
+    .list li { margin: 5px 0; font-size: 0.91rem; }
+    .note { font-family: var(--font-ui); font-size: 0.68rem; letter-spacing: 0.1em; color: var(--muted2); margin-top: 6px; }
+
+    /* ── HERO ── */
+    #hero { position: relative; min-height: 82vh; display: flex; flex-direction: column; justify-content: center; padding: 6rem 0 4rem; overflow: hidden; }
+    .hero-geo { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+    .bg-hex { position: absolute; right: -6vw; top: 50%; transform: translateY(-50%); width: 50vw; max-width: 720px; opacity: 0.055; animation: spin 90s linear infinite; }
+    @keyframes spin { from{transform:translateY(-50%) rotate(0deg)} to{transform:translateY(-50%) rotate(360deg)} }
+    .scan { position: absolute; left:0; right:0; height:1px; background: linear-gradient(to right, transparent, var(--gold-line), transparent); }
+    .scan.t { top:16%; } .scan.b { top:83%; }
+
+    .hero-eyebrow { font-family: var(--font-ui); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.38em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.6rem; opacity: 0; animation: slideUp .8s ease .15s forwards; }
+    .hero-title { opacity: 0; animation: slideUp .9s ease .3s forwards; margin-bottom: 1rem; }
+    .hero-trademark { font-family: var(--font-ui); font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(200,169,110,0.55); margin-bottom: 2rem; opacity: 0; animation: slideUp .9s ease .44s forwards; }
+    .hero-sub { max-width: 600px; font-size: 1.02rem; line-height: 1.88; color: var(--muted); margin-bottom: 2.4rem; opacity: 0; animation: slideUp .9s ease .56s forwards; }
+    .hero-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2.2rem; opacity: 0; animation: slideUp .9s ease .68s forwards; }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; opacity: 0; animation: slideUp .9s ease .80s forwards; }
+
+    @keyframes slideUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+
+    /* ── STANDARDS BANNER ── */
+    .standards-bar {
+      display: flex; align-items: center; gap: 0;
+      border: 1px solid var(--border); overflow: hidden; margin-bottom: 48px;
+    }
+    .std-item {
+      flex: 1; padding: 16px 20px;
+      border-right: 1px solid var(--border);
+      background: var(--panel); transition: background .3s;
+    }
+    .std-item:last-child { border-right: none; }
+    .std-item:hover { background: var(--panel2); }
+    .std-code { font-family: var(--mono); font-size: 0.72rem; color: var(--gold); letter-spacing: 0.08em; margin-bottom: 4px; }
+    .std-name { font-family: var(--font-ui); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    @media(max-width:720px){ .standards-bar{ flex-direction:column; } .std-item{ border-right:none; border-bottom:1px solid var(--border); } .std-item:last-child{border-bottom:none;} }
+
+    /* ── PHASE CARDS ── */
+    .phase {
+      display: grid; grid-template-columns: 64px 1fr; gap: 0;
+      border: 1px solid var(--border); position: relative;
+      overflow: hidden; transition: background .3s; background: var(--panel);
+      margin-bottom: 10px;
+    }
+    .phase::before { content:''; position:absolute; top:0; left:0; width:0; height:2px; background:var(--gold); transition:width .4s ease; }
+    .phase:hover { background: var(--panel2); }
+    .phase:hover::before { width:100%; }
+
+    .ph-accent { display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border); padding: 24px 0; flex-direction: column; gap: 8px; }
+    .ph-num { font-family: var(--font-display); font-size: 2.2rem; font-weight: 300; line-height: 1; }
+    .ph-roman { font-family: var(--font-ui); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; }
+
+    .ph-body { padding: 20px 26px; }
+    .ph-title { font-family: var(--font-ui); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 6px; }
+    .ph-sub { font-family: var(--font-ui); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted2); margin-bottom: 12px; }
+    .ph-desc { font-size: 0.92rem; color: var(--muted); line-height: 1.78; }
+    .ph-tools { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+    .tool-chip { font-family: var(--mono); font-size: 0.63rem; color: var(--muted2); border: 1px solid var(--border); padding: 3px 9px; background: var(--panel); letter-spacing: 0.06em; }
+
+    /* phase accent colours */
+    .ph1 .ph-accent { background: var(--ph1); } .ph1 .ph-num,.ph1 .ph-roman { color: rgba(168,216,234,0.85); } .ph1 .ph-title { color: rgba(168,216,234,0.9); }
+    .ph2 .ph-accent { background: var(--ph2); } .ph2 .ph-num,.ph2 .ph-roman { color: rgba(250,186,100,0.85); } .ph2 .ph-title { color: rgba(250,186,100,0.9); }
+    .ph3 .ph-accent { background: var(--ph3); } .ph3 .ph-num,.ph3 .ph-roman { color: rgba(130,185,235,0.85); } .ph3 .ph-title { color: rgba(130,185,235,0.9); }
+    .ph4 .ph-accent { background: var(--ph4); } .ph4 .ph-num,.ph4 .ph-roman { color: rgba(252,165,100,0.85); } .ph4 .ph-title { color: rgba(252,165,100,0.9); }
+    .ph5 .ph-accent { background: var(--ph5); } .ph5 .ph-num,.ph5 .ph-roman { color: rgba(100,210,170,0.85); } .ph5 .ph-title { color: rgba(100,210,170,0.9); }
+    .ph6 .ph-accent { background: var(--ph6); } .ph6 .ph-num,.ph6 .ph-roman { color: rgba(190,170,255,0.85); } .ph6 .ph-title { color: rgba(190,170,255,0.9); }
+
+    /* ── TOOL EXPLAINER CARDS ── */
+    .tool-card { background: var(--panel); border: 1px solid var(--border); padding: 22px; position: relative; transition: background .3s; overflow: hidden; }
+    .tool-card::before { content:''; position:absolute; top:0; left:0; width:0; height:2px; background:var(--gold); transition:width .4s ease; }
+    .tool-card:hover { background: var(--panel2); }
+    .tool-card:hover::before { width:100%; }
+    .tool-code { font-family: var(--mono); font-size: 1rem; color: var(--gold); letter-spacing: 0.06em; margin-bottom: 10px; display: block; }
+    .tool-name { font-family: var(--font-ui); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; display: block; }
+    .tool-desc { font-size: 0.91rem; color: var(--muted); line-height: 1.78; }
+
+    /* ── COMPARISON TABLE ── */
+    .compare-table { width: 100%; border-collapse: collapse; border: 1px solid var(--border); }
+    .compare-table th { font-family: var(--font-ui); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); padding: 13px 18px; border-bottom: 1px solid var(--border); background: var(--gold-dim); text-align: left; }
+    .compare-table td { padding: 12px 18px; border-bottom: 1px solid var(--border-soft); font-size: 0.9rem; color: var(--muted); vertical-align: top; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:hover td { background: rgba(200,169,110,0.03); }
+    .compare-table td:first-child { font-family: var(--font-ui); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text); white-space: nowrap; }
+    .check { color: var(--gold); }
+    .dim { color: var(--muted2); }
+
+    /* ── CASE STUDY ── */
+    .case-banner {
+      background: var(--deep-navy); border: 1px solid var(--border);
+      padding: 0; overflow: hidden; margin-bottom: 28px;
+    }
+    .case-header {
+      display: flex; align-items: center; justify-content: space-between; gap: 14px;
+      padding: 16px 24px; border-bottom: 1px solid var(--border);
+      background: var(--gold-dim);
+    }
+    .case-header-left { display: flex; align-items: center; gap: 12px; }
+    .case-flag { font-family: var(--font-ui); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+    .case-date { font-family: var(--mono); font-size: 0.66rem; color: var(--muted2); }
+    .live-badge { font-family: var(--font-ui); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(100,210,170,0.9); border: 1px solid rgba(100,210,170,0.3); padding: 3px 9px; display: flex; align-items: center; gap: 6px; }
+    .live-dot { width: 5px; height: 5px; background: rgba(100,210,170,0.9); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+
+    .case-body { padding: 24px; }
+
+    .finding {
+      display: grid; grid-template-columns: 20px 1fr; gap: 12px; align-items: start;
+      padding: 12px 0; border-bottom: 1px solid var(--border-soft);
+    }
+    .finding:last-child { border-bottom: none; }
+    .finding-bullet { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; margin-top: 8px; opacity: 0.6; }
+    .finding-text { font-size: 0.92rem; color: var(--muted); line-height: 1.75; }
+    .finding-source { font-family: var(--mono); font-size: 0.65rem; color: var(--muted2); margin-top: 4px; }
+
+    .indicator-grid {
+      display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin-top: 14px;
+    }
+    @media(max-width:640px){ .indicator-grid{ grid-template-columns:1fr; } }
+
+    .indicator {
+      padding: 14px 16px; border: 1px solid var(--border); background: var(--panel);
+      position: relative;
+    }
+    .ind-label { font-family: var(--font-ui); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .ind-text { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── CALLOUT ── */
+    .callout { padding: 30px; border: 1px solid var(--gold-line); background: linear-gradient(135deg, rgba(200,169,110,0.07), rgba(10,12,16,0.6)); position: relative; overflow: hidden; }
+    .callout::after { content:''; position:absolute; top:-80px; right:-80px; width:220px; height:220px; border-radius:50%; background: radial-gradient(circle, rgba(200,169,110,0.1), transparent 70%); pointer-events:none; }
+
+    /* ── FOOTER ── */
+    .footer { padding: 28px 0 38px; border-top: 1px solid var(--border); }
+    .footer .row { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+    .footer-brand { font-family: var(--font-ui); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+    .footer-brand .gold { color: var(--gold); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .75s ease, transform .75s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .d1{transition-delay:.08s} .d2{transition-delay:.16s} .d3{transition-delay:.24s}
+    .d4{transition-delay:.32s} .d5{transition-delay:.40s} .d6{transition-delay:.48s}
+
+    @media(max-width:900px){ .nav-links{ display:none; } }
+    @media(max-width:640px){ .case-header{ flex-direction:column; align-items:flex-start; gap:8px; } }
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="container">
+    <div class="nav" role="navigation" aria-label="Primary">
+      <a class="brand" href="index.html" aria-label="Quanta Analytica home">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <polygon points="18,2 32,10 32,26 18,34 4,26 4,10" fill="none" stroke="#c8a96e" stroke-width="1.2"/>
+          <circle cx="18" cy="18" r="4" fill="#c8a96e" opacity="0.75"/>
+        </svg>
+        <div class="brand-name">
+          <strong>Quanta Analytica</strong>
+          <span>MNS Consulting</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Site pages">
+        <a href="index.html">Home</a>
+        <a href="mns-lbs.html">MNS · LBS Advisory</a>
+        <a href="qa-process.html">QA Process™</a>
+        <a href="cognition-model.html">Cognition Model</a>
+        <a href="qa-csrf.html" class="current" aria-current="page">QA-CSRF™</a>
+        <a href="#phases">Phases</a>
+        <a href="#tools">Tools</a>
+        <a href="#case-study">Case Study</a>
+      </nav>
+
+      <div class="nav-right">
+        <a class="btn ghost small" href="qa-process.html">QA Process™</a>
+        <a class="btn primary small" href="mns-lbs.html#contact">Advisory Intake</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ── MAIN ── -->
+<main id="content">
+  <div class="container">
+
+    <!-- HERO -->
+    <section id="hero" aria-label="QA-CSRF hero">
+      <div class="hero-geo" aria-hidden="true">
+        <svg class="bg-hex" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="250,20 460,140 460,360 250,480 40,360 40,140" fill="none" stroke="#c8a96e" stroke-width="1"/>
+          <polygon points="250,60 430,158 430,342 250,440 70,342 70,158" fill="none" stroke="#c8a96e" stroke-width="0.5"/>
+          <polygon points="250,95 400,176 400,324 250,405 100,324 100,176" fill="none" stroke="#c8a96e" stroke-width="0.3"/>
+          <circle cx="250" cy="250" r="3" fill="#c8a96e" opacity="0.9"/>
+          <line x1="250" y1="20" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.3"/>
+          <line x1="460" y1="140" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.3"/>
+          <line x1="460" y1="360" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.3"/>
+          <line x1="250" y1="480" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.3"/>
+          <line x1="40"  y1="360" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.3"/>
+          <line x1="40"  y1="140" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.3"/>
+        </svg>
+        <div class="scan t"></div>
+        <div class="scan b"></div>
+      </div>
+
+      <div style="position:relative; z-index:2;">
+        <p class="hero-eyebrow">Proprietary Framework · MNS Consulting · NGO Security</p>
+        <h1 class="hero-title">QA-CSRF™<br /><em>Conflict Systems<br />Research Framework</em></h1>
+        <p class="hero-trademark">Quanta Analytica Conflict Systems Research Framework™ · Registered Methodology</p>
+        <p class="hero-sub">
+          An operational framework purpose-built for conflict systems research and NGO security risk management in volatile, fragile, and high-risk environments. QA-CSRF™ integrates ISO 31000:2018 risk principles, GISF/INSSA SRM aligned standards, and a structured toolkit — PESTELS, CAF 2.0, and CARVER — to produce decision-ready outputs: risk registers, contingency plans, security protocols, and field-level SitReps.
+        </p>
+        <div class="hero-pills">
+          <span class="pill"><span class="dot" aria-hidden="true"></span> ISO 31000:2018 aligned</span>
+          <span class="pill">GISF/INSSA compliant</span>
+          <span class="pill">NGO security risk management</span>
+          <span class="pill">Fragile &amp; conflict-affected environments</span>
+          <span class="pill">Do No Harm · CHS · ISO 27001</span>
+        </div>
+        <div class="hero-ctas">
+          <a class="btn primary" href="#phases">Explore the Framework</a>
+          <a class="btn" href="#tools">Integrated Tools</a>
+          <a class="btn ghost" href="#case-study">Sudan Case Study</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT IT IS -->
+    <section aria-label="What QA-CSRF is">
+      <div class="divider reveal">
+        <span class="divider-num">00</span>
+        <div class="divider-rule"></div>
+        <span class="divider-label">Overview</span>
+      </div>
+
+      <!-- Standards bar -->
+      <div class="standards-bar reveal">
+        <div class="std-item">
+          <div class="std-code">ISO 31000:2018</div>
+          <div class="std-name">Risk Management Principles</div>
+        </div>
+        <div class="std-item">
+          <div class="std-code">GISF/INSSA SRM</div>
+          <div class="std-name">NGO Safety &amp; Security Risk Management Standards</div>
+        </div>
+        <div class="std-item">
+          <div class="std-code">CHS</div>
+          <div class="std-name">Core Humanitarian Standard</div>
+        </div>
+        <div class="std-item">
+          <div class="std-code">Do No Harm</div>
+          <div class="std-name">Conflict-Sensitive Programming</div>
+        </div>
+        <div class="std-item">
+          <div class="std-code">ISO 27001</div>
+          <div class="std-name">Information Security &amp; Data Protection</div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start;" class="reveal">
+        <div>
+          <h2>From Conflict Theory<br />to <em>Operational Risk</em></h2>
+          <p style="margin-top:1.4rem; font-size:1rem; line-height:1.9;">
+            QA-CSRF™ was developed through MNS Consulting's partnership work with Lladner Business Systems' Global Development &amp; Risk Management Division and first presented through ARAC International Inc. It originated as an academic Conflict Systems Research framework — drawing from sociology, psychology, economics, and systems analysis — and was systematically upgraded into a field-operational risk management tool.
+          </p>
+          <p style="font-size:1rem; line-height:1.9;">
+            The upgrade replaced conceptual typologies with quantified scoring, narrative analysis with structured analytic tools, and generic resolution strategies with ISO-aligned risk treatment plans carrying defined controls, monitoring cycles, and escalation thresholds. The result is a framework that retains the theoretical depth of conflict systems analysis while producing the practical outputs that NGO field teams, security managers, and programme donors actually need.
+          </p>
+          <div style="margin-top:1.8rem; display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn" href="mns-lbs.html">View Origin Partnership</a>
+            <a class="btn ghost" href="qa-process.html">Full QA Process™</a>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div class="card">
+            <h3>Who It Serves</h3>
+            <p>International and national NGOs, humanitarian operators, INGOs, donors, and implementing partners operating in fragile states, active conflict zones, post-conflict transition environments, and any context where security risk management and conflict analysis must be integrated — not siloed.</p>
+          </div>
+          <div class="card">
+            <h3>What It Produces</h3>
+            <ul class="list">
+              <li>Risk registers with likelihood × impact scoring</li>
+              <li>CARVER asset criticality assessments</li>
+              <li>Contingency and evacuation plans</li>
+              <li>SitReps with indicators and escalation thresholds</li>
+              <li>Conflict actor and stakeholder maps (CAF 2.0)</li>
+              <li>Macro context scans (PESTELS)</li>
+              <li>Ethics and data protection compliance records</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>The Core Distinction</h3>
+            <p>The academic Conflict Systems Research framework teaches <em>what conflict is</em>. QA-CSRF™ structures <em>how to manage it in practice</em>. The former is the foundation; the latter is the operational system built on it. Both are embedded within QA-CSRF™ — theoretical rigour and field-level practicality are not traded off against each other.</p>
+          </div>
+        </div>
+      </div>
+      <style>@media(max-width:760px){ section > div[style*="grid-template-columns:1fr 1fr"]{ grid-template-columns:1fr !important; } }</style>
+    </section>
+
+    <!-- SIX PHASES -->
+    <section id="phases" aria-label="Framework phases">
+      <div class="divider reveal">
+        <span class="divider-num">01</span>
+        <div class="divider-rule"></div>
+        <span class="divider-label">Framework Phases</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; gap:14px; margin-bottom:1.4rem;" class="reveal">
+        <h2>Six <em>Operational Phases</em></h2>
+        <span class="kicker">ISO 31000 cycle · iterative by design</span>
+      </div>
+      <p class="reveal" style="max-width:620px; margin-bottom:2.2rem; font-size:0.97rem; line-height:1.88;">
+        QA-CSRF™ is organized as a six-phase iterative cycle aligned to ISO 31000:2018. Each phase has defined inputs, methods, and outputs. The cycle does not terminate — it repeats as the conflict environment evolves, with monitoring data from Phase 6 feeding back into Phase 1 context establishment.
+      </p>
+
+      <div class="phase ph1 reveal d1">
+        <div class="ph-accent">
+          <span class="ph-num">1</span>
+          <span class="ph-roman">Phase I</span>
+        </div>
+        <div class="ph-body">
+          <div class="ph-title">Context Establishment</div>
+          <div class="ph-sub">PESTELS macro scan · CAF 2.0 actor mapping</div>
+          <div class="ph-desc">
+            Every risk assessment begins with a thorough understanding of the environment in which the organization operates. Phase 1 deploys PESTELS to scan the macro context — Political, Economic, Social, Technological, Environmental, Legal, and Security dimensions — and CAF 2.0 to map the full actor and stakeholder landscape including armed groups, state actors, civil society, community leaders, and international entities. The output is a structured context picture that gives all subsequent analysis a grounded, sourced baseline. Without this foundation, risk identification in Phase 2 operates on assumptions rather than evidence.
+          </div>
+          <div class="ph-tools">
+            <span class="tool-chip">PESTELS</span>
+            <span class="tool-chip">CAF 2.0</span>
+            <span class="tool-chip">Stakeholder mapping</span>
+            <span class="tool-chip">Environmental scan</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase ph2 reveal d2">
+        <div class="ph-accent">
+          <span class="ph-num">2</span>
+          <span class="ph-roman">Phase II</span>
+        </div>
+        <div class="ph-body">
+          <div class="ph-title">Risk Identification</div>
+          <div class="ph-sub">Threats to people · systems · data · operations</div>
+          <div class="ph-desc">
+            Using the context established in Phase 1, Phase 2 systematically identifies the risks facing the organization, its personnel, its implementing partners, and the communities it serves. Risk categories include physical security threats to staff and assets, operational disruption risks, partner compliance and reliability risks, information and data security risks, and reputational risks arising from association with conflict parties. Identification is structured — not a brainstorm — using conflict mapping and the actor profiles built in CAF 2.0 to ensure that every credible threat source is traced to a corresponding organizational exposure.
+          </div>
+          <div class="ph-tools">
+            <span class="tool-chip">Conflict mapping</span>
+            <span class="tool-chip">Threat identification</span>
+            <span class="tool-chip">Exposure analysis</span>
+            <span class="tool-chip">Partner risk profiling</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase ph3 reveal d3">
+        <div class="ph-accent">
+          <span class="ph-num">3</span>
+          <span class="ph-roman">Phase III</span>
+        </div>
+        <div class="ph-body">
+          <div class="ph-title">Risk Analysis</div>
+          <div class="ph-sub">Likelihood × Impact scoring · CARVER assessment</div>
+          <div class="ph-desc">
+            Phase 3 quantifies the risks identified in Phase 2. Each risk is scored on a calibrated Likelihood × Impact matrix to produce a risk level that can be compared, prioritized, and communicated consistently across the organization. Simultaneously, CARVER scoring is applied to critical assets and operational systems — evaluating Criticality, Accessibility, Recuperability, Vulnerability, Effect, and Recognizability. CARVER scoring translates qualitative threat assessments into prioritized protection plans grounded in the actual operational profile of the organization, not generic threat typologies. The combination of risk matrix scoring and CARVER assessment gives field security managers and programme leadership a unified, quantified picture of the organization's risk exposure.
+          </div>
+          <div class="ph-tools">
+            <span class="tool-chip">Likelihood × Impact matrix</span>
+            <span class="tool-chip">CARVER scoring</span>
+            <span class="tool-chip">Asset criticality</span>
+            <span class="tool-chip">Vulnerability mapping</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase ph4 reveal d4">
+        <div class="ph-accent">
+          <span class="ph-num">4</span>
+          <span class="ph-roman">Phase IV</span>
+        </div>
+        <div class="ph-body">
+          <div class="ph-title">Risk Evaluation</div>
+          <div class="ph-sub">Risk ranking · ethical risk filters · decision thresholds</div>
+          <div class="ph-desc">
+            The quantified risk scores from Phase 3 are evaluated against the organization's risk appetite, programme priorities, and ethical obligations. This phase does not operate on risk scores alone — it applies ethical risk filters drawn from Do No Harm principles, the Core Humanitarian Standard, and conflict-sensitive programming frameworks. A risk that scores low on a standard likelihood × impact matrix may still require immediate treatment if it carries significant harm potential for conflict-affected communities. Evaluation also sets the decision thresholds: the risk levels at which specific responses are triggered, including escalation to leadership, programme redesign, or operations suspension.
+          </div>
+          <div class="ph-tools">
+            <span class="tool-chip">Risk ranking</span>
+            <span class="tool-chip">Do No Harm filters</span>
+            <span class="tool-chip">CHS compliance</span>
+            <span class="tool-chip">Decision thresholds</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase ph5 reveal d5">
+        <div class="ph-accent">
+          <span class="ph-num">5</span>
+          <span class="ph-roman">Phase V</span>
+        </div>
+        <div class="ph-body">
+          <div class="ph-title">Risk Treatment</div>
+          <div class="ph-sub">Mitigation · contingency · evacuation · deterrence</div>
+          <div class="ph-desc">
+            For each evaluated risk, Phase 5 produces a treatment plan specifying the chosen response — mitigation, transfer, acceptance, or avoidance — along with the specific controls, responsible parties, timelines, and resource requirements. For high-severity risks, treatment plans include contingency protocols and, where necessary, evacuation and hibernation procedures. Deterrence measures are specified for threat sources that are influenced by organizational posture, visibility, and acceptance strategies. All treatment plans are documented in the risk register with sufficient detail for handover, audit, and donor reporting. Phase 5 is where analysis becomes action.
+          </div>
+          <div class="ph-tools">
+            <span class="tool-chip">Risk register</span>
+            <span class="tool-chip">Contingency protocols</span>
+            <span class="tool-chip">Evacuation planning</span>
+            <span class="tool-chip">Acceptance strategies</span>
+            <span class="tool-chip">Controls documentation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase ph6 reveal d6">
+        <div class="ph-accent">
+          <span class="ph-num">6</span>
+          <span class="ph-roman">Phase VI</span>
+        </div>
+        <div class="ph-body">
+          <div class="ph-title">Monitoring &amp; Review</div>
+          <div class="ph-sub">Iterative updates · trend analysis · ethics checks · SitRep cadence</div>
+          <div class="ph-desc">
+            QA-CSRF™ does not produce static documents. Phase 6 establishes the monitoring architecture that keeps risk assessments current as the conflict environment evolves. This includes the SitRep cadence — the frequency and format of situational reporting — and the indicator and escalation threshold system that tells field teams and leadership when a risk profile has changed materially. Trend analysis tracks whether the risk environment is stabilizing or deteriorating. Ethics checks ensure that treatment plans remain compliant with Do No Harm and CHS obligations as circumstances change. Data protection reviews under ISO 27001 principles ensure that sensitive information remains secure throughout the programme lifecycle. Phase 6 feeds its outputs back into Phase 1, completing the iterative cycle.
+          </div>
+          <div class="ph-tools">
+            <span class="tool-chip">SitRep cadence</span>
+            <span class="tool-chip">Indicators &amp; thresholds</span>
+            <span class="tool-chip">Trend analysis</span>
+            <span class="tool-chip">Ethics compliance review</span>
+            <span class="tool-chip">ISO 27001 data review</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTEGRATED TOOLS -->
+    <section id="tools" aria-label="Integrated tools">
+      <div class="divider reveal">
+        <span class="divider-num">02</span>
+        <div class="divider-rule"></div>
+        <span class="divider-label">Integrated Tools</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; gap:14px; margin-bottom:1.4rem;" class="reveal">
+        <h2>The <em>Analytical Toolkit</em></h2>
+        <span class="kicker">Four instruments · one integrated system</span>
+      </div>
+      <p class="reveal" style="max-width:600px; margin-bottom:2rem; font-size:0.97rem; line-height:1.88;">
+        QA-CSRF™ integrates four purpose-selected analytic tools, each covering a distinct analytical requirement. Together they give the framework its quantitative backbone and ensure that every phase is grounded in structured, reproducible analysis rather than narrative judgement alone.
+      </p>
+
+      <div class="grid cols-2">
+        <div class="tool-card reveal d1">
+          <span class="tool-code">PESTELS</span>
+          <span class="tool-name">Political · Economic · Social · Technological · Environmental · Legal · Security</span>
+          <div class="tool-desc">
+            PESTELS is the macro-environment scanning tool deployed in Phase 1. It structures the systematic review of seven contextual dimensions that shape the operating environment: Political stability and governance dynamics; Economic conditions including sanctions, resource flows, and livelihood impacts; Social cohesion, community tensions, and demographic pressures; Technological factors including communications infrastructure and cyber risks; Environmental pressures such as climate shocks and resource scarcity; Legal frameworks governing NGO operations, access, and liability; and Security conditions at national, regional, and local levels. PESTELS ensures that the risk identification in Phase 2 is anchored to a comprehensive, structured picture of the environment — not just the security dimension in isolation.
+          </div>
+        </div>
+
+        <div class="tool-card reveal d2">
+          <span class="tool-code">CAF 2.0</span>
+          <span class="tool-name">Conflict Actor Framework 2.0 — Stakeholder &amp; Actor Mapping</span>
+          <div class="tool-desc">
+            CAF 2.0 is the actor and stakeholder mapping instrument used in Phase 1 and continuously updated through Phase 6. It maps the full landscape of actors in the operating environment — armed groups, state security forces, political entities, community leaders, civil society organizations, international actors, and the communities the organization serves. For each actor, CAF 2.0 captures their interests, objectives, capabilities, relationships to the organization, and potential to generate risk or serve as a protection resource. The 2.0 designation reflects the updated integration of influence and information environment actors — including disinformation sources and narrative actors — alongside traditional conflict parties.
+          </div>
+        </div>
+
+        <div class="tool-card reveal d3">
+          <span class="tool-code">CARVER</span>
+          <span class="tool-name">Criticality · Accessibility · Recuperability · Vulnerability · Effect · Recognizability</span>
+          <div class="tool-desc">
+            Originally developed for military target analysis, CARVER has been adapted within QA-CSRF™ as a defensive asset prioritization tool for NGO security planning. Applied in Phase 3, it scores the organization's critical assets and systems — including personnel, vehicles, communications, data systems, offices, warehouses, and partner relationships — across six dimensions. Criticality assesses how essential the asset is to operations; Accessibility evaluates how easy it is for a threat actor to reach it; Recuperability estimates how long it would take to restore if compromised; Vulnerability identifies specific weaknesses; Effect measures operational impact if lost; and Recognizability gauges how identifiable the asset is to potential threat actors. CARVER scores guide protection prioritization and mitigation investment decisions.
+          </div>
+        </div>
+
+        <div class="tool-card reveal d4">
+          <span class="tool-code">ISO 31000 Cycle</span>
+          <span class="tool-name">Risk Management Principles &amp; Guidelines</span>
+          <div class="tool-desc">
+            ISO 31000:2018 provides the governance architecture for the entire QA-CSRF™ framework. It ensures that risk management is iterative, structured, and aligned to internationally recognised principles: integration with the organization's broader governance; structured and comprehensive coverage; customization to the specific context; inclusive engagement of stakeholders; human and cultural sensitivity; dynamic response to change; best available information; and continual improvement. ISO 31000 alignment is not simply a credential — it shapes the architecture of the six-phase cycle, the documentation requirements, and the review cadence. It also ensures that QA-CSRF™ outputs are credible to institutional donors and governance bodies that require evidence of structured risk management practice.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACADEMIC VS OPERATIONAL -->
+    <section aria-label="Academic vs operational comparison">
+      <div class="divider reveal">
+        <span class="divider-num">03</span>
+        <div class="divider-rule"></div>
+        <span class="divider-label">Framework Comparison</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; gap:14px; margin-bottom:1.4rem;" class="reveal">
+        <h2>Academic Foundation vs.<br /><em>Operational System</em></h2>
+        <span class="kicker">Complementary · not competing</span>
+      </div>
+      <p class="reveal" style="max-width:620px; margin-bottom:1.8rem; font-size:0.97rem; line-height:1.88;">
+        QA-CSRF™ was built on the academic Conflict Systems Research framework — not as a replacement, but as an operational transformation of it. Understanding the relationship between the two is essential to understanding why QA-CSRF™ is structured as it is. The academic framework teaches what conflict is. QA-CSRF™ structures how to manage it under operational conditions.
+      </p>
+      <div class="reveal" style="overflow-x:auto;">
+        <table class="compare-table" aria-label="Comparison of academic CSR and QA-CSRF operational framework">
+          <thead>
+            <tr>
+              <th>Dimension</th>
+              <th>Academic CSR Framework</th>
+              <th>QA-CSRF™ (Operational)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Purpose</td>
+              <td class="dim">Conceptual understanding of conflict types and dynamics</td>
+              <td><span class="check">✦</span> Structured operational risk management for NGO field use</td>
+            </tr>
+            <tr>
+              <td>Primary tools</td>
+              <td class="dim">Conflict mapping, tree diagrams, typologies</td>
+              <td><span class="check">✦</span> PESTELS, CAF 2.0, CARVER, ISO 31000 cycle</td>
+            </tr>
+            <tr>
+              <td>Output type</td>
+              <td class="dim">Conceptual analysis, academic reports</td>
+              <td><span class="check">✦</span> Risk registers, contingency plans, SitReps, security protocols</td>
+            </tr>
+            <tr>
+              <td>Quantification</td>
+              <td class="dim">Minimal — qualitative and descriptive</td>
+              <td><span class="check">✦</span> Likelihood × Impact scoring + CARVER numerical assessment</td>
+            </tr>
+            <tr>
+              <td>Ethics framework</td>
+              <td class="dim">Implied through empathy and values language</td>
+              <td><span class="check">✦</span> Formalized — Do No Harm, CHS, ISO 27001, conflict-sensitive programming</td>
+            </tr>
+            <tr>
+              <td>Primary audience</td>
+              <td class="dim">Students, researchers, conflict studies programmes</td>
+              <td><span class="check">✦</span> Field security managers, NGO leadership, programme donors</td>
+            </tr>
+            <tr>
+              <td>Operating environment</td>
+              <td class="dim">Controlled academic or training contexts</td>
+              <td><span class="check">✦</span> Fragile states, conflict zones, humanitarian operations</td>
+            </tr>
+            <tr>
+              <td>Donor reporting</td>
+              <td class="dim">Not designed for it</td>
+              <td><span class="check">✦</span> Outputs directly applicable to institutional donor risk reporting requirements</td>
+            </tr>
+            <tr>
+              <td>Iterative cycle</td>
+              <td class="dim">Sequential, not explicitly iterative</td>
+              <td><span class="check">✦</span> ISO 31000 iterative cycle with monitoring feedback loop</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note reveal" style="margin-top:12px;">Together: CSR Framework = "the theory and typologies." QA-CSRF™ = "the applied risk management system." One teaches what conflict is; the other structures how to manage it in practice.</p>
+    </section>
+
+    <!-- SUDAN CASE STUDY -->
+    <section id="case-study" aria-label="Sudan case study">
+      <div class="divider reveal">
+        <span class="divider-num">04</span>
+        <div class="divider-rule"></div>
+        <span class="divider-label">Applied Case Study</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; gap:14px; margin-bottom:1.4rem;" class="reveal">
+        <h2>QA-CSRF™ Applied:<br /><em>Sudan, September 2025</em></h2>
+        <span class="kicker">Live framework application</span>
+      </div>
+      <p class="reveal" style="max-width:620px; margin-bottom:2rem; font-size:0.97rem; line-height:1.88;">
+        The following demonstrates QA-CSRF™ applied to a live conflict environment. Sudan in September 2025 represents one of the most complex active humanitarian crises globally — combining active armed conflict, mass displacement, ethnic violence, famine risk, and contested international mediation. This case study walks through the framework's seven analytical steps as applied to that environment.
+      </p>
+
+      <div class="case-banner reveal">
+        <div class="case-header">
+          <div class="case-header-left">
+            <div class="case-flag">Sudan — North Darfur / El Fasher</div>
+            <div class="case-date">Reference date: September 2025</div>
+          </div>
+          <div class="live-badge"><div class="live-dot"></div>Active conflict environment</div>
+        </div>
+        <div class="case-body">
+          <h3 style="margin-bottom:14px;">Situation Snapshot</h3>
+          <div class="finding">
+            <div class="finding-bullet"></div>
+            <div>
+              <div class="finding-text">The war between the Sudanese Armed Forces (SAF) and the Rapid Support Forces (RSF) continues with El Fasher under prolonged siege and catastrophic civilian impact, including acute child malnutrition and mass displacement.</div>
+              <div class="finding-source">Financial Times · UNICEF</div>
+            </div>
+          </div>
+          <div class="finding">
+            <div class="finding-bullet"></div>
+            <div>
+              <div class="finding-text">Humanitarian needs remain extreme: 20.9 million people targeted for aid in 2025, displacement surpassing 10 million, with multiple areas crossing or projected to cross famine thresholds.</div>
+              <div class="finding-source">OCHA · IPC Info · UNICEF</div>
+            </div>
+          </div>
+          <div class="finding">
+            <div class="finding-bullet"></div>
+            <div>
+              <div class="finding-text">Credible investigations document ethnic cleansing and crimes against humanity in Darfur. UN human rights findings describe deliberate targeting of civilians, including Masalit communities.</div>
+              <div class="finding-source">Human Rights Watch · OHCHR</div>
+            </div>
+          </div>
+          <div class="finding">
+            <div class="finding-bullet"></div>
+            <div>
+              <div class="finding-text">Allegations of external resupply to the RSF remain under scrutiny by UN experts and NGOs, with denials from the UAE. International mediation tracks (Jeddah, Geneva) remain fragmented and stalled.</div>
+              <div class="finding-source">Reuters · The Guardian · Amnesty International · The Washington Institute</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;" class="reveal">
+
+        <div class="card">
+          <h3>Step 1 — Conflict Definition</h3>
+          <p style="margin-top:10px; font-size:0.92rem; line-height:1.78;">An intrastate, multi-theater civil war begun April 2023 between SAF and RSF, now characterized by urban sieges, ethnic targeting in Darfur, and nationwide economic collapse with mass displacement and food insecurity. Current epicenter: El Fasher, North Darfur — a tipping point for both Darfur and national famine risk.</p>
+          <div style="margin-top:10px; display:flex; gap:6px; flex-wrap:wrap;">
+            <span style="font-family:var(--mono); font-size:0.62rem; color:var(--muted2); border:1px solid var(--border); padding:3px 8px; background:var(--panel);">Intrastate</span>
+            <span style="font-family:var(--mono); font-size:0.62rem; color:var(--muted2); border:1px solid var(--border); padding:3px 8px; background:var(--panel);">Multi-theater</span>
+            <span style="font-family:var(--mono); font-size:0.62rem; color:var(--muted2); border:1px solid var(--border); padding:3px 8px; background:var(--panel);">Ethnic dimension</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Step 2 — Conflict Types</h3>
+          <ul class="list" style="margin-top:10px;">
+            <li>Political and military power struggle — rival armed formations following the collapsed civilian transition</li>
+            <li>Communal and ethnic violence — Darfur, specifically attacks targeting Masalit communities</li>
+            <li>Humanitarian access warfare — siege tactics that weaponize starvation and impede aid delivery</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Step 3 — Actor Map (CAF 2.0)</h3>
+          <ul class="list" style="margin-top:10px;">
+            <li><strong style="color:var(--text); font-weight:400;">SAF</strong> — seeks national control, defeat of RSF, international recognition. Leverage: formal sovereignty, Port Sudan, air assets</li>
+            <li><strong style="color:var(--text); font-weight:400;">RSF</strong> — controls most of Darfur, siege warfare around El Fasher, consolidating territorial leverage. Leverage: territorial control, mobility, alleged external supply</li>
+            <li><strong style="color:var(--text); font-weight:400;">Civilians / Taqaddum</strong> — seek protection, aid corridors, civilian rule. Low coercive leverage; high moral authority</li>
+            <li><strong style="color:var(--text); font-weight:400;">International actors</strong> — Jeddah/Geneva tracks stalled; AU–IGAD fragmented. Leverage: aid, sanctions, convening power</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Step 4 — Conflict Resolution Menu</h3>
+          <ul class="list" style="margin-top:10px;">
+            <li>Consolidate Jeddah and Geneva tracks under AU–IGAD umbrella with explicit civilian transition parameters</li>
+            <li>Operationalize Security Council pressure around El Fasher for verified aid corridors and safe evacuations</li>
+            <li>Support atrocity crime investigations and use targeted sanctions tied to siege behaviors</li>
+            <li>Establish community-level dispute resolution in Darfur with land and restitution mechanisms</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="card reveal" style="margin-top:14px;">
+        <h3>Step 5 — Near-Term Priorities &amp; Early Warning Indicators</h3>
+        <p style="margin-top:10px; margin-bottom:16px; font-size:0.92rem; line-height:1.78;">The following indicators operationalize the conflict monitoring architecture for this environment. Each tracks a specific dimension of the crisis and feeds directly into the SitRep cadence and escalation threshold system.</p>
+        <div class="indicator-grid">
+          <div class="indicator">
+            <div class="ind-label">Siege Dynamics</div>
+            <div class="ind-text">Frequency and intensity of strikes around El Fasher; market prices; severe acute malnutrition admissions at health facilities.</div>
+          </div>
+          <div class="indicator">
+            <div class="ind-label">Humanitarian Access</div>
+            <div class="ind-text">Monthly convoy pass rates and tonnage delivered vs. planned; deconfliction protocol compliance; hospital and IDP camp incident rates.</div>
+          </div>
+          <div class="indicator">
+            <div class="ind-label">Famine Tracking</div>
+            <div class="ind-text">IPC Phase 4 to 5 shifts at locality level; camp-specific FRC (Famine Review Committee) updates; acute malnutrition trend lines.</div>
+          </div>
+          <div class="indicator">
+            <div class="ind-label">Atrocity Risk</div>
+            <div class="ind-text">UN human rights incident logs; satellite-verified mass-grave detection alerts; targeted community protection requests from civil society.</div>
+          </div>
+          <div class="indicator">
+            <div class="ind-label">Mediation Traction</div>
+            <div class="ind-text">Unified agenda publication; sequencing agreement on ceasefire; verified monitoring architecture establishment.</div>
+          </div>
+          <div class="indicator">
+            <div class="ind-label">Supply Chain Integrity</div>
+            <div class="ind-text">Audit of flight and cargo manifests along the Chad–Darfur axis; embargo compliance summaries from UN panels.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal" style="margin-top:14px;">
+        <h3>Step 6 — Ethics, OSINT Integrity &amp; Do No Harm</h3>
+        <p style="margin-top:10px; font-size:0.92rem; line-height:1.78; max-width:800px;">
+          Apply Do No Harm principles rigorously when publicizing locality-level detail that might endanger civilians under siege or expose community informants. Prefer triangulated figures from UN agencies (UNICEF, OCHA), IPC, and organizations with transparent methodologies. Breaking casualty estimates and natural disaster figures are treated as evolving and potentially contested — they are not presented as confirmed until triangulated across at least two independent sources. OSINT collection in conflict environments must be conducted with awareness of surveillance risks for local sources and communities.
+        </p>
+      </div>
+
+      <div class="card reveal" style="margin-top:14px; border-color:var(--gold-line); background:var(--gold-dim);">
+        <h3 style="color:var(--gold-light);">Step 7 — Decision-Ready Output for Leadership</h3>
+        <p style="margin-top:12px; font-size:0.95rem; line-height:1.85; max-width:820px;">
+          <strong style="color:var(--text); font-weight:400;">Problem clarity:</strong> The core dynamic is a SAF–RSF struggle with El Fasher as a tipping point for Darfur and national famine risk. Any NGO operating in North Darfur faces a risk environment defined by active siege warfare, ethnic targeting, weaponized access denial, and a fragmented international response that cannot be relied upon for protection.<br /><br />
+          <strong style="color:var(--text); font-weight:400;">Negotiation levers:</strong> Consolidate diplomatic tracks; pair ceasefire with monitored access; escalate targeted sanctions tied to siege behaviors. NGO acceptance strategies must be maintained with all parties simultaneously — which, under current conditions, requires explicit neutrality communication and regular actor briefings.<br /><br />
+          <strong style="color:var(--text); font-weight:400;">Operational actions:</strong> Corridor access, population protection measures, and embargo enforcement are immediately actionable and measurable. Field teams should operate with active hibernation and evacuation protocols, defined escalation triggers, and regular SitRep reporting against the indicator framework above.
+        </p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section aria-label="Engagement">
+      <div class="callout reveal">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:14px; flex-wrap:wrap; margin-bottom:12px;">
+          <h2>Deploy <em>QA-CSRF™</em></h2>
+          <span class="kicker">NGO security · conflict analysis · risk governance</span>
+        </div>
+        <p style="max-width:560px; font-size:0.97rem; line-height:1.88; margin-top:10px;">
+          If your organization operates in volatile or conflict-affected environments and needs a structured, ISO-aligned security risk management system, MNS Consulting can deploy QA-CSRF™ to your operational context. Engagements are scoped to need — from a single risk register to a full security governance architecture.
+        </p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:22px;">
+          <a class="btn primary" href="mns-lbs.html#contact">Start Advisory Intake</a>
+          <a class="btn" href="qa-process.html">Full QA Process™</a>
+          <a class="btn ghost" href="index.html">Quanta Analytica Home</a>
+        </div>
+        <p class="note" style="margin-top:16px;">QA-CSRF™ is a proprietary methodology of MNS Consulting. PESTELS, CAF 2.0, CARVER, and ISO 31000 are integrated components used under standard frameworks. Do No Harm and CHS principles apply throughout all engagements.</p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="footer" role="contentinfo">
+      <div class="row">
+        <div class="footer-brand">
+          <span class="gold">Quanta Analytica</span> &nbsp;·&nbsp;
+          QA-CSRF™ &nbsp;·&nbsp;
+          MNS Consulting &nbsp;·&nbsp;
+          &copy; <span id="year"></span>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+          <a class="pill" href="index.html" style="color:var(--gold); border-color:var(--gold-line);">Home</a>
+          <a class="pill" href="mns-lbs.html" style="color:var(--gold); border-color:var(--gold-line);">MNS · LBS Advisory</a>
+          <a class="pill" href="qa-process.html" style="color:var(--gold); border-color:var(--gold-line);">QA Process™</a>
+          <a class="pill" href="cognition-model.html" style="color:var(--gold); border-color:var(--gold-line);">Cognition Model</a>
+          <a class="pill" href="https://insights.quanta-analytica.com" target="_blank" rel="noopener" style="color:var(--gold); border-color:var(--gold-line);">Insights ↗</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.container -->
+</main>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  reveals.forEach(el => obs.observe(el));
+
+  // Smooth scroll for in-page anchors
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener("click", e => {
+      const id = a.getAttribute("href");
+      if (!id || id === "#") return;
+      const el = document.querySelector(id);
+      if (!el) return;
+      e.preventDefault();
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      history.replaceState(null, "", id);
+    });
+  });
+
+  // Active nav on scroll
+  const sections = ["#phases","#tools","#case-study"]
+    .map(s => document.querySelector(s)).filter(Boolean);
+  const navLinks = Array.from(document.querySelectorAll(".nav-links a"));
+
+  const navObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => {
+          const href = l.getAttribute("href");
+          if (href && href.startsWith("#"))
+            l.classList.toggle("active", href === "#" + entry.target.id);
+        });
+      }
+    });
+  }, { rootMargin: "-42% 0px -52% 0px", threshold: 0.01 });
+
+  sections.forEach(s => navObs.observe(s));
+</script>
+</body>
+</html>
