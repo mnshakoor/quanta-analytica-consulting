@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Togo & Benin — Fragility & Governance Intelligence Assessment | Quanta Analytica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:           #0A0E17;
+  --bg-panel:     #0F1520;
+  --bg-card:      #131B2A;
+  --bg-card-alt:  #0D1421;
+  --amber:        #E8A020;
+  --amber-dim:    #9B6A14;
+  --amber-glow:   rgba(232,160,32,0.12);
+  --amber-pale:   rgba(232,160,32,0.06);
+  --red:          #D94040;
+  --red-dim:      rgba(217,64,64,0.15);
+  --green:        #2EA86A;
+  --green-dim:    rgba(46,168,106,0.15);
+  --yellow:       #D4B84A;
+  --blue-steel:   #3A6EA8;
+  --text-primary: #E8E2D4;
+  --text-body:    #B8B0A0;
+  --text-muted:   #6A6258;
+  --text-mono:    #8FA8C8;
+  --border:       rgba(232,160,32,0.18);
+  --border-dim:   rgba(255,255,255,0.06);
+  --scan-line:    rgba(0,0,0,0.12);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* Scanline texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    var(--scan-line) 0px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.35;
+}
+
+/* ── PROGRESS ──────────────────────────────────────────────────────────── */
+#progress {
+  position: fixed; top: 0; left: 0;
+  height: 2px; width: 0%;
+  background: var(--amber);
+  z-index: 10000;
+  box-shadow: 0 0 12px var(--amber);
+  transition: width 0.08s linear;
+}
+
+/* ── NAV ───────────────────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 900;
+  background: rgba(10,14,23,0.96);
+  border-bottom: 1px solid var(--border);
+  height: 52px;
+  display: flex; align-items: center;
+  padding: 0 2rem;
+  gap: 1.5rem;
+  backdrop-filter: blur(16px);
+}
+
+.nav-classify {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--amber);
+  text-transform: uppercase;
+  padding: 0.2rem 0.7rem;
+  border: 1px solid var(--amber-dim);
+  border-radius: 2px;
+}
+
+.nav-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  flex: 1;
+}
+
+.nav-date {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+/* ── HERO ──────────────────────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding: 9rem 3rem 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 15% 50%, rgba(232,160,32,0.05) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 70% at 85% 20%, rgba(58,110,168,0.06) 0%, transparent 60%);
+}
+
+/* Animated grid */
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(232,160,32,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232,160,32,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: gridPulse 8s ease-in-out infinite;
+}
+
+@keyframes gridPulse {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+
+.hero-inner {
+  position: relative; z-index: 2;
+  max-width: 900px;
+}
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 1.8rem;
+  opacity: 0; animation: fadeIn 0.7s 0.2s ease forwards;
+}
+
+.hero-tag::before {
+  content: '';
+  width: 20px; height: 1px;
+  background: var(--amber);
+}
+
+.hero-domain {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  color: var(--blue-steel);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  opacity: 0; animation: fadeIn 0.7s 0.35s ease forwards;
+}
+
+.hero-title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.12;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+  opacity: 0; animation: fadeIn 0.8s 0.45s ease forwards;
+}
+
+.hero-title span {
+  color: var(--amber);
+}
+
+.hero-subtitle {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text-body);
+  max-width: 580px;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  opacity: 0; animation: fadeIn 0.8s 0.55s ease forwards;
+}
+
+/* Metadata strip */
+.hero-meta {
+  display: flex; flex-wrap: wrap; gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+  max-width: 700px;
+  opacity: 0; animation: fadeIn 0.8s 0.7s ease forwards;
+}
+
+.meta-cell {
+  flex: 1; min-width: 140px;
+  padding: 0.85rem 1.2rem;
+  border-right: 1px solid var(--border);
+  background: var(--bg-card);
+}
+
+.meta-cell:last-child { border-right: none; }
+
+.meta-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.meta-value {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--amber);
+}
+
+/* Threat level indicator */
+.threat-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(217,64,64,0.1);
+  border: 1px solid rgba(217,64,64,0.3);
+  border-radius: 2px;
+  padding: 0.25rem 0.7rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--red);
+  text-transform: uppercase;
+}
+
+.threat-dot {
+  width: 6px; height: 6px;
+  background: var(--red);
+  border-radius: 50%;
+  animation: blink 1.8s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+
+/* ── MAIN ──────────────────────────────────────────────────────────────── */
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+}
+
+/* ── SECTION ───────────────────────────────────────────────────────────── */
+.section {
+  margin-bottom: 5rem;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.section.visible { opacity: 1; transform: translateY(0); }
+
+.section-header {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-dim);
+}
+
+.section-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--amber);
+  background: var(--amber-pale);
+  border: 1px solid var(--amber-dim);
+  padding: 0.2rem 0.65rem;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.section-title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+}
+
+/* ── BLUF ──────────────────────────────────────────────────────────────── */
+.bluf-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bluf-item {
+  display: flex; gap: 0;
+  border-bottom: 1px solid var(--border-dim);
+  background: var(--bg-card);
+  transition: background 0.2s;
+}
+
+.bluf-item:last-child { border-bottom: none; }
+.bluf-item:hover { background: var(--bg-card-alt); }
+
+.bluf-index {
+  width: 44px; min-width: 44px;
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 1.1rem 0 1.1rem;
+  border-right: 1px solid var(--border-dim);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem; font-weight: 600;
+  color: var(--amber);
+  background: var(--amber-pale);
+}
+
+.bluf-text {
+  padding: 0.9rem 1.3rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--text-body);
+}
+
+.bluf-text strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* ── SNAPSHOT TABLE ────────────────────────────────────────────────────── */
+.snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.snapshot-cell {
+  background: var(--bg-card);
+  padding: 1.1rem 1.3rem;
+}
+
+.snapshot-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--amber-dim);
+  margin-bottom: 0.4rem;
+}
+
+.snapshot-content {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-body);
+  line-height: 1.5;
+}
+
+.snapshot-content strong { color: var(--text-primary); }
+
+/* ── KEY JUDGMENTS ─────────────────────────────────────────────────────── */
+.kj-list { display: flex; flex-direction: column; gap: 1rem; }
+
+.kj-item {
+  display: flex; gap: 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-left: 3px solid var(--amber-dim);
+  border-radius: 0 3px 3px 0;
+  padding: 1.1rem 1.3rem;
+  transition: border-left-color 0.2s;
+}
+
+.kj-item:hover { border-left-color: var(--amber); }
+
+.kj-item.high { border-left-color: var(--amber); }
+.kj-item.moderate { border-left-color: var(--blue-steel); }
+
+.kj-conf {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 0.3rem;
+  min-width: 56px;
+}
+
+.kj-conf-badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.5rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.18rem 0.4rem;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.kj-conf-badge.high {
+  color: var(--amber);
+  background: var(--amber-pale);
+  border: 1px solid var(--amber-dim);
+}
+
+.kj-conf-badge.moderate {
+  color: var(--blue-steel);
+  background: rgba(58,110,168,0.08);
+  border: 1px solid rgba(58,110,168,0.25);
+}
+
+.kj-id {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+
+.kj-body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--text-body);
+}
+
+.kj-body strong { color: var(--text-primary); }
+
+/* ── EVIDENCE BOX ──────────────────────────────────────────────────────── */
+.evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.evidence-box {
+  border: 1px solid var(--border-dim);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.evidence-box-header {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.65rem 1rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+}
+
+.evidence-box-header.know {
+  background: var(--green-dim);
+  color: var(--green);
+  border-bottom: 1px solid rgba(46,168,106,0.15);
+}
+
+.evidence-box-header.assess {
+  background: var(--amber-pale);
+  color: var(--amber);
+  border-bottom: 1px solid var(--amber-dim);
+}
+
+.evidence-box-header.gap {
+  background: var(--red-dim);
+  color: var(--red);
+  border-bottom: 1px solid rgba(217,64,64,0.2);
+}
+
+.evidence-box ul {
+  list-style: none;
+  padding: 0.8rem 1rem;
+  background: var(--bg-card);
+}
+
+.evidence-box li {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.82rem;
+  color: var(--text-body);
+  line-height: 1.6;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--border-dim);
+  padding-left: 1rem;
+  position: relative;
+}
+
+.evidence-box li:last-child { border-bottom: none; }
+
+.evidence-box li::before {
+  content: '›';
+  position: absolute; left: 0;
+  color: var(--amber-dim);
+  font-weight: 600;
+}
+
+/* ── I&W TABLE ─────────────────────────────────────────────────────────── */
+.iw-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.82rem;
+}
+
+.iw-table thead tr {
+  background: var(--bg-card-alt);
+  border-bottom: 1px solid var(--border);
+}
+
+.iw-table th {
+  padding: 0.75rem 1rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--amber);
+  text-align: left;
+  border-right: 1px solid var(--border-dim);
+}
+
+.iw-table th:last-child { border-right: none; }
+
+.iw-table tbody tr {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-dim);
+  transition: background 0.15s;
+}
+
+.iw-table tbody tr:last-child { border-bottom: none; }
+.iw-table tbody tr:hover { background: var(--bg-card-alt); }
+
+.iw-table td {
+  padding: 0.8rem 1rem;
+  color: var(--text-body);
+  border-right: 1px solid var(--border-dim);
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.iw-table td:last-child { border-right: none; }
+
+.iw-table td:first-child { color: var(--text-primary); font-weight: 600; }
+
+.status-pill {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.55rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.15rem 0.55rem;
+  border-radius: 20px;
+}
+
+.status-pill.red    { background: var(--red-dim); color: var(--red); border: 1px solid rgba(217,64,64,0.25); }
+.status-pill.amber  { background: var(--amber-pale); color: var(--amber); border: 1px solid var(--amber-dim); }
+.status-pill.green  { background: var(--green-dim); color: var(--green); border: 1px solid rgba(46,168,106,0.25); }
+
+/* ── SCENARIO CARDS ────────────────────────────────────────────────────── */
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.scenario-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.scenario-header {
+  padding: 0.8rem 1.2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid var(--border-dim);
+}
+
+.scenario-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+}
+
+.scenario-prob {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--text-muted);
+}
+
+.scenario-card.best  .scenario-header { background: var(--green-dim); }
+.scenario-card.best  .scenario-label  { color: var(--green); }
+.scenario-card.base  .scenario-header { background: var(--amber-pale); }
+.scenario-card.base  .scenario-label  { color: var(--amber); }
+.scenario-card.worst .scenario-header { background: var(--red-dim); }
+.scenario-card.worst .scenario-label  { color: var(--red); }
+
+.scenario-title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  padding: 0.9rem 1.2rem 0.4rem;
+}
+
+.scenario-body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.82rem;
+  color: var(--text-body);
+  line-height: 1.65;
+  padding: 0 1.2rem 1rem;
+}
+
+/* ── FIVE LAYER ────────────────────────────────────────────────────────── */
+.layer-stack { display: flex; flex-direction: column; gap: 1px; }
+
+.layer-item {
+  display: flex; gap: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.layer-num {
+  width: 100px; min-width: 100px;
+  background: var(--bg-card-alt);
+  border-right: 1px solid var(--border-dim);
+  padding: 1rem 1.2rem;
+  display: flex; flex-direction: column; gap: 0.25rem;
+}
+
+.layer-num-code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.55rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--amber);
+}
+
+.layer-num-name {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem; font-weight: 600;
+  color: var(--text-primary);
+}
+
+.layer-body {
+  padding: 1rem 1.3rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-body);
+  line-height: 1.65;
+}
+
+/* ── RECOMMENDATIONS ───────────────────────────────────────────────────── */
+.rec-timeline {
+  display: flex; flex-direction: column; gap: 0;
+  position: relative;
+}
+
+.rec-timeline::before {
+  content: '';
+  position: absolute; left: 79px; top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--amber), transparent);
+  opacity: 0.3;
+}
+
+.rec-block {
+  display: flex; gap: 0;
+  margin-bottom: 1.5rem;
+}
+
+.rec-time {
+  width: 80px; min-width: 80px;
+  padding-top: 0.1rem;
+}
+
+.rec-time-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.55rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.rec-time-label.immediate { background: var(--red-dim); color: var(--red); border: 1px solid rgba(217,64,64,0.2); }
+.rec-time-label.near      { background: var(--amber-pale); color: var(--amber); border: 1px solid var(--amber-dim); }
+.rec-time-label.medium    { background: var(--green-dim); color: var(--green); border: 1px solid rgba(46,168,106,0.2); }
+
+.rec-content {
+  flex: 1;
+  padding-left: 1.5rem;
+  border-left: none;
+}
+
+.rec-items { display: flex; flex-direction: column; gap: 0.6rem; }
+
+.rec-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-radius: 3px;
+  padding: 0.9rem 1.1rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-body);
+  line-height: 1.6;
+}
+
+.rec-item strong { color: var(--text-primary); }
+
+/* ── CONFIDENCE ────────────────────────────────────────────────────────── */
+.conf-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.conf-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: var(--bg-card-alt);
+  border-bottom: 1px solid var(--border);
+}
+
+.conf-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--amber);
+}
+
+.conf-level {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem; font-weight: 600;
+  color: var(--yellow);
+  background: rgba(212,184,74,0.1);
+  border: 1px solid rgba(212,184,74,0.25);
+  padding: 0.2rem 0.7rem;
+  border-radius: 2px;
+}
+
+.conf-body { padding: 1.2rem 1.5rem; }
+
+.conf-row {
+  display: flex; gap: 0.8rem;
+  margin-bottom: 0.65rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.83rem;
+  color: var(--text-body);
+  line-height: 1.55;
+}
+
+.conf-row::before {
+  content: '›';
+  color: var(--amber-dim);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 0.05em;
+}
+
+.conf-divider {
+  border: none; border-top: 1px solid var(--border-dim);
+  margin: 1rem 0;
+}
+
+.uncertainty-list { display: flex; flex-direction: column; gap: 0.6rem; }
+
+.uncertainty-item {
+  display: flex; gap: 0.8rem;
+  background: var(--bg-card-alt);
+  border: 1px solid var(--border-dim);
+  border-left: 3px solid rgba(217,64,64,0.4);
+  border-radius: 0 3px 3px 0;
+  padding: 0.75rem 1rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.82rem;
+  color: var(--text-body);
+  line-height: 1.55;
+}
+
+.uncertainty-item strong { color: var(--text-primary); }
+
+/* ── REFERENCES ────────────────────────────────────────────────────────── */
+.ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.8rem;
+}
+
+.ref-table thead tr {
+  background: var(--bg-card-alt);
+  border-bottom: 1px solid var(--border);
+}
+
+.ref-table th {
+  padding: 0.65rem 0.9rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.55rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--amber-dim);
+  text-align: left;
+  border-right: 1px solid var(--border-dim);
+}
+
+.ref-table th:last-child { border-right: none; }
+
+.ref-table tbody tr {
+  border-bottom: 1px solid var(--border-dim);
+  background: var(--bg-card);
+  transition: background 0.15s;
+}
+
+.ref-table tbody tr:hover { background: var(--bg-card-alt); }
+.ref-table tbody tr:last-child { border-bottom: none; }
+
+.ref-table td {
+  padding: 0.7rem 0.9rem;
+  color: var(--text-body);
+  border-right: 1px solid var(--border-dim);
+  vertical-align: top;
+}
+
+.ref-table td:last-child { border-right: none; }
+.ref-table td:first-child { color: var(--amber); font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; }
+
+.band-pill {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.55rem; font-weight: 600;
+  padding: 0.12rem 0.45rem;
+  border-radius: 2px;
+  letter-spacing: 0.1em;
+}
+
+.band-pill.green  { background: var(--green-dim); color: var(--green); border: 1px solid rgba(46,168,106,0.25); }
+.band-pill.amber  { background: var(--amber-pale); color: var(--amber); border: 1px solid var(--amber-dim); }
+
+/* ── PROSE ─────────────────────────────────────────────────────────────── */
+.prose {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-body);
+  line-height: 1.8;
+}
+
+.prose p { margin-bottom: 1rem; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--text-primary); }
+
+.sub-section {
+  margin-top: 2.2rem;
+  margin-bottom: 1.2rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-mono);
+  display: flex; align-items: center; gap: 0.8rem;
+}
+
+.sub-section::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border-dim), transparent);
+}
+
+/* ── BEHAVIORAL RISK ───────────────────────────────────────────────────── */
+.risk-bars { display: flex; flex-direction: column; gap: 0.8rem; }
+
+.risk-bar-item {
+  display: flex; align-items: center; gap: 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-radius: 3px;
+  padding: 0.8rem 1.1rem;
+}
+
+.risk-rank {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem; font-weight: 600;
+  color: var(--amber);
+  width: 24px; min-width: 24px;
+  text-align: center;
+}
+
+.risk-label {
+  flex: 1;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.risk-desc {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  max-width: 320px;
+  line-height: 1.4;
+}
+
+/* ── FOOTER ────────────────────────────────────────────────────────────── */
+footer {
+  background: var(--bg-panel);
+  border-top: 1px solid var(--border);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.footer-qa {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 0.5rem;
+}
+
+.footer-sub {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.footer-copy {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+/* ── ANIMATIONS ────────────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .hero { padding: 7rem 1.4rem 4rem; }
+  main  { padding: 3rem 1.2rem 4rem; }
+  nav   { padding: 0 1rem; }
+  .nav-title, .nav-date { display: none; }
+  .iw-table, .ref-table { font-size: 0.75rem; }
+  .iw-table th, .iw-table td, .ref-table th, .ref-table td { padding: 0.6rem 0.7rem; }
+  .layer-item { flex-direction: column; }
+  .layer-num { width: auto; border-right: none; border-bottom: 1px solid var(--border-dim); flex-direction: row; gap: 0.8rem; }
+  .risk-bar-item { flex-wrap: wrap; }
+  .risk-desc { max-width: 100%; }
+}
+
+@media print {
+  nav, #progress, body::before { display: none; }
+  .section { opacity: 1; transform: none; }
+  body { background: white; color: black; }
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-classify">Open Source</div>
+  <div class="nav-title">QAP // Fragility &amp; Governance Modeling // Togo &amp; Benin</div>
+  <div class="nav-date">March 2026</div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Intelligence Assessment</div>
+    <div class="hero-domain">Domain: Fragility &amp; Governance Modeling</div>
+    <h1 class="hero-title">Stability Pathways for<br><span>Togo and Benin</span></h1>
+    <p class="hero-subtitle">A structured intelligence assessment of escalation risks, governance deficits, and the pathways required to keep both regions stable against JNIM's deliberate southern advance.</p>
+    <div class="hero-meta">
+      <div class="meta-cell">
+        <div class="meta-label">Producer</div>
+        <div class="meta-value">M. Nuri Shakoor</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">Framework</div>
+        <div class="meta-value">QAP™ / OSPREY</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">Date</div>
+        <div class="meta-value">March 2026</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">Confidence</div>
+        <div class="meta-value">Moderate</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">Threat Level</div>
+        <div class="meta-value"><span class="threat-badge"><span class="threat-dot"></span>Escalating</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main>
+
+  <!-- 1. BLUF -->
+  <section class="section" id="s1">
+    <div class="section-header">
+      <span class="section-num">01 // BLUF</span>
+      <div class="section-title">Bottom Line Up Front</div>
+    </div>
+    <div class="bluf-grid">
+      <div class="bluf-item">
+        <div class="bluf-index">01</div>
+        <div class="bluf-text"><strong>Strategic intent, not spillover.</strong> JNIM's expansion into Benin and Togo is a deliberate strategic push. Both states now sit on the active frontline of the jihadist southern advance.</div>
+      </div>
+      <div class="bluf-item">
+        <div class="bluf-index">02</div>
+        <div class="bluf-text"><strong>Escalating casualties.</strong> Togo recorded 52 deaths from ten attacks in 2024. Benin suffered 28 soldiers killed in early January 2025 alone, near the Burkina Faso-Niger border.</div>
+      </div>
+      <div class="bluf-item">
+        <div class="bluf-index">03</div>
+        <div class="bluf-text"><strong>Internal fractures emerging.</strong> A thwarted coup attempt in Benin on 7 December 2025, mounted by military officers citing the deteriorating northern security situation, shows that external threat pressure is now activating internal political fractures.</div>
+      </div>
+      <div class="bluf-item">
+        <div class="bluf-index">04</div>
+        <div class="bluf-text"><strong>Security dominance is self-undermining.</strong> Both governments have defaulted to a security-heavy posture while neglecting the political, economic, and social conditions that make communities vulnerable to recruitment. This is generating diminishing returns and new grievances.</div>
+      </div>
+      <div class="bluf-item">
+        <div class="bluf-index">05</div>
+        <div class="bluf-text"><strong>Governance competition has begun.</strong> JNIM has shifted strategy toward territorial administration — controlling territory, establishing governance structures, and cultivating local support. Conventional military responses alone cannot counter this.</div>
+      </div>
+      <div class="bluf-item">
+        <div class="bluf-index">06</div>
+        <div class="bluf-text"><strong>Dual-track response required.</strong> Stability requires hardening the security perimeter in the short term while investing urgently in governance presence, economic integration, and community trust in the north over the medium term.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. SITUATION SNAPSHOT -->
+  <section class="section" id="s2">
+    <div class="section-header">
+      <span class="section-num">02 // SNAPSHOT</span>
+      <div class="section-title">Situation Snapshot</div>
+    </div>
+    <div class="snapshot-grid">
+      <div class="snapshot-cell">
+        <div class="snapshot-label">Who</div>
+        <div class="snapshot-content">Govts of <strong>Togo</strong> &amp; <strong>Benin</strong>, <strong>JNIM</strong>, IS Sahel, ECOWAS, Accra Initiative, France, United States</div>
+      </div>
+      <div class="snapshot-cell">
+        <div class="snapshot-label">What</div>
+        <div class="snapshot-content">Sustained jihadist infiltration of northern border zones, combined with political fragility in both capitals</div>
+      </div>
+      <div class="snapshot-cell">
+        <div class="snapshot-label">Where</div>
+        <div class="snapshot-content">Northern <strong>Togo</strong> (Savanes); northern <strong>Benin</strong> (Atacora, Alibori); W-Arly-Pendjari tri-border park complex</div>
+      </div>
+      <div class="snapshot-cell">
+        <div class="snapshot-label">When</div>
+        <div class="snapshot-content">Active escalation since 2019 (Benin) and 2021 (Togo); acceleration through 2024–2025; political flashpoint December 2025</div>
+      </div>
+      <div class="snapshot-cell">
+        <div class="snapshot-label">Why</div>
+        <div class="snapshot-content">Limited service delivery, anti-govt disinformation, intercommunal tensions, and absent economic opportunity in border regions</div>
+      </div>
+      <div class="snapshot-cell">
+        <div class="snapshot-label">How</div>
+        <div class="snapshot-content">Extremists leveraged farmer-pastoralist disputes and livestock movement restrictions to recruit and establish footholds</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. KEY JUDGMENTS -->
+  <section class="section" id="s3">
+    <div class="section-header">
+      <span class="section-num">03 // KEY JUDGMENTS</span>
+      <div class="section-title">Key Judgments</div>
+    </div>
+    <div class="kj-list">
+      <div class="kj-item high">
+        <div class="kj-conf">
+          <div class="kj-conf-badge high">High</div>
+          <div class="kj-id">KJ-1</div>
+        </div>
+        <div class="kj-body"><strong>JNIM's southern expansion is strategic and durable.</strong> JNIM's hybrid governance model — imposing local taxes, settling disputes, restricting cross-border commerce — represents the most significant threat trajectory for 2026. Military pressure alone will not reverse this.</div>
+      </div>
+      <div class="kj-item high">
+        <div class="kj-conf">
+          <div class="kj-conf-badge high">High</div>
+          <div class="kj-id">KJ-2</div>
+        </div>
+        <div class="kj-body"><strong>Benin faces a compounded threat.</strong> The December 2025 coup attempt indicates that security failures in the north are now generating political fractures inside the state apparatus, creating a dangerous feedback loop between external threat and internal instability.</div>
+      </div>
+      <div class="kj-item moderate">
+        <div class="kj-conf">
+          <div class="kj-conf-badge moderate">Moderate</div>
+          <div class="kj-id">KJ-3</div>
+        </div>
+        <div class="kj-body"><strong>Togo's governance response is self-undermining.</strong> The extended state of emergency in Savanes has been used to arbitrarily detain people on ethnic grounds, suppressing citizen advocacy and community trust networks critical to counter-insurgency.</div>
+      </div>
+      <div class="kj-item moderate">
+        <div class="kj-conf">
+          <div class="kj-conf-badge moderate">Moderate</div>
+          <div class="kj-id">KJ-4</div>
+        </div>
+        <div class="kj-body"><strong>Western military withdrawal has created a security vacuum.</strong> The shift toward alternative partnerships is observable regionally. Neither Togo nor Benin has pivoted to Russia, but their options are narrowing as external support frameworks fragment.</div>
+      </div>
+      <div class="kj-item moderate">
+        <div class="kj-conf">
+          <div class="kj-conf-badge moderate">Moderate</div>
+          <div class="kj-id">KJ-5</div>
+        </div>
+        <div class="kj-body"><strong>Regional coordination architecture is structurally insufficient.</strong> Overlapping AU, ECOWAS, and AES mandates produce acute institutional fragmentation. The ECOWAS Rapid Deployment Force at 1,650 personnel is symbolic, not deterrent.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. EVIDENCE -->
+  <section class="section" id="s4">
+    <div class="section-header">
+      <span class="section-num">04 // EVIDENCE</span>
+      <div class="section-title">Evidence Summary</div>
+    </div>
+    <div class="evidence-grid">
+      <div class="evidence-box">
+        <div class="evidence-box-header know">&#10003; &nbsp; What We Know (Facts)</div>
+        <ul>
+          <li>Violent events within 50km of coastal West African borders up over 250% in two years, surpassing 450 incidents</li>
+          <li>Benin coup attempt 7 Dec 2025, thwarted with ECOWAS/Nigeria support</li>
+          <li>Togo: 52 deaths in 2024; Benin: 173 deaths in past year</li>
+          <li>Togo 2024 constitutional amendments consolidated executive authority under Gnassingbé</li>
+          <li>Togo CIPLEV and Benin CLTIF established with U.S. support as prevention bodies</li>
+        </ul>
+      </div>
+      <div class="evidence-box">
+        <div class="evidence-box-header assess">~ &nbsp; What We Assess (Inferences)</div>
+        <ul>
+          <li>JNIM governance competition in the north likely outpaces state service delivery in those zones</li>
+          <li>Benin military grievances over northern deployments are latent and could resurface</li>
+          <li>Togo's constitutional consolidation may reduce incentive to invest in marginalised northern populations</li>
+          <li>U.S. policy posture shift may reduce coastal West Africa stabilisation commitment</li>
+        </ul>
+      </div>
+      <div class="evidence-box">
+        <div class="evidence-box-header gap">&#9651; &nbsp; What We Don't Know (Gaps)</div>
+        <ul>
+          <li>Granular JNIM recruitment rates and command node locations inside both countries</li>
+          <li>True extent of community collaboration vs. coerced compliance with extremist groups</li>
+          <li>Whether Trump administration will maintain or reduce SPCPS framework commitments</li>
+          <li>Real-time JNIM administrative reach inside WAP park corridor</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. ANALYSIS -->
+  <section class="section" id="s5">
+    <div class="section-header">
+      <span class="section-num">05 // ANALYSIS</span>
+      <div class="section-title">Analysis</div>
+    </div>
+
+    <div class="sub-section">Five-Layer Strategic Cognition Mapping</div>
+    <div class="layer-stack">
+      <div class="layer-item">
+        <div class="layer-num"><div class="layer-num-code">L1</div><div class="layer-num-name">Foundations</div></div>
+        <div class="layer-body">Two coastal states with historically moderate governance records, now under sustained jihadist pressure. Both have functioning capitals and coastal economies. Both have weak state presence in northern border regions — the foundational vulnerability JNIM exploits.</div>
+      </div>
+      <div class="layer-item">
+        <div class="layer-num"><div class="layer-num-code">L2</div><div class="layer-num-name">Mechanisms</div></div>
+        <div class="layer-body">Violent extremist groups exploit weak governance, marginalisation, and local grievances. Youth unemployment, pastoral-farmer land conflicts, and geographic marginalisation are the primary recruitment levers. JNIM's governance provision model accelerates community defection from the state where the state is absent.</div>
+      </div>
+      <div class="layer-item">
+        <div class="layer-num"><div class="layer-num-code">L3</div><div class="layer-num-name">Dynamics</div></div>
+        <div class="layer-body">A compounding feedback loop is active: crackdowns generate resentment → resentment reduces intelligence cooperation → degraded effectiveness increases attacks → attacks generate pressure for more crackdowns. JNIM explicitly threatens reprisals against cooperating civilians, locking communities into forced neutrality that disadvantages the state over time.</div>
+      </div>
+      <div class="layer-item">
+        <div class="layer-num"><div class="layer-num-code">L4</div><div class="layer-num-name">Leverage</div></div>
+        <div class="layer-body">Three primary leverage points: (1) governance extension into northern zones through service delivery, not only security presence; (2) cross-border intelligence coordination via Accra Initiative; (3) economic integration of northern border communities into national supply chains.</div>
+      </div>
+      <div class="layer-item">
+        <div class="layer-num"><div class="layer-num-code">L5</div><div class="layer-num-name">Paradigms</div></div>
+        <div class="layer-body">Both governments frame violent extremism as an external import requiring border security, often alongside rhetoric targeting Fulani populations. This framing is analytically incorrect and operationally counterproductive. The required paradigm shift: reframe as a domestic governance deficit, not a foreign invasion.</div>
+      </div>
+    </div>
+
+    <div class="sub-section" style="margin-top:2.8rem;">Scenario Modeling</div>
+    <div class="scenario-grid">
+      <div class="scenario-card best">
+        <div class="scenario-header">
+          <span class="scenario-label">Scenario A — Best Case</span>
+          <span class="scenario-prob">Probability: Low–Moderate</span>
+        </div>
+        <div class="scenario-title">Stabilisation Pathway</div>
+        <div class="scenario-body">Both govts accelerate governance investment in the north, integrating civil society into counter-extremism programming. ECOWAS RDF deploys along key infiltration corridors. JNIM's territorial ambitions are disrupted before governance structures entrench.<br><br><strong>Triggers:</strong> Sustained political will in both capitals; U.S. and European funding continuation; Accra Initiative intelligence-sharing breakthrough.</div>
+      </div>
+      <div class="scenario-card base">
+        <div class="scenario-header">
+          <span class="scenario-label">Scenario B — Base Case</span>
+          <span class="scenario-prob">Probability: Moderate–High</span>
+        </div>
+        <div class="scenario-title">Managed Deterioration</div>
+        <div class="scenario-body">Both govts maintain security-dominant approach with marginal governance investment. Attacks continue increasing. Northern populations remain caught between security forces and JNIM. A second coup attempt in Benin within 18–24 months if northern conditions don't visibly improve.<br><br><strong>Triggers:</strong> No governance investment announcement; continued state of emergency renewal without civilian spending.</div>
+      </div>
+      <div class="scenario-card worst">
+        <div class="scenario-header">
+          <span class="scenario-label">Scenario C — Worst Case</span>
+          <span class="scenario-prob">Probability: Low–Moderate, rising</span>
+        </div>
+        <div class="scenario-title">Cascading Fragility</div>
+        <div class="scenario-body">A major JNIM urban attack or successful coup triggers institutional crisis. One or both govts pivot toward Russian security partnerships. ECOWAS cohesion fractures further. Refugee flows accelerate toward coastal cities. Maritime security in Lomé and Cotonou deteriorates.<br><br><strong>Triggers:</strong> Mass-casualty urban attack; successful second coup; Russia bilateral security visit.</div>
+      </div>
+    </div>
+
+    <div class="sub-section" style="margin-top:2.8rem;">Indicators &amp; Warnings</div>
+    <div style="overflow-x:auto;">
+    <table class="iw-table">
+      <thead>
+        <tr>
+          <th>Indicator</th>
+          <th>Direction</th>
+          <th>Threshold</th>
+          <th>Status</th>
+          <th>Cadence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>JNIM attacks — Savanes (Togo)</td>
+          <td>Increasing</td>
+          <td>&gt;3 attacks/month</td>
+          <td><span class="status-pill amber">Amber</span></td>
+          <td>Monthly</td>
+        </tr>
+        <tr>
+          <td>JNIM attacks — Atacora/Alibori (Benin)</td>
+          <td>Increasing</td>
+          <td>&gt;4 attacks/month</td>
+          <td><span class="status-pill red">Red</span></td>
+          <td>Monthly</td>
+        </tr>
+        <tr>
+          <td>IDP displacement — both countries north</td>
+          <td>Increasing</td>
+          <td>&gt;50,000 new IDP</td>
+          <td><span class="status-pill amber">Amber</span></td>
+          <td>Quarterly</td>
+        </tr>
+        <tr>
+          <td>Military grievance signals (Benin)</td>
+          <td>Latent</td>
+          <td>Any public statement citing deployment conditions</td>
+          <td><span class="status-pill amber">Amber</span></td>
+          <td>Ongoing</td>
+        </tr>
+        <tr>
+          <td>Togo Savanes emergency extension</td>
+          <td>Recurring</td>
+          <td>3rd consecutive extension with no governance investment</td>
+          <td><span class="status-pill red">Red</span></td>
+          <td>Biannual</td>
+        </tr>
+        <tr>
+          <td>ECOWAS RDF deployment status</td>
+          <td>Delayed</td>
+          <td>No deployment by Q3 2026</td>
+          <td><span class="status-pill amber">Amber</span></td>
+          <td>Quarterly</td>
+        </tr>
+        <tr>
+          <td>Accra Initiative joint operations</td>
+          <td>Declining</td>
+          <td>No joint operation in 6 months</td>
+          <td><span class="status-pill amber">Amber</span></td>
+          <td>Biannual</td>
+        </tr>
+        <tr>
+          <td>Russia security partnership signals</td>
+          <td>Emerging</td>
+          <td>Official bilateral security visit</td>
+          <td><span class="status-pill green">Green</span></td>
+          <td>Ongoing</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <!-- 6. BEHAVIORAL TRADECRAFT -->
+  <section class="section" id="s6">
+    <div class="section-header">
+      <span class="section-num">06 // BEHAVIORAL</span>
+      <div class="section-title">Applied Behavioral Tradecraft</div>
+    </div>
+
+    <div class="sub-section">Behavioral Risk Drivers (Ranked)</div>
+    <div class="risk-bars">
+      <div class="risk-bar-item">
+        <div class="risk-rank">01</div>
+        <div class="risk-label">State Legitimacy Deficit in the North</div>
+        <div class="risk-desc">Northern populations perceive the central govt as extractive rather than protective, creating an identity vacuum JNIM actively fills through governance provision and dispute resolution.</div>
+      </div>
+      <div class="risk-bar-item">
+        <div class="risk-rank">02</div>
+        <div class="risk-label">Threat-Coercion Compliance Spiral</div>
+        <div class="risk-desc">JNIM explicitly threatens reprisals against civilians who cooperate with the state, making non-cooperation the rational survival choice. Security crackdowns with ethnic profiling accelerate this dynamic.</div>
+      </div>
+      <div class="risk-bar-item">
+        <div class="risk-rank">03</div>
+        <div class="risk-label">Elite Political Incentive Misalignment</div>
+        <div class="risk-desc">In Togo, reduced northern accountability. In Benin, post-coup pressure creates incentives for visible military assertiveness over slower governance investment. Both incentive structures work against stabilisation.</div>
+      </div>
+      <div class="risk-bar-item">
+        <div class="risk-rank">04</div>
+        <div class="risk-label">Narrative Capture of Grievance</div>
+        <div class="risk-desc">JNIM has actively leveraged pastoral-farmer disputes and economic marginalisation in its recruitment narrative. Both govts have ceded this narrative space by framing the conflict as external rather than engaging underlying grievances.</div>
+      </div>
+    </div>
+
+    <div class="sub-section" style="margin-top:2.2rem;">Influence &amp; Narrative Vulnerabilities</div>
+    <div class="prose">
+      <p>Civil society and media actors in both countries are largely excluded from counter-extremism architecture, with media used primarily to publicise government activity rather than as a genuine community engagement channel. This limits the state's narrative reach into affected communities precisely where it is most needed.</p>
+      <p>Pastoralists and Fula community members are widely perceived as connected to extremists, creating a stigmatisation dynamic that accelerates radicalisation among the very groups most important to win over. This framing, reinforced by security rhetoric in both capitals, is analytically counterproductive.</p>
+    </div>
+  </section>
+
+  <!-- 7. RECOMMENDATIONS -->
+  <section class="section" id="s7">
+    <div class="section-header">
+      <span class="section-num">07 // RECOMMENDATIONS</span>
+      <div class="section-title">Recommendations</div>
+    </div>
+    <div class="rec-timeline">
+      <div class="rec-block">
+        <div class="rec-time"><div class="rec-time-label immediate">0–72h</div></div>
+        <div class="rec-content">
+          <div class="rec-items">
+            <div class="rec-item"><strong>Signal institutional cohesion:</strong> Issue a joint Togo-Benin statement reaffirming ECOWAS partnership and Accra Initiative commitment in response to the December 2025 coup attempt.</div>
+            <div class="rec-item"><strong>Establish baseline:</strong> Commission an internal audit of northern governance service delivery gaps in both countries to anchor medium-term investment targeting.</div>
+            <div class="rec-item"><strong>Intelligence briefing:</strong> Request a classified brief from Accra Initiative partners on current JNIM command node locations in both countries to inform near-term targeting priorities.</div>
+          </div>
+        </div>
+      </div>
+      <div class="rec-block">
+        <div class="rec-time"><div class="rec-time-label near">3–30 days</div></div>
+        <div class="rec-content">
+          <div class="rec-items">
+            <div class="rec-item"><strong>Togo:</strong> Announce a credible governance investment package for Savanes to accompany any state of emergency renewal — demonstrating that security measures are paired with visible state presence: health posts, market infrastructure, local administration.</div>
+            <div class="rec-item"><strong>Benin:</strong> Conduct a structured civil-military review of northern deployment conditions to address the grievances that motivated the December coup attempt before they resurface at higher intensity.</div>
+            <div class="rec-item"><strong>Cross-border protocol:</strong> Activate bilateral Togo-Benin intelligence-sharing on JNIM movements in the WAP corridor, which currently functions as a cross-border operational safe zone.</div>
+          </div>
+        </div>
+      </div>
+      <div class="rec-block">
+        <div class="rec-time"><div class="rec-time-label medium">30–180 days</div></div>
+        <div class="rec-content">
+          <div class="rec-items">
+            <div class="rec-item"><strong>Civil society integration:</strong> Formally integrate civil society organisations — particularly those with presence in northern communities — into CIPLEV and CLTIF operational planning as design partners, not just committee seats.</div>
+            <div class="rec-item"><strong>Narrative reframe:</strong> Shift public-facing counter-extremism communications from "foreign threat" to "northern development and security" framing that engages community grievances rather than stigmatising Fulani and pastoral populations.</div>
+            <div class="rec-item"><strong>ECOWAS advocacy:</strong> Prioritise Togo and Benin border zones in the 2026 RDF deployment footprint, ensuring the force is not concentrated solely in AES-adjacent areas.</div>
+            <div class="rec-item"><strong>Pastoral protocol:</strong> Establish a cross-border pastoral movement protocol between Togo and Benin that regularises livestock movement and removes a key JNIM recruitment lever.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. CONFIDENCE -->
+  <section class="section" id="s8">
+    <div class="section-header">
+      <span class="section-num">08 // CONFIDENCE</span>
+      <div class="section-title">Confidence &amp; Uncertainties</div>
+    </div>
+    <div class="conf-panel">
+      <div class="conf-header">
+        <div class="conf-title">Overall Confidence Assessment</div>
+        <div class="conf-level">MODERATE</div>
+      </div>
+      <div class="conf-body">
+        <div class="conf-row">Attack data from ACLED and UN Security Council reporting is strong and corroborated across multiple independent source streams.</div>
+        <div class="conf-row">Governance deficit analysis is well-supported by ISS Africa field research and cross-validated by Foreign Policy and Africa Center assessments.</div>
+        <div class="conf-row">JNIM strategic intent assessed with high confidence based on claimed operations and documented governance behaviour in Mali and Burkina Faso. Confidence capped at Moderate due to absence of granular field data on recruitment rates and current U.S. policy trajectory.</div>
+        <hr class="conf-divider">
+        <div class="sub-section" style="margin-top:0.5rem;">Three Uncertainties That Could Flip the Assessment</div>
+        <div class="uncertainty-list">
+          <div class="uncertainty-item"><strong>U.S. policy continuity:</strong> If the current administration withdraws the Biden-era SPCPS framework ($100M+ committed), the capacity-building programs underpinning both CIPLEV and CLTIF would be materially degraded, accelerating toward Scenario C.</div>
+          <div class="uncertainty-item"><strong>Second coup attempt in Benin:</strong> If military grievances are not addressed and a second attempt succeeds, regional dynamics shift dramatically. ECOWAS intervention would be tested at scale for the first time in a high-threat environment.</div>
+          <div class="uncertainty-item"><strong>JNIM urban expansion:</strong> A mass-casualty attack in a secondary city — rather than rural border zones — could collapse public confidence in both governments rapidly, triggering emergency measures that further erode civil liberties and community trust.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. REFERENCES -->
+  <section class="section" id="s9">
+    <div class="section-header">
+      <span class="section-num">09 // REFERENCES</span>
+      <div class="section-title">Source Register &amp; WSI Audit</div>
+    </div>
+    <div style="overflow-x:auto;">
+    <table class="ref-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Source</th>
+          <th>Type</th>
+          <th>Band</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>[1]</td><td>ACLED: Conflict Intensifies Beyond Burkina Faso, Mali, and Niger (2025)</td><td>Conflict Data / OSINT</td><td><span class="band-pill green">Green</span></td></tr>
+        <tr><td>[2]</td><td>UN Security Council: West Africa and the Sahel — April 2025 Forecast</td><td>Intergovernmental</td><td><span class="band-pill green">Green</span></td></tr>
+        <tr><td>[3]</td><td>UN Security Council: West Africa and the Sahel — November 2025 Forecast</td><td>Intergovernmental</td><td><span class="band-pill green">Green</span></td></tr>
+        <tr><td>[4]</td><td>African Security Analysis: UN Security Council Forecast November 2025</td><td>Analytical Secondary</td><td><span class="band-pill amber">Amber</span></td></tr>
+        <tr><td>[5]</td><td>ISS Africa: Civilian-State Security Cooperation in Benin and Togo</td><td>Field Research</td><td><span class="band-pill green">Green</span></td></tr>
+        <tr><td>[6]</td><td>Chatham House: West Africa Needs Regional Solutions (December 2025)</td><td>Policy Analysis</td><td><span class="band-pill green">Green</span></td></tr>
+        <tr><td>[7]</td><td>Africa Center for Strategic Studies: Recalibrating Coastal West Africa's Response (Oct 2024)</td><td>Policy Analysis</td><td><span class="band-pill green">Green</span></td></tr>
+        <tr><td>[8]</td><td>Foreign Policy: Islamist Extremists Are a Threat to Ghana, Togo, and Benin (Sept 2024)</td><td>Analytical Journalism</td><td><span class="band-pill amber">Amber</span></td></tr>
+        <tr><td>[9]</td><td>ISS Africa: Evidence Must Guide Terrorism Prevention in Benin and Togo</td><td>Field Research</td><td><span class="band-pill green">Green</span></td></tr>
+        <tr><td>[10]</td><td>UN Press: Security Council Briefing — West Africa, December 2025</td><td>Official Record</td><td><span class="band-pill green">Green</span></td></tr>
+        <tr><td>[11]</td><td>INIS Webinar Report: Security Challenges in West Africa (December 2025)</td><td>Academic / Policy</td><td><span class="band-pill amber">Amber</span></td></tr>
+        <tr><td>[12]</td><td>UNDP: Prevention Facility for the Gulf of Guinea (2025)</td><td>UN Development</td><td><span class="band-pill green">Green</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="prose" style="margin-top:1.2rem;">
+      <p><strong>Independence test applied:</strong> Key judgments on JNIM expansion, attack frequency, and governance deficit are corroborated by at least three independent source streams (ACLED data, UN reporting, ISS Africa field research, and Africa Center policy analysis). No single-source key judgment is present without explicit caveat.</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-qa">Quanta Analytica Process™</div>
+  <div class="footer-sub">Framework-Governed Intelligence &middot; Strategic Risk &middot; Decision-Ready Analysis</div>
+  <div class="footer-copy">M. Nuri Shakoor &nbsp;|&nbsp; March 2026 &nbsp;|&nbsp; All claims traced to open-source evidence or labelled as analyst inference</div>
+</footer>
+
+<script>
+  // Progress
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    const p = h > 0 ? (window.scrollY / h) * 100 : 0;
+    document.getElementById('progress').style.width = p + '%';
+  });
+
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+
+  document.querySelectorAll('.section').forEach(s => obs.observe(s));
+</script>
+
+</body>
+</html>
