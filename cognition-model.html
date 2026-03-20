@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>QA Process™ vs Five-Layer Cognition Model | Quanta Analytica</title>
+  <meta name="description" content="How the Quanta Analytica Process™ operational workflow integrates with the Five-Layer Cognition Model — the analytical reasoning engine embedded within Stage 3 of the QA Process." />
+  <meta name="keywords" content="Quanta Analytica Process, Five-Layer Cognition Model, structured analysis, foundations mechanisms dynamics leverage paradigms, intelligence framework, MNS Consulting" />
+  <meta name="author" content="M. Nuri Shakoor, MNS Consulting" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://quanta-analytica.com/cognition-model.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://quanta-analytica.com/cognition-model.html" />
+  <meta property="og:title" content="QA Process™ vs Five-Layer Cognition Model" />
+  <meta property="og:description" content="The operational workflow meets the analytical reasoning engine. How the QA Process and Five-Layer Cognition Model interlock." />
+  <meta property="og:image" content="https://quanta-analytica.com/og-image.png" />
+  <meta property="og:site_name" content="Quanta Analytica" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="QA Process™ vs Five-Layer Cognition Model | Quanta Analytica" />
+  <meta name="twitter:description" content="The operational workflow meets the analytical reasoning engine." />
+  <meta name="twitter:image" content="https://quanta-analytica.com/og-image.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "name": "QA Process™ vs Five-Layer Cognition Model",
+    "description": "How the Quanta Analytica Process operational workflow integrates with the Five-Layer Cognition Model analytical reasoning engine.",
+    "author": { "@type": "Person", "name": "M. Nuri Shakoor" },
+    "publisher": { "@type": "Organization", "name": "MNS Consulting", "url": "https://quanta-analytica.com" },
+    "url": "https://quanta-analytica.com/cognition-model.html"
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow+Condensed:wght@300;400;500;600&family=Barlow:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --obsidian:   #0a0c10;
+      --deep-navy:  #0d1220;
+      --midnight:   #111827;
+      --panel:      rgba(255,255,255,0.04);
+      --panel2:     rgba(255,255,255,0.07);
+      --gold:       #c8a96e;
+      --gold-light: #e2c98a;
+      --gold-dim:   rgba(200,169,110,0.12);
+      --gold-line:  rgba(200,169,110,0.28);
+      --text:       rgba(245,242,236,0.95);
+      --muted:      rgba(245,242,236,0.68);
+      --muted2:     rgba(245,242,236,0.40);
+      --border:     rgba(200,169,110,0.14);
+      --border-soft:rgba(255,255,255,0.07);
+      --shadow:     0 16px 56px rgba(0,0,0,0.5);
+      /* layer accent colours — all dark-palette compliant */
+      --c-steel:    rgba(168,216,234,0.18);
+      --c-steel-b:  rgba(168,216,234,0.45);
+      --c-amber:    rgba(250,186,100,0.16);
+      --c-amber-b:  rgba(250,186,100,0.50);
+      --c-blue:     rgba(130,185,235,0.16);
+      --c-blue-b:   rgba(130,185,235,0.45);
+      --c-teal:     rgba(100,210,170,0.16);
+      --c-teal-b:   rgba(100,210,170,0.45);
+      --c-violet:   rgba(190,170,255,0.16);
+      --c-violet-b: rgba(190,170,255,0.45);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-ui:      'Barlow Condensed', sans-serif;
+      --font-body:    'Barlow', sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+      --max: 1160px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--obsidian);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+      cursor: crosshair;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 999; opacity: 0.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    .skip-link {
+      position: absolute; left: -999px; top: 10px;
+      background: var(--panel2); padding: 10px 12px;
+      border: 1px solid var(--border); z-index: 9999;
+      font-family: var(--font-ui);
+    }
+    .skip-link:focus { left: 12px; }
+
+    .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+
+    /* ── NAV ── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(10,12,16,0.94), rgba(10,12,16,0.72));
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 14px; padding: 14px 0;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .brand:hover { text-decoration: none; }
+    .brand-name { display: flex; flex-direction: column; line-height: 1.15; }
+    .brand-name strong {
+      font-family: var(--font-ui); font-size: 0.92rem;
+      font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text);
+    }
+    .brand-name span {
+      font-family: var(--font-ui); font-size: 0.68rem;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);
+    }
+    .nav-links { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+    .nav-links a {
+      padding: 7px 11px;
+      font-family: var(--font-ui); font-size: 0.7rem;
+      font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted); border: 1px solid transparent;
+      transition: color .25s, border-color .25s, background .25s;
+    }
+    .nav-links a:hover, .nav-links a.current {
+      color: var(--gold); border-color: var(--gold-line);
+      background: var(--gold-dim); text-decoration: none;
+    }
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 9px 16px; border: 1px solid var(--gold-line); background: var(--gold-dim);
+      color: var(--gold); cursor: pointer; font-family: var(--font-ui); font-weight: 500;
+      font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+      transition: background .2s, border-color .2s, transform .1s; user-select: none; text-decoration: none;
+    }
+    .btn:hover { background: rgba(200,169,110,0.22); border-color: var(--gold); text-decoration: none; }
+    .btn:active { transform: translateY(1px); }
+    .btn.primary { background: var(--gold); color: var(--obsidian); border-color: var(--gold); }
+    .btn.primary:hover { background: var(--gold-light); border-color: var(--gold-light); }
+    .btn.ghost { background: transparent; color: var(--muted); border-color: var(--border-soft); }
+    .btn.ghost:hover { background: var(--panel); color: var(--text); border-color: var(--border); }
+    .btn.small { padding: 6px 12px; font-size: 0.66rem; }
+
+    /* ── LAYOUT ── */
+    main { padding: 36px 0 80px; }
+    section { padding: 52px 0; }
+
+    h1, h2, h3, h4 { margin: 0; }
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 5.5vw, 6rem);
+      font-weight: 300; line-height: 0.95; letter-spacing: -0.01em;
+    }
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem, 2.8vw, 2.8rem);
+      font-weight: 300; line-height: 1.05;
+    }
+    h3 {
+      font-family: var(--font-ui); font-size: 0.78rem;
+      font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+    }
+    h4 {
+      font-family: var(--font-display); font-size: 1.2rem; font-weight: 400;
+    }
+    em { font-style: italic; color: var(--gold-light); }
+    p { margin: 10px 0 0; color: var(--muted); }
+
+    .divider { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.4rem; }
+    .divider-num { font-family: var(--font-ui); font-size: 0.63rem; letter-spacing: 0.28em; color: var(--gold); opacity: 0.55; }
+    .divider-rule { width: 48px; height: 1px; background: var(--gold-line); flex-shrink: 0; }
+    .divider-label { font-family: var(--font-ui); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); }
+
+    .kicker { font-family: var(--font-ui); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+    .pill {
+      display: inline-flex; align-items: center; gap: 7px; padding: 5px 11px;
+      border: 1px solid var(--gold-line); background: var(--gold-dim); color: var(--muted);
+      font-family: var(--font-ui); font-size: 0.66rem; letter-spacing: 0.15em; text-transform: uppercase;
+    }
+    .dot {
+      width: 6px; height: 6px; background: var(--gold); border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(200,169,110,0.14); animation: pulse 3s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:.35;transform:scale(1)} 50%{opacity:1;transform:scale(1.4)} }
+
+    .grid { display: grid; gap: 14px; }
+    .cols-2 { grid-template-columns: repeat(2,1fr); }
+    .cols-3 { grid-template-columns: repeat(3,1fr); }
+    @media(max-width:800px){ .cols-2,.cols-3{ grid-template-columns:1fr; } }
+
+    .card {
+      background: var(--panel); border: 1px solid var(--border); padding: 22px; position: relative; transition: background .3s;
+    }
+    .card::before { content:''; position:absolute; top:0; left:0; width:0; height:2px; background:var(--gold); transition:width .4s ease; }
+    .card:hover { background: var(--panel2); }
+    .card:hover::before { width:100%; }
+
+    .list { margin: 10px 0 0; padding: 0 0 0 18px; color: var(--muted); }
+    .list li { margin: 5px 0; font-size: 0.91rem; }
+    .note { font-family: var(--font-ui); font-size: 0.68rem; letter-spacing: 0.1em; color: var(--muted2); margin-top: 6px; }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative; min-height: 80vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 6rem 0 4rem; overflow: hidden;
+    }
+    .hero-geo { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+    .bg-hex {
+      position: absolute; right: -6vw; top: 50%; transform: translateY(-50%);
+      width: 50vw; max-width: 720px; opacity: 0.05;
+      animation: spin 90s linear infinite;
+    }
+    @keyframes spin { from{transform:translateY(-50%) rotate(0deg)} to{transform:translateY(-50%) rotate(360deg)} }
+    .scan { position: absolute; left:0; right:0; height:1px; background: linear-gradient(to right, transparent, var(--gold-line), transparent); }
+    .scan.t { top:16%; } .scan.b { top:82%; }
+
+    .hero-eyebrow {
+      font-family: var(--font-ui); font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.38em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.6rem;
+      opacity: 0; animation: slideUp .8s ease .15s forwards;
+    }
+    .hero-title { opacity: 0; animation: slideUp .9s ease .3s forwards; margin-bottom: 2rem; }
+    .hero-sub {
+      max-width: 580px; font-size: 1.02rem; line-height: 1.88; color: var(--muted); margin-bottom: 2.6rem;
+      opacity: 0; animation: slideUp .9s ease .48s forwards;
+    }
+    .hero-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2.2rem; opacity: 0; animation: slideUp .9s ease .62s forwards; }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; opacity: 0; animation: slideUp .9s ease .76s forwards; }
+
+    @keyframes slideUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+    /* ── ANALOGY BANNER ── */
+    .analogy-banner {
+      display: grid; grid-template-columns: 1fr auto 1fr; gap: 0;
+      border: 1px solid var(--border); margin-bottom: 48px; overflow: hidden;
+    }
+    .analogy-side {
+      padding: 22px 28px; background: var(--panel);
+    }
+    .analogy-side.right { text-align: right; }
+    .analogy-divider {
+      display: flex; align-items: center; justify-content: center;
+      padding: 0 20px; border-left: 1px solid var(--border); border-right: 1px solid var(--border);
+      background: var(--gold-dim);
+    }
+    .analogy-divider span {
+      font-family: var(--font-ui); font-size: 0.62rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold); writing-mode: vertical-rl; transform: rotate(180deg);
+    }
+    .analogy-label {
+      font-family: var(--font-ui); font-size: 0.66rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 6px; display: block;
+    }
+    .analogy-title {
+      font-family: var(--font-display); font-size: 1.25rem; font-weight: 400;
+      color: var(--text); margin-bottom: 4px;
+    }
+    .analogy-sub { font-family: var(--font-ui); font-size: 0.72rem; letter-spacing: 0.1em; color: var(--muted); }
+    @media(max-width:680px){
+      .analogy-banner { grid-template-columns: 1fr; }
+      .analogy-side.right { text-align: left; }
+      .analogy-divider { padding: 14px 22px; writing-mode: horizontal-tb; }
+      .analogy-divider span { writing-mode: horizontal-tb; transform: none; }
+    }
+
+    /* ── THE MAIN DIAGRAM ── */
+    .diagram-wrap {
+      background: var(--deep-navy); border: 1px solid var(--border);
+      padding: 32px; overflow-x: auto; margin-bottom: 14px;
+    }
+    .diagram-wrap svg { display: block; max-width: 100%; height: auto; }
+
+    /* SVG element classes — applied inside the SVG */
+    .qa-node rect  { fill: rgba(255,255,255,0.04); stroke: rgba(200,169,110,0.25); stroke-width: 1; }
+    .qa-node-hi rect { fill: rgba(200,169,110,0.1); stroke: rgba(200,169,110,0.6); stroke-width: 1.5; }
+    .qa-out rect   { fill: rgba(100,210,170,0.10); stroke: rgba(100,210,170,0.40); stroke-width: 1; }
+    .l-found rect  { fill: var(--c-steel);  stroke: var(--c-steel-b);  stroke-width: 1; }
+    .l-mech  rect  { fill: var(--c-amber);  stroke: var(--c-amber-b);  stroke-width: 1; }
+    .l-dyn   rect  { fill: var(--c-blue);   stroke: var(--c-blue-b);   stroke-width: 1; }
+    .l-lev   rect  { fill: var(--c-teal);   stroke: var(--c-teal-b);   stroke-width: 1; }
+    .l-par   rect  { fill: var(--c-violet); stroke: var(--c-violet-b); stroke-width: 1; }
+
+    /* ── LAYER DETAIL CARDS ── */
+    .layer-detail {
+      display: grid; grid-template-columns: 56px 1fr; gap: 0;
+      border: 1px solid var(--border); margin-bottom: 10px; overflow: hidden;
+      position: relative; transition: background .3s; background: var(--panel);
+    }
+    .layer-detail::before { content:''; position:absolute; top:0; left:0; width:0; height:2px; background:var(--gold); transition:width .4s ease; }
+    .layer-detail:hover { background: var(--panel2); }
+    .layer-detail:hover::before { width:100%; }
+
+    .ld-accent {
+      display: flex; align-items: center; justify-content: center;
+      border-right: 1px solid var(--border); padding: 20px 0;
+    }
+    .ld-accent span {
+      font-family: var(--font-display); font-size: 2rem; font-weight: 300; opacity: 0.7;
+    }
+    .ld-body { padding: 18px 22px; }
+    .ld-title { font-family: var(--font-ui); font-size: 0.76rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 4px; }
+    .ld-sub { font-family: var(--font-ui); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted2); margin-bottom: 10px; }
+    .ld-desc { font-size: 0.92rem; color: var(--muted); line-height: 1.75; }
+
+    /* accent colours for each layer */
+    .acc-steel  .ld-accent { background: var(--c-steel); }
+    .acc-steel  .ld-title  { color: #a8d8ea; }
+    .acc-amber  .ld-accent { background: var(--c-amber); }
+    .acc-amber  .ld-title  { color: #faba64; }
+    .acc-blue   .ld-accent { background: var(--c-blue);  }
+    .acc-blue   .ld-title  { color: #82b9eb; }
+    .acc-teal   .ld-accent { background: var(--c-teal);  }
+    .acc-teal   .ld-title  { color: #64d2aa; }
+    .acc-violet .ld-accent { background: var(--c-violet);}
+    .acc-violet .ld-title  { color: #beb0ff; }
+
+    /* ── QAP STAGE CARDS ── */
+    .stage-card {
+      display: grid; grid-template-columns: 48px 1fr; gap: 0;
+      border: 1px solid var(--border); overflow: hidden;
+      position: relative; background: var(--panel); transition: background .3s;
+    }
+    .stage-card::before { content:''; position:absolute; top:0; left:0; width:0; height:2px; background:var(--gold); transition:width .4s ease; }
+    .stage-card:hover { background: var(--panel2); }
+    .stage-card:hover::before { width:100%; }
+    .stage-card.highlighted { border-color: var(--gold-line); background: var(--gold-dim); }
+    .stage-card.highlighted::before { width: 100%; }
+
+    .sc-num {
+      display: flex; align-items: center; justify-content: center;
+      border-right: 1px solid var(--border);
+      font-family: var(--font-display); font-size: 1.5rem; font-weight: 300;
+      color: var(--gold); opacity: 0.45; padding: 18px 0;
+    }
+    .stage-card.highlighted .sc-num { opacity: 0.9; }
+
+    .sc-body { padding: 16px 20px; }
+    .sc-title { font-family: var(--font-ui); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .stage-card.highlighted .sc-title { color: var(--gold-light); }
+    .sc-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+    .sc-badge {
+      display: inline-block; margin-top: 8px;
+      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em;
+      color: var(--gold); border: 1px solid var(--gold-line);
+      background: var(--panel); padding: 3px 8px;
+    }
+
+    .callout {
+      padding: 30px; border: 1px solid var(--gold-line);
+      background: linear-gradient(135deg, rgba(200,169,110,0.07), rgba(10,12,16,0.6));
+      position: relative; overflow: hidden;
+    }
+    .callout::after {
+      content:''; position:absolute; top:-80px; right:-80px;
+      width:220px; height:220px; border-radius:50%;
+      background: radial-gradient(circle, rgba(200,169,110,0.1), transparent 70%); pointer-events:none;
+    }
+
+    .footer { padding: 28px 0 38px; border-top: 1px solid var(--border); }
+    .footer .row { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+    .footer-brand { font-family: var(--font-ui); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+    .footer-brand .gold { color: var(--gold); }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .75s ease, transform .75s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .d1{transition-delay:.08s} .d2{transition-delay:.16s} .d3{transition-delay:.24s}
+    .d4{transition-delay:.32s} .d5{transition-delay:.40s} .d6{transition-delay:.48s}
+
+    @media(max-width:900px){ .nav-links{ display:none; } }
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="container">
+    <div class="nav" role="navigation" aria-label="Primary">
+      <a class="brand" href="index.html" aria-label="Quanta Analytica home">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <polygon points="18,2 32,10 32,26 18,34 4,26 4,10" fill="none" stroke="#c8a96e" stroke-width="1.2"/>
+          <circle cx="18" cy="18" r="4" fill="#c8a96e" opacity="0.75"/>
+        </svg>
+        <div class="brand-name">
+          <strong>Quanta Analytica</strong>
+          <span>MNS Consulting</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Site pages">
+        <a href="index.html">Home</a>
+        <a href="mns-lbs.html">MNS · LBS Advisory</a>
+        <a href="qa-process.html">QA Process™</a>
+        <a href="cognition-model.html" class="current" aria-current="page">Cognition Model</a>
+        <a href="#diagram">Diagram</a>
+        <a href="#qap-stages">QAP Stages</a>
+        <a href="#five-layers">Five Layers</a>
+      </nav>
+
+      <div class="nav-right">
+        <a class="btn ghost small" href="qa-process.html">QA Process™</a>
+        <a class="btn primary small" href="index.html#connect">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ── MAIN ── -->
+<main id="content">
+  <div class="container">
+
+    <!-- HERO -->
+    <section id="hero" aria-label="Page hero">
+      <div class="hero-geo" aria-hidden="true">
+        <svg class="bg-hex" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="250,20 460,140 460,360 250,480 40,360 40,140" fill="none" stroke="#c8a96e" stroke-width="1"/>
+          <polygon points="250,60 430,158 430,342 250,440 70,342 70,158" fill="none" stroke="#c8a96e" stroke-width="0.5"/>
+          <circle cx="250" cy="250" r="3" fill="#c8a96e" opacity="0.9"/>
+          <line x1="250" y1="20" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.3"/>
+          <line x1="460" y1="140" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.3"/>
+          <line x1="460" y1="360" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.3"/>
+          <line x1="250" y1="480" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.3"/>
+          <line x1="40" y1="360" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.3"/>
+          <line x1="40" y1="140" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.3"/>
+        </svg>
+        <div class="scan t"></div>
+        <div class="scan b"></div>
+      </div>
+
+      <div style="position:relative; z-index:2;">
+        <p class="hero-eyebrow">Framework Architecture · Quanta Analytica</p>
+        <h1 class="hero-title">
+          The Process<br />Meets the <em>Reasoning<br />Engine</em>
+        </h1>
+        <p class="hero-sub">
+          Two distinct but interlocking instruments underpin the Quanta Analytica methodology. The <strong style="color:var(--text); font-weight:400;">QA Process™</strong> is the operational flight path — how analysis moves from raw problem to decision-grade output. The <strong style="color:var(--text); font-weight:400;">Five-Layer Cognition Model</strong> is the navigation system — how analysts think inside Stage 3 of that flight path. This page explains both, how they relate, and why the distinction matters.
+        </p>
+        <div class="hero-pills">
+          <span class="pill"><span class="dot" aria-hidden="true"></span> Operational workflow</span>
+          <span class="pill">Analytical reasoning engine</span>
+          <span class="pill">Stage 3 integration</span>
+          <span class="pill">Five-layer cognition</span>
+        </div>
+        <div class="hero-ctas">
+          <a class="btn primary" href="#diagram">View the Diagram</a>
+          <a class="btn" href="#qap-stages">QAP Stages</a>
+          <a class="btn ghost" href="qa-process.html">Full QA Process™</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT IS EACH -->
+    <section aria-label="What each model is">
+      <div class="divider reveal">
+        <span class="divider-num">00</span>
+        <div class="divider-rule"></div>
+        <span class="divider-label">The Two Instruments</span>
+      </div>
+
+      <div class="analogy-banner reveal">
+        <div class="analogy-side">
+          <span class="analogy-label">QA Process™</span>
+          <div class="analogy-title">The Aircraft</div>
+          <div class="analogy-sub">Operational workflow · flight path</div>
+          <p style="margin-top:10px; font-size:0.91rem; line-height:1.8;">
+            Defines where the analysis goes — from problem intake through data acquisition, structured analysis, scenario modeling, strategic judgement, and final analytical products. It is the end-to-end operational architecture that governs how intelligence work is sequenced and delivered.
+          </p>
+        </div>
+        <div class="analogy-divider">
+          <span>vs</span>
+        </div>
+        <div class="analogy-side right">
+          <span class="analogy-label">Five-Layer Cognition Model</span>
+          <div class="analogy-title">The Navigation System</div>
+          <div class="analogy-sub">Analytical reasoning engine · how to think</div>
+          <p style="margin-top:10px; font-size:0.91rem; line-height:1.8;">
+            Governs how the analyst reasons inside Stage 3 of the QA Process. It is not a workflow — it is a structured hierarchy of analytical lenses that ensures reasoning moves from grounded facts through causal mechanisms, system dynamics, strategic leverage points, and finally to paradigm-level framing. It prevents shallow analysis by enforcing depth.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid cols-2 reveal">
+        <div class="card">
+          <h3>Why Keep Them Separate?</h3>
+          <p>Conflating process and reasoning is one of the most common analytical failures. A well-structured process can still produce shallow reasoning — and deep reasoning without process structure produces outputs that cannot be reproduced, communicated, or defended. The QA Process™ and the Five-Layer Cognition Model are complementary instruments, not alternatives. Each fails without the other.</p>
+        </div>
+        <div class="card">
+          <h3>Where They Interlock</h3>
+          <p>The Five-Layer Cognition Model operates exclusively within Stage 3 (Structured Analysis) of the QA Process. When the analyst enters Stage 3, the process scaffolding hands off to the cognition model — which takes the calibrated data from Stage 2 and produces the structured analytical product that feeds into Stage 4 (Scenario Modeling) and Stage 5 (Strategic Judgement). The output of the cognition model is the input to the rest of the QAP.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIAGRAM -->
+    <section id="diagram" aria-label="Integration diagram">
+      <div class="divider reveal">
+        <span class="divider-num">01</span>
+        <div class="divider-rule"></div>
+        <span class="divider-label">Integration Diagram</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; gap:14px; margin-bottom:1.6rem;" class="reveal">
+        <h2>How They <em>Interlock</em></h2>
+        <span class="kicker">Stage 3 is the handoff point</span>
+      </div>
+      <p class="reveal" style="max-width:600px; margin-bottom:2rem; font-size:0.97rem; line-height:1.88;">
+        The diagram below shows the QA Process™ operational pipeline on the left and the Five-Layer Cognition Model on the right. The bracket indicates the precise handoff: Stage 3 of the QAP is where the cognition model's five layers execute. The aircraft flies the route — the navigation system determines how it thinks at the critical analytical juncture.
+      </p>
+
+      <div class="diagram-wrap reveal">
+        <svg width="100%" viewBox="0 0 740 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Integration diagram: QA Process pipeline left, Five-Layer Cognition Model right, connected at Stage 3">
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M2 1L8 5L2 9" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.6"/>
+            </marker>
+            <marker id="arr-dim" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M2 1L8 5L2 9" fill="none" stroke="rgba(200,169,110,0.35)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </marker>
+          </defs>
+
+          <!-- ── LEFT COLUMN HEADER ── -->
+          <text font-family="'Barlow Condensed', sans-serif" font-size="13" font-weight="600" letter-spacing="2" text-transform="uppercase" fill="rgba(200,169,110,0.9)" x="175" y="26" text-anchor="middle">QUANTA ANALYTICA PROCESS™</text>
+          <text font-family="'Barlow Condensed', sans-serif" font-size="11" fill="rgba(245,242,236,0.45)" x="175" y="44" text-anchor="middle">Operational workflow</text>
+
+          <!-- Stage 1 -->
+          <g class="qa-node">
+            <rect x="30" y="58" width="290" height="46" rx="4"/>
+            <text font-family="'Barlow Condensed', sans-serif" font-size="12" font-weight="600" letter-spacing="1.5" fill="rgba(245,242,236,0.85)" x="175" y="76" text-anchor="middle" dominant-baseline="central">1 · PROBLEM FRAMING</text>
+            <text font-family="'Barlow Condensed', sans-serif" font-size="10" fill="rgba(245,242,236,0.45)" x="175" y="93" text-anchor="middle">Define · restate · scope constraints</text>
+          </g>
+          <line x1="175" y1="104" x2="175" y2="120" stroke="rgba(200,169,110,0.4)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <!-- Stage 2 -->
+          <g class="qa-node">
+            <rect x="30" y="120" width="290" height="46" rx="4"/>
+            <text font-family="'Barlow Condensed', sans-serif" font-size="12" font-weight="600" letter-spacing="1.5" fill="rgba(245,242,236,0.85)" x="175" y="138" text-anchor="middle" dominant-baseline="central">2 · DATA ACQUISITION</text>
+            <text font-family="'Barlow Condensed', sans-serif" font-size="10" fill="rgba(245,242,236,0.45)" x="175" y="155" text-anchor="middle">Source tiering · quality gates · triangulation</text>
+          </g>
+          <line x1="175" y1="166" x2="175" y2="182" stroke="rgba(200,169,110,0.4)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <!-- Stage 3 HIGHLIGHTED -->
+          <g class="qa-node-hi">
+            <rect x="30" y="182" width="290" height="58" rx="4"/>
+            <text font-family="'Barlow Condensed', sans-serif" font-size="12" font-weight="600" letter-spacing="1.5" fill="rgba(200,169,110,0.95)" x="175" y="203" text-anchor="middle" dominant-baseline="central">3 · STRUCTURED ANALYSIS</text>
+            <text font-family="'Barlow Condensed', sans-serif" font-size="10" fill="rgba(200,169,110,0.6)" x="175" y="220" text-anchor="middle">← Five-Layer Cognition Model operates here</text>
+            <text font-family="'Barlow Condensed', sans-serif" font-size="10" fill="rgba(245,242,236,0.4)" x="175" y="234" text-anchor="middle">Hypothesis testing · assumptions register · ACH</text>
+          </g>
+          <line x1="175" y1="240" x2="175" y2="256" stroke="rgba(200,169,110,0.4)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <!-- Stage 4 -->
+          <g class="qa-node">
+            <rect x="30" y="256" width="290" height="46" rx="4"/>
+            <text font-family="'Barlow Condensed', sans-serif" font-size="12" font-weight="600" letter-spacing="1.5" fill="rgba(245,242,236,0.85)" x="175" y="274" text-anchor="middle" dominant-baseline="central">4 · SCENARIO MODELING</text>
+            <text font-family="'Barlow Condensed', sans-serif" font-size="10" fill="rgba(245,242,236,0.45)" x="175" y="291" text-anchor="middle">Probability · indicators · escalation thresholds</text>
+          </g>
+          <line x1="175" y1="302" x2="175" y2="318" stroke="rgba(200,169,110,0.4)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <!-- Stage 5 -->
+          <g class="qa-node">
+            <rect x="30" y="318" width="290" height="46" rx="4"/>
+            <text font-family="'Barlow Condensed', sans-serif" font-size="12" font-weight="600" letter-spacing="1.5" fill="rgba(245,242,236,0.85)" x="175" y="336" text-anchor="middle" dominant-baseline="central">5 · STRATEGIC JUDGEMENT</text>
+            <text font-family="'Barlow Condensed', sans-serif" font-size="10" fill="rgba(245,242,236,0.45)" x="175" y="353" text-anchor="middle">HITL validation · expert review · confidence</text>
+          </g>
+          <line x1="175" y1="364" x2="175" y2="380" stroke="rgba(200,169,110,0.4)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <!-- Output -->
+          <g class="qa-out">
+            <rect x="30" y="380" width="290" height="52" rx="4"/>
+            <text font-family="'Barlow Condensed', sans-serif" font-size="12" font-weight="600" letter-spacing="1.5" fill="rgba(100,210,170,0.9)" x="175" y="400" text-anchor="middle" dominant-baseline="central">ANALYTICAL PRODUCTS</text>
+            <text font-family="'Barlow Condensed', sans-serif" font-size="10" fill="rgba(100,210,170,0.55)" x="175" y="418" text-anchor="middle">SitReps · Risk assessments · Decision briefs</text>
+          </g>
+
+          <!-- ── VERTICAL DIVIDER ── -->
+          <line x1="370" y1="28" x2="370" y2="490" stroke="rgba(200,169,110,0.12)" stroke-width="1" stroke-dasharray="4 4"/>
+
+          <!-- ── RIGHT COLUMN HEADER ── -->
+          <text font-family="'Barlow Condensed', sans-serif" font-size="13" font-weight="600" letter-spacing="2" fill="rgba(200,169,110,0.9)" x="565" y="26" text-anchor="middle">FIVE-LAYER COGNITION MODEL</text>
+          <text font-family="'Barlow Condensed', sans-serif" font-size="11" fill="rgba(245,242,236,0.45)" x="565" y="44" text-anchor="middle">Analytical reasoning engine</text>
+
+          <!-- L1 Foundations -->
+          <g class="l-found">
+            <rect x="410" y="182" width="290" height="46" rx="4"/>
+            <text font-family="'Barlow Condensed', sans-serif" font-size="12" font-weight="600" letter-spacing="1.5" fill="rgba(168,216,234,0.95)" x="555" y="200" text-anchor="middle" dominant-baseline="central">FOUNDATIONS</text>
+            <text font-family="'Barlow Condensed', sans-serif" font-size="10" fill="rgba(168,216,234,0.55)" x="555" y="217" text-anchor="middle">System baseline mapping</text>
+          </g>
+          <line x1="555" y1="228" x2="555" y2="242" stroke="rgba(200,169,110,0.4)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <!-- L2 Mechanisms -->
+          <g class="l-mech">
+            <rect x="410" y="242" width="290" height="46" rx="4"/>
+            <text font-family="'Barlow Condensed', sans-serif" font-size="12" font-weight="600" letter-spacing="1.5" fill="rgba(250,186,100,0.95)" x="555" y="260" text-anchor="middle" dominant-baseline="central">MECHANISMS</text>
+            <text font-family="'Barlow Condensed', sans-serif" font-size="10" fill="rgba(250,186,100,0.55)" x="555" y="277" text-anchor="middle">Causal driver analysis</text>
+          </g>
+          <line x1="555" y1="288" x2="555" y2="302" stroke="rgba(200,169,110,0.4)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <!-- L3 Dynamics -->
+          <g class="l-dyn">
+            <rect x="410" y="302" width="290" height="46" rx="4"/>
+            <text font-family="'Barlow Condensed', sans-serif" font-size="12" font-weight="600" letter-spacing="1.5" fill="rgba(130,185,235,0.95)" x="555" y="320" text-anchor="middle" dominant-baseline="central">DYNAMICS</text>
+            <text font-family="'Barlow Condensed', sans-serif" font-size="10" fill="rgba(130,185,235,0.55)" x="555" y="337" text-anchor="middle">System behavior modeling</text>
+          </g>
+          <line x1="555" y1="348" x2="555" y2="362" stroke="rgba(200,169,110,0.4)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <!-- L4 Leverage -->
+          <g class="l-lev">
+            <rect x="410" y="362" width="290" height="46" rx="4"/>
+            <text font-family="'Barlow Condensed', sans-serif" font-size="12" font-weight="600" letter-spacing="1.5" fill="rgba(100,210,170,0.95)" x="555" y="380" text-anchor="middle" dominant-baseline="central">LEVERAGE</text>
+            <text font-family="'Barlow Condensed', sans-serif" font-size="10" fill="rgba(100,210,170,0.55)" x="555" y="397" text-anchor="middle">Strategic intervention analysis</text>
+          </g>
+          <line x1="555" y1="408" x2="555" y2="422" stroke="rgba(200,169,110,0.4)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <!-- L5 Paradigms -->
+          <g class="l-par">
+            <rect x="410" y="422" width="290" height="46" rx="4"/>
+            <text font-family="'Barlow Condensed', sans-serif" font-size="12" font-weight="600" letter-spacing="1.5" fill="rgba(190,170,255,0.95)" x="555" y="440" text-anchor="middle" dominant-baseline="central">PARADIGMS</text>
+            <text font-family="'Barlow Condensed', sans-serif" font-size="10" fill="rgba(190,170,255,0.55)" x="555" y="457" text-anchor="middle">Strategic framing and worldview</text>
+          </g>
+
+          <!-- BRACKET: Stage 3 → Five Layers -->
+          <path d="M320 211 L370 211 L370 445 L410 445" fill="none" stroke="rgba(200,169,110,0.30)" stroke-width="1" stroke-dasharray="3 3"/>
+          <path d="M320 182 L348 182 L348 468 L410 468" fill="none" stroke="rgba(200,169,110,0.14)" stroke-width="0.8" stroke-dasharray="3 3"/>
+
+          <!-- BOTTOM LABELS -->
+          <text font-family="'Barlow Condensed', sans-serif" font-size="10" letter-spacing="1.5" fill="rgba(200,169,110,0.4)" x="175" y="508" text-anchor="middle">THE AIRCRAFT · FLIGHT PATH</text>
+          <text font-family="'Barlow Condensed', sans-serif" font-size="10" letter-spacing="1.5" fill="rgba(200,169,110,0.4)" x="555" y="508" text-anchor="middle">THE NAVIGATION SYSTEM · HOW TO THINK</text>
+        </svg>
+      </div>
+      <p class="note reveal">Diagram: QA Process™ pipeline (left) and Five-Layer Cognition Model (right). The dashed bracket shows that the cognition model is nested inside Stage 3 of the QAP — it is not a parallel workflow but an embedded reasoning engine.</p>
+    </section>
+
+    <!-- QAP STAGES EXPLAINED -->
+    <section id="qap-stages" aria-label="QA Process stages explained">
+      <div class="divider reveal">
+        <span class="divider-num">02</span>
+        <div class="divider-rule"></div>
+        <span class="divider-label">QAP Stages Explained</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; gap:14px; margin-bottom:1.4rem;" class="reveal">
+        <h2>The QA Process™ <em>Pipeline</em></h2>
+        <span class="kicker">Five stages · one output chain</span>
+      </div>
+      <p class="reveal" style="max-width:600px; margin-bottom:2rem; font-size:0.97rem; line-height:1.88;">
+        Each stage of the QA Process™ has a defined purpose, inputs, and outputs. Skipping or compressing any stage degrades the integrity of the chain. Stage 3 is where the Five-Layer Cognition Model activates.
+      </p>
+
+      <div class="grid" style="gap:10px;">
+        <div class="stage-card reveal d1">
+          <div class="sc-num" aria-hidden="true">1</div>
+          <div class="sc-body">
+            <div class="sc-title">Problem Framing</div>
+            <div class="sc-desc">The most critical and most commonly skipped stage. The problem is not simply stated — it is restated, challenged, and reframed until it becomes analytically actionable. Decision constraints, stakeholder landscape, success criteria, and the "decision horizon" (how far ahead the output must reach) are all mapped. If this stage is rushed, every subsequent stage operates on the wrong target.</div>
+            <span class="sc-badge">Input: Raw problem statement · Output: Structured problem frame</span>
+          </div>
+        </div>
+
+        <div class="stage-card reveal d2">
+          <div class="sc-num" aria-hidden="true">2</div>
+          <div class="sc-body">
+            <div class="sc-title">Data Acquisition &amp; Source Calibration</div>
+            <div class="sc-desc">Raw information is not raw intelligence. In Stage 2, sources are tiered by reliability and provenance, triangulation protocols are applied, and quality gates filter out low-confidence material before it enters the analytic pipeline. This stage rejects the common assumption that volume equals quality. A smaller, well-calibrated dataset produces more reliable analysis than a large, uncalibrated one.</div>
+            <span class="sc-badge">Input: Raw information · Output: Tiered, calibrated source set</span>
+          </div>
+        </div>
+
+        <div class="stage-card highlighted reveal d3">
+          <div class="sc-num" aria-hidden="true">3</div>
+          <div class="sc-body">
+            <div class="sc-title">Structured Analysis ← Five-Layer Cognition Model operates here</div>
+            <div class="sc-desc">This is the analytical core of the QAP. The calibrated data from Stage 2 is subjected to structured analytic techniques: competing hypotheses, assumptions registers, bias checks, and confidence calibration. Critically, the Five-Layer Cognition Model governs how the analyst reasons during this stage — ensuring depth, preventing premature closure, and structuring the reasoning from baseline facts through to strategic framing. LLMs are deployed here under governance controls as augmentation tools, not decision-makers.</div>
+            <span class="sc-badge">Input: Calibrated source set · Output: Structured analytic assessment</span>
+          </div>
+        </div>
+
+        <div class="stage-card reveal d4">
+          <div class="sc-num" aria-hidden="true">4</div>
+          <div class="sc-body">
+            <div class="sc-title">Scenario Modeling</div>
+            <div class="sc-desc">The structured assessment from Stage 3 is translated into probabilistic scenarios — plausible futures with associated indicators and escalation thresholds. This stage does not produce prediction; it produces structured uncertainty. Each scenario carries a confidence level, a set of observable indicators that would confirm or disconfirm it, and a threshold definition that tells decision-makers when to act.</div>
+            <span class="sc-badge">Input: Structured analytic assessment · Output: Scenario set with indicators</span>
+          </div>
+        </div>
+
+        <div class="stage-card reveal d5">
+          <div class="sc-num" aria-hidden="true">5</div>
+          <div class="sc-body">
+            <div class="sc-title">Strategic Judgement &amp; Human Validation</div>
+            <div class="sc-desc">Expert human analysts review, stress-test, and validate the scenario set. This is the mandatory human-in-the-loop control point. Analysts challenge assumptions, apply domain expertise, and exercise contextual judgement that no model can replicate. The output of this stage is the certified, decision-grade product — the only output that may be presented to stakeholders as authoritative.</div>
+            <span class="sc-badge">Input: Scenario set · Output: Validated, decision-grade assessment</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FIVE LAYERS EXPLAINED -->
+    <section id="five-layers" aria-label="Five-Layer Cognition Model explained">
+      <div class="divider reveal">
+        <span class="divider-num">03</span>
+        <div class="divider-rule"></div>
+        <span class="divider-label">Five-Layer Cognition Model</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; gap:14px; margin-bottom:1.4rem;" class="reveal">
+        <h2>The <em>Reasoning Engine</em></h2>
+        <span class="kicker">Foundations → Paradigms</span>
+      </div>
+      <p class="reveal" style="max-width:640px; margin-bottom:2rem; font-size:0.97rem; line-height:1.88;">
+        The Five-Layer Cognition Model is a hierarchical reasoning framework that structures how analysts think inside Stage 3 of the QAP. It moves from the concrete to the conceptual — from observable system baselines through causal drivers, system behaviors, strategic leverage points, and finally to the paradigm-level assumptions that shape how a situation is fundamentally framed. Each layer is a prerequisite for the next. Skipping to Paradigms without traversing the lower layers produces ideology, not analysis.
+      </p>
+
+      <div style="display:flex; flex-direction:column; gap:10px;">
+
+        <div class="layer-detail acc-steel reveal d1">
+          <div class="ld-accent">
+            <span style="color:#a8d8ea;">I</span>
+          </div>
+          <div class="ld-body">
+            <div class="ld-title">Foundations</div>
+            <div class="ld-sub">System baseline mapping</div>
+            <div class="ld-desc">
+              The first layer establishes the factual baseline of the system under analysis. Who are the actors? What are the institutions, relationships, resources, and structural conditions that define the environment? Foundations are not assumptions — they are verified, sourced facts about the current state. This layer prevents analysis from beginning in the abstract. You must know what exists before you can analyze why it behaves as it does. In practice, this means mapping the system's components with the same discipline a structural engineer maps load-bearing elements — with sourced evidence, not intuition.
+            </div>
+          </div>
+        </div>
+
+        <div class="layer-detail acc-amber reveal d2">
+          <div class="ld-accent">
+            <span style="color:#faba64;">II</span>
+          </div>
+          <div class="ld-body">
+            <div class="ld-title">Mechanisms</div>
+            <div class="ld-sub">Causal driver analysis</div>
+            <div class="ld-desc">
+              Once the baseline is established, the second layer asks: what is causing the system to behave the way it does? Mechanisms are the causal drivers — the incentive structures, resource flows, historical grievances, institutional logics, and external pressures that generate observable events. Most surface-level analysis stops at events (what happened). The Mechanisms layer requires the analyst to go one level deeper and ask what structural forces are producing those events. This layer is where competing hypotheses are most productively tested — different causal explanations imply different future trajectories and different intervention points.
+            </div>
+          </div>
+        </div>
+
+        <div class="layer-detail acc-blue reveal d3">
+          <div class="ld-accent">
+            <span style="color:#82b9eb;">III</span>
+          </div>
+          <div class="ld-body">
+            <div class="ld-title">Dynamics</div>
+            <div class="ld-sub">System behavior modeling</div>
+            <div class="ld-desc">
+              The third layer models how the system behaves over time — its feedback loops, tipping points, acceleration patterns, and decay trajectories. Where the Mechanisms layer identifies what is driving the system, the Dynamics layer describes how those mechanisms interact to produce system-level behavior. This is where non-linear effects, cascading risks, and emergent behaviors become visible. A system with three causal mechanisms does not behave as the sum of three independent forces — it behaves as an interacting system that can produce outcomes none of the mechanisms would suggest in isolation. The Dynamics layer forces analysts to reason about interaction effects, not just individual drivers.
+            </div>
+          </div>
+        </div>
+
+        <div class="layer-detail acc-teal reveal d4">
+          <div class="ld-accent">
+            <span style="color:#64d2aa;">IV</span>
+          </div>
+          <div class="ld-body">
+            <div class="ld-title">Leverage</div>
+            <div class="ld-sub">Strategic intervention analysis</div>
+            <div class="ld-desc">
+              The fourth layer identifies where in the system strategic action can produce disproportionate effect. Not all intervention points are equal — some structural positions amplify force, others dissipate it. Leverage analysis draws on the Foundations, Mechanisms, and Dynamics layers to identify the nodes, relationships, and thresholds where targeted action changes the system's trajectory. This is not a recommendations layer — it is an analytical layer. The output is a map of leverage points with associated confidence levels, not a list of prescribed actions. Decision-makers use this map; they own the decisions.
+            </div>
+          </div>
+        </div>
+
+        <div class="layer-detail acc-violet reveal d5">
+          <div class="ld-accent">
+            <span style="color:#beb0ff;">V</span>
+          </div>
+          <div class="ld-body">
+            <div class="ld-title">Paradigms</div>
+            <div class="ld-sub">Strategic framing and worldview</div>
+            <div class="ld-desc">
+              The fifth and final layer examines the paradigm-level assumptions that shape how the situation is fundamentally framed — by the analyst, by stakeholders, and by the actors within the system itself. Paradigms are the deepest and most dangerous source of analytical failure: they are often invisible to the analyst holding them. The Paradigms layer requires explicit examination of the conceptual frameworks, worldview assumptions, and historical analogies being used to make sense of the situation. It asks: what would have to be true for this entire framing to be wrong? What alternative paradigm would produce a fundamentally different — and potentially more accurate — picture? This layer is where the most consequential analytical shifts occur, and why it cannot be reached without first traversing the four layers below it.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- WHY IT MATTERS -->
+    <section aria-label="Why this architecture matters">
+      <div class="divider reveal">
+        <span class="divider-num">04</span>
+        <div class="divider-rule"></div>
+        <span class="divider-label">Why It Matters</span>
+      </div>
+      <div class="reveal" style="margin-bottom:1.6rem;">
+        <h2>The Cost of <em>Collapsing</em> the Distinction</h2>
+      </div>
+      <p class="reveal" style="max-width:640px; margin-bottom:2rem; font-size:0.97rem; line-height:1.88;">
+        Most intelligence failures are not failures of information — they are failures of reasoning structure. The aircraft had the right data. The navigation system was either absent, misconfigured, or overridden. The QA Process™ and Five-Layer Cognition Model exist precisely to address this failure mode.
+      </p>
+
+      <div class="grid cols-3 reveal">
+        <div class="card">
+          <h3>Process Without Depth</h3>
+          <p>A well-structured workflow that lacks a reasoning model produces outputs efficiently but shallowly. Every stage is completed — but Stage 3 produces surface-level pattern matching rather than structured causal analysis. The products look authoritative. They are not.</p>
+        </div>
+        <div class="card">
+          <h3>Depth Without Process</h3>
+          <p>An analyst with exceptional reasoning capability but no process structure produces insights that are brilliant, idiosyncratic, and unreproducible. No other analyst can validate or replicate them. No client can trust outputs that depend entirely on one person's unpredictable cognition.</p>
+        </div>
+        <div class="card">
+          <h3>Both Together</h3>
+          <p>The QA Process™ provides the reproducible, governable, auditable structure. The Five-Layer Cognition Model provides the analytical depth. Together they produce outputs that are simultaneously rigorous, transparent, reproducible, and defensible — the four requirements of decision-grade intelligence.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section aria-label="Engagement">
+      <div class="callout reveal">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:14px; flex-wrap:wrap; margin-bottom:12px;">
+          <h2>Apply the <em>Framework</em></h2>
+          <span class="kicker">Both instruments · one engagement</span>
+        </div>
+        <p style="max-width:540px; font-size:0.97rem; line-height:1.88; margin-top:10px;">
+          The QA Process™ and Five-Layer Cognition Model are deployed together in every MNS Consulting engagement. If your organization needs decision-grade intelligence built on this architecture, the starting point is an advisory intake.
+        </p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:22px;">
+          <a class="btn primary" href="mns-lbs.html#contact">Start Advisory Intake</a>
+          <a class="btn" href="qa-process.html">Full QA Process™</a>
+          <a class="btn ghost" href="index.html">Quanta Analytica Home</a>
+        </div>
+        <p class="note" style="margin-top:16px;">QA-CSRF™, IGRIS™, The Quanta Analytica Process™, and the Five-Layer Cognition Model are proprietary to MNS Consulting. All rights reserved.</p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="footer" role="contentinfo">
+      <div class="row">
+        <div class="footer-brand">
+          <span class="gold">Quanta Analytica</span> &nbsp;·&nbsp;
+          Cognition Model &nbsp;·&nbsp;
+          MNS Consulting &nbsp;·&nbsp;
+          &copy; <span id="year"></span>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+          <a class="pill" href="index.html" style="color:var(--gold); border-color:var(--gold-line);">Home</a>
+          <a class="pill" href="mns-lbs.html" style="color:var(--gold); border-color:var(--gold-line);">MNS · LBS Advisory</a>
+          <a class="pill" href="qa-process.html" style="color:var(--gold); border-color:var(--gold-line);">QA Process™</a>
+          <a class="pill" href="https://insights.quanta-analytica.com" target="_blank" rel="noopener" style="color:var(--gold); border-color:var(--gold-line);">Insights ↗</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.container -->
+</main>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => obs.observe(el));
+
+  // Smooth scroll for in-page anchors only
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener("click", e => {
+      const id = a.getAttribute("href");
+      if (!id || id === "#") return;
+      const el = document.querySelector(id);
+      if (!el) return;
+      e.preventDefault();
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      history.replaceState(null, "", id);
+    });
+  });
+
+  // Active nav highlight for in-page sections
+  const sections = ["#diagram","#qap-stages","#five-layers"]
+    .map(s => document.querySelector(s)).filter(Boolean);
+  const navLinks = Array.from(document.querySelectorAll(".nav-links a"));
+
+  const navObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => {
+          const href = l.getAttribute("href");
+          if (href && href.startsWith("#"))
+            l.classList.toggle("active", href === "#" + entry.target.id);
+        });
+      }
+    });
+  }, { rootMargin: "-42% 0px -52% 0px", threshold: 0.01 });
+
+  sections.forEach(s => navObs.observe(s));
+</script>
+</body>
+</html>
