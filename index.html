@@ -171,13 +171,26 @@
       transform: translateY(-50%);
       width: 55vw;
       max-width: 780px;
-      opacity: 0.21;
+      opacity: 0.18;
       animation: rotateHex 60s linear infinite;
     }
 
     @keyframes rotateHex {
       from { transform: translateY(-50%) rotate(0deg); }
       to { transform: translateY(-50%) rotate(360deg); }
+    }
+
+    /* Network canvas — sits behind the rotating hex ring */
+    .hex-network-canvas {
+      position: absolute;
+      right: -5vw;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 55vw;
+      max-width: 780px;
+      aspect-ratio: 1 / 1;
+      pointer-events: none;
+      opacity: 0.55;
     }
 
     .hero-line {
@@ -806,6 +819,11 @@
   <!-- HERO -->
   <section id="hero" aria-label="Hero">
     <div class="geo-bg" aria-hidden="true">
+
+      <!-- Network animation canvas — renders inside the hex shape -->
+      <canvas class="hex-network-canvas" id="hexNetCanvas"></canvas>
+
+      <!-- Rotating hex rings sit on top -->
       <svg class="hex-ring" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
         <polygon points="250,30 450,145 450,355 250,470 50,355 50,145" fill="none" stroke="#c8a96e" stroke-width="1"/>
         <polygon points="250,60 420,162 420,338 250,440 80,338 80,162" fill="none" stroke="#c8a96e" stroke-width="0.5"/>
@@ -818,6 +836,7 @@
         <line x1="50" y1="355" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.4"/>
         <line x1="50" y1="145" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.4"/>
       </svg>
+
     </div>
 
     <div class="hero-line top" aria-hidden="true"></div>
@@ -1043,12 +1062,12 @@
     <p class="reveal">Whether you're exploring partnership, research collaboration, or seeking decision-grade analysis — we'd like to hear from you.</p>
 
     <div class="connect-links reveal">
-      <a href="mailto:info@quanta-analytica.com" class="btn-primary">Get in Touch</a>
+      <a href="/cdn-cgi/l/email-protection#c1a8afa7ae81b0b4a0afb5a0eca0afa0adb8b5a8a2a0efa2aeac" class="btn-primary">Get in Touch</a>
       <a href="https://insights.quanta-analytica.com" target="_blank" rel="noopener" class="btn-ghost">Visit Insights &rarr;</a>
     </div>
 
     <p class="contact-info reveal">
-      <a href="mailto:info@quanta-analytica.com">info@quanta-analytica.com</a>
+      <a href="/cdn-cgi/l/email-protection#8ee7e0e8e1cefffbefe0faefa3efe0efe2f7fae7edefa0ede1e3"><span class="__cf_email__" data-cfemail="3a53545c557a4b4f5b544e5b175b545b56434e53595b14595557">[email&#160;protected]</span></a>
       &nbsp;&nbsp;·&nbsp;&nbsp;
       <a href="https://insights.quanta-analytica.com" target="_blank" rel="noopener">insights.quanta-analytica.com</a>
     </p>
@@ -1065,7 +1084,7 @@
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Intersection Observer for reveal animations
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
@@ -1095,6 +1114,118 @@
     }, { threshold: 0.4 });
 
     sections.forEach(s => navObserver.observe(s));
+
+    // ── HEX NETWORK CANVAS ANIMATION ──
+    (function () {
+      const canvas = document.getElementById('hexNetCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      const GOLD       = '200, 169, 110';
+      const NODE_COUNT = 38;
+      const MAX_DIST   = 0.28;
+      const SPEED      = 0.00028;
+
+      let W, H, cx, cy, hexR, verts, nodes;
+
+      function getHexVertices(cx, cy, r) {
+        const pts = [];
+        const angles = [270, 330, 30, 90, 150, 210];
+        for (const a of angles) {
+          const rad = (a * Math.PI) / 180;
+          pts.push({ x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) });
+        }
+        return pts;
+      }
+
+      function pointInHex(px, py, verts) {
+        let inside = false;
+        const n = verts.length;
+        for (let i = 0, j = n - 1; i < n; j = i++) {
+          const xi = verts[i].x, yi = verts[i].y;
+          const xj = verts[j].x, yj = verts[j].y;
+          const intersect = ((yi > py) !== (yj > py)) &&
+            (px < ((xj - xi) * (py - yi)) / (yj - yi) + xi);
+          if (intersect) inside = !inside;
+        }
+        return inside;
+      }
+
+      function resize() {
+        const rect = canvas.getBoundingClientRect();
+        W = canvas.width  = rect.width  * window.devicePixelRatio;
+        H = canvas.height = rect.height * window.devicePixelRatio;
+        cx = W / 2;
+        cy = H / 2;
+        hexR = Math.min(W, H) * 0.455;
+        verts = getHexVertices(cx, cy, hexR);
+        initNodes();
+      }
+
+      function initNodes() {
+        nodes = [];
+        let attempts = 0;
+        while (nodes.length < NODE_COUNT && attempts < 5000) {
+          attempts++;
+          const x = cx + (Math.random() - 0.5) * hexR * 2;
+          const y = cy + (Math.random() - 0.5) * hexR * 2;
+          if (pointInHex(x, y, verts)) {
+            const angle = Math.random() * Math.PI * 2;
+            const speed = (0.5 + Math.random() * 0.5) * SPEED * Math.min(W, H);
+            nodes.push({ x, y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed });
+          }
+        }
+      }
+
+      function tick() {
+        ctx.clearRect(0, 0, W, H);
+
+        for (const n of nodes) {
+          n.x += n.vx;
+          n.y += n.vy;
+          if (!pointInHex(n.x, n.y, verts)) {
+            n.x -= n.vx * 2;
+            n.y -= n.vy * 2;
+            const angle = Math.atan2(cy - n.y, cx - n.x) + (Math.random() - 0.5) * 0.8;
+            const speed = Math.sqrt(n.vx * n.vx + n.vy * n.vy);
+            n.vx = Math.cos(angle) * speed;
+            n.vy = Math.sin(angle) * speed;
+          }
+        }
+
+        const maxPx = MAX_DIST * Math.min(W, H);
+
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            const dx = nodes[i].x - nodes[j].x;
+            const dy = nodes[i].y - nodes[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < maxPx) {
+              const alpha = (1 - dist / maxPx) * 0.45;
+              ctx.beginPath();
+              ctx.moveTo(nodes[i].x, nodes[i].y);
+              ctx.lineTo(nodes[j].x, nodes[j].y);
+              ctx.strokeStyle = `rgba(${GOLD}, ${alpha})`;
+              ctx.lineWidth = 0.8 * window.devicePixelRatio;
+              ctx.stroke();
+            }
+          }
+        }
+
+        for (const n of nodes) {
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, 2 * window.devicePixelRatio, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${GOLD}, 0.7)`;
+          ctx.fill();
+        }
+
+        requestAnimationFrame(tick);
+      }
+
+      resize();
+      window.addEventListener('resize', resize);
+      requestAnimationFrame(tick);
+    })();
   </script>
 </body>
 </html>
