@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary SEO -->
+  <title>About | Quanta Analytica — Decision-Grade Intelligence</title>
+  <meta name="description" content="Quanta Analytica is an independent research and consulting platform integrating structured analytic tradecraft, systems thinking, and AI-assisted workflows to deliver decision-grade intelligence. Developed through MNS Consulting." />
+  <meta name="keywords" content="about Quanta Analytica, structured analytic techniques, intelligence analysis platform, MNS Consulting, decision support, AI-assisted research, analytic tradecraft, M. Nuri Shakoor" />
+  <meta name="author" content="M. Nuri Shakoor, MNS Consulting" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://quanta-analytica.com/about.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://quanta-analytica.com/about.html" />
+  <meta property="og:title" content="About Quanta Analytica | Decision-Grade Intelligence" />
+  <meta property="og:description" content="An independent research and consulting platform integrating structured analytic tradecraft, systems thinking, and AI-assisted workflows." />
+  <meta property="og:image" content="https://quanta-analytica.com/og-image.png" />
+  <meta property="og:site_name" content="Quanta Analytica" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About Quanta Analytica" />
+  <meta name="twitter:description" content="Structured analytic tradecraft, systems thinking, and AI-assisted workflows for decision-grade intelligence." />
+  <meta name="twitter:image" content="https://quanta-analytica.com/og-image.png" />
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Quanta Analytica",
+    "description": "Quanta Analytica is an independent research and consulting platform focused on improving the rigor, clarity, and strategic value of modern analysis.",
+    "url": "https://quanta-analytica.com/about.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "MNS Consulting",
+      "url": "https://quanta-analytica.com"
+    }
+  }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow+Condensed:wght@300;400;500;600&family=Barlow:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --obsidian:    #0a0c10;
+      --deep-navy:   #0d1220;
+      --midnight:    #111827;
+      --gold:        #c8a96e;
+      --gold-light:  #e2c98a;
+      --gold-dim:    rgba(200, 169, 110, 0.15);
+      --gold-line:   rgba(200, 169, 110, 0.3);
+      --white:       #f5f2ec;
+      --grey:        #8a8f9a;
+      --grey-light:  #c2c4c8;
+      --border:      rgba(200, 169, 110, 0.14);
+      --panel:       rgba(255, 255, 255, 0.04);
+      --panel2:      rgba(255, 255, 255, 0.07);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-ui:      'Barlow Condensed', sans-serif;
+      --font-body:    'Barlow', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--obsidian);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+      cursor: crosshair;
+    }
+
+    /* ── NOISE ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 1000; opacity: 0.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.5rem 3rem;
+      background: linear-gradient(to bottom, rgba(10,12,16,0.95) 0%, transparent 100%);
+      backdrop-filter: blur(2px);
+    }
+
+    .nav-logo {
+      font-family: var(--font-ui); font-size: 0.85rem; font-weight: 600;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+
+    .nav-links a {
+      font-family: var(--font-ui); font-size: 0.75rem; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--grey-light); text-decoration: none; transition: color 0.3s;
+    }
+    .nav-links a:hover, .nav-links a.current { color: var(--gold); }
+
+    /* ── PAGE HERO ── */
+    #page-hero {
+      position: relative; min-height: 72vh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 10rem 3rem 5rem; overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-geo { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+
+    .hero-geo-hex {
+      position: absolute; right: -5vw; top: 50%;
+      transform: translateY(-50%);
+      width: 50vw; max-width: 680px;
+      opacity: 0.07;
+      animation: rotateHex 80s linear infinite;
+    }
+
+    @keyframes rotateHex {
+      from { transform: translateY(-50%) rotate(0deg); }
+      to   { transform: translateY(-50%) rotate(360deg); }
+    }
+
+    .hero-scan {
+      position: absolute; left: 0; right: 0; height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-line), transparent);
+    }
+    .hero-scan.t { top: 22%; }
+    .hero-scan.b { top: 80%; }
+
+    /* radial glow behind text */
+    #page-hero::before {
+      content: '';
+      position: absolute; left: -10%; top: -10%;
+      width: 60%; height: 80%;
+      background: radial-gradient(ellipse at 20% 40%, rgba(200,169,110,0.05), transparent 65%);
+      pointer-events: none;
+    }
+
+    .page-hero-content { position: relative; z-index: 2; max-width: 820px; }
+
+    .page-eyebrow {
+      font-family: var(--font-ui); font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.38em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1.4rem;
+      opacity: 0; animation: slideUp 0.8s ease 0.15s forwards;
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(3.4rem, 6vw, 6.5rem);
+      font-weight: 300; line-height: 0.95; letter-spacing: -0.01em;
+      margin-bottom: 2rem;
+      opacity: 0; animation: slideUp 0.9s ease 0.3s forwards;
+    }
+
+    .page-title em { font-style: italic; color: var(--gold-light); }
+
+    .page-lead {
+      max-width: 600px; font-size: 1.05rem; font-weight: 300;
+      color: var(--grey-light); line-height: 1.85;
+      opacity: 0; animation: slideUp 0.9s ease 0.46s forwards;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── MAIN ── */
+    main { padding-bottom: 80px; }
+
+    section { padding: 6rem 3rem; position: relative; }
+
+    /* ── DIVIDER ROW ── */
+    .divider {
+      display: flex; align-items: center; gap: 1.4rem; margin-bottom: 2rem;
+    }
+    .divider-num {
+      font-family: var(--font-ui); font-size: 0.63rem;
+      letter-spacing: 0.28em; color: var(--gold); opacity: 0.55;
+    }
+    .divider-rule { width: 48px; height: 1px; background: var(--gold-line); flex-shrink: 0; }
+    .divider-label {
+      font-family: var(--font-ui); font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold);
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 3rem);
+      font-weight: 300; line-height: 1.05; margin: 0;
+    }
+    h2 em { font-style: italic; color: var(--gold-light); }
+
+    h3 {
+      font-family: var(--font-ui); font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+      margin: 0 0 10px;
+    }
+
+    p { color: var(--grey-light); line-height: 1.88; font-size: 0.97rem; margin: 0; }
+
+    /* ── MISSION SECTION ── */
+    #mission { background: var(--deep-navy); border-bottom: 1px solid var(--border); }
+
+    .mission-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: start;
+      max-width: 1200px; margin: 0 auto;
+    }
+
+    .mission-text { display: flex; flex-direction: column; gap: 1.4rem; }
+
+    .mission-pullquote {
+      padding: 2.2rem 2.4rem;
+      border-left: 2px solid var(--gold);
+      background: rgba(200,169,110,0.05);
+    }
+
+    .pullquote-text {
+      font-family: var(--font-display);
+      font-size: 1.25rem; font-style: italic; font-weight: 300;
+      line-height: 1.7; color: var(--white); margin: 0;
+    }
+
+    .pullquote-attr {
+      font-family: var(--font-ui); font-size: 0.68rem;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin-top: 1.2rem; display: block;
+    }
+
+    /* ── PILLARS ── */
+    #pillars { background: var(--obsidian); border-bottom: 1px solid var(--border); }
+
+    .pillars-inner { max-width: 1200px; margin: 0 auto; }
+
+    .pillars-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+      border: 1px solid var(--border); margin-top: 2.4rem;
+    }
+
+    .pillar {
+      padding: 2.6rem 2.4rem;
+      border-right: 1px solid var(--border);
+      position: relative; transition: background 0.3s;
+    }
+    .pillar:last-child { border-right: none; }
+    .pillar:hover { background: var(--panel); }
+
+    .pillar::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 0; height: 2px; background: var(--gold);
+      transition: width 0.4s ease;
+    }
+    .pillar:hover::before { width: 100%; }
+
+    .pillar-icon {
+      width: 38px; height: 38px; margin-bottom: 1.4rem;
+    }
+
+    .pillar-desc {
+      font-size: 0.92rem; color: var(--grey-light); line-height: 1.8; margin-top: 8px;
+    }
+
+    /* ── PLATFORM SECTION ── */
+    #platform { background: var(--deep-navy); border-bottom: 1px solid var(--border); }
+
+    .platform-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr;
+      gap: 5rem; align-items: start;
+    }
+
+    .platform-body { display: flex; flex-direction: column; gap: 1.4rem; }
+
+    .use-case-list {
+      display: flex; flex-direction: column; gap: 0;
+      border: 1px solid var(--border); margin-top: 1rem;
+    }
+
+    .use-case-item {
+      display: flex; align-items: center; gap: 1.4rem;
+      padding: 1.1rem 1.4rem;
+      border-bottom: 1px solid rgba(200,169,110,0.08);
+      transition: background 0.25s;
+    }
+    .use-case-item:last-child { border-bottom: none; }
+    .use-case-item:hover { background: var(--panel); }
+
+    .uc-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--gold); opacity: 0.6; flex-shrink: 0;
+    }
+
+    .uc-label {
+      font-family: var(--font-ui); font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--grey-light);
+    }
+
+    /* ── PRINCIPLE SECTION ── */
+    #principle { background: var(--midnight); border-bottom: 1px solid var(--border); }
+
+    .principle-inner { max-width: 1200px; margin: 0 auto; }
+
+    .principle-statement {
+      max-width: 860px; margin: 2.4rem 0 3.5rem;
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 2.2vw, 1.95rem);
+      font-weight: 300; line-height: 1.6; color: var(--white);
+    }
+    .principle-statement em { font-style: italic; color: var(--gold-light); }
+
+    .principle-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+    }
+
+    .principle-card {
+      background: var(--panel); border: 1px solid var(--border);
+      padding: 2rem; position: relative; transition: background 0.3s;
+    }
+    .principle-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 0; height: 2px; background: var(--gold);
+      transition: width 0.4s ease;
+    }
+    .principle-card:hover { background: var(--panel2); }
+    .principle-card:hover::before { width: 100%; }
+
+    .pc-num {
+      font-family: var(--font-display); font-size: 2.2rem;
+      font-weight: 300; color: var(--gold); opacity: 0.25;
+      line-height: 1; margin-bottom: 1rem;
+    }
+
+    .pc-desc {
+      font-size: 0.9rem; color: var(--grey-light); line-height: 1.8; margin-top: 8px;
+    }
+
+    /* ── CONNECT CTA ── */
+    #connect-cta {
+      background: var(--obsidian);
+      padding: 7rem 3rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cta-hex {
+      width: 72px; margin: 0 auto 2rem; opacity: 0.45;
+    }
+
+    #connect-cta h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      font-weight: 300; line-height: 1; margin-bottom: 1.4rem;
+    }
+
+    #connect-cta p {
+      max-width: 480px; margin: 0 auto 2.8rem;
+      font-size: 0.95rem; color: var(--grey); line-height: 1.8;
+    }
+
+    .cta-links { display: flex; justify-content: center; gap: 1.4rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      font-family: var(--font-ui); font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none;
+      color: var(--obsidian); background: var(--gold);
+      padding: 1rem 2.2rem; display: inline-block;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); text-decoration: none; }
+
+    .btn-ghost {
+      font-family: var(--font-ui); font-size: 0.75rem; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none;
+      color: var(--gold); border: 1px solid var(--gold-line);
+      padding: 1rem 2.2rem; display: inline-block;
+      transition: background 0.3s, border-color 0.3s, transform 0.2s;
+    }
+    .btn-ghost:hover { background: var(--gold-dim); border-color: var(--gold); transform: translateY(-2px); text-decoration: none; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #070810; padding: 2.5rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-top: 1px solid rgba(200,169,110,0.08);
+    }
+    .footer-brand {
+      font-family: var(--font-ui); font-size: 0.72rem;
+      letter-spacing: 0.25em; text-transform: uppercase; color: var(--grey);
+    }
+    .footer-brand span { color: var(--gold); }
+    .footer-legal {
+      font-family: var(--font-ui); font-size: 0.65rem;
+      letter-spacing: 0.1em; color: rgba(138,143,154,0.5); text-align: right;
+    }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .rd1 { transition-delay: 0.08s; }
+    .rd2 { transition-delay: 0.16s; }
+    .rd3 { transition-delay: 0.24s; }
+    .rd4 { transition-delay: 0.32s; }
+    .rd5 { transition-delay: 0.40s; }
+    .rd6 { transition-delay: 0.48s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
+      section { padding: 4.5rem 1.5rem; }
+      #page-hero { padding: 8rem 1.5rem 4rem; }
+      .mission-grid, .platform-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .pillars-grid, .principle-grid { grid-template-columns: 1fr; }
+      .pillar { border-right: none; border-bottom: 1px solid var(--border); }
+      .pillar:last-child { border-bottom: none; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+      .footer-legal { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav aria-label="Main navigation">
+    <a href="index.html" class="nav-logo">Quanta Analytica</a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="current">About</a></li>
+      <li><a href="index.html#capabilities">Capabilities</a></li>
+      <li><a href="index.html#frameworks">Frameworks</a></li>
+      <li><a href="mns-lbs.html">MNS Consulting</a></li>
+      <li><a href="/reports/">Reports</a></li>
+      <li><a href="index.html#connect">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── PAGE HERO ── -->
+  <div id="page-hero">
+    <div class="hero-geo" aria-hidden="true">
+      <svg class="hero-geo-hex" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="250,30 450,145 450,355 250,470 50,355 50,145" fill="none" stroke="#c8a96e" stroke-width="1"/>
+        <polygon points="250,60 420,162 420,338 250,440 80,338 80,162" fill="none" stroke="#c8a96e" stroke-width="0.5"/>
+        <polygon points="250,90 390,178 390,322 250,410 110,322 110,178" fill="none" stroke="#c8a96e" stroke-width="0.3"/>
+        <circle cx="250" cy="250" r="3" fill="#c8a96e" opacity="0.8"/>
+        <line x1="250" y1="30"  x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.4"/>
+        <line x1="450" y1="145" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.4"/>
+        <line x1="450" y1="355" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.4"/>
+        <line x1="250" y1="470" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.4"/>
+        <line x1="50"  y1="355" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.4"/>
+        <line x1="50"  y1="145" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.4"/>
+      </svg>
+      <div class="hero-scan t"></div>
+      <div class="hero-scan b"></div>
+    </div>
+
+    <div class="page-hero-content">
+      <p class="page-eyebrow">MNS Consulting &nbsp;·&nbsp; Independent Research &amp; Consulting</p>
+      <h1 class="page-title">About <em>Quanta<br />Analytica</em></h1>
+      <p class="page-lead">An independent research and consulting platform focused on improving the rigor, clarity, and strategic value of modern analysis — where structured tradecraft meets advanced AI-assisted workflows.</p>
+    </div>
+  </div>
+
+  <!-- ── MAIN ── -->
+  <main id="content">
+
+    <!-- ── 01 MISSION ── -->
+    <section id="mission" aria-label="Mission">
+      <div class="mission-grid">
+
+        <div class="mission-text">
+          <div class="divider reveal">
+            <span class="divider-num">01</span>
+            <div class="divider-rule"></div>
+            <span class="divider-label">Mission</span>
+          </div>
+          <h2 class="reveal">Transforming Information<br />into <em>Defensible Insight</em></h2>
+          <p class="reveal rd1">
+            Quanta Analytica was developed to address a growing challenge across government, nonprofit, academic, and private sector environments: the need to transform vast quantities of fragmented information into structured, defensible insight that supports sound decision-making.
+          </p>
+          <p class="reveal rd2">
+            At its core, Quanta Analytica operates as an applied analytic environment that integrates structured analytic tradecraft, systems thinking, behavioral insight, and advanced AI-assisted research workflows. Rather than relying on generic content generation approaches, the platform is designed to guide analysts, researchers, and decision-makers through disciplined reasoning processes that strengthen analytical integrity while reducing bias, noise, and cognitive overload.
+          </p>
+          <p class="reveal rd3">
+            The foundation of the platform is The Quanta Analytica Process™ — a structured analytic operating environment drawing upon empirically grounded frameworks used in intelligence analysis, risk management, policy research, and strategic planning.
+          </p>
+        </div>
+
+        <div class="reveal rd2">
+          <div class="mission-pullquote">
+            <p class="pullquote-text">
+              "Strong analysis is not the result of intuition alone, nor is it the product of automated systems operating without constraint. Effective analysis emerges from the disciplined integration of human judgment, structured methodology, and carefully designed analytic environments that promote intellectual rigor, transparency, and accountability."
+            </p>
+            <span class="pullquote-attr">Guiding Principle &nbsp;·&nbsp; Quanta Analytica</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── 02 PILLARS ── -->
+    <section id="pillars" aria-label="Core pillars">
+      <div class="pillars-inner">
+        <div class="divider reveal">
+          <span class="divider-num">02</span>
+          <div class="divider-rule"></div>
+          <span class="divider-label">Core Pillars</span>
+        </div>
+        <h2 class="reveal">Four Integrated <em>Disciplines</em></h2>
+        <p class="reveal rd1" style="max-width:600px; margin-top:1rem;">
+          The platform integrates four disciplines that collectively improve analytical resilience and conceptual clarity across every engagement.
+        </p>
+
+        <div class="pillars-grid">
+
+          <div class="pillar reveal rd1">
+            <svg class="pillar-icon" viewBox="0 0 38 38" fill="none" aria-hidden="true">
+              <polygon points="19,3 34,11 34,27 19,35 4,27 4,11" fill="none" stroke="#c8a96e" stroke-width="1.2"/>
+              <circle cx="19" cy="19" r="4" fill="#c8a96e" opacity="0.7"/>
+            </svg>
+            <h3>Structured Analytic Tradecraft</h3>
+            <p class="pillar-desc">Techniques drawn from professional intelligence analysis — including competing hypotheses, key assumptions checks, and indicator-based reasoning — applied systematically to reduce bias and strengthen analytical integrity.</p>
+          </div>
+
+          <div class="pillar reveal rd2">
+            <svg class="pillar-icon" viewBox="0 0 38 38" fill="none" aria-hidden="true">
+              <rect x="4" y="4" width="30" height="30" fill="none" stroke="#c8a96e" stroke-width="1.2"/>
+              <line x1="4" y1="19" x2="34" y2="19" stroke="#c8a96e" stroke-width="0.7"/>
+              <line x1="19" y1="4" x2="19" y2="34" stroke="#c8a96e" stroke-width="0.7"/>
+              <circle cx="19" cy="19" r="3" fill="#c8a96e" opacity="0.6"/>
+            </svg>
+            <h3>Systems Thinking</h3>
+            <p class="pillar-desc">Frameworks that model complex environments as dynamic systems — mapping feedback loops, causal drivers, and emergent behaviors to produce analysis that accounts for interdependence rather than isolated variables.</p>
+          </div>
+
+          <div class="pillar reveal rd3">
+            <svg class="pillar-icon" viewBox="0 0 38 38" fill="none" aria-hidden="true">
+              <circle cx="19" cy="19" r="15" fill="none" stroke="#c8a96e" stroke-width="1.2"/>
+              <path d="M12 19 Q15 13 19 19 Q23 25 26 19" fill="none" stroke="#c8a96e" stroke-width="1.1"/>
+              <circle cx="12" cy="19" r="2" fill="#c8a96e" opacity="0.7"/>
+              <circle cx="26" cy="19" r="2" fill="#c8a96e" opacity="0.7"/>
+            </svg>
+            <h3>Behavioral Insight</h3>
+            <p class="pillar-desc">Methodologies that account for human cognition, decision-making under uncertainty, and the behavioral patterns of actors within complex systems — grounding analysis in how people and organizations actually operate.</p>
+          </div>
+
+          <div class="pillar reveal rd4">
+            <svg class="pillar-icon" viewBox="0 0 38 38" fill="none" aria-hidden="true">
+              <path d="M5 30 L12 18 L19 24 L26 10 L33 14" fill="none" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round"/>
+              <circle cx="5"  cy="30" r="2.2" fill="#c8a96e"/>
+              <circle cx="12" cy="18" r="2.2" fill="#c8a96e"/>
+              <circle cx="19" cy="24" r="2.2" fill="#c8a96e"/>
+              <circle cx="26" cy="10" r="2.2" fill="#c8a96e"/>
+              <circle cx="33" cy="14" r="2.2" fill="#c8a96e"/>
+            </svg>
+            <h3>AI-Assisted Research Workflows</h3>
+            <p class="pillar-desc">Disciplined integration of large language models within governed analytic pipelines — accelerating research synthesis, hypothesis generation, and pattern recognition while preserving human authority over every analytical judgment.</p>
+          </div>
+
+          <div class="pillar reveal rd5">
+            <svg class="pillar-icon" viewBox="0 0 38 38" fill="none" aria-hidden="true">
+              <polygon points="19,4 33,12 33,26 19,34 5,26 5,12" fill="none" stroke="#c8a96e" stroke-width="1.2"/>
+              <polygon points="19,10 27,14 27,24 19,28 11,24 11,14" fill="none" stroke="#c8a96e" stroke-width="0.7"/>
+            </svg>
+            <h3>Risk &amp; Vulnerability Assessment</h3>
+            <p class="pillar-desc">Quantified risk assessment models — including CARVER, ISO 31000-aligned frameworks, and probabilistic scenario modeling — that convert qualitative intelligence into prioritized, defensible risk profiles.</p>
+          </div>
+
+          <div class="pillar reveal rd6">
+            <svg class="pillar-icon" viewBox="0 0 38 38" fill="none" aria-hidden="true">
+              <path d="M7 9h24M7 15h18M7 21h22M7 27h14" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round"/>
+              <circle cx="31" cy="27" r="5" fill="none" stroke="#c8a96e" stroke-width="1.1"/>
+              <polyline points="28.5,27 30.2,28.7 33.5,25.3" stroke="#c8a96e" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h3>Human-in-the-Loop Validation</h3>
+            <p class="pillar-desc">A non-negotiable control architecture ensuring expert human review at every stage of the analytic process — maintaining accountability, auditability, and the primacy of professional judgment over automated outputs.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 03 PLATFORM ── -->
+    <section id="platform" aria-label="The platform and use cases">
+      <div class="platform-inner">
+
+        <div class="platform-body">
+          <div class="divider reveal">
+            <span class="divider-num">03</span>
+            <div class="divider-rule"></div>
+            <span class="divider-label">The Platform</span>
+          </div>
+          <h2 class="reveal">Structure Over <em>Noise</em></h2>
+          <p class="reveal rd1">
+            Quanta Analytica recognizes that artificial intelligence has significantly accelerated access to information — but access alone does not guarantee insight. Without structure, information abundance can produce confusion rather than understanding.
+          </p>
+          <p class="reveal rd2">
+            The platform therefore emphasizes disciplined workflows that help users identify relevant signals, evaluate competing hypotheses, test assumptions, and develop conclusions that are both logically coherent and strategically meaningful. The goal is not to generate content at speed — it is to produce outputs that can be defended, challenged, and acted upon with confidence.
+          </p>
+          <p class="reveal rd3">
+            Quanta Analytica also provides guidance on how to effectively configure and apply large language models in a manner consistent with professional analytic standards — recognizing that the value of AI in intelligence work lies not in replacing human judgment but in extending its reach across larger and more complex information environments.
+          </p>
+          <p class="reveal rd4">
+            The platform is developed as part of the broader consulting and research initiatives led through MNS Consulting, where structured analysis, AI-assisted research, and decision-support frameworks are applied to real-world challenges requiring clarity under conditions of uncertainty.
+          </p>
+        </div>
+
+        <div class="reveal rd2">
+          <h3 style="margin-bottom:0.6rem;">Analytic Use Cases</h3>
+          <p style="font-size:0.88rem; margin-bottom:0.8rem;">The platform supports a wide range of applied analytic domains.</p>
+          <div class="use-case-list">
+            <div class="use-case-item"><div class="uc-dot"></div><span class="uc-label">Geopolitical Risk Assessment</span></div>
+            <div class="use-case-item"><div class="uc-dot"></div><span class="uc-label">Conflict Analysis</span></div>
+            <div class="use-case-item"><div class="uc-dot"></div><span class="uc-label">Policy Evaluation</span></div>
+            <div class="use-case-item"><div class="uc-dot"></div><span class="uc-label">Organizational Decision Support</span></div>
+            <div class="use-case-item"><div class="uc-dot"></div><span class="uc-label">Market Intelligence</span></div>
+            <div class="use-case-item"><div class="uc-dot"></div><span class="uc-label">Advanced Research Synthesis</span></div>
+            <div class="use-case-item"><div class="uc-dot"></div><span class="uc-label">NGO Security Risk Management</span></div>
+            <div class="use-case-item"><div class="uc-dot"></div><span class="uc-label">Humanitarian Intelligence</span></div>
+            <div class="use-case-item"><div class="uc-dot"></div><span class="uc-label">AI Governance &amp; Deployment</span></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── 04 GUIDING PRINCIPLE ── -->
+    <section id="principle" aria-label="Guiding principle">
+      <div class="principle-inner">
+        <div class="divider reveal">
+          <span class="divider-num">04</span>
+          <div class="divider-rule"></div>
+          <span class="divider-label">Guiding Principle</span>
+        </div>
+        <h2 class="reveal">The Standard We <em>Operate By</em></h2>
+
+        <p class="principle-statement reveal rd1">
+          By combining structured tradecraft with modern AI capabilities, Quanta Analytica provides a practical pathway for analysts, consultants, researchers, and organizations seeking to improve the <em>quality</em>, <em>reliability</em>, and <em>strategic usefulness</em> of their analytical outputs.
+        </p>
+
+        <div class="principle-grid">
+
+          <div class="principle-card reveal rd1">
+            <div class="pc-num">I</div>
+            <h3>Rigor Before Speed</h3>
+            <p class="pc-desc">Analytical quality is never traded for throughput. Every workflow is structured to enforce the reasoning steps that prevent premature closure, confirmation bias, and unchallenged assumptions — regardless of the time pressure involved.</p>
+          </div>
+
+          <div class="principle-card reveal rd2">
+            <div class="pc-num">II</div>
+            <h3>Transparency &amp; Auditability</h3>
+            <p class="pc-desc">Every analytic product produced through the QA Process™ is traceable back to its source inputs, assumption set, confidence calibration, and reviewer chain. Outputs that cannot be audited are not decision-grade.</p>
+          </div>
+
+          <div class="principle-card reveal rd3">
+            <div class="pc-num">III</div>
+            <h3>Human Authority</h3>
+            <p class="pc-desc">No AI-generated output is treated as a conclusion. Every model-generated candidate is a starting point for human analysis — not an endpoint. Authority over analytic judgments remains with credentialed human analysts at all times.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONNECT CTA ── -->
+    <section id="connect-cta" aria-label="Connect">
+      <svg class="cta-hex" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <polygon points="40,5 72,22 72,58 40,75 8,58 8,22" fill="none" stroke="#c8a96e" stroke-width="1.2"/>
+        <circle cx="40" cy="40" r="5" fill="#c8a96e" opacity="0.6"/>
+      </svg>
+      <h2 class="reveal">Work With <em>Quanta Analytica</em></h2>
+      <p class="reveal">Whether you are exploring partnership, research collaboration, or seeking decision-grade analytic support — we'd like to hear from you.</p>
+      <div class="cta-links reveal">
+        <a href="index.html#connect" class="btn-primary">Get in Touch</a>
+        <a href="index.html#frameworks" class="btn-ghost">Explore Frameworks</a>
+        <a href="https://insights.quanta-analytica.com" target="_blank" rel="noopener" class="btn-ghost">Insights &amp; Research ↗</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-brand">
+      <span>Quanta Analytica</span> &nbsp;·&nbsp; An MNS Consulting Initiative
+    </div>
+    <div class="footer-legal">
+      QA-CSRF™, IGRIS™ and The Quanta Analytica Process™ are proprietary to MNS Consulting.<br />
+      &copy; 2025 MNS Consulting. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Smooth scroll for in-page anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        if (!id || id === '#') return;
+        const el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+
+</body>
+</html>
