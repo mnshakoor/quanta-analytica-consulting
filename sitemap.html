@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary SEO -->
+  <title>Site Map | Quanta Analytica</title>
+  <meta name="description" content="Complete site map for Quanta Analytica — navigate all pages including framework documentation, intelligence reports, advisory services, and research insights." />
+  <meta name="keywords" content="Quanta Analytica sitemap, site map, navigation, MNS Consulting" />
+  <meta name="author" content="M. Nuri Shakoor, MNS Consulting" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://quanta-analytica.com/sitemap.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://quanta-analytica.com/sitemap.html" />
+  <meta property="og:title" content="Site Map | Quanta Analytica" />
+  <meta property="og:description" content="Navigate all pages of Quanta Analytica — frameworks, reports, advisory, and research." />
+  <meta property="og:site_name" content="Quanta Analytica" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow+Condensed:wght@300;400;500;600&family=Barlow:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --obsidian:   #0a0c10;
+      --deep-navy:  #0d1220;
+      --midnight:   #111827;
+      --gold:       #c8a96e;
+      --gold-light: #e2c98a;
+      --gold-dim:   rgba(200,169,110,0.12);
+      --gold-line:  rgba(200,169,110,0.28);
+      --white:      #f5f2ec;
+      --grey:       #8a8f9a;
+      --grey-light: #c2c4c8;
+      --border:     rgba(200,169,110,0.14);
+      --border-soft:rgba(255,255,255,0.06);
+      --panel:      rgba(255,255,255,0.04);
+      --panel2:     rgba(255,255,255,0.07);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-ui:      'Barlow Condensed', sans-serif;
+      --font-body:    'Barlow', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--obsidian);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+      cursor: crosshair;
+      min-height: 100vh;
+    }
+
+    /* noise */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 1000; opacity: 0.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.5rem 3rem;
+      background: linear-gradient(to bottom, rgba(10,12,16,0.95) 0%, transparent 100%);
+      backdrop-filter: blur(2px);
+    }
+    .nav-logo {
+      font-family: var(--font-ui); font-size: 0.85rem; font-weight: 600;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); text-decoration: none;
+    }
+    .nav-logo:hover { text-decoration: none; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--font-ui); font-size: 0.75rem; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--grey-light); text-decoration: none; transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a.current { color: var(--gold); }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 9rem 3rem 4.5rem;
+      border-bottom: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute; right: -8vw; top: 50%;
+      transform: translateY(-50%);
+      width: 42vw; max-width: 560px;
+      aspect-ratio: 1/1;
+      background: radial-gradient(circle at center, rgba(200,169,110,0.06), transparent 68%);
+      pointer-events: none;
+    }
+
+    /* scan lines */
+    .ph-scan {
+      position: absolute; left: 0; right: 0; height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-line), transparent);
+    }
+    .ph-scan.t { top: 22%; }
+    .ph-scan.b { top: 84%; }
+
+    .page-header-content { position: relative; z-index: 2; max-width: 720px; }
+
+    .ph-eyebrow {
+      font-family: var(--font-ui); font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.38em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1.2rem;
+      opacity: 0; animation: slideUp 0.8s ease 0.15s forwards;
+    }
+
+    .ph-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      font-weight: 300; line-height: 0.95; letter-spacing: -0.01em;
+      margin-bottom: 1.6rem;
+      opacity: 0; animation: slideUp 0.9s ease 0.28s forwards;
+    }
+    .ph-title em { font-style: italic; color: var(--gold-light); }
+
+    .ph-desc {
+      font-size: 0.97rem; color: var(--grey-light); line-height: 1.85; max-width: 560px;
+      opacity: 0; animation: slideUp 0.9s ease 0.42s forwards;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── MAIN ── */
+    main { padding: 4rem 3rem 6rem; max-width: 1200px; margin: 0 auto; }
+
+    /* section group */
+    .sm-group { margin-bottom: 4rem; }
+
+    .sm-group-header {
+      display: flex; align-items: center; gap: 1.4rem;
+      margin-bottom: 1.2rem; padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sm-group-num {
+      font-family: var(--font-ui); font-size: 0.63rem;
+      letter-spacing: 0.28em; color: var(--gold); opacity: 0.55;
+    }
+
+    .sm-group-rule { width: 40px; height: 1px; background: var(--gold-line); flex-shrink: 0; }
+
+    .sm-group-title {
+      font-family: var(--font-ui); font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold);
+    }
+
+    /* page entry rows */
+    .sm-list { display: flex; flex-direction: column; gap: 0; }
+
+    .sm-entry {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 2rem;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--border-soft);
+      position: relative;
+      transition: background 0.25s;
+    }
+    .sm-entry:last-child { border-bottom: none; }
+    .sm-entry:hover { background: var(--panel); margin: 0 -1.2rem; padding-left: 1.2rem; padding-right: 1.2rem; }
+
+    .sm-entry-left { display: flex; flex-direction: column; gap: 4px; }
+
+    .sm-entry-title {
+      font-family: var(--font-ui); font-size: 0.9rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--white); transition: color 0.25s;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .sm-entry:hover .sm-entry-title { color: var(--gold); }
+
+    .sm-entry-title .arrow {
+      opacity: 0; transform: translateX(-4px);
+      transition: opacity 0.25s, transform 0.25s;
+      font-size: 0.8rem; color: var(--gold);
+    }
+    .sm-entry:hover .sm-entry-title .arrow { opacity: 1; transform: translateX(0); }
+
+    .sm-entry-desc {
+      font-family: var(--font-body); font-size: 0.88rem;
+      color: var(--grey); line-height: 1.65;
+    }
+
+    .sm-entry-url {
+      font-family: var(--font-ui); font-size: 0.64rem;
+      letter-spacing: 0.12em; color: var(--grey);
+      opacity: 0.55; margin-top: 3px;
+      white-space: nowrap; align-self: center;
+    }
+
+    /* type badge */
+    .sm-badge {
+      font-family: var(--font-ui); font-size: 0.6rem;
+      font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid var(--gold-line);
+      background: var(--gold-dim); padding: 3px 9px;
+      white-space: nowrap; align-self: start; margin-top: 2px;
+    }
+
+    .sm-badge.external {
+      color: var(--grey-light); border-color: var(--border-soft);
+      background: var(--panel);
+    }
+
+    .sm-badge.sub {
+      color: rgba(168,216,234,0.8); border-color: rgba(168,216,234,0.25);
+      background: rgba(168,216,234,0.08);
+    }
+
+    /* sub-entries (reports/) */
+    .sm-sub { margin-top: 4px; }
+
+    .sm-sub-entry {
+      display: grid; grid-template-columns: 24px 1fr auto;
+      align-items: center; gap: 10px;
+      padding: 0.8rem 0 0.8rem 1.4rem;
+      border-bottom: 1px solid var(--border-soft);
+      transition: background 0.25s;
+    }
+    .sm-sub-entry:last-child { border-bottom: none; }
+    .sm-sub-entry:hover { background: var(--panel); margin: 0 -1.2rem; padding-left: 2.6rem; padding-right: 1.2rem; }
+
+    .sub-connector {
+      display: flex; align-items: flex-start; justify-content: center;
+      padding-top: 4px;
+    }
+    .sub-connector svg { opacity: 0.3; }
+
+    .sm-sub-title {
+      font-family: var(--font-ui); font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--grey-light); text-decoration: none; transition: color 0.25s;
+    }
+    .sm-sub-entry:hover .sm-sub-title { color: var(--gold); }
+
+    .sm-sub-desc {
+      font-family: var(--font-body); font-size: 0.84rem;
+      color: var(--grey); margin-top: 2px; line-height: 1.5;
+    }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      background: #070810; padding: 2.5rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-top: 1px solid rgba(200,169,110,0.08);
+    }
+    .footer-brand {
+      font-family: var(--font-ui); font-size: 0.72rem;
+      letter-spacing: 0.25em; text-transform: uppercase; color: var(--grey);
+    }
+    .footer-brand span { color: var(--gold); }
+    .footer-legal {
+      font-family: var(--font-ui); font-size: 0.65rem;
+      letter-spacing: 0.1em; color: rgba(138,143,154,0.5); text-align: right;
+    }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .rd1{transition-delay:.06s} .rd2{transition-delay:.12s} .rd3{transition-delay:.18s}
+    .rd4{transition-delay:.24s} .rd5{transition-delay:.30s} .rd6{transition-delay:.36s}
+    .rd7{transition-delay:.42s} .rd8{transition-delay:.48s}
+
+    @media(max-width:900px){
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
+      main { padding: 3.5rem 1.5rem 5rem; }
+      .page-header { padding: 7.5rem 1.5rem 3.5rem; }
+      .sm-entry { grid-template-columns: 1fr; gap: 8px; }
+      .sm-entry-url { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav aria-label="Main navigation">
+    <a href="index.html" class="nav-logo">Quanta Analytica</a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="index.html#frameworks">Frameworks</a></li>
+      <li><a href="mns-lbs.html">MNS Consulting</a></li>
+      <li><a href="/reports/">Reports</a></li>
+      <li><a href="sitemap.html" class="current">Site Map</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── PAGE HEADER ── -->
+  <div class="page-header">
+    <div class="ph-scan t"></div>
+    <div class="ph-scan b"></div>
+    <div class="page-header-content">
+      <p class="ph-eyebrow">Quanta Analytica &nbsp;·&nbsp; Full Navigation Index</p>
+      <h1 class="ph-title">Site <em>Map</em></h1>
+      <p class="ph-desc">A complete index of all pages across the Quanta Analytica platform — including framework documentation, intelligence reports, advisory services, and the Insights &amp; Research portal. Click any entry to navigate directly to that page.</p>
+    </div>
+  </div>
+
+  <!-- ── MAIN ── -->
+  <main id="content" aria-label="Site map">
+
+    <!-- GROUP 1 — CORE PAGES -->
+    <div class="sm-group reveal">
+      <div class="sm-group-header">
+        <span class="sm-group-num">01</span>
+        <div class="sm-group-rule"></div>
+        <span class="sm-group-title">Core Pages</span>
+      </div>
+      <div class="sm-list">
+
+        <div class="sm-entry">
+          <div class="sm-entry-left">
+            <a href="index.html" class="sm-entry-title">
+              Quanta Analytica — Home
+              <span class="arrow">→</span>
+            </a>
+            <div class="sm-entry-desc">The Quanta Analytica homepage. Decision-grade intelligence for complex environments — introducing the platform, capabilities, proprietary frameworks, and the four-stage QA Process™. The primary entry point to the site.</div>
+            <div class="sm-entry-url">quanta-analytica.com/</div>
+          </div>
+          <span class="sm-badge">Home</span>
+        </div>
+
+        <div class="sm-entry">
+          <div class="sm-entry-left">
+            <a href="about.html" class="sm-entry-title">
+              About Quanta Analytica
+              <span class="arrow">→</span>
+            </a>
+            <div class="sm-entry-desc">The mission, origin, and guiding principles of the Quanta Analytica platform. Covers the four core disciplines — structured analytic tradecraft, systems thinking, behavioral insight, and AI-assisted research workflows — alongside the platform's use cases and governing principles.</div>
+            <div class="sm-entry-url">quanta-analytica.com/about.html</div>
+          </div>
+          <span class="sm-badge">About</span>
+        </div>
+
+        <div class="sm-entry">
+          <div class="sm-entry-left">
+            <a href="services.html" class="sm-entry-title">
+              Services
+              <span class="arrow">→</span>
+            </a>
+            <div class="sm-entry-desc">Six core service areas delivered through MNS Consulting: Custom Intelligence &amp; Research Reports, AI Configuration &amp; LLM Workflow Setup, Structured Analytic Tradecraft Support, Decision-Support Framework Development, Training &amp; Workshops, and Research Advisory &amp; Consultation.</div>
+            <div class="sm-entry-url">quanta-analytica.com/services.html</div>
+          </div>
+          <span class="sm-badge">Services</span>
+        </div>
+
+        <div class="sm-entry">
+          <div class="sm-entry-left">
+            <a href="mns-lbs.html" class="sm-entry-title">
+              MNS Consulting × LBS Advisory
+              <span class="arrow">→</span>
+            </a>
+            <div class="sm-entry-desc">The founding partnership page — MNS Consulting and Lladner Business Systems LLC, Global Development &amp; Risk Management Division. The origin of the Quanta Analytica frameworks, risk intelligence advisory services, and the structured analytic work developed for LBS clients.</div>
+            <div class="sm-entry-url">quanta-analytica.com/mns-lbs.html</div>
+          </div>
+          <span class="sm-badge">Advisory</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- GROUP 2 — FRAMEWORK PAGES -->
+    <div class="sm-group reveal rd2">
+      <div class="sm-group-header">
+        <span class="sm-group-num">02</span>
+        <div class="sm-group-rule"></div>
+        <span class="sm-group-title">Proprietary Frameworks</span>
+      </div>
+      <div class="sm-list">
+
+        <div class="sm-entry">
+          <div class="sm-entry-left">
+            <a href="qa-process.html" class="sm-entry-title">
+              The Quanta Analytica Process™
+              <span class="arrow">→</span>
+            </a>
+            <div class="sm-entry-desc">The master methodology — a six-layer operational intelligence framework integrating LLM-augmented structured analysis, human-in-the-loop validation, and AI governance. Covers all six integrated layers, six use case domains, six governance principles, and a framework comparison table. The parent framework for QA-CSRF™ and IGRIS™.</div>
+            <div class="sm-entry-url">quanta-analytica.com/qa-process.html</div>
+          </div>
+          <span class="sm-badge">Framework</span>
+        </div>
+
+        <div class="sm-entry">
+          <div class="sm-entry-left">
+            <a href="qa-csrf.html" class="sm-entry-title">
+              QA-CSRF™ — Conflict Systems Research Framework
+              <span class="arrow">→</span>
+            </a>
+            <div class="sm-entry-desc">The Quanta Analytica Conflict Systems Research Framework — a six-phase ISO 31000-aligned operational framework for NGO security risk management in volatile and fragile environments. Integrates PESTELS, CAF 2.0, CARVER, Do No Harm, CHS, and ISO 27001. Includes the Sudan September 2025 applied case study.</div>
+            <div class="sm-entry-url">quanta-analytica.com/qa-csrf.html</div>
+          </div>
+          <span class="sm-badge">Framework</span>
+        </div>
+
+        <div class="sm-entry">
+          <div class="sm-entry-left">
+            <a href="igris.html" class="sm-entry-title">
+              IGRIS™ — Integrated Geo-Risk Intelligence System
+              <span class="arrow">→</span>
+            </a>
+            <div class="sm-entry-desc">The Integrated Geo-Risk Intelligence System — a five-phase closed-loop intelligence engine fusing SATCON-X structured analytics, CARVER-ECO prioritization, and Monte Carlo / Gaussian copula probabilistic simulation. Includes the six-country Africa geo-risk dashboard (DRC, Mozambique, Sudan, Mauritania, Benin, Togo) and the full Python Monte Carlo engine code.</div>
+            <div class="sm-entry-url">quanta-analytica.com/igris.html</div>
+          </div>
+          <span class="sm-badge">Framework</span>
+        </div>
+
+        <div class="sm-entry">
+          <div class="sm-entry-left">
+            <a href="cognition-model.html" class="sm-entry-title">
+              QA Process™ vs Five-Layer Cognition Model
+              <span class="arrow">→</span>
+            </a>
+            <div class="sm-entry-desc">How the QA Process™ operational workflow integrates with the Five-Layer Cognition Model analytical reasoning engine. Explains the aircraft vs. navigation system distinction, details all five QAP stages, and provides full explanations of the five cognition layers: Foundations, Mechanisms, Dynamics, Leverage, and Paradigms.</div>
+            <div class="sm-entry-url">quanta-analytica.com/cognition-model.html</div>
+          </div>
+          <span class="sm-badge">Framework</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- GROUP 3 — REPORTS -->
+    <div class="sm-group reveal rd3">
+      <div class="sm-group-header">
+        <span class="sm-group-num">03</span>
+        <div class="sm-group-rule"></div>
+        <span class="sm-group-title">Intelligence Reports</span>
+      </div>
+      <div class="sm-list">
+
+        <div class="sm-entry">
+          <div class="sm-entry-left">
+            <a href="reports/" class="sm-entry-title">
+              Featured Reports — Index
+              <span class="arrow">→</span>
+            </a>
+            <div class="sm-entry-desc">The featured intelligence reports index — up to ten current reports displayed at any time, each with title, abstract, and BLUF summary. Reports are produced using the QA Process™, QA-CSRF™, or IGRIS™ frameworks and undergo human-in-the-loop validation before publication.</div>
+            <div class="sm-entry-url">quanta-analytica.com/reports/</div>
+          </div>
+          <span class="sm-badge sub">Directory</span>
+        </div>
+
+        <!-- Sub-entries: published reports -->
+        <div class="sm-sub">
+          <div class="sm-sub-entry">
+            <div class="sub-connector">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M4 2v8h7" stroke="#c8a96e" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <a href="reports/chad-sudan-border-crisis.html" class="sm-sub-title">Chad-Sudan Border Crisis: Drone Strike, Closure &amp; Escalation Risk</a>
+              <div class="sm-sub-desc">QAP Intelligence Assessment · 19 March 2026 · Conflict Systems Analysis · Chad · Sudan</div>
+            </div>
+            <span class="sm-badge sub" style="white-space:nowrap; align-self:start; margin-top:2px;">Report 01</span>
+          </div>
+
+          <div class="sm-sub-entry">
+            <div class="sub-connector">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M4 2v8h7" stroke="#c8a96e" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <a href="reports/togo_benin_intelligence_assessment.html" class="sm-sub-title">Stability Pathways for Togo and Benin: Escalation Risks &amp; Governance Deficits</a>
+              <div class="sm-sub-desc">QAP™ · OSPREY Intelligence Assessment · March 2026 · Fragility &amp; Governance Modeling · Togo · Benin</div>
+            </div>
+            <span class="sm-badge sub" style="white-space:nowrap; align-self:start; margin-top:2px;">Report 02</span>
+          </div>
+
+          <div class="sm-sub-entry">
+            <div class="sub-connector">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M4 2v8h7" stroke="#c8a96e" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <a href="reports/sudan-conflict-assessment-q12026.html" class="sm-sub-title">Sudan Conflict &amp; Humanitarian Crisis: Current Assessment — Q1 2026</a>
+              <div class="sm-sub-desc">QAP™ Conflict Assessment · 13 March 2026 · Conflict Systems Analysis · Sudan · Threat Level 9/10 Critical</div>
+            </div>
+            <span class="sm-badge sub" style="white-space:nowrap; align-self:start; margin-top:2px;">Report 03</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- GROUP 4 — EXTERNAL -->
+    <div class="sm-group reveal rd4">
+      <div class="sm-group-header">
+        <span class="sm-group-num">04</span>
+        <div class="sm-group-rule"></div>
+        <span class="sm-group-title">External &amp; Research</span>
+      </div>
+      <div class="sm-list">
+
+        <div class="sm-entry">
+          <div class="sm-entry-left">
+            <a href="https://insights.quanta-analytica.com" target="_blank" rel="noopener" class="sm-entry-title">
+              Insights &amp; Research — Patreon Portal
+              <span class="arrow">↗</span>
+            </a>
+            <div class="sm-entry-desc">The Quanta Analytica Insights &amp; Research portal hosted at insights.quanta-analytica.com. Early access to intelligence reports, framework development updates, applied case studies, and research commentary for subscribers. The primary channel for ongoing analytic output from MNS Consulting and Quanta Analytica.</div>
+            <div class="sm-entry-url">insights.quanta-analytica.com</div>
+          </div>
+          <span class="sm-badge external">External ↗</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- GROUP 5 — NAVIGATION -->
+    <div class="sm-group reveal rd5">
+      <div class="sm-group-header">
+        <span class="sm-group-num">05</span>
+        <div class="sm-group-rule"></div>
+        <span class="sm-group-title">Site Navigation</span>
+      </div>
+      <div class="sm-list">
+
+        <div class="sm-entry">
+          <div class="sm-entry-left">
+            <a href="sitemap.html" class="sm-entry-title">
+              Site Map
+              <span class="arrow">→</span>
+            </a>
+            <div class="sm-entry-desc">This page. A complete navigable index of all pages across the Quanta Analytica platform with titles and descriptions.</div>
+            <div class="sm-entry-url">quanta-analytica.com/sitemap.html</div>
+          </div>
+          <span class="sm-badge">You Are Here</span>
+        </div>
+
+        <div class="sm-entry">
+          <div class="sm-entry-left">
+            <a href="index.html#connect" class="sm-entry-title">
+              Contact — Get in Touch
+              <span class="arrow">→</span>
+            </a>
+            <div class="sm-entry-desc">Reach the Quanta Analytica team via the contact section of the homepage. For advisory inquiries, service requests, partnership discussions, or research collaboration. Email: info@quanta-analytica.com.</div>
+            <div class="sm-entry-url">quanta-analytica.com/#connect</div>
+          </div>
+          <span class="sm-badge">Contact</span>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="site-footer">
+    <div class="footer-brand">
+      <span>Quanta Analytica</span> &nbsp;·&nbsp; An MNS Consulting Initiative
+    </div>
+    <div class="footer-legal">
+      QA-CSRF™, IGRIS™ and The Quanta Analytica Process™ are proprietary to MNS Consulting.<br />
+      &copy; 2025 MNS Consulting. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.07 });
+    reveals.forEach(el => obs.observe(el));
+  </script>
+
+</body>
+</html>
