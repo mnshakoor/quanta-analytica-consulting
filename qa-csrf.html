@@ -6,7 +6,7 @@
 
   <!-- SEO -->
   <title>QA-CSRF™ | Conflict &amp; Security Risk Framework | Quanta Analytica</title>
-  <meta name="description" content="QA-CSRF™ — the Quanta Analytica Conflict Systems Research Framework. MNS Consulting's operational framework for NGO security risk management in volatile, fragile, and high-risk environments. ISO 31000-aligned, GISF/INSSA compliant." />
+  <meta name="description" content="QA-CSRF™ — the Quanta Analytica Conflict Systems Research Framework. MNS Consulting's operational framework for NGO security risk management in volatile, fragile, and high-risk environments. ISO 31000-aligned, INSSA SRMP-C compliant." />
   <meta name="keywords" content="QA-CSRF, Conflict Systems Research Framework, NGO security risk management, ISO 31000, CARVER, PESTELS, CAF 2.0, MNS Consulting, Quanta Analytica, NGO safety, humanitarian risk, conflict analysis" />
   <meta name="author" content="M. Nuri Shakoor, MNS Consulting" />
   <meta name="robots" content="index, follow" />
@@ -15,7 +15,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://quanta-analytica.com/qa-csrf.html" />
   <meta property="og:title" content="QA-CSRF™ | Conflict &amp; Security Risk Framework" />
-  <meta property="og:description" content="MNS Consulting's operational framework for NGO security risk management. ISO 31000-aligned, GISF/INSSA SRM compliant, built for volatile and fragile environments." />
+  <meta property="og:description" content="MNS Consulting's operational framework for NGO security risk management. ISO 31000-aligned, INSSA SRMP-C compliant, built for volatile and fragile environments." />
   <meta property="og:image" content="https://quanta-analytica.com/og-image.png" />
   <meta property="og:site_name" content="Quanta Analytica" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -28,11 +28,33 @@
     "@context": "https://schema.org",
     "@type": "TechArticle",
     "name": "QA-CSRF™ — Quanta Analytica Conflict Systems Research Framework",
-    "description": "MNS Consulting's operational framework for conflict systems research and NGO security risk management, integrating ISO 31000, GISF/INSSA SRM, CARVER, PESTELS, and CAF 2.0.",
+    "description": "MNS Consulting's operational framework for conflict systems research and NGO security risk management, integrating ISO 31000, INSSA SRMP-C, CARVER, PESTELS, and CAF 2.0.",
     "author": { "@type": "Person", "name": "M. Nuri Shakoor" },
     "publisher": { "@type": "Organization", "name": "MNS Consulting", "url": "https://quanta-analytica.com" },
     "url": "https://quanta-analytica.com/qa-csrf.html"
   }
+
+    // ── HAMBURGER MENU ──
+    (function () {
+      const btn  = document.getElementById('navHamburger');
+      const menu = document.getElementById('mobileMenu');
+      if (!btn || !menu) return;
+      function toggleMenu(force) {
+        const isOpen = force !== undefined ? force : !menu.classList.contains('open');
+        menu.classList.toggle('open', isOpen);
+        btn.classList.toggle('open', isOpen);
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      }
+      btn.addEventListener('click', () => toggleMenu());
+      menu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => toggleMenu(false));
+      });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') toggleMenu(false);
+      });
+    })();
+
   </script>
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
@@ -298,6 +320,78 @@
 
     @media(max-width:900px){ .nav-links{ display:none; } }
     @media(max-width:640px){ .case-header{ flex-direction:column; align-items:flex-start; gap:8px; } }
+
+    /* ── HAMBURGER MENU ── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 200;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--gold, #c8a96e);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      transform-origin: center;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 99;
+      background: rgba(13,18,32,0.98);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--gold-line, rgba(200,169,110,0.28));
+      padding-top: 70px;
+      max-height: 100vh;
+      overflow-y: auto;
+      transform: translateY(-100%);
+      transition: transform 0.35s ease;
+    }
+    .mobile-menu.open {
+      transform: translateY(0);
+    }
+    .mobile-menu ul {
+      list-style: none;
+      padding: 0.5rem 0 1.5rem;
+      margin: 0;
+    }
+    .mobile-menu ul li a {
+      display: block;
+      padding: 1rem 2rem;
+      font-family: var(--font-ui, 'Barlow Condensed', sans-serif);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--grey-light, #c2c4c8);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(200,169,110,0.08);
+      transition: color 0.2s, background 0.2s;
+    }
+    .mobile-menu ul li:last-child a { border-bottom: none; }
+    .mobile-menu ul li a:hover { color: var(--gold, #c8a96e); background: rgba(200,169,110,0.06); }
+    .mobile-menu ul li a.current { color: var(--gold, #c8a96e); }
+
+    @media (max-width: 900px) {
+      .nav-hamburger { display: flex; }
+      .mobile-menu { display: block; }
+    }
   </style>
 </head>
 <body>
@@ -328,6 +422,23 @@
         <a href="#tools">Tools</a>
         <a href="#case-study">Case Study</a>
       </nav>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+
+  <!-- MOBILE NAV MENU -->
+  <div class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+    <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="qa-csrf.html">QA-CSRF™</a></li>
+          <li><a href="qa-process.html">QA Process™</a></li>
+          <li><a href="igris.html">IGRIS™</a></li>
+          <li><a href="cognition-model.html">Cognition Model</a></li>
+          <li><a href="mns-lbs.html">MNS Consulting</a></li>
+          <li><a href="/reports/">Reports</a></li>
+    </ul>
+  </div>
 
       <div class="nav-right">
         <a class="btn ghost small" href="qa-process.html">QA Process™</a>
@@ -365,11 +476,11 @@
         <h1 class="hero-title">QA-CSRF™<br /><em>Conflict Systems<br />Research Framework</em></h1>
         <p class="hero-trademark">Quanta Analytica Conflict Systems Research Framework™ · Registered Methodology</p>
         <p class="hero-sub">
-          An operational framework purpose-built for conflict systems research and NGO security risk management in volatile, fragile, and high-risk environments. QA-CSRF™ integrates ISO 31000:2018 risk principles, GISF/INSSA SRM aligned standards, and a structured toolkit — PESTELS, CAF 2.0, and CARVER — to produce decision-ready outputs: risk registers, contingency plans, security protocols, and field-level SitReps.
+          An operational framework purpose-built for conflict systems research and NGO security risk management in volatile, fragile, and high-risk environments. QA-CSRF™ integrates ISO 31000:2018 risk principles, INSSA SRMP-C competencies, and a structured toolkit — PESTELS, CAF 2.0, and CARVER — to produce decision-ready outputs: risk registers, contingency plans, security protocols, and field-level SitReps.
         </p>
         <div class="hero-pills">
           <span class="pill"><span class="dot" aria-hidden="true"></span> ISO 31000:2018 aligned</span>
-          <span class="pill">GISF/INSSA compliant</span>
+          <span class="pill">INSSA SRMP-C compliant</span>
           <span class="pill">NGO security risk management</span>
           <span class="pill">Fragile &amp; conflict-affected environments</span>
           <span class="pill">Do No Harm · CHS · ISO 27001</span>
@@ -397,8 +508,8 @@
           <div class="std-name">Risk Management Principles</div>
         </div>
         <div class="std-item">
-          <div class="std-code">GISF/INSSA SRM</div>
-          <div class="std-name">NGO Safety &amp; Security Risk Management Standards</div>
+          <div class="std-code">INSSA SRMP-C</div>
+          <div class="std-name">NGO Safety &amp; Security Competencies</div>
         </div>
         <div class="std-item">
           <div class="std-code">CHS</div>
