@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mauritania: The Governance-Exclusion Loop | Quanta Analytica Process™ | 22 MAR 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:           #0A0E17;
+  --bg-panel:     #0F1520;
+  --bg-card:      #131B2A;
+  --bg-card-alt:  #0D1421;
+  --amber:        #E8A020;
+  --amber-dim:    #9B6A14;
+  --amber-glow:   rgba(232,160,32,0.12);
+  --amber-pale:   rgba(232,160,32,0.06);
+  --red:          #D94040;
+  --red-dim:      rgba(217,64,64,0.15);
+  --green:        #2EA86A;
+  --green-dim:    rgba(46,168,106,0.15);
+  --yellow:       #D4B84A;
+  --blue-steel:   #3A6EA8;
+  --text-primary: #E8E2D4;
+  --text-body:    #B8B0A0;
+  --text-muted:   #6A6258;
+  --text-mono:    #8FA8C8;
+  --border:       rgba(232,160,32,0.18);
+  --border-dim:   rgba(255,255,255,0.06);
+  --scan-line:    rgba(0,0,0,0.12);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text-primary);font-family:'IBM Plex Sans',sans-serif;font-size:15px;line-height:1.7;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,var(--scan-line) 0px,transparent 1px,transparent 3px);pointer-events:none;z-index:9999;opacity:0.35;}
+#progress{position:fixed;top:0;left:0;height:2px;width:0%;background:var(--amber);z-index:10000;box-shadow:0 0 12px var(--amber);transition:width 0.08s linear;}
+nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(10,14,23,0.96);border-bottom:1px solid var(--border);height:52px;display:flex;align-items:center;padding:0 2rem;gap:1.5rem;backdrop-filter:blur(16px);}
+.nav-classify{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);padding:0.2rem 0.7rem;border:1px solid var(--amber-dim);border-radius:2px;}
+.nav-title{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--text-muted);letter-spacing:0.06em;flex:1;}
+.nav-date{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--text-muted);letter-spacing:0.08em;}
+.hero{min-height:100vh;background:var(--bg-panel);border-bottom:1px solid var(--border);display:flex;flex-direction:column;justify-content:center;padding:9rem 3rem 5rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 15% 50%,rgba(232,160,32,0.05) 0%,transparent 65%),radial-gradient(ellipse 50% 70% at 85% 20%,rgba(217,64,64,0.04) 0%,transparent 60%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(232,160,32,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(232,160,32,0.04) 1px,transparent 1px);background-size:48px 48px;animation:gridPulse 8s ease-in-out infinite;}
+@keyframes gridPulse{0%,100%{opacity:0.5}50%{opacity:1}}
+.hero-inner{position:relative;z-index:2;max-width:900px;}
+.hero-tag{display:inline-flex;align-items:center;gap:0.6rem;font-family:'IBM Plex Mono',monospace;font-size:0.62rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:var(--amber);margin-bottom:1.8rem;opacity:0;animation:fadeIn 0.7s 0.2s ease forwards;}
+.hero-tag::before{content:'';width:20px;height:1px;background:var(--amber);}
+.hero-domain{font-family:'IBM Plex Mono',monospace;font-size:0.68rem;letter-spacing:0.18em;color:var(--blue-steel);text-transform:uppercase;margin-bottom:1rem;opacity:0;animation:fadeIn 0.7s 0.35s ease forwards;}
+.hero-title{font-family:'Libre Baskerville',serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:700;line-height:1.12;color:var(--text-primary);margin-bottom:0.6rem;opacity:0;animation:fadeIn 0.8s 0.45s ease forwards;}
+.hero-title span{color:var(--amber);}
+.hero-subtitle{font-family:'IBM Plex Sans',sans-serif;font-size:1rem;font-weight:300;color:var(--text-body);max-width:580px;line-height:1.6;margin-bottom:3rem;opacity:0;animation:fadeIn 0.8s 0.55s ease forwards;}
+.hero-meta{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--border);border-radius:3px;overflow:hidden;max-width:760px;opacity:0;animation:fadeIn 0.8s 0.7s ease forwards;}
+.meta-cell{flex:1;min-width:120px;padding:0.85rem 1.2rem;border-right:1px solid var(--border);background:var(--bg-card);}
+.meta-cell:last-child{border-right:none;}
+.meta-label{font-family:'IBM Plex Mono',monospace;font-size:0.55rem;letter-spacing:0.2em;color:var(--text-muted);text-transform:uppercase;margin-bottom:0.3rem;}
+.meta-value{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;font-weight:600;color:var(--amber);}
+.meta-value.yellow{color:var(--yellow);}
+.threat-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(232,160,32,0.08);border:1px solid rgba(232,160,32,0.3);border-radius:2px;padding:0.25rem 0.7rem;font-family:'IBM Plex Mono',monospace;font-size:0.62rem;font-weight:600;letter-spacing:0.18em;color:var(--amber);text-transform:uppercase;margin-top:1.5rem;opacity:0;animation:fadeIn 0.8s 0.85s ease forwards;}
+.threat-dot{width:6px;height:6px;background:var(--amber);border-radius:50%;animation:blink 1.8s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+.hero-stats{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:2rem;opacity:0;animation:fadeIn 0.8s 1.0s ease forwards;}
+.hero-stat{background:var(--bg-card);border:1px solid var(--border-dim);padding:0.45rem 0.9rem;display:flex;flex-direction:column;gap:2px;}
+.hero-stat-label{font-family:'IBM Plex Mono',monospace;font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-muted);}
+.hero-stat-value{font-family:'IBM Plex Mono',monospace;font-size:0.8rem;font-weight:600;color:var(--text-mono);}
+main{max-width:1000px;margin:0 auto;padding:4rem 2rem 6rem;}
+.section{margin-bottom:5rem;opacity:0;transform:translateY(20px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.section.visible{opacity:1;transform:translateY(0);}
+.section-header{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--border-dim);}
+.section-num{font-family:'IBM Plex Mono',monospace;font-size:0.58rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber);background:var(--amber-pale);border:1px solid var(--amber-dim);padding:0.2rem 0.65rem;border-radius:2px;white-space:nowrap;}
+.section-title{font-family:'Libre Baskerville',serif;font-size:1.45rem;font-weight:700;color:var(--text-primary);letter-spacing:0.01em;}
+cite{font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:0.58rem;font-weight:600;color:var(--blue-steel);vertical-align:super;line-height:0;letter-spacing:0;}
+.bluf-grid{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:4px;overflow:hidden;}
+.bluf-item{display:flex;gap:0;border-bottom:1px solid var(--border-dim);background:var(--bg-card);transition:background 0.2s;}
+.bluf-item:last-child{border-bottom:none;}
+.bluf-item:hover{background:var(--bg-card-alt);}
+.bluf-index{width:44px;min-width:44px;display:flex;align-items:flex-start;justify-content:center;padding:1.1rem 0;border-right:1px solid var(--border-dim);font-family:'IBM Plex Mono',monospace;font-size:0.62rem;font-weight:600;color:var(--amber);background:var(--amber-pale);}
+.bluf-text{padding:0.9rem 1.3rem;font-family:'IBM Plex Sans',sans-serif;font-size:0.9rem;line-height:1.65;color:var(--text-body);}
+.bluf-text strong{color:var(--text-primary);font-weight:600;}
+.snapshot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:2rem;}
+.snapshot-cell{background:var(--bg-card);padding:1.1rem 1.3rem;}
+.snapshot-label{font-family:'IBM Plex Mono',monospace;font-size:0.58rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber-dim);margin-bottom:0.4rem;}
+.snapshot-content{font-family:'IBM Plex Sans',sans-serif;font-size:0.85rem;color:var(--text-body);line-height:1.5;}
+.snapshot-content strong{color:var(--text-primary);}
+.kj-list{display:flex;flex-direction:column;gap:1rem;}
+.kj-item{display:flex;gap:1rem;background:var(--bg-card);border:1px solid var(--border-dim);border-left:3px solid var(--amber-dim);border-radius:0 3px 3px 0;padding:1.1rem 1.3rem;transition:border-left-color 0.2s;}
+.kj-item:hover{border-left-color:var(--amber);}
+.kj-item.high{border-left-color:var(--amber);}
+.kj-item.moderate{border-left-color:var(--blue-steel);}
+.kj-item.low{border-left-color:var(--text-muted);}
+.kj-conf{display:flex;flex-direction:column;align-items:center;gap:0.3rem;min-width:60px;}
+.kj-conf-badge{font-family:'IBM Plex Mono',monospace;font-size:0.5rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:0.18rem 0.4rem;border-radius:2px;white-space:nowrap;}
+.kj-conf-badge.high{color:var(--amber);background:var(--amber-pale);border:1px solid var(--amber-dim);}
+.kj-conf-badge.moderate{color:var(--blue-steel);background:rgba(58,110,168,0.08);border:1px solid rgba(58,110,168,0.25);}
+.kj-conf-badge.low{color:var(--text-muted);background:rgba(106,98,88,0.12);border:1px solid rgba(106,98,88,0.25);}
+.kj-conf-badge.low-mod{color:var(--yellow);background:rgba(212,184,74,0.08);border:1px solid rgba(212,184,74,0.25);}
+.kj-id{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--text-muted);margin-top:0.2rem;}
+.kj-body{font-family:'IBM Plex Sans',sans-serif;font-size:0.88rem;line-height:1.65;color:var(--text-body);}
+.kj-body strong{color:var(--text-primary);}
+.evidence-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-bottom:1.5rem;}
+.evidence-box{border:1px solid var(--border-dim);border-radius:3px;overflow:hidden;}
+.evidence-box-header{display:flex;align-items:center;gap:0.6rem;padding:0.65rem 1rem;font-family:'IBM Plex Mono',monospace;font-size:0.58rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;}
+.evidence-box-header.know{background:var(--green-dim);color:var(--green);border-bottom:1px solid rgba(46,168,106,0.15);}
+.evidence-box-header.assess{background:var(--amber-pale);color:var(--amber);border-bottom:1px solid var(--amber-dim);}
+.evidence-box-header.gap{background:var(--red-dim);color:var(--red);border-bottom:1px solid rgba(217,64,64,0.2);}
+.evidence-box ul{list-style:none;padding:0.8rem 1rem;background:var(--bg-card);}
+.evidence-box li{font-family:'IBM Plex Sans',sans-serif;font-size:0.82rem;color:var(--text-body);line-height:1.6;padding:0.35rem 0 0.35rem 1rem;border-bottom:1px solid var(--border-dim);position:relative;}
+.evidence-box li:last-child{border-bottom:none;}
+.evidence-box li::before{content:'›';position:absolute;left:0;color:var(--amber-dim);font-weight:600;}
+.evidence-box li strong{color:var(--text-primary);}
+.wsi-note{background:var(--bg-card);border:1px solid var(--border-dim);border-left:3px solid var(--blue-steel);border-radius:0 3px 3px 0;padding:1rem 1.3rem;font-family:'IBM Plex Sans',sans-serif;font-size:0.82rem;color:var(--text-body);line-height:1.6;margin-bottom:1.5rem;}
+.wsi-note strong{color:var(--text-mono);}
+.iw-table,.ach-table,.assumption-table,.kpi-table,.pig-table{width:100%;border-collapse:collapse;border:1px solid var(--border);border-radius:3px;overflow:hidden;font-family:'IBM Plex Sans',sans-serif;font-size:0.82rem;}
+.iw-table thead tr,.ach-table thead tr,.assumption-table thead tr,.kpi-table thead tr,.pig-table thead tr{background:var(--bg-card-alt);border-bottom:1px solid var(--border);}
+.iw-table th,.ach-table th,.assumption-table th,.kpi-table th,.pig-table th{padding:0.75rem 1rem;font-family:'IBM Plex Mono',monospace;font-size:0.58rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--amber);text-align:left;border-right:1px solid var(--border-dim);}
+.iw-table th:last-child,.ach-table th:last-child,.assumption-table th:last-child,.kpi-table th:last-child,.pig-table th:last-child{border-right:none;}
+.iw-table tbody tr,.ach-table tbody tr,.assumption-table tbody tr,.kpi-table tbody tr,.pig-table tbody tr{background:var(--bg-card);border-bottom:1px solid var(--border-dim);transition:background 0.15s;}
+.iw-table tbody tr:last-child,.ach-table tbody tr:last-child,.assumption-table tbody tr:last-child,.kpi-table tbody tr:last-child,.pig-table tbody tr:last-child{border-bottom:none;}
+.iw-table tbody tr:hover,.ach-table tbody tr:hover,.assumption-table tbody tr:hover,.kpi-table tbody tr:hover,.pig-table tbody tr:hover{background:var(--bg-card-alt);}
+.iw-table td,.ach-table td,.assumption-table td,.kpi-table td,.pig-table td{padding:0.8rem 1rem;color:var(--text-body);border-right:1px solid var(--border-dim);vertical-align:top;line-height:1.5;}
+.iw-table td:last-child,.ach-table td:last-child,.assumption-table td:last-child,.kpi-table td:last-child,.pig-table td:last-child{border-right:none;}
+.iw-table td:first-child{color:var(--text-primary);font-weight:600;}
+.assumption-table td strong{color:var(--text-primary);}
+.pig-table td:first-child{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;font-weight:600;color:var(--amber);}
+.kpi-table td:first-child{color:var(--text-primary);font-weight:600;}
+.status-pill{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:0.55rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:0.15rem 0.55rem;border-radius:20px;}
+.status-pill.red{background:var(--red-dim);color:var(--red);border:1px solid rgba(217,64,64,0.25);}
+.status-pill.amber{background:var(--amber-pale);color:var(--amber);border:1px solid var(--amber-dim);}
+.status-pill.green{background:var(--green-dim);color:var(--green);border:1px solid rgba(46,168,106,0.25);}
+.status-pill.blue{background:rgba(58,110,168,0.1);color:var(--blue-steel);border:1px solid rgba(58,110,168,0.25);}
+.status-pill.yellow{background:rgba(212,184,74,0.08);color:var(--yellow);border:1px solid rgba(212,184,74,0.25);}
+.pillar-tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:0.52rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:0.12rem 0.45rem;border-radius:2px;background:rgba(58,110,168,0.1);color:var(--blue-steel);border:1px solid rgba(58,110,168,0.25);margin:2px 2px 2px 0;}
+.scenario-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;}
+.scenario-card{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:3px;overflow:hidden;}
+.scenario-header{padding:0.8rem 1.2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border-dim);}
+.scenario-label{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;}
+.scenario-prob{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--text-muted);}
+.scenario-card.best .scenario-header{background:var(--green-dim);}
+.scenario-card.best .scenario-label{color:var(--green);}
+.scenario-card.base .scenario-header{background:var(--amber-pale);}
+.scenario-card.base .scenario-label{color:var(--amber);}
+.scenario-card.worst .scenario-header{background:var(--red-dim);}
+.scenario-card.worst .scenario-label{color:var(--red);}
+.scenario-title{font-family:'Libre Baskerville',serif;font-size:0.92rem;font-weight:700;color:var(--text-primary);padding:0.9rem 1.2rem 0.4rem;}
+.scenario-body{font-family:'IBM Plex Sans',sans-serif;font-size:0.82rem;color:var(--text-body);line-height:1.65;padding:0 1.2rem 1rem;}
+.scenario-triggers{padding:0 1.2rem 1rem;}
+.scenario-triggers-label{font-family:'IBM Plex Mono',monospace;font-size:0.55rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.4rem;}
+.scenario-trigger-item{font-family:'IBM Plex Sans',sans-serif;font-size:0.78rem;color:var(--text-body);line-height:1.5;padding:0.2rem 0 0.2rem 0.8rem;position:relative;}
+.scenario-trigger-item::before{content:'—';position:absolute;left:0;color:var(--amber-dim);font-size:0.7rem;}
+.behavioral-grid{display:flex;flex-direction:column;gap:1rem;}
+.behavioral-item{background:var(--bg-card);border:1px solid var(--border-dim);border-left:3px solid var(--blue-steel);border-radius:0 3px 3px 0;overflow:hidden;}
+.behavioral-header{padding:0.7rem 1.2rem;background:rgba(58,110,168,0.06);border-bottom:1px solid var(--border-dim);font-family:'IBM Plex Mono',monospace;font-size:0.62rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-mono);}
+.behavioral-body{padding:0.9rem 1.2rem;font-family:'IBM Plex Sans',sans-serif;font-size:0.85rem;color:var(--text-body);line-height:1.65;}
+.behavioral-body strong{color:var(--text-primary);}
+.rec-timeline{display:flex;flex-direction:column;gap:0;position:relative;}
+.rec-timeline::before{content:'';position:absolute;left:79px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--amber),transparent);opacity:0.3;}
+.rec-block{display:flex;gap:0;margin-bottom:1.5rem;}
+.rec-time{width:80px;min-width:80px;padding-top:0.1rem;}
+.rec-time-label{font-family:'IBM Plex Mono',monospace;font-size:0.55rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:0.2rem 0.5rem;border-radius:2px;white-space:nowrap;display:inline-block;}
+.rec-time-label.immediate{background:var(--red-dim);color:var(--red);border:1px solid rgba(217,64,64,0.2);}
+.rec-time-label.near{background:var(--amber-pale);color:var(--amber);border:1px solid var(--amber-dim);}
+.rec-time-label.medium{background:var(--green-dim);color:var(--green);border:1px solid rgba(46,168,106,0.2);}
+.rec-content{flex:1;padding-left:1.5rem;}
+.rec-items{display:flex;flex-direction:column;gap:0.6rem;}
+.rec-item{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:3px;padding:0.9rem 1.1rem;font-family:'IBM Plex Sans',sans-serif;font-size:0.85rem;color:var(--text-body);line-height:1.6;}
+.rec-item strong{color:var(--text-primary);}
+.conf-panel{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;overflow:hidden;}
+.conf-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;background:var(--bg-card-alt);border-bottom:1px solid var(--border);}
+.conf-title{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);}
+.conf-level{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;font-weight:600;color:var(--yellow);background:rgba(212,184,74,0.1);border:1px solid rgba(212,184,74,0.25);padding:0.2rem 0.7rem;border-radius:2px;}
+.conf-body{padding:1.2rem 1.5rem;}
+.conf-row{display:flex;gap:0.8rem;margin-bottom:0.65rem;font-family:'IBM Plex Sans',sans-serif;font-size:0.83rem;color:var(--text-body);line-height:1.55;}
+.conf-row::before{content:'›';color:var(--amber-dim);font-weight:700;flex-shrink:0;margin-top:0.05em;}
+.conf-divider{border:none;border-top:1px solid var(--border-dim);margin:1rem 0;}
+.uncertainty-list{display:flex;flex-direction:column;gap:0.6rem;}
+.uncertainty-item{display:flex;gap:0.8rem;background:var(--bg-card-alt);border:1px solid var(--border-dim);border-left:3px solid rgba(217,64,64,0.4);border-radius:0 3px 3px 0;padding:0.75rem 1rem;font-family:'IBM Plex Sans',sans-serif;font-size:0.82rem;color:var(--text-body);line-height:1.55;}
+.uncertainty-item strong{color:var(--text-primary);}
+.threshold-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;}
+.threshold-cell{border-radius:3px;overflow:hidden;border:1px solid var(--border-dim);}
+.threshold-dot-header{display:flex;align-items:center;gap:0.6rem;padding:0.75rem 1rem;border-bottom:1px solid var(--border-dim);}
+.threshold-label-text{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;}
+.threshold-dot2{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.green-zone .threshold-dot-header{background:var(--green-dim);}
+.green-zone .threshold-label-text{color:var(--green);}
+.green-zone .threshold-dot2{background:var(--green);}
+.amber-zone .threshold-dot-header{background:var(--amber-pale);}
+.amber-zone .threshold-label-text{color:var(--amber);}
+.amber-zone .threshold-dot2{background:var(--amber);animation:blink 2s ease-in-out infinite;}
+.red-zone .threshold-dot-header{background:var(--red-dim);}
+.red-zone .threshold-label-text{color:var(--red);}
+.red-zone .threshold-dot2{background:var(--red);animation:blink 1.4s ease-in-out infinite;}
+.threshold-body{font-family:'IBM Plex Sans',sans-serif;font-size:0.82rem;color:var(--text-body);line-height:1.6;padding:0.9rem 1rem;background:var(--bg-card);}
+.ref-table{width:100%;border-collapse:collapse;font-family:'IBM Plex Sans',sans-serif;font-size:0.8rem;}
+.ref-table thead tr{background:var(--bg-card-alt);border-bottom:1px solid var(--border);}
+.ref-table th{padding:0.65rem 0.9rem;font-family:'IBM Plex Mono',monospace;font-size:0.55rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--amber-dim);text-align:left;border-right:1px solid var(--border-dim);}
+.ref-table th:last-child{border-right:none;}
+.ref-table tbody tr{border-bottom:1px solid var(--border-dim);background:var(--bg-card);transition:background 0.15s;}
+.ref-table tbody tr:hover{background:var(--bg-card-alt);}
+.ref-table tbody tr:last-child{border-bottom:none;}
+.ref-table td{padding:0.7rem 0.9rem;color:var(--text-body);border-right:1px solid var(--border-dim);vertical-align:top;}
+.ref-table td:last-child{border-right:none;}
+.ref-table td:first-child{color:var(--amber);font-family:'IBM Plex Mono',monospace;font-size:0.72rem;}
+.band-pill{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:0.55rem;font-weight:600;padding:0.12rem 0.45rem;border-radius:2px;letter-spacing:0.1em;}
+.band-pill.green{background:var(--green-dim);color:var(--green);border:1px solid rgba(46,168,106,0.25);}
+.band-pill.amber{background:var(--amber-pale);color:var(--amber);border:1px solid var(--amber-dim);}
+.band-pill.red{background:var(--red-dim);color:var(--red);border:1px solid rgba(217,64,64,0.25);}
+.prose{font-family:'IBM Plex Sans',sans-serif;font-size:0.9rem;color:var(--text-body);line-height:1.8;}
+.prose p{margin-bottom:1rem;}
+.prose p:last-child{margin-bottom:0;}
+.prose strong{color:var(--text-primary);}
+.sub-section{margin-top:2.2rem;margin-bottom:1.2rem;font-family:'IBM Plex Mono',monospace;font-size:0.65rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-mono);display:flex;align-items:center;gap:0.8rem;}
+.sub-section::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border-dim),transparent);}
+footer{background:var(--bg-panel);border-top:1px solid var(--border);padding:3rem 2rem;text-align:center;}
+.footer-qa{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);margin-bottom:0.5rem;}
+.footer-sub{font-family:'IBM Plex Sans',sans-serif;font-size:0.75rem;color:var(--text-muted);margin-bottom:1rem;}
+.footer-copy{font-family:'IBM Plex Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;color:var(--text-muted);opacity:0.5;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:640px){
+  .hero{padding:7rem 1.4rem 4rem;}
+  main{padding:3rem 1.2rem 4rem;}
+  nav{padding:0 1rem;}
+  .nav-title,.nav-date{display:none;}
+  .iw-table,.ref-table{font-size:0.75rem;}
+  .iw-table th,.iw-table td,.ref-table th,.ref-table td{padding:0.6rem 0.7rem;}
+  .snapshot-grid{grid-template-columns:1fr 1fr;}
+  .scenario-grid{grid-template-columns:1fr;}
+  .threshold-grid{grid-template-columns:1fr;}
+}
+@media print{
+  nav,#progress,body::before{display:none;}
+  .section{opacity:1;transform:none;}
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<nav>
+  <div class="nav-classify">Open Source</div>
+  <div class="nav-title">QAP // Conflict Systems Analysis + Fragility &amp; Governance Modeling // Mauritania</div>
+  <div class="nav-date">22 March 2026</div>
+</nav>
+
+<header class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Intelligence Assessment</div>
+    <div class="hero-domain">Domain: Conflict Systems Analysis + Fragility &amp; Governance Modeling</div>
+    <h1 class="hero-title">Mauritania: The Governance-Exclusion Loop<br><span>Fragility Drivers, Institutional Sabotage &amp; Pathways to Legitimacy</span></h1>
+    <p class="hero-subtitle">A QAP-compliant structured intelligence assessment of the systemic chasm between Mauritania's anti-slavery legal framework and extractive institutional practice, and the scenario pathways that determine whether the Governance-Exclusion Loop can be broken.</p>
+    <div class="hero-meta">
+      <div class="meta-cell"><div class="meta-label">Date</div><div class="meta-value">22 MAR 2026</div></div>
+      <div class="meta-cell"><div class="meta-label">Classification</div><div class="meta-value">Unclassified / Open Source</div></div>
+      <div class="meta-cell"><div class="meta-label">Confidence</div><div class="meta-value yellow">Moderate</div></div>
+      <div class="meta-cell"><div class="meta-label">Scope</div><div class="meta-value">Mauritania | 12 Months</div></div>
+      <div class="meta-cell"><div class="meta-label">Framework</div><div class="meta-value">QAP v1.0</div></div>
+    </div>
+    <div class="threat-badge"><div class="threat-dot"></div>Threat Status: Amber — Managed Stasis with Deterioration Risk</div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-label">Enslaved Persons (est.)</div><div class="hero-stat-value">149,000+</div></div>
+      <div class="hero-stat"><div class="hero-stat-label">Total Incarcerations (ever)</div><div class="hero-stat-value">&lt; 10</div></div>
+      <div class="hero-stat"><div class="hero-stat-label">Refugees Hosted</div><div class="hero-stat-value">309,000</div></div>
+      <div class="hero-stat"><div class="hero-stat-label">New Malian Arrivals (Oct–Jan)</div><div class="hero-stat-value">7,931+</div></div>
+      <div class="hero-stat"><div class="hero-stat-label">Base Scenario</div><div class="hero-stat-value">Stasis — 60%</div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 // BLUF -->
+<section class="section" id="s1">
+  <div class="section-header">
+    <span class="section-num">01 // BLUF</span>
+    <div class="section-title">Bottom Line Up Front</div>
+  </div>
+  <div class="bluf-grid">
+    <div class="bluf-item"><div class="bluf-index">01</div><div class="bluf-text"><strong>The Governance-Exclusion Loop is intentional:</strong> Mauritania's multi-layered pattern of prosecutorial obstruction, social mediation pressure, activist suppression, and border-security collusion constitutes a deliberate systemic feature to preserve an extractive social order — not a capacity deficit. Fewer than ten individuals have ever been imprisoned for hereditary slavery despite decades of criminalization.<cite>[1,5,6]</cite></div></div>
+    <div class="bluf-item"><div class="bluf-index">02</div><div class="bluf-text"><strong>TIP Tier 2 rating overstates ground-level improvement.</strong> Legal and institutional framework signals (2020 anti-trafficking law, specialized courts, INCHTMS, NRM procedural manuals) drove the rating upgrade. Implementation remains negligible: near-zero official accountability and NGO-documented continuation of hereditary slavery affecting an estimated 149,000 individuals through 2025–2026.<cite>[5,6,8]</cite></div></div>
+    <div class="bluf-item"><div class="bluf-index">03</div><div class="bluf-text"><strong>External pressures compound structural fragility.</strong> JNIM encroachment from Mali, 309,000+ refugees in Hodh Chargui (7,931 new arrivals Oct 2025–Jan 2026), and EU-linked migration-control abuses raise near-term risk of state legitimacy erosion in peripheral zones — particularly among already-marginalized Haratine communities.<cite>[2,7]</cite></div></div>
+    <div class="bluf-item"><div class="bluf-index">04</div><div class="bluf-text"><strong>Primary analytic judgment:</strong> The INCHTMS (National Committee for Combating Human Trafficking and Smuggling) is the highest-leverage intervention point. The body has legal mandate, existing infrastructure, and international visibility to serve as a reform anchor — if granted binding authority over prosecutorial referrals and inclusive civil society membership from affected communities.<cite>[1,5,6]</cite></div></div>
+    <div class="bluf-item"><div class="bluf-index">05</div><div class="bluf-text"><strong>Base case is managed stasis, not resolution.</strong> Without systemic shift, the 12-month trajectory is continued surface stability with persistent underlying fragility. Meaningful deterioration risk (20%) if the Sahel security perimeter degrades or internal repression triggers organized Haratine political mobilization.</div></div>
+    <div class="bluf-item"><div class="bluf-index">06</div><div class="bluf-text"><strong>Highest-priority policy gap:</strong> International partners must condition security and development assistance on measurable KPI benchmarks. The January 2026 U.S. military equipment transfer without documented human-rights conditionality exemplifies the current dynamic of inadvertent extractive-capacity reinforcement.<cite>[3,5]</cite></div></div>
+  </div>
+</section>
+
+<!-- 02 // SNAPSHOT -->
+<section class="section" id="s2">
+  <div class="section-header">
+    <span class="section-num">02 // SNAPSHOT</span>
+    <div class="section-title">Situation Snapshot</div>
+  </div>
+  <div class="snapshot-grid">
+    <div class="snapshot-cell"><div class="snapshot-label">Who</div><div class="snapshot-content">State of Mauritania (executive, judiciary, security apparatus) vs. Haratine (40% of pop.) and Afro-Mauritanian communities; international actors: U.S., EU, UN; NGOs including IRA-Mauritania, SOS-Esclaves</div></div>
+    <div class="snapshot-cell"><div class="snapshot-label">What</div><div class="snapshot-content">Modern anti-slavery legal frameworks<cite>[5,6]</cite> deliberately subverted by institutional actors, sustaining descent-based chattel slavery (est. 149,000+ individuals<cite>[8]</cite>) and producing a self-reinforcing fragility loop</div></div>
+    <div class="snapshot-cell"><div class="snapshot-label">Where</div><div class="snapshot-content">Nationwide governance failure; slavery concentrated in rural/eastern regions; security and refugee stress in Hodh Chargui; migration-control abuses around Nouadhibou on the Atlantic route<cite>[7]</cite></div></div>
+    <div class="snapshot-cell"><div class="snapshot-label">When</div><div class="snapshot-content">Structural: 1981 abolition to present. Immediate window: Jan–Mar 2026 — escalating Malian refugee influx,<cite>[2]</cite> U.S. military equipment transfer (Jan 2026),<cite>[3]</cite> TIP Tier 2 retained, no major structural reforms in Q1 2026</div></div>
+    <div class="snapshot-cell"><div class="snapshot-label">Why</div><div class="snapshot-content">Political will deficit: Beydane/Arab-Moorish elites benefit from forced Haratine labor. External partnerships (U.S., EU) create perverse incentives rewarding stability theater over accountability<cite>[4,5]</cite></div></div>
+    <div class="snapshot-cell"><div class="snapshot-label">How</div><div class="snapshot-content">Police/prosecutors redirect slavery complaints to "social mediation"; anti-slavery judges reassigned; civil society harassed under cybercrime/blasphemy laws; border forces collude with smugglers; EU migration funding reinforces abusive practices<cite>[1,5,6,7]</cite></div></div>
+  </div>
+</section>
+
+<!-- 03 // KEY JUDGMENTS -->
+<section class="section" id="s3">
+  <div class="section-header">
+    <span class="section-num">03 // KEY JUDGMENTS</span>
+    <div class="section-title">Key Judgments</div>
+  </div>
+  <div class="kj-list">
+    <div class="kj-item high"><div class="kj-conf"><div class="kj-conf-badge high">High</div><div class="kj-id">KJ-1</div></div><div class="kj-body"><strong>Institutional sabotage is a systemic feature, not an incidental failure.</strong> The consistent pattern — prosecutorial obstruction, social mediation pressure, activist suppression via blasphemy and cybercrime laws, border collusion — is too coherent and multi-actor to represent capacity failure. It is designed to preserve an ethnically stratified social order.<cite>[1,2,5,6]</cite></div></div>
+    <div class="kj-item high"><div class="kj-conf"><div class="kj-conf-badge high">High</div><div class="kj-id">KJ-2</div></div><div class="kj-body"><strong>The TIP Tier 2 rating functions as a legitimacy shield, not a performance certification.</strong> The rating rests on legal and institutional framework outputs (laws passed, bodies created, plans adopted) rather than outcome metrics. This insulates the regime from downgrade pressure while enforcement failure continues.<cite>[5,6,8]</cite></div></div>
+    <div class="kj-item moderate"><div class="kj-conf"><div class="kj-conf-badge moderate">Moderate</div><div class="kj-id">KJ-3</div></div><div class="kj-body"><strong>External security dependency creates a structural reform-resistance incentive.</strong> Mauritania's counterterrorism value to the U.S. and migration-containment value to the EU provides sufficient external legitimation to defer accountability reform without material consequences. The Jan 2026 equipment transfer without documented conditionality exemplifies this dynamic.<cite>[3,4]</cite></div></div>
+    <div class="kj-item moderate"><div class="kj-conf"><div class="kj-conf-badge moderate">Moderate</div><div class="kj-id">KJ-4</div></div><div class="kj-body"><strong>The Sahel perimeter is the primary near-term security variable.</strong> JNIM encroachment in the Wagadou Forest zone and the ongoing refugee influx into Hodh Chargui are the most proximate destabilizing vectors, compounding grievance conditions in under-served peripheral populations with structural Haratine exclusion.<cite>[2,4]</cite></div></div>
+    <div class="kj-item moderate"><div class="kj-conf"><div class="kj-conf-badge moderate">Moderate</div><div class="kj-id">KJ-5</div></div><div class="kj-body"><strong>INCHTMS empowerment is the highest-leverage single intervention.</strong> The body has legal mandate, infrastructure, and international visibility to serve as a reform anchor — if granted binding authority over prosecutors and inclusive CSO membership. <strong>[Analyst Inference]</strong> supported by structural logic, not direct evidence of internal political feasibility.<cite>[1,5,6]</cite></div></div>
+    <div class="kj-item low"><div class="kj-conf"><div class="kj-conf-badge low-mod">Low–Mod</div><div class="kj-id">KJ-6</div></div><div class="kj-body"><strong>JNIM's egalitarian narrative poses a latent recruitment risk to Haratine communities in Hodh Chargui.</strong> Unverified at this stage but structurally coherent: populations for whom the existing state provides only extraction are susceptible to ideological offers of an alternative social order. This remains a watchpoint, not a leading explanation.<cite>[2,4]</cite></div></div>
+  </div>
+</section>
+
+<!-- 04 // EVIDENCE -->
+<section class="section" id="s4">
+  <div class="section-header">
+    <span class="section-num">04 // EVIDENCE</span>
+    <div class="section-title">Evidence Summary</div>
+  </div>
+  <div class="evidence-grid">
+    <div class="evidence-box">
+      <div class="evidence-box-header know">&#10003; &nbsp;What We Know — Verified Facts</div>
+      <ul>
+        <li>Mauritania abolished slavery in 1981; criminalized it in 2007; enacted the 2015 anti-slavery law; passed the 2020 anti-trafficking law.<cite>[1,5,6]</cite></li>
+        <li>The INCHTMS exists with a victim support fund and standardized NRM procedural manuals; a 2024–2026 National Action Plan is in force.<cite>[5,6]</cite></li>
+        <li>Fewer than ten individuals have ever been imprisoned for hereditary slavery in Mauritania's entire history.<cite>[1]</cite></li>
+        <li>An estimated 149,000 individuals remain in slavery-like conditions as of 2025 NGO reporting.<cite>[8]</cite></li>
+        <li>JNIM maintains active bases in the Wagadou Forest on the Mauritania-Mali border; no domestic terror attacks since 2011.<cite>[2,4]</cite></li>
+        <li>UNHCR reported 309,000 refugees in Mauritania (Dec 2025), with 7,931+ new Malian arrivals Oct 2025–Jan 2026.<cite>[2]</cite></li>
+        <li>U.S. delivered military equipment to Mauritania in January 2026, framed as border-security support.<cite>[3]</cite></li>
+        <li>HRW documented migration-control abuses (arbitrary arrest, torture, rape, extortion, collective expulsion) linked to EU externalization funding through 2025.<cite>[7]</cite></li>
+      </ul>
+    </div>
+    <div class="evidence-box">
+      <div class="evidence-box-header assess">&#9670; &nbsp;What We Assess — Analyst Inferences</div>
+      <ul>
+        <li><strong>[Inference]</strong> The prosecution rate gap is too large and consistent to represent capacity failure alone; it reflects deliberate obstruction. Social mediation as the default response is a de facto amnesty mechanism for slaveholders.<cite>[1,5,6]</cite></li>
+        <li><strong>[Inference]</strong> EU and U.S. security partnerships provide the Ghazouani regime with sufficient external legitimation to defer accountability reform. A structural incentive, not merely oversight.<cite>[3,4]</cite></li>
+        <li><strong>[Inference]</strong> NGO capacity to document slavery is under pressure via cybercrime and blasphemy laws. The 149,000 figure should be treated as a floor, not a ceiling.<cite>[1,8]</cite></li>
+        <li><strong>[Inference]</strong> The 2026 refugee concentration in Hodh Chargui elevates localized grievance and vulnerability to extremist messaging. JNIM's narrative appeal is structurally coherent in this context.</li>
+      </ul>
+    </div>
+    <div class="evidence-box">
+      <div class="evidence-box-header gap">&#9650; &nbsp;What We Do Not Know — Intelligence Gaps</div>
+      <ul>
+        <li><strong>[GAP-1 CRITICAL]</strong> Internal disposition of the Ghazouani government: factional split between reformers and hardliners on the slavery question.</li>
+        <li><strong>[GAP-2 CRITICAL]</strong> Actual INCHTMS victim fund disbursements vs. allocations; NRM operational intake status. This is a confidence ceiling for the sabotage hypothesis.</li>
+        <li><strong>[GAP-3 HIGH]</strong> Whether current U.S. military assistance agreements contain human-rights conditionality benchmarks.</li>
+        <li><strong>[GAP-4 HIGH]</strong> Real-time JNIM infiltration depth into Mauritanian territory or active recruitment in Haratin-adjacent communities.</li>
+        <li><strong>[GAP-5 MOD]</strong> Post-2022 UN Special Rapporteur follow-up status and new field-level slavery prevalence data.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sub-section">WSI Source Credibility Audit</div>
+  <div class="wsi-note"><strong>Independence test applied:</strong> Multiple sources citing the same TIP figures or NGO statistics are counted as ONE stream unless they represent independent field research. Advocacy NGO estimates (Corp Accountability Lab) are assessed as Amber-band and used as corroborating, not primary, sources. No single-source key judgment is present without explicit caveat. No Red-band sources used as primary evidence.</div>
+  <div style="overflow-x:auto;">
+  <table class="ref-table">
+    <thead><tr><th>#</th><th>Source</th><th>Type</th><th>Band</th><th>Independence Note</th></tr></thead>
+    <tbody>
+      <tr><td>[1]</td><td>Shakoor, M.N. (2025). <em>The Mauritanian Paradox.</em> ARAC International Inc.</td><td>Structured Analytic Product</td><td><span class="band-pill green">Green</span></td><td>Primary analytic source; field-grounded; cited primaries</td></tr>
+      <tr><td>[2]</td><td>UNHCR (Jan 2026). Mauritania Hodh Chargui 2025 Overview. reliefweb.int</td><td>UN Field Report</td><td><span class="band-pill green">Green</span></td><td>Independent stream — UN field reporting</td></tr>
+      <tr><td>[3]</td><td>ADF Magazine (Jan 2026). "Mauritania Receives U.S. Military Equipment."</td><td>Regional Security Publication</td><td><span class="band-pill amber">Amber</span></td><td>Corroborated by U.S. Embassy Mauritania; use with caveat</td></tr>
+      <tr><td>[4]</td><td>Africa Center for Strategic Studies (2024). "Mauritania: 2024 Elections Spotlight."</td><td>Policy Research Institution</td><td><span class="band-pill green">Green</span></td><td>Independent stream</td></tr>
+      <tr><td>[5]</td><td>U.S. Dept. of State (2024). 2024 Trafficking in Persons Report: Mauritania.</td><td>Government Primary Source</td><td><span class="band-pill green">Green</span></td><td>Annual production, documented methodology</td></tr>
+      <tr><td>[6]</td><td>U.S. Dept. of State (2025). 2025 Trafficking in Persons Report: Mauritania.</td><td>Government Primary Source</td><td><span class="band-pill green">Green</span></td><td>Independent from [5] — separate reporting cycle</td></tr>
+      <tr><td>[7]</td><td>Human Rights Watch (2025). <em>They Accused Me of Trying to Go to Europe.</em></td><td>Human Rights Organization</td><td><span class="band-pill green">Green</span></td><td>Independent stream; documented field methodology</td></tr>
+      <tr><td>[8]</td><td>Corp Accountability Lab (2025). "Widespread Chattel Slavery in Mauritania."</td><td>Advocacy NGO</td><td><span class="band-pill amber">Amber</span></td><td>Consistent with Global Slavery Index methodology; corroborating only</td></tr>
+      <tr><td>[9]</td><td>Global Organized Crime Index (2025). Mauritania Country Profile.</td><td>Multi-Indicator Composite</td><td><span class="band-pill green">Green</span></td><td>Independent stream; documented scoring</td></tr>
+      <tr><td>[10]</td><td>IMF (2023). Mauritania: Governance Diagnostic. imf.org</td><td>Multilateral Institution</td><td><span class="band-pill green">Green</span></td><td>Peer-reviewed governance diagnostic</td></tr>
+      <tr><td>[11]</td><td>OHCHR (2022). Mauritania: UN Special Rapporteur Visit Report.</td><td>UN Primary Source</td><td><span class="band-pill green">Green</span></td><td>Most recent Special Rapporteur field baseline</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- 05 // ANALYSIS -->
+<section class="section" id="s5">
+  <div class="section-header">
+    <span class="section-num">05 // ANALYSIS</span>
+    <div class="section-title">Structured Analytic Tradecraft</div>
+  </div>
+
+  <div class="sub-section">5.1 — Key Assumptions Check</div>
+  <div style="overflow-x:auto;">
+  <table class="assumption-table">
+    <thead><tr><th>Assumption</th><th>Basis</th><th>Vulnerability</th><th>Risk if Wrong</th></tr></thead>
+    <tbody>
+      <tr><td><strong>A1:</strong> State has sufficient capacity to prosecute if political will existed</td><td>TIP reports credit institutional framework adequacy; specialized courts, prosecutors, and referral procedures all exist<cite>[5,6]</cite></td><td>If capacity is actually the primary deficit, INCHTMS empowerment without parallel investment would fail</td><td><span class="status-pill red">HIGH</span> — Shifts primary intervention from political to technical; lengthens timeline materially</td></tr>
+      <tr><td><strong>A2:</strong> International partners have leverage and can be persuaded to apply conditionality</td><td>U.S. TIP downgrade threat has historically influenced behavior; EU human rights linkage precedent exists<cite>[5,6]</cite></td><td>If Mauritania's strategic value is too high to risk, conditionality is performative</td><td><span class="status-pill red">HIGH</span> — Base scenario rises to 80%; Scenario 2 effectively foreclosed</td></tr>
+      <tr><td><strong>A3:</strong> Civil society organizations have operational capacity to participate meaningfully in INCHTMS</td><td>IRA-Mauritania and SOS-Esclaves have documented field capacity and international links<cite>[1]</cite></td><td>NGO crackdown laws could pre-empt functional CSO participation following any inclusion proposal</td><td><span class="status-pill amber">MODERATE</span> — INCHTMS becomes a captured entity rather than reform anchor</td></tr>
+      <tr><td><strong>A4:</strong> JNIM poses external threat but lacks current organizational foothold inside Mauritania</td><td>No domestic attacks since 2011; border security credited in ISS/U.S. assessments<cite>[2,4]</cite></td><td>Absence of reported attacks does not confirm absence of presence; attribution intelligence is limited</td><td><span class="status-pill amber">MODERATE</span> — If JNIM has domestic cells, Scenario 3 accelerates materially</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="sub-section">5.2 — Analysis of Competing Hypotheses (ACH)</div>
+  <div class="prose" style="margin-bottom:1rem;"><p><strong>Central question:</strong> What best explains the persistent gap between Mauritania's anti-slavery legal framework and de facto enforcement?</p></div>
+  <div style="overflow-x:auto;">
+  <table class="ach-table">
+    <thead><tr><th>Hypothesis</th><th>Supporting Evidence</th><th>Evidence Against / Gaps</th><th>Assessment</th></tr></thead>
+    <tbody>
+      <tr><td><strong>H-A:</strong> Capacity Gap — institutions lack resources and skills to enforce</td><td>TIP recommendations cite training needs; limited judicial budget; rural access gaps<cite>[5,6]</cite></td><td>Pattern too consistent and multi-actor to be capacity alone; officials actively redirect cases; zero investigations of complicit officials despite legal obligation<cite>[1,5,6]</cite></td><td><span class="status-pill amber">Low</span></td></tr>
+      <tr><td><strong>H-B:</strong> Political-Will Deficit — elite deliberately preserves slavery system</td><td>Fewer than 10 convictions in entire history; social mediation embedded as institutional practice; activist suppression; zero complicity prosecutions<cite>[1,5,6]</cite></td><td>Some reforms did occur (specialized courts, victim fund, NAP); some reassignment of obstructionist judges<cite>[5]</cite></td><td><span class="status-pill green">Leading</span></td></tr>
+      <tr><td><strong>H-C:</strong> Mixed — capacity and political will both constrain, interactively</td><td>Capacity gaps are real but exploited by elites; framework progress is genuine but insufficient to disrupt the system</td><td>Does not fully explain <em>active</em> suppression of victims and activists — passive under-investment would not generate this intensity of obstruction</td><td><span class="status-pill green">Co-present</span></td></tr>
+      <tr><td><strong>H-D:</strong> External norm compliance — reforms are genuine but hindered by social change pace</td><td>Some advocates note gradual normative shifts; younger Haratine generation more organized</td><td>Judicial obstruction is active, not passive. Police response to activists is repressive, not neglectful<cite>[1,6]</cite></td><td><span class="status-pill amber">Watchpoint</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="prose" style="margin-top:1rem;"><p><strong>Provisional judgment:</strong> H-B (Political-Will Deficit) is the primary explanatory hypothesis, with H-C as a useful secondary frame. H-A is rejected as the principal explanation on the basis of active obstruction evidence. H-D is retained as a calibration check against over-confidence in the sabotage framing.</p></div>
+
+  <div class="sub-section">5.3 — Scenario Analysis</div>
+  <div class="scenario-grid" style="margin-bottom:2rem;">
+    <div class="scenario-card best">
+      <div class="scenario-header"><span class="scenario-label">Scenario 1 — Managed Stasis</span><span class="scenario-prob">Likelihood: Moderate — 60%</span></div>
+      <div class="scenario-title">Surface stability masks persistent structural fragility</div>
+      <div class="scenario-body">Ghazouani maintains reform signals (NAP targets, training workshops, TIP Tier 2 retention) while systemic enforcement failure continues. JNIM remains at the border. Refugees stabilize with donor funding. No meaningful change in prosecution rates. Fragility managed but not reduced.</div>
+      <div class="scenario-triggers"><div class="scenario-triggers-label">Key Indicators</div>
+        <div class="scenario-trigger-item">No U.S./EU conditionality applied to assistance</div>
+        <div class="scenario-trigger-item">No JNIM incursion inside Mauritanian territory</div>
+        <div class="scenario-trigger-item">No organized Haratine political coalition emerges</div>
+      </div>
+    </div>
+    <div class="scenario-card base">
+      <div class="scenario-header"><span class="scenario-label">Scenario 2 — Reform Trajectory</span><span class="scenario-prob">Likelihood: Low–Moderate — 20%</span></div>
+      <div class="scenario-title">Conditionality activates a virtuous accountability cycle</div>
+      <div class="scenario-body">U.S. or EU conditions assistance on INCHTMS reform and prosecutorial KPIs. Ghazouani implements binding INCHTMS authority with CSO inclusion. NRM becomes operational. Conviction rates begin to rise. First virtuous feedback cycle in Positive Peace pillars begins.</div>
+      <div class="scenario-triggers"><div class="scenario-triggers-label">Key Indicators</div>
+        <div class="scenario-trigger-item">TIP downgrade to Tier 2 Watch List issued</div>
+        <div class="scenario-trigger-item">EU parliament ties migration funding to human rights benchmarks</div>
+        <div class="scenario-trigger-item">Credible Haratine political challenger activates constituency</div>
+      </div>
+    </div>
+    <div class="scenario-card worst">
+      <div class="scenario-header"><span class="scenario-label">Scenario 3 — Compounding Fragility</span><span class="scenario-prob">Likelihood: Low — 20%</span></div>
+      <div class="scenario-title">Sahel deterioration and internal repression converge</div>
+      <div class="scenario-body">JNIM conducts cross-border attack or achieves documented recruitment in Hodh Chargui. Regime responds with broad repression. Anti-slavery NGOs formally banned. EU migration funding increased without conditions. State legitimacy deficit becomes acute.</div>
+      <div class="scenario-triggers"><div class="scenario-triggers-label">Key Indicators</div>
+        <div class="scenario-trigger-item">JNIM attack on Mauritanian soil</div>
+        <div class="scenario-trigger-item">Mass civil disturbance linked to slavery or ethnic discrimination</div>
+        <div class="scenario-trigger-item">Major NGO operational ban enacted</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-section">5.4 — Indicators &amp; Warnings Table</div>
+  <div style="overflow-x:auto;">
+  <table class="iw-table">
+    <thead><tr><th>Indicator</th><th>Direction</th><th>Threshold</th><th>Cadence</th></tr></thead>
+    <tbody>
+      <tr><td>JNIM cross-border incursion depth</td><td><span class="status-pill red">Warn — Sc.3</span></td><td>Active presence inside Mauritanian territory; civilian casualty event</td><td>Monthly: ISS Africa, ACLED</td></tr>
+      <tr><td>Refugee intake rate in Hodh Chargui</td><td><span class="status-pill amber">Watch — Sc.3</span></td><td>&gt;10,000 new arrivals/month for 3 consecutive months</td><td>Monthly: UNHCR</td></tr>
+      <tr><td>Anti-slavery prosecution initiation rate</td><td><span class="status-pill amber">Watch — Sc.1</span></td><td>Zero new investigations in any 6-month period</td><td>Biannual: TIP + NGO monitoring</td></tr>
+      <tr><td>Civil society restriction action</td><td><span class="status-pill red">Warn — Sc.3</span></td><td>New NGO law or IRA-Mauritania / SOS-Esclaves operational ban</td><td>Event-driven: immediate alert</td></tr>
+      <tr><td>INCHTMS victim fund disbursement</td><td><span class="status-pill amber">Watch — Sc.1</span></td><td>Zero documented disbursements in any 12-month period</td><td>Annual: INCHTMS/CNDH records</td></tr>
+      <tr><td>U.S./EU conditionality signal</td><td><span class="status-pill green">Positive — Sc.2</span></td><td>Formal linkage of assistance to TIP/human rights benchmarks</td><td>Event-driven: quarterly diplomatic review</td></tr>
+      <tr><td>NRM operational activation</td><td><span class="status-pill green">Positive — Sc.2</span></td><td>First verified victim referral batch processed through NRM</td><td>Event-driven</td></tr>
+      <tr><td>Haratine political mobilization</td><td><span class="status-pill blue">Watch — All Scenarios</span></td><td>Emergence of organized coalition demanding anti-slavery enforcement</td><td>Event-driven</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- 06 // BEHAVIORAL -->
+<section class="section" id="s6">
+  <div class="section-header">
+    <span class="section-num">06 // BEHAVIORAL</span>
+    <div class="section-title">Applied Behavioral Tradecraft</div>
+  </div>
+  <div class="prose" style="margin-bottom:1.5rem;"><p>Applied where it materially improves risk modeling. Five behavioral dynamics are assessed as analytically load-bearing.</p></div>
+  <div class="behavioral-grid">
+    <div class="behavioral-item">
+      <div class="behavioral-header">01 — Elite Identity Preservation — Highest Risk Driver</div>
+      <div class="behavioral-body">Beydane/Arab-Moorish identity is structurally entangled with slave ownership and caste hierarchy. Reform is perceived not as law enforcement but as an <strong>existential identity threat</strong>, generating coordinated resistance disguised as cultural or religious tradition. This is identity-level threat response — far more resistant to external pressure than rational cost-benefit resistance. Normative "human rights" appeals are ineffective without prior religious or social authority reframing.</div>
+    </div>
+    <div class="behavioral-item">
+      <div class="behavioral-header">02 — Authority Cue Exploitation</div>
+      <div class="behavioral-body">Quranic teachers, religious leaders, and traditional authorities anchor the legitimacy of the slavery system. The state's own blasphemy laws weaponized against reform critics create a closed authority ecosystem that delegitimizes reform advocates before they can build influence. Any external intervention that appears to bypass this religious authority structure will trigger resistance framed as "Western cultural imperialism."</div>
+    </div>
+    <div class="behavioral-item">
+      <div class="behavioral-header">03 — Victim Intimidation Architecture</div>
+      <div class="behavioral-body">Financial compensation offers, family pressure, prosecutor coercion, and activist arrest create a multi-layer deterrent system making complaint more costly than submission — a classically <strong>extractive compliance architecture</strong>. This architecture is self-reinforcing: each successful mediation settlement strengthens the norm that slavery is a civil dispute, not a crime.</div>
+    </div>
+    <div class="behavioral-item">
+      <div class="behavioral-header">04 — Legitimacy Laundering via International Framing</div>
+      <div class="behavioral-body">Producing legal frameworks, national action plans, and institutional bodies without operationalizing them is a deliberate legitimacy-laundering operation targeted at international partners. TIP Tier 2 status functions as a reputational shield, reducing reform pressure while sustaining the underlying system. Each reform produces international recognition at <strong>zero enforcement cost</strong>.</div>
+    </div>
+    <div class="behavioral-item">
+      <div class="behavioral-header">05 — Cognitive Escalation Risk in Peripheral Zones</div>
+      <div class="behavioral-body">Haratine communities in Hodh Chargui face compounded pressure: refugee competition for services, historical marginalization, and perceived state absence. JNIM's egalitarian Islamic narrative — free of racial hierarchy — is structurally appealing to populations for whom the state offers only extraction. The <strong>structural conditions for susceptibility</strong> are present and require monitoring as a leading, not lagging, indicator.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 // RECOMMENDATIONS -->
+<section class="section" id="s7">
+  <div class="section-header">
+    <span class="section-num">07 // RECOMMENDATIONS</span>
+    <div class="section-title">Recommendations</div>
+  </div>
+  <div class="rec-timeline">
+    <div class="rec-block">
+      <div class="rec-time"><div class="rec-time-label immediate">0–72h</div></div>
+      <div class="rec-content"><div class="rec-items">
+        <div class="rec-item"><strong>Audit existing U.S.-Mauritania bilateral agreements</strong> for any current human-rights benchmarks or conditionality language. Determine baseline before any next engagement cycle.</div>
+        <div class="rec-item"><strong>Activate I&amp;W monitoring</strong> on civil society restriction actions and JNIM cross-border activity — the two indicators most capable of rapidly shifting the scenario trajectory without warning.</div>
+        <div class="rec-item"><strong>Brief U.S. Embassy Nouakchott and relevant EU delegations</strong> on the INCHTMS leverage-point analysis in advance of any scheduled Q2 2026 bilateral meetings.</div>
+      </div></div>
+    </div>
+    <div class="rec-block">
+      <div class="rec-time"><div class="rec-time-label near">3–30 days</div></div>
+      <div class="rec-content"><div class="rec-items">
+        <div class="rec-item"><strong>Formally link the 2026 TIP reporting cycle</strong> to INCHTMS binding-authority reform. Make explicit in Tier 2 Watch List criteria that failure to operationalize the NRM with documented victim referrals — and failure to initiate complicity investigations — will trigger Watch List placement in 2027.</div>
+        <div class="rec-item"><strong>EU internal review</strong> of migration-control funding to Mauritania with explicit HRW 2025 abuse documentation. Require an accountability mechanism as condition of any funding renewal cycle.</div>
+        <div class="rec-item"><strong>Draft legislative amendment proposal</strong> through international NGO partners and at least one Mauritanian CSO co-sponsor granting INCHTMS binding authority over prosecutorial referrals of slavery cases.</div>
+        <div class="rec-item"><strong>Request UNHCR dedicated protection monitoring</strong> in Hodh Chargui explicitly screening for JNIM recruitment activity among refugee and Haratine communities.</div>
+      </div></div>
+    </div>
+    <div class="rec-block">
+      <div class="rec-time"><div class="rec-time-label medium">30–180 days</div></div>
+      <div class="rec-content"><div class="rec-items">
+        <div class="rec-item"><strong>Pilot inclusive INCHTMS membership model</strong> in two regions with formally registered IRA-Mauritania and SOS-Esclaves representatives; 90-day victim referral trial with documented case tracking against KPI baseline.</div>
+        <div class="rec-item"><strong>Fund NRM operational pilot</strong> in at least two regions with an independent monitoring body accessible to civil society. Document referral numbers, service access rates, and prosecution transfer rates.</div>
+        <div class="rec-item"><strong>Fund Islamic scholar engagement program</strong> to develop a religiously-grounded anti-slavery narrative that can be amplified through existing religious authority channels without triggering elite identity-threat reactions.</div>
+        <div class="rec-item"><strong>Commission independent KPI baseline assessment</strong> across all six performance indicator categories (Section 08) to establish pre-reform benchmarks for 2027 TIP reporting comparison.</div>
+        <div class="rec-item"><strong>Negotiate U.S. security assistance conditionality MOU addendum</strong> tying future equipment transfers to documented progress on at least three of the six KPI categories within 18 months of the January 2026 transfer.</div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 // KPIs -->
+<section class="section" id="s8">
+  <div class="section-header">
+    <span class="section-num">08 // KPIs</span>
+    <div class="section-title">Performance Indicators for Accountability</div>
+  </div>
+  <div class="prose" style="margin-bottom:1.5rem;"><p>Adapted from Shakoor (2025) and calibrated to the Positive Peace framework. These KPIs provide the measurement architecture for the mutual-accountability model proposed in Section 07.</p></div>
+  <div style="overflow-x:auto;">
+  <table class="kpi-table">
+    <thead><tr><th>KPI Category</th><th>Specific Indicator</th><th>Source / Verification</th><th>Positive Peace Pillars</th></tr></thead>
+    <tbody>
+      <tr><td>Prosecutorial Efficacy</td><td>Annual number of investigations, prosecutions, and convictions for hereditary slavery and trafficking, with sentences involving significant prison terms</td><td>Ministry of Justice; U.S. State Dept. TIP Report; NGO monitoring</td><td><span class="pillar-tag">Well-Functioning Gov.</span><span class="pillar-tag">Low Corruption</span><span class="pillar-tag">Acceptance of Rights</span></td></tr>
+      <tr><td>Victim ID &amp; Support</td><td>Number of victims formally identified and referred to services through the NRM per reporting period</td><td>INCHTMS/CNDH records; NGO service provider data</td><td><span class="pillar-tag">Acceptance of Rights</span><span class="pillar-tag">Equitable Resources</span></td></tr>
+      <tr><td>Official Accountability</td><td>Number of investigations and prosecutions of government officials for complicity in or interference with trafficking/slavery cases</td><td>Ministry of Interior/Justice; independent media</td><td><span class="pillar-tag">Low Corruption</span><span class="pillar-tag">Well-Functioning Gov.</span></td></tr>
+      <tr><td>Resource Allocation</td><td>Annual budget allocated vs. disbursed to INCHTMS victim fund and anti-slavery courts; % restitution ordered that is collected and provided to victims</td><td>Ministry of Finance; INCHTMS financial reports</td><td><span class="pillar-tag">Equitable Resources</span></td></tr>
+      <tr><td>Institutional Capacity</td><td>Number of law enforcement, judicial officials, and labor inspectors trained on anti-slavery/trafficking laws and victim-centered approaches per year</td><td>INCHTMS training records; international partner reports</td><td><span class="pillar-tag">Well-Functioning Gov.</span></td></tr>
+      <tr><td>Governance Indices</td><td>Year-over-year change in V-Dem Equality before the law (v2xcl_rol), BTI Rule of Law, and World Bank Control of Corruption scores</td><td>V-Dem dataset; BTI Country Reports; World Bank Governance Indicators</td><td><span class="pillar-tag">Well-Functioning Gov.</span><span class="pillar-tag">Low Corruption</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- 09 // CONFIDENCE -->
+<section class="section" id="s9">
+  <div class="section-header">
+    <span class="section-num">09 // CONFIDENCE</span>
+    <div class="section-title">Confidence &amp; Uncertainties</div>
+  </div>
+  <div class="conf-panel">
+    <div class="conf-header">
+      <div class="conf-title">Overall Confidence Assessment</div>
+      <div class="conf-level">MODERATE</div>
+    </div>
+    <div class="conf-body">
+      <div class="conf-row">Primary load-bearing claims rest on multiple independent Green-band source streams (U.S. State Dept. TIP, UN Special Rapporteur, HRW, IMF, UNHCR, ISS Africa) that converge on the same structural findings. The independence test is satisfied for core factual claims.</div>
+      <div class="conf-row"><strong>GAP-2 (INCHTMS fund disbursements) is a confidence ceiling, not merely a gap.</strong> If actual disbursements are substantial and the NRM is partially operational, the systemic-sabotage framing would require recalibration toward H-C (mixed) rather than H-B (deliberate).</div>
+      <div class="conf-row">Behavioral tradecraft assessments are structural inferences, not direct observation of elite decision-making processes. They improve risk modeling but do not constitute evidentiary facts.</div>
+      <hr class="conf-divider">
+      <div class="sub-section">Three Uncertainties That Could Flip This Assessment</div>
+      <div class="uncertainty-list">
+        <div class="uncertainty-item"><strong>Flip Risk 1 — INCHTMS Operational Reality:</strong> If internal INCHTMS records reveal substantial victim fund disbursements and a functioning NRM intake process not captured in public reporting, the assessment of institutional sabotage as systemic and deliberate may be overdrawn. H-C would become the primary explanation; intervention design shifts from political accountability to capacity-building.</div>
+        <div class="uncertainty-item"><strong>Flip Risk 2 — JNIM Security Deterioration:</strong> If JNIM conducts a cross-border attack or achieves documented recruitment among Mauritanian nationals in Q2–Q3 2026, the regime's security calculus shifts materially — either increasing international openness on human rights or triggering total internal repression with partners acquiescing. Either outcome shifts scenario probabilities.</div>
+        <div class="uncertainty-item"><strong>Flip Risk 3 — U.S. Conditionality Application:</strong> If the U.S. formally conditions 2026–2027 security assistance on documented TIP KPI progress, Scenario 2 probability rises from 20% to approximately 40–50%. This is the single highest-impact variable under external actor control. Absent this, Managed Stasis remains overwhelmingly likely at 70–75%.</div>
+      </div>
+      <hr class="conf-divider">
+      <div class="sub-section">Assumption Failure Drill — Top 2</div>
+      <div style="overflow-x:auto;">
+      <table class="assumption-table">
+        <thead><tr><th>Assumption</th><th>Failure Signal</th><th>Consequence</th></tr></thead>
+        <tbody>
+          <tr><td><strong>A1:</strong> State has capacity to prosecute if political will exists</td><td>INCHTMS granted binding authority; compliance remains near zero despite reformist willingness signals</td><td>Shifts primary intervention to capacity-building; lengthens reform timeline by 3–5 years; reduces confidence in INCHTMS as sole leverage point</td></tr>
+          <tr><td><strong>A2:</strong> International partners have leverage and will apply conditionality when given clear framework</td><td>TIP downgrade threatened; EU formally notified of abuse linkage; no change in assistance terms within 90 days</td><td>Base scenario probability rises to 75–80%; Scenario 2 effectively foreclosed; policy focus shifts to harm-reduction within managed stasis</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 // INTEL GAPS -->
+<section class="section" id="s10">
+  <div class="section-header">
+    <span class="section-num">10 // INTEL GAPS</span>
+    <div class="section-title">Priority Intelligence Gaps</div>
+  </div>
+  <div style="overflow-x:auto;">
+  <table class="pig-table">
+    <thead><tr><th>Gap</th><th>Description</th><th>Priority</th><th>Scenario Impact</th></tr></thead>
+    <tbody>
+      <tr><td>GAP-1</td><td>Internal disposition of the Ghazouani government toward reform: factional split between reformers and hardliners on the slavery question</td><td><span class="status-pill red">Critical</span></td><td>Determines whether Scenario 2 is politically reachable at all</td></tr>
+      <tr><td>GAP-2</td><td>Actual INCHTMS victim fund disbursements vs. allocations on paper; NRM operational intake status beyond procedural manual existence</td><td><span class="status-pill red">Critical</span></td><td>Confidence ceiling: resolving this determines whether H-B or H-C is the primary explanatory hypothesis</td></tr>
+      <tr><td>GAP-3</td><td>Whether current U.S. military assistance agreements contain any human-rights conditionality benchmarks</td><td><span class="status-pill red">High</span></td><td>Determines whether conditionality leverage already exists (unused) or must be negotiated from scratch</td></tr>
+      <tr><td>GAP-4</td><td>Real-time JNIM infiltration depth into Mauritanian territory or active recruitment in Haratin-adjacent communities in Hodh Chargui</td><td><span class="status-pill red">High</span></td><td>If confirmed, accelerates Scenario 3 probability materially and changes intervention priority ordering</td></tr>
+      <tr><td>GAP-5</td><td>Post-2022 UN Special Rapporteur follow-up visit status and new field-level data on slavery prevalence beyond the 149,000 estimate</td><td><span class="status-pill amber">Moderate</span></td><td>Updated field data would allow more precise scenario modeling</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- 11 // THRESHOLDS -->
+<section class="section" id="s11">
+  <div class="section-header">
+    <span class="section-num">11 // THRESHOLDS</span>
+    <div class="section-title">Action Thresholds</div>
+  </div>
+  <div class="threshold-grid">
+    <div class="threshold-cell green-zone">
+      <div class="threshold-dot-header"><div class="threshold-dot2"></div><div class="threshold-label-text">Green — Monitor</div></div>
+      <div class="threshold-body">No JNIM incidents near Mauritanian border; refugee numbers stabilizing; no I&amp;W indicators activated; any signs of INCHTMS operational activity. Continue intelligence collection at standard cadence. No immediate partner action required.</div>
+    </div>
+    <div class="threshold-cell amber-zone">
+      <div class="threshold-dot-header"><div class="threshold-dot2"></div><div class="threshold-label-text">Amber — Act</div></div>
+      <div class="threshold-body">Any JNIM incident near the Mauritanian border; OR any civil society restriction action; OR INCHTMS fund disbursements confirmed at zero for 12 months; OR refugee intake rate exceeds threshold. Escalate reporting cadence; brief senior decision-makers; activate diplomatic engagement track; reassess assumption register.</div>
+    </div>
+    <div class="threshold-cell red-zone">
+      <div class="threshold-dot-header"><div class="threshold-dot2"></div><div class="threshold-label-text">Red — Emergency Response</div></div>
+      <div class="threshold-body">Confirmed JNIM attack inside Mauritanian territory; OR mass-casualty event linked to slavery repression; OR major anti-slavery NGO ban enacted; OR two or more Scenario 3 indicators activate simultaneously. Immediate executive brief. Convene crisis response group. Updated full assessment within 48 hours.</div>
+    </div>
+  </div>
+  <p style="margin-top:1rem;font-family:'IBM Plex Mono',monospace;font-size:0.68rem;color:var(--text-muted);">Current Status Assessment: <strong style="color:var(--amber);">AMBER — Multiple I&amp;W indicators on watch. GAP-2 (INCHTMS fund disbursements) unresolved. External conditionality not yet applied.</strong></p>
+</section>
+
+<!-- 12 // REFERENCES -->
+<section class="section" id="s12">
+  <div class="section-header">
+    <span class="section-num">12 // REFERENCES</span>
+    <div class="section-title">Source Register &amp; WSI Audit</div>
+  </div>
+  <div style="overflow-x:auto;">
+  <table class="ref-table">
+    <thead><tr><th>#</th><th>Source</th><th>Type</th><th>Band</th></tr></thead>
+    <tbody>
+      <tr><td>[1]</td><td>Shakoor, M.N. (2025). <em>The Mauritanian Paradox: A Systems Analysis of Institutional Sabotage, State Fragility, and Pathways to Legitimacy.</em> ARAC International Inc. CC BY-NC-ND 4.0.</td><td>Structured Analytic Product</td><td><span class="band-pill green">Green</span></td></tr>
+      <tr><td>[2]</td><td>UNHCR (January 2026). Mauritania Hodh Chargui 2025 Overview. reliefweb.int</td><td>UN Field Report</td><td><span class="band-pill green">Green</span></td></tr>
+      <tr><td>[3]</td><td>ADF Magazine (January 2026). "Mauritania Receives U.S. Military Equipment." adf-magazine.com</td><td>Regional Security Publication</td><td><span class="band-pill amber">Amber</span></td></tr>
+      <tr><td>[4]</td><td>Africa Center for Strategic Studies (2024). "Mauritania: 2024 Elections Spotlight." africacenter.org</td><td>Policy Research Institution</td><td><span class="band-pill green">Green</span></td></tr>
+      <tr><td>[5]</td><td>U.S. Department of State (2024). 2024 Trafficking in Persons Report: Mauritania. state.gov</td><td>Government Primary Source</td><td><span class="band-pill green">Green</span></td></tr>
+      <tr><td>[6]</td><td>U.S. Department of State (2025). 2025 Trafficking in Persons Report: Mauritania. state.gov</td><td>Government Primary Source</td><td><span class="band-pill green">Green</span></td></tr>
+      <tr><td>[7]</td><td>Human Rights Watch (2025). <em>They Accused Me of Trying to Go to Europe: Migration Control Abuses and EU.</em> hrw.org</td><td>Human Rights Organization</td><td><span class="band-pill green">Green</span></td></tr>
+      <tr><td>[8]</td><td>Corp Accountability Lab (2025). "Widespread Chattel Slavery in Mauritania." corpaccountabilitylab.org</td><td>Advocacy NGO</td><td><span class="band-pill amber">Amber</span></td></tr>
+      <tr><td>[9]</td><td>Global Organized Crime Index (2025). Mauritania Country Profile. ocindex.net</td><td>Multi-Indicator Composite</td><td><span class="band-pill green">Green</span></td></tr>
+      <tr><td>[10]</td><td>IMF (2023). Mauritania: Technical Assistance Report — Governance Diagnostic. imf.org</td><td>Multilateral Institution</td><td><span class="band-pill green">Green</span></td></tr>
+      <tr><td>[11]</td><td>OHCHR (2022). "Mauritania: UN Expert Encouraged on Progress, Says More Work Needed." ohchr.org</td><td>UN Primary Source</td><td><span class="band-pill green">Green</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="prose" style="margin-top:1.2rem;">
+    <p><strong>Band key:</strong> Green = high credibility, independent stream. Amber = use with caveat (advocacy, secondary, or state-adjacent). Red = lead-only, non-evidentiary per WSI policy.</p>
+    <p><strong>Independence test applied:</strong> No single-source key judgment is present without explicit caveat. Advocacy NGO estimates are used as corroborating, not load-bearing, evidence. Multiple outlets citing the same TIP cycle counted as ONE stream.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-qa">Quanta Analytica Process™</div>
+  <div class="footer-sub">Framework-Governed Intelligence &middot; Conflict Systems Analysis &middot; Fragility &amp; Governance Modeling &middot; Decision-Ready Assessment</div>
+  <div class="footer-copy">QAP-CSA-FGM-MRT-2026-0322 &nbsp;|&nbsp; 22 March 2026 &nbsp;|&nbsp; All claims traced to open-source evidence or labelled as analyst inference &nbsp;|&nbsp; Verify all figures with primary sources before operational decision-making &nbsp;|&nbsp; Original source: Shakoor (2025) ARAC International Inc. CC BY-NC-ND 4.0</div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    const p = h > 0 ? (window.scrollY / h) * 100 : 0;
+    document.getElementById('progress').style.width = p + '%';
+  });
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.section').forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
