@@ -41,28 +41,6 @@
     "email": "info@quanta-analytica.com",
     "sameAs": ["https://quanta-analytica.com", "https://insights.quanta-analytica.com"]
   }
-
-    // ── HAMBURGER MENU ──
-    (function () {
-      const btn  = document.getElementById('navHamburger');
-      const menu = document.getElementById('mobileMenu');
-      if (!btn || !menu) return;
-      function toggleMenu(force) {
-        const isOpen = force !== undefined ? force : !menu.classList.contains('open');
-        menu.classList.toggle('open', isOpen);
-        btn.classList.toggle('open', isOpen);
-        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        document.body.style.overflow = isOpen ? 'hidden' : '';
-      }
-      btn.addEventListener('click', () => toggleMenu());
-      menu.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => toggleMenu(false));
-      });
-      document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') toggleMenu(false);
-      });
-    })();
-
   </script>
 
   <!-- Favicon -->
@@ -950,78 +928,6 @@
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
-
-    /* ── HAMBURGER MENU ── */
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 5px;
-      width: 36px;
-      height: 36px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-      z-index: 200;
-    }
-    .nav-hamburger span {
-      display: block;
-      width: 22px;
-      height: 1.5px;
-      background: var(--gold, #c8a96e);
-      border-radius: 2px;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      transform-origin: center;
-    }
-    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
-    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 99;
-      background: rgba(13,18,32,0.98);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--gold-line, rgba(200,169,110,0.28));
-      padding-top: 70px;
-      max-height: 100vh;
-      overflow-y: auto;
-      transform: translateY(-100%);
-      transition: transform 0.35s ease;
-    }
-    .mobile-menu.open {
-      transform: translateY(0);
-    }
-    .mobile-menu ul {
-      list-style: none;
-      padding: 0.5rem 0 1.5rem;
-      margin: 0;
-    }
-    .mobile-menu ul li a {
-      display: block;
-      padding: 1rem 2rem;
-      font-family: var(--font-ui, 'Barlow Condensed', sans-serif);
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--grey-light, #c2c4c8);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(200,169,110,0.08);
-      transition: color 0.2s, background 0.2s;
-    }
-    .mobile-menu ul li:last-child a { border-bottom: none; }
-    .mobile-menu ul li a:hover { color: var(--gold, #c8a96e); background: rgba(200,169,110,0.06); }
-    .mobile-menu ul li a.current { color: var(--gold, #c8a96e); }
-
-    @media (max-width: 900px) {
-      .nav-hamburger { display: flex; }
-      .mobile-menu { display: block; }
-    }
   </style>
 </head>
 
@@ -1055,12 +961,8 @@
           <a href="#contact">Contact</a>
         </div>
 
-        
-      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobileMenu">
-        <span></span><span></span><span></span>
-      </button>
-      <div class="nav-qa-link">
-          <a class="btn ghost small" href="https://quanta-analytica.com" target="_blank" rel="noopener" aria-label="Return to Quanta Analytica main site">
+        <div class="nav-qa-link">
+          <a class="btn ghost small" href="index.html" rel="noopener" aria-label="Return to Quanta Analytica main site">
             ← Quanta Analytica
           </a>
           <button class="btn primary" type="button" id="openIntakeTop">
@@ -1347,15 +1249,15 @@ truth).</pre>
         <div class="proof-grid">
           <div class="proof reveal reveal-delay-1">
             <strong>Credentials</strong>
-            <span>INSSA SRMP-C, security risk management practice</span>
+            <span>INSSA SRMP-R, security risk management practice</span>
           </div>
           <div class="proof reveal reveal-delay-2">
             <strong>Frameworks</strong>
-            <span>ISO-aligned risk work, structured analytic methods</span>
+            <span>ISO-aligned risk work, structured analytic methods, MIT System Dynamics, CARVER, PESTELS</span>
           </div>
           <div class="proof reveal reveal-delay-1">
             <strong>Systems Lens</strong>
-            <span>Positive Peace, conflict systems analysis</span>
+            <span>Conflict Assessment System Tool (CAST), IEP-HALO Positive Peace Systems Thinking, Conflict Assessment Framework (CAF),</span>
           </div>
           <div class="proof reveal reveal-delay-2">
             <strong>Outputs</strong>
@@ -1480,7 +1382,7 @@ truth).</pre>
             <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
               <a class="btn" href="#contact">Contact</a>
               <button class="btn primary" type="button" data-open-intake="true">Start Intake</button>
-              <a class="btn ghost" href="https://quanta-analytica.com" target="_blank" rel="noopener">Quanta Analytica →</a>
+              <a class="btn ghost" href="index.html" rel="noopener">Quanta Analytica →</a>
             </div>
           </div>
         </div>
@@ -1499,7 +1401,7 @@ truth).</pre>
           <div class="hero-actions" style="margin-top:16px;">
             <button class="btn primary" type="button" data-open-intake="true">Start Intake</button>
             <a class="btn" href="#methods">Review Methods</a>
-            <a class="btn ghost" href="https://quanta-analytica.com" target="_blank" rel="noopener">Quanta Analytica →</a>
+            <a class="btn ghost" href="index.html" rel="noopener">Quanta Analytica →</a>
           </div>
           <p class="note" style="margin-top:14px;">No countdowns, no gimmicks — disciplined structure and clear scope.</p>
         </div>
@@ -1520,9 +1422,9 @@ truth).</pre>
           <div class="card reveal reveal-delay-1">
             <h3>Direct</h3>
             <ul class="list">
-              <li>Email: <a href="/cdn-cgi/l/email-protection#d5bcbbb3ba95a4a0b4bba1b4f8b4bbb4b9aca1bcb6b4fbb6bab8" style="color:var(--gold);"><span class="__cf_email__" data-cfemail="10797e767f506165717e64713d717e717c69647973713e737f7d">[email&#160;protected]</span></a></li>
+              <li>Email: <a href="mailto:info@quanta-analytica.com" style="color:var(--gold);">info@quanta-analytica.com</a></li>
               <li>Insights: <a href="https://insights.quanta-analytica.com" target="_blank" rel="noopener" style="color:var(--gold);">insights.quanta-analytica.com</a></li>
-              <li>Main site: <a href="https://quanta-analytica.com" target="_blank" rel="noopener" style="color:var(--gold);">quanta-analytica.com</a></li>
+              <li>Main site: <a href="index.html" rel="noopener" style="color:var(--gold);">quanta-analytica.com</a></li>
             </ul>
             <p class="note">For sensitive details, use the intake so we can scope safely.</p>
           </div>
@@ -1547,7 +1449,7 @@ truth).</pre>
             <span class="pill">Structured analysis</span>
             <span class="pill">Risk governance</span>
             <span class="pill">Decision support</span>
-            <a class="pill" href="https://quanta-analytica.com" target="_blank" rel="noopener" style="color:var(--gold); border-color:var(--gold-line);">Quanta Analytica ↗</a>
+            <a class="pill" href="index.html" rel="noopener" style="color:var(--gold); border-color:var(--gold-line);">Quanta Analytica ↗</a>
           </div>
         </div>
       </div>
@@ -1633,7 +1535,7 @@ truth).</pre>
     </div>
   </div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     // Year
     document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -1750,4 +1652,13 @@ truth).</pre>
       if (!draft.value) return;
       try {
         await navigator.clipboard.writeText(draft.value);
-        copyBtn.textContent = "Copied ✓"
+        copyBtn.textContent = "Copied ✓";
+        setTimeout(() => copyBtn.textContent = "Copy draft email", 1400);
+      } catch {
+        copyBtn.textContent = "Copy failed";
+        setTimeout(() => copyBtn.textContent = "Copy draft email", 1400);
+      }
+    });
+  </script>
+</body>
+</html>
