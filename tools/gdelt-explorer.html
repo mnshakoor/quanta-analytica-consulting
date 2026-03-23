@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GDELT Event Search &amp; Analysis | Quanta Analytica</title>
+
+  <meta name="description" content="GDELT Event Search and Analysis tool — powered by Quanta Analytica and MNS Consulting. Search, map, and network-visualize global event data from the GDELT Project." />
+  <meta name="robots" content="noindex, follow" />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow+Condensed:wght@300;400;500;600&family=Barlow:wght@300;400&display=swap" rel="stylesheet" />
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <style>
+    /* ══════════════════════════════════════════════
+       QUANTA ANALYTICA DESIGN TOKENS
+    ══════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --obsidian:   #0a0c10;
+      --deep-navy:  #0d1220;
+      --midnight:   #111827;
+      --surface:    #131d2e;
+      --surface2:   #182035;
+      --gold:       #c8a96e;
+      --gold-light: #e2c98a;
+      --gold-dim:   rgba(200,169,110,0.12);
+      --gold-line:  rgba(200,169,110,0.28);
+      --gold-hover: rgba(200,169,110,0.22);
+      --white:      #f5f2ec;
+      --muted:      rgba(245,242,236,0.65);
+      --muted2:     rgba(245,242,236,0.38);
+      --border:     rgba(200,169,110,0.16);
+      --border-soft:rgba(255,255,255,0.06);
+      --ok:         rgba(100,210,140,0.85);
+      --ok-dim:     rgba(100,210,140,0.12);
+      --warn:       rgba(250,186,80,0.85);
+      --warn-dim:   rgba(250,186,80,0.12);
+      --danger:     rgba(220,80,80,0.85);
+      --danger-dim: rgba(220,80,80,0.12);
+      --info:       rgba(100,180,240,0.85);
+      --info-dim:   rgba(100,180,240,0.12);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-ui:      'Barlow Condensed', sans-serif;
+      --font-body:    'Barlow', sans-serif;
+      --font-mono:    ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      --nav-h: 54px;
+      --tab-h: 44px;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--obsidian);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* noise texture */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9999; opacity: 0.45;
+    }
+
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { color: var(--gold-light); text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ── TOP NAV ── */
+    #appNav {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-h); z-index: 200;
+      background: rgba(10,12,16,0.97);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(14px);
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding: 0 1.6rem;
+      gap: 1rem;
+    }
+
+    .nav-left { display: flex; align-items: center; gap: 12px; }
+
+    .nav-brand-link {
+      display: flex; align-items: center; gap: 9px;
+      text-decoration: none;
+    }
+    .nav-brand-link:hover { text-decoration: none; }
+
+    .nav-brand-name {
+      font-family: var(--font-ui); font-size: 0.78rem;
+      font-weight: 600; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--gold);
+    }
+
+    .nav-divider { width: 1px; height: 18px; background: var(--gold-line); }
+
+    .nav-tool-name {
+      font-family: var(--font-ui); font-size: 0.72rem;
+      font-weight: 400; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted);
+    }
+
+    .nav-right {
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    .nav-badge {
+      font-family: var(--font-ui); font-size: 0.6rem;
+      font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+      border: 1px solid var(--gold-line); background: var(--gold-dim);
+      padding: 3px 10px; white-space: nowrap;
+    }
+
+    /* ── TABS ── */
+    #tabBar {
+      position: fixed;
+      top: var(--nav-h); left: 0; right: 0;
+      height: var(--tab-h); z-index: 190;
+      background: var(--deep-navy);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: stretch;
+      padding: 0 1.2rem;
+      gap: 0;
+      overflow-x: auto;
+    }
+    #tabBar::-webkit-scrollbar { height: 2px; }
+    #tabBar::-webkit-scrollbar-thumb { background: var(--gold-line); }
+
+    .qa-tab {
+      display: flex; align-items: center; gap: 7px;
+      padding: 0 1.2rem;
+      font-family: var(--font-ui); font-size: 0.7rem;
+      font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted);
+      border: none; background: none; cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+    .qa-tab:hover { color: var(--gold-light); }
+    .qa-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+    .tab-icon { font-size: 12px; }
+
+    /* ── MAIN CONTENT AREA ── */
+    #appBody {
+      margin-top: calc(var(--nav-h) + var(--tab-h));
+      min-height: calc(100vh - var(--nav-h) - var(--tab-h) - 40px);
+      padding: 1.4rem 1.4rem 2rem;
+    }
+
+    /* ── TAB PANES ── */
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; }
+
+    /* ── STATUS / ERROR BARS ── */
+    .qa-alert {
+      display: none;
+      padding: 0.8rem 1.2rem;
+      border: 1px solid;
+      margin-bottom: 1rem;
+      font-family: var(--font-ui); font-size: 0.72rem;
+      letter-spacing: 0.1em; border-radius: 0;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .qa-alert.info  { background: var(--info-dim);   border-color: rgba(100,180,240,0.3); color: var(--info); }
+    .qa-alert.error { background: var(--danger-dim); border-color: rgba(220,80,80,0.3);   color: var(--danger); }
+    .qa-alert.success{background: var(--ok-dim);     border-color: rgba(100,210,140,0.3); color: var(--ok); }
+    .qa-alert[style*="none"] { display: none !important; }
+    .qa-alert:not([style*="none"]) { display: flex; }
+
+    /* ── CARDS ── */
+    .qa-card {
+      background: var(--surface); border: 1px solid var(--border);
+      margin-bottom: 1rem; position: relative;
+      transition: background 0.2s;
+    }
+    .qa-card:hover { background: var(--surface2); }
+    .qa-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 0; height: 2px; background: var(--gold);
+      transition: width 0.4s ease;
+    }
+    .qa-card:hover::before { width: 100%; }
+
+    .qa-card-header {
+      padding: 0.75rem 1.1rem;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 10px;
+      background: rgba(0,0,0,0.15);
+    }
+
+    .qa-card-title {
+      font-family: var(--font-ui); font-size: 0.72rem;
+      font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold);
+      margin: 0;
+    }
+
+    .qa-card-body { padding: 1rem 1.1rem; }
+
+    /* ── GRID ── */
+    .qa-row { display: flex; gap: 1rem; align-items: flex-start; }
+    .qa-col-3 { flex: 0 0 calc(25% - 0.75rem); min-width: 220px; }
+    .qa-col-9 { flex: 1; min-width: 0; }
+    .qa-col-12 { flex: 0 0 100%; }
+
+    @media (max-width: 860px) {
+      .qa-row { flex-direction: column; }
+      .qa-col-3, .qa-col-9, .qa-col-12 { flex: 0 0 100%; min-width: 0; }
+    }
+
+    /* ── FORM ELEMENTS ── */
+    .qa-label {
+      font-family: var(--font-ui); font-size: 0.66rem;
+      font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted);
+      display: block; margin-bottom: 5px;
+    }
+
+    .qa-input, .qa-select, .qa-textarea {
+      width: 100%;
+      padding: 8px 10px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--white); font-family: var(--font-body);
+      font-size: 13px; font-weight: 300;
+      outline: none; border-radius: 0;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .qa-input:focus, .qa-select:focus, .qa-textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 2px rgba(200,169,110,0.1);
+    }
+    .qa-textarea { min-height: 80px; resize: vertical; font-family: var(--font-mono); font-size: 12px; }
+    .qa-select option { background: var(--deep-navy); color: var(--white); }
+
+    .qa-form-group { margin-bottom: 0.9rem; }
+
+    /* ── BUTTONS ── */
+    .qa-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 6px; padding: 8px 16px;
+      font-family: var(--font-ui); font-size: 0.68rem;
+      font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; border: 1px solid;
+      cursor: pointer; transition: background 0.2s, border-color 0.2s, transform 0.1s;
+      white-space: nowrap; border-radius: 0;
+    }
+    .qa-btn:active { transform: translateY(1px); }
+
+    .qa-btn-primary {
+      background: var(--gold); color: var(--obsidian);
+      border-color: var(--gold);
+    }
+    .qa-btn-primary:hover { background: var(--gold-light); border-color: var(--gold-light); }
+
+    .qa-btn-ghost {
+      background: var(--gold-dim); color: var(--gold);
+      border-color: var(--gold-line);
+    }
+    .qa-btn-ghost:hover { background: var(--gold-hover); border-color: var(--gold); }
+
+    .qa-btn-danger {
+      background: var(--danger-dim); color: var(--danger);
+      border-color: rgba(220,80,80,0.3);
+    }
+    .qa-btn-danger:hover { background: rgba(220,80,80,0.2); }
+
+    .qa-btn-sm { padding: 5px 11px; font-size: 0.62rem; }
+    .qa-btn-full { width: 100%; }
+
+    .qa-btn-group { display: flex; gap: 6px; flex-wrap: wrap; }
+
+    /* ── QUERY BUTTONS (predefined) ── */
+    #queryButtons { display: flex; flex-direction: column; gap: 5px; }
+
+    .query-btn {
+      width: 100%; text-align: left;
+      padding: 8px 12px;
+      background: var(--gold-dim); color: var(--gold);
+      border: 1px solid var(--gold-line);
+      font-family: var(--font-ui); font-size: 0.66rem;
+      font-weight: 500; letter-spacing: 0.14em;
+      cursor: pointer; transition: background 0.2s, border-color 0.2s;
+      border-radius: 0;
+    }
+    .query-btn:hover { background: var(--gold-hover); border-color: var(--gold); }
+    .query-btn.active { background: var(--gold); color: var(--obsidian); border-color: var(--gold); }
+
+    /* ── DIVIDER ── */
+    .qa-divider {
+      height: 1px; background: var(--border);
+      margin: 1rem 0;
+    }
+
+    .qa-section-label {
+      font-family: var(--font-ui); font-size: 0.62rem;
+      font-weight: 600; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--gold);
+      opacity: 0.65; margin-bottom: 8px;
+    }
+
+    /* ── RESULTS TABLE ── */
+    #resultsContainer { overflow-x: auto; }
+
+    .qa-table {
+      width: 100%; border-collapse: collapse;
+      font-size: 12px;
+    }
+    .qa-table th {
+      font-family: var(--font-ui); font-size: 0.6rem;
+      font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+      padding: 9px 12px; text-align: left;
+      border-bottom: 1px solid var(--border);
+      background: rgba(0,0,0,0.2); white-space: nowrap;
+    }
+    .qa-table td {
+      padding: 8px 12px; color: var(--muted);
+      border-bottom: 1px solid var(--border-soft);
+      vertical-align: top; line-height: 1.5;
+    }
+    .qa-table tr:hover td { background: rgba(200,169,110,0.04); }
+
+    .empty-state {
+      text-align: center; padding: 3rem 1rem;
+      font-family: var(--font-ui); font-size: 0.7rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted2);
+    }
+
+    /* ── MAP ── */
+    #mapContainer {
+      height: 580px; border: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .leaflet-container { background: #0a0e1a !important; }
+
+    /* ── NETWORK ── */
+    #networkContainer {
+      height: 580px; border: 1px solid var(--border);
+      background: var(--surface); overflow: hidden;
+    }
+
+    /* ── QA RESULTS ── */
+    #qaResults { display: flex; flex-direction: column; gap: 8px; }
+
+    .qa-test-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 10px 14px; border: 1px solid var(--border-soft);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .qa-test-status {
+      font-family: var(--font-mono); font-size: 10px;
+      font-weight: 600; padding: 2px 7px;
+      white-space: nowrap; flex-shrink: 0; margin-top: 1px;
+    }
+    .qa-test-status.pass { background: var(--ok-dim); color: var(--ok); }
+    .qa-test-status.fail { background: var(--danger-dim); color: var(--danger); }
+    .qa-test-status.warn { background: var(--warn-dim); color: var(--warn); }
+
+    .qa-test-name { font-family: var(--font-ui); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; color: var(--white); }
+    .qa-test-detail { font-size: 11px; color: var(--muted); margin-top: 2px; line-height: 1.5; }
+
+    /* ── CUSTOM QUERY BUILDER ── */
+    .cq-section-header {
+      font-family: var(--font-ui); font-size: 0.68rem;
+      font-weight: 600; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--gold);
+      margin: 0 0 10px; padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cq-tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+
+    .cq-tag {
+      font-family: var(--font-mono); font-size: 11px;
+      padding: 3px 9px; border: 1px solid var(--gold-line);
+      background: var(--gold-dim); color: var(--gold);
+      cursor: pointer; transition: background 0.15s, border-color 0.15s;
+      user-select: none;
+    }
+    .cq-tag:hover { background: var(--gold-hover); border-color: var(--gold); }
+    .cq-tag.inserted { background: rgba(100,210,140,0.12); border-color: rgba(100,210,140,0.4); color: var(--ok); }
+
+    .cq-preview {
+      background: rgba(0,0,0,0.3); border: 1px solid var(--border);
+      padding: 10px 12px; margin-top: 8px;
+      font-family: var(--font-mono); font-size: 11px;
+      color: var(--muted); line-height: 1.6; word-break: break-all;
+    }
+
+    .cq-help-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 10px; margin-top: 6px;
+    }
+
+    .cq-help-item {
+      padding: 10px 12px; border: 1px solid var(--border);
+      background: rgba(0,0,0,0.15);
+    }
+    .cq-help-item code {
+      font-family: var(--font-mono); font-size: 11px;
+      color: var(--gold); display: block; margin-bottom: 4px;
+    }
+    .cq-help-item p {
+      font-size: 11px; color: var(--muted); line-height: 1.5; margin: 0;
+    }
+
+    .cq-url-display {
+      background: rgba(0,0,0,0.4); border: 1px solid var(--gold-line);
+      padding: 10px 14px; margin-top: 10px; word-break: break-all;
+      font-family: var(--font-mono); font-size: 11px; color: var(--gold);
+    }
+
+    .badge-new {
+      font-family: var(--font-ui); font-size: 0.55rem;
+      font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--obsidian);
+      background: var(--gold); padding: 2px 6px;
+      vertical-align: middle;
+    }
+
+    /* ── FOOTER ── */
+    #appFooter {
+      border-top: 1px solid var(--border);
+      padding: 0.8rem 1.6rem;
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 8px;
+      background: rgba(10,12,16,0.6);
+    }
+    .footer-attr {
+      font-family: var(--font-ui); font-size: 0.62rem;
+      letter-spacing: 0.12em; color: var(--muted2);
+    }
+    .footer-attr a { color: var(--gold); }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: var(--obsidian); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-line); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      :root { --nav-h: 50px; }
+      #appNav { padding: 0 1rem; }
+      .nav-tool-name, .nav-badge { display: none; }
+      #appBody { padding: 1rem 0.8rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ TOP NAV ══ -->
+  <nav id="appNav" aria-label="Application navigation">
+    <div class="nav-left">
+      <a href="index.html" class="nav-brand-link" aria-label="Quanta Analytica home">
+        <svg width="22" height="22" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <polygon points="18,2 32,10 32,26 18,34 4,26 4,10" fill="none" stroke="#c8a96e" stroke-width="1.4"/>
+          <circle cx="18" cy="18" r="4" fill="#c8a96e" opacity="0.8"/>
+        </svg>
+        <span class="nav-brand-name">Quanta Analytica</span>
+      </a>
+      <div class="nav-divider" aria-hidden="true"></div>
+      <span class="nav-tool-name">GDELT Event Explorer</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-badge">MNS Consulting</span>
+      <span class="nav-badge">GDELT Project</span>
+    </div>
+  </nav>
+
+  <!-- ══ TAB BAR ══ -->
+  <div id="tabBar" role="tablist" aria-label="Main navigation tabs">
+    <button class="qa-tab active" data-tab="search" role="tab" aria-selected="true" aria-controls="pane-search">
+      <span class="tab-icon">◈</span> Search &amp; Results
+    </button>
+    <button class="qa-tab" data-tab="map" role="tab" aria-selected="false" aria-controls="pane-map">
+      <span class="tab-icon">◉</span> Map View
+    </button>
+    <button class="qa-tab" data-tab="network" role="tab" aria-selected="false" aria-controls="pane-network">
+      <span class="tab-icon">◎</span> Link Network
+    </button>
+    <button class="qa-tab" data-tab="custom-query" role="tab" aria-selected="false" aria-controls="pane-custom-query">
+      <span class="tab-icon">◐</span> Custom Query <span class="badge-new">New</span>
+    </button>
+    <button class="qa-tab" data-tab="debug" role="tab" aria-selected="false" aria-controls="pane-debug">
+      <span class="tab-icon">◫</span> Debug &amp; QA
+    </button>
+  </div>
+
+  <!-- ══ BODY ══ -->
+  <div id="appBody">
+
+    <!-- Status / Error Alerts -->
+    <div id="statusBar" class="qa-alert info" role="alert" style="display:none;">
+      <span>◈</span><span id="statusMessage"></span>
+    </div>
+    <div id="errorBar" class="qa-alert error" role="alert" style="display:none;">
+      <span>⚠</span><span id="errorMessage"></span>
+    </div>
+
+    <!-- ══ TAB: SEARCH & RESULTS ══ -->
+    <div id="pane-search" class="tab-pane active" role="tabpanel" aria-labelledby="tab-search">
+      <div class="qa-row">
+
+        <!-- Left: Query Selection -->
+        <div class="qa-col-3">
+          <div class="qa-card">
+            <div class="qa-card-header">
+              <span class="qa-card-title">Query Selection</span>
+            </div>
+            <div class="qa-card-body">
+              <div class="qa-form-group">
+                <label class="qa-label" for="maxRecords">Max Records</label>
+                <input type="number" class="qa-input" id="maxRecords" value="250" min="1" max="250" />
+              </div>
+              <div class="qa-form-group">
+                <button class="qa-btn qa-btn-primary qa-btn-full" id="refreshBtn">
+                  ↻ Refresh Results
+                </button>
+              </div>
+              <div class="qa-divider"></div>
+              <div class="qa-section-label">Predefined Queries</div>
+              <div id="queryButtons"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Results -->
+        <div class="qa-col-9">
+          <div class="qa-card">
+            <div class="qa-card-header">
+              <span class="qa-card-title">Results</span>
+              <div class="qa-btn-group">
+                <button class="qa-btn qa-btn-ghost qa-btn-sm" id="exportJSON">Export JSON</button>
+                <button class="qa-btn qa-btn-ghost qa-btn-sm" id="exportCSV">Export CSV</button>
+                <button class="qa-btn qa-btn-ghost qa-btn-sm" id="exportXML">Export XML</button>
+              </div>
+            </div>
+            <div class="qa-card-body">
+              <div id="resultsContainer">
+                <div class="empty-state">Select a query to view results</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /pane-search -->
+
+    <!-- ══ TAB: MAP VIEW ══ -->
+    <div id="pane-map" class="tab-pane" role="tabpanel" aria-labelledby="tab-map">
+      <div class="qa-card">
+        <div class="qa-card-header">
+          <span class="qa-card-title">Geographic Event Distribution</span>
+          <span style="font-family:var(--font-ui);font-size:0.62rem;letter-spacing:0.12em;color:var(--muted2);">Leaflet · GDELT geo data</span>
+        </div>
+        <div class="qa-card-body" style="padding:0;">
+          <div id="mapContainer"></div>
+        </div>
+      </div>
+    </div><!-- /pane-map -->
+
+    <!-- ══ TAB: NETWORK VIEW ══ -->
+    <div id="pane-network" class="tab-pane" role="tabpanel" aria-labelledby="tab-network">
+      <div class="qa-row">
+
+        <div class="qa-col-3">
+          <div class="qa-card">
+            <div class="qa-card-header">
+              <span class="qa-card-title">Network Controls</span>
+            </div>
+            <div class="qa-card-body">
+              <div class="qa-form-group">
+                <label class="qa-label" for="networkSearch">Search Node</label>
+                <input type="text" class="qa-input" id="networkSearch" placeholder="Enter keyword..." />
+              </div>
+              <div class="qa-form-group">
+                <label class="qa-label" for="networkFilter">Filter By</label>
+                <input type="text" class="qa-input" id="networkFilter" placeholder="Filter keyword..." />
+              </div>
+              <button class="qa-btn qa-btn-primary qa-btn-full" id="refreshNetwork">
+                ↻ Refresh Network
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="qa-col-9">
+          <div class="qa-card">
+            <div class="qa-card-header">
+              <span class="qa-card-title">Actor &amp; Keyword Network</span>
+              <span style="font-family:var(--font-ui);font-size:0.62rem;letter-spacing:0.12em;color:var(--muted2);">D3 · Force graph</span>
+            </div>
+            <div class="qa-card-body" style="padding:0;">
+              <div id="networkContainer"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /pane-network -->
+
+    <!-- ══ TAB: CUSTOM QUERY BUILDER (NEW) ══ -->
+    <div id="pane-custom-query" class="tab-pane" role="tabpanel" aria-labelledby="tab-custom-query">
+      <div class="qa-row">
+
+        <!-- Left: Builder Controls -->
+        <div class="qa-col-3">
+          <div class="qa-card">
+            <div class="qa-card-header">
+              <span class="qa-card-title">Query Parameters</span>
+            </div>
+            <div class="qa-card-body">
+
+              <div class="qa-form-group">
+                <label class="qa-label" for="cq-keyword">Keywords / Theme</label>
+                <input type="text" class="qa-input" id="cq-keyword" placeholder='e.g. Sudan OR "El Fasher"' />
+              </div>
+
+              <div class="qa-form-group">
+                <label class="qa-label" for="cq-domain">Domain Filter</label>
+                <input type="text" class="qa-input" id="cq-domain" placeholder="e.g. reuters.com" />
+              </div>
+
+              <div class="qa-form-group">
+                <label class="qa-label" for="cq-country">Source Country (FIPS)</label>
+                <input type="text" class="qa-input" id="cq-country" placeholder="e.g. US, UK, SU (Sudan)" maxlength="4" />
+              </div>
+
+              <div class="qa-form-group">
+                <label class="qa-label" for="cq-lang">Language</label>
+                <select class="qa-select" id="cq-lang">
+                  <option value="">Any</option>
+                  <option value="English">English</option>
+                  <option value="Arabic">Arabic</option>
+                  <option value="French">French</option>
+                  <option value="Spanish">Spanish</option>
+                  <option value="Russian">Russian</option>
+                  <option value="Chinese">Chinese</option>
+                  <option value="German">German</option>
+                  <option value="Portuguese">Portuguese</option>
+                </select>
+              </div>
+
+              <div class="qa-form-group">
+                <label class="qa-label" for="cq-tone">Tone Range</label>
+                <div style="display:flex;gap:6px;">
+                  <input type="number" class="qa-input" id="cq-tone-min" placeholder="Min e.g. -10" step="0.5" style="width:50%;" />
+                  <input type="number" class="qa-input" id="cq-tone-max" placeholder="Max e.g. 0"  step="0.5" style="width:50%;" />
+                </div>
+              </div>
+
+              <div class="qa-form-group">
+                <label class="qa-label" for="cq-startdate">Start Date</label>
+                <input type="date" class="qa-input" id="cq-startdate" />
+              </div>
+
+              <div class="qa-form-group">
+                <label class="qa-label" for="cq-enddate">End Date</label>
+                <input type="date" class="qa-input" id="cq-enddate" />
+              </div>
+
+              <div class="qa-form-group">
+                <label class="qa-label" for="cq-maxrecords">Max Records</label>
+                <input type="number" class="qa-input" id="cq-maxrecords" value="250" min="1" max="250" />
+              </div>
+
+              <div class="qa-form-group">
+                <label class="qa-label" for="cq-mode">Output Mode</label>
+                <select class="qa-select" id="cq-mode">
+                  <option value="artlist">Article List (artlist)</option>
+                  <option value="timelinevol">Timeline Volume (timelinevol)</option>
+                  <option value="timelinevolraw">Timeline Volume Raw</option>
+                  <option value="timelinelang">Timeline by Language</option>
+                  <option value="timelinesourcecountry">Timeline by Source Country</option>
+                  <option value="tonechart">Tone Chart</option>
+                </select>
+              </div>
+
+              <div class="qa-divider"></div>
+
+              <button class="qa-btn qa-btn-primary qa-btn-full" id="cq-build-btn">
+                ◈ Build &amp; Preview Query
+              </button>
+              <div style="height:6px;"></div>
+              <button class="qa-btn qa-btn-ghost qa-btn-full" id="cq-run-btn">
+                ↻ Run Query
+              </button>
+              <div style="height:6px;"></div>
+              <button class="qa-btn qa-btn-sm" id="cq-save-btn" style="width:100%;background:var(--ok-dim);color:var(--ok);border-color:rgba(100,210,140,0.3);">
+                ＋ Save as Predefined Query
+              </button>
+            </div>
+          </div>
+        </div><!-- /col-3 -->
+
+        <!-- Right: Editor + Reference -->
+        <div class="qa-col-9">
+
+          <!-- Raw Query Editor -->
+          <div class="qa-card" style="margin-bottom:1rem;">
+            <div class="qa-card-header">
+              <span class="qa-card-title">Raw GDELT Query String</span>
+              <div class="qa-btn-group">
+                <button class="qa-btn qa-btn-ghost qa-btn-sm" id="cq-clear-btn">Clear</button>
+                <button class="qa-btn qa-btn-ghost qa-btn-sm" id="cq-copy-url-btn">Copy URL</button>
+              </div>
+            </div>
+            <div class="qa-card-body">
+              <div class="qa-section-label">Direct query editor — type GDELT query syntax directly</div>
+              <textarea class="qa-textarea" id="cq-raw" rows="3" placeholder='e.g. "El Fasher" sourcelang:English domain:reuters.com'></textarea>
+
+              <div style="margin-top:10px;">
+                <div class="qa-section-label">Quick-insert operators</div>
+                <div class="cq-tag-row" id="cq-operator-tags">
+                  <span class="cq-tag" data-insert='domain:'>domain:</span>
+                  <span class="cq-tag" data-insert='sourcelang:'>sourcelang:</span>
+                  <span class="cq-tag" data-insert='sourcecountry:'>sourcecountry:</span>
+                  <span class="cq-tag" data-insert='tone&gt;'>tone&gt;</span>
+                  <span class="cq-tag" data-insert='tone&lt;'>tone&lt;</span>
+                  <span class="cq-tag" data-insert='near10:'>near10:</span>
+                  <span class="cq-tag" data-insert='near25:'>near25:</span>
+                  <span class="cq-tag" data-insert=' AND '> AND </span>
+                  <span class="cq-tag" data-insert=' OR '> OR </span>
+                  <span class="cq-tag" data-insert=' -'> NOT (−)</span>
+                  <span class="cq-tag" data-insert='"" '>"phrase"</span>
+                  <span class="cq-tag" data-insert='()'>(group)</span>
+                </div>
+              </div>
+
+              <div style="margin-top:10px;">
+                <div class="qa-section-label">Built query URL</div>
+                <div class="cq-url-display" id="cq-url-preview">
+                  Configure parameters and click Build &amp; Preview to see the full GDELT API URL.
+                </div>
+              </div>
+
+              <div id="cq-results-area" style="margin-top:1rem;">
+                <!-- custom query results render here -->
+              </div>
+            </div>
+          </div>
+
+          <!-- GDELT Query Reference -->
+          <div class="qa-card">
+            <div class="qa-card-header">
+              <span class="qa-card-title">GDELT Query Reference</span>
+              <a href="https://blog.gdeltproject.org/gdelt-doc2-api-debuts-making-research-and-analysis-easier/" target="_blank" rel="noopener" class="qa-btn qa-btn-ghost qa-btn-sm">
+                Official Docs ↗
+              </a>
+            </div>
+            <div class="qa-card-body">
+
+              <div style="margin-bottom:1.2rem;">
+                <div class="cq-section-header">Boolean Operators</div>
+                <div class="cq-help-grid">
+                  <div class="cq-help-item"><code>term1 term2</code><p>Implicit AND — both terms must appear.</p></div>
+                  <div class="cq-help-item"><code>term1 OR term2</code><p>Either term must appear (OR must be uppercase).</p></div>
+                  <div class="cq-help-item"><code>-term</code><p>Exclude articles containing this term (NOT).</p></div>
+                  <div class="cq-help-item"><code>"exact phrase"</code><p>Match the exact multi-word phrase.</p></div>
+                  <div class="cq-help-item"><code>(term1 OR term2)</code><p>Grouping for complex boolean logic.</p></div>
+                  <div class="cq-help-item"><code>near10:term1 term2</code><p>Both terms within 10 words of each other.</p></div>
+                </div>
+              </div>
+
+              <div style="margin-bottom:1.2rem;">
+                <div class="cq-section-header">Field Filters</div>
+                <div class="cq-help-grid">
+                  <div class="cq-help-item"><code>domain:reuters.com</code><p>Restrict to articles from a specific domain.</p></div>
+                  <div class="cq-help-item"><code>domainis:reuters.com</code><p>Exact domain match (no subdomains).</p></div>
+                  <div class="cq-help-item"><code>sourcelang:English</code><p>Filter by article source language.</p></div>
+                  <div class="cq-help-item"><code>sourcecountry:US</code><p>Filter by source country FIPS code (US, UK, SU…).</p></div>
+                  <div class="cq-help-item"><code>tone&gt;5</code><p>Articles with tone score above 5 (positive).</p></div>
+                  <div class="cq-help-item"><code>tone&lt;-5</code><p>Articles with tone score below −5 (negative).</p></div>
+                  <div class="cq-help-item"><code>image:yes</code><p>Articles containing at least one image.</p></div>
+                  <div class="cq-help-item"><code>video:yes</code><p>Articles containing embedded video.</p></div>
+                </div>
+              </div>
+
+              <div style="margin-bottom:1.2rem;">
+                <div class="cq-section-header">Output Modes (mode=)</div>
+                <div class="cq-help-grid">
+                  <div class="cq-help-item"><code>artlist</code><p>Returns list of matching articles (title, URL, date, tone).</p></div>
+                  <div class="cq-help-item"><code>timelinevol</code><p>Volume of coverage over time (normalised).</p></div>
+                  <div class="cq-help-item"><code>timelinevolraw</code><p>Raw article count over time.</p></div>
+                  <div class="cq-help-item"><code>timelinelang</code><p>Coverage volume broken down by language.</p></div>
+                  <div class="cq-help-item"><code>timelinesourcecountry</code><p>Coverage broken down by source country.</p></div>
+                  <div class="cq-help-item"><code>tonechart</code><p>Distribution of tone scores across results.</p></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="cq-section-header">Example Queries</div>
+                <div style="display:flex;flex-direction:column;gap:6px;" id="cq-examples">
+                  <!-- populated by JS -->
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div><!-- /col-9 -->
+      </div>
+    </div><!-- /pane-custom-query -->
+
+    <!-- ══ TAB: DEBUG & QA ══ -->
+    <div id="pane-debug" class="tab-pane" role="tabpanel" aria-labelledby="tab-debug">
+      <div class="qa-card">
+        <div class="qa-card-header">
+          <span class="qa-card-title">Quality Assurance &amp; Debug</span>
+          <button class="qa-btn qa-btn-primary qa-btn-sm" id="runQATests">
+            ▶ Run QA Tests
+          </button>
+        </div>
+        <div class="qa-card-body">
+          <div id="qaResults">
+            <div class="empty-state">Click "Run QA Tests" to validate all queries</div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /pane-debug -->
+
+  </div><!-- /appBody -->
+
+  <!-- ══ FOOTER ══ -->
+  <footer id="appFooter">
+    <div class="footer-attr">
+      Data: <a href="https://www.gdeltproject.org/" target="_blank" rel="noopener">The GDELT Project</a>
+      &nbsp;·&nbsp; Application: Quanta Analytica (MNS Consulting)
+      &nbsp;·&nbsp; Mapping: Leaflet &nbsp;·&nbsp; Network: D3.js
+    </div>
+    <div class="footer-attr">
+      <a href="index.html">← Quanta Analytica Home</a>
+    </div>
+  </footer>
+
+  <!-- ══ SCRIPTS ══ -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+
+  <script>
+    /* ══════════════════════════════════════════════════════════
+       QA THEME — TAB SYSTEM
+    ══════════════════════════════════════════════════════════ */
+    document.querySelectorAll('.qa-tab').forEach(tab => {
+      tab.addEventListener('click', function () {
+        const target = this.dataset.tab;
+        document.querySelectorAll('.qa-tab').forEach(t => {
+          t.classList.toggle('active', t.dataset.tab === target);
+          t.setAttribute('aria-selected', t.dataset.tab === target ? 'true' : 'false');
+        });
+        document.querySelectorAll('.tab-pane').forEach(p => {
+          p.classList.toggle('active', p.id === 'pane-' + target);
+        });
+      });
+    });
+
+    /* ══════════════════════════════════════════════════════════
+       CUSTOM QUERY BUILDER
+    ══════════════════════════════════════════════════════════ */
+    const GDELT_BASE = 'https://api.gdeltproject.org/api/v2/doc/doc';
+
+    function buildGdeltUrl(query, mode, maxRecords) {
+      const params = new URLSearchParams({
+        query:   query.trim(),
+        mode:    mode || 'artlist',
+        maxrecords: maxRecords || 250,
+        format:  'json'
+      });
+      return GDELT_BASE + '?' + params.toString();
+    }
+
+    function getBuiltQuery() {
+      const raw = document.getElementById('cq-raw').value.trim();
+      if (raw) return raw;
+
+      const parts = [];
+      const kw = document.getElementById('cq-keyword').value.trim();
+      if (kw) parts.push(kw);
+      const domain  = document.getElementById('cq-domain').value.trim();
+      if (domain)  parts.push('domain:' + domain);
+      const country = document.getElementById('cq-country').value.trim().toUpperCase();
+      if (country) parts.push('sourcecountry:' + country);
+      const lang    = document.getElementById('cq-lang').value;
+      if (lang)    parts.push('sourcelang:' + lang);
+      const tMin = document.getElementById('cq-tone-min').value;
+      const tMax = document.getElementById('cq-tone-max').value;
+      if (tMin)    parts.push('tone>' + tMin);
+      if (tMax)    parts.push('tone<' + tMax);
+      const startDate = document.getElementById('cq-startdate').value;
+      const endDate   = document.getElementById('cq-enddate').value;
+      if (startDate)  parts.push('startdatetime:' + startDate.replace(/-/g,'') + '000000');
+      if (endDate)    parts.push('enddatetime:'   + endDate.replace(/-/g,'')   + '235959');
+      return parts.join(' ');
+    }
+
+    document.getElementById('cq-build-btn').addEventListener('click', function () {
+      const query   = getBuiltQuery();
+      const mode    = document.getElementById('cq-mode').value;
+      const maxRec  = document.getElementById('cq-maxrecords').value;
+      if (!query) {
+        document.getElementById('cq-url-preview').textContent = '⚠ Enter at least one keyword or parameter.';
+        return;
+      }
+      const url = buildGdeltUrl(query, mode, maxRec);
+      document.getElementById('cq-url-preview').textContent = url;
+      document.getElementById('cq-url-preview').dataset.url = url;
+    });
+
+    document.getElementById('cq-run-btn').addEventListener('click', async function () {
+      const url = document.getElementById('cq-url-preview').dataset.url;
+      if (!url) {
+        document.getElementById('cq-url-preview').textContent = '⚠ Build the query first.';
+        return;
+      }
+      const area = document.getElementById('cq-results-area');
+      area.innerHTML = '<div class="empty-state">Querying GDELT API…</div>';
+      try {
+        const resp = await fetch(url);
+        if (!resp.ok) throw new Error('HTTP ' + resp.status);
+        const data = await resp.json();
+        renderCustomResults(data, area);
+      } catch (e) {
+        area.innerHTML = '<div class="qa-alert error" style="display:flex;"><span>⚠</span><span>Error: ' + e.message + '. Check CORS — GDELT API may need a proxy for browser requests.</span></div>';
+      }
+    });
+
+    function renderCustomResults(data, container) {
+      const articles = data.articles || data.data || [];
+      if (!articles.length) {
+        container.innerHTML = '<div class="empty-state">No results returned.</div>'; return;
+      }
+      let html = '<table class="qa-table"><thead><tr><th>#</th><th>Title</th><th>Source</th><th>Date</th><th>Tone</th></tr></thead><tbody>';
+      articles.slice(0, 250).forEach((a, i) => {
+        const tone = a.tone ? parseFloat(a.tone).toFixed(2) : '—';
+        const toneColor = a.tone > 2 ? 'var(--ok)' : a.tone < -2 ? 'var(--danger)' : 'var(--muted)';
+        html += `<tr>
+          <td style="color:var(--muted2)">${i+1}</td>
+          <td><a href="${a.url||'#'}" target="_blank" rel="noopener" style="color:var(--gold-light)">${a.title||'—'}</a></td>
+          <td style="white-space:nowrap">${a.domain||a.sourcecountry||'—'}</td>
+          <td style="white-space:nowrap;font-family:var(--font-mono);font-size:11px">${(a.seendate||a.date||'').replace(/(\d{4})(\d{2})(\d{2}).*/,'$1-$2-$3')}</td>
+          <td style="color:${toneColor};font-family:var(--font-mono);font-size:11px">${tone}</td>
+        </tr>`;
+      });
+      html += '</tbody></table>';
+      container.innerHTML = html;
+    }
+
+    document.getElementById('cq-copy-url-btn').addEventListener('click', function () {
+      const url = document.getElementById('cq-url-preview').textContent;
+      if (url && url.startsWith('http')) {
+        navigator.clipboard.writeText(url).then(() => {
+          this.textContent = 'Copied ✓';
+          setTimeout(() => this.textContent = 'Copy URL', 1400);
+        });
+      }
+    });
+
+    document.getElementById('cq-clear-btn').addEventListener('click', function () {
+      document.getElementById('cq-raw').value = '';
+      document.getElementById('cq-keyword').value  = '';
+      document.getElementById('cq-domain').value   = '';
+      document.getElementById('cq-country').value  = '';
+      document.getElementById('cq-lang').value     = '';
+      document.getElementById('cq-tone-min').value = '';
+      document.getElementById('cq-tone-max').value = '';
+      document.getElementById('cq-startdate').value= '';
+      document.getElementById('cq-enddate').value  = '';
+      document.getElementById('cq-url-preview').textContent = 'Configure parameters and click Build & Preview.';
+      document.getElementById('cq-results-area').innerHTML = '';
+    });
+
+    // Quick-insert operator tags
+    document.getElementById('cq-operator-tags').addEventListener('click', function (e) {
+      if (!e.target.classList.contains('cq-tag')) return;
+      const raw = document.getElementById('cq-raw');
+      const insert = e.target.dataset.insert;
+      const start = raw.selectionStart;
+      const end   = raw.selectionEnd;
+      raw.value = raw.value.slice(0, start) + insert + raw.value.slice(end);
+      raw.focus();
+      raw.selectionStart = raw.selectionEnd = start + insert.length;
+      e.target.classList.add('inserted');
+      setTimeout(() => e.target.classList.remove('inserted'), 600);
+    });
+
+    // Save as predefined query
+    document.getElementById('cq-save-btn').addEventListener('click', function () {
+      const query  = getBuiltQuery();
+      const urlEl  = document.getElementById('cq-url-preview');
+      const url    = urlEl.dataset.url || '';
+      if (!query || !url) { alert('Build the query first.'); return; }
+      const name = prompt('Name for this query:', query.substring(0, 40));
+      if (!name) return;
+      // Dispatch a custom event that app.js can listen to
+      document.dispatchEvent(new CustomEvent('qa:saveQuery', { detail: { name, query, url } }));
+      const btn = document.createElement('button');
+      btn.className = 'query-btn'; btn.textContent = name;
+      btn.dataset.query = query; btn.dataset.url = url;
+      document.getElementById('queryButtons').appendChild(btn);
+      alert('Query "' + name + '" saved to Predefined Queries.');
+    });
+
+    // Example queries
+    const CQ_EXAMPLES = [
+      { label: 'Sudan conflict coverage (English)', query: '"Sudan" OR "Darfur" sourcelang:English tone<-3' },
+      { label: 'Sahel militant activity',           query: 'JNIM OR "Sahel" OR "Burkina Faso" sourcelang:French OR sourcelang:English' },
+      { label: 'Ukraine war — multi-language',      query: '"Ukraine" AND "Russia" near10:war OR attack' },
+      { label: 'West Africa governance crisis',     query: '"coup" AND ("West Africa" OR Sahel OR Benin OR Togo) -sport' },
+      { label: 'DRC cobalt supply chain',            query: '"DRC" OR "Congo" cobalt mine OR mining domain:reuters.com OR domain:bloomberg.com' },
+    ];
+
+    const examplesEl = document.getElementById('cq-examples');
+    CQ_EXAMPLES.forEach(ex => {
+      const div = document.createElement('div');
+      div.style.cssText = 'display:flex;align-items:center;gap:10px;padding:7px 10px;border:1px solid var(--border);background:rgba(0,0,0,0.1);cursor:pointer;transition:background 0.2s;';
+      div.innerHTML = `<span style="font-family:var(--font-ui);font-size:0.66rem;font-weight:600;letter-spacing:0.12em;color:var(--gold);flex-shrink:0;">USE ↗</span>
+        <code style="font-family:var(--font-mono);font-size:10.5px;color:var(--muted);word-break:break-all;">${ex.query}</code>
+        <span style="font-family:var(--font-ui);font-size:0.62rem;color:var(--muted2);flex-shrink:0;">${ex.label}</span>`;
+      div.addEventListener('mouseenter', () => div.style.background = 'rgba(200,169,110,0.06)');
+      div.addEventListener('mouseleave', () => div.style.background = 'rgba(0,0,0,0.1)');
+      div.addEventListener('click', () => {
+        document.getElementById('cq-raw').value = ex.query;
+        // Scroll to top of custom query pane
+        document.querySelector('[data-tab="custom-query"]').click();
+        document.getElementById('cq-raw').focus();
+      });
+      examplesEl.appendChild(div);
+    });
+
+    /* ══════════════════════════════════════════════════════════
+       COMPATIBILITY SHIMS — keep IDs Bootstrap/app.js expects
+       The original app.js wires to these IDs directly.
+       Map old Bootstrap tab events to our tab system.
+    ══════════════════════════════════════════════════════════ */
+
+    // Expose a Bootstrap-compatible tab API so app.js can call it
+    window.getActiveTab = function () {
+      const active = document.querySelector('.qa-tab.active');
+      return active ? active.dataset.tab : 'search';
+    };
+
+    // Mirror old Bootstrap tab IDs for app.js compatibility
+    // app.js may look for #search, #map, #network, #debug
+    ['search','map','network','debug'].forEach(id => {
+      const pane = document.getElementById('pane-' + id);
+      if (pane) pane.id = id;  // give it the old ID too via alias
+    });
+
+    /* Also expose old Bootstrap Tab show trigger compatibility */
+    document.querySelectorAll('.qa-tab').forEach(tab => {
+      tab.addEventListener('click', function () {
+        const ev = new CustomEvent('shown.bs.tab', { detail: { target: '#' + this.dataset.tab } });
+        document.dispatchEvent(ev);
+      });
+    });
+
+    /* ══════════════════════════════════════════════════════════
+       LOAD app.js — must be last so all IDs exist
+    ══════════════════════════════════════════════════════════ */
+  </script>
+
+  <!-- app.js — your existing application logic (loads last) -->
+  <script src="app.js"></script>
+
+</body>
+</html>
