@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>ARAC Global Stability Analytics Dashboard | Quanta Analytica Process™ | 24 Mar 2026</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:           #0A0E17;
+      --bg-panel:     #0F1520;
+      --bg-card:      #131B2A;
+      --bg-card-alt:  #0D1421;
+      --amber:        #E8A020;
+      --amber-dim:    #9B6A14;
+      --amber-glow:   rgba(232,160,32,0.12);
+      --amber-pale:   rgba(232,160,32,0.06);
+      --red:          #D94040;
+      --red-dim:      rgba(217,64,64,0.15);
+      --green:        #2EA86A;
+      --green-dim:    rgba(46,168,106,0.15);
+      --yellow:       #D4B84A;
+      --blue-steel:   #3A6EA8;
+      --text-primary: #E8E2D4;
+      --text-body:    #B8B0A0;
+      --text-muted:   #6A6258;
+      --text-mono:    #8FA8C8;
+      --border:       rgba(232,160,32,0.18);
+      --border-dim:   rgba(255,255,255,0.06);
+      --scan-line:    rgba(0,0,0,0.12);
+    }
+
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+
+    body{background:var(--bg);color:var(--text-primary);font-family:'IBM Plex Sans',sans-serif;font-size:15px;line-height:1.7;overflow-x:hidden;}
+
+    body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,var(--scan-line) 0px,transparent 1px,transparent 3px);pointer-events:none;z-index:9999;opacity:0.35;}
+
+    #progress{position:fixed;top:0;left:0;height:2px;width:0%;background:var(--amber);z-index:10000;box-shadow:0 0 12px var(--amber);transition:width 0.08s linear;}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(10,14,23,0.96);border-bottom:1px solid var(--border);height:52px;display:flex;align-items:center;padding:0 2rem;gap:1.5rem;backdrop-filter:blur(16px);}
+    .nav-classify{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);padding:0.2rem 0.7rem;border:1px solid var(--amber-dim);border-radius:2px;}
+    .nav-title{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--text-muted);letter-spacing:0.06em;flex:1;}
+    .nav-date{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--text-muted);letter-spacing:0.08em;}
+
+    .hero{min-height:100vh;background:var(--bg-panel);border-bottom:1px solid var(--border);display:flex;flex-direction:column;justify-content:center;padding:9rem 3rem 5rem;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 15% 50%,rgba(232,160,32,0.05) 0%,transparent 65%),radial-gradient(ellipse 50% 70% at 85% 20%,rgba(217,64,64,0.04) 0%,transparent 60%);}
+    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(232,160,32,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(232,160,32,0.04) 1px,transparent 1px);background-size:48px 48px;animation:gridPulse 8s ease-in-out infinite;}
+    @keyframes gridPulse{0%,100%{opacity:0.5}50%{opacity:1}}
+    .hero-inner{position:relative;z-index:2;max-width:900px;}
+    .hero-tag{display:inline-flex;align-items:center;gap:0.6rem;font-family:'IBM Plex Mono',monospace;font-size:0.62rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:var(--amber);margin-bottom:1.8rem;opacity:0;animation:fadeIn 0.7s 0.2s ease forwards;}
+    .hero-tag::before{content:'';width:20px;height:1px;background:var(--amber);}
+    .hero-domain{font-family:'IBM Plex Mono',monospace;font-size:0.68rem;letter-spacing:0.18em;color:var(--blue-steel);text-transform:uppercase;margin-bottom:1rem;opacity:0;animation:fadeIn 0.7s 0.35s ease forwards;}
+    .hero-title{font-family:'Libre Baskerville',serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:700;line-height:1.12;color:var(--text-primary);margin-bottom:0.6rem;opacity:0;animation:fadeIn 0.8s 0.45s ease forwards;}
+    .hero-title span{color:var(--amber);}
+    .hero-subtitle{font-family:'IBM Plex Sans',sans-serif;font-size:1rem;font-weight:300;color:var(--text-body);max-width:580px;line-height:1.6;margin-bottom:3rem;opacity:0;animation:fadeIn 0.8s 0.55s ease forwards;}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--border);border-radius:3px;overflow:hidden;max-width:760px;opacity:0;animation:fadeIn 0.8s 0.7s ease forwards;}
+    .meta-cell{flex:1;min-width:120px;padding:0.85rem 1.2rem;border-right:1px solid var(--border);background:var(--bg-card);}
+    .meta-cell:last-child{border-right:none;}
+    .meta-label{font-family:'IBM Plex Mono',monospace;font-size:0.55rem;letter-spacing:0.2em;color:var(--text-muted);text-transform:uppercase;margin-bottom:0.3rem;}
+    .meta-value{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;font-weight:600;color:var(--amber);}
+    .meta-value.yellow{color:var(--yellow);}
+    .meta-value.red{color:var(--red);}
+    .threat-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(217,64,64,0.1);border:1px solid rgba(217,64,64,0.3);border-radius:2px;padding:0.25rem 0.7rem;font-family:'IBM Plex Mono',monospace;font-size:0.62rem;font-weight:600;letter-spacing:0.18em;color:var(--red);text-transform:uppercase;margin-top:1.5rem;opacity:0;animation:fadeIn 0.8s 0.85s ease forwards;}
+    .threat-badge.amber-threat{background:rgba(232,160,32,0.08);border-color:rgba(232,160,32,0.3);color:var(--amber);}
+    .threat-dot{width:6px;height:6px;background:currentColor;border-radius:50%;animation:blink 1.8s ease-in-out infinite;}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+    .hero-stats{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:2rem;opacity:0;animation:fadeIn 0.8s 1.0s ease forwards;}
+    .hero-stat{background:var(--bg-card);border:1px solid var(--border-dim);padding:0.45rem 0.9rem;display:flex;flex-direction:column;gap:2px;}
+    .hero-stat-label{font-family:'IBM Plex Mono',monospace;font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-muted);}
+    .hero-stat-value{font-family:'IBM Plex Mono',monospace;font-size:0.8rem;font-weight:600;color:var(--text-mono);}
+
+    main{max-width:1400px;margin:0 auto;padding:4rem 2rem 6rem;}
+
+    .section{margin-bottom:5rem;opacity:0;transform:translateY(20px);transition:opacity 0.65s ease,transform 0.65s ease;}
+    .section.visible{opacity:1;transform:translateY(0);}
+    .section-header{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--border-dim);}
+    .section-num{font-family:'IBM Plex Mono',monospace;font-size:0.58rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber);background:var(--amber-pale);border:1px solid var(--amber-dim);padding:0.2rem 0.65rem;border-radius:2px;white-space:nowrap;}
+    .section-title{font-family:'Libre Baskerville',serif;font-size:1.45rem;font-weight:700;color:var(--text-primary);letter-spacing:0.01em;}
+
+    .prose{font-family:'IBM Plex Sans',sans-serif;font-size:0.9rem;color:var(--text-body);line-height:1.8;}
+    .prose p{margin-bottom:1rem;}
+    .prose p:last-child{margin-bottom:0;}
+    .prose strong{color:var(--text-primary);}
+
+    .sub-section{margin-top:2.2rem;margin-bottom:1.2rem;font-family:'IBM Plex Mono',monospace;font-size:0.65rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-mono);display:flex;align-items:center;gap:0.8rem;}
+    .sub-section::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border-dim),transparent);}
+
+    /* ── TABLEAU EMBED WRAPPER ── */
+    .tableau-wrapper{
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+    .tableau-header{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 1.4rem;
+      background: var(--bg-card-alt);
+      border-bottom: 1px solid var(--border);
+    }
+    .tableau-header-left{
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .tableau-badge{
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue-steel);
+      background: rgba(58,110,168,0.1);
+      border: 1px solid rgba(58,110,168,0.25);
+      padding: 0.15rem 0.6rem;
+      border-radius: 2px;
+    }
+    .tableau-title-label{
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: 0.08em;
+    }
+    .tableau-status{
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.58rem;
+      color: var(--green);
+      letter-spacing: 0.12em;
+    }
+    .tableau-status-dot{
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: blink 2.2s ease-in-out infinite;
+    }
+    .tableau-body{
+      padding: 1.5rem;
+      background: var(--bg-card);
+    }
+    .tableau-body .tableauPlaceholder{
+      width: 100% !important;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .tableau-footer{
+      padding: 0.75rem 1.4rem;
+      background: var(--bg-card-alt);
+      border-top: 1px solid var(--border-dim);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .tableau-footer-note{
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.55rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+    }
+    .tableau-footer-link{
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.55rem;
+      color: var(--amber-dim);
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .tableau-footer-link:hover{ color: var(--amber); }
+
+    /* ── ABOUT / INFO CARDS ── */
+    .info-grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .info-card{
+      background: var(--bg-card);
+      border: 1px solid var(--border-dim);
+      border-radius: 3px;
+      padding: 1.1rem 1.3rem;
+    }
+    .info-card-label{
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber-dim);
+      margin-bottom: 0.5rem;
+    }
+    .info-card-text{
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.83rem;
+      color: var(--text-body);
+      line-height: 1.6;
+    }
+    .info-card-text strong{ color: var(--text-primary); }
+
+    /* Status pills */
+    .status-pill{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:0.55rem;font-weight:600;padding:0.12rem 0.55rem;border-radius:2px;letter-spacing:0.1em;text-transform:uppercase;}
+    .status-pill.green{background:var(--green-dim);color:var(--green);border:1px solid rgba(46,168,106,0.25);}
+    .status-pill.amber{background:var(--amber-pale);color:var(--amber);border:1px solid var(--amber-dim);}
+    .status-pill.red{background:var(--red-dim);color:var(--red);border:1px solid rgba(217,64,64,0.25);}
+    .status-pill.blue{background:rgba(58,110,168,0.15);color:var(--blue-steel);border:1px solid rgba(58,110,168,0.3);}
+
+    footer{background:var(--bg-panel);border-top:1px solid var(--border);padding:3rem 2rem;text-align:center;}
+    .footer-qa{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);margin-bottom:0.5rem;}
+    .footer-sub{font-family:'IBM Plex Sans',sans-serif;font-size:0.75rem;color:var(--text-muted);margin-bottom:1rem;}
+    .footer-copy{font-family:'IBM Plex Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;color:var(--text-muted);opacity:0.5;}
+
+    @keyframes fadeIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+    @media(max-width:640px){
+      .hero{padding:7rem 1.4rem 4rem;}
+      main{padding:3rem 1.2rem 4rem;}
+      nav{padding:0 1rem;}
+      .nav-title,.nav-date{display:none;}
+      .tableau-body{padding:0.75rem;}
+      .tableau-header,.tableau-footer{padding:0.75rem 1rem;}
+    }
+    @media print{
+      nav,#progress,body::before{display:none;}
+      .section{opacity:1;transform:none;}
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<nav>
+  <div class="nav-classify">Open Source</div>
+  <div class="nav-title">QAP // ARAC-GSA // Global Stability Analytics Dashboard</div>
+  <div class="nav-date">24 March 2026</div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Intelligence Dashboard</div>
+    <div class="hero-domain">Domain: Global Stability Analytics &amp; Conflict Systems</div>
+    <h1 class="hero-title">ARAC Global<br><span>Stability Analytics Dashboard</span></h1>
+    <p class="hero-subtitle">Interactive global security indicator analysis produced under the QAP&#8482; framework. Tracks conflict dynamics, fragility indices, and stability signals across active monitoring regions.</p>
+
+    <div class="hero-meta">
+      <div class="meta-cell">
+        <div class="meta-label">Published</div>
+        <div class="meta-value">24 Mar 2026</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">Classification</div>
+        <div class="meta-value">Open Source</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">Dashboard Version</div>
+        <div class="meta-value yellow">v1.0</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">Scope</div>
+        <div class="meta-value">Global | 2026</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">Framework</div>
+        <div class="meta-value">QAP&#8482; / OSPREY</div>
+      </div>
+    </div>
+
+    <div class="threat-badge amber-threat">
+      <div class="threat-dot"></div>
+      Dashboard Status: Live &mdash; Interactive Indicators Active
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-label">Data Source</div>
+        <div class="hero-stat-value">Tableau Public</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-label">Producer</div>
+        <div class="hero-stat-value">ARAC / MNS</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-label">Dashboard ID</div>
+        <div class="hero-stat-value">ISD-GSA-v1</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-label">Refresh Cadence</div>
+        <div class="hero-stat-value">On Demand</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main>
+
+  <!-- SECTION 01 — ABOUT THE DASHBOARD -->
+  <section class="section" id="s01">
+    <div class="section-header">
+      <span class="section-num">01 // OVERVIEW</span>
+      <div class="section-title">About This Dashboard</div>
+    </div>
+
+    <div class="prose">
+      <p>The <strong>ARAC Global Stability Analytics (GSA) Dashboard</strong> is an interactive intelligence product produced under the Quanta Analytica Process&#8482; framework. It aggregates and visualises global security indicator data to support structured analytic tradecraft, early warning monitoring, and decision support across conflict, fragility, and governance domains.</p>
+      <p>Use the interactive filters and controls within the dashboard to drill down by region, indicator type, and time horizon. All indicator data is sourced from open-access datasets and processed through the QAP&#8482; ISD (Indicator &amp; Signal Detection) methodology.</p>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-card-label">Primary Use Case</div>
+        <div class="info-card-text"><strong>Early Warning &amp; Indicators Monitoring.</strong> Track shifts in stability signals before they manifest as acute crises.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Analytic Framework</div>
+        <div class="info-card-text"><strong>QAP&#8482; / OSPREY.</strong> All indicators are weighted and structured in accordance with QAP Indicators &amp; Warnings tradecraft.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Navigation</div>
+        <div class="info-card-text">Use Tableau toolbar controls to <strong>filter, zoom, and export</strong>. Hover over data points for contextual detail layers.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Data Classification</div>
+        <div class="info-card-text">All source data is <strong>open source</strong>. No classified or sensitive personal data is included in this dashboard.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 02 — LIVE DASHBOARD EMBED -->
+  <section class="section" id="s02">
+    <div class="section-header">
+      <span class="section-num">02 // DASHBOARD</span>
+      <div class="section-title">Global Security Indicators — Interactive View</div>
+    </div>
+
+    <div class="prose" style="margin-bottom:1.5rem;">
+      <p>The live dashboard below renders all indicator panels. Use the Tableau toolbar to filter by region, indicator category, and date range. <strong>Fullscreen mode</strong> is available via the toolbar expand icon at bottom right of the embed.</p>
+    </div>
+
+    <!-- TABLEAU EMBED WRAPPER -->
+    <div class="tableau-wrapper">
+      <div class="tableau-header">
+        <div class="tableau-header-left">
+          <span class="tableau-badge">Tableau Public</span>
+          <span class="tableau-title-label">ARAC GSA — ISD Global Indicator Analysis &mdash; Dashboard v1</span>
+        </div>
+        <div class="tableau-status">
+          <div class="tableau-status-dot"></div>
+          Live
+        </div>
+      </div>
+
+      <div class="tableau-body">
+        <!-- ═══════════════════════════════════════════════ -->
+        <!-- TABLEAU EMBED — ORIGINAL SCRIPT (UNMODIFIED)   -->
+        <!-- ═══════════════════════════════════════════════ -->
+        <div class='tableauPlaceholder' id='viz1774372257081' style='position: relative'>
+          <noscript>
+            <a href='#'>
+              <img alt='ARAC Global Stability Analytics Dashboard v1'
+                   src='https://public.tableau.com/static/images/AR/ARAC-GSA-ISDGlobalIndicatorAnalysis/ARACGlobalStabilityAnalyticsDashboardv1/1_rss.png'
+                   style='border: none' />
+            </a>
+          </noscript>
+          <object class='tableauViz' style='display:none;'>
+            <param name='host_url'            value='https%3A%2F%2Fpublic.tableau.com%2F' />
+            <param name='embed_code_version'  value='3' />
+            <param name='site_root'           value='' />
+            <param name='name'                value='ARAC-GSA-ISDGlobalIndicatorAnalysis&#47;ARACGlobalStabilityAnalyticsDashboardv1' />
+            <param name='tabs'                value='no' />
+            <param name='toolbar'             value='yes' />
+            <param name='static_image'        value='https://public.tableau.com/static/images/AR/ARAC-GSA-ISDGlobalIndicatorAnalysis/ARACGlobalStabilityAnalyticsDashboardv1/1.png' />
+            <param name='animate_transition'  value='yes' />
+            <param name='display_static_image' value='yes' />
+            <param name='display_spinner'     value='yes' />
+            <param name='display_overlay'     value='yes' />
+            <param name='display_count'       value='yes' />
+            <param name='language'            value='en-US' />
+          </object>
+        </div>
+        <script type='text/javascript'>
+          var divElement  = document.getElementById('viz1774372257081');
+          var vizElement  = divElement.getElementsByTagName('object')[0];
+          if      (divElement.offsetWidth > 800) { vizElement.style.width='1280px'; vizElement.style.height='2447px'; }
+          else if (divElement.offsetWidth > 500) { vizElement.style.width='1280px'; vizElement.style.height='2447px'; }
+          else                                   { vizElement.style.width='100%';   vizElement.style.height='3127px'; }
+          var scriptElement = document.createElement('script');
+          scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+          vizElement.parentNode.insertBefore(scriptElement, vizElement);
+        </script>
+        <!-- ═══════════════════════════════════════════════ -->
+      </div>
+
+      <div class="tableau-footer">
+        <span class="tableau-footer-note">Source: Tableau Public &mdash; ARAC-GSA-ISDGlobalIndicatorAnalysis &mdash; Rendered via QAP&#8482; Intelligence Portal</span>
+        <a class="tableau-footer-link"
+           href="https://public.tableau.com/views/ARAC-GSA-ISDGlobalIndicatorAnalysis/ARACGlobalStabilityAnalyticsDashboardv1"
+           target="_blank" rel="noopener">View on Tableau Public &#8599;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 03 — INDICATOR GUIDANCE -->
+  <section class="section" id="s03">
+    <div class="section-header">
+      <span class="section-num">03 // GUIDANCE</span>
+      <div class="section-title">How to Read the Indicators</div>
+    </div>
+
+    <div class="prose">
+      <p>Global stability indicators in this dashboard are structured according to the QAP&#8482; Indicators &amp; Warnings (I&amp;W) methodology. Each indicator carries a <strong>direction, threshold, and status signal</strong> — not simply a raw data point. Consumers should read indicator movement in terms of the analytic significance of the change, not the absolute value.</p>
+    </div>
+
+    <div class="sub-section">Signal Status Key</div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-card-label">Status</div>
+        <div class="info-card-text" style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem;">
+          <span class="status-pill green">Stable</span>
+          <span>Indicator within expected range. No action threshold triggered.</span>
+        </div>
+        <div class="info-card-text" style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem;">
+          <span class="status-pill amber">Watch</span>
+          <span>Indicator trending toward threshold. Elevated monitoring warranted.</span>
+        </div>
+        <div class="info-card-text" style="display:flex;align-items:center;gap:0.6rem;">
+          <span class="status-pill red">Active</span>
+          <span>Threshold breached. Immediate analytic review required.</span>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Direction Coding</div>
+        <div class="info-card-text">
+          <strong>Increasing:</strong> Signal value trending upward from baseline.<br/><br/>
+          <strong>Decreasing:</strong> Signal value trending downward from baseline.<br/><br/>
+          <strong>Stable:</strong> No significant directional movement within monitoring window.
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">QAP I&amp;W Framework</div>
+        <div class="info-card-text">Indicators are weighted by <strong>diagnosticity</strong> — the degree to which a change in the indicator meaningfully distinguishes between competing hypotheses. High-weight indicators drive key judgments; low-weight indicators contribute to pattern recognition only.</div>
+      </div>
+    </div>
+
+    <div class="sub-section">Analytic Integrity Note</div>
+    <div class="prose">
+      <p>This dashboard is produced under the Quanta Analytica Process&#8482;. All displayed indicators are sourced from open-access datasets. <strong>No indicator should be treated in isolation</strong> — cross-referencing against the full QAP&#8482; assessment product is recommended before drawing analytic conclusions. For full methodology, consult the QAP&#8482; / OSPREY framework documentation.</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-qa">Quanta Analytica Process&#8482; &nbsp;|&nbsp; MNS Consulting</div>
+  <div class="footer-sub">Global Stability Analytics Dashboard &mdash; ARAC-GSA-ISD &mdash; 24 March 2026</div>
+  <div class="footer-copy">QAP-ARAC-GSA-GLB-2026-0324 &nbsp;//&nbsp; Open Source &nbsp;//&nbsp; QAP&#8482; / OSPREY Framework &nbsp;//&nbsp; quanta-analytica.com</div>
+</footer>
+
+<script>
+  // Scroll progress bar
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    const p = h > 0 ? (window.scrollY / h) * 100 : 0;
+    document.getElementById('progress').style.width = p + '%';
+  });
+
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.section').forEach(s => obs.observe(s));
+</script>
+
+</body>
+</html>
