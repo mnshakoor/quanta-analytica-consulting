@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sierra Leone: Illicit Hub, ECOWAS Fragility & the Sahel Terrorism Nexus | Quanta Analytica Process™ | 23 Mar 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg:           #0A0E17;
+  --bg-panel:     #0F1520;
+  --bg-card:      #131B2A;
+  --bg-card-alt:  #0D1421;
+  --amber:        #E8A020;
+  --amber-dim:    #9B6A14;
+  --amber-glow:   rgba(232,160,32,0.12);
+  --amber-pale:   rgba(232,160,32,0.06);
+  --red:          #D94040;
+  --red-dim:      rgba(217,64,64,0.15);
+  --green:        #2EA86A;
+  --green-dim:    rgba(46,168,106,0.15);
+  --yellow:       #D4B84A;
+  --blue-steel:   #3A6EA8;
+  --text-primary: #E8E2D4;
+  --text-body:    #B8B0A0;
+  --text-muted:   #6A6258;
+  --text-mono:    #8FA8C8;
+  --border:       rgba(232,160,32,0.18);
+  --border-dim:   rgba(255,255,255,0.06);
+  --scan-line:    rgba(0,0,0,0.12);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text-primary);font-family:'IBM Plex Sans',sans-serif;font-size:15px;line-height:1.7;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,var(--scan-line) 0px,transparent 1px,transparent 3px);pointer-events:none;z-index:9999;opacity:0.35;}
+#progress{position:fixed;top:0;left:0;height:2px;width:0%;background:var(--amber);z-index:10000;box-shadow:0 0 12px var(--amber);transition:width 0.08s linear;}
+nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(10,14,23,0.96);border-bottom:1px solid var(--border);height:52px;display:flex;align-items:center;padding:0 2rem;gap:1.5rem;backdrop-filter:blur(16px);}
+.nav-classify{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);padding:0.2rem 0.7rem;border:1px solid var(--amber-dim);border-radius:2px;}
+.nav-title{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--text-muted);letter-spacing:0.06em;flex:1;}
+.nav-date{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--text-muted);letter-spacing:0.08em;}
+.hero{min-height:100vh;background:var(--bg-panel);border-bottom:1px solid var(--border);display:flex;flex-direction:column;justify-content:center;padding:9rem 3rem 5rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 15% 50%,rgba(232,160,32,0.05) 0%,transparent 65%),radial-gradient(ellipse 50% 70% at 85% 20%,rgba(217,64,64,0.04) 0%,transparent 60%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(232,160,32,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(232,160,32,0.04) 1px,transparent 1px);background-size:48px 48px;animation:gridPulse 8s ease-in-out infinite;}
+@keyframes gridPulse{0%,100%{opacity:0.5}50%{opacity:1}}
+.hero-inner{position:relative;z-index:2;max-width:900px;}
+.hero-tag{display:inline-flex;align-items:center;gap:0.6rem;font-family:'IBM Plex Mono',monospace;font-size:0.62rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:var(--amber);margin-bottom:1.8rem;opacity:0;animation:fadeIn 0.7s 0.2s ease forwards;}
+.hero-tag::before{content:'';width:20px;height:1px;background:var(--amber);}
+.hero-domain{font-family:'IBM Plex Mono',monospace;font-size:0.68rem;letter-spacing:0.18em;color:var(--blue-steel);text-transform:uppercase;margin-bottom:1rem;opacity:0;animation:fadeIn 0.7s 0.35s ease forwards;}
+.hero-title{font-family:'Libre Baskerville',serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:700;line-height:1.12;color:var(--text-primary);margin-bottom:0.6rem;opacity:0;animation:fadeIn 0.8s 0.45s ease forwards;}
+.hero-title span{color:var(--amber);}
+.hero-subtitle{font-family:'IBM Plex Sans',sans-serif;font-size:1rem;font-weight:300;color:var(--text-body);max-width:580px;line-height:1.6;margin-bottom:3rem;opacity:0;animation:fadeIn 0.8s 0.55s ease forwards;}
+.hero-meta{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--border);border-radius:3px;overflow:hidden;max-width:760px;opacity:0;animation:fadeIn 0.8s 0.7s ease forwards;}
+.meta-cell{flex:1;min-width:120px;padding:0.85rem 1.2rem;border-right:1px solid var(--border);background:var(--bg-card);}
+.meta-cell:last-child{border-right:none;}
+.meta-label{font-family:'IBM Plex Mono',monospace;font-size:0.55rem;letter-spacing:0.2em;color:var(--text-muted);text-transform:uppercase;margin-bottom:0.3rem;}
+.meta-value{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;font-weight:600;color:var(--amber);}
+.meta-value.red{color:var(--red);}
+.meta-value.yellow{color:var(--yellow);}
+.threat-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(217,64,64,0.1);border:1px solid rgba(217,64,64,0.3);border-radius:2px;padding:0.25rem 0.7rem;font-family:'IBM Plex Mono',monospace;font-size:0.62rem;font-weight:600;letter-spacing:0.18em;color:var(--red);text-transform:uppercase;margin-top:1.5rem;opacity:0;animation:fadeIn 0.8s 0.85s ease forwards;}
+.threat-badge.amber-threat{background:rgba(232,160,32,0.08);border-color:rgba(232,160,32,0.3);color:var(--amber);}
+.threat-dot{width:6px;height:6px;background:currentColor;border-radius:50%;animation:blink 1.8s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+.hero-stats{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:2rem;opacity:0;animation:fadeIn 0.8s 1.0s ease forwards;}
+.hero-stat{background:var(--bg-card);border:1px solid var(--border-dim);padding:0.45rem 0.9rem;display:flex;flex-direction:column;gap:2px;}
+.hero-stat-label{font-family:'IBM Plex Mono',monospace;font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-muted);}
+.hero-stat-value{font-family:'IBM Plex Mono',monospace;font-size:0.8rem;font-weight:600;color:var(--text-mono);}
+main{max-width:1000px;margin:0 auto;padding:4rem 2rem 6rem;}
+.section{margin-bottom:5rem;opacity:0;transform:translateY(20px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.section.visible{opacity:1;transform:translateY(0);}
+.section-header{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--border-dim);}
+.section-num{font-family:'IBM Plex Mono',monospace;font-size:0.58rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber);background:var(--amber-pale);border:1px solid var(--amber-dim);padding:0.2rem 0.65rem;border-radius:2px;white-space:nowrap;}
+.section-title{font-family:'Libre Baskerville',serif;font-size:1.45rem;font-weight:700;color:var(--text-primary);letter-spacing:0.01em;}
+cite{font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:0.58rem;font-weight:600;color:var(--blue-steel);vertical-align:super;line-height:0;letter-spacing:0;}
+.bluf-grid{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:4px;overflow:hidden;}
+.bluf-item{display:flex;gap:0;border-bottom:1px solid var(--border-dim);background:var(--bg-card);transition:background 0.2s;}
+.bluf-item:last-child{border-bottom:none;}
+.bluf-item:hover{background:var(--bg-card-alt);}
+.bluf-index{font-family:'IBM Plex Mono',monospace;font-size:0.78rem;font-weight:600;color:var(--amber);background:var(--amber-pale);border-right:1px solid var(--border);padding:1rem 1.2rem;min-width:52px;display:flex;align-items:center;justify-content:center;}
+.bluf-text{padding:0.9rem 1.2rem;font-family:'IBM Plex Sans',sans-serif;font-size:0.88rem;color:var(--text-body);line-height:1.65;}
+.bluf-text strong{color:var(--text-primary);}
+.snapshot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-dim);border:1px solid var(--border);border-radius:4px;overflow:hidden;}
+.snapshot-cell{background:var(--bg-card);padding:1.1rem 1.3rem;}
+.snapshot-label{font-family:'IBM Plex Mono',monospace;font-size:0.55rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber-dim);margin-bottom:0.45rem;}
+.snapshot-content{font-family:'IBM Plex Sans',sans-serif;font-size:0.85rem;color:var(--text-body);line-height:1.55;}
+.kj-list{display:flex;flex-direction:column;gap:0.8rem;}
+.kj-item{display:flex;gap:0;border:1px solid var(--border-dim);border-radius:4px;overflow:hidden;}
+.kj-item.high{border-left:3px solid var(--amber);}
+.kj-item.moderate{border-left:3px solid var(--blue-steel);}
+.kj-item.low{border-left:3px solid var(--text-muted);}
+.kj-conf{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.4rem;padding:1rem;min-width:80px;background:var(--bg-card-alt);border-right:1px solid var(--border-dim);}
+.kj-conf-badge{font-family:'IBM Plex Mono',monospace;font-size:0.52rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.18rem 0.4rem;border-radius:2px;text-align:center;}
+.kj-conf-badge.high{background:var(--amber-pale);color:var(--amber);border:1px solid var(--amber-dim);}
+.kj-conf-badge.moderate{background:rgba(58,110,168,0.12);color:var(--blue-steel);border:1px solid rgba(58,110,168,0.25);}
+.kj-conf-badge.low-mod{background:rgba(212,184,74,0.08);color:var(--yellow);border:1px solid rgba(212,184,74,0.2);}
+.kj-conf-badge.low{background:var(--bg-card);color:var(--text-muted);border:1px solid var(--border-dim);}
+.kj-id{font-family:'IBM Plex Mono',monospace;font-size:0.58rem;color:var(--text-muted);letter-spacing:0.1em;}
+.kj-body{padding:1rem 1.3rem;font-family:'IBM Plex Sans',sans-serif;font-size:0.87rem;color:var(--text-body);line-height:1.65;background:var(--bg-card);}
+.kj-body strong{color:var(--text-primary);}
+.evidence-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.evidence-box{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:4px;overflow:hidden;}
+.evidence-box-header{font-family:'IBM Plex Mono',monospace;font-size:0.58rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:0.7rem 1rem;border-bottom:1px solid var(--border-dim);}
+.evidence-box-header.know{background:var(--green-dim);color:var(--green);}
+.evidence-box-header.assess{background:var(--amber-pale);color:var(--amber);}
+.evidence-box-header.gap{background:var(--red-dim);color:var(--red);}
+.evidence-box ul{list-style:none;padding:1rem;display:flex;flex-direction:column;gap:0.6rem;}
+.evidence-box li{font-family:'IBM Plex Sans',sans-serif;font-size:0.82rem;color:var(--text-body);line-height:1.55;padding-left:1rem;position:relative;}
+.evidence-box li::before{content:'›';position:absolute;left:0;color:var(--amber-dim);}
+.evidence-box li strong{color:var(--text-primary);}
+.wsi-note{background:var(--bg-card);border:1px solid var(--border-dim);border-left:3px solid var(--blue-steel);padding:0.9rem 1.2rem;font-family:'IBM Plex Sans',sans-serif;font-size:0.82rem;color:var(--text-body);line-height:1.6;margin-bottom:1.2rem;border-radius:0 3px 3px 0;}
+.wsi-note strong{color:var(--text-primary);}
+.assumption-table,.ach-table,.iw-table,.pig-table,.kpi-table{width:100%;border-collapse:collapse;font-family:'IBM Plex Sans',sans-serif;font-size:0.83rem;}
+.assumption-table thead tr,.ach-table thead tr,.iw-table thead tr,.pig-table thead tr,.kpi-table thead tr{background:var(--bg-card-alt);border-bottom:1px solid var(--border);}
+.assumption-table th,.ach-table th,.iw-table th,.pig-table th,.kpi-table th{padding:0.65rem 0.9rem;font-family:'IBM Plex Mono',monospace;font-size:0.55rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--amber-dim);text-align:left;border-right:1px solid var(--border-dim);}
+.assumption-table th:last-child,.ach-table th:last-child,.iw-table th:last-child,.pig-table th:last-child,.kpi-table th:last-child{border-right:none;}
+.assumption-table tbody tr,.ach-table tbody tr,.iw-table tbody tr,.pig-table tbody tr,.kpi-table tbody tr{border-bottom:1px solid var(--border-dim);background:var(--bg-card);}
+.assumption-table tbody tr:hover,.ach-table tbody tr:hover,.iw-table tbody tr:hover,.pig-table tbody tr:hover,.kpi-table tbody tr:hover{background:var(--bg-card-alt);}
+.assumption-table tbody tr:last-child,.ach-table tbody tr:last-child,.iw-table tbody tr:last-child,.pig-table tbody tr:last-child,.kpi-table tbody tr:last-child{border-bottom:none;}
+.assumption-table td,.ach-table td,.iw-table td,.pig-table td,.kpi-table td{padding:0.75rem 0.9rem;color:var(--text-body);border-right:1px solid var(--border-dim);vertical-align:top;line-height:1.55;}
+.assumption-table td:last-child,.ach-table td:last-child,.iw-table td:last-child,.pig-table td:last-child,.kpi-table td:last-child{border-right:none;}
+.assumption-table td:first-child,.ach-table td:first-child,.pig-table td:first-child{color:var(--text-primary);font-weight:600;}
+.iw-table td:first-child{color:var(--text-primary);font-size:0.82rem;}
+.status-pill{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:0.55rem;font-weight:600;padding:0.12rem 0.45rem;border-radius:2px;letter-spacing:0.1em;text-transform:uppercase;}
+.status-pill.red{background:var(--red-dim);color:var(--red);border:1px solid rgba(217,64,64,0.25);}
+.status-pill.amber{background:var(--amber-pale);color:var(--amber);border:1px solid var(--amber-dim);}
+.status-pill.green{background:var(--green-dim);color:var(--green);border:1px solid rgba(46,168,106,0.25);}
+.status-pill.blue{background:rgba(58,110,168,0.12);color:var(--blue-steel);border:1px solid rgba(58,110,168,0.25);}
+.status-pill.yellow{background:rgba(212,184,74,0.1);color:var(--yellow);border:1px solid rgba(212,184,74,0.25);}
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.scenario-card{border:1px solid var(--border-dim);border-radius:4px;overflow:hidden;}
+.scenario-card.best{border-top:3px solid var(--green);}
+.scenario-card.base{border-top:3px solid var(--amber);}
+.scenario-card.worst{border-top:3px solid var(--red);}
+.scenario-label{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;padding:0.7rem 1rem;border-bottom:1px solid var(--border-dim);}
+.scenario-card.best .scenario-label{background:var(--green-dim);color:var(--green);}
+.scenario-card.base .scenario-label{background:var(--amber-pale);color:var(--amber);}
+.scenario-card.worst .scenario-label{background:var(--red-dim);color:var(--red);}
+.scenario-title{font-family:'Libre Baskerville',serif;font-size:0.88rem;font-weight:700;color:var(--text-primary);padding:0.8rem 1rem 0.4rem;}
+.scenario-body{font-family:'IBM Plex Sans',sans-serif;font-size:0.8rem;color:var(--text-body);padding:0 1rem 1rem;line-height:1.6;}
+.scenario-trigger{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--text-muted);padding:0.6rem 1rem;border-top:1px solid var(--border-dim);background:var(--bg-card-alt);}
+.behavioral-grid{display:flex;flex-direction:column;gap:0.7rem;}
+.behavioral-item{display:flex;gap:0;border:1px solid var(--border-dim);border-radius:3px;overflow:hidden;background:var(--bg-card);}
+.behavioral-rank{font-family:'IBM Plex Mono',monospace;font-size:0.78rem;font-weight:600;color:var(--amber);background:var(--amber-pale);border-right:1px solid var(--border-dim);padding:1rem 1.1rem;min-width:50px;display:flex;align-items:center;justify-content:center;}
+.behavioral-content{padding:0.9rem 1.2rem;font-family:'IBM Plex Sans',sans-serif;font-size:0.85rem;color:var(--text-body);line-height:1.6;}
+.behavioral-content strong{color:var(--text-primary);}
+.rec-timeline{display:flex;flex-direction:column;gap:1rem;}
+.rec-block{display:flex;gap:0;border:1px solid var(--border-dim);border-radius:4px;overflow:hidden;}
+.rec-time{min-width:130px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.2rem 0.8rem;gap:0.4rem;}
+.rec-time-label{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:0.2rem 0.5rem;border-radius:2px;text-align:center;}
+.rec-time-label.immediate{background:var(--red-dim);color:var(--red);border:1px solid rgba(217,64,64,0.2);}
+.rec-time-label.near{background:var(--amber-pale);color:var(--amber);border:1px solid var(--amber-dim);}
+.rec-time-label.medium{background:var(--green-dim);color:var(--green);border:1px solid rgba(46,168,106,0.2);}
+.rec-content{flex:1;padding-left:1.5rem;padding:1rem 1.2rem 1rem 1.5rem;}
+.rec-items{display:flex;flex-direction:column;gap:0.6rem;}
+.rec-item{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:3px;padding:0.9rem 1.1rem;font-family:'IBM Plex Sans',sans-serif;font-size:0.85rem;color:var(--text-body);line-height:1.6;}
+.rec-item strong{color:var(--text-primary);}
+.conf-panel{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;overflow:hidden;}
+.conf-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;background:var(--bg-card-alt);border-bottom:1px solid var(--border);}
+.conf-title{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);}
+.conf-level{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;font-weight:600;color:var(--yellow);background:rgba(212,184,74,0.1);border:1px solid rgba(212,184,74,0.25);padding:0.2rem 0.7rem;border-radius:2px;}
+.conf-body{padding:1.2rem 1.5rem;}
+.conf-row{display:flex;gap:0.8rem;margin-bottom:0.65rem;font-family:'IBM Plex Sans',sans-serif;font-size:0.83rem;color:var(--text-body);line-height:1.55;}
+.conf-row::before{content:'›';color:var(--amber-dim);font-weight:700;flex-shrink:0;margin-top:0.05em;}
+.conf-divider{border:none;border-top:1px solid var(--border-dim);margin:1rem 0;}
+.uncertainty-list{display:flex;flex-direction:column;gap:0.6rem;}
+.uncertainty-item{display:flex;gap:0.8rem;background:var(--bg-card-alt);border:1px solid var(--border-dim);border-left:3px solid rgba(217,64,64,0.4);border-radius:0 3px 3px 0;padding:0.75rem 1rem;font-family:'IBM Plex Sans',sans-serif;font-size:0.82rem;color:var(--text-body);line-height:1.55;}
+.uncertainty-item strong{color:var(--text-primary);}
+.threshold-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;}
+.threshold-cell{border-radius:3px;overflow:hidden;border:1px solid var(--border-dim);}
+.threshold-dot-header{display:flex;align-items:center;gap:0.6rem;padding:0.75rem 1rem;border-bottom:1px solid var(--border-dim);}
+.threshold-label-text{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;}
+.threshold-dot2{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.green-zone .threshold-dot-header{background:var(--green-dim);}
+.green-zone .threshold-label-text{color:var(--green);}
+.green-zone .threshold-dot2{background:var(--green);}
+.amber-zone .threshold-dot-header{background:var(--amber-pale);}
+.amber-zone .threshold-label-text{color:var(--amber);}
+.amber-zone .threshold-dot2{background:var(--amber);animation:blink 2s ease-in-out infinite;}
+.red-zone .threshold-dot-header{background:var(--red-dim);}
+.red-zone .threshold-label-text{color:var(--red);}
+.red-zone .threshold-dot2{background:var(--red);animation:blink 1.4s ease-in-out infinite;}
+.threshold-body{font-family:'IBM Plex Sans',sans-serif;font-size:0.82rem;color:var(--text-body);line-height:1.6;padding:0.9rem 1rem;background:var(--bg-card);}
+.ref-table{width:100%;border-collapse:collapse;font-family:'IBM Plex Sans',sans-serif;font-size:0.8rem;}
+.ref-table thead tr{background:var(--bg-card-alt);border-bottom:1px solid var(--border);}
+.ref-table th{padding:0.65rem 0.9rem;font-family:'IBM Plex Mono',monospace;font-size:0.55rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--amber-dim);text-align:left;border-right:1px solid var(--border-dim);}
+.ref-table th:last-child{border-right:none;}
+.ref-table tbody tr{border-bottom:1px solid var(--border-dim);background:var(--bg-card);transition:background 0.15s;}
+.ref-table tbody tr:hover{background:var(--bg-card-alt);}
+.ref-table tbody tr:last-child{border-bottom:none;}
+.ref-table td{padding:0.7rem 0.9rem;color:var(--text-body);border-right:1px solid var(--border-dim);vertical-align:top;}
+.ref-table td:last-child{border-right:none;}
+.ref-table td:first-child{color:var(--amber);font-family:'IBM Plex Mono',monospace;font-size:0.72rem;}
+.band-pill{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:0.55rem;font-weight:600;padding:0.12rem 0.45rem;border-radius:2px;letter-spacing:0.1em;}
+.band-pill.green{background:var(--green-dim);color:var(--green);border:1px solid rgba(46,168,106,0.25);}
+.band-pill.amber{background:var(--amber-pale);color:var(--amber);border:1px solid var(--amber-dim);}
+.band-pill.red{background:var(--red-dim);color:var(--red);border:1px solid rgba(217,64,64,0.25);}
+.prose{font-family:'IBM Plex Sans',sans-serif;font-size:0.9rem;color:var(--text-body);line-height:1.8;}
+.prose p{margin-bottom:1rem;}
+.prose p:last-child{margin-bottom:0;}
+.prose strong{color:var(--text-primary);}
+.sub-section{margin-top:2.2rem;margin-bottom:1.2rem;font-family:'IBM Plex Mono',monospace;font-size:0.65rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-mono);display:flex;align-items:center;gap:0.8rem;}
+.sub-section::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border-dim),transparent);}
+footer{background:var(--bg-panel);border-top:1px solid var(--border);padding:3rem 2rem;text-align:center;}
+.footer-qa{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);margin-bottom:0.5rem;}
+.footer-sub{font-family:'IBM Plex Sans',sans-serif;font-size:0.75rem;color:var(--text-muted);margin-bottom:1rem;}
+.footer-copy{font-family:'IBM Plex Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;color:var(--text-muted);opacity:0.5;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:768px){
+  .evidence-grid,.scenario-grid{grid-template-columns:1fr;}
+  .snapshot-grid{grid-template-columns:1fr 1fr;}
+  .hero{padding:7rem 1.4rem 4rem;}
+  main{padding:3rem 1.2rem 4rem;}
+  nav{padding:0 1rem;}
+  .nav-title,.nav-date{display:none;}
+  .iw-table,.ref-table{font-size:0.75rem;}
+  .threshold-grid{grid-template-columns:1fr;}
+}
+@media print{
+  nav,#progress,body::before{display:none;}
+  .section{opacity:1;transform:none;}
+}
+  </style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<nav>
+  <div class="nav-classify">Open Source</div>
+  <div class="nav-title">QAP // CONFLICT SYSTEMS + FRAGILITY MODELING // SIERRA LEONE — ECOWAS/AES NEXUS</div>
+  <div class="nav-date">23 March 2026</div>
+</nav>
+
+<header class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Intelligence Assessment</div>
+    <div class="hero-domain">Domain: Conflict Systems Analysis + Fragility &amp; Governance Modeling</div>
+    <h1 class="hero-title">Sierra Leone: Illicit Hub,<br><span>ECOWAS Fragility &amp; the Sahel Terrorism Nexus</span></h1>
+    <p class="hero-subtitle">A Quanta Analytica Process™ assessment examining Sierra Leone's role as a node in West Africa's illicit trafficking architecture and its structural interconnections with ECOWAS/AES instability, the Sahel jihadist expansion, and GTI 2026 regional data.</p>
+
+    <div class="hero-meta">
+      <div class="meta-cell"><div class="meta-label">Date</div><div class="meta-value">23 Mar 2026</div></div>
+      <div class="meta-cell"><div class="meta-label">Classification</div><div class="meta-value">Unclassified / Open Source</div></div>
+      <div class="meta-cell"><div class="meta-label">Confidence</div><div class="meta-value yellow">Moderate</div></div>
+      <div class="meta-cell"><div class="meta-label">Scope</div><div class="meta-value">Sierra Leone + West Africa | 2025–2027</div></div>
+      <div class="meta-cell"><div class="meta-label">Framework</div><div class="meta-value">QAP v1.0</div></div>
+    </div>
+
+    <div class="threat-badge">
+      <div class="threat-dot"></div>Threat Status: Red — Escalating Regional Contagion Risk
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-label">GTI 2026 Rank (SL)</div><div class="hero-stat-value">Unranked / Zero Score</div></div>
+      <div class="hero-stat"><div class="hero-stat-label">Sahel Deaths 2025</div><div class="hero-stat-value">&gt;3,000+</div></div>
+      <div class="hero-stat"><div class="hero-stat-label">JNIM Coastal Expansion</div><div class="hero-stat-value">Active 2025–2026</div></div>
+      <div class="hero-stat"><div class="hero-stat-label">W. Africa GTI Deteriorations</div><div class="hero-stat-value">7 of 19 globally</div></div>
+      <div class="hero-stat"><div class="hero-stat-label">Primary Source</div><div class="hero-stat-value">GTI 2026 (IEP/Dragonfly)</div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- 01 BLUF -->
+  <section class="section" id="s1">
+    <div class="section-header">
+      <span class="section-num">01 // BLUF</span>
+      <div class="section-title">Bottom Line Up Front</div>
+    </div>
+    <div class="bluf-grid">
+      <div class="bluf-item">
+        <div class="bluf-index">01</div>
+        <div class="bluf-text"><strong>Sierra Leone scores zero on the GTI 2026</strong> but its structural conditions — fragile governance, Atlantic maritime exposure, porous land borders, diamond and mineral wealth, and entrenched informal economies — position it as a high-risk passive node in West Africa's expanding illicit trafficking architecture, even in the absence of active terrorism.<cite>[1]</cite></div>
+      </div>
+      <div class="bluf-item">
+        <div class="bluf-index">02</div>
+        <div class="bluf-text"><strong>JNIM's documented expansion into coastal West Africa is the primary escalatory vector.</strong> From staging bases in southern Burkina Faso and the W-Arly-Pendjari complex, JNIM has incrementally penetrated Benin, Togo, and intermittently Côte d'Ivoire, and has conducted its first confirmed attack in Nigeria (Kwara State, October 2025). Sierra Leone lies on this southern arc of expansion.<cite>[1,2]</cite></div>
+      </div>
+      <div class="bluf-item">
+        <div class="bluf-index">03</div>
+        <div class="bluf-text"><strong>The ECOWAS-AES fracture is a structural accelerant.</strong> The withdrawal of Burkina Faso, Mali, and Niger from ECOWAS, the expulsion of French and UN forces, and the failure of Russian Africa Corps to contain jihadist expansion have eliminated regional security architecture. Sierra Leone, a committed ECOWAS member, now operates in a weakened collective security environment.<cite>[1,3]</cite></div>
+      </div>
+      <div class="bluf-item">
+        <div class="bluf-index">04</div>
+        <div class="bluf-text"><strong>Illicit trafficking is the connective tissue.</strong> Arms, narcotics, and mineral trafficking networks link Sierra Leone's Atlantic coast to the Sahel via Guinea, Guinea-Bissau, and the Mano River corridor. These same networks historically financed RUF and AFRC activities and remain available as revenue infrastructure for any emerging extremist presence.<cite>[2,4]</cite></div>
+      </div>
+      <div class="bluf-item">
+        <div class="bluf-index">05</div>
+        <div class="bluf-text"><strong>Youth radicalisation vulnerability is structurally elevated.</strong> GTI 2026 documents youth radicalisation as a critical global security concern: 42% of terror-related investigations in Europe and North America in 2025 involved minors. Sierra Leone shares the Sub-Saharan African pattern — state security abuse, unemployment, and grievance — that the UNDP identifies as the primary drivers of VEO recruitment in the region.<cite>[1,5]</cite></div>
+      </div>
+      <div class="bluf-item">
+        <div class="bluf-index">06</div>
+        <div class="bluf-text"><strong>The 2026 outlook is deteriorating.</strong> IEP's GTI assessment explicitly states that the global improvement in terrorism recorded in 2025 may be a temporary reprieve; in West Africa, jihadist groups are deliberately reducing civilian attacks to consolidate territory and pursue economic blockade strategies. Sierra Leone's current zero-score status should not be read as durable safety — it reflects absence of recorded incidents, not absence of structural risk.<cite>[1]</cite></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 SNAPSHOT -->
+  <section class="section" id="s2">
+    <div class="section-header">
+      <span class="section-num">02 // SNAPSHOT</span>
+      <div class="section-title">Situation Snapshot</div>
+    </div>
+    <div class="snapshot-grid">
+      <div class="snapshot-cell">
+        <div class="snapshot-label">Who</div>
+        <div class="snapshot-content">Sierra Leone (SL), ECOWAS member states, AES junta states (Mali, Burkina Faso, Niger), JNIM, ISSP, transnational trafficking networks, Guinea-Bissau as narco-state node, Mano River Union states.</div>
+      </div>
+      <div class="snapshot-cell">
+        <div class="snapshot-label">What</div>
+        <div class="snapshot-content">Assessment of Sierra Leone's role as a potential illicit trafficking hub in the context of widening ECOWAS fragility, the southward expansion of Sahel jihadist groups, and 2026 GTI regional data.</div>
+      </div>
+      <div class="snapshot-cell">
+        <div class="snapshot-label">Where</div>
+        <div class="snapshot-content">Sierra Leone (Atlantic coast, Freetown port, diamond belt, Guinea-Liberia border corridors); broader West African littoral arc from Guinea-Bissau to Côte d'Ivoire; Central Sahel tri-border area.</div>
+      </div>
+      <div class="snapshot-cell">
+        <div class="snapshot-label">When</div>
+        <div class="snapshot-content">Current assessment (March 2026), drawing on GTI 2026 data (2025 incident year). Risk horizon: 2026–2028. Key inflection: JNIM coastal expansion acceleration post-2024 French/UN withdrawal.</div>
+      </div>
+      <div class="snapshot-cell">
+        <div class="snapshot-label">Why</div>
+        <div class="snapshot-content">Sierra Leone's structural vulnerabilities — governance fragility, illicit economy, youth unemployment, porous maritime/land borders — make it susceptible to contagion from the Sahel jihadist expansion and ECOWAS institutional collapse.</div>
+      </div>
+      <div class="snapshot-cell">
+        <div class="snapshot-label">How</div>
+        <div class="snapshot-content">Through Mano River corridor narco-trafficking, arms flows from Libya via Sahel, JNIM community-embedding tactics targeting marginalised border populations, economic blockade of coastal capitals, and exploitation of state security legitimacy deficits.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 KEY JUDGMENTS -->
+  <section class="section" id="s3">
+    <div class="section-header">
+      <span class="section-num">03 // KEY JUDGMENTS</span>
+      <div class="section-title">Key Judgments</div>
+    </div>
+    <div class="kj-list">
+      <div class="kj-item high">
+        <div class="kj-conf">
+          <div class="kj-conf-badge high">High</div>
+          <div class="kj-id">KJ-1</div>
+        </div>
+        <div class="kj-body"><strong>Sierra Leone's Atlantic position and existing narco-transit infrastructure make it a structurally available hub for illicit trafficking regardless of its current zero GTI score.</strong> The Mano River corridor (Guinea–SL–Liberia) is a documented transit route for South American cocaine destined for European markets via Guinea-Bissau, a pattern that predates and outlasts active conflict cycles in the region. This infrastructure is fungible — it can finance any armed actor that achieves sufficient presence.<cite>[2,4]</cite></div>
+      </div>
+      <div class="kj-item high">
+        <div class="kj-conf">
+          <div class="kj-conf-badge high">High</div>
+          <div class="kj-id">KJ-2</div>
+        </div>
+        <div class="kj-body"><strong>JNIM's documented southward expansion constitutes the most proximate terrorism contagion vector for Sierra Leone within a 24–36 month window.</strong> GTI 2026 confirms JNIM's first attack in Nigeria (October 2025) and sustained operations in Benin, marking an unprecedented southern geographic reach. JNIM's strategy — incremental community embedding, exploitation of herder-farmer tensions, and economic blockade of coastal capitals — is directly applicable to Sierra Leone's northern border communities with Guinea.<cite>[1,2]</cite></div>
+      </div>
+      <div class="kj-item moderate">
+        <div class="kj-conf">
+          <div class="kj-conf-badge moderate">Moderate</div>
+          <div class="kj-id">KJ-3</div>
+        </div>
+        <div class="kj-body"><strong>The ECOWAS-AES institutional fracture materially weakens Sierra Leone's collective security environment.</strong> The defection of Mali, Burkina Faso, and Niger from ECOWAS — combined with Niger's suspension of MNJTF participation and the expulsion of French/UN forces — has dismantled the multilateral counterterrorism architecture that once contained Sahel jihadist expansion to the north. Sierra Leone lacks the bilateral capacity to compensate for this institutional loss.<cite>[1,3]</cite></div>
+      </div>
+      <div class="kj-item moderate">
+        <div class="kj-conf">
+          <div class="kj-conf-badge moderate">Moderate</div>
+          <div class="kj-id">KJ-4</div>
+        </div>
+        <div class="kj-body"><strong>Sierra Leone's youth unemployment crisis and historical state security legitimacy deficit mirror the Sub-Saharan African radicalisation profile documented in GTI 2026.</strong> The UNDP pattern — where 71% of VEO recruits cited state security abuse as the tipping point and 25% cited unemployment — is analytically applicable to Sierra Leone's northern and eastern border communities, where state presence is thinnest and historical grievances against security forces are deepest.<cite>[1,5]</cite></div>
+      </div>
+      <div class="kj-item low">
+        <div class="kj-conf">
+          <div class="kj-conf-badge low-mod">Low–Mod</div>
+          <div class="kj-id">KJ-5</div>
+        </div>
+        <div class="kj-body"><strong>The risk of direct ISSP penetration into Sierra Leone is lower than JNIM but not negligible.</strong> GTI 2026 documents ISSP's eastward expansion toward northwest Nigeria, suggesting its operational corridor is oriented differently from JNIM. However, ISSP's use of porous borders and illicit trafficking networks as force multipliers means that Atlantic coastal routes remain within its medium-term operational planning horizon.<cite>[1]</cite></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 EVIDENCE -->
+  <section class="section" id="s4">
+    <div class="section-header">
+      <span class="section-num">04 // EVIDENCE</span>
+      <div class="section-title">Evidence Summary</div>
+    </div>
+
+    <div class="wsi-note">
+      <strong>WSI Policy Applied:</strong> This assessment draws on the GTI 2026 report (IEP/Dragonfly TerrorismTracker — Tier A primary source), supplemented by UNDP Journey to Extremism data, Global Initiative Against Transnational Organised Crime reporting, and open-source regional security analysis. The independence test was applied: GTI 2026 and UNDP represent independent evidentiary streams. Expert contributions within GTI 2026 (Moody, Stockhammer/Gustenau, Hwang) are treated as corroborating analytical assessments, not independent primary sources. No single-source key judgments without explicit caveat.
+    </div>
+
+    <div class="evidence-grid">
+      <div class="evidence-box">
+        <div class="evidence-box-header know">&#10003; &nbsp;What We Know — Verified Facts</div>
+        <ul>
+          <li>Sierra Leone scores zero on the GTI 2026, indicating no recorded terrorist incidents in the past five years.<cite>[1]</cite></li>
+          <li>GTI 2026 ranks six of the ten most terrorism-impacted countries as Sub-Saharan African; the Sahel accounts for more than half of all global terrorism deaths in 2025.<cite>[1]</cite></li>
+          <li>JNIM conducted its first confirmed attack in Nigeria (Kwara State) in October 2025, documenting an unprecedented southward extension of operations.<cite>[1,2]</cite></li>
+          <li>GTI 2026 explicitly records JNIM operations in the W-Arly-Pendjari complex spanning Burkina Faso, Niger, and Benin — within 1,500km of Sierra Leone's northern border.<cite>[1]</cite></li>
+          <li>The Mano River corridor is a documented cocaine transit route, with Guinea-Bissau functioning as a narco-state node connecting South American supply to European demand.<cite>[4]</cite></li>
+          <li>ECOWAS has been structurally weakened by the departure of Burkina Faso, Mali, and Niger (AES), who have formed an alternative Alliance of Sahel States with mutual defence provisions.<cite>[1,3]</cite></li>
+          <li>GTI 2026 documents that 71% of Sub-Saharan African VEO recruits cited state security force abuse as the primary tipping point for joining.<cite>[1,5]</cite></li>
+          <li>West Africa accounted for 7 of 19 global GTI deteriorations in 2025, the highest concentration of any region.<cite>[1]</cite></li>
+          <li>Benin recorded a 68% increase in JNIM deaths between January and December 2025 vs the preceding 11-month period.<cite>[2]</cite></li>
+        </ul>
+      </div>
+
+      <div class="evidence-box">
+        <div class="evidence-box-header assess">&#9670; &nbsp;What We Assess — Analyst Inferences</div>
+        <ul>
+          <li><strong>[Inference]</strong> Sierra Leone's zero GTI score reflects the absence of recorded incidents, not the absence of trafficking infrastructure or structural vulnerability. The distinction is analytically critical for forward-looking risk assessment.</li>
+          <li><strong>[Inference]</strong> JNIM's documented community-embedding and anti-herder/farmer tension exploitation strategy is directly transferable to Sierra Leone's northern border communities with Guinea, where Fula pastoralist communities share cross-border ethnic and economic ties.</li>
+          <li><strong>[Inference]</strong> The collapse of French and UN security presence in the Sahel is the primary structural cause of JNIM's southward geographic diversification, making coastal state vulnerability an emergent consequence of exogenous policy decisions rather than local failure.</li>
+          <li><strong>[Inference]</strong> Sierra Leone's Freetown port and diamond export infrastructure create dual-use vulnerability: legitimate commercial corridors that can be exploited for arms and narcotics transit without generating terrorism incident data.</li>
+          <li><strong>[Inference]</strong> The ECOWAS institutional fracture reduces Sierra Leone's access to multilateral intelligence-sharing, joint operations capacity, and early-warning mechanisms that would otherwise provide advance detection of contagion from Guinea or Liberia.</li>
+        </ul>
+      </div>
+
+      <div class="evidence-box">
+        <div class="evidence-box-header gap">&#9650; &nbsp;What We Do Not Know — Intelligence Gaps</div>
+        <ul>
+          <li><strong>[GAP-1 CRITICAL]</strong> Whether JNIM has conducted reconnaissance or pre-positioning activities in Guinea or Sierra Leone's northern border districts. No open-source data confirms or refutes this.</li>
+          <li><strong>[GAP-2 HIGH]</strong> The current volume and composition of arms flows entering Sierra Leone from the Sahel via Guinea, and the degree to which established trafficking networks have been monetised by any VEO actor.</li>
+          <li><strong>[GAP-3 HIGH]</strong> The operational capacity and counter-trafficking effectiveness of Sierra Leone's security forces in northern and eastern border districts, particularly post-2023 political tensions.</li>
+          <li><strong>[GAP-4 MOD]</strong> The degree to which diaspora communities in Sierra Leone are exposed to digital radicalisation pipelines documented in GTI 2026 (TikTok, Telegram, gaming platforms) targeting West African youth.</li>
+          <li><strong>[GAP-5 MOD]</strong> Whether Guinea's political instability under the CNRD junta has weakened border interdiction capacity in ways that create new trafficking corridors toward Sierra Leone.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 ANALYSIS -->
+  <section class="section" id="s5">
+    <div class="section-header">
+      <span class="section-num">05 // ANALYSIS</span>
+      <div class="section-title">Structured Analytic Tradecraft</div>
+    </div>
+
+    <div class="sub-section">5.1 — Strategic Cognition Mapping</div>
+
+    <div style="overflow-x:auto;">
+    <table class="assumption-table">
+      <thead><tr><th style="width:18%">Layer</th><th>Analysis</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>L1 — FOUNDATIONS<br><span style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--text-muted);">Strategic Context</span></td>
+          <td>Sierra Leone occupies a structurally ambiguous position in the West African security architecture: formally stable, institutionally fragile, geographically exposed. Its post-RUF/AFRC recovery narrative — reinforced by the UN Mission's 2005 closure — has produced a sustained zero-terrorism designation that risks masking underlying vulnerability accumulation. The GTI 2026 data confirms that the Sahel epicentre is shifting southward, and that the Atlantic coastline is the terminal destination of JNIM's long-arc expansion strategy. Sierra Leone sits at the junction of the Mano River Union (historical conflict zone), ECOWAS (weakening collective security), and the Atlantic narco-transit corridor linking South America, Guinea-Bissau, and European markets — a convergence that makes it structurally important to regional illicit economy even when operationally quiet.<cite>[1,2,4]</cite></td>
+        </tr>
+        <tr>
+          <td>L2 — MECHANISMS<br><span style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--text-muted);">Operational Factors</span></td>
+          <td>Three mechanisms drive Sierra Leone's risk accumulation. First, the <strong>illicit corridor function</strong>: the Mano River corridor is an established transhipment route for cocaine (Conakry → Freetown → Monrovia → Abidjan) and for conflict diamonds and artisanal gold flows that evade formal export channels. Second, the <strong>border governance deficit</strong>: Sierra Leone's northern border with Guinea and eastern border with Liberia are thinly administered and permeable — the same geographic conditions that enabled cross-border RUF movement in the 1990s and that JNIM has exploited in the Burkina-Niger-Benin tri-border area. Third, the <strong>security legitimacy gap</strong>: GTI 2026 documents that state security force abuse is the leading tipping point for VEO recruitment in Sub-Saharan Africa. Sierra Leone's security forces carry documented legitimacy deficits from past atrocities, creating a pre-existing grievance substrate that external actors can exploit without generating the territorial control required to appear in terrorism datasets.<cite>[1,2,5]</cite></td>
+        </tr>
+        <tr>
+          <td>L3 — DYNAMICS<br><span style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--text-muted);">Trends &amp; Change</span></td>
+          <td>The critical dynamic is the <strong>southward compression of the jihadist operational frontier</strong>. GTI 2026 charts JNIM's expansion from Mali (2017–2018) to Burkina Faso (2019–2020) to Niger (2021–2022) to Benin/Togo (2023–2025) to its first Nigeria attack (October 2025). This is not random diffusion — it is a deliberate strategy of geographic diversification driven by counterterrorism pressure in the Sahel core and the opportunity created by weak coastal state governance. The compression adds approximately 400–600km of southward movement every 18–24 months at the current pace, placing Sierra Leone within a credible medium-term operational horizon. Simultaneously, the <strong>ECOWAS-AES fracture</strong> is not merely diplomatic noise — it has materially reduced the multilateral intelligence-sharing and joint operations capacity available to coastal states, precisely at the moment when those capabilities are most needed.<cite>[1,2,3]</cite></td>
+        </tr>
+        <tr>
+          <td>L4 — LEVERAGE<br><span style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--text-muted);">Points of Influence</span></td>
+          <td>Three leverage points exist for reducing Sierra Leone's contagion risk. First, <strong>border governance investment</strong> in the northern Guinea corridor and eastern Liberia border — the entry points of highest vulnerability — could interdict both illicit trafficking and pre-positioning activity before it generates incident data. Second, <strong>security sector reform continuation</strong> is the single highest-impact instrument given the documented role of state security abuse as the primary VEO recruitment driver; SL's fragile SSR progress must be defended against political backsliding. Third, <strong>ECOWAS resilience architecture</strong> — SL should be active in rebuilding coastal state intelligence-sharing mechanisms to compensate for the AES defection, potentially through bilateral arrangements with Côte d'Ivoire and Ghana, both of which GTI 2026 identifies as relative success stories in resisting jihadist penetration through development and governance investment.<cite>[1,2,3]</cite></td>
+        </tr>
+        <tr>
+          <td>L5 — PARADIGMS<br><span style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--text-muted);">Worldview &amp; Framing</span></td>
+          <td>The dominant analytical error in Sierra Leone risk assessment is the <strong>stability-as-safety fallacy</strong> — interpreting zero terrorism incidents as evidence of low structural risk. GTI 2026 directly challenges this framing: it notes that Burkina Faso's improving headline numbers mask territorial consolidation by jihadist groups who are reducing civilian attacks specifically to win hearts and minds. The same dynamic applies prospectively to Sierra Leone: the absence of recorded incidents is a function of current JNIM operational focus, not of Sierra Leone's structural resistance. A complementary framing error is treating the ECOWAS-AES fracture as a distant diplomatic issue with no operational security consequences for coastal states — GTI 2026 data on JNIM's southward expansion directly contradicts this view.<cite>[1,2]</cite></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="sub-section">5.2 — Indicators &amp; Warnings Table</div>
+
+    <div style="overflow-x:auto;">
+    <table class="iw-table">
+      <thead>
+        <tr><th>Indicator</th><th>Direction</th><th>Threshold</th><th>Status</th><th>Cadence</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>JNIM attack claims in Guinea or northern Côte d'Ivoire</td>
+          <td>↑ Escalatory</td>
+          <td>First confirmed JNIM incident within 500km of SL border</td>
+          <td><span class="status-pill amber">WATCH</span></td>
+          <td>Monthly</td>
+        </tr>
+        <tr>
+          <td>Narcotics seizure volumes at Freetown port and Lungi International</td>
+          <td>↑ = network activation</td>
+          <td>Sustained increase in cocaine/precursor seizures above 2023 baseline</td>
+          <td><span class="status-pill yellow">MONITOR</span></td>
+          <td>Quarterly</td>
+        </tr>
+        <tr>
+          <td>GTI score change for Guinea (currently zero-scored)</td>
+          <td>↑ = buffer erosion</td>
+          <td>Any non-zero GTI score for Guinea or Liberia</td>
+          <td><span class="status-pill green">BASELINE</span></td>
+          <td>Annual (GTI)</td>
+        </tr>
+        <tr>
+          <td>Herder-farmer communal conflict incidents in SL northern districts</td>
+          <td>↑ = JNIM recruitment substrate expanding</td>
+          <td>Pattern of incidents exploitable by external actor</td>
+          <td><span class="status-pill yellow">MONITOR</span></td>
+          <td>Monthly</td>
+        </tr>
+        <tr>
+          <td>Arms trafficking interdictions on Guinea-SL border</td>
+          <td>↑ = corridor activation</td>
+          <td>Weapons consistent with Libyan/Sahel-origin arms cache</td>
+          <td><span class="status-pill yellow">MONITOR</span></td>
+          <td>Quarterly</td>
+        </tr>
+        <tr>
+          <td>ECOWAS joint security mechanism activation vs coastal threats</td>
+          <td>↓ = institutional degradation</td>
+          <td>Failure to convene joint response within 30 days of coastal incident</td>
+          <td><span class="status-pill amber">WATCH</span></td>
+          <td>Event-driven</td>
+        </tr>
+        <tr>
+          <td>SL youth unemployment and fuel/food price shocks</td>
+          <td>↑ = radicalisation substrate</td>
+          <td>Youth unemployment &gt;60% + sustained commodity price crisis</td>
+          <td><span class="status-pill amber">WATCH</span></td>
+          <td>Quarterly</td>
+        </tr>
+        <tr>
+          <td>Benin/Togo JNIM death count trajectory</td>
+          <td>↑ = southern front consolidation</td>
+          <td>Sustained &gt;100 deaths/year in either coastal state</td>
+          <td><span class="status-pill amber">WATCH</span></td>
+          <td>Monthly</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="sub-section">5.3 — Scenario Modeling</div>
+
+    <div class="scenario-grid">
+      <div class="scenario-card best">
+        <div class="scenario-label">Best Case</div>
+        <div class="scenario-title">Contained Sahel, Functional ECOWAS Littoral Architecture</div>
+        <div class="scenario-body">JNIM expansion stalls at current southern frontier (Benin/Togo/NW Nigeria). ECOWAS coastal states successfully establish a new intelligence-sharing and joint-operations architecture independent of AES participation. Sierra Leone's governance and SSR trajectory holds. GTI score remains zero through 2027.</div>
+        <div class="scenario-trigger">Triggers: Effective Côte d'Ivoire/Ghana/Nigeria coastal coalition; JNIM internal fragmentation; sustained SL economic stabilisation.</div>
+      </div>
+      <div class="scenario-card base">
+        <div class="scenario-label">Base Case</div>
+        <div class="scenario-title">Gradual Contagion, Narco-Hub Consolidation</div>
+        <div class="scenario-body">JNIM continues southward expansion at current pace, consolidating in Guinea's Forest Region by 2027. Sierra Leone's Mano River corridor becomes more actively utilised for arms and narcotics transit. GTI score remains nominally zero but illicit economy deepens. Security incidents remain below terrorism classification threshold. ECOWAS capacity is structurally degraded but not collapsed.</div>
+        <div class="scenario-trigger">Triggers: No effective coastal coalition; Guinea junta governance failure; commodity shock deepening SL youth unemployment.</div>
+      </div>
+      <div class="scenario-card worst">
+        <div class="scenario-label">Worst Case</div>
+        <div class="scenario-title">Active JNIM Penetration, Terrorism Debut</div>
+        <div class="scenario-body">JNIM achieves operational presence in Guinea's Forest Region and begins community embedding in SL's Kailahun/Kono border districts. First terrorism-classified incident in Sierra Leone. Diamond/mineral revenue infrastructure captured by VEO actors. Freetown port becomes active arms node. GTI score moves from zero to high-impact within 18 months. Regional contagion accelerates to Liberia and Guinea.</div>
+        <div class="scenario-trigger">Triggers: Guinea state collapse; SL political crisis weakening security sector; confirmed JNIM attack in Guinea within 200km of SL border.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 BEHAVIORAL -->
+  <section class="section" id="s6">
+    <div class="section-header">
+      <span class="section-num">06 // BEHAVIORAL</span>
+      <div class="section-title">Applied Behavioral Tradecraft</div>
+    </div>
+
+    <div class="sub-section">6.1 — Behavioral Risk Drivers (Ranked)</div>
+    <div class="behavioral-grid">
+      <div class="behavioral-item">
+        <div class="behavioral-rank">01</div>
+        <div class="behavioral-content"><strong>Significance Quest + State Abandonment:</strong> GTI 2026 documents that 77% of radicalised minors experienced abandonment and 71% of Sub-Saharan African VEO recruits cited state security abuse as the tipping point. In Sierra Leone's northern districts, where state services are thin and historical security force legitimacy is lowest, this dynamic is structurally present. JNIM's offer of employment, protection, and communal purpose directly targets this vulnerability, without requiring formal recruitment infrastructure.<cite>[1,5]</cite></div>
+      </div>
+      <div class="behavioral-item">
+        <div class="behavioral-rank">02</div>
+        <div class="behavioral-content"><strong>Illicit Economy as Identity and Livelihood:</strong> Sierra Leone's artisanal mining sector, informal maritime economy, and established smuggling networks create a population segment for whom engagement with illicit trafficking is a normalised livelihood strategy, not a criminal aberration. This population is functionally pre-positioned to serve as logistics infrastructure for any VEO actor that achieves sufficient local legitimacy — without ideological commitment being a prerequisite.<cite>[4]</cite></div>
+      </div>
+      <div class="behavioral-item">
+        <div class="behavioral-rank">03</div>
+        <div class="behavioral-content"><strong>Herder-Farmer Tension as JNIM Recruitment Substrate:</strong> JNIM's documented expansion pattern consistently exploits herder-farmer land disputes — targeting marginalised pastoral communities (frequently Fula/Fulani) with offers of protection and justice. Sierra Leone has a Fula community concentrated in northern and eastern districts with cross-border ties to Guinea, placing it squarely within the social profile that JNIM has exploited across its entire expansion arc from Mali to Benin.<cite>[2]</cite></div>
+      </div>
+      <div class="behavioral-item">
+        <div class="behavioral-rank">04</div>
+        <div class="behavioral-content"><strong>Digital Radicalisation Acceleration:</strong> GTI 2026 documents that the average radicalisation timeline has contracted from 18 months (2005) to weeks (2025), driven by TikTok, Telegram, and gaming platforms. Sierra Leone's young population, increasing smartphone penetration, and youth unemployment create the exact conditions — social isolation, identity search, economic marginalisation — that algorithmic radicalisation pipelines are designed to exploit. Unlike geographic contagion, digital exposure operates independent of physical proximity to the Sahel.<cite>[1]</cite></div>
+      </div>
+      <div class="behavioral-item">
+        <div class="behavioral-rank">05</div>
+        <div class="behavioral-content"><strong>Authority Cue Transfer from AES Narrative:</strong> The AES junta states have deployed sophisticated anti-colonial, anti-Western narrative campaigns that have achieved high resonance among West African youth populations, including those in coastal states. GTI 2026 expert contributor Moody specifically notes the effectiveness of Russian-backed propaganda operations across West Africa. Sierra Leone's exposure to this narrative environment is direct and ongoing, creating an ideological substrate that lowers resistance to VEO messaging.<cite>[2]</cite></div>
+      </div>
+    </div>
+
+    <div class="sub-section">6.2 — Influence &amp; Narrative Vulnerabilities</div>
+    <div class="prose">
+      <p><strong>The "Peace Dividend" Framing Risk:</strong> Sierra Leone's post-conflict identity — embodied in the SLPP and APC political competition and the UN Mission closure narrative — creates an institutional blind spot toward terrorism risk. Political elites have strong incentives to maintain the narrative of stability that underpins international investment and donor relations. This framing incentive can delay early warning recognition and public acknowledgment of vulnerability accumulation, precisely when early action would be most effective.</p>
+      <p><strong>JNIM's Community-Before-Violence Doctrine:</strong> GTI 2026 explicitly documents that in coastal West Africa, JNIM is "treating coastal states less as primary theatres of operation and more as strategic rear areas for regrouping and expansion," and is "initially deploying reconnaissance teams and religious intermediaries rather than large combat units." This means Sierra Leone could be actively targeted for community embedding without generating any data point that would register on terrorism monitoring systems — making the standard incident-based early warning architecture structurally blind to JNIM's actual entry methodology.</p>
+      <p><strong>The Guinea Buffer Variable:</strong> Guinea sits between Sierra Leone and the current JNIM operational frontier. Its political trajectory under the CNRD junta — characterised by governance instability, security sector unpredictability, and delayed transition — is the single most important exogenous variable in Sierra Leone's terrorism exposure calculus. Guinea's deterioration would remove the primary geographic buffer and create a direct land border exposure that Sierra Leone's current security architecture is not designed to address.</p>
+    </div>
+  </section>
+
+  <!-- 07 RECOMMENDATIONS -->
+  <section class="section" id="s7">
+    <div class="section-header">
+      <span class="section-num">07 // RECOMMENDATIONS</span>
+      <div class="section-title">Recommendations</div>
+    </div>
+
+    <div class="rec-timeline">
+      <div class="rec-block">
+        <div class="rec-time">
+          <div class="rec-time-label immediate">0–72H Immediate</div>
+        </div>
+        <div class="rec-content">
+          <div class="rec-items">
+            <div class="rec-item"><strong>Commission a border vulnerability audit</strong> of SL's northern (Guinea) and eastern (Liberia) border districts, specifically mapping existing trafficking corridors, arms flow entry points, and communities with documented herder-farmer tensions that correspond to the JNIM recruitment substrate profile documented in GTI 2026.</div>
+            <div class="rec-item"><strong>Initiate bilateral intelligence-sharing protocol</strong> with Côte d'Ivoire and Ghana — the two coastal states GTI 2026 identifies as maintaining effective counter-jihadist resilience — to access early warning data on JNIM expansion that is not available through the degraded ECOWAS channel.</div>
+            <div class="rec-item"><strong>Alert national security planning staff</strong> to the GTI 2026 distinction between zero-scored countries and structurally low-risk countries. Recalibrate security assessment frameworks to include structural vulnerability indicators alongside incident-based metrics.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rec-block">
+        <div class="rec-time">
+          <div class="rec-time-label near">3–30 Days Near-Term</div>
+        </div>
+        <div class="rec-content">
+          <div class="rec-items">
+            <div class="rec-item"><strong>Develop a Mano River Union security protocol</strong> specifically targeting the narco-trafficking corridor from Guinea-Bissau through Guinea and Sierra Leone to Liberia. The existing MRU framework should be explicitly tasked with monitoring for arms flows consistent with Sahel-origin trafficking patterns documented in GTI 2026 (Libyan weapons proliferation southward).</div>
+            <div class="rec-item"><strong>Engage community leaders in Fula and Mandingo communities</strong> in Kailahun, Kono, and Kambia districts — the cross-border ethnic and pastoral communities that most closely match the JNIM recruitment profile — to assess local security conditions, establish early warning relationships, and pre-empt the community embedding methodology that JNIM has deployed across its expansion arc.</div>
+            <div class="rec-item"><strong>Conduct digital environment audit</strong> of social media and messaging platform content targeting Sierra Leonean youth, specifically assessing AES narrative penetration, jihadist content exposure, and online recruitment pipeline activity consistent with GTI 2026's documented radicalisation acceleration patterns.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rec-block">
+        <div class="rec-time">
+          <div class="rec-time-label medium">30–180 Days Medium-Term</div>
+        </div>
+        <div class="rec-content">
+          <div class="rec-items">
+            <div class="rec-item"><strong>Anchor a coastal state security coalition</strong> outside the AES-compromised ECOWAS framework. Given GTI 2026's documentation of Ghana and Côte d'Ivoire as the most effective coastal state resistors to jihadist penetration — specifically attributing their success to governance investment, decentralisation, and border development — Sierra Leone should pursue a trilateral or broader coastal intelligence-sharing and joint response arrangement modelled on their approach.</div>
+            <div class="rec-item"><strong>Deepen security sector reform</strong> specifically targeting the legitimacy deficit in northern and eastern border security forces. The UNDP/GTI 2026 finding that 71% of Sub-Saharan African VEO recruits cited security force abuse as their tipping point is the highest-leverage point for intervention. SSR investment in professional standards, community relations, and oversight mechanisms directly reduces the recruitment substrate available to any VEO actor operating in or near Sierra Leone.</div>
+            <div class="rec-item"><strong>Establish economic resilience programming</strong> in northern border communities as a preventive counter-radicalisation measure, explicitly framed around the GTI 2026 finding that 25% of VEO recruits cited unemployment as primary motivation and the documented JNIM tactic of offering wages and economic opportunity as recruitment incentives. Programming should target artisanal mining communities and pastoral populations most exposed to both livelihood precarity and herder-farmer conflicts.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 CONFIDENCE -->
+  <section class="section" id="s8">
+    <div class="section-header">
+      <span class="section-num">08 // CONFIDENCE</span>
+      <div class="section-title">Confidence &amp; Uncertainties</div>
+    </div>
+
+    <div class="conf-panel">
+      <div class="conf-header">
+        <div class="conf-title">Overall Confidence Assessment</div>
+        <div class="conf-level">MODERATE</div>
+      </div>
+      <div class="conf-body">
+        <div class="conf-row">The GTI 2026 primary source is Tier A (IEP/Dragonfly TerrorismTracker), providing high-quality incident data and trend analysis through 2025. Key judgments on JNIM expansion, the ECOWAS-AES fracture, and Sub-Saharan African radicalisation drivers are strongly evidenced.</div>
+        <div class="conf-row">Confidence is limited to Moderate overall because the critical variable — whether JNIM has conducted reconnaissance or pre-positioning in Guinea or Sierra Leone — is an intelligence gap with no open-source resolution. The forward-looking structural risk assessment is analytically sound but operationally unverifiable from open sources.</div>
+        <div class="conf-row">The Mano River narco-trafficking corridor assessment draws on established Global Initiative and UNODC reporting. The connection between this infrastructure and potential VEO financing is an assessed inference, not an established fact — confidence in that specific causal link is Low-Moderate.</div>
+
+        <hr class="conf-divider">
+        <div class="sub-section">Three Uncertainties That Could Flip This Assessment</div>
+
+        <div class="uncertainty-list">
+          <div class="uncertainty-item"><strong>Flip Risk 1 — Guinea Stabilisation:</strong> If Guinea's CNRD junta successfully consolidates governance and strengthens border interdiction capacity, it maintains the geographic buffer between JNIM's current operational frontier and Sierra Leone. This would significantly extend the timeline and raise the cost of jihadist penetration of the Mano River corridor, potentially rendering the base case scenario obsolete. Confidence in current Guinea governance trajectory: Low (insufficient open-source data on CNRD institutional capacity).</div>
+          <div class="uncertainty-item"><strong>Flip Risk 2 — JNIM Strategic Reorientation:</strong> JNIM may choose to consolidate current territorial gains in the Sahel core and Benin/Togo rather than continuing southward expansion. GTI 2026 documents that the group is reducing civilian attacks to win hearts and minds during a consolidation phase — this same dynamic could mean that further southern geographic expansion is deprioritised in favour of deepening control of current holdings. If so, Sierra Leone's exposure timeline extends significantly.</div>
+          <div class="uncertainty-item"><strong>Flip Risk 3 — Sierra Leone Governance Shock:</strong> A domestic political crisis — electoral dispute, security sector mutiny, or severe economic shock — could simultaneously weaken border security capacity and deepen the state legitimacy deficit that constitutes the primary VEO recruitment substrate. In this scenario, the timeline to active JNIM penetration would compress dramatically regardless of external pressure. This flip risk is endogenous and therefore more analytically tractable than external variables.</div>
+        </div>
+
+        <hr class="conf-divider">
+        <div class="sub-section">Assumption Failure Drill — Top 2</div>
+        <div style="overflow-x:auto;">
+        <table class="assumption-table">
+          <thead><tr><th>Assumption</th><th>Failure Signal</th><th>Consequence for Assessment</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>A1:</strong> Guinea functions as an effective geographic buffer between JNIM and Sierra Leone</td>
+              <td>Confirmed JNIM attack or community embedding in Guinea's Forest Region (Nzérékoré, Macenta, Guékédou districts)</td>
+              <td>Assessment upgrades to HIGH confidence; worst-case scenario becomes base case; immediate operational recommendations activate</td>
+            </tr>
+            <tr>
+              <td><strong>A2:</strong> Sierra Leone's illicit trafficking infrastructure does not currently involve VEO actors</td>
+              <td>Arms seizures at Freetown port or northern border consistent with Sahel-origin stockpiles; narco-trafficking proceeds linked to VEO financing networks</td>
+              <td>Assessment upgrades from structural to operational risk; radicalisation timeline compresses significantly; financial intelligence becomes priority collection target</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 INTEL GAPS -->
+  <section class="section" id="s9">
+    <div class="section-header">
+      <span class="section-num">09 // INTEL GAPS</span>
+      <div class="section-title">Priority Intelligence Gaps</div>
+    </div>
+    <div style="overflow-x:auto;">
+    <table class="pig-table">
+      <thead>
+        <tr><th>Gap</th><th>Description</th><th>Priority</th><th>Scenario Impact</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>GAP-1</td>
+          <td>JNIM reconnaissance or pre-positioning activity in Guinea's Forest Region, particularly Fula/Mandingo community outreach consistent with documented embedding methodology</td>
+          <td><span class="status-pill red">Critical</span></td>
+          <td>Determines whether base or worst-case scenario is operative; closes Guinea buffer assumption</td>
+        </tr>
+        <tr>
+          <td>GAP-2</td>
+          <td>Current arms flow volumes and composition entering Sierra Leone via Guinea, and degree of VEO actor involvement in established trafficking networks</td>
+          <td><span class="status-pill red">High</span></td>
+          <td>Determines whether illicit infrastructure is financially available to VEO actors now vs. prospectively</td>
+        </tr>
+        <tr>
+          <td>GAP-3</td>
+          <td>Sierra Leone security force operational capacity and legitimacy status in Kailahun, Kono, and Kambia districts — the communities most matching JNIM recruitment profile</td>
+          <td><span class="status-pill red">High</span></td>
+          <td>Determines depth of state legitimacy deficit available as VEO recruitment substrate</td>
+        </tr>
+        <tr>
+          <td>GAP-4</td>
+          <td>Digital radicalisation exposure data: social media content analysis of platforms targeting Sierra Leonean youth with AES/jihadist narratives</td>
+          <td><span class="status-pill amber">Moderate</span></td>
+          <td>Determines whether digital pathway is already activating independent of physical JNIM proximity</td>
+        </tr>
+        <tr>
+          <td>GAP-5</td>
+          <td>Guinea CNRD junta's border interdiction capacity and political will to maintain frontier security vs JNIM infiltration</td>
+          <td><span class="status-pill amber">Moderate</span></td>
+          <td>Determines durability of geographic buffer and validity of best-case scenario timeline</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <!-- 10 THRESHOLDS -->
+  <section class="section" id="s10">
+    <div class="section-header">
+      <span class="section-num">10 // THRESHOLDS</span>
+      <div class="section-title">Action Thresholds</div>
+    </div>
+    <div class="threshold-grid">
+      <div class="threshold-cell green-zone">
+        <div class="threshold-dot-header">
+          <div class="threshold-dot2"></div>
+          <div class="threshold-label-text">Green — Monitor</div>
+        </div>
+        <div class="threshold-body">GTI score remains zero. No confirmed JNIM activity within Guinea's Forest Region. Benin/Togo JNIM deaths remain below 150/year. ECOWAS coastal intelligence-sharing mechanism functional. Mano River narco-corridor interdiction rates stable or improving. Maintain current monitoring cadence; no escalation of security posture required.</div>
+      </div>
+      <div class="threshold-cell amber-zone">
+        <div class="threshold-dot-header">
+          <div class="threshold-dot2"></div>
+          <div class="threshold-label-text">Amber — Act</div>
+        </div>
+        <div class="threshold-body">Confirmed JNIM activity in Guinea's Forest Region OR any terrorism-classified incident in Guinea or Liberia OR sustained increase in arms seizures at SL northern border consistent with Sahel-origin patterns OR two or more GTI 2026 indicator thresholds breached simultaneously. Activate bilateral intelligence protocols; surge border monitoring; initiate community early-warning engagement in high-risk districts.</div>
+      </div>
+      <div class="threshold-cell red-zone">
+        <div class="threshold-dot-header">
+          <div class="threshold-dot2"></div>
+          <div class="threshold-label-text">Red — Emergency Response</div>
+        </div>
+        <div class="threshold-body">First terrorism-classified incident in Sierra Leone OR confirmed JNIM community embedding in Kailahun/Kono/Kambia districts OR Freetown port implicated in VEO arms financing OR Guinea state collapse creating direct land border exposure. Activate ECOWAS Article 58 collective security mechanism; deploy joint border interdiction force; initiate international partner support request; escalate SSR and counter-radicalisation programming to emergency tempo.</div>
+      </div>
+    </div>
+    <p style="margin-top:1rem;font-family:'IBM Plex Mono',monospace;font-size:0.68rem;color:var(--text-muted);">
+      Current Status Assessment: <strong style="color:var(--amber);">AMBER-WATCH — Structural vulnerabilities present; no active incident data; buffer states under increasing pressure. Trajectory toward amber threshold crossing within 12–24 months under base case.</strong>
+    </p>
+  </section>
+
+  <!-- 11 REFERENCES -->
+  <section class="section" id="s11">
+    <div class="section-header">
+      <span class="section-num">11 // REFERENCES</span>
+      <div class="section-title">Source Register &amp; WSI Audit</div>
+    </div>
+
+    <div style="overflow-x:auto;">
+    <table class="ref-table">
+      <thead>
+        <tr><th>#</th><th>Source</th><th>Type</th><th>Band</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>[1]</td>
+          <td>Institute for Economics &amp; Peace / Dragonfly Intelligence (2026). <em>Global Terrorism Index 2026: Measuring the Impact of Terrorism.</em> IEP Report 108, March 2026. Primary dataset: TerrorismTracker.</td>
+          <td>Tier A — Peer-reviewed index; independent empirical database</td>
+          <td><span class="band-pill green">Green</span></td>
+        </tr>
+        <tr>
+          <td>[2]</td>
+          <td>Moody, J. (2026). "Jihadists in the Sahel: What is Behind Expansion and What is the Threat to Coastal West Africa?" In GTI 2026 Expert Contributions. IEP.</td>
+          <td>Tier B — Expert contribution within Tier A primary source; corroborating analytical stream</td>
+          <td><span class="band-pill green">Green</span></td>
+        </tr>
+        <tr>
+          <td>[3]</td>
+          <td>ECOWAS/AES institutional documentation and open-source reporting on Alliance of Sahel States formation, ECOWAS suspension of Mali/Burkina Faso/Niger, and MNJTF restructuring (2023–2026).</td>
+          <td>Tier B — Multiple open-source outlets; treated as single stream (independence test applied)</td>
+          <td><span class="band-pill amber">Amber</span></td>
+        </tr>
+        <tr>
+          <td>[4]</td>
+          <td>Global Initiative Against Transnational Organized Crime. Regional reporting on Mano River narco-trafficking corridor and Guinea-Bissau narco-state dynamics (2022–2025).</td>
+          <td>Tier A — Independent specialist monitoring organisation</td>
+          <td><span class="band-pill green">Green</span></td>
+        </tr>
+        <tr>
+          <td>[5]</td>
+          <td>UNDP (2023). <em>Journey to Extremism in Africa: Pathways to Recruitment and Disengagement.</em> United Nations Development Programme.</td>
+          <td>Tier A — UN primary research; independent from GTI source stream</td>
+          <td><span class="band-pill green">Green</span></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="prose" style="margin-top:1.2rem;">
+      <p><strong>Band key:</strong> Green = high credibility, independent evidentiary stream. Amber = use with caveat (syndicated, state-adjacent, or secondary synthesis). Red = lead-only per WSI policy.</p>
+      <p><strong>Independence test:</strong> GTI 2026 [1] and UNDP [5] constitute independent primary streams. Moody [2] is a corroborating analytical assessment within [1] — not counted as an independent stream. Global Initiative [4] is independent of IEP/UNDP. ECOWAS/AES reporting [3] is multi-outlet but substantially syndicated — treated as one stream. No key judgment rests on a single source without explicit caveat. Social media and AI-generated content: excluded from evidential base per WSI policy.</p>
+      <p><strong>Analytic integrity statement:</strong> All consequential claims in this assessment are traced to the above sources or explicitly labelled as analyst inference. No fabricated sources, quotes, statistics, or data have been introduced. Confidence levels reflect evidence quality and diagnosticity, not volume of aligned reporting.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-qa">Quanta Analytica Process™</div>
+  <div class="footer-sub">Framework-Governed Intelligence &middot; Conflict Systems Analysis &middot; Fragility &amp; Governance Modeling &middot; Decision-Ready Assessment</div>
+  <div class="footer-copy">QAP-CSA-FGM-SLE-2026-0323 &nbsp;|&nbsp; 23 March 2026 &nbsp;|&nbsp; All claims traced to open-source evidence or labelled as analyst inference &nbsp;|&nbsp; Verify all figures with primary sources before operational decision-making</div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    const p = h > 0 ? (window.scrollY / h) * 100 : 0;
+    document.getElementById('progress').style.width = p + '%';
+  });
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.section').forEach(s => obs.observe(s));
+</script>
+
+</body>
+</html>
