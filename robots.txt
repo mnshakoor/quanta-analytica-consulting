@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Replace with your actual sitemap URL
+Sitemap: https://quanta-analytica.com/sitemap.xml
