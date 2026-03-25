@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Quanta Analytica Resource Portal | QAP™ | Tools &amp; Dashboards</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:           #0A0E17;
+      --bg-panel:     #0F1520;
+      --bg-card:      #131B2A;
+      --bg-card-alt:  #0D1421;
+      --amber:        #E8A020;
+      --amber-dim:    #9B6A14;
+      --amber-glow:   rgba(232,160,32,0.12);
+      --amber-pale:   rgba(232,160,32,0.06);
+      --red:          #D94040;
+      --red-dim:      rgba(217,64,64,0.15);
+      --green:        #2EA86A;
+      --green-dim:    rgba(46,168,106,0.15);
+      --yellow:       #D4B84A;
+      --blue-steel:   #3A6EA8;
+      --text-primary: #E8E2D4;
+      --text-body:    #B8B0A0;
+      --text-muted:   #6A6258;
+      --text-mono:    #8FA8C8;
+      --border:       rgba(232,160,32,0.18);
+      --border-dim:   rgba(255,255,255,0.06);
+      --scan-line:    rgba(0,0,0,0.12);
+    }
+
+    *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body { background: var(--bg); color: var(--text-primary); font-family: 'IBM Plex Sans', sans-serif; font-size: 15px; line-height: 1.7; overflow-x: hidden; }
+
+    body::before { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, var(--scan-line) 0px, transparent 1px, transparent 3px); pointer-events: none; z-index: 9999; opacity: 0.35; }
+
+    #progress { position: fixed; top: 0; left: 0; height: 2px; width: 0%; background: var(--amber); z-index: 10000; box-shadow: 0 0 12px var(--amber); transition: width 0.08s linear; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; background: rgba(10,14,23,0.96); border-bottom: 1px solid var(--border); height: 52px; display: flex; align-items: center; padding: 0 2rem; gap: 1.5rem; backdrop-filter: blur(16px); }
+    .nav-classify { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); padding: 0.2rem 0.7rem; border: 1px solid var(--amber-dim); border-radius: 2px; }
+    .nav-title { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.06em; flex: 1; }
+    .nav-date { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; color: var(--text-muted); letter-spacing: 0.08em; }
+
+    /* HERO */
+    .hero { min-height: 72vh; background: var(--bg-panel); border-bottom: 1px solid var(--border); display: flex; flex-direction: column; justify-content: center; padding: 9rem 3rem 5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 15% 50%, rgba(232,160,32,0.05) 0%, transparent 65%), radial-gradient(ellipse 50% 70% at 85% 20%, rgba(58,110,168,0.04) 0%, transparent 60%); }
+    .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(232,160,32,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(232,160,32,0.04) 1px, transparent 1px); background-size: 48px 48px; animation: gridPulse 8s ease-in-out infinite; }
+    @keyframes gridPulse { 0%,100% { opacity: 0.5 } 50% { opacity: 1 } }
+    .hero-inner { position: relative; z-index: 2; max-width: 900px; }
+    .hero-tag { display: inline-flex; align-items: center; gap: 0.6rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.8rem; opacity: 0; animation: fadeIn 0.7s 0.2s ease forwards; }
+    .hero-tag::before { content: ''; width: 20px; height: 1px; background: var(--amber); }
+    .hero-domain { font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; letter-spacing: 0.18em; color: var(--blue-steel); text-transform: uppercase; margin-bottom: 1rem; opacity: 0; animation: fadeIn 0.7s 0.35s ease forwards; }
+    .hero-title { font-family: 'Libre Baskerville', serif; font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 700; line-height: 1.12; color: var(--text-primary); margin-bottom: 0.6rem; opacity: 0; animation: fadeIn 0.8s 0.45s ease forwards; }
+    .hero-title span { color: var(--amber); }
+    .hero-subtitle { font-family: 'IBM Plex Sans', sans-serif; font-size: 1rem; font-weight: 300; color: var(--text-body); max-width: 600px; line-height: 1.6; margin-bottom: 3rem; opacity: 0; animation: fadeIn 0.8s 0.55s ease forwards; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; max-width: 760px; opacity: 0; animation: fadeIn 0.8s 0.7s ease forwards; }
+    .meta-cell { flex: 1; min-width: 120px; padding: 0.85rem 1.2rem; border-right: 1px solid var(--border); background: var(--bg-card); }
+    .meta-cell:last-child { border-right: none; }
+    .meta-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.3rem; }
+    .meta-value { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; font-weight: 600; color: var(--amber); }
+    .meta-value.blue { color: var(--blue-steel); }
+    .threat-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(232,160,32,0.08); border: 1px solid rgba(232,160,32,0.3); border-radius: 2px; padding: 0.25rem 0.7rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.18em; color: var(--amber); text-transform: uppercase; margin-top: 1.5rem; opacity: 0; animation: fadeIn 0.8s 0.85s ease forwards; }
+    .threat-dot { width: 6px; height: 6px; background: currentColor; border-radius: 50%; animation: blink 2s ease-in-out infinite; }
+    @keyframes blink { 0%,100% { opacity: 1 } 50% { opacity: 0.2 } }
+
+    /* MAIN */
+    main { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+
+    /* SECTION */
+    .section { margin-bottom: 5rem; opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .section.visible { opacity: 1; transform: translateY(0); }
+    .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-dim); }
+    .section-num { font-family: 'IBM Plex Mono', monospace; font-size: 0.58rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); background: var(--amber-pale); border: 1px solid var(--amber-dim); padding: 0.2rem 0.65rem; border-radius: 2px; white-space: nowrap; }
+    .section-title { font-family: 'Libre Baskerville', serif; font-size: 1.45rem; font-weight: 700; color: var(--text-primary); letter-spacing: 0.01em; }
+
+    /* SUB-SECTION DIVIDER */
+    .sub-section { margin-top: 2.4rem; margin-bottom: 1.2rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-mono); display: flex; align-items: center; gap: 0.8rem; }
+    .sub-section::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--border-dim), transparent); }
+
+    /* PROSE */
+    .prose { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.9rem; color: var(--text-body); line-height: 1.8; }
+    .prose p { margin-bottom: 1rem; }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose strong { color: var(--text-primary); }
+
+    /* ── TOOL CARDS ── */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1rem;
+    }
+
+    .tool-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-dim);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s, background 0.2s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .tool-card:hover {
+      border-color: var(--border);
+      background: var(--bg-card-alt);
+    }
+    .tool-card:hover .tool-arrow { opacity: 1; transform: translateX(3px); }
+
+    .tool-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 1.1rem 1.2rem 0.6rem;
+      gap: 0.8rem;
+    }
+    .tool-card-left { display: flex; flex-direction: column; gap: 0.45rem; flex: 1; }
+
+    .tool-type-badge {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.52rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.12rem 0.5rem;
+      border-radius: 2px;
+      display: inline-block;
+      width: fit-content;
+    }
+    .tool-type-badge.dashboard  { background: rgba(58,110,168,0.15); color: var(--blue-steel); border: 1px solid rgba(58,110,168,0.25); }
+    .tool-type-badge.explorer   { background: var(--green-dim);       color: var(--green);      border: 1px solid rgba(46,168,106,0.25); }
+    .tool-type-badge.feed       { background: var(--amber-pale);      color: var(--amber);      border: 1px solid var(--amber-dim); }
+    .tool-type-badge.report     { background: rgba(212,184,74,0.1);   color: var(--yellow);     border: 1px solid rgba(212,184,74,0.25); }
+    .tool-type-badge.toolkit    { background: var(--red-dim);         color: var(--red);        border: 1px solid rgba(217,64,64,0.25); }
+    .tool-type-badge.index      { background: rgba(139,168,200,0.12); color: var(--text-mono);  border: 1px solid rgba(139,168,200,0.2); }
+
+    .tool-card-name {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .tool-arrow {
+      font-size: 1rem;
+      color: var(--amber-dim);
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+    }
+
+    .tool-card-body {
+      padding: 0 1.2rem 1rem;
+      flex: 1;
+    }
+    .tool-card-desc {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.8rem;
+      color: var(--text-body);
+      line-height: 1.6;
+    }
+
+    .tool-card-footer {
+      padding: 0.65rem 1.2rem;
+      background: var(--bg-card-alt);
+      border-top: 1px solid var(--border-dim);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .tool-filename {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.58rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+    }
+    .tool-domain-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.52rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* QUICK ACCESS TABLE */
+    .dir-table { width: 100%; border-collapse: collapse; font-family: 'IBM Plex Sans', sans-serif; font-size: 0.82rem; }
+    .dir-table thead tr { background: var(--bg-card-alt); border-bottom: 1px solid var(--border); }
+    .dir-table th { padding: 0.65rem 0.9rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.55rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--amber-dim); text-align: left; border-right: 1px solid var(--border-dim); }
+    .dir-table th:last-child { border-right: none; }
+    .dir-table tbody tr { border-bottom: 1px solid var(--border-dim); background: var(--bg-card); transition: background 0.15s; }
+    .dir-table tbody tr:hover { background: var(--bg-card-alt); }
+    .dir-table tbody tr:last-child { border-bottom: none; }
+    .dir-table td { padding: 0.7rem 0.9rem; color: var(--text-body); border-right: 1px solid var(--border-dim); vertical-align: middle; }
+    .dir-table td:last-child { border-right: none; }
+    .dir-table td:first-child { font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; color: var(--amber); }
+    .dir-table a { color: var(--text-primary); text-decoration: none; font-weight: 600; transition: color 0.15s; }
+    .dir-table a:hover { color: var(--amber); }
+
+    /* STATUS PILLS */
+    .status-pill { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 0.52rem; font-weight: 600; padding: 0.1rem 0.5rem; border-radius: 2px; letter-spacing: 0.1em; text-transform: uppercase; }
+    .status-pill.green  { background: var(--green-dim); color: var(--green); border: 1px solid rgba(46,168,106,0.25); }
+    .status-pill.amber  { background: var(--amber-pale); color: var(--amber); border: 1px solid var(--amber-dim); }
+    .status-pill.blue   { background: rgba(58,110,168,0.15); color: var(--blue-steel); border: 1px solid rgba(58,110,168,0.3); }
+    .status-pill.yellow { background: rgba(212,184,74,0.1); color: var(--yellow); border: 1px solid rgba(212,184,74,0.25); }
+
+    /* FOOTER */
+    footer { background: var(--bg-panel); border-top: 1px solid var(--border); padding: 3rem 2rem; text-align: center; }
+    .footer-qa { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.5rem; }
+    .footer-sub { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1rem; }
+    .footer-copy { font-family: 'IBM Plex Mono', monospace; font-size: 0.58rem; letter-spacing: 0.12em; color: var(--text-muted); opacity: 0.5; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(14px) } to { opacity: 1; transform: translateY(0) } }
+
+    @media(max-width: 640px) {
+      .hero { padding: 7rem 1.4rem 4rem; }
+      main { padding: 3rem 1.2rem 4rem; }
+      nav { padding: 0 1rem; }
+      .nav-title, .nav-date { display: none; }
+      .tools-grid { grid-template-columns: 1fr; }
+      .dir-table { font-size: 0.75rem; }
+    }
+    @media print {
+      nav, #progress, body::before { display: none; }
+      .section { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<nav>
+  <div class="nav-classify">Open Source</div>
+  <div class="nav-title">QAP™ // Resource Portal // Tools &amp; Dashboards</div>
+  <div class="nav-date">24 March 2026</div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Intelligence Resource Portal</div>
+    <div class="hero-domain">Quanta Analytica Process™ &nbsp;|&nbsp; MNS Consulting</div>
+    <h1 class="hero-title">Quanta Analytica<br><span>Resource Portal</span></h1>
+    <p class="hero-subtitle">Centralised access to QAP™ analytical tools, data explorers, security feeds, and intelligence dashboards. All resources are produced or curated under the Quanta Analytica Process™ framework.</p>
+
+    <div class="hero-meta">
+      <div class="meta-cell">
+        <div class="meta-label">Portal Version</div>
+        <div class="meta-value">v1.0</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">Resources</div>
+        <div class="meta-value">11 Tools</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">Classification</div>
+        <div class="meta-value blue">Open Source</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">Producer</div>
+        <div class="meta-value">Various</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">Framework</div>
+        <div class="meta-value">Various</div>
+      </div>
+    </div>
+
+    <div class="threat-badge">
+      <div class="threat-dot"></div>
+      Portal Status: Active &mdash; All Resources Available
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main>
+
+  <!-- SECTION 01 — FEATURED TOOLS (card grid) -->
+  <section class="section" id="s01">
+    <div class="section-header">
+      <span class="section-num">01 // TOOLS</span>
+      <div class="section-title">Analytical Tools &amp; Dashboards</div>
+    </div>
+
+    <div class="prose" style="margin-bottom:2rem;">
+      <p>Select any resource below to open it. All tools are produced by service providers, 3rd party partners or MNS Consulting curated for use in accordance with the providers guidelines and vetted under the QAP™ framework. Resources span global stability analytics, conflict data, security incident tracking, democratic indices, and open-source intelligence feeds.</p>
+    </div>
+
+    <!-- DASHBOARDS -->
+    <div class="sub-section">Dashboards &amp; Analytics</div>
+    <div class="tools-grid">
+
+      <a class="tool-card" href="arac-global-stability-dashboard.html">
+        <div class="tool-card-header">
+          <div class="tool-card-left">
+            <span class="tool-type-badge dashboard">Dashboard</span>
+            <div class="tool-card-name">ARAC Global Stability Analytics</div>
+          </div>
+          <div class="tool-arrow">&#8599;</div>
+        </div>
+        <div class="tool-card-body">
+          <div class="tool-card-desc">Interactive global security indicator analysis. Tracks conflict dynamics, fragility indices, and stability signals across active monitoring regions using Tableau-powered visualisations.</div>
+        </div>
+        <div class="tool-card-footer">
+          <span class="tool-filename">arac-global-stability-dashboard.html</span>
+          <span class="tool-domain-tag">Conflict Systems</span>
+        </div>
+      </a>
+
+      <a class="tool-card" href="2024-global-security-report.html">
+        <div class="tool-card-header">
+          <div class="tool-card-left">
+            <span class="tool-type-badge report">Report</span>
+            <div class="tool-card-name">2024 Global Security Report</div>
+          </div>
+          <div class="tool-arrow">&#8599;</div>
+        </div>
+        <div class="tool-card-body">
+          <div class="tool-card-desc">Annual global security assessment covering key threat developments, regional conflict dynamics, and emerging risk patterns across the 2024 reporting period.</div>
+        </div>
+        <div class="tool-card-footer">
+          <span class="tool-filename">2024-global-security-report.html</span>
+          <span class="tool-domain-tag">Global Security</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- DATA EXPLORERS -->
+    <div class="sub-section">Data Explorers</div>
+    <div class="tools-grid">
+
+      <a class="tool-card" href="gdelt-explorer.html">
+        <div class="tool-card-header">
+          <div class="tool-card-left">
+            <span class="tool-type-badge explorer">Explorer</span>
+            <div class="tool-card-name">GDELT Explorer</div>
+          </div>
+          <div class="tool-arrow">&#8599;</div>
+        </div>
+        <div class="tool-card-body">
+          <div class="tool-card-desc">Interactive exploration of GDELT (Global Database of Events, Language and Tone) data. Query global event streams, conflict indicators, and media signals by region and time period.</div>
+        </div>
+        <div class="tool-card-footer">
+          <span class="tool-filename">gdelt-explorer.html</span>
+          <span class="tool-domain-tag">OSINT / Media Analytics</span>
+        </div>
+      </a>
+
+      <a class="tool-card" href="vdem-explorer.html">
+        <div class="tool-card-header">
+          <div class="tool-card-left">
+            <span class="tool-type-badge explorer">Explorer</span>
+            <div class="tool-card-name">V-Dem Explorer</div>
+          </div>
+          <div class="tool-arrow">&#8599;</div>
+        </div>
+        <div class="tool-card-body">
+          <div class="tool-card-desc">Varieties of Democracy (V-Dem) dataset explorer. Analyse democratic governance indicators, civil liberties trends, and institutional fragility scores across country and time filters.</div>
+        </div>
+        <div class="tool-card-footer">
+          <span class="tool-filename">vdem-explorer.html</span>
+          <span class="tool-domain-tag">Fragility &amp; Governance</span>
+        </div>
+      </a>
+
+      <a class="tool-card" href="inso-conflict-data.html">
+        <div class="tool-card-header">
+          <div class="tool-card-left">
+            <span class="tool-type-badge explorer">Explorer</span>
+            <div class="tool-card-name">INSO Conflict Data</div>
+          </div>
+          <div class="tool-arrow">&#8599;</div>
+        </div>
+        <div class="tool-card-body">
+          <div class="tool-card-desc">INSO-sourced conflict data explorer covering armed incidents, displacement events, and humanitarian access constraints in active conflict zones.</div>
+        </div>
+        <div class="tool-card-footer">
+          <span class="tool-filename">inso-conflict-data.html</span>
+          <span class="tool-domain-tag">Conflict Systems / NGO SRM</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- SECURITY FEEDS & INCIDENT TOOLS -->
+    <div class="sub-section">Security Feeds &amp; Incident Monitoring</div>
+    <div class="tools-grid">
+
+      <a class="tool-card" href="gs-feed.html">
+        <div class="tool-card-header">
+          <div class="tool-card-left">
+            <span class="tool-type-badge feed">Feed</span>
+            <div class="tool-card-name">Global Security Feed</div>
+          </div>
+          <div class="tool-arrow">&#8599;</div>
+        </div>
+        <div class="tool-card-body">
+          <div class="tool-card-desc">Live aggregated global security event feed. Monitors and surfaces significant security developments, conflict events, and early warning signals from open-source reporting streams.</div>
+        </div>
+        <div class="tool-card-footer">
+          <span class="tool-filename">gs-feed.html</span>
+          <span class="tool-domain-tag">Early Warning / OSINT</span>
+        </div>
+      </a>
+
+      <a class="tool-card" href="inso-security-incidents.html">
+        <div class="tool-card-header">
+          <div class="tool-card-left">
+            <span class="tool-type-badge feed">Feed</span>
+            <div class="tool-card-name">INSO Security Incidents</div>
+          </div>
+          <div class="tool-arrow">&#8599;</div>
+        </div>
+        <div class="tool-card-body">
+          <div class="tool-card-desc">Security incident monitoring tool drawing on INSO data. Tracks attack types, actor attribution, geographic distribution, and trend analysis for humanitarian operating environments.</div>
+        </div>
+        <div class="tool-card-footer">
+          <span class="tool-filename">inso-security-incidents.html</span>
+          <span class="tool-domain-tag">NGO SRM / Incident Data</span>
+        </div>
+      </a>
+
+      <a class="tool-card" href="iosi.html">
+        <div class="tool-card-header">
+          <div class="tool-card-left">
+            <span class="tool-type-badge index">Index</span>
+            <div class="tool-card-name">IOSI — Global Intelligence Sharing Network</div>
+          </div>
+          <div class="tool-arrow">&#8599;</div>
+        </div>
+        <div class="tool-card-body">
+          <div class="tool-card-desc">The International Organisation for Security and Intelligence. A global network of security and intelligence professionals of with a wide range of skills and areas of expertise.</div>
+        </div>
+        <div class="tool-card-footer">
+          <span class="tool-filename">iosi.html</span>
+          <span class="tool-domain-tag">OSINT / Information Integrity</span>
+        </div>
+      </a>
+
+<a class="tool-card" href="https://worldmonitor.app">
+        <div class="tool-card-header">
+          <div class="tool-card-left">
+            <span class="tool-type-badge report">Report</span>
+            <div class="tool-card-name">World Monitor OSINT Feed</div>
+          </div>
+          <div class="tool-arrow">&#8599;</div>
+        </div>
+        <div class="tool-card-body">
+          <div class="tool-card-desc">Real-time global intelligence dashboard with live news, markets, military tracking, infrastructure monitoring, and geopolitical data. OSINT in one view. Also available on Github:https://github.com/koala73/worldmonitor</div>
+        </div>
+        <div class="tool-card-footer">
+          <span class="tool-filename">https://worldmonitor.app</span>
+          <span class="tool-domain-tag">Global Security</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- TOOLKITS -->
+    <div class="sub-section">Toolkits &amp; Frameworks</div>
+    <div class="tools-grid">
+
+      <a class="tool-card" href="gisf-toolkit.html">
+        <div class="tool-card-header">
+          <div class="tool-card-left">
+            <span class="tool-type-badge toolkit">Toolkit</span>
+            <div class="tool-card-name">GISF Toolkit</div>
+          </div>
+          <div class="tool-arrow">&#8599;</div>
+        </div>
+        <div class="tool-card-body">
+          <div class="tool-card-desc">Global Interagency Security Forum (GISF) toolkit resources adapted for QAP™ NGO Security Risk Management workflows. Covers risk assessment templates, context analysis, and staff safety frameworks.</div>
+        </div>
+        <div class="tool-card-footer">
+          <span class="tool-filename">gisf-toolkit.html</span>
+          <span class="tool-domain-tag">NGO SRM</span>
+        </div>
+      </a>
+
+      <a class="tool-card" href="siim.html">
+        <div class="tool-card-header">
+          <div class="tool-card-left">
+            <span class="tool-type-badge toolkit">Toolkit</span>
+            <div class="tool-card-name">SIIM — Security Incident &amp; Impact Matrix</div>
+          </div>
+          <div class="tool-arrow">&#8599;</div>
+        </div>
+        <div class="tool-card-body">
+          <div class="tool-card-desc">Structured incident and impact matrix tool for security risk assessments. Enables systematic scoring of likelihood, impact, and vulnerability across operational environments.</div>
+        </div>
+        <div class="tool-card-footer">
+          <span class="tool-filename">siim.html</span>
+          <span class="tool-domain-tag">Corporate Risk / NGO SRM</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- SECTION 02 — QUICK REFERENCE TABLE -->
+  <section class="section" id="s02">
+    <div class="section-header">
+      <span class="section-num">02 // DIRECTORY</span>
+      <div class="section-title">Full Resource Directory</div>
+    </div>
+
+    <div class="prose" style="margin-bottom:1.5rem;">
+      <p>Complete listing of all resources available in this portal. Click any resource name to open directly.</p>
+    </div>
+
+    <table class="dir-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Resource</th>
+          <th>Type</th>
+          <th>Domain</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>01</td>
+          <td><a href="arac-global-stability-dashboard.html">ARAC Global Stability Analytics Dashboard</a></td>
+          <td>Dashboard</td>
+          <td>Conflict Systems / Global Stability</td>
+          <td><span class="status-pill green">Active</span></td>
+        </tr>
+        <tr>
+          <td>02</td>
+          <td><a href="2024-global-security-report.html">2024 Global Security Report</a></td>
+          <td>Report</td>
+          <td>Global Security</td>
+          <td><span class="status-pill yellow">Archive</span></td>
+        </tr>
+        <tr>
+          <td>03</td>
+          <td><a href="gdelt-explorer.html">GDELT Explorer</a></td>
+          <td>Explorer</td>
+          <td>OSINT / Media Analytics</td>
+          <td><span class="status-pill green">Active</span></td>
+        </tr>
+        <tr>
+          <td>04</td>
+          <td><a href="gisf-toolkit.html">GISF Toolkit</a></td>
+          <td>Toolkit</td>
+          <td>NGO Security Risk Management</td>
+          <td><span class="status-pill green">Active</span></td>
+        </tr>
+        <tr>
+          <td>05</td>
+          <td><a href="gs-feed.html">Global Security Feed</a></td>
+          <td>Feed</td>
+          <td>Early Warning / OSINT</td>
+          <td><span class="status-pill green">Active</span></td>
+        </tr>
+        <tr>
+          <td>06</td>
+          <td><a href="inso-conflict-data.html">INSO Conflict Data</a></td>
+          <td>Explorer</td>
+          <td>Conflict Systems / NGO SRM</td>
+          <td><span class="status-pill green">Active</span></td>
+        </tr>
+        <tr>
+          <td>07</td>
+          <td><a href="inso-security-incidents.html">INSO Security Incidents</a></td>
+          <td>Feed</td>
+          <td>NGO SRM / Incident Data</td>
+          <td><span class="status-pill green">Active</span></td>
+        </tr>
+        <tr>
+          <td>08</td>
+          <td><a href="iosi.html">IOSI — Open Source Intelligence Index</a></td>
+          <td>Index</td>
+          <td>OSINT / Information Integrity</td>
+          <td><span class="status-pill green">Active</span></td>
+        </tr>
+        <tr>
+          <td>09</td>
+          <td><a href="siim.html">SIIM — Security Incident &amp; Impact Matrix</a></td>
+          <td>Toolkit</td>
+          <td>Corporate Risk / NGO SRM</td>
+          <td><span class="status-pill green">Active</span></td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td><a href="vdem-explorer.html">V-Dem Explorer</a></td>
+          <td>Explorer</td>
+          <td>Fragility &amp; Governance Modeling</td>
+          <td><span class="status-pill green">Active</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- SECTION 03 — ABOUT -->
+  <section class="section" id="s03">
+    <div class="section-header">
+      <span class="section-num">03 // ABOUT</span>
+      <div class="section-title">About This Portal</div>
+    </div>
+
+    <div class="prose">
+      <p>The <strong>Quanta Analytica Resource Portal</strong> provides centralised access to the full suite of analytical tools, data platforms, and intelligence products developed under the QAP™ framework by Quanta Analytica and MNS Consulting.</p>
+      <p>All resources are produced in accordance with the <strong>Quanta Analytica Process™ (QAP™)</strong> — a framework-governed, LLM-augmented intelligence and risk analysis methodology. Each tool integrates structured analytic tradecraft, open-source data, and domain-specific risk modelling to support decision-ready intelligence outputs.</p>
+      <p>For full methodology documentation, visit <strong>quanta-analytica.com</strong>. For support or to commission a bespoke assessment, contact MNS Consulting directly.</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-qa">Quanta Analytica Process™ &nbsp;|&nbsp; MNS Consulting</div>
+  <div class="footer-sub">Quanta Analytica Resource Portal &mdash; Tools &amp; Dashboards &mdash; 24 March 2026</div>
+  <div class="footer-copy">QAP-PORTAL-GLB-2026-0324 &nbsp;//&nbsp; Open Source &nbsp;//&nbsp; QAP™ / OSPREY Framework &nbsp;//&nbsp; quanta-analytica.com</div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    const p = h > 0 ? (window.scrollY / h) * 100 : 0;
+    document.getElementById('progress').style.width = p + '%';
+  });
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.section').forEach(s => obs.observe(s));
+</script>
+
+</body>
+</html>
