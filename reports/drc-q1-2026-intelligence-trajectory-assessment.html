@@ -1,0 +1,1975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DRC Q1-2026 Intelligence &amp; Trajectory Assessment | Quanta Analytica Process&#8482; | 25 Mar 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       QAP CSS VARIABLE SYSTEM
+       ============================================================ */
+    :root {
+      --col-bg:          #0b0e14;
+      --col-surface:     #111520;
+      --col-surface-2:   #161c2a;
+      --col-surface-3:   #1c2438;
+      --col-border:      #2a3450;
+      --col-border-2:    #1e2840;
+
+      --col-amber:       #e8a820;
+      --col-amber-dim:   #b07818;
+      --col-amber-faint: rgba(232,168,32,0.08);
+      --col-amber-glow:  rgba(232,168,32,0.18);
+
+      --col-red:         #c0392b;
+      --col-red-faint:   rgba(192,57,43,0.12);
+      --col-red-glow:    rgba(192,57,43,0.22);
+
+      --col-green:       #27ae60;
+      --col-green-faint: rgba(39,174,96,0.10);
+
+      --col-blue:        #2d7fc1;
+      --col-blue-faint:  rgba(45,127,193,0.10);
+
+      --col-slate:       #6a85b0;
+      --col-slate-2:     #4e6589;
+      --col-muted:       #3d506e;
+
+      --col-text:        #c8d4e8;
+      --col-text-dim:    #8fa0be;
+      --col-text-faint:  #546070;
+      --col-heading:     #dce8f8;
+      --col-white:       #f0f4fc;
+
+      --font-mono:    'IBM Plex Mono', monospace;
+      --font-sans:    'IBM Plex Sans', sans-serif;
+      --font-serif:   'Libre Baskerville', serif;
+
+      --radius-sm:    4px;
+      --radius-md:    8px;
+      --radius-lg:    14px;
+
+      --shadow-card:  0 2px 16px rgba(0,0,0,0.45);
+      --shadow-glow:  0 0 24px rgba(232,168,32,0.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--col-bg);
+      color: var(--col-text);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ---- SCROLL PROGRESS ---- */
+    #progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--col-amber), #f7c948);
+      z-index: 9999;
+      transition: width 0.1s linear;
+    }
+
+    /* ---- NAV ---- */
+    nav {
+      position: fixed;
+      top: 3px; left: 0; right: 0;
+      z-index: 900;
+      background: rgba(11,14,20,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--col-border-2);
+      padding: 0 2rem;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--col-amber);
+      text-transform: uppercase;
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .nav-classify {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      color: var(--col-amber);
+      border: 1px solid var(--col-amber-dim);
+      border-radius: var(--radius-sm);
+      padding: 3px 9px;
+      background: var(--col-amber-faint);
+      text-transform: uppercase;
+    }
+    .nav-doc-id {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--col-slate);
+    }
+
+    /* ---- HERO ---- */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 7rem 2.5rem 4rem;
+      overflow: hidden;
+      background: linear-gradient(160deg, #0d1120 0%, #0b0e14 60%, #0e1118 100%);
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--col-border-2) 1px, transparent 1px),
+        linear-gradient(90deg, var(--col-border-2) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    .hero-grid::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 40%, transparent 30%, var(--col-bg) 80%);
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 920px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .hero-running {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: var(--col-slate-2);
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--col-border-2);
+    }
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      color: var(--col-amber);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      color: var(--col-white);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .hero-subtitle {
+      font-family: var(--font-sans);
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--col-text-dim);
+      margin-bottom: 2rem;
+      max-width: 680px;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      border: 1px solid var(--col-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: 1.8rem;
+      background: var(--col-surface);
+    }
+    .meta-cell {
+      flex: 1 1 140px;
+      padding: 0.75rem 1rem;
+      border-right: 1px solid var(--col-border);
+    }
+    .meta-cell:last-child { border-right: none; }
+    .meta-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      color: var(--col-slate-2);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .meta-value {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--col-text);
+    }
+    .threat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--col-red-faint);
+      border: 1px solid var(--col-red);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: #e05050;
+      letter-spacing: 0.1em;
+    }
+    .threat-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--col-red);
+      animation: blink 1.4s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%,100% { opacity: 1; }
+      50%      { opacity: 0.25; }
+    }
+    .scope-boundary {
+      font-family: var(--font-sans);
+      font-style: italic;
+      font-size: 13px;
+      color: var(--col-slate);
+      border-left: 3px solid var(--col-blue);
+      padding: 0.8rem 1.2rem;
+      background: var(--col-blue-faint);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    .hero-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .hero-metric-box {
+      background: var(--col-surface);
+      border: 1px solid var(--col-border);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1.2rem;
+      min-width: 130px;
+    }
+    .hero-metric-num {
+      font-family: var(--font-mono);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--col-amber);
+      line-height: 1;
+    }
+    .hero-metric-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--col-slate);
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* ---- MAIN ---- */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    /* ---- SECTION WRAPPER ---- */
+    .section {
+      margin-bottom: 4rem;
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1.6rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--col-border);
+    }
+    .section-num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      color: var(--col-amber);
+      background: var(--col-amber-faint);
+      border: 1px solid var(--col-amber-dim);
+      border-radius: var(--radius-sm);
+      padding: 3px 9px;
+      white-space: nowrap;
+    }
+    .section-title {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--col-text-dim);
+      text-transform: uppercase;
+    }
+    .sub-section {
+      margin-top: 2rem;
+      padding-top: 1.2rem;
+    }
+    .sub-section::after {
+      content: '';
+      display: block;
+      height: 1px;
+      background: linear-gradient(90deg, var(--col-border), transparent);
+      margin-top: 1.2rem;
+    }
+    .sub-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--col-amber);
+      margin-bottom: 0.9rem;
+    }
+    p {
+      color: var(--col-text);
+      line-height: 1.75;
+      margin-bottom: 0.9rem;
+    }
+
+    /* ---- BLUF ---- */
+    .bluf-grid { display: flex; flex-direction: column; gap: 1.4rem; }
+    .bluf-item {
+      display: flex;
+      gap: 1.2rem;
+      padding: 1.1rem 1.3rem;
+      background: var(--col-surface);
+      border: 1px solid var(--col-border);
+      border-left: 3px solid var(--col-amber);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+    .bluf-index {
+      font-family: var(--font-mono);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: rgba(232,168,32,0.3);
+      min-width: 28px;
+      padding-top: 2px;
+    }
+    .bluf-text strong {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--col-white);
+      margin-bottom: 0.4rem;
+    }
+    .bluf-text { font-size: 0.92rem; color: var(--col-text-dim); }
+
+    /* ---- KIQ TABLE ---- */
+    .kiq-table, .assumption-table, .ach-table, .iw-table, .risk-matrix, .pig-table, .annex-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin-bottom: 1rem;
+    }
+    .kiq-table th, .assumption-table th, .ach-table th, .iw-table th,
+    .risk-matrix th, .pig-table th, .annex-table th {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--col-amber);
+      background: var(--col-surface-2);
+      padding: 0.65rem 0.9rem;
+      border: 1px solid var(--col-border);
+      text-align: left;
+    }
+    .kiq-table td, .assumption-table td, .ach-table td, .iw-table td,
+    .risk-matrix td, .pig-table td, .annex-table td {
+      padding: 0.65rem 0.9rem;
+      border: 1px solid var(--col-border);
+      color: var(--col-text);
+      vertical-align: top;
+      line-height: 1.55;
+    }
+    .kiq-table tr:nth-child(even), .assumption-table tr:nth-child(even),
+    .ach-table tr:nth-child(even), .iw-table tr:nth-child(even),
+    .risk-matrix tr:nth-child(even), .pig-table tr:nth-child(even),
+    .annex-table tr:nth-child(even) {
+      background: var(--col-surface);
+    }
+    td.id-cell {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--col-amber);
+      white-space: nowrap;
+    }
+    .risk-high { background: rgba(192,57,43,0.15) !important; }
+
+    /* ---- SNAPSHOT ---- */
+    .snapshot-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--col-border);
+      border: 1px solid var(--col-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .snapshot-cell {
+      background: var(--col-surface);
+      padding: 1rem 1.2rem;
+    }
+    .snapshot-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--col-amber);
+      margin-bottom: 6px;
+    }
+    .snapshot-content {
+      font-size: 13.5px;
+      color: var(--col-text);
+      line-height: 1.55;
+    }
+
+    /* ---- KEY JUDGMENTS ---- */
+    .kj-list { display: flex; flex-direction: column; gap: 1rem; }
+    .kj-item {
+      padding: 1.1rem 1.3rem;
+      border-radius: var(--radius-md);
+      border-left: 4px solid;
+      background: var(--col-surface);
+    }
+    .kj-item.high   { border-color: var(--col-red);   background: var(--col-red-faint); }
+    .kj-item.moderate { border-color: var(--col-amber); background: var(--col-amber-faint); }
+    .kj-item.low    { border-color: var(--col-green);  background: var(--col-green-faint); }
+    .kj-item.watch  { border-color: var(--col-blue);   background: var(--col-blue-faint); }
+    .kj-header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+    .kj-band {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+    .kj-item.high   .kj-band { background: var(--col-red-glow);   color: #e05050; border: 1px solid var(--col-red); }
+    .kj-item.moderate .kj-band { background: var(--col-amber-glow); color: var(--col-amber); border: 1px solid var(--col-amber-dim); }
+    .kj-item.low   .kj-band { background: var(--col-green-faint); color: var(--col-green); border: 1px solid var(--col-green); }
+    .kj-item.watch .kj-band { background: var(--col-blue-faint);  color: var(--col-blue); border: 1px solid var(--col-blue); }
+    .kj-id {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--col-slate);
+    }
+    .kj-text {
+      font-size: 0.93rem;
+      color: var(--col-text);
+      line-height: 1.65;
+    }
+    .kj-meta {
+      margin-top: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--col-slate-2);
+    }
+
+    /* ---- EVIDENCE ---- */
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .evidence-box {
+      background: var(--col-surface);
+      border: 1px solid var(--col-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .evidence-box-header {
+      padding: 0.55rem 0.9rem;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .evidence-box-header.know   { background: var(--col-green-faint);  color: var(--col-green); }
+    .evidence-box-header.assess { background: var(--col-amber-faint);  color: var(--col-amber); }
+    .evidence-box-header.gap    { background: var(--col-red-faint);    color: #e05050; }
+    .evidence-box ul {
+      padding: 0.8rem 1rem 0.8rem 1.4rem;
+      margin: 0;
+      list-style: disc;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--col-text-dim);
+    }
+    .evidence-box ul li { margin-bottom: 6px; }
+
+    .wsi-note {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--col-slate);
+      background: var(--col-surface-2);
+      border: 1px solid var(--col-border);
+      border-left: 3px solid var(--col-blue);
+      padding: 0.8rem 1.1rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin-top: 1.2rem;
+      line-height: 1.55;
+    }
+    .wsi-note strong { color: var(--col-text); }
+
+    /* ---- STATUS / BAND PILLS ---- */
+    .status-pill {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      padding: 2px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+    .status-pill.red    { background: var(--col-red-faint);   color: #e05050;         border: 1px solid var(--col-red); }
+    .status-pill.amber  { background: var(--col-amber-faint); color: var(--col-amber); border: 1px solid var(--col-amber-dim); }
+    .status-pill.green  { background: var(--col-green-faint); color: var(--col-green); border: 1px solid var(--col-green); }
+    .status-pill.blue   { background: var(--col-blue-faint);  color: var(--col-blue);  border: 1px solid var(--col-blue); }
+    .band-pill {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      padding: 2px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+    .band-pill.green  { background: var(--col-green-faint); color: var(--col-green); border: 1px solid var(--col-green); }
+    .band-pill.amber  { background: var(--col-amber-faint); color: var(--col-amber); border: 1px solid var(--col-amber-dim); }
+    .band-pill.red    { background: var(--col-red-faint);   color: #e05050;         border: 1px solid var(--col-red); }
+    cite {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--col-amber);
+      font-style: normal;
+      vertical-align: super;
+      line-height: 0;
+    }
+
+    /* ---- SCENARIO CARDS ---- */
+    .scenario-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .scenario-card {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--col-border);
+    }
+    .scenario-head {
+      padding: 0.6rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .scenario-card.best .scenario-head   { background: var(--col-green-faint); color: var(--col-green); }
+    .scenario-card.base .scenario-head   { background: var(--col-amber-faint); color: var(--col-amber); }
+    .scenario-card.worst .scenario-head  { background: var(--col-red-faint);   color: #e05050; }
+    .scenario-body {
+      padding: 0.9rem 1rem;
+      background: var(--col-surface);
+      font-size: 13px;
+      color: var(--col-text-dim);
+      line-height: 1.6;
+    }
+    .scenario-prob {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--col-slate);
+      margin-top: 0.5rem;
+    }
+
+    /* ---- BEHAVIORAL ---- */
+    .behavioral-note {
+      font-style: italic;
+      font-size: 13px;
+      color: var(--col-slate);
+      border-left: 3px solid var(--col-blue);
+      padding: 0.6rem 1rem;
+      background: var(--col-blue-faint);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin-bottom: 1.2rem;
+    }
+    .behavioral-grid { display: flex; flex-direction: column; gap: 1rem; }
+    .behavioral-item {
+      background: var(--col-surface);
+      border: 1px solid var(--col-border);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.2rem;
+    }
+    .behavioral-item-header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+    .behavioral-rank {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--col-amber);
+      min-width: 22px;
+    }
+    .behavioral-driver {
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--col-white);
+    }
+    .behavioral-item p { font-size: 13px; color: var(--col-text-dim); margin-bottom: 0; }
+
+    /* ---- IMPLICATIONS & RECS ---- */
+    .rec-timeline { display: flex; flex-direction: column; gap: 0; }
+    .rec-block {
+      display: flex;
+      gap: 0;
+    }
+    .rec-time {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+      padding: 1rem 0.65rem;
+      min-width: 36px;
+      text-align: center;
+      border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+    }
+    .rec-time.red   { background: var(--col-red-faint);   color: #e05050; }
+    .rec-time.amber { background: var(--col-amber-faint); color: var(--col-amber); }
+    .rec-time.green { background: var(--col-green-faint); color: var(--col-green); }
+    .rec-content {
+      flex: 1;
+      padding: 1rem 1.2rem;
+      background: var(--col-surface);
+      border: 1px solid var(--col-border);
+      border-left: none;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin-bottom: 4px;
+      font-size: 13.5px;
+      line-height: 1.65;
+    }
+    .rec-content ul { padding-left: 1.2rem; color: var(--col-text-dim); }
+    .rec-content ul li { margin-bottom: 5px; }
+
+    /* ---- CONFIDENCE ---- */
+    .conf-panel {
+      border: 1px solid var(--col-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+    .conf-header {
+      padding: 0.8rem 1.2rem;
+      background: var(--col-amber-faint);
+      border-bottom: 1px solid var(--col-border);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      color: var(--col-amber);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .conf-body {
+      padding: 1rem 1.2rem;
+      background: var(--col-surface);
+      font-size: 13.5px;
+      color: var(--col-text);
+      line-height: 1.65;
+    }
+    .uncertainty-list { display: flex; flex-direction: column; gap: 0.8rem; }
+    .uncertainty-item {
+      padding: 0.9rem 1.1rem;
+      background: var(--col-red-faint);
+      border: 1px solid var(--col-red);
+      border-radius: var(--radius-md);
+      font-size: 13.5px;
+      color: var(--col-text);
+      line-height: 1.6;
+    }
+    .uncertainty-item strong { color: #e05050; }
+
+    /* ---- REFERENCES ---- */
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    .ref-table th {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--col-amber);
+      background: var(--col-surface-2);
+      padding: 0.5rem 0.7rem;
+      border: 1px solid var(--col-border);
+      text-align: left;
+    }
+    .ref-table td {
+      padding: 0.55rem 0.7rem;
+      border: 1px solid var(--col-border);
+      color: var(--col-text-dim);
+      vertical-align: top;
+    }
+    .ref-table tr:nth-child(even) td { background: var(--col-surface); }
+    .band-key {
+      margin-top: 1rem;
+      padding: 0.8rem 1rem;
+      background: var(--col-surface);
+      border: 1px solid var(--col-border);
+      border-radius: var(--radius-md);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--col-slate);
+      line-height: 1.7;
+    }
+    .independence-stmt {
+      margin-top: 0.8rem;
+      font-style: italic;
+      font-size: 12.5px;
+      color: var(--col-slate-2);
+    }
+
+    /* ---- THRESHOLD GRID ---- */
+    .threshold-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .threshold-cell {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--col-border);
+    }
+    .threshold-head {
+      padding: 0.6rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .threshold-cell.green-zone .threshold-head { background: var(--col-green-faint); color: var(--col-green); }
+    .threshold-cell.amber-zone .threshold-head { background: var(--col-amber-faint); color: var(--col-amber); }
+    .threshold-cell.red-zone   .threshold-head { background: var(--col-red-faint);   color: #e05050; }
+    .threshold-body {
+      padding: 0.9rem 1rem;
+      background: var(--col-surface);
+      font-size: 12.5px;
+      color: var(--col-text-dim);
+      line-height: 1.6;
+    }
+
+    /* ---- 5-LAYER MAP ---- */
+    .layer-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin-bottom: 1rem;
+    }
+    .layer-table th {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--col-amber);
+      background: var(--col-surface-2);
+      padding: 0.65rem 0.9rem;
+      border: 1px solid var(--col-border);
+      text-align: left;
+    }
+    .layer-table td {
+      padding: 0.65rem 0.9rem;
+      border: 1px solid var(--col-border);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    .layer-table tr:nth-child(even) td { background: var(--col-surface); }
+    .layer-code {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--col-amber);
+      font-weight: 600;
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      background: var(--col-surface);
+      border-top: 1px solid var(--col-border);
+      padding: 2rem 2.5rem;
+      text-align: center;
+    }
+    .footer-brand {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      color: var(--col-slate-2);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .footer-doc-id {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--col-muted);
+    }
+    .footer-disclaimer {
+      font-size: 11px;
+      color: var(--col-text-faint);
+      margin-top: 0.6rem;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 720px) {
+      .snapshot-grid { grid-template-columns: repeat(2, 1fr); }
+      .evidence-grid { grid-template-columns: 1fr; }
+      .scenario-grid { grid-template-columns: 1fr; }
+      .threshold-grid { grid-template-columns: 1fr; }
+      .hero-metrics { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-brand">Quanta Analytica | MNS Consulting</span>
+  <div class="nav-right">
+    <span class="nav-doc-id">QAP-CSA-FGM-COD-2026-0325</span>
+    <span class="nav-classify">OSINT // Analytical</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-running">
+      <span>QUANTA ANALYTICA | MNS CONSULTING</span>
+      <span>CONFLICT SYSTEMS ANALYSIS // DEMOCRATIC REPUBLIC OF CONGO</span>
+    </div>
+    <div class="hero-eyebrow">Intelligence &amp; Trajectory Assessment</div>
+    <h1 class="hero-title">Democratic Republic of Congo<br>Q1-2026 Geopolitical &amp; Security Assessment</h1>
+    <p class="hero-subtitle">January through March 2026: Armed conflict trajectory, peace process diagnostics, humanitarian escalation, and strategic outlook for eastern DRC and the wider Great Lakes region.</p>
+
+    <div class="hero-meta">
+      <div class="meta-cell">
+        <div class="meta-label">Domain</div>
+        <div class="meta-value">Conflict Systems + Fragility Modeling</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">Date</div>
+        <div class="meta-value">25 March 2026</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">Threat Level</div>
+        <div class="meta-value"><span class="threat-badge"><span class="threat-dot"></span>CRITICAL</span></div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">Overall Confidence</div>
+        <div class="meta-value">MODERATE</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">Classification</div>
+        <div class="meta-value">OSINT // Open Source</div>
+      </div>
+    </div>
+
+    <div class="scope-boundary">
+      Analytic Scope Boundary: This assessment covers the period 1 January to 25 March 2026 with a 90-day forward outlook. Sources are limited to open-source reporting, UN agency documentation, Security Council records, and accredited conflict-monitoring organizations. Excluded streams include classified signals intelligence, proprietary humanitarian partner data, and unverified social media. Confidence reflects evidence quality and corroboration depth across independent streams; volume of aligned reporting is not treated as corroboration.
+    </div>
+
+    <div class="hero-metrics">
+      <div class="hero-metric-box">
+        <div class="hero-metric-num">~8.2M</div>
+        <div class="hero-metric-label">Total Displaced (Sept 2025)</div>
+      </div>
+      <div class="hero-metric-box">
+        <div class="hero-metric-num">14.9M</div>
+        <div class="hero-metric-label">People Requiring Aid (2026)</div>
+      </div>
+      <div class="hero-metric-box">
+        <div class="hero-metric-num">27,000</div>
+        <div class="hero-metric-label">Estimated M23 Combatants</div>
+      </div>
+      <div class="hero-metric-box">
+        <div class="hero-metric-num">$1.4B</div>
+        <div class="hero-metric-label">OCHA 2026 Humanitarian Appeal</div>
+      </div>
+      <div class="hero-metric-box">
+        <div class="hero-metric-num">60+</div>
+        <div class="hero-metric-label">FARDC Drone Strikes (Jan-Mar)</div>
+      </div>
+      <div class="hero-metric-box">
+        <div class="hero-metric-num">24%</div>
+        <div class="hero-metric-label">2025 Humanitarian Funding Met</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- 01 // BLUF -->
+  <section class="section" id="bluf">
+    <div class="section-header">
+      <span class="section-num">01 // BLUF</span>
+      <span class="section-title">Bottom Line Up Front</span>
+    </div>
+    <div class="bluf-grid">
+      <div class="bluf-item">
+        <div class="bluf-index">1</div>
+        <div class="bluf-text">
+          <strong>Peace frameworks exist on paper; the war persists on the ground.</strong>
+          The Washington Accords (December 2025) and the Doha Framework (November 2025) have not produced a functional ceasefire. Both sides continue military operations, trade violations accusations, and expand or consolidate territorial positions. As of late March 2026, neither M23 nor the FARDC has demonstrated strategic interest in unconditional cessation of hostilities.<cite>[1][3][10]</cite>
+        </div>
+      </div>
+      <div class="bluf-item">
+        <div class="bluf-index">2</div>
+        <div class="bluf-text">
+          <strong>M23/AFC has consolidated parallel state structures across the Kivus.</strong>
+          The group controls Goma, Bukavu, and large swathes of North and South Kivu, operating parallel administrations since early 2025. A fourth major recruitment cycle in February 2026 has reportedly swelled M23 combatant strength to approximately 27,000, a fivefold increase from early 2025. This is an [INFERENCE] based on ICG reporting, not independently verified by multiple streams.<cite>[4][14]</cite>
+        </div>
+      </div>
+      <div class="bluf-item">
+        <div class="bluf-index">3</div>
+        <div class="bluf-text">
+          <strong>Drone warfare has emerged as a new and destabilizing operational dimension.</strong>
+          FARDC has conducted over 60 documented drone strikes since January 2026, killing M23's spokesperson and other personnel near Rubaya on 24 February. M23 has responded with strikes on Kisangani's Bangoka International Airport. This aerial escalation elevates civilian risk and complicates ceasefire verification.<cite>[10][7]</cite>
+        </div>
+      </div>
+      <div class="bluf-item">
+        <div class="bluf-index">4</div>
+        <div class="bluf-text">
+          <strong>The humanitarian situation is catastrophic and worsening under a funding collapse.</strong>
+          OCHA estimates 14.9 million people require humanitarian assistance in 2026. A $1.4 billion appeal was launched in January; only 24% of the 2025 plan was funded. Over 200,000 civilians were displaced in the Minembwe highlands of South Kivu alone by late February 2026, and recurrent outbreaks of cholera, mpox, and measles compound crisis severity.<cite>[8][21][23][30]</cite>
+        </div>
+      </div>
+      <div class="bluf-item">
+        <div class="bluf-index">5</div>
+        <div class="bluf-text">
+          <strong>The US-DRC security relationship is deepening, but US leverage over Rwanda is constrained.</strong>
+          AFRICOM engagement in Kinshasa has intensified since January 2026, with intelligence sharing, training programs, and joint exercise commitments. On 2 March, the US imposed sanctions on four Rwandan military officials and on the RDF as an entity. The March 17-18 Washington talks produced new de-escalation commitments, but implementation history is weak.<cite>[10][11][14]</cite>
+        </div>
+      </div>
+      <div class="bluf-item">
+        <div class="bluf-index">6</div>
+        <div class="bluf-text">
+          <strong>Negotiating positions remain maximalist and structurally incompatible in Q1 2026.</strong>
+          Kinshasa insists on unconditional M23 withdrawal, disarmament, and cantonment. M23 demands political power-sharing and autonomy in eastern DRC. Neither side has incentive to concede: M23 entrenches its de facto state; Kinshasa cannot accept terms that legitimize armed insurrection. This deadlock is the primary driver of prolonged conflict.<cite>[4][14][16]</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 // KIQs -->
+  <section class="section" id="kiqs">
+    <div class="section-header">
+      <span class="section-num">02 // KIQs</span>
+      <span class="section-title">Key Intelligence Questions</span>
+    </div>
+    <table class="kiq-table">
+      <thead>
+        <tr>
+          <th style="width:10%">Q-ID</th>
+          <th style="width:60%">Intelligence Question</th>
+          <th style="width:30%">Links To</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="id-cell">KIQ-01</td>
+          <td>Will the Washington Accords and Doha Framework produce a functioning, monitored ceasefire within Q2 2026, or will both processes collapse under accumulated violations?</td>
+          <td>KJ-01, KJ-02, Gap-01, EWI-01</td>
+        </tr>
+        <tr>
+          <td class="id-cell">KIQ-02</td>
+          <td>To what extent does M23's consolidation of parallel governance in eastern DRC represent a durable territorial partition rather than a negotiating posture, and what conditions would reverse it?</td>
+          <td>KJ-03, KJ-04, Gap-02, EWI-02</td>
+        </tr>
+        <tr>
+          <td class="id-cell">KIQ-03</td>
+          <td>Does Rwanda's formal admission of "security coordination" with M23 (January 2026 congressional testimony) signal a shift toward transparency, or does it reflect tactical repositioning ahead of anticipated sanctions?</td>
+          <td>KJ-05, Gap-03, EWI-03</td>
+        </tr>
+        <tr>
+          <td class="id-cell">KIQ-04</td>
+          <td>What are the escalation thresholds for M23's drone campaign against FARDC logistics infrastructure, and does the current rate of strikes constitute a qualitative shift in the conflict's character?</td>
+          <td>KJ-03, KJ-06, EWI-04</td>
+        </tr>
+        <tr>
+          <td class="id-cell">KIQ-05</td>
+          <td>Will the acute humanitarian funding collapse in 2026 generate secondary security instability (social unrest, militia proliferation, predatory governance) at a scale that undermines any peace dividend?</td>
+          <td>KJ-06, Gap-04, EWI-05</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 03 // SNAPSHOT -->
+  <section class="section" id="snapshot">
+    <div class="section-header">
+      <span class="section-num">03 // SNAPSHOT</span>
+      <span class="section-title">Situation Snapshot</span>
+    </div>
+    <div class="snapshot-grid">
+      <div class="snapshot-cell">
+        <div class="snapshot-label">WHO</div>
+        <div class="snapshot-content">M23/AFC (Rwanda-backed), FARDC (DRC government forces), Wazalendo pro-government militias, FDLR (Hutu armed remnants), MONUSCO (UN), US/Qatar/AU/Angola mediators, Tshisekedi government, Kagame government, Burundi (aligned with Kinshasa), 100+ other armed groups in eastern DRC.</div>
+      </div>
+      <div class="snapshot-cell">
+        <div class="snapshot-label">WHAT</div>
+        <div class="snapshot-content">Protracted armed conflict between Congolese state forces and Rwandan-backed M23/AFC rebels over control of mineral-rich eastern provinces. Parallel diplomatic tracks in Doha and Washington have produced framework agreements with near-zero implementation. Drone escalation from both sides compounds ceasefire instability.</div>
+      </div>
+      <div class="snapshot-cell">
+        <div class="snapshot-label">WHERE</div>
+        <div class="snapshot-content">North Kivu (Goma, Masisi, Rutshuru, Walikale, Rubaya), South Kivu (Bukavu, Uvira, Minembwe highlands, Fizi territory). Secondary pressure in Ituri, Maniema, Tanganyika. Diplomatic activity centered on Doha, Washington DC, Lomé, and Luanda.</div>
+      </div>
+      <div class="snapshot-cell">
+        <div class="snapshot-label">WHEN</div>
+        <div class="snapshot-content">Q1 2026 (January to 25 March). Conflict has been continuous since M23's resurgence in late 2021. Goma fell to M23 on 27 January 2025; Bukavu and Uvira followed. Current phase: drone escalation (Feb-Mar 2026), stalled negotiations, and partial Lomé-AU mediation consolidation.</div>
+      </div>
+      <div class="snapshot-cell">
+        <div class="snapshot-label">WHY</div>
+        <div class="snapshot-content">Competition over mineral resources (coltan, gold, tin, tungsten); residual ethnic dynamics rooted in the 1994 Rwanda genocide; Rwanda's strategic interest in eastern DRC buffer zones; weak Congolese state authority; M23 political ambitions for power-sharing; FDLR presence used by Rwanda as justification for military engagement.</div>
+      </div>
+      <div class="snapshot-cell">
+        <div class="snapshot-label">HOW</div>
+        <div class="snapshot-content">M23 sustains operations via direct Rwandan Defence Force troop deployment (3,000-4,000 RDF acknowledged by UN), sophisticated weapons systems, drone capability, and parallel state institution-building. FARDC responds via Bayraktar drone strikes, Chinese weapons, external military cooperation (US AFRICOM, Wazalendo integration). Diplomacy via Qatar (Doha) and US (Washington) frameworks runs parallel to active conflict.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 // KEY JUDGMENTS -->
+  <section class="section" id="kj">
+    <div class="section-header">
+      <span class="section-num">04 // KEY JUDGMENTS</span>
+      <span class="section-title">Key Judgments</span>
+    </div>
+    <div class="kj-list">
+      <div class="kj-item high">
+        <div class="kj-header">
+          <span class="kj-band">High Confidence</span>
+          <span class="kj-id">KJ-01</span>
+        </div>
+        <div class="kj-text">The Doha and Washington peace frameworks will not produce a functional, monitored ceasefire in Q2 2026 absent a significant shift in at least one party's strategic calculus. Both frameworks are structurally stalled: M23 will not withdraw from territory it controls without political concessions Kinshasa considers illegitimate; Kinshasa will not offer political concessions to a group it classifies as a terrorist proxy. Neither the February ceasefire agreement nor the March 17-18 Washington talks have produced observable behavior change on the ground.<cite>[3][10][13][14]</cite></div>
+        <div class="kj-meta">Maps to: KIQ-01 | Sources: UN News, Security Council Report, CriticalThreats, ICG</div>
+      </div>
+      <div class="kj-item high">
+        <div class="kj-header">
+          <span class="kj-band">High Confidence</span>
+          <span class="kj-id">KJ-02</span>
+        </div>
+        <div class="kj-text">M23/AFC's parallel administrative structures in the Kivus represent a durable strategic posture, not a temporary military foothold. The group has established governance, taxation, and security infrastructure in Goma and Bukavu over 12+ months. Recruitment cycles in July and September 2025, October 2025, and February 2026 indicate intent to consolidate, not negotiate from weakness. This trajectory points toward de facto territorial partition unless external military pressure reverses it.<cite>[2][4][14]</cite></div>
+        <div class="kj-meta">Maps to: KIQ-02 | Sources: Al Jazeera, ICG, CriticalThreats</div>
+      </div>
+      <div class="kj-item high">
+        <div class="kj-header">
+          <span class="kj-band">High Confidence</span>
+          <span class="kj-id">KJ-03</span>
+        </div>
+        <div class="kj-text">Drone warfare has crossed a tactical threshold in Q1 2026. FARDC's 60+ documented strikes mark a quantitative escalation, and the killing of M23 spokesperson Willy Ngoma on 24 February signals a strategy of targeted leadership degradation. M23's retaliatory strike on Kisangani airport on 2 February represents a geographic escalation beyond eastern DRC frontlines. This dynamic raises civilian harm risk and creates new escalation pathways not anticipated in existing ceasefire frameworks.<cite>[7][10]</cite></div>
+        <div class="kj-meta">Maps to: KIQ-04 | Sources: Britannica/AP, Security Council Report</div>
+      </div>
+      <div class="kj-item moderate">
+        <div class="kj-header">
+          <span class="kj-band">Moderate Confidence</span>
+          <span class="kj-id">KJ-04</span>
+        </div>
+        <div class="kj-text">Rwanda's ambassador's January 2026 congressional testimony acknowledging "security coordination" with M23 likely reflects tactical positioning ahead of anticipated US sanctions rather than a genuine transparency shift. Rwanda has consistently denied direct military involvement despite UN documentation to the contrary. The March 2 US sanctions on four RDF officials and the RDF as an entity are meaningful but insufficient to alter Rwanda's fundamental calculus, which is tied to strategic and economic interests in eastern DRC. [INFERENCE: Rwanda's calculus is analyst-assessed; direct confirmation requires classified access.]<cite>[10][14]</cite></div>
+        <div class="kj-meta">Maps to: KIQ-03 | Sources: Security Council Report, CriticalThreats</div>
+      </div>
+      <div class="kj-item moderate">
+        <div class="kj-header">
+          <span class="kj-band">Moderate Confidence</span>
+          <span class="kj-id">KJ-05</span>
+        </div>
+        <div class="kj-text">The US-DRC security partnership is deepening but its near-term impact is limited by capability gaps on the FARDC side and political constraints on US direct military support. AFRICOM engagement, intelligence sharing, and training commitments in January-February 2026 signal sustained US investment. However, the FARDC remains structurally fragile, and the US continues to simultaneously engage Rwanda diplomatically. This dual-track posture limits how far Washington will push Kigali. Confidence is moderate given limited public detail on MOU specifics.<cite>[14][11]</cite></div>
+        <div class="kj-meta">Maps to: KIQ-01, KIQ-03 | Sources: CriticalThreats, US State Department</div>
+      </div>
+      <div class="kj-item high">
+        <div class="kj-header">
+          <span class="kj-band">High Confidence</span>
+          <span class="kj-id">KJ-06</span>
+        </div>
+        <div class="kj-text">The humanitarian funding collapse constitutes an independent second-order threat multiplier. OCHA's $1.4 billion 2026 appeal faces a severe shortfall; 2025 saw only 24% of requirements met. With 14.9 million people requiring assistance, service closures, IDP camp collapses, and epidemic proliferation (cholera, mpox, measles) are not future risks but current conditions. Funding gaps will deepen social instability, predatory governance by armed groups, and militia recruitment pipelines in ungoverned spaces.<cite>[8][29][30]</cite></div>
+        <div class="kj-meta">Maps to: KIQ-05 | Sources: OCHA, Concern Worldwide, UNHCR</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 // EVIDENCE -->
+  <section class="section" id="evidence">
+    <div class="section-header">
+      <span class="section-num">05 // EVIDENCE SUMMARY</span>
+      <span class="section-title">Evidence Summary</span>
+    </div>
+    <div class="evidence-grid">
+      <div class="evidence-box">
+        <div class="evidence-box-header know">WHAT WE KNOW</div>
+        <ul>
+          <li>M23 captured Goma (Jan 2025), Bukavu, and Uvira; controls large areas of North and South Kivu as of Q1 2026.</li>
+          <li>Washington Accords signed December 4, 2025; Doha Framework signed November 14, 2025. Neither is implemented.</li>
+          <li>DRC and M23 signed Doha ceasefire terms of reference on February 2, 2026. Fighting has continued.</li>
+          <li>On March 17-18, DRC and Rwanda met in Washington and agreed to further implementation steps.</li>
+          <li>FARDC has conducted 60+ drone strikes since January 2026; M23 killed Willy Ngoma on February 24.</li>
+          <li>M23 conducted drone strike on Kisangani airport on February 2, 2026.</li>
+          <li>US imposed sanctions on four RDF officials and the RDF as entity on March 2, 2026.</li>
+          <li>OCHA launched $1.4B humanitarian appeal on January 28, 2026. 2025 funding was 24% met.</li>
+          <li>Over 200,000 civilians displaced in Minembwe highlands since early February 2026.</li>
+          <li>More than 62,000 asylum seekers crossed into Burundi since February 14, 2026.</li>
+          <li>171 bodies found in mass graves in eastern Congo as reported February 26, 2026.</li>
+        </ul>
+      </div>
+      <div class="evidence-box">
+        <div class="evidence-box-header assess">WHAT WE ASSESS</div>
+        <ul>
+          <li>[INFERENCE] M23 has approximately 27,000 active combatants following its February 2026 recruitment cycle, a fivefold increase from early 2025 (ICG, December 2025). Not independently corroborated to the same figure by a second primary source.</li>
+          <li>[INFERENCE] Rwanda views continued military presence in eastern DRC as non-negotiable for security and economic interests, and will accept diplomatic friction with the US before genuinely withdrawing RDF troops.</li>
+          <li>[INFERENCE] The Doha process's function, as understood by Kinshasa, is M23's eventual dissolution, not a power-sharing arrangement. This incompatibility makes a global peace agreement extremely unlikely without external coercive pressure.</li>
+          <li>[INFERENCE] Goma airport's continued closure for over a year represents an intentional M23 leverage mechanism, not merely a security concern, given the airport's humanitarian importance.</li>
+          <li>[INFERENCE] Chinese economic interests in DRC mines constrain Kinshasa's ability to restructure the security sector without outside support, contributing to FARDC's persistent fragility.</li>
+        </ul>
+      </div>
+      <div class="evidence-box">
+        <div class="evidence-box-header gap">WHAT WE DON'T KNOW</div>
+        <ul>
+          <li>The precise composition and command structure of RDF troops in eastern DRC, and whether the March 17-18 disengagement commitments reflect genuine force withdrawal planning.</li>
+          <li>The actual aggregate civilian displacement figure for Q1 2026; UNHCR September 2025 figure of 8.2 million may undercount current scale.</li>
+          <li>The degree to which M23's political wing (AFC) and its military wing have aligned objectives, or whether internal fractures exist that could create negotiating leverage.</li>
+          <li>Whether the US-DRC security MOU has been formalized beyond commitments and what specific capabilities or intelligence sharing have been transferred.</li>
+          <li>The status and operational capacity of MONUSCO's ceasefire monitoring role in South Kivu as of late March 2026.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <div class="sub-title">Key Drivers</div>
+      <p><strong>[FACT]</strong> Rwanda's documented military presence (RDF troops, weapons systems) in eastern DRC directly enables M23 territorial control at a scale no domestic insurgency could sustain independently.</p>
+      <p><strong>[FACT]</strong> The FDLR's presence in eastern DRC provides Rwanda's publicly stated justification for its security engagement, creating a structural circular dependency that neither side has incentive to resolve unilaterally.</p>
+      <p><strong>[INFERENCE]</strong> Eastern DRC's mineral wealth (coltan, gold, tungsten) constitutes an economic incentive system for Rwanda and M23 that operates independently of any political settlement, meaning economic actors must be addressed for any peace to hold.</p>
+      <p><strong>[INFERENCE]</strong> Kinshasa's domestic political constraints, including the Kabila death sentence in absentia and the alignment of opposition politicians with some AFC demands, reduce Tshisekedi's room for political compromise at the negotiating table.</p>
+    </div>
+
+    <div class="sub-section">
+      <div class="sub-title">Binding Constraints on Available Responses</div>
+      <p><strong>Structural:</strong> The DRC's state authority has never effectively penetrated eastern provinces; the absence of functional governance infrastructure means any ceasefire creates ungoverned space for 100+ armed groups.</p>
+      <p><strong>Political:</strong> Kinshasa cannot offer power-sharing to M23 without legitimizing armed rebellion as a political strategy, creating a precedent the government considers existential. M23 cannot disarm without guarantees it does not expect to receive.</p>
+      <p><strong>Resource:</strong> Humanitarian response is critically underfunded; 76% of 2025 requirements went unmet. Any peace dividend that depends on rapid reconstruction faces immediate funding failure.</p>
+      <p><strong>Temporal:</strong> The Doha framework's multi-pillar negotiation architecture requires months per pillar under favorable conditions; at current pace, a global peace agreement is beyond the 180-day horizon of this assessment.</p>
+    </div>
+
+    <div class="wsi-note">
+      <strong>WSI Source Independence Note:</strong> Key Judgment KJ-01 (peace framework failure) is corroborated by five independent analytical streams: UN News, the Security Council Report, International Crisis Group, CriticalThreats, and Al Jazeera. KJ-03 (drone escalation) is corroborated by three streams: AP/Britannica, Security Council Report, and ACLED data. KJ-06 (humanitarian funding collapse) is corroborated by four independent agency streams: OCHA, UNHCR, Concern Worldwide, and ACAPS. The M23 combatant figure of 27,000 is single-source (ICG) and is explicitly labeled as [INFERENCE] throughout. Rwanda's security coordination admission (January 2026 congressional testimony) is corroborated by Security Council Report and Reuters reporting cited in CriticalThreats. No social media or AI-generated content was used as evidence.
+    </div>
+  </section>
+
+  <!-- 06 // ANALYSIS -->
+  <section class="section" id="analysis">
+    <div class="section-header">
+      <span class="section-num">06 // STRUCTURED ANALYTIC TRADECRAFT</span>
+      <span class="section-title">Structured Analytic Tradecraft</span>
+    </div>
+    <p style="font-style:italic;color:var(--col-slate);font-size:13px;margin-bottom:1.5rem;">Techniques applied in this section: Five-Layer Strategic Cognition Map, Key Assumptions Check, Analysis of Competing Hypotheses (ACH), Indicators and Warnings (I&amp;W), Scenario Modeling.</p>
+
+    <div class="sub-section">
+      <div class="sub-title">Five-Layer Strategic Cognition Map</div>
+      <table class="layer-table">
+        <thead>
+          <tr>
+            <th style="width:15%">Layer Code</th>
+            <th>Assessment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="layer-code">L1 FOUNDATIONS</span><br><small style="color:var(--col-slate)">Structural roots</small></td>
+            <td>The DRC-Rwanda conflict is structurally rooted in the 1994 genocide's displacement of Hutu armed groups into eastern Congo, creating a permanent security dilemma for Kigali. Overlaid on this is the DRC's colonial-era administrative failure to integrate eastern provinces into the national state. Mineral wealth (cobalt, coltan, gold) sustains multiple armed actors economically independent of any political outcome. These foundations are not resolvable in the near term and will constrain any settlement.</td>
+          </tr>
+          <tr>
+            <td><span class="layer-code">L2 MECHANISMS</span><br><small style="color:var(--col-slate)">Operational levers</small></td>
+            <td>M23 operates via RDF military backing, ethnic Tutsi identity mobilization, parallel taxation and governance, and the AFC political coalition. FARDC operates via Wazalendo militia integration, Bayraktar drone strikes, external military partnerships (US, China), and MONUSCO logistical support. Neither mechanism is capable of delivering a decisive military outcome; the result is attrition warfare with periodic territorial shifts.</td>
+          </tr>
+          <tr>
+            <td><span class="layer-code">L3 DYNAMICS</span><br><small style="color:var(--col-slate)">Current trajectory</small></td>
+            <td>Q1 2026 is characterized by: (1) Drone escalation by both sides crossing previous tactical norms; (2) M23 consolidating governance while publicly committing to the Doha process; (3) The DRC deepening external military partnerships to compensate for FARDC fragility; (4) Peace frameworks accumulating violations faster than compliance; (5) Humanitarian systems approaching operational breakdown from funding starvation.</td>
+          </tr>
+          <tr>
+            <td><span class="layer-code">L4 LEVERAGE</span><br><small style="color:var(--col-slate)">Points of intervention</small></td>
+            <td>The highest-leverage intervention points are: (a) Sustained and targeted US sanctions on Rwanda until RDF disengagement is verifiable; (b) Operationalizing the EJVM ceasefire monitoring mechanism with real enforcement capacity; (c) Donor mobilization for the $1.4B humanitarian appeal to prevent secondary instability from collapsing the peace dividend; (d) Engagement with AFC's political wing to test whether internal fractures offer negotiating openings not accessible through M23's military leadership.</td>
+          </tr>
+          <tr>
+            <td><span class="layer-code">L5 PARADIGMS</span><br><small style="color:var(--col-slate)">Worldview shaping actors</small></td>
+            <td>Kigali's paradigm: eastern DRC is a permanent security threat that requires structural management, not a one-time military operation. M23/AFC paradigm: armed pressure is the only proven path to political recognition in the DRC system. Kinshasa's paradigm: any political concession to armed groups normalizes insurrection. These worldviews are not reconcilable through text-based frameworks alone; only shifts in the cost-benefit calculus of continued conflict (via sanctions, military reversal, or economic incentive) will alter them.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub-section">
+      <div class="sub-title">Key Assumptions Check</div>
+      <table class="assumption-table">
+        <thead>
+          <tr><th>ID</th><th>Assumption</th><th>Why It Matters</th><th>Risk if Wrong</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="id-cell">A-01</td>
+            <td>RDF troops remain actively embedded with M23 and will not withdraw ahead of verified FDLR neutralization.</td>
+            <td>Underpins KJ-01 and the assessment of peace framework failure. If RDF withdraws meaningfully, the entire conflict trajectory shifts.</td>
+            <td>Assessment overestimates intractability; peace is more achievable than assessed.</td>
+            <td><span class="status-pill red">Active</span></td>
+          </tr>
+          <tr>
+            <td class="id-cell">A-02</td>
+            <td>Both DRC and M23 negotiating positions are genuine, not merely performative stances designed to satisfy international mediators while continuing military operations.</td>
+            <td>Determines whether negotiation effort is worth investment or whether coercive pressure is the only effective lever.</td>
+            <td>If positions are performative, diplomatic resources are being misallocated by all mediators.</td>
+            <td><span class="status-pill amber">Active / Unverified</span></td>
+          </tr>
+          <tr>
+            <td class="id-cell">A-03</td>
+            <td>The humanitarian crisis will not trigger mass civilian unrest or urban breakdown in Goma, Bukavu, or Kinshasa at a scale that changes the political landscape in Q2 2026.</td>
+            <td>If civilian unrest escalates, Tshisekedi's domestic position weakens, which could either accelerate negotiations or produce internal instability that further distracts from the peace process.</td>
+            <td>Domestic instability in Kinshasa creates a second front that fragments the government's capacity to negotiate.</td>
+            <td><span class="status-pill amber">Active / Watch</span></td>
+          </tr>
+          <tr>
+            <td class="id-cell">A-04</td>
+            <td>The US will maintain its dual-track approach (sanctions + diplomacy) with Rwanda and will not choose between the two tracks under domestic political pressure.</td>
+            <td>US coherence is the primary external variable sustaining any residual compliance pressure on both parties. US withdrawal or reversal of sanctions would remove the only significant coercive mechanism currently active.</td>
+            <td>Loss of US leverage over Rwanda accelerates M23 entrenchment without a diplomatic counterweight.</td>
+            <td><span class="status-pill amber">Active</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub-section">
+      <div class="sub-title">Analysis of Competing Hypotheses (ACH)</div>
+      <table class="ach-table">
+        <thead>
+          <tr><th>Hypothesis</th><th>Evidence For</th><th>Evidence Against</th><th>Diagnosticity</th><th>Verdict</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>H1:</strong> The Doha/Washington peace frameworks will produce a durable ceasefire by end-Q2 2026.</td>
+            <td>March 17-18 Washington talks with concrete de-escalation steps; Lomé AU consolidation; US sanctions adding pressure.</td>
+            <td>Every prior ceasefire has been violated; maximalist positions unchanged; M23 continuing recruitment cycles; drone escalation in February-March 2026.</td>
+            <td>High: the absence of compliance behavior is strong diagnostic evidence against H1.</td>
+            <td><span class="status-pill red">REJECTED</span></td>
+          </tr>
+          <tr>
+            <td><strong>H2:</strong> M23 is consolidating control as leverage toward a negotiated power-sharing outcome, not permanent partition.</td>
+            <td>M23 maintains public commitment to Doha process; AFC political wing signals interest in governance reform, not secession.</td>
+            <td>Parallel state institutions now 12+ months old; bank closures, taxation, and civilian administration suggest permanence; four recruitment cycles indicate long-term force generation.</td>
+            <td>Moderate: both interpretations are consistent with observed behavior. H2 is not falsified but is weakened by consolidation depth.</td>
+            <td><span class="status-pill amber">UNCERTAIN</span></td>
+          </tr>
+          <tr>
+            <td><strong>H3:</strong> The conflict is fundamentally driven by Rwandan strategic and economic interests, not M23 political objectives, and cannot be resolved without a Rwanda-DRC bilateral settlement.</td>
+            <td>RDF troop presence; ambassador's admission of "security coordination"; UN documentation; US sanctions on RDF as entity; M23 combatant capability far exceeds indigenous insurgency norms.</td>
+            <td>AFC/M23 has articulated its own political platform; Bisimwa's statements indicate autonomous leadership; domestic Congolese grievances (CNDP legacy, Tutsi community security) are real.</td>
+            <td>High: evidence strongly supports the hypothesis that the Rwanda dimension is load-bearing, though Congolese dynamics are also real and not reducible to proxies.</td>
+            <td><span class="status-pill green">SUPPORTED</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size:13px;font-style:italic;color:var(--col-slate);margin-top:0.5rem;">Selected hypothesis: H3 is the most diagnostically supported. The conflict's resolution requires a durable Rwanda-DRC bilateral settlement with verified RDF withdrawal as a precondition, not merely an M23-government negotiation.</p>
+    </div>
+
+    <div class="sub-section">
+      <div class="sub-title">Indicators and Warnings</div>
+      <table class="iw-table">
+        <thead>
+          <tr><th>Indicator</th><th>Direction</th><th>Current Status</th><th>Threshold</th><th>Cadence</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>RDF troop presence in eastern DRC</td>
+            <td>Stable / Entrenched</td>
+            <td><span class="status-pill red">No change observed</span></td>
+            <td>Verified withdrawal of 30%+ of estimated RDF forces</td>
+            <td>Monthly</td>
+          </tr>
+          <tr>
+            <td>M23 recruitment cycle activity</td>
+            <td>Escalating</td>
+            <td><span class="status-pill red">4th cycle completed Feb 2026</span></td>
+            <td>Six-month hiatus in new recruitment announcements</td>
+            <td>Bi-monthly</td>
+          </tr>
+          <tr>
+            <td>FARDC drone strike frequency</td>
+            <td>Escalating sharply</td>
+            <td><span class="status-pill red">60+ strikes in Q1 2026</span></td>
+            <td>Drop below 5 strikes per month for 60 days</td>
+            <td>Weekly</td>
+          </tr>
+          <tr>
+            <td>Doha pillar negotiation progress</td>
+            <td>Stalled</td>
+            <td><span class="status-pill amber">Terms of Reference signed Feb 2, not operationalized</span></td>
+            <td>Signature of two additional pillars with implementation timeline</td>
+            <td>Monthly</td>
+          </tr>
+          <tr>
+            <td>Goma airport operational status</td>
+            <td>Closed (12+ months)</td>
+            <td><span class="status-pill red">Humanitarian flights suspended</span></td>
+            <td>Sustained reopening for humanitarian flights</td>
+            <td>Weekly</td>
+          </tr>
+          <tr>
+            <td>Humanitarian funding for 2026 HNRP</td>
+            <td>Critical shortfall</td>
+            <td><span class="status-pill red">24% of 2025 met; 2026 underfunded</span></td>
+            <td>50% of $1.4B appeal funded by end-Q2 2026</td>
+            <td>Monthly</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub-section">
+      <div class="sub-title">Scenario Modeling</div>
+      <div class="scenario-grid">
+        <div class="scenario-card best">
+          <div class="scenario-head">Best Case</div>
+          <div class="scenario-body">
+            <strong style="color:var(--col-green)">Partial Stabilization</strong><br>
+            US sanctions and sustained diplomatic pressure prompt Rwanda to begin verifiable RDF redeployment from defined areas. M23 suspends military operations in Masisi and Walikale. A monitored ceasefire takes hold in at least North Kivu by end of Q2 2026. Goma airport partially reopens for humanitarian flights. Humanitarian funding for the HNRP reaches 40-50% by mid-year.
+            <div class="scenario-prob">Probability: 10-15% | Trigger: Sustained US coercive pressure + RDF political recalculation</div>
+          </div>
+        </div>
+        <div class="scenario-card base">
+          <div class="scenario-head">Base Case</div>
+          <div class="scenario-body">
+            <strong style="color:var(--col-amber)">Prolonged Deadlock with Episodic Escalation</strong><br>
+            The Doha and Washington processes continue at low intensity without breakthrough. Drone warfare persists, with periodic intensity spikes following targeted strikes. M23 maintains its parallel state; FARDC makes limited territorial gains in isolated areas. The humanitarian crisis deepens, driven by funding collapse and access constraints. No agreement on the remaining six Doha pillars by end of 2026.
+            <div class="scenario-prob">Probability: 65-70% | Trigger: Status quo persistence with no structural change in actor incentives</div>
+          </div>
+        </div>
+        <div class="scenario-card worst">
+          <div class="scenario-head">Worst Case</div>
+          <div class="scenario-body">
+            <strong style="color:#e05050">Regional Escalation / Diplomatic Collapse</strong><br>
+            A major FARDC drone strike kills senior RDF personnel or Rwandan civilians, triggering Kigali to formalize military operations. Burundi-Rwanda tensions escalate to direct border incidents. The Doha process collapses entirely. A second FARDC offensive to retake Goma fails, triggering government instability in Kinshasa. Humanitarian system reaches operational breakdown in North and South Kivu.
+            <div class="scenario-prob">Probability: 15-20% | Trigger: Accidental escalation event or Kinshasa domestic political crisis</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 // BEHAVIORAL -->
+  <section class="section" id="behavioral">
+    <div class="section-header">
+      <span class="section-num">07 // BEHAVIORAL TRADECRAFT</span>
+      <span class="section-title">Applied Behavioral Tradecraft</span>
+    </div>
+    <div class="behavioral-note">
+      Justification: The behavioral layer is analytically relevant to this case because the conflict's continuation is substantially maintained by identity dynamics (Tutsi-Hutu legacy framing), legitimacy contestation between armed actors and state institutions, and incentive structures that make conflict economically rational for multiple actors. Behavioral analysis is applied only where evidence supports it and is not used for psychological speculation.
+    </div>
+    <div class="behavioral-grid">
+      <div class="behavioral-item">
+        <div class="behavioral-item-header">
+          <span class="behavioral-rank">01</span>
+          <span class="behavioral-driver">Legitimacy Contestation as a Force Multiplier</span>
+        </div>
+        <p>M23/AFC's public communications consistently frame its operations in the language of governance failure and civilian protection rather than insurgency. The use of "AFC" (Alliance Fleuve Congo) as a political umbrella and the construction of parallel institutions in Goma and Bukavu are behavioral signals of a legitimacy competition strategy, not a purely military one. This framing creates cognitive resonance among Congolese communities disillusioned with FARDC, generating passive support that is difficult for the state to counter through military means alone.</p>
+      </div>
+      <div class="behavioral-item">
+        <div class="behavioral-item-header">
+          <span class="behavioral-rank">02</span>
+          <span class="behavioral-driver">Ethnic Identity Activation and the FDLR Legitimation Loop</span>
+        </div>
+        <p>Both Rwanda and M23 systematically invoke FDLR presence as a threat to Tutsi communities, activating identity-based fear that generates both domestic support for Rwanda's engagement and local recruitment for M23. This is an observable [FACT]: the FDLR narrative appears in all major M23/Rwanda public communications. The behavioral effect is a legitimation loop that is self-reinforcing: FDLR inaction by Kinshasa confirms the narrative, regardless of actual FDLR operational threat level.</p>
+      </div>
+      <div class="behavioral-item">
+        <div class="behavioral-item-header">
+          <span class="behavioral-rank">03</span>
+          <span class="behavioral-driver">Economic Rationality of Continued Conflict for Armed Actors</span>
+        </div>
+        <p>The mineral economy of eastern DRC (coltan at Rubaya, gold in multiple territories) creates rational economic incentives for both M23 command structures and for Rwanda to maintain access rather than negotiate peace. The FARDC and Wazalendo also extract economic value from controlled territory and security contracts. This creates a multi-actor collective action problem where peace's economic costs to incumbents exceed the benefits of stability. Evidence: Rubaya is simultaneously a key mining site and the location of the February 24 drone strike that killed M23 spokesperson Ngoma, indicating active military-economic integration at target sites.</p>
+      </div>
+      <div class="behavioral-item">
+        <div class="behavioral-item-header">
+          <span class="behavioral-rank">04</span>
+          <span class="behavioral-driver">Influence and Narrative Vulnerabilities</span>
+        </div>
+        <p>M23's narrative control in Goma has been partially effective: Al Jazeera reporting from January 2026 documents residents noting improved security under M23 despite economic hardship. This creates an information environment where the humanitarian narrative (M23 causes suffering) competes with a local security narrative (M23 provides order). International communicators targeting Congolese civilian audiences must account for this split perception. Kinshasa's counter-narrative is weakened by the FARDC's own documented abuses and the absence of state services in returned areas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 // IMPLICATIONS -->
+  <section class="section" id="implications">
+    <div class="section-header">
+      <span class="section-num">08 // IMPLICATIONS, RISK &amp; RECOMMENDATIONS</span>
+      <span class="section-title">Strategic Implications, Risk Scoring &amp; Recommendations</span>
+    </div>
+
+    <div class="sub-section">
+      <div class="sub-title">A. Strategic Implications</div>
+      <p><strong>Local actors (DRC state, Congolese civilians):</strong> The Tshisekedi government faces an increasingly constrained strategic position. Its external military partnerships (US, China) compensate for FARDC fragility but do not resolve the fundamental governance and legitimacy deficit in eastern provinces. Civilians face compounding crises: active conflict, humanitarian system breakdown, epidemic surges, and economic collapse from banking closures and market disruption. The Kabila conviction in absentia signals the government's use of legal mechanisms to suppress opposition, which may backfire by broadening AFC's domestic political resonance.</p>
+      <p><strong>International actors (US, EU, UN):</strong> The US faces a strategic choice between its transactional interest in DRC minerals and security partnership and its stated commitment to the Washington Accords' implementation. Inconsistency between sanctions and diplomatic engagement signals that US pressure has a ceiling. MONUSCO's mandate is under review; its practical capacity to support ceasefire monitoring without access to M23-held territories is severely constrained. The ICG's January 2026 statement warning of continued violations signals international stakeholder frustration but limited actionable leverage.</p>
+      <p><strong>Regional actors (Rwanda, Burundi, Uganda, AU):</strong> Rwanda's position is structurally advantaged in the near term: it has acknowledged coordination with M23, absorbed US sanctions without strategic reversal, and continued to benefit from eastern DRC's economic integration into the Rwandan economy. The DRC-Burundi alignment creates a potential second axis of pressure on M23's southern flank, but Burundi-Rwanda bilateral tensions introduce escalation risk. The AU's transition to Togolese mediation under Gnassingbé adds institutional capacity but does not resolve the Angola-shaped diplomatic gap left when Luanda stepped back in March 2025.</p>
+    </div>
+
+    <div class="sub-section">
+      <div class="sub-title">B. Risk Scoring Matrix</div>
+      <table class="risk-matrix">
+        <thead>
+          <tr><th>Risk</th><th>Likelihood (1-5)</th><th>Impact (1-5)</th><th>Score</th><th>Mitigant</th></tr>
+        </thead>
+        <tbody>
+          <tr class="risk-high">
+            <td>Doha/Washington frameworks collapse without successor mechanism</td>
+            <td>4</td><td>5</td><td>20</td>
+            <td>Sustained US and Qatari engagement; AU facilitator continuity; incremental pillar-by-pillar approach</td>
+          </tr>
+          <tr class="risk-high">
+            <td>Drone strike kills RDF personnel or Rwandan civilians, triggering formal escalation</td>
+            <td>3</td><td>5</td><td>15</td>
+            <td>Deconfliction channel between FARDC and RDF; clear red lines on drone use communicated via mediators</td>
+          </tr>
+          <tr class="risk-high">
+            <td>Humanitarian system operational breakdown in North/South Kivu</td>
+            <td>4</td><td>4</td><td>16</td>
+            <td>Emergency donor mobilization; Goma airport reopening; humanitarian access agreements with M23</td>
+          </tr>
+          <tr>
+            <td>FARDC offensive failure triggers domestic political crisis in Kinshasa</td>
+            <td>3</td><td>4</td><td>12</td>
+            <td>US-DRC security MOU bolsters FARDC capacity; political management of public expectations on military outcomes</td>
+          </tr>
+          <tr>
+            <td>Burundi-Rwanda bilateral tensions escalate to military incident</td>
+            <td>2</td><td>4</td><td>8</td>
+            <td>High-level shuttle diplomacy; AU Gnassingbé mediation of Rwanda-Burundi track</td>
+          </tr>
+          <tr>
+            <td>M23 internal fracture between military and AFC political wings creates negotiating opportunity</td>
+            <td>2</td><td>3</td><td>6</td>
+            <td>Monitor for signals of AFC political wing divergence; engage AFC civilian leadership separately from M23 military</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub-section">
+      <div class="sub-title">C. Recommendations by Time Horizon</div>
+      <div class="rec-timeline">
+        <div class="rec-block">
+          <div class="rec-time red">0-72H IMMEDIATE</div>
+          <div class="rec-content">
+            <ul>
+              <li>Establish an emergency humanitarian air bridge to Goma via alternative routing or secured corridor, bypassing the closed main airport. Coordinate with MONUSCO and M23 on humanitarian flight assurances.</li>
+              <li>Issue joint US-EU public statement reaffirming consequences for Washington Accords violations, specifically naming drone strikes on civilian infrastructure as triggering further sanctions review.</li>
+              <li>Dispatch MONUSCO technical team to Uvira to operationalize the ceasefire monitoring function agreed on February 2, 2026, per the Doha terms of reference.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="rec-block">
+          <div class="rec-time amber">3-30 DAYS NEAR-TERM</div>
+          <div class="rec-content">
+            <ul>
+              <li>Convene emergency donor conference to close the 2026 humanitarian funding gap. Frame the $1.4B appeal as a conflict stabilization investment, not a development expenditure, to access security-budget donors.</li>
+              <li>US to present Rwanda with a structured compliance timeline for the March 17-18 disengagement commitments, with specific verifiable milestones and pre-stated sanctions triggers for non-compliance.</li>
+              <li>Initiate backchannel contact with AFC political wing leadership through Qatari intermediaries to probe whether positions diverge from M23 military command on the power-sharing question.</li>
+              <li>Coordinate with FARDC to impose a 30-day self-imposed pause on drone strikes against non-leadership targets as a confidence-building measure tied to M23 commitment to ceasefire terms of reference.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="rec-block">
+          <div class="rec-time green">30-180 DAYS MEDIUM-TERM</div>
+          <div class="rec-content">
+            <ul>
+              <li>Develop a sequenced economic incentive framework for Rwanda that links economic cooperation agreements (minerals, infrastructure) to verifiable RDF withdrawal, making peace economically competitive with continued engagement.</li>
+              <li>Accelerate the EJVM (Extended Joint Verification Mechanism) operationalization with real-time monitoring capacity, embedding MONUSCO, AU, and neutral state observers in a single command-and-control structure.</li>
+              <li>Commission an independent assessment of M23's parallel administrative capacity to identify governance components that could be incorporated into a transitional arrangement, reducing the binary choice between full legitimization and full dismantlement.</li>
+              <li>Initiate a DRC-Burundi-Rwanda trilateral security dialogue under AU facilitation to address the southern DRC-Burundi border dimension and prevent the Burundi axis from becoming a secondary front.</li>
+              <li>Develop a post-conflict economic recovery plan for eastern DRC with Chinese and US investment frameworks, as Chinese-held mining infrastructure provides a significant lever for Beijing's constructive engagement if mobilized.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 // CONFIDENCE -->
+  <section class="section" id="confidence">
+    <div class="section-header">
+      <span class="section-num">09 // CONFIDENCE &amp; UNCERTAINTIES</span>
+      <span class="section-title">Confidence Statement and Uncertainties</span>
+    </div>
+    <div class="conf-panel">
+      <div class="conf-header">Overall Confidence: MODERATE</div>
+      <div class="conf-body">
+        <p>This assessment carries a <strong>MODERATE</strong> overall confidence rating for the following reasons:</p>
+        <p><strong>(1) Evidence quality is solid for observable facts but degraded for actor intentions:</strong> The documented facts of the conflict (territorial control, ceasefire texts, drone strike counts, humanitarian statistics) are corroborated by multiple independent streams. However, the intentions of key actors, particularly Rwanda's calculus on RDF withdrawal and M23's genuine vs. performative commitment to the Doha process, rest on inference and single-stream claims rather than verifiable behavioral evidence.</p>
+        <p><strong>(2) M23 combatant figures are single-source:</strong> The 27,000 combatant estimate from ICG (December 2025) has not been independently corroborated by a second primary source with direct access. This figure drives several risk assessments and is labeled as [INFERENCE] throughout, but its centrality to the analysis introduces uncertainty into force balance calculations.</p>
+        <p><strong>(3) Rapidly evolving situation with significant information gaps:</strong> The March 17-18 Washington talks occurred within the assessment window and their operational implications are not yet observable. MONUSCO's operational status in South Kivu as of late March remains unclear in open sources. The degree to which US sanctions have changed Rwanda's internal decision-making is unknown.</p>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <div class="sub-title">Flip-Risk Uncertainties</div>
+      <div class="uncertainty-list">
+        <div class="uncertainty-item">
+          <strong>Flip Risk 1: Rwanda announces a genuine and verifiable phased RDF withdrawal.</strong> If Rwanda, under escalating US economic pressure or a change in Kagame's strategic calculation, announces a credible and timed withdrawal of RDF forces from defined eastern DRC territories with international monitoring, the entire assessment trajectory shifts toward the best-case scenario. No current signals support this, but the March 17-18 disengagement commitments create a formal framework within which it could occur.
+        </div>
+        <div class="uncertainty-item">
+          <strong>Flip Risk 2: A major escalatory incident (accidental or deliberate) collapses both diplomatic tracks simultaneously.</strong> A FARDC drone strike that kills identifiable RDF or Rwandan civilian personnel, or an M23 attack on a strategic FARDC or MONUSCO installation, could trigger responses that make diplomatic engagement politically impossible for either party. This would accelerate the worst-case scenario on a shorter timeline than currently assessed.
+        </div>
+        <div class="uncertainty-item">
+          <strong>Flip Risk 3: AFC political wing publicly breaks with M23 military command on withdrawal.</strong> If AFC's political leadership publicly endorses a phased restoration of Congolese state authority in exchange for defined political guarantees, this would create an internal split that Kinshasa and mediators could exploit to disaggregate the political and military dimensions of the conflict. Current evidence does not support this, but the AFC's stated political ambitions (governance reform, not secession) leave conceptual space for this divergence.
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <div class="sub-title">Assumption Failure Drill</div>
+      <table class="assumption-table">
+        <thead>
+          <tr><th>Assumption</th><th>Failure Signal</th><th>Consequence</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A-01: RDF troops remain actively embedded with M23 and will not withdraw ahead of FDLR neutralization.</td>
+            <td>Verifiable reports from MONUSCO, UN Group of Experts, or satellite imagery of RDF force reduction in at least two defined operational areas.</td>
+            <td>The primary driver of M23's military capability diminishes; the conflict shifts from a proxy war to a domestic insurgency with significantly lower risk of regional escalation. Peace frameworks become more actionable.</td>
+          </tr>
+          <tr>
+            <td>A-04: The US will maintain its dual-track approach with Rwanda without choosing between sanctions and diplomacy.</td>
+            <td>US revocation or non-renewal of March 2 RDF sanctions, or US public statement prioritizing the Washington Accords over accountability for Accords violations.</td>
+            <td>The principal external coercive mechanism available to enforce compliance disappears. Rwanda faces no material cost for continued engagement in eastern DRC. M23 consolidation becomes the permanent default trajectory with no incentive to negotiate.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 10 // REFERENCES -->
+  <section class="section" id="references">
+    <div class="section-header">
+      <span class="section-num">10 // REFERENCES</span>
+      <span class="section-title">Source Register and WSI Audit</span>
+    </div>
+    <table class="ref-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Source</th>
+          <th>Type</th>
+          <th>Band</th>
+          <th>Independence Note</th>
+          <th>URL / Locator</th>
+          <th>Atomic Claim / Falsifiability</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Wikipedia: M23 Campaign (2022-present)</td>
+          <td>Secondary / Aggregator</td>
+          <td><span class="band-pill amber">AMBER</span></td>
+          <td>Aggregates multiple primary sources; does not constitute an independent stream but provides event chronology cross-reference.</td>
+          <td>en.wikipedia.org/wiki/M23_campaign</td>
+          <td>Goma fell January 27, 2025; M23 announced march on Kinshasa. Falsifiable via contemporaneous news records.</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Al Jazeera: Banks Shut, One Year After M23 Seized Goma</td>
+          <td>News / Field Reporting</td>
+          <td><span class="band-pill green">GREEN</span></td>
+          <td>On-the-ground field reporting with named sources; independent of UN institutional reporting.</td>
+          <td>aljazeera.com/features/2026/1/29/...</td>
+          <td>Banks remain closed in Goma one year after M23 seizure; civilian economic hardship described. Falsifiable via business registration or banking operational records.</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>UN News: M23 Talks Progress, Violence Persists (Feb 5, 2026)</td>
+          <td>Institutional / UN</td>
+          <td><span class="band-pill green">GREEN</span></td>
+          <td>UN institutional; independent of government and NGO reporting streams.</td>
+          <td>news.un.org/en/story/2026/02/1166899</td>
+          <td>February 2 ceasefire terms of reference signed; situation remains volatile. Falsifiable via Security Council records.</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>International Crisis Group: The M23 Offensive - Elusive Peace (Dec 22, 2025)</td>
+          <td>Analytical / Think Tank</td>
+          <td><span class="band-pill green">GREEN</span></td>
+          <td>Independent conflict analysis organization; not affiliated with any party to the conflict. High analytical credibility.</td>
+          <td>crisisgroup.org/africa/.../320-m23-offensive</td>
+          <td>M23 and political wing (AFC) control largest rebel area since 1990s; 27,000 combatant estimate as of December 2025. Combatant figure labeled single-source inference.</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>CFR Global Conflict Tracker: DRC (Updated Feb 2026)</td>
+          <td>Analytical / Secondary</td>
+          <td><span class="band-pill amber">AMBER</span></td>
+          <td>Secondary analytical source; synthesizes primary reports but does not constitute independent primary reporting.</td>
+          <td>cfr.org/global-conflict-tracker/conflict/violence-drc</td>
+          <td>M23 ceasefire declared February 4 2025; 900-2000 killed in Goma offensive. Figures from UN and DRC government estimates with divergence noted.</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Defcon Level: DRC Congo Conflict 2026</td>
+          <td>Secondary / Web</td>
+          <td><span class="band-pill amber">AMBER</span></td>
+          <td>Secondary aggregator; provides contextual framing but is not an independent primary source. Used for background only.</td>
+          <td>defconlevel.com/drc-congo-conflict</td>
+          <td>Background contextual claims on conflict structure. Not used for key judgments.</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Britannica / AP Newsfeed: M23 (Updated Mar 24, 2026)</td>
+          <td>Reference with Live AP Integration</td>
+          <td><span class="band-pill green">GREEN</span></td>
+          <td>Live AP wire integration provides primary news corroboration. AP is independent of Britannica's reference function.</td>
+          <td>britannica.com/topic/March-23-Movement</td>
+          <td>171 bodies found in mass graves Feb 26; M23 senior official killed by drone strike Feb 24; journalists held in containers Mar 24. Independently falsifiable via AP wire archives.</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>OCHA: Democratic Republic of the Congo (Ongoing)</td>
+          <td>Institutional / Humanitarian</td>
+          <td><span class="band-pill green">GREEN</span></td>
+          <td>Primary humanitarian institutional reporting; independent of government and armed actor streams.</td>
+          <td>unocha.org/democratic-republic-congo</td>
+          <td>5.35 million displaced in 2025; 26.6 million food insecure; epidemic outbreaks ongoing. Falsifiable via IOM Displacement Tracking Matrix.</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>NPR: M23 War in Eastern DRC (Feb 26, 2026)</td>
+          <td>News / Field Reporting</td>
+          <td><span class="band-pill green">GREEN</span></td>
+          <td>Independent US public media; field reporting from behind government front lines.</td>
+          <td>npr.org/2026/02/26/nx-s1-5727883/...</td>
+          <td>Fighting continues in South Kivu despite US peace deal. Wazalendo fighters documented January 30, 2026.</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Security Council Report: DRC Closed Consultations (March 2026)</td>
+          <td>Institutional / UNSC Analysis</td>
+          <td><span class="band-pill green">GREEN</span></td>
+          <td>Independent UN Security Council monitoring organization; primary documentary access. High reliability for formal UNSC activities.</td>
+          <td>securitycouncilreport.org/.../drc-closed-consultations</td>
+          <td>60+ FARDC drone strikes since January; Ngoma killed Feb 24; M23 airport strike Feb 2; US sanctions on RDF March 2. Falsifiable via UNSC records and ACLED data.</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>US State Department: Joint Statement on Washington Accords (Mar 17-18, 2026)</td>
+          <td>Government / Primary</td>
+          <td><span class="band-pill green">GREEN</span></td>
+          <td>Primary government statement; authoritative on US government position. Not independent on DRC/Rwanda compliance claims.</td>
+          <td>state.gov/releases/.../joint-statement-washington-accords</td>
+          <td>DRC and Rwanda agreed to coordinated de-escalation steps on March 17-18, 2026. Falsifiable via subsequent implementation reports.</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>Wikipedia: 2025 DRC-Rwanda Peace Agreement</td>
+          <td>Secondary / Aggregator</td>
+          <td><span class="band-pill amber">AMBER</span></td>
+          <td>Aggregates primary treaty texts and diplomatic chronology. Used for timeline verification only.</td>
+          <td>en.wikipedia.org/wiki/2025_DRC-Rwanda_peace_agreement</td>
+          <td>M23 withdrew from Uvira January 17, 2026; Lomé conference January 17, 2026. Falsifiable via Reuters and AFP archives.</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>Security Council Report: DRC March 2026 Monthly Forecast</td>
+          <td>Institutional / UNSC Analysis</td>
+          <td><span class="band-pill green">GREEN</span></td>
+          <td>Independent institutional analysis of UNSC activities. Primary access to resolution texts and Secretary-General reporting.</td>
+          <td>securitycouncilreport.org/.../drc-33.php</td>
+          <td>Ceasefire violations traded; February 2 terms of reference signed; MONUSCO field mission to Uvira. Falsifiable via UNSC resolutions 2773 and 2808.</td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td>CriticalThreats: Deadlock in the DRC (AEI, March 2026)</td>
+          <td>Analytical / Think Tank</td>
+          <td><span class="band-pill green">GREEN</span></td>
+          <td>American Enterprise Institute conflict analysis. Independent of UN and government institutional tracks. Cites Reuters and primary government sources directly.</td>
+          <td>criticalthreats.org/analysis/deadlock-in-the-drc</td>
+          <td>M23 recruitment February 2026; 27,000 combatants (ICG); AFRICOM engagement January-February 2026; Muyaya statement mid-March 2026. AEI is independent of DRC and Rwanda governments.</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td>CriticalThreats: DRC M23 Doha Peace Framework (Nov 2025)</td>
+          <td>Analytical / Think Tank</td>
+          <td><span class="band-pill green">GREEN</span></td>
+          <td>Same source organization as [14]; used for background on Doha process structure.</td>
+          <td>criticalthreats.org/analysis/drc-m23-doha-peace-framework</td>
+          <td>Framework nonbinding; six pillars unresolved; head of M23 delegation described path as "still long." Falsifiable via Doha framework text.</td>
+        </tr>
+        <tr>
+          <td>16</td>
+          <td>Al Jazeera: M23-DRC Peace Talks in Doha Stalled (Aug 2025)</td>
+          <td>News</td>
+          <td><span class="band-pill green">GREEN</span></td>
+          <td>Independent news reporting; used for M23 spokesperson statements and negotiating position documentation.</td>
+          <td>aljazeera.com/news/2025/8/19/m23-dr-congo-peace-talks-stalled</td>
+          <td>M23 missed signing session; Kanyuka: "We are in Goma...not going to get out." Falsifiable via contemporaneous AP and Reuters reports.</td>
+        </tr>
+        <tr>
+          <td>17</td>
+          <td>ICG Statement via GlobalSecurity.org (March 5, 2026)</td>
+          <td>Institutional / Multilateral</td>
+          <td><span class="band-pill green">GREEN</span></td>
+          <td>International Contact Group (US, EU, UK, France, Germany, etc.) joint statement. Independent of any single government position.</td>
+          <td>globalsecurity.org/.../mil-260305-ffo01.htm</td>
+          <td>ICG condemns ceasefire violations; commends Gnassingbé mediation; Goma airport used for MONUSCO visit. Falsifiable via ICG member government official statements.</td>
+        </tr>
+        <tr>
+          <td>21</td>
+          <td>OCHA: Humanitarian Funding Gap Press Release (Jan 28, 2026)</td>
+          <td>Institutional / Humanitarian</td>
+          <td><span class="band-pill green">GREEN</span></td>
+          <td>Primary OCHA institutional release. Independent of government and armed actor reporting.</td>
+          <td>unocha.org/publications/report/drc/facing-critical-funding-gap</td>
+          <td>$1.4B appeal launched January 28, 2026; 14.9 million people require aid; 2025 only 24% funded. Falsifiable via OCHA Financial Tracking Service.</td>
+        </tr>
+        <tr>
+          <td>23</td>
+          <td>ACAPS: DRC Crisis Analysis (February 2026)</td>
+          <td>Humanitarian Analytics</td>
+          <td><span class="band-pill green">GREEN</span></td>
+          <td>ACAPS is independent of UN institutional reporting though it collaborates on JIAF. Primary analytical organization for humanitarian severity assessments.</td>
+          <td>acaps.org/en/countries/drc</td>
+          <td>Over 200,000 displaced in Minembwe highlands by February 23, 2026; 62,000 asylum seekers to Burundi since February 14. Falsifiable via UNHCR registration data.</td>
+        </tr>
+        <tr>
+          <td>27</td>
+          <td>UNHCR: DR Congo Emergency (Updated 2026)</td>
+          <td>Institutional / Humanitarian</td>
+          <td><span class="band-pill green">GREEN</span></td>
+          <td>UN refugee agency; independent stream from OCHA, ACAPS, and IOM. Cross-corroborates displacement figures.</td>
+          <td>unhcr.org/us/emergencies/dr-congo-emergency</td>
+          <td>8.2 million displaced by September 2025; projected 9 million by end-2026; 28 million food insecure. Falsifiable via IOM DTM and WFP food security monitoring.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="band-key">
+      <strong>BAND KEY:</strong> GREEN = primary or directly accountable source with verifiable editorial standards and named authors/institutions; AMBER = secondary source, aggregator, or source with limited editorial accountability; RED = single-source, unverified, anonymous, or AI-generated content (not used in this assessment for key judgments).<br><br>
+      <strong>Independence Test:</strong> Multiple outlets reporting the same event from the same upstream wire service (e.g., multiple papers citing the same Reuters dispatch) count as ONE corroboration stream, not multiple. This assessment treats OCHA, UNHCR, ACAPS, IOM, ICG, Security Council Report, CriticalThreats, and Al Jazeera/NPR as separate independent streams. UN News, while UN-branded, draws on different institutional sources than OCHA for analytical purposes.
+    </div>
+    <p class="independence-stmt">No social media content, anonymous posts, or AI-generated material was used as evidence in this assessment. All factual claims are either confirmed from GREEN-band sources or explicitly labeled as [INFERENCE] or [ASSUMPTION] where evidence is incomplete.</p>
+  </section>
+
+  <!-- ANNEX A -->
+  <section class="section" id="annexa">
+    <div class="section-header">
+      <span class="section-num">ANNEX A // EARLY WARNING</span>
+      <span class="section-title">Early Warning Indicators</span>
+    </div>
+    <table class="annex-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Trigger Event</th>
+          <th>Scenario Signal</th>
+          <th>Leading Indicators</th>
+          <th>Analytic Action Required</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="id-cell">EWI-01</td>
+          <td>Rwanda formally announces RDF withdrawal from defined eastern DRC areas with international monitoring commitment.</td>
+          <td>Best Case: Partial Stabilization pathway opens.</td>
+          <td>Change in Rwanda's public messaging on "security coordination" framing; MONUSCO or UN Group of Experts documentation of RDF force reduction; satellite imagery of RDF camp activity changes.</td>
+          <td>Upgrade confidence in peace framework viability; revise base case scenario probabilities upward toward best case; alert humanitarian partners to plan for potential return window.</td>
+        </tr>
+        <tr>
+          <td class="id-cell">EWI-02</td>
+          <td>M23 launches fifth major recruitment cycle or announces expansion of parallel administrative structures to new territory outside North/South Kivu.</td>
+          <td>Worst Case: Partition trajectory accelerating.</td>
+          <td>Reports of new recruitment drives in Maniema or Ituri; M23 administrative appointments in new territories; expansion of M23 taxation network to new geographic areas.</td>
+          <td>Revise KJ-02 from "consolidation" to "expansion" posture; escalate to senior decision-maker; assess implications for FARDC defensive posture and MONUSCO mandate.</td>
+        </tr>
+        <tr>
+          <td class="id-cell">EWI-03</td>
+          <td>FARDC drone strike kills identifiable RDF personnel or causes Rwandan civilian casualties inside DRC territory under RDF operational control.</td>
+          <td>Worst Case: Formal Rwanda-DRC military confrontation.</td>
+          <td>Reports of RDF casualties in FARDC strike areas; Rwanda government statements using language of "attack on Rwanda" or invoking Article 51 (UN Charter self-defense); RDF troop movements toward DRC border.</td>
+          <td>Immediate escalation alert; notify diplomatic channel contacts in Washington and Doha; assess ceasefire framework collapse risk; prepare worst-case scenario contingency brief.</td>
+        </tr>
+        <tr>
+          <td class="id-cell">EWI-04</td>
+          <td>US revokes or suspends March 2 sanctions on RDF or Rwandan military officials.</td>
+          <td>Worst Case: Loss of primary external coercive pressure.</td>
+          <td>US State Department or Treasury statements modifying sanction language; bilateral US-Rwanda meetings not involving DRC; change in AFRICOM tone on Rwanda-DRC diplomatic balance.</td>
+          <td>Revise Assumption A-04 to FAILED; reassess all recommendations dependent on US leverage; escalate to principal-level for strategic reassessment.</td>
+        </tr>
+        <tr>
+          <td class="id-cell">EWI-05</td>
+          <td>Humanitarian system operational breakdown: OCHA declares emergency suspension of services in North Kivu due to access denial or funding exhaustion.</td>
+          <td>Worst Case: Secondary instability accelerator activated.</td>
+          <td>OCHA or cluster partners announcing suspension of food distribution, health services, or IDP support in North or South Kivu; reports of IDP camp collapse or mass civilian movement without humanitarian coverage; disease outbreak declarations (cholera, mpox) crossing provincial thresholds.</td>
+          <td>Escalate humanitarian funding advocacy to highest priority; assess secondary instability cascade (predatory governance, militia recruitment surge, civilian displacement into Burundi/Uganda at scale); revise scenario probabilities.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ANNEX B -->
+  <section class="section" id="annexb">
+    <div class="section-header">
+      <span class="section-num">ANNEX B // INTEL GAPS</span>
+      <span class="section-title">Priority Intelligence Gaps &amp; Action Thresholds</span>
+    </div>
+
+    <div class="sub-section">
+      <div class="sub-title">B.1 Priority Intelligence Gaps</div>
+      <table class="pig-table">
+        <thead>
+          <tr>
+            <th>Gap ID</th>
+            <th>Intelligence Question</th>
+            <th>Why It Matters</th>
+            <th>Collection Recommendation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="id-cell">Gap-01</td>
+            <td>What are the specific disengagement benchmarks and timelines agreed by DRC and Rwanda in the March 17-18 Washington meetings, and what verification mechanism applies?</td>
+            <td>Without knowing the specific commitments, it is impossible to assess whether the Washington Accords are being implemented or violated, which is the primary determinant of whether the peace framework is functional.</td>
+            <td>Monitor US State Department follow-on statements; request MONUSCO reporting on force position changes; cross-reference with UN Group of Experts reporting cycles.</td>
+          </tr>
+          <tr>
+            <td class="id-cell">Gap-02</td>
+            <td>Does the AFC political wing hold positions on the power-sharing question that diverge meaningfully from M23 military command, and are there individuals within AFC who would support a phased restoration of Congolese state authority?</td>
+            <td>An internal AFC-M23 divergence is the primary potential source of a negotiating breakthrough not available through direct Kinshasa-M23 engagement. It is the scenario that could most rapidly change the base case trajectory.</td>
+            <td>Track AFC political wing statements separately from M23 military statements; monitor Bisimwa and Nangaa public communications for divergence signals; engage regional diplomatic contacts with access to AFC civilian leadership.</td>
+          </tr>
+          <tr>
+            <td class="id-cell">Gap-03</td>
+            <td>What is Rwanda's internal economic cost-benefit calculation for continued RDF deployment in eastern DRC, specifically regarding mineral revenue flows vs. sanctions and diplomatic costs?</td>
+            <td>This is the load-bearing assumption for the entire assessment. If the economic cost of continued engagement exceeds the benefits, Rwanda's calculus is amendable to shifting through targeted sanctions; if not, diplomatic instruments are insufficient.</td>
+            <td>Monitor Rwandan GDP and export data for indicators of minerals revenue from DRC; track impact of US March 2 sanctions on Rwandan banking and international financial access; analyze Rwandan budget allocations for defense sector changes.</td>
+          </tr>
+          <tr>
+            <td class="id-cell">Gap-04</td>
+            <td>What is the current actual displaced population figure for Q1 2026, given that UNHCR's most recent comprehensive figure is from September 2025 and conditions have deteriorated?</td>
+            <td>Accurate displacement figures are required to size the humanitarian response, prioritize geographic interventions, and assess secondary instability risk from ungoverned population movements.</td>
+            <td>IOM Displacement Tracking Matrix update request; ACAPS emergency situation assessment; UNHCR Regional Bureau for West and Central Africa immediate operational update.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub-section">
+      <div class="sub-title">B.2 Action Thresholds</div>
+      <div class="threshold-grid">
+        <div class="threshold-cell green-zone">
+          <div class="threshold-head">GREEN // MONITOR</div>
+          <div class="threshold-body">
+            <strong>Condition:</strong> Current situation with no major escalation event. Peace frameworks still nominally active. Drone strikes at current or lower frequency. Humanitarian system strained but operationally functional in core areas.
+            <br><br>
+            <strong>Required Actions:</strong> Continue current monitoring cadence. Weekly review of Security Council reporting and OCHA flash updates. Monthly scenario probability review. Maintain contact with diplomatic and humanitarian network.
+            <br><br>
+            <strong>Responsible Parties:</strong> Analyst team; humanitarian partners; diplomatic contacts.
+          </div>
+        </div>
+        <div class="threshold-cell amber-zone">
+          <div class="threshold-head">AMBER // ACT NOW</div>
+          <div class="threshold-body">
+            <strong>Condition:</strong> One or more of the following: (a) M23 fifth recruitment cycle announced; (b) FARDC drone strike kills RDF personnel and Rwanda issues formal protest; (c) OCHA flash appeal for emergency supplemental funding in North or South Kivu; (d) US signals softening on RDF sanctions; (e) Doha process suspended by either party.
+            <br><br>
+            <strong>Required Actions:</strong> Escalate to principal-level decision-makers. Activate diplomatic emergency contacts. Commission immediate situation update brief. Review all programmatic and personnel decisions dependent on current assessment.
+            <br><br>
+            <strong>Responsible Parties:</strong> Senior analyst; principal decision-maker; diplomatic liaison.
+          </div>
+        </div>
+        <div class="threshold-cell red-zone">
+          <div class="threshold-head">RED // EMERGENCY</div>
+          <div class="threshold-body">
+            <strong>Condition:</strong> One or more of the following: (a) Rwanda formally declares military operations in DRC or invokes self-defense; (b) Both Doha and Washington processes simultaneously suspended; (c) Tshisekedi government faces coup attempt or rapid domestic instability event; (d) OCHA declares humanitarian access entirely denied in North and/or South Kivu; (e) Armed group attacks on MONUSCO personnel resulting in fatalities triggering mandate review.
+            <br><br>
+            <strong>Required Actions:</strong> Immediate all-partner notification. Activate emergency protocols. Issue rapid-cycle situation report within 24 hours. Reassess all active recommendations as void. Engage US, EU, and AU emergency contacts.
+            <br><br>
+            <strong>Responsible Parties:</strong> Organizational leadership; partner network; crisis communication leads.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-brand">Quanta Analytica Process&#8482; | MNS Consulting</div>
+  <div class="footer-doc-id">QAP-CSA-FGM-COD-2026-0325 | Q1-2026 DRC Geopolitical &amp; Security Assessment | 25 March 2026</div>
+  <p class="footer-disclaimer">This report is produced using the Quanta Analytica Process&#8482;, a framework-governed intelligence methodology. All analysis is based on open-source information. Claims are evidence-sourced, inference-labeled, or explicitly identified as assumptions. This document does not constitute legal, financial, or operational advice. Sources are accurate as of the date of publication.</p>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    const p = h > 0 ? (window.scrollY / h) * 100 : 0;
+    document.getElementById('progress').style.width = p + '%';
+  });
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.section').forEach(s => obs.observe(s));
+</script>
+
+</body>
+</html>
