@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Africa Mining Risk Assessment 2026 | Quanta Analytica Process™ | 26 MAR 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:#0a0c10;--bg-card:#111318;--bg-card-alt:#13161c;
+      --border:#1f2330;--border-mid:#2a2f40;
+      --gold:#c9a84c;--gold-dim:#8a6f2e;--gold-pale:#e8d9a8;
+      --slate:#8898b0;--slate-light:#a8bad0;
+      --white:#e8edf4;--white-dim:#b0bccf;
+      --red:#d94040;--red-dim:#7a1f1f;--red-pale:#2a1010;
+      --amber:#c9813a;--amber-dim:#7a4e20;--amber-pale:#251808;
+      --green:#3a9a5c;--green-dim:#1f6035;--green-pale:#0a1f12;
+      --blue:#3a7abf;--blue-pale:#0c1d30;
+      --font-mono:'IBM Plex Mono',monospace;
+      --font-sans:'IBM Plex Sans',sans-serif;
+      --font-serif:'Libre Baskerville',serif;
+      --max-width:1000px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--white);font-family:var(--font-sans);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+    #progress{position:fixed;top:0;left:0;height:3px;background:var(--gold);width:0;z-index:9999;transition:width 0.1s linear}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,12,16,0.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px}
+    .nav-brand{font-family:var(--font-mono);font-size:0.65rem;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase}
+    .nav-classify{font-family:var(--font-mono);font-size:0.6rem;background:var(--red-dim);color:var(--red);border:1px solid var(--red-dim);padding:0.2rem 0.7rem;letter-spacing:0.1em;text-transform:uppercase}
+    .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:6rem 2rem 3rem;overflow:hidden;background:radial-gradient(ellipse at 20% 50%,rgba(201,168,76,0.06) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(58,122,191,0.05) 0%,transparent 50%),var(--bg)}
+    .hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;opacity:0.3;mask-image:radial-gradient(ellipse at center,black 30%,transparent 80%)}
+    .hero-running{font-family:var(--font-mono);font-size:0.6rem;color:var(--gold-dim);letter-spacing:0.15em;text-transform:uppercase;display:flex;justify-content:space-between;margin-bottom:2rem}
+    .hero-title{font-family:var(--font-serif);font-size:clamp(2rem,5vw,3.4rem);font-weight:700;color:var(--white);line-height:1.15;max-width:850px;margin-bottom:1rem}
+    .hero-subtitle{font-family:var(--font-sans);font-size:1rem;color:var(--slate-light);max-width:700px;margin-bottom:1.8rem}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:1.8rem}
+    .meta-cell{background:var(--bg-card);border:1px solid var(--border);padding:0.5rem 1rem;font-family:var(--font-mono);font-size:0.6rem;color:var(--slate);letter-spacing:0.08em}
+    .meta-cell span{color:var(--gold-pale);display:block;font-size:0.65rem}
+    .threat-badge{display:inline-flex;align-items:center;gap:0.5rem;background:var(--red-pale);border:1px solid var(--red-dim);padding:0.5rem 1rem;font-family:var(--font-mono);font-size:0.6rem;color:var(--red);letter-spacing:0.08em;text-transform:uppercase}
+    .threat-dot{width:7px;height:7px;border-radius:50%;background:var(--red);animation:blink 1.4s ease-in-out infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+    .scope-boundary{font-family:var(--font-sans);font-style:italic;font-size:0.8rem;color:var(--blue);border-left:2px solid var(--blue);padding-left:1rem;max-width:800px;line-height:1.6}
+    main{max-width:var(--max-width);margin:0 auto;padding:4rem 2rem 6rem}
+    .section{margin-bottom:3rem;opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+    .section.visible{opacity:1;transform:none}
+    .section-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.8rem;padding-bottom:0.8rem;border-bottom:1px solid var(--border)}
+    .section-num{font-family:var(--font-mono);font-size:0.6rem;color:var(--gold);letter-spacing:0.12em;background:rgba(201,168,76,0.08);border:1px solid var(--gold-dim);padding:0.25rem 0.7rem;white-space:nowrap}
+    .section-title{font-family:var(--font-serif);font-size:1.3rem;color:var(--white);font-weight:400}
+    .bluf-grid{display:flex;flex-direction:column;gap:1.2rem}
+    .bluf-item{display:grid;grid-template-columns:2.5rem 1fr;gap:1rem;align-items:start;background:var(--bg-card);border:1px solid var(--border);border-left:3px solid var(--gold);padding:1.2rem 1.4rem}
+    .bluf-index{font-family:var(--font-mono);font-size:1.1rem;color:var(--gold-pale);font-weight:600;padding-top:0.1rem}
+    .bluf-text strong{display:block;font-family:var(--font-sans);font-size:0.85rem;font-weight:600;color:var(--gold-pale);margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:0.05em}
+    .bluf-text p{color:var(--white-dim);font-size:0.88rem}
+    cite{font-style:normal;color:var(--gold-dim);font-size:0.75rem;font-family:var(--font-mono)}
+    .kiq-table,.assumption-table,.ach-table,.iw-table,.pig-table,.risk-matrix,.ref-table,.five-layer-table{width:100%;border-collapse:collapse;font-size:0.82rem}
+    .kiq-table th,.assumption-table th,.ach-table th,.iw-table th,.pig-table th,.risk-matrix th,.ref-table th,.five-layer-table th{background:rgba(201,168,76,0.08);border:1px solid var(--border-mid);color:var(--gold-pale);font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.6rem 0.8rem;text-align:left}
+    .kiq-table td,.assumption-table td,.ach-table td,.iw-table td,.pig-table td,.risk-matrix td,.ref-table td,.five-layer-table td{border:1px solid var(--border);padding:0.6rem 0.8rem;color:var(--white-dim);vertical-align:top;line-height:1.5}
+    .kiq-table tr:nth-child(even) td,.assumption-table tr:nth-child(even) td,.ach-table tr:nth-child(even) td,.iw-table tr:nth-child(even) td,.pig-table tr:nth-child(even) td,.risk-matrix tr:nth-child(even) td,.ref-table tr:nth-child(even) td{background:rgba(255,255,255,0.015)}
+    .kiq-id{font-family:var(--font-mono);font-size:0.7rem;color:var(--gold);font-weight:600;white-space:nowrap}
+    .snapshot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--border)}
+    .snapshot-cell{background:var(--bg-card);padding:1.2rem 1.4rem}
+    .snapshot-label{font-family:var(--font-mono);font-size:0.58rem;color:var(--gold);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.5rem}
+    .snapshot-cell p{color:var(--white-dim);font-size:0.85rem;line-height:1.55}
+    .kj-list{display:flex;flex-direction:column;gap:1rem}
+    .kj-item{background:var(--bg-card);border:1px solid var(--border);padding:1.2rem 1.4rem;display:grid;grid-template-columns:90px 1fr;gap:1rem;align-items:start}
+    .kj-item.high{border-left:4px solid var(--red)}
+    .kj-item.moderate{border-left:4px solid var(--amber)}
+    .kj-item.low{border-left:4px solid var(--green)}
+    .kj-item.watch{border-left:4px solid var(--blue)}
+    .kj-meta{display:flex;flex-direction:column;gap:0.4rem}
+    .kj-conf{font-family:var(--font-mono);font-size:0.55rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.2rem 0.5rem;text-align:center;border:1px solid}
+    .kj-item.high .kj-conf{color:var(--red);border-color:var(--red-dim);background:var(--red-pale)}
+    .kj-item.moderate .kj-conf{color:var(--amber);border-color:var(--amber-dim);background:var(--amber-pale)}
+    .kj-item.low .kj-conf{color:var(--green);border-color:var(--green-dim);background:var(--green-pale)}
+    .kj-item.watch .kj-conf{color:var(--blue);border-color:rgba(58,122,191,0.4);background:var(--blue-pale)}
+    .kj-id{font-family:var(--font-mono);font-size:0.6rem;color:var(--slate);text-align:center}
+    .kj-content p{color:var(--white-dim);font-size:0.86rem;line-height:1.55}
+    .kj-footer{font-family:var(--font-mono);font-size:0.6rem;color:var(--slate);margin-top:0.5rem}
+    .evidence-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-bottom:1.8rem}
+    .evidence-box{background:var(--bg-card);border:1px solid var(--border)}
+    .evidence-box-header{padding:0.6rem 1rem;font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase}
+    .evidence-box-header.know{background:rgba(58,154,92,0.12);color:var(--green);border-bottom:1px solid var(--green-dim)}
+    .evidence-box-header.assess{background:rgba(201,129,58,0.12);color:var(--amber);border-bottom:1px solid var(--amber-dim)}
+    .evidence-box-header.gap{background:rgba(217,64,64,0.12);color:var(--red);border-bottom:1px solid var(--red-dim)}
+    .evidence-box ul{list-style:none;padding:0.8rem 1rem}
+    .evidence-box li{color:var(--white-dim);font-size:0.82rem;padding:0.35rem 0;border-bottom:1px solid rgba(255,255,255,0.04);line-height:1.5}
+    .evidence-box li:last-child{border-bottom:none}
+    .evidence-box li::before{content:"— ";color:var(--slate)}
+    .sub-section{margin-top:2rem;padding-top:1.2rem;border-top:1px solid var(--border)}
+    .sub-section-title{font-family:var(--font-mono);font-size:0.65rem;color:var(--gold-dim);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.8rem}
+    .driver-list{display:flex;flex-direction:column;gap:0.5rem}
+    .driver-item{display:flex;gap:0.8rem;align-items:flex-start;padding:0.6rem 0.8rem;background:var(--bg-card-alt);border-left:2px solid var(--border-mid)}
+    .driver-tag{font-family:var(--font-mono);font-size:0.55rem;padding:0.15rem 0.4rem;border:1px solid;white-space:nowrap;margin-top:0.15rem}
+    .driver-tag.fact{color:var(--green);border-color:var(--green-dim)}
+    .driver-tag.inf{color:var(--amber);border-color:var(--amber-dim)}
+    .driver-item p{color:var(--white-dim);font-size:0.82rem;line-height:1.5}
+    .wsi-note{background:var(--blue-pale);border:1px solid rgba(58,122,191,0.3);border-left:3px solid var(--blue);padding:0.8rem 1.2rem;margin-top:1.2rem;font-family:var(--font-mono);font-size:0.7rem;color:var(--blue);line-height:1.6}
+    .five-layer-table td{vertical-align:top;font-size:0.82rem;color:var(--white-dim)}
+    .five-layer-table .layer-code{font-family:var(--font-mono);font-size:0.65rem;color:var(--gold);white-space:nowrap;font-weight:600}
+    .five-layer-table .layer-name{font-family:var(--font-mono);font-size:0.58rem;color:var(--slate);display:block;margin-top:0.2rem;text-transform:uppercase}
+    .five-layer-table tr:nth-child(even) td{background:rgba(255,255,255,0.015)}
+    .scenario-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+    .scenario-card{background:var(--bg-card);border:1px solid var(--border);padding:1.2rem 1.4rem}
+    .scenario-card.best{border-top:3px solid var(--green)}
+    .scenario-card.base{border-top:3px solid var(--amber)}
+    .scenario-card.worst{border-top:3px solid var(--red)}
+    .scenario-label{font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.5rem}
+    .scenario-card.best .scenario-label{color:var(--green)}
+    .scenario-card.base .scenario-label{color:var(--amber)}
+    .scenario-card.worst .scenario-label{color:var(--red)}
+    .scenario-title{font-family:var(--font-serif);font-size:1rem;color:var(--white);margin-bottom:0.7rem}
+    .scenario-prob{font-family:var(--font-mono);font-size:0.65rem;color:var(--slate);margin-bottom:0.7rem}
+    .scenario-card p{color:var(--white-dim);font-size:0.82rem;line-height:1.55}
+    .scenario-triggers{font-family:var(--font-mono);font-size:0.65rem;color:var(--slate);margin-top:0.8rem;border-top:1px solid var(--border);padding-top:0.6rem}
+    .behavioral-justification{font-style:italic;color:var(--blue);border-left:2px solid var(--blue);padding-left:1rem;margin-bottom:1.5rem;font-size:0.85rem}
+    .behavioral-grid{display:flex;flex-direction:column;gap:0.8rem}
+    .behavioral-item{background:var(--bg-card);border:1px solid var(--border);padding:1rem 1.2rem;display:grid;grid-template-columns:130px 1fr;gap:1rem}
+    .behavioral-rank{font-family:var(--font-mono);font-size:0.6rem;color:var(--amber);letter-spacing:0.08em;text-transform:uppercase}
+    .behavioral-item p{color:var(--white-dim);font-size:0.82rem;line-height:1.5}
+    .impl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-bottom:1.8rem}
+    .impl-card{background:var(--bg-card);border:1px solid var(--border);padding:1.2rem}
+    .impl-label{font-family:var(--font-mono);font-size:0.6rem;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.6rem}
+    .impl-card p{color:var(--white-dim);font-size:0.82rem;line-height:1.55}
+    .risk-matrix .score-high{background:rgba(217,64,64,0.12);color:var(--red);font-weight:600;font-family:var(--font-mono)}
+    .risk-matrix .score-med{background:rgba(201,129,58,0.1);color:var(--amber);font-family:var(--font-mono)}
+    .risk-matrix .score-low{background:rgba(58,154,92,0.1);color:var(--green);font-family:var(--font-mono)}
+    .risk-matrix td.row-high{background:rgba(217,64,64,0.04)}
+    .rec-timeline{display:flex;flex-direction:column;gap:0;margin-top:1.5rem}
+    .rec-block{display:grid;grid-template-columns:180px 1fr;border:1px solid var(--border);border-bottom:none}
+    .rec-block:last-child{border-bottom:1px solid var(--border)}
+    .rec-time{padding:1.2rem;border-right:1px solid var(--border);font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;display:flex;flex-direction:column;justify-content:center;gap:0.3rem}
+    .rec-block:nth-child(1) .rec-time{color:var(--red);background:var(--red-pale)}
+    .rec-block:nth-child(2) .rec-time{color:var(--amber);background:var(--amber-pale)}
+    .rec-block:nth-child(3) .rec-time{color:var(--green);background:var(--green-pale)}
+    .rec-content{padding:1.2rem;background:var(--bg-card)}
+    .rec-content ul{list-style:none;padding:0}
+    .rec-content li{color:var(--white-dim);font-size:0.82rem;padding:0.3rem 0;border-bottom:1px solid rgba(255,255,255,0.04);line-height:1.5}
+    .rec-content li::before{content:"» ";color:var(--slate)}
+    .rec-content li:last-child{border-bottom:none}
+    .conf-panel{background:var(--bg-card);border:1px solid var(--border-mid);margin-bottom:1.5rem}
+    .conf-header{padding:1rem 1.4rem;border-bottom:1px solid var(--border);font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;display:flex;align-items:center;gap:1rem}
+    .conf-level{padding:0.2rem 0.8rem;border:1px solid}
+    .conf-level.moderate{color:var(--amber);border-color:var(--amber-dim);background:var(--amber-pale)}
+    .conf-body{padding:1rem 1.4rem;color:var(--white-dim);font-size:0.84rem;line-height:1.6}
+    .uncertainty-list{display:flex;flex-direction:column;gap:0.8rem}
+    .uncertainty-item{background:rgba(217,64,64,0.05);border:1px solid var(--red-dim);border-left:3px solid var(--red);padding:0.8rem 1.2rem;color:var(--white-dim);font-size:0.84rem;line-height:1.5}
+    .uncertainty-item strong{color:var(--red);font-family:var(--font-mono);font-size:0.65rem;display:block;margin-bottom:0.3rem;letter-spacing:0.08em;text-transform:uppercase}
+    .ref-table th{font-size:0.55rem}
+    .ref-table td{font-size:0.75rem}
+    .band-pill{font-family:var(--font-mono);font-size:0.55rem;padding:0.15rem 0.5rem;border:1px solid;text-transform:uppercase;letter-spacing:0.05em;white-space:nowrap;display:inline-block}
+    .band-pill.green{color:var(--green);border-color:var(--green-dim)}
+    .band-pill.amber{color:var(--amber);border-color:var(--amber-dim)}
+    .band-pill.red{color:var(--red);border-color:var(--red-dim)}
+    .annex-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.8rem;padding-bottom:0.8rem;border-bottom:1px solid var(--border)}
+    .annex-num{font-family:var(--font-mono);font-size:0.6rem;color:var(--slate);letter-spacing:0.12em;background:rgba(136,152,176,0.08);border:1px solid var(--border-mid);padding:0.25rem 0.7rem;white-space:nowrap}
+    .annex-title{font-family:var(--font-serif);font-size:1.2rem;color:var(--white);font-weight:400}
+    .threshold-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin-top:1.5rem}
+    .threshold-cell{padding:1.2rem;border:1px solid;border-top:4px solid}
+    .threshold-cell.green-zone{border-color:var(--green-dim);border-top-color:var(--green);background:var(--green-pale)}
+    .threshold-cell.amber-zone{border-color:var(--amber-dim);border-top-color:var(--amber);background:var(--amber-pale)}
+    .threshold-cell.red-zone{border-color:var(--red-dim);border-top-color:var(--red);background:var(--red-pale)}
+    .threshold-label{font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.8rem}
+    .threshold-cell.green-zone .threshold-label{color:var(--green)}
+    .threshold-cell.amber-zone .threshold-label{color:var(--amber)}
+    .threshold-cell.red-zone .threshold-label{color:var(--red)}
+    .threshold-cell ul{list-style:none;padding:0}
+    .threshold-cell li{font-size:0.8rem;color:var(--white-dim);padding:0.3rem 0;border-bottom:1px solid rgba(255,255,255,0.04);line-height:1.5}
+    .threshold-cell li::before{content:"» ";color:var(--slate)}
+    .threshold-cell li:last-child{border-bottom:none}
+    .status-pill{font-family:var(--font-mono);font-size:0.6rem;padding:0.15rem 0.5rem;border:1px solid;text-transform:uppercase;letter-spacing:0.06em;white-space:nowrap;display:inline-block}
+    .status-pill.red{color:var(--red);border-color:var(--red-dim);background:var(--red-pale)}
+    .status-pill.amber{color:var(--amber);border-color:var(--amber-dim);background:var(--amber-pale)}
+    .status-pill.green{color:var(--green);border-color:var(--green-dim);background:var(--green-pale)}
+    .status-pill.blue{color:var(--blue);border-color:rgba(58,122,191,0.4);background:var(--blue-pale)}
+    .status-pill.yellow{color:var(--gold);border-color:var(--gold-dim);background:rgba(201,168,76,0.08)}
+    footer{border-top:1px solid var(--border);padding:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+    .footer-brand{font-family:var(--font-mono);font-size:0.6rem;color:var(--slate);letter-spacing:0.1em}
+    .footer-doc-id{font-family:var(--font-mono);font-size:0.6rem;color:var(--gold-dim);letter-spacing:0.1em}
+    .prose{color:var(--white-dim);font-size:0.86rem;line-height:1.7;margin-bottom:1rem}
+    @media(max-width:600px){.bluf-item,.kj-item,.behavioral-item,.rec-block{grid-template-columns:1fr}.rec-time{border-right:none;border-bottom:1px solid var(--border)}}
+  </style>
+</head>
+<body>
+<div id="progress"></div>
+<nav>
+  <div class="nav-brand">Quanta Analytica Process™ | MNS Consulting</div>
+  <div class="nav-classify">Restricted Intelligence Product</div>
+</nav>
+
+<header class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-running">
+    <span>QUANTA ANALYTICA | MNS CONSULTING</span>
+    <span>CORPORATE RISK INTELLIGENCE // AFRICA EXTRACTIVES</span>
+  </div>
+  <h1 class="hero-title">Africa Mining Risk Assessment: Regional Geopolitical, Regulatory &amp; Security Environment</h1>
+  <p class="hero-subtitle">Five-Region Disaggregated Risk Assessment for the Extractive Sector — Through March 2026 with 6-12 Month Forward Outlook</p>
+  <div class="hero-meta">
+    <div class="meta-cell">DOMAIN<span>Corporate Risk Intelligence</span></div>
+    <div class="meta-cell">DATE<span>26 March 2026</span></div>
+    <div class="meta-cell">CONFIDENCE<span>Moderate</span></div>
+    <div class="meta-cell">SCOPE<span>5 Sub-Regions, 30+ Countries</span></div>
+    <div class="meta-cell">HORIZON<span>6-12 Months</span></div>
+    <div class="meta-cell">FRAMEWORK<span>QAP v2.0</span></div>
+    <div class="threat-badge"><div class="threat-dot"></div>THREAT LEVEL: ELEVATED</div>
+  </div>
+  <div class="scope-boundary">
+    Analytic Scope: Five African sub-regions (North, West/Sahel, Central, East, Southern Africa) assessed through March 2026. Forward horizon: 6-12 months (to Q1 2027). Sources: Open-source intelligence including UN Security Council reports, Fraser Institute surveys, peer-reviewed analysis, multilateral institution publications, specialist risk consultancies (Verisk Maplecroft, WTW, MS Risk), and financial institution assessments. Excluded: classified government intelligence, proprietary operator data, real-time commodity pricing data. Confidence note: Regional assessments reflect moderate to high confidence where multi-stream corroboration exists; single-source claims are explicitly flagged. This product is decision-relevant but not a substitute for in-country due diligence or legal counsel.
+  </div>
+</header>
+
+<main>
+
+<!-- 01 BLUF -->
+<section class="section" id="bluf">
+  <div class="section-header">
+    <div class="section-num">01 // BLUF</div>
+    <h2 class="section-title">Bottom Line Up Front</h2>
+  </div>
+  <div class="bluf-grid">
+    <div class="bluf-item">
+      <div class="bluf-index">1</div>
+      <div class="bluf-text">
+        <strong>The Sahel Constitutes Africa's Highest-Risk Mining Zone — Operationally and Fiscally</strong>
+        <p>The Alliance of Sahel States (Mali, Burkina Faso, Niger) combines junta-driven resource nationalism with active jihadist insurgency, producing a compound risk that has forced at least seven mining companies to exit Burkina Faso since 2022. JNIM now controls fuel supply routes to Bamako and accounts for over half of global terrorism deaths. Malian authorities have seized Barrick Gold's gold stocks ($245 million), detained foreign executives, and rewrote the mining code to mandate up to 35% government stakes. This is a systemic, not episodic, operational threat. <cite>[12][15][16]</cite></p>
+      </div>
+    </div>
+    <div class="bluf-item">
+      <div class="bluf-index">2</div>
+      <div class="bluf-text">
+        <strong>Central Africa's DRC Is a US-China Proxy Contest for Critical Mineral Dominance</strong>
+        <p>M23's seizure of Goma and Bukavu in January-February 2025 triggered the Washington Accords (December 2025), including a $9 billion US-backed consortium stake in DRC copper and cobalt operations. Despite nominal peace arrangements, fighting continues in eastern DRC and conflict has approached mineral-rich corridors. Chinese operators control the southern industrial mining belt. The DRC's leveraging of mineral access as a diplomatic instrument has permanently altered the risk calculus for all parties, and a fragile ceasefire leaves supply route security unresolved. <cite>[21][22][25][27]</cite></p>
+      </div>
+    </div>
+    <div class="bluf-item">
+      <div class="bluf-index">3</div>
+      <div class="bluf-text">
+        <strong>Resource Nationalism Is Now a Continental Doctrine, Not a Jurisdictional Exception</strong>
+        <p>At least 13 African countries have enacted mineral export restrictions since 2023. Zimbabwe's February 2026 immediate suspension of all raw lithium exports directly exposes Chinese operators with an estimated $900 million in deployed capital. The African Union's February 2026 Continental Critical Minerals Value Addition Framework codifies this as a collective continental agenda. Investors treating jurisdictions not yet affected as stable are mispricing the risk. <cite>[31][33][34]</cite></p>
+      </div>
+    </div>
+    <div class="bluf-item">
+      <div class="bluf-index">4</div>
+      <div class="bluf-text">
+        <strong>US-China-Russia Competition Has Structurally Reshaped the External Actor Landscape</strong>
+        <p>The US Critical Minerals Ministerial (February 2026), Project Vault strategic reserve, and DRC Washington Accords reflect Washington's accelerated posture. Russia's Africa Corps operates mining-for-security exchanges across the Sahel. China dominates refining and upstream access in the DRC, Zambia, Guinea, and Zimbabwe. This multipolar competition increases host government leverage while creating compliance, sanctions, and reputational risks for Western operators navigating contested jurisdictions. <cite>[3][4][18][20]</cite></p>
+      </div>
+    </div>
+    <div class="bluf-item">
+      <div class="bluf-index">5</div>
+      <div class="bluf-text">
+        <strong>East Africa Offers a Conditional Opportunity Window — Not a Risk-Free Alternative</strong>
+        <p>Tanzania, Kenya, and Ethiopia are attracting capital flight from Sahel-exposed portfolios. Tanzania's mining share of GDP rose from 3.5% to 9% between 2020 and 2024. However, East African governments face identical structural incentives to tighten fiscal terms as commodity revenues grow. Tanzania's Minerals Regulation Commission Act (June 2025) has already raised property rights concerns. Treating East Africa as a uniformly safe alternative reflects inadequate scenario planning. <cite>[32][47][53]</cite></p>
+      </div>
+    </div>
+    <div class="bluf-item">
+      <div class="bluf-index">6</div>
+      <div class="bluf-text">
+        <strong>North Africa and Core Southern Africa Remain Continent's Most Stable Investment Anchors</strong>
+        <p>Morocco (Fraser Institute 15th globally, 2025) and Botswana (7th globally) maintain the continent's most predictable mining governance frameworks. Morocco's phosphate dominance and EV battery supply chain integration produce net investment inflows. Zambia, Namibia, and South Africa offer substantially more regulatory predictability than the Sahel or eastern DRC, despite energy and infrastructure constraints. Zimbabwe is the Southern Africa outlier, with its lithium export ban accelerating what is now a regional trend. <cite>[31][41][47]</cite></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 KIQs -->
+<section class="section" id="kiqs">
+  <div class="section-header">
+    <div class="section-num">02 // KIQs</div>
+    <h2 class="section-title">Key Intelligence Questions</h2>
+  </div>
+  <table class="kiq-table">
+    <thead><tr><th>QUESTION ID</th><th>INTELLIGENCE QUESTION</th><th>LINKS TO</th></tr></thead>
+    <tbody>
+      <tr><td class="kiq-id">KIQ-01</td><td>To what extent do Sahel junta-driven resource nationalism and jihadist insurgency jointly constitute an operational discontinuity risk for mining operators, versus a manageable fiscal headwind?</td><td>KJ-01, KJ-02, I&amp;W W-01/W-02, Annex A A-01</td></tr>
+      <tr><td class="kiq-id">KIQ-02</td><td>Does the Washington Accords / DRC-US minerals framework represent a durable stabilization pathway for eastern Congo, or a politically-brokered transaction that leaves structural conflict drivers intact?</td><td>KJ-03, KJ-04, ACH H2, Annex B G-02</td></tr>
+      <tr><td class="kiq-id">KIQ-03</td><td>How will Zimbabwe's February 2026 raw lithium export suspension propagate through global supply chains, and what does it signal about the pace and coherence of African beneficiation doctrine adoption?</td><td>KJ-05, KJ-06, Scenarios, I&amp;W W-05</td></tr>
+      <tr><td class="kiq-id">KIQ-04</td><td>Does US-China competition for African critical minerals create net leverage for host governments, or does it introduce compliance and sanctions fragmentation risks that undermine investment predictability?</td><td>KJ-04, KJ-06, Behavioral, Annex B G-04</td></tr>
+      <tr><td class="kiq-id">KIQ-05</td><td>To what extent does East Africa's regulatory reform wave represent a genuine structural improvement versus a cyclical opening that will tighten as commodity revenues grow?</td><td>KJ-07, Assumptions A-03, I&amp;W W-06</td></tr>
+      <tr><td class="kiq-id">KIQ-06</td><td>What are the early warning indicators that conflict spillover from the Sahel or eastern DRC could affect currently stable adjacent mining jurisdictions including Ghana, Côte d'Ivoire, Zambia, and Tanzania?</td><td>KJ-02, KJ-03, Annex A A-03/A-04</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 03 SNAPSHOT -->
+<section class="section" id="snapshot">
+  <div class="section-header">
+    <div class="section-num">03 // SNAPSHOT</div>
+    <h2 class="section-title">Situation Snapshot</h2>
+  </div>
+  <div class="snapshot-grid">
+    <div class="snapshot-cell"><div class="snapshot-label">WHO</div><p>Mining majors (Barrick, Glencore, Anglo American, Newmont, AngloGold Ashanti), Chinese state-linked operators (CMOC, Zijin, Huayou, Sinomine, Chengxin), US-backed Orion Critical Minerals Consortium, Russian Africa Corps, Sahel AES juntas, M23 rebels and Rwandan-backed forces, Gulf sovereign wealth funds (UAE/Saudi), and EU strategic investors across North and East Africa.</p></div>
+    <div class="snapshot-cell"><div class="snapshot-label">WHAT</div><p>A multi-vector risk environment: junta-driven asset seizures and retroactive code rewrites in the Sahel; active armed conflict over mineral corridors in eastern DRC; a continent-wide beneficiation mandate (13+ export restriction regimes since 2023); US-China-Russia competition for mineral access; and conditional regulatory reform cycles in East and North Africa.</p></div>
+    <div class="snapshot-cell"><div class="snapshot-label">WHERE</div><p>Five sub-regions: North Africa (Morocco, Egypt, Algeria, Libya, Tunisia); West/Sahel (Ghana, Guinea, Côte d'Ivoire, Senegal, Mali, Burkina Faso, Niger, Nigeria); Central Africa (DRC, Congo-Brazzaville, Cameroon); East Africa (Tanzania, Kenya, Ethiopia, Uganda, Rwanda); Southern Africa (South Africa, Zambia, Zimbabwe, Namibia, Botswana, Mozambique, Angola).</p></div>
+    <div class="snapshot-cell"><div class="snapshot-label">WHEN</div><p>Assessment current as of March 2026. Key recent triggers: Zimbabwe lithium export ban (25 February 2026); US Critical Minerals Ministerial and DRC copper export arrangement (February 2026); JNIM fuel blockade resumption (December 2025 onwards); Barrick Gold personnel detention in Mali (September 2025); DRC-US Washington Accords signing (December 2025); South Africa removed from FATF grey list (late 2025).</p></div>
+    <div class="snapshot-cell"><div class="snapshot-label">WHY</div><p>Africa holds approximately 30% of global critical mineral reserves essential to the green energy transition. Rising commodity prices, US-China decoupling, and COVID-era supply chain disruption have elevated the strategic value of African deposits. Host governments face strong domestic political incentives to capture more mineral rents, while operators face demand-side pressure from Western clean energy mandates that depend on African supply.</p></div>
+    <div class="snapshot-cell"><div class="snapshot-label">HOW</div><p>Risk propagates through three intersecting mechanisms: (1) coercive regulatory action including retroactive code changes, asset seizures, license revocations, and personnel detention; (2) kinetic security threats including jihadist attacks on supply logistics, armed group extortion of mining sites, and inter-state conflict disrupting transport corridors; (3) geopolitical displacement forcing operators to make politically consequential partner choices with compliance, sanctions, and reputational implications.</p></div>
+  </div>
+</section>
+
+<!-- 04 KEY JUDGMENTS -->
+<section class="section" id="key-judgments">
+  <div class="section-header">
+    <div class="section-num">04 // KEY JUDGMENTS</div>
+    <h2 class="section-title">Key Judgments</h2>
+  </div>
+  <div class="kj-list">
+    <div class="kj-item high">
+      <div class="kj-meta"><div class="kj-conf">HIGH CONFIDENCE</div><div class="kj-id">KJ-01</div></div>
+      <div class="kj-content">
+        <p><strong style="color:var(--white);">The Sahel AES bloc presents an operationally discontinuous risk environment for foreign mining operators.</strong> The convergence of coercive fiscal extraction, retroactive code changes, executive detention, and active JNIM insurgency targeting supply routes constitutes a systemic threat to operational continuity, not merely elevated political risk. The Malian government's demonstrated willingness to seize mineral stocks, arrest executives, and rewrite contractual frameworks mid-production cycle means all remaining operators face a non-trivial probability of operational suspension regardless of compliance posture. <cite>[12][15][16]</cite></p>
+        <div class="kj-footer">KIQ mapping: KIQ-01 | Confidence drivers: Multi-source corroboration across WTW, Africa Defense Forum, Chatham House, Security Council Report</div>
+      </div>
+    </div>
+    <div class="kj-item high">
+      <div class="kj-meta"><div class="kj-conf">HIGH CONFIDENCE</div><div class="kj-id">KJ-02</div></div>
+      <div class="kj-content">
+        <p><strong style="color:var(--white);">JNIM's operational expansion toward coastal West Africa represents a leading indicator of risk contagion for currently stable mining jurisdictions.</strong> UN reporting confirms JNIM has reached new capability levels, conducting complex drone and IED attacks, and is repositioning toward northern Togo, Benin, and Nigeria's Sokoto region. If this expansion advances, gold producers in Ghana, Côte d'Ivoire, and Senegal face corridor and community security risks within the 12-month forward horizon. <cite>[13][14][16]</cite></p>
+        <div class="kj-footer">KIQ mapping: KIQ-01, KIQ-06 | Confidence drivers: UNSC Monitoring Team reporting, Institute for Economics and Peace GTI 2025</div>
+      </div>
+    </div>
+    <div class="kj-item high">
+      <div class="kj-meta"><div class="kj-conf">HIGH CONFIDENCE</div><div class="kj-id">KJ-03</div></div>
+      <div class="kj-content">
+        <p><strong style="color:var(--white);">The Washington Accords have not resolved the structural drivers of eastern DRC conflict.</strong> Despite nominal peace arrangements and US-brokered frameworks, fighting continues in North Kivu, M23 retains control of Goma and Bukavu, and ceasefire violations are documented and ongoing. The minerals-for-security exchange has secured preferential US access to DRC copper and cobalt at the cost of leaving governance and accountability gaps unaddressed. Industrial operators in southern DRC (Lualaba, Haut-Katanga) face manageable but non-zero transport disruption risk as conflict dynamics evolve. <cite>[21][27][29]</cite></p>
+        <div class="kj-footer">KIQ mapping: KIQ-02 | Confidence drivers: Al Jazeera, Lowy Institute, Atlantic Council, Geopolitical Monitor corroboration</div>
+      </div>
+    </div>
+    <div class="kj-item moderate">
+      <div class="kj-meta"><div class="kj-conf">MODERATE CONFIDENCE</div><div class="kj-id">KJ-04</div></div>
+      <div class="kj-content">
+        <p><strong style="color:var(--white);">US-China mineral competition is increasing host government leverage in the near term but is not producing stable investment conditions.</strong> African governments are successfully using geopolitical multipolarity to extract competing offers from Washington, Beijing, and Gulf investors. However, the result is not improved governance — it is reduced incentive for any single external partner to impose accountability. Operators face a new compliance risk layer: partnerships in jurisdictions where US and Chinese interests conflict may generate sanctions exposure, ESG challenges, or offtake arrangement instability. <cite>[4][20][25]</cite></p>
+        <div class="kj-footer">KIQ mapping: KIQ-04 | Confidence note: Moderate because outcomes depend on evolving US executive posture and Chinese counter-moves not yet fully visible</div>
+      </div>
+    </div>
+    <div class="kj-item high">
+      <div class="kj-meta"><div class="kj-conf">HIGH CONFIDENCE</div><div class="kj-id">KJ-05</div></div>
+      <div class="kj-content">
+        <p><strong style="color:var(--white);">African beneficiation doctrine has crossed a threshold from national policy to coordinated continental agenda.</strong> The AU's February 2026 Continental Critical Minerals Value Addition Framework, combined with Zimbabwe's immediate raw lithium export ban, Indonesia-style beneficiation mandates in multiple jurisdictions, and 13+ export restriction regimes since 2023, indicates this is not a temporary policy cycle. Operators in any African mining jurisdiction should treat beneficiation requirements as a medium-term certainty and re-assess project economics accordingly. <cite>[31][33][34]</cite></p>
+        <div class="kj-footer">KIQ mapping: KIQ-03 | Confidence drivers: African Security Analysis, Pan African Visions, Gide legal analysis, Hogan Lovells</div>
+      </div>
+    </div>
+    <div class="kj-item moderate">
+      <div class="kj-meta"><div class="kj-conf">MODERATE CONFIDENCE</div><div class="kj-id">KJ-06</div></div>
+      <div class="kj-content">
+        <p><strong style="color:var(--white);">Morocco and Botswana will retain their status as Africa's most institutionally stable mining jurisdictions through the 12-month horizon.</strong> Morocco's phosphate dominance, EU and Gulf investment integration, and improving macro performance (FATF-style reforms underway, CAN 2026 stimulus) create structural resilience against regulatory deterioration. Botswana's 7th global Fraser ranking reflects sustained governance quality. Both are exceptions to the continental trend, not exemplars of it. <cite>[41][43][50]</cite></p>
+        <div class="kj-footer">KIQ mapping: KIQ-03, KIQ-04 | Confidence note: Moderate because domestic social pressures in Morocco and Botswana election cycles remain latent risk factors</div>
+      </div>
+    </div>
+    <div class="kj-item moderate">
+      <div class="kj-meta"><div class="kj-conf">MODERATE CONFIDENCE</div><div class="kj-id">KJ-07</div></div>
+      <div class="kj-content">
+        <p><strong style="color:var(--white);">East Africa's current regulatory opening is genuine but contingent on commodity revenue levels remaining below the threshold that triggers political demands for greater state capture.</strong> Tanzania's mining GDP contribution (3.5% to 9%, 2020-2024) is approaching levels historically associated with intensified government intervention in other African jurisdictions. The Minerals Regulation Commission Act (2025) and property rights concerns are early indicators. Investors should build regulatory tightening scenarios into project modelling at the 3-5 year horizon. <cite>[47][53][54]</cite></p>
+        <div class="kj-footer">KIQ mapping: KIQ-05 | Confidence note: Moderate because regulatory trajectory depends on political leadership continuity and commodity price cycles</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 EVIDENCE -->
+<section class="section" id="evidence">
+  <div class="section-header">
+    <div class="section-num">05 // EVIDENCE</div>
+    <h2 class="section-title">Evidence Summary</h2>
+  </div>
+  <div class="evidence-grid">
+    <div class="evidence-box">
+      <div class="evidence-box-header know">What We Know</div>
+      <ul>
+        <li>The Sahel accounts for 51% of global terrorism deaths (IEP GTI 2025); deaths exceeded 25,000 in 2024 for the first time.</li>
+        <li>At least seven mining companies have exited Burkina Faso since 2022 due to insecurity; gold output fell from 67 to 47.7 metric tons (2021-2024).</li>
+        <li>Mali rewrote its mining code in 2023 mandating up to 35% government stakes; has extracted over $1 billion in concessions through coercive tactics.</li>
+        <li>M23 controls Goma and Bukavu (seized January-February 2025) and earns approximately $300,000/month from the Rubaya coltan mine.</li>
+        <li>Zimbabwe suspended all raw lithium exports on 25 February 2026; the country accounts for 8-10% of global supply.</li>
+        <li>At least 13 African countries have enacted mineral export restrictions since 2023; DRC mandates 10% equity transfers.</li>
+        <li>Morocco ranks 15th globally (Fraser Institute 2025); Botswana ranks 7th — Africa's highest-rated jurisdictions.</li>
+        <li>Tanzania's mining contribution to GDP rose from 3.5% (2020) to 9% (2024) following regulatory reforms.</li>
+        <li>The US-backed Orion Consortium signed an MOU with Glencore for a 40% stake in Mutanda and Kamoto Copper Company ($9 billion transaction).</li>
+        <li>South Africa was removed from the FATF grey list in late 2025, boosting market confidence.</li>
+      </ul>
+    </div>
+    <div class="evidence-box">
+      <div class="evidence-box-header assess">What We Assess</div>
+      <ul>
+        <li>JNIM's expansion toward coastal West Africa (Togo, Benin, Nigeria's Sokoto) is likely to disrupt mining corridor security in Ghana and Côte d'Ivoire within 12-24 months if current trajectory continues. [INFERENCE]</li>
+        <li>The Washington Accords have not materially reduced eastern DRC conflict risk for industrial operators; the peace framework is politically convenient but structurally thin. [INFERENCE]</li>
+        <li>Zimbabwe's lithium export ban is likely to accelerate, not deter, similar measures by other African lithium and critical mineral producers within the 12-month forward horizon. [INFERENCE]</li>
+        <li>Chinese operators in the Sahel face the highest reputational-to-operational risk ratio of any external actor; their willingness to engage under junta conditions has reduced Western partner options and may generate future sanctions exposure. [INFERENCE]</li>
+        <li>US-China mineral competition is producing increased host government leverage in negotiations but is not translating into improved governance or stability. [INFERENCE]</li>
+        <li>Zambia's copper output growth (19.2% in 2025) and the Lobito Corridor investment ($553 million DFC loan, December 2025) represent the most credible near-term infrastructure improvement for Southern Africa's export capacity. [INFERENCE with strong basis]</li>
+      </ul>
+    </div>
+    <div class="evidence-box">
+      <div class="evidence-box-header gap">What We Do Not Know</div>
+      <ul>
+        <li>Whether the DRC-Rwanda Washington Accords ceasefire will hold through Q2 2026, or whether M23 will advance toward the southern mineral provinces. [Critical gap]</li>
+        <li>The degree to which Zimbabwe's export ban was pre-coordinated with other AU members or reflects a unilateral sovereign calculation. [Important for propagation risk assessment]</li>
+        <li>Russia's Africa Corps operational capacity following the collapse of Syrian logistics bases in December 2024 and the partial redeployment to Ukraine. [Affects Sahel security trajectory]</li>
+        <li>Whether the US "security-for-minerals" approach in the Sahel (Project Vault, Ministerial outreach) will achieve durable AES re-engagement or remain symbolically limited. [Affects geopolitical alignment calculations]</li>
+        <li>The current status of JNIM's political-territorial governance ambitions in southern Mali and whether these signal a strategy shift from tactical disruption to state-building. [Affects operational risk horizon]</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <div class="sub-section-title">Key Drivers</div>
+    <div class="driver-list">
+      <div class="driver-item"><span class="driver-tag fact">FACT</span><p>Africa holds 79.3% of global PGM reserves, 61.7% of chromium, 54.5% of cobalt, and 36.5% of manganese — making it structurally irreplaceable in the global clean energy transition.</p></div>
+      <div class="driver-item"><span class="driver-tag fact">FACT</span><p>The Sahel accounts for over half of global terrorism deaths, with JNIM reaching new operational capability levels including drone strikes, IED networks, and large-formation attacks on military installations.</p></div>
+      <div class="driver-item"><span class="driver-tag fact">FACT</span><p>US-China trade decoupling has elevated African mineral access to national security priority status in both Washington and Beijing, driving competitive bilateral agreements and displacing multilateral governance norms.</p></div>
+      <div class="driver-item"><span class="driver-tag inf">INFERENCE</span><p>African governments have internalized the asymmetry between their geological leverage and their current position in global value chains, driving a continent-wide beneficiation doctrine that will not reverse regardless of commodity price cycles.</p></div>
+      <div class="driver-item"><span class="driver-tag inf">INFERENCE</span><p>Junta governments in the Sahel face a structural fiscal trap: resource nationalism generates short-term revenue but deters the long-term investment needed to develop reserves, accelerating both fiscal deterioration and insurgent opportunity.</p></div>
+      <div class="driver-item"><span class="driver-tag fact">FACT</span><p>Infrastructure constraints — particularly the Lobito Corridor's disrepair, energy shortages in South Africa and Zambia, and port congestion in East Africa — constitute binding operational constraints that limit the pace of viable expansion regardless of above-ground political conditions.</p></div>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <div class="sub-section-title">Binding Constraints on Available Responses</div>
+    <div class="driver-list">
+      <div class="driver-item"><span class="driver-tag fact">STRUCTURAL</span><p>Western operators cannot meaningfully substitute African mineral supply in the 0-5 year horizon; geological concentration creates a structural dependency that limits the credibility of withdrawal threats as a regulatory deterrent.</p></div>
+      <div class="driver-item"><span class="driver-tag fact">POLITICAL</span><p>Junta governments in the AES bloc face domestic legitimacy pressures that make concessions to foreign operators politically costly; the "anti-colonial" sovereignty narrative provides a durable popular mandate for resource nationalism regardless of economic consequences.</p></div>
+      <div class="driver-item"><span class="driver-tag fact">TEMPORAL</span><p>The 6-12 month horizon is insufficient for most infrastructure development or alternative supply development to produce meaningful mitigation; operators are effectively locked into current exposure profiles for the assessment period.</p></div>
+      <div class="driver-item"><span class="driver-tag inf">RESOURCE</span><p>Russia's reduced Africa Corps capacity following Syrian base collapse and Ukraine redeployment may limit the Sahel juntas' security options, potentially increasing their vulnerability to insurgent pressure and creating leverage for alternative security partners including the US.</p></div>
+    </div>
+  </div>
+
+  <div class="wsi-note">
+    WSI Source Independence Note: Key judgments on Sahel security are corroborated by at minimum four independent streams (UN DPPA/Security Council Report, IEP Global Terrorism Index, WTW analysis, and Chatham House). DRC conflict assessments draw on three independent streams (Atlantic Council, Lowy Institute, Geopolitical Monitor). Beneficiation doctrine assessments are supported by legal analysis (Gide, Hogan Lovells) and financial sector reporting (Pan African Visions, African Security Analysis). Single-source claims: the $300,000/month M23 coltan revenue figure (Genocide Watch, June 2025) is cited with explicit caveat pending corroboration. No AI-generated content is used as evidence. Social media sourcing has been excluded from all key judgment support.
+  </div>
+</section>
+
+<!-- 06 ANALYSIS -->
+<section class="section" id="analysis">
+  <div class="section-header">
+    <div class="section-num">06 // ANALYSIS</div>
+    <h2 class="section-title">Structured Analytic Tradecraft</h2>
+  </div>
+  <p class="prose"><em>Techniques applied: Five-Layer Strategic Cognition Map, Key Assumptions Check, Analysis of Competing Hypotheses (ACH), Indicators and Warnings, Scenario Modeling.</em></p>
+
+  <div class="sub-section">
+    <div class="sub-section-title">Five-Layer Strategic Cognition Map</div>
+    <table class="five-layer-table">
+      <tbody>
+        <tr>
+          <td style="width:140px"><span class="layer-code">L1</span><span class="layer-name">Foundations</span></td>
+          <td>Africa's structural geological dominance in critical minerals creates irreversible leverage for host governments. The green energy transition has converted mineral deposits from economic assets into national security instruments for both producer and consumer states. This foundational asymmetry — global demand concentration versus supply geographic concentration — underpins all regional risk dynamics.</td>
+        </tr>
+        <tr>
+          <td><span class="layer-code">L2</span><span class="layer-name">Mechanisms</span></td>
+          <td>Three risk propagation mechanisms operate simultaneously: (1) coercive regulatory action (retroactive code changes, asset seizures, license revocations, personnel detention); (2) kinetic security threats (insurgent attacks on logistics, armed group extortion, inter-state conflict); (3) geopolitical displacement (US-China-Russia competition forcing politically consequential partner selection). Each mechanism amplifies the others in high-exposure jurisdictions.</td>
+        </tr>
+        <tr>
+          <td><span class="layer-code">L3</span><span class="layer-name">Dynamics</span></td>
+          <td>The Sahel security-fiscal trap is self-reinforcing: resource nationalism generates short-term revenue but deters long-term investment, accelerating fiscal deterioration and creating insurgent opportunity. In the DRC, mineral competition between external powers is producing neither peace nor governance improvement, only competitive extraction access at different contractual terms. In East Africa, regulatory openings follow capital flight from higher-risk jurisdictions, but will tighten as revenue scales.</td>
+        </tr>
+        <tr>
+          <td><span class="layer-code">L4</span><span class="layer-name">Leverage</span></td>
+          <td>Decision-relevant leverage points for operators: (1) beneficiation investment commitment as a regulatory risk hedge in Southern and East Africa; (2) explicit engagement with security corridor infrastructure in DRC's southern provinces before conflict expands; (3) political risk insurance and ICSID arbitration clause activation as deterrence in Sahel jurisdictions; (4) early engagement with US/EU mineral partnership frameworks in East Africa to access preferential financing and regulatory support.</td>
+        </tr>
+        <tr>
+          <td><span class="layer-code">L5</span><span class="layer-name">Paradigms</span></td>
+          <td>The prevailing investor paradigm of African mining risk as manageable political risk within stable regulatory frameworks is obsolete in a majority of the continent's high-value jurisdictions. The emerging paradigm is one of resource sovereignty: African states increasingly view mining as a domain of national security and development rather than foreign investment facilitation. Operators who do not internalize this paradigm shift will systematically underprice risk and overestimate the durability of existing contractual protections.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub-section">
+    <div class="sub-section-title">Key Assumptions Check</div>
+    <table class="assumption-table">
+      <thead><tr><th>ID</th><th>ASSUMPTION</th><th>WHY IT MATTERS</th><th>RISK IF WRONG</th><th>STATUS</th></tr></thead>
+      <tbody>
+        <tr><td class="kiq-id">A-01</td><td>Sahel juntas will maintain power and continue resource nationalist policies through the 12-month horizon.</td><td>Drives confidence in operational discontinuity judgments for Mali, Burkina Faso, Niger.</td><td>If juntas fall or moderate, regulatory posture could normalize rapidly, improving operator conditions.</td><td><span class="status-pill amber">Active</span></td></tr>
+        <tr><td class="kiq-id">A-02</td><td>Eastern DRC conflict will remain geographically contained to North/South Kivu and not expand to Lualaba/Haut-Katanga mining provinces.</td><td>Industrial copper/cobalt operations in southern DRC are assessed as manageable risk only if this assumption holds.</td><td>If M23 or affiliated groups advance south, the DRC's entire industrial mining output (~70% of global cobalt) faces disruption.</td><td><span class="status-pill amber">Active — watch</span></td></tr>
+        <tr><td class="kiq-id">A-03</td><td>East African regulatory openings represent sustainable reform rather than cyclical liberalization ahead of a revenue-driven tightening.</td><td>Drives investment horizon recommendations for Tanzania, Kenya, Ethiopia, Uganda.</td><td>If regulatory tightening accelerates, investors who entered during the opening phase face retroactive conditions on capital-intensive long-duration projects.</td><td><span class="status-pill amber">Unverified</span></td></tr>
+        <tr><td class="kiq-id">A-04</td><td>China will prioritize maintaining upstream mining access in Africa over pursuing sanctions enforcement compliance demands from Western partners.</td><td>Affects compliance risk landscape for Western operators in Chinese-dominated jurisdictions.</td><td>If China recalibrates toward multilateral compliance norms, the competitive dynamic underpinning host government leverage shifts materially.</td><td><span class="status-pill green">Confirmed near-term</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub-section">
+    <div class="sub-section-title">Analysis of Competing Hypotheses (ACH) — DRC Stability</div>
+    <table class="ach-table">
+      <thead><tr><th>HYPOTHESIS</th><th>EVIDENCE FOR</th><th>EVIDENCE AGAINST</th><th>DIAGNOSTICITY</th><th>VERDICT</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>H1:</strong> Washington Accords represent a durable stabilization framework that will reduce conflict risk for DRC mining operations.</td>
+          <td>US-brokered peace, US security partnership, $9B Glencore deal signals investment confidence, DRC copper export arrangement to US signals normalization.</td>
+          <td>Fighting continues in eastern DRC post-Accords; missed ceasefire deadlines; M23 retains Goma and Bukavu; structural ethnic/governance drivers unaddressed; GDP declined 8.6% (2023) and 6.5% (2024).</td>
+          <td>High: Counter-evidence is strong and contemporaneous with the peace framework.</td>
+          <td><span class="status-pill red">Rejected</span></td>
+        </tr>
+        <tr>
+          <td><strong>H2:</strong> Washington Accords represent a transactional minerals-for-security arrangement that leaves conflict drivers intact and operational risk unresolved.</td>
+          <td>Ongoing ceasefire violations; M23 territorial retention; no accountability mechanisms for Rwanda backing; peace narrative has "unravelled" per Lowy Institute; humanitarian crisis continues.</td>
+          <td>US engagement creates diplomatic pressure on Rwanda; security partnership could deter future escalation; economic interests of all parties favor some stability.</td>
+          <td>High: Evidence base is multi-sourced, contemporaneous, and consistent across independent analysts.</td>
+          <td><span class="status-pill green">Selected</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub-section">
+    <div class="sub-section-title">Indicators and Warnings</div>
+    <table class="iw-table">
+      <thead><tr><th>ID</th><th>INDICATOR</th><th>DIRECTION</th><th>CURRENT STATUS</th><th>THRESHOLD</th><th>CADENCE</th></tr></thead>
+      <tbody>
+        <tr><td class="kiq-id">W-01</td><td>JNIM attacks on fuel/supply routes in southern Mali and coastal West Africa.</td><td>Escalating</td><td><span class="status-pill red">Active</span> — resumed Dec 2025, ongoing</td><td>First confirmed attack within 100km of Ghanaian or Ivorian border triggers KIQ-06 reassessment.</td><td>Weekly</td></tr>
+        <tr><td class="kiq-id">W-02</td><td>Additional foreign mining executive detentions or asset seizures in AES states.</td><td>Unchanged / risk elevated</td><td><span class="status-pill amber">Watchlist</span> — Barrick detention Sep 2025</td><td>Any new detention of non-AES-nationality personnel triggers force majeure review across AES portfolios.</td><td>Monthly</td></tr>
+        <tr><td class="kiq-id">W-03</td><td>M23 / allied group territorial advances toward Lualaba Province, DRC.</td><td>Stable (contained north)</td><td><span class="status-pill amber">Monitor</span></td><td>Any confirmed M23 operation south of South Kivu boundary triggers emergency corridor risk assessment.</td><td>Monthly</td></tr>
+        <tr><td class="kiq-id">W-04</td><td>New ICSID arbitration claims filed against African states by mining operators.</td><td>Increasing</td><td><span class="status-pill amber">Active</span> — multiple cases 2024-2025</td><td>Five or more new filings in a single quarter signals systemic deterioration in investor-state relations.</td><td>Quarterly</td></tr>
+        <tr><td class="kiq-id">W-05</td><td>Additional African states enacting raw mineral export bans or beneficiation mandates.</td><td>Accelerating</td><td><span class="status-pill red">Active</span> — Zimbabwe Feb 2026; AU framework Feb 2026</td><td>Any G5 African economy (South Africa, Egypt, Nigeria, Kenya, Tanzania) enacting export restrictions triggers global supply chain reassessment.</td><td>Monthly</td></tr>
+        <tr><td class="kiq-id">W-06</td><td>Tanzania or Kenya introducing retroactive fiscal changes affecting existing mining licenses.</td><td>Risk emerging</td><td><span class="status-pill amber">Early signal</span> — MRC Act property rights concerns</td><td>Any retrospective royalty increase above 5% or new government equity mandate triggers KIQ-05 reassessment.</td><td>Quarterly</td></tr>
+        <tr><td class="kiq-id">W-07</td><td>Russia's Africa Corps operational capacity in the Sahel.</td><td>Declining</td><td><span class="status-pill amber">Degraded</span> — Syrian hub lost Dec 2024; Ukraine redeployment</td><td>Africa Corps withdrawal from any AES state creates a security vacuum that changes junta survivability calculations.</td><td>Monthly</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub-section">
+    <div class="sub-section-title">Scenario Modeling</div>
+    <div class="scenario-grid">
+      <div class="scenario-card best">
+        <div class="scenario-label">Scenario A — Optimistic</div>
+        <div class="scenario-title">Managed Stabilization and Selective Opening</div>
+        <div class="scenario-prob">Probability: 15-20% | Horizon: 6-12 months</div>
+        <p>Washington Accords hold in the DRC; Russia's reduced Africa Corps capacity forces AES juntas into partial US re-engagement, moderating the most extreme resource nationalist measures; Zimbabwe negotiates a phased beneficiation timeline acceptable to Chinese operators; East Africa regulatory openings sustain capital inflows; Morocco and Botswana remain stable anchors.</p>
+        <div class="scenario-triggers">Triggers: DRC-Rwanda diplomatic normalization verifiable on the ground; Barrick Gold settlement in Mali; US-AES security cooperation formal agreement.</div>
+      </div>
+      <div class="scenario-card base">
+        <div class="scenario-label">Scenario B — Base Case</div>
+        <div class="scenario-title">Fragmented Risk Escalation and Regional Divergence</div>
+        <div class="scenario-prob">Probability: 55-65% | Horizon: 6-12 months</div>
+        <p>Sahel security deteriorates further with JNIM expanding toward coastal West Africa; DRC maintains nominal peace framework while conflict continues below threshold of full-scale escalation in the east; Zimbabwe beneficiation mandate persists, Chinese operators negotiate extended processing timelines; two to three additional African states adopt export restrictions; East Africa continues attracting capital flight from Sahel but introduces incremental regulatory tightening; North Africa and Botswana remain relatively stable.</p>
+        <div class="scenario-triggers">Sustained JNIM attacks on supply routes; DRC ceasefire violations continue but no territorial advance south; one to two additional ICSID filings per quarter.</div>
+      </div>
+      <div class="scenario-card worst">
+        <div class="scenario-label">Scenario C — Adverse</div>
+        <div class="scenario-title">Systemic Contagion and Supply Chain Rupture</div>
+        <div class="scenario-prob">Probability: 20-25% | Horizon: 6-12 months</div>
+        <p>JNIM establishes operational presence in Ghana or Côte d'Ivoire, triggering evacuation of gold operations; M23 advances toward Lualaba Province, disrupting Chinese copper and cobalt operations; two or more additional major African states impose immediate raw mineral export bans; US-China sanctions conflict forces operators to choose between Western ESG frameworks and Chinese supply chain access; AES juntas collectively expel remaining Western operators.</p>
+        <div class="scenario-triggers">Confirmed jihadist attack within Ghana or Côte d'Ivoire; M23 advance south of South Kivu; Tanzania or Kenya immediate export restriction enactment.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 BEHAVIORAL -->
+<section class="section" id="behavioral">
+  <div class="section-header">
+    <div class="section-num">07 // BEHAVIORAL</div>
+    <h2 class="section-title">Applied Behavioral Tradecraft</h2>
+  </div>
+  <p class="behavioral-justification">Justification for behavioral layer: Resource nationalism in Africa is not purely rational policy optimization — it is significantly shaped by sovereignty identity narratives, colonial legitimacy grievances, and elite-level signaling to domestic political constituencies. Understanding these behavioral drivers is essential for assessing the durability of current postures, predicting the threshold at which governments will accept negotiated compromise, and identifying influence and narrative vulnerabilities that shape the external actor environment. All analysis below is evidence-based; no psychological speculation is applied.</p>
+  <div class="behavioral-grid">
+    <div class="behavioral-item">
+      <div class="behavioral-rank">DRIVER 1<br>Sovereignty Legitimacy Signaling</div>
+      <p>AES junta governments derive a substantial share of their domestic legitimacy from anti-colonial sovereignty narratives. Resource nationalist measures — including expelling Western operators, renegotiating contracts with coercion, and replacing French/Western partners with Russian/Chinese ones — function as identity-consistent legitimacy performance rather than purely economic calculation. This means that rational economic incentives (lost investment, revenue decline) have limited deterrent effect on the most extreme measures. Compromise will be framed as negotiated sovereignty assertion, not capitulation.</p>
+    </div>
+    <div class="behavioral-item">
+      <div class="behavioral-rank">DRIVER 2<br>Precedent Contagion Effect</div>
+      <p>Mali's demonstrated success in extracting over $1 billion in concessions through coercive tactics has established a behavioral template that other resource-holding governments monitor actively. WTW analysts explicitly note that these methods may be "appealing to others" — particularly Guinea and Burkina Faso. This creates a precedent cascade risk: each successful coercive extraction lowers the inhibition threshold for the next jurisdiction. Observable corroboration: multiple simultaneous ICSID filings across jurisdictions that had not previously used such measures.</p>
+    </div>
+    <div class="behavioral-item">
+      <div class="behavioral-rank">DRIVER 3<br>Geopolitical Multipolarity as Leverage Maximizer</div>
+      <p>African governments have strategically internalized that US-China competition produces competing offers without requiring governance improvement. The behavioral pattern is consistent: accept minerals framework from one power, signal openness to the other, extract better terms from both. The DRC's simultaneous engagement with Washington (Accords), Beijing (existing CMOC/Zijin deals), and Gulf investors reflects deliberate leverage maximization, not incoherence. This behavioral pattern is expanding across the continent as other governments observe its success.</p>
+    </div>
+    <div class="behavioral-item">
+      <div class="behavioral-rank">DRIVER 4<br>Insurgent Economic Warfare Logic</div>
+      <p>JNIM's targeting of fuel supply routes to Bamako is a deliberate economic warfare strategy: create visible scarcity, extract ransoms from fuel tanker operators, film attacks for social media dissemination, and simultaneously undermine the junta's economic legitimacy. This is not opportunistic criminality — it is a coherent counter-state economic strategy that compounds the junta's fiscal trap. Operators within JNIM's operational radius should treat this as a persistent feature of the security environment, not a temporary disruption.</p>
+    </div>
+  </div>
+  <div class="sub-section">
+    <div class="sub-section-title">Influence and Narrative Vulnerabilities</div>
+    <p class="prose">Western operators and their governments face a structural narrative disadvantage in AES states: any assertion of investor rights is framed as neo-colonial extraction against sovereign communities. This narrative environment means that legal mechanisms (ICSID arbitration, bilateral investment treaties) are effective at eventual compensation but not at preventing coercive action. Operators who invest in community-visible beneficiation, local content, and social infrastructure commitments create a counter-narrative that is harder for nationalist governments to weaponize. Operators who have not made these investments are exposed to both government and community mobilization as political pressure tools.</p>
+    <p class="prose">In East Africa, a different narrative vulnerability applies: the "responsible sourcing" framing promoted by Western regulatory demands (EU Battery Regulation, US Dodd-Frank) creates friction with host government beneficiation ambitions, which require processing inside the country before ESG certification is possible. Operators who fail to engage East African governments on this tension will face regulatory friction as beneficiation requirements advance.</p>
+  </div>
+</section>
+
+<!-- 08 IMPLICATIONS -->
+<section class="section" id="implications">
+  <div class="section-header">
+    <div class="section-num">08 // IMPLICATIONS, RISK &amp; RECOMMENDATIONS</div>
+    <h2 class="section-title">Strategic Implications, Risk Scoring &amp; Recommendations</h2>
+  </div>
+
+  <div class="sub-section">
+    <div class="sub-section-title">A. Strategic Implications by Actor</div>
+    <div class="impl-grid">
+      <div class="impl-card">
+        <div class="impl-label">For Investors</div>
+        <p>Portfolio risk is now structurally bifurcated between AES/eastern DRC (operational discontinuity risk: HIGH) and North Africa/Southern Africa anchors (manageable but not absent). Standard political risk insurance products are unlikely to cover the full loss profile from Sahel-type coercive extractions. Diversification across risk tiers is essential. The beneficiation mandate is a medium-term certainty requiring project economics recalculation in all African mining jurisdictions regardless of current status. East Africa offers a genuine window that requires active monitoring for tightening signals at the 3-year horizon.</p>
+      </div>
+      <div class="impl-card">
+        <div class="impl-label">For Operators</div>
+        <p>The threshold question in AES states is not "can we manage the regulatory risk" but "what is our exit protocol and at what trigger will we activate it." Any operator without a documented force majeure and personnel evacuation protocol in Mali, Burkina Faso, and Niger is inadequately prepared. In the DRC, the primary operational risk is transport corridor security rather than regulatory risk — route redundancy and corridor monitoring are the critical mitigants. In Southern and East Africa, beneficiation investment commitments are the most effective long-term regulatory risk hedge available.</p>
+      </div>
+      <div class="impl-card">
+        <div class="impl-label">For Strategic Planners</div>
+        <p>The multipolar external actor environment has structurally changed the risk architecture for Africa mining: US-China competition increases host government leverage and decreases accountability enforcement capacity for any single external actor. The Lobito Corridor ($553 million DFC investment) and the US-DRC minerals framework represent the most significant US infrastructure and governance leverage in Central and Southern Africa in two decades. Strategic planners should assess whether their supply chain dependencies align with the emerging US-China bifurcation, and prepare for scenarios where partner choices have compliance and sanctions implications.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <div class="sub-section-title">B. Risk Scoring Matrix by Region</div>
+    <table class="risk-matrix">
+      <thead><tr><th>REGION / RISK TYPE</th><th>LIKELIHOOD (1-5)</th><th>IMPACT (1-5)</th><th>SCORE</th><th>PRIMARY MITIGANT</th></tr></thead>
+      <tbody>
+        <tr class="row-high"><td><strong>West/Sahel: Operational discontinuity (asset seizure, personnel detention)</strong></td><td>5</td><td>5</td><td class="score-high">25</td><td>Exit protocol activation; ICSID arbitration clause; force majeure documentation</td></tr>
+        <tr class="row-high"><td><strong>West/Sahel: Jihadist attack on mining logistics and supply routes</strong></td><td>5</td><td>4</td><td class="score-high">20</td><td>Route redundancy; armed escort protocols; fuel pre-positioning; non-operational periods</td></tr>
+        <tr class="row-high"><td><strong>Central Africa (DRC East): Conflict disruption of transport corridors</strong></td><td>4</td><td>5</td><td class="score-high">20</td><td>Southern route alternatives; Lobito Corridor development; corridor security monitoring</td></tr>
+        <tr><td><strong>Continental: Beneficiation mandate / export restriction enactment</strong></td><td>4</td><td>4</td><td class="score-med">16</td><td>Proactive beneficiation investment; government partnership frameworks; stabilization clauses</td></tr>
+        <tr><td><strong>East Africa: Regulatory tightening (retroactive fiscal change)</strong></td><td>3</td><td>4</td><td class="score-med">12</td><td>Regulatory monitoring; local content investment; bilateral investment treaty activation</td></tr>
+        <tr><td><strong>Southern Africa: Infrastructure / energy constraint (South Africa, Zambia)</strong></td><td>4</td><td>3</td><td class="score-med">12</td><td>On-site renewable energy investment; Zambia grid interconnector projects; logistics redundancy</td></tr>
+        <tr><td><strong>Continental: US-China compliance conflict (sanctions / partner choice)</strong></td><td>3</td><td>4</td><td class="score-med">12</td><td>Legal counsel on partner selection; supply chain mapping; Western financing frameworks</td></tr>
+        <tr><td><strong>North Africa: Social unrest / regulatory shift (Morocco, Egypt)</strong></td><td>2</td><td>3</td><td class="score-low">6</td><td>Community engagement; ESG investment; regulatory change monitoring</td></tr>
+        <tr><td><strong>Southern Africa: Resource nationalism escalation (Zambia, Namibia, Botswana)</strong></td><td>2</td><td>3</td><td class="score-low">6</td><td>Stakeholder engagement; beneficiation pre-commitment; transparent fiscal compliance</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub-section">
+    <div class="sub-section-title">C. Recommendations by Time Horizon</div>
+    <div class="rec-timeline">
+      <div class="rec-block">
+        <div class="rec-time">0-72H IMMEDIATE</div>
+        <div class="rec-content"><ul>
+          <li>Verify current status of force majeure and personnel evacuation protocols for all operations in Mali, Burkina Faso, and Niger; confirm activation triggers are documented and communicated to country-level management.</li>
+          <li>Brief board-level and legal counsel on Zimbabwe lithium export ban implications for supply chain offtake obligations and any existing DRC copper export arrangements contingent on Washington Accords durability.</li>
+          <li>Instruct country teams in DRC's Lualaba and Haut-Katanga to conduct route vulnerability assessment for primary mineral export corridors toward Angola (Lobito) and Dar es Salaam.</li>
+          <li>Check compliance exposure for any current or planned operational partnerships in jurisdictions where US sanctions and Chinese partner interests conflict (Sahel uranium, DRC cobalt).</li>
+        </ul></div>
+      </div>
+      <div class="rec-block">
+        <div class="rec-time">3-30 DAYS NEAR-TERM</div>
+        <div class="rec-content"><ul>
+          <li>Conduct full portfolio beneficiation exposure assessment: map all export streams from African operations against the 13 active export restriction regimes and identify which jurisdictions present near-term regulatory tightening exposure.</li>
+          <li>Engage legal counsel on ICSID arbitration clause status and stabilization clause enforceability for all AES-state and DRC operations; quantify potential recovery value against realistic operational scenarios.</li>
+          <li>Engage East Africa country teams on monitoring cadence for Tanzania's Minerals Regulation Commission Act implementation and Kenya's potential mining code reform; establish clear property rights monitoring indicators.</li>
+          <li>Assess whether current Morocco and Botswana investment postures adequately reflect their anchor-market value as the continent's two most stable jurisdictions; consider whether increased exposure to these markets offsets AES-state concentration risk.</li>
+          <li>Establish or refresh intelligence partnerships with specialist Africa mining risk consultancies (Verisk Maplecroft, MS Risk, WTW Africa practice) for monthly operational threat updates for Sahel and DRC portfolios.</li>
+        </ul></div>
+      </div>
+      <div class="rec-block">
+        <div class="rec-time">30-180 DAYS MEDIUM-TERM</div>
+        <div class="rec-content"><ul>
+          <li>Develop formal beneficiation investment strategy for each African operating jurisdiction with a timeline aligned to host government expectations; proactively communicate this strategy to government stakeholders before regulatory mandates are applied.</li>
+          <li>Build scenario-based project economics models for all active African mining projects that include (a) a regulatory tightening scenario (additional fiscal obligations), (b) an export restriction scenario, and (c) a conflict disruption scenario for corridor-dependent projects.</li>
+          <li>Engage the US Development Finance Corporation and equivalent EU Global Gateway frameworks regarding Lobito Corridor co-investment and Central/Southern Africa supply chain security — these frameworks provide both infrastructure support and political risk reduction as a byproduct of US strategic interest alignment.</li>
+          <li>Establish or strengthen community investment and local content programmes in East Africa and Southern Africa operations; ensure these are externally visible as a counter-narrative to nationalist expropriation framing before the political environment shifts.</li>
+          <li>Develop a geopolitical partner diversification strategy for jurisdictions where China currently dominates financing and offtake; assess whether Western alternative financing (DFC, EU, Export Credit Agencies) is commercially viable for near-term capital requirements.</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 CONFIDENCE -->
+<section class="section" id="confidence">
+  <div class="section-header">
+    <div class="section-num">09 // CONFIDENCE &amp; UNCERTAINTIES</div>
+    <h2 class="section-title">Confidence Statement and Uncertainties</h2>
+  </div>
+  <div class="conf-panel">
+    <div class="conf-header">Overall Confidence Level: <span class="conf-level moderate">MODERATE</span></div>
+    <div class="conf-body">
+      <p>This assessment carries overall MODERATE confidence, with HIGH confidence on specific regional sub-judgments and MODERATE confidence on forward projections. Reasons:</p>
+      <p>1. <strong>Source corroboration is strong for current conditions but weaker for forward projections.</strong> Sahel security assessments are corroborated by four-plus independent streams from recognized international institutions. DRC conflict assessments draw on at least three independent streams with consistent findings. Beneficiation doctrine assessments are corroborated by legal analysis and financial sector reporting from multiple jurisdictions. Forward scenario probabilities are analyst inferences from trend extrapolation, not empirically verifiable.</p>
+      <p>2. <strong>Key uncertainty clusters remain unresolved.</strong> Russia's Africa Corps reconstituted capacity, the durability of the DRC ceasefire, and the pace of JNIM southward expansion toward coastal West Africa are all high-diagnosticity uncertainties with insufficient current evidence to resolve. Each of these could materially alter the risk landscape within the assessment horizon.</p>
+      <p>3. <strong>Geopolitical dynamics are moving faster than conventional intelligence cycles can track.</strong> The Washington Accords, the US Critical Minerals Ministerial, and the AU beneficiation framework all emerged within a six-week window (December 2025 to February 2026). This pace of change increases the probability that significant developments will occur between production and consumption of this assessment. Continuous monitoring is required.</p>
+    </div>
+  </div>
+  <div class="sub-section">
+    <div class="sub-section-title">Flip-Risk Uncertainties</div>
+    <div class="uncertainty-list">
+      <div class="uncertainty-item">
+        <strong>FLIP RISK 1: M23 Southern Advance</strong>
+        If M23 or allied armed groups advance toward DRC's southern mineral provinces (Lualaba, Haut-Katanga), the industrial copper-cobalt output supporting approximately 70% of global cobalt supply faces acute disruption risk. This would flip Scenario B to Scenario C for the DRC, dramatically alter global battery supply chains, and potentially trigger force majeure across multiple major operators simultaneously. Current assessment treats this as a contained risk; any confirmed advance requires immediate reassessment.
+      </div>
+      <div class="uncertainty-item">
+        <strong>FLIP RISK 2: JNIM Coastal Expansion Rate</strong>
+        If JNIM achieves operational presence in Ghana, Côte d'Ivoire, or Senegal faster than the 12-24 month timeline currently assessed, currently stable West African mining jurisdictions would face security corridor threats for which they are institutionally and operationally unprepared. Ghana's 2025 Fraser ranking drop to 53rd (from its historical anchor position) is an early signal that investor confidence is already adjusting. Accelerated JNIM expansion would flip the West Africa coastal states from "watch" to "high risk" within the assessment horizon.
+      </div>
+      <div class="uncertainty-item">
+        <strong>FLIP RISK 3: US-China Sanctions Escalation in Africa</strong>
+        If the US imposes secondary sanctions on entities operating alongside Chinese partners in African critical mineral jurisdictions (analogous to Russia sanctions extension), operators currently managing dual-partner exposure would face an immediate compliance crisis across their African portfolios. This would not be a gradual risk — it would be an immediate operational and legal emergency requiring rapid portfolio restructuring. Current US executive posture has not signaled this direction, but the structural competitive logic makes it a non-trivial tail risk over the 12-month horizon.
+      </div>
+    </div>
+  </div>
+  <div class="sub-section">
+    <div class="sub-section-title">Assumption Failure Drill</div>
+    <table class="assumption-table">
+      <thead><tr><th>ASSUMPTION</th><th>FAILURE SIGNAL</th><th>CONSEQUENCE</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>AES juntas maintain power and resource nationalist posture through the 12-month horizon (A-01)</td>
+          <td>Coup or negotiated junta exit in any AES state; formal AES-ECOWAS rapprochement including military government moderation; AES-US security framework agreement requiring regulatory concessions to Western operators</td>
+          <td>Rapid reassessment of AES risk tier; potentially significant re-entry opportunity for operators with existing contractual frameworks; existing concession holders may benefit from restored regulatory stability faster than new entrants. Previous assessments of operational discontinuity risk may be materially overstated.</td>
+        </tr>
+        <tr>
+          <td>Eastern DRC conflict remains geographically contained north of Lualaba Province (A-02)</td>
+          <td>Confirmed M23 or affiliated armed group operation south of South Kivu provincial boundary; Congolese armed forces FARDC retreat from Kasai or Tanganyika; US or UN intelligence reporting of M23 advance planning toward mining provinces</td>
+          <td>Immediate operational crisis for Zijin (Kamoa-Kakula), CMOC (TFM, KFM), Glencore (Mutanda via Orion Consortium) and all transport-dependent operations. Global cobalt and copper supply disruption likely; force majeure declarations probable; DRC GDP impact severe. Requires emergency CEO-level decision within 72 hours of signal confirmation.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="sub-section">
+    <div class="sub-section-title">Monitoring Plan</div>
+    <p class="prose">Weekly: JNIM attack pattern against West African supply routes and civilian infrastructure (UN OCHA, Security Council Report). Monthly: AES junta mining code developments, ICSID filing tracker (Global Arbitration Review), M23 territorial status (UN MONUSCO), Russia Africa Corps operational reporting (open-source intelligence). Quarterly: Fraser Institute investment attractiveness updates, East Africa regulatory change tracker (Hogan Lovells Africa practice), commodity price impact on beneficiation economics. Annually: Full reassessment of all regional risk tiers against this baseline document.</p>
+  </div>
+</section>
+
+<!-- 10 REFERENCES -->
+<section class="section" id="references">
+  <div class="section-header">
+    <div class="section-num">10 // REFERENCES</div>
+    <h2 class="section-title">Source Register and WSI Audit</h2>
+  </div>
+  <table class="ref-table">
+    <thead><tr><th>#</th><th>SOURCE</th><th>TYPE</th><th>BAND</th><th>INDEPENDENCE NOTE</th><th>URL / LOCATOR</th><th>ATOMIC CLAIM / FALSIFIABILITY</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Mining Technology / GlobalData, Oct 2025</td><td>Industry Analysis</td><td><span class="band-pill green">Green</span></td><td>Independent of UN and NGO streams; commercially sourced data</td><td>mining-technology.com/africa-mining-sector</td><td>Africa holds 79.3% of global PGM reserves (USGS 2025); platinum to decline 6.4% in 2025</td></tr>
+      <tr><td>2</td><td>Brookings Institution / Foresight Africa 2026, Feb 2026</td><td>Think Tank</td><td><span class="band-pill green">Green</span></td><td>Independent of industry and government sources; academic peer review</td><td>brookings.edu/articles/unlocking-africas-critical-minerals</td><td>Global lithium demand to increase 4.5x by 2040; China controls 60% of global mining output and 91% of processing</td></tr>
+      <tr><td>3</td><td>Africa Defense Forum, Feb 2025</td><td>Specialist Security Media</td><td><span class="band-pill amber">Amber</span></td><td>Independent military-focused publication; some editorial positioning; corroborated by WTW and Chatham House</td><td>adf-magazine.com/sahel-mining</td><td>Mali mining code mandates up to 35% government stake; $1.2B expected from mining Q1 2025; Burkina Faso gold output 47.7 mt</td></tr>
+      <tr><td>4</td><td>UN Security Council Report (Monthly Forecasts), Nov-Dec 2025</td><td>Intergovernmental</td><td><span class="band-pill green">Green</span></td><td>Primary UN documentary source; independent of all commercial and NGO streams</td><td>securitycouncilreport.org</td><td>JNIM reached new operational capability levels; ISGS expanding along Niger-Nigeria border; 1,650 ECOWAS Rapid Deployment Force planned 2026</td></tr>
+      <tr><td>5</td><td>WTW / Willis Towers Watson, Mar 2025</td><td>Commercial Risk Consultancy</td><td><span class="band-pill green">Green</span></td><td>Independent of UN and NGO sources; commercially derived insurance risk methodology</td><td>wtwco.com/sub-saharan-africa-mining</td><td>Seven mining companies exited Burkina Faso in past two years; resource nationalism trend across 14+ African states</td></tr>
+      <tr><td>6</td><td>Chatham House, Dec 2025</td><td>Independent Think Tank</td><td><span class="band-pill green">Green</span></td><td>Independent of commercial and government streams; established analytical reputation</td><td>chathamhouse.org/west-africa-sahel</td><td>JNIM imposed fuel blockade on Bamako supply routes; Africa Corps escorted fuel convoy Niamey to Bamako; militants targeting gold and lithium mining sites</td></tr>
+      <tr><td>7</td><td>Institute for Economics and Peace, GTI 2025</td><td>Research Institute</td><td><span class="band-pill green">Green</span></td><td>Independent quantitative methodology; global benchmark</td><td>visionofhumanity.org/sahel</td><td>Sahel accounts for 51% of global terrorism deaths; conflict deaths exceeded 25,000 in 2024; Niger recorded largest global increase in terrorism deaths</td></tr>
+      <tr><td>8</td><td>Al Jazeera, Feb 2026</td><td>International Media</td><td><span class="band-pill amber">Amber</span></td><td>Corroborated by Atlantic Council, Lowy Institute, openDemocracy; editorial positioning requires assessment</td><td>aljazeera.com/features/drc-minerals</td><td>M23 seized Goma and Bukavu (Jan-Feb 2025); eastern cities held by M23; fighting continues post-Washington Accords</td></tr>
+      <tr><td>9</td><td>Atlantic Council, Jun 2025</td><td>Think Tank</td><td><span class="band-pill green">Green</span></td><td>Independent of commercial sources; established analytical reputation; US-oriented perspective requires noting</td><td>atlanticcouncil.org/drc-beyond-critical-minerals</td><td>7,000+ killed in DRC since January 2025; 7.8 million internally displaced; M23 captured Goma Jan 25 2025, Bukavu Feb 16 2025</td></tr>
+      <tr><td>10</td><td>openDemocracy, Feb 2026</td><td>Independent Media</td><td><span class="band-pill amber">Amber</span></td><td>Independent editorial positioning; analysis corroborated by Mongabay and Atlantic Council on DRC mineral deals</td><td>opendemocracy.net/drc-minerals</td><td>Orion Consortium MOU with Glencore for 40% stake in Mutanda and KCC ($9B); Washington Accords signed Dec 2025</td></tr>
+      <tr><td>11</td><td>African Security Analysis, Mar 2026</td><td>Specialist Risk Intelligence</td><td><span class="band-pill amber">Amber</span></td><td>Single-source for some Zimbabwe claims; corroborated on beneficiation trend by Gide and Hogan Lovells</td><td>africansecurityanalysis.org</td><td>Zimbabwe suspended all raw lithium exports Feb 25 2026 immediately; 1.128 million tonnes spodumene exported 2025; Chinese operators including Huayou ($400M) and Sinomine ($500M) exposed</td></tr>
+      <tr><td>12</td><td>ISS Africa, 2026</td><td>Think Tank / Policy</td><td><span class="band-pill green">Green</span></td><td>Independent of commercial sources; Africa-specialized analytical institution</td><td>issafrica.org/us-minerals-diplomacy-sahel</td><td>Mali projected Africa's second-largest lithium producer 2026 (890,000 tonnes reserves); Niger holds 454,000 tonnes uranium reserves (5% global); Goulamina and Bougouni lithium under Chinese control</td></tr>
+      <tr><td>13</td><td>Semafor, Jan 2025</td><td>Media</td><td><span class="band-pill amber">Amber</span></td><td>Industry executive source; corroborated by Fraser Institute data and WTW analysis</td><td>semafor.com/east-africa-mining</td><td>Tanzania mining GDP share rose from 3.5% (2020) to 9% (2024); Kenya lifted four-year mining license moratorium Oct 2023</td></tr>
+      <tr><td>14</td><td>Fraser Institute, Annual Survey of Mining Companies 2025</td><td>Industry Survey</td><td><span class="band-pill green">Green</span></td><td>Independent quantitative methodology; 256 executives surveyed; global benchmark</td><td>fraserinstitute.org/mining-survey-2025</td><td>Botswana ranked 7th globally (score 85.99); Morocco ranked 15th (score 78.97); Ghana ranked 53rd (score 55.21)</td></tr>
+      <tr><td>15</td><td>Pan African Visions, Mar 2026</td><td>Pan-African Policy Media</td><td><span class="band-pill amber">Amber</span></td><td>Single-source for Valterra and Hormuz context; beneficiation trend corroborated by AU resolution and multiple country sources</td><td>panafricanvisions.com/hormuz-minerals</td><td>At least 13 African countries enacted mineral export restrictions since 2023; AU Continental Critical Minerals Value Addition Framework adopted Feb 2026; Lobito Corridor DFC $553M loan Dec 2025</td></tr>
+    </tbody>
+  </table>
+  <div style="margin-top:1.2rem;padding:1rem;background:var(--bg-card-alt);border:1px solid var(--border);">
+    <p style="font-family:var(--font-mono);font-size:0.65rem;color:var(--slate);line-height:1.6;"><strong style="color:var(--gold-pale);">Band Key:</strong> GREEN — Verified, independently corroborated, primary or established institutional source. AMBER — Credible but requires corroboration; single-stream or editorially positioned source. RED — Unverified, social media sourced, or AI-generated; not used as evidence in any key judgment.</p>
+    <p style="font-family:var(--font-mono);font-size:0.65rem;color:var(--slate);margin-top:0.6rem;line-height:1.6;"><strong style="color:var(--gold-pale);">Independence Test Statement:</strong> Sahel security key judgments (KJ-01, KJ-02) are supported by four independent streams: UN Security Council documentation, IEP quantitative index, WTW commercial risk analysis, and Chatham House policy research. DRC conflict key judgments (KJ-03, KJ-04) are supported by three independent streams: Atlantic Council, Lowy Institute, and Geopolitical Monitor, with corroboration from Al Jazeera and openDemocracy. All AMBER-banded sources with load-bearing claims are explicitly corroborated by at least one GREEN-banded independent source before inclusion in Key Judgments. No RED-band sources were used. No key judgment rests on a single source without explicit caveat.</p>
+  </div>
+</section>
+
+<!-- ANNEX A -->
+<section class="section" id="annex-a">
+  <div class="annex-header">
+    <div class="annex-num">ANNEX A</div>
+    <h2 class="annex-title">Early Warning Indicators</h2>
+  </div>
+  <table class="iw-table">
+    <thead><tr><th>ID</th><th>TRIGGER EVENT</th><th>SCENARIO SIGNAL</th><th>LEADING INDICATORS</th><th>ANALYTIC ACTION REQUIRED</th></tr></thead>
+    <tbody>
+      <tr><td class="kiq-id">A-01</td><td>JNIM first confirmed attack within 50km of a Ghana or Côte d'Ivoire gold mine</td><td>Scenario B to C transition; coastal West Africa risk tier upgrade to HIGH</td><td>JNIM statement claiming operations in Volta Region (Ghana) or Zanzan (Côte d'Ivoire); increased IED incidents on northern transport routes; Ghana military emergency deployment to northern mining regions</td><td>Immediate reassessment of all coastal West Africa operations; operator security protocol activation; government stakeholder emergency engagement</td></tr>
+      <tr><td class="kiq-id">A-02</td><td>Additional senior foreign mining executive detained or expelled by an AES government</td><td>Escalation of coercive extraction pattern; possible signal of new AES junta fiscal crisis requiring emergency revenue</td><td>Public statements by AES junta officials accusing mining companies of "financial crimes"; tax authority audits initiated on multiple operators simultaneously; social media campaigns targeting foreign mining executives</td><td>Emergency legal counsel activation for all AES-state operations; force majeure protocol review; personnel travel restriction consideration</td></tr>
+      <tr><td class="kiq-id">A-03</td><td>Confirmed M23 armed movement or advance toward Tanganyika or Kasai provinces, DRC</td><td>Assumption A-02 failure; potential Scenario C transition for DRC industrial mining output</td><td>MONUSCO reporting of M23 forward reconnaissance south of South Kivu; FARDC retreat from intermediate positions; Chinese mining company security advisory upgrades for southern DRC operations</td><td>Immediate CEO-level decision brief; force majeure scenario modeling for DRC copper/cobalt operations; alternative route and supply stockpiling assessment</td></tr>
+      <tr><td class="kiq-id">A-04</td><td>Tanzania or Kenya enacts immediate (not phased) raw mineral export restriction on a commercially significant commodity</td><td>East Africa risk tier upgrade; capital flight from East Africa; Assumption A-03 failure</td><td>Parliamentary or cabinet statements on "immediate" beneficiation requirements; Tanzania MRC enforcement actions against export shipments; foreign operator emergency filings in Tanzanian courts</td><td>KIQ-05 reassessment; portfolio exposure mapping across East Africa; legal counsel on investment treaty protections</td></tr>
+      <tr><td class="kiq-id">A-05</td><td>US executive action imposing secondary sanctions on entities operating alongside Chinese partners in specific African jurisdictions</td><td>Immediate compliance crisis for dual-partner operators; forced portfolio restructuring</td><td>US Treasury/OFAC designation of specific Chinese mining entities operating in Africa; US State Department "entity list" additions; US Congressional legislation targeting African mineral supply chain practices</td><td>Emergency compliance audit of all African operations with Chinese co-investors or offtake partners; legal counsel on sanction exposure; communication strategy for investors and regulators</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ANNEX B -->
+<section class="section" id="annex-b">
+  <div class="annex-header">
+    <div class="annex-num">ANNEX B</div>
+    <h2 class="annex-title">Priority Intelligence Gaps and Action Thresholds</h2>
+  </div>
+
+  <div class="sub-section">
+    <div class="sub-section-title">B.1 Priority Intelligence Gaps</div>
+    <table class="pig-table">
+      <thead><tr><th>GAP ID</th><th>INTELLIGENCE QUESTION</th><th>WHY IT MATTERS</th><th>COLLECTION RECOMMENDATION</th></tr></thead>
+      <tbody>
+        <tr><td class="kiq-id">G-01</td><td>What is the current operational capacity and geographic deployment of Russia's Africa Corps in the Sahel following the collapse of Syrian logistics bases?</td><td>Africa Corps capacity directly affects AES junta survivability, which drives the durability of resource nationalist postures. Reduced capacity increases junta vulnerability, potentially creating openings for US or alternative partner re-engagement.</td><td>Open-source monitoring of Africa Corps social media and operational reporting; engagement with specialist conflict tracking organizations (ACLED, Armed Conflict Survey); cross-reference with Russian Ministry of Defense statements.</td></tr>
+        <tr><td class="kiq-id">G-02</td><td>What are the actual enforcement mechanisms in the DRC-Rwanda Washington Accords, and are there verifiable accountability triggers that would alter the current assessment of DRC conflict durability?</td><td>If the Accords contain enforceable accountability mechanisms not visible in public reporting, the conflict risk assessment for eastern DRC may be overstated. If they do not, the current assessment is well-founded.</td><td>Full text review of Washington Accords documentation; legal analysis of DRC-US bilateral minerals agreement; engagement with DRC legal and civil society monitoring organizations.</td></tr>
+        <tr><td class="kiq-id">G-03</td><td>What is JNIM's current operational planning posture toward coastal West Africa mining jurisdictions?</td><td>The pace of JNIM's coastal expansion is the primary driver of the Scenario B/C probability assessment for the 12-month horizon. Faster expansion dramatically changes the risk profile for Ghana, Côte d'Ivoire, and Senegal operations.</td><td>UN DPPA and 1267 Committee monitoring team reports; engagement with Sahelian civil society organizations tracking armed group movements; specialist security consultancy HUMINT in affected regions.</td></tr>
+        <tr><td class="kiq-id">G-04</td><td>To what extent has Zimbabwe's February 2026 lithium export ban been coordinated with other African lithium and critical mineral producers as part of the AU beneficiation framework?</td><td>If the ban is coordinated, propagation to Namibia, Zimbabwe, DRC, and other producers is likely faster than independently assessed. If unilateral, it may represent an isolated sovereign calculation with different propagation dynamics.</td><td>AU Commission documentation review; bilateral diplomatic reporting from Zimbabwe, Namibia, DRC, and Zambia regarding beneficiation coordination; engagement with African Development Bank mining governance unit.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub-section">
+    <div class="sub-section-title">B.2 Action Thresholds</div>
+    <div class="threshold-grid">
+      <div class="threshold-cell green-zone">
+        <div class="threshold-label">GREEN // MONITOR</div>
+        <ul>
+          <li>Trigger: All AES-state conditions remain within current parameters; no new executive detentions; no M23 territorial advance; East Africa regulatory environment stable.</li>
+          <li>Required actions: Maintain current monitoring cadence; quarterly portfolio review; beneficiation strategy development continues; no operational changes required.</li>
+          <li>Responsible parties: Country-level security and regulatory affairs managers; quarterly senior management review.</li>
+        </ul>
+      </div>
+      <div class="threshold-cell amber-zone">
+        <div class="threshold-label">AMBER // ACT NOW</div>
+        <ul>
+          <li>Trigger: Any single Annex A indicator (A-01 through A-05) confirmed; new AES junta mining code change affecting existing licenses; DRC ceasefire collapse with visible southward M23 movement; additional African state enacting immediate export ban.</li>
+          <li>Required actions: Activate force majeure review across affected portfolios; engage legal counsel on ICSID options; increase monitoring to weekly cadence; brief C-suite and board audit/risk committee; review political risk insurance coverage; non-essential personnel security advisory.</li>
+          <li>Responsible parties: COO, General Counsel, Chief Risk Officer; escalation to CEO within 24 hours of trigger confirmation.</li>
+        </ul>
+      </div>
+      <div class="threshold-cell red-zone">
+        <div class="threshold-label">RED // EMERGENCY</div>
+        <ul>
+          <li>Trigger: Executive personnel detained in any jurisdiction; M23 advance confirmed toward Lualaba Province; JNIM confirmed attack on major gold mine; US secondary sanctions designating African mining partners; immediate export ban in Tanzania or South Africa; two or more concurrent Annex A triggers within 30-day window.</li>
+          <li>Required actions: Immediate CEO-level decision brief; force majeure activation consideration; personnel evacuation protocol review; ICSID or BIT arbitration filing preparation; investor and regulatory communications plan activation; engagement with home government diplomatic missions.</li>
+          <li>Responsible parties: CEO, Board Chair, General Counsel; government relations and investor communications immediate activation; independent legal counsel retained within 48 hours.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-brand">Quanta Analytica Process™ | MNS Consulting | Restricted Intelligence Product</div>
+  <div class="footer-doc-id">QAP-CRI-AFR-EXTRACT-2026-0326</div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    const p = h > 0 ? (window.scrollY / h) * 100 : 0;
+    document.getElementById('progress').style.width = p + '%';
+  });
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.section').forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
