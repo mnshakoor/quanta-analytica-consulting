@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Red Sea Corridor: Corporate Risk & Compliance Exposure | Quanta Analytica Process™ | 27 MAR 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg:#0a0c10;
+  --bg-card:#111318;
+  --bg-card-alt:#13161c;
+  --border:#1f2330;
+  --border-mid:#2a2f40;
+  --gold:#c9a84c;
+  --gold-dim:#8a6f2e;
+  --gold-pale:#e8d9a8;
+  --slate:#8898b0;
+  --slate-light:#a8bad0;
+  --white:#e8edf4;
+  --white-dim:#b0bccf;
+  --red:#d94040;
+  --red-dim:#7a1f1f;
+  --red-pale:#2a1010;
+  --amber:#c9813a;
+  --amber-dim:#7a4e20;
+  --amber-pale:#251808;
+  --green:#3a9a5c;
+  --green-dim:#1f6035;
+  --green-pale:#0a1f12;
+  --blue:#3a7abf;
+  --blue-pale:#0c1d30;
+  --font-mono:'IBM Plex Mono',monospace;
+  --font-sans:'IBM Plex Sans',sans-serif;
+  --font-serif:'Libre Baskerville',serif;
+  --max-width:1000px;
+
+  /* legacy variable aliases used in inline styles and original markup */
+  --navy-deep: var(--bg);
+  --navy-head: var(--white);
+  --gold-muted: var(--gold-dim);
+  --slate-muted: var(--slate);
+  --body-dark: var(--white-dim);
+  --sand: var(--bg-card-alt);
+  --cream: var(--bg);
+  --blue-soft: var(--blue-pale);
+  --red-alert: var(--red);
+  --red-tint: var(--red-pale);
+  --green-signal: var(--green);
+  --green-tint: var(--green-pale);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:var(--font-sans);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+#progress{position:fixed;top:0;left:0;height:3px;background:var(--gold);width:0;z-index:9999;transition:width 0.1s linear}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,12,16,0.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px;gap:1rem}
+.nav-brand{font-family:var(--font-mono);font-size:0.65rem;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap}
+.nav-classify{font-family:var(--font-mono);font-size:0.6rem;background:var(--red-pale);color:var(--red);border:1px solid var(--red-dim);padding:0.2rem 0.7rem;letter-spacing:0.1em;text-transform:uppercase;white-space:nowrap}
+nav ul{display:flex;align-items:center;gap:1rem;list-style:none;flex:1;justify-content:center}
+nav ul a{font-family:var(--font-mono);font-size:0.58rem;color:var(--slate);letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:color .2s ease}
+nav ul a:hover{color:var(--gold)}
+
+/* hero */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:6rem 2rem 3rem;overflow:hidden;background:radial-gradient(ellipse at 20% 50%,rgba(201,168,76,0.06) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(58,122,191,0.05) 0%,transparent 50%),var(--bg)}
+.hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;opacity:.3;mask-image:radial-gradient(ellipse at center,black 30%,transparent 80%)}
+.hero-inner{position:relative;z-index:1;max-width:var(--max-width);width:100%;margin:0 auto}
+.hero-running{font-family:var(--font-mono);font-size:.6rem;color:var(--gold-dim);letter-spacing:.15em;text-transform:uppercase;display:flex;justify-content:space-between;gap:1rem;margin-bottom:2rem}
+.hero-running-left,.hero-running-right{display:block}
+.hero h1{font-family:var(--font-serif);font-size:clamp(2rem,5vw,3.4rem);font-weight:700;color:var(--white);line-height:1.15;max-width:850px;margin-bottom:1rem;text-transform:none;letter-spacing:0}
+.hero h1 span{display:block;color:var(--gold)}
+.hero-subtitle{font-family:var(--font-sans);font-size:1rem;color:var(--slate-light);max-width:760px;margin-bottom:1.8rem;font-style:normal;letter-spacing:0}
+.hero-meta{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1rem}
+.meta-cell{background:var(--bg-card);border:1px solid var(--border);padding:.5rem 1rem;font-family:var(--font-mono);font-size:.6rem;color:var(--slate);letter-spacing:.08em;min-width:auto;border-radius:0}
+.meta-cell .mc-label{display:block;color:var(--slate);font-size:.58rem;text-transform:uppercase;margin-bottom:.15rem}
+.meta-cell .mc-value{display:block;color:var(--gold-pale);font-size:.65rem;font-weight:500}
+.threat-badge{display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:inherit}
+.threat-dot{width:7px;height:7px;border-radius:50%;background:var(--red);animation:blink 1.4s ease-in-out infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.scope-boundary{font-family:var(--font-sans);font-style:italic;font-size:.8rem;color:var(--blue);border-left:2px solid var(--blue);padding-left:1rem;max-width:850px;line-height:1.6;background:transparent;margin-top:1.25rem}
+.scope-boundary strong{color:var(--gold-pale);font-style:normal;letter-spacing:.05em}
+
+/* main + section */
+main{max-width:var(--max-width);margin:0 auto;padding:4rem 2rem 6rem}
+.section{margin-bottom:3rem;opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.section.visible{opacity:1;transform:none}
+.section-num{display:inline-block;font-family:var(--font-mono);font-size:.6rem;color:var(--gold);letter-spacing:.12em;background:rgba(201,168,76,.08);border:1px solid var(--gold-dim);padding:.25rem .7rem;white-space:nowrap;text-transform:uppercase;margin-bottom:.8rem}
+.section-title{font-family:var(--font-serif);font-size:1.3rem;color:var(--white);font-weight:400;margin-bottom:1.4rem;padding-bottom:.8rem;border-bottom:1px solid var(--border)}
+.sub-section{font-family:var(--font-mono);font-size:.65rem;color:var(--gold-dim);letter-spacing:.12em;text-transform:uppercase;margin:2rem 0 .8rem;padding-top:1.2rem;border-top:1px solid var(--border)}
+.prose,p{color:var(--white-dim)}
+.prose{font-size:.86rem;line-height:1.7;margin-bottom:1rem}
+strong{color:var(--gold-pale)}
+cite{font-style:normal;color:var(--gold-dim);font-size:.75rem;font-family:var(--font-mono)}
+
+/* tables */
+table,.kiq-table,.assumption-table,.ach-table,.iw-table,.pig-table,.risk-matrix,.ref-table,.layer-map{width:100%;border-collapse:collapse;font-size:.82rem}
+th,.kiq-table th,.assumption-table th,.ach-table th,.iw-table th,.pig-table th,.risk-matrix th,.ref-table th,.layer-map th{background:rgba(201,168,76,.08);border:1px solid var(--border-mid);color:var(--gold-pale);font-family:var(--font-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:.6rem .8rem;text-align:left}
+td,.kiq-table td,.assumption-table td,.ach-table td,.iw-table td,.pig-table td,.risk-matrix td,.ref-table td,.layer-map td{border:1px solid var(--border);padding:.6rem .8rem;color:var(--white-dim);vertical-align:top;line-height:1.55;background:transparent}
+tr:nth-child(even) td,.kiq-table tr:nth-child(even) td,.assumption-table tr:nth-child(even) td,.ach-table tr:nth-child(even) td,.iw-table tr:nth-child(even) td,.pig-table tr:nth-child(even) td,.risk-matrix tr:nth-child(even) td,.ref-table tr:nth-child(even) td,.layer-map tr:nth-child(even) td{background:rgba(255,255,255,.015)}
+.row-red td{background:rgba(217,64,64,.06)!important}
+.col-id,.layer-code{font-family:var(--font-mono);font-size:.7rem;color:var(--gold);font-weight:600;white-space:nowrap;background:transparent;text-align:center}
+td.label-cell,.layer-name{font-family:var(--font-mono);font-size:.62rem;color:var(--slate);text-transform:uppercase;background:rgba(255,255,255,.015)}
+.layer-content{font-size:.82rem;color:var(--white-dim)}
+
+/* cards / grids */
+.bluf-grid,.kj-list,.behavioral-grid,.uncertainty-list,.rec-timeline{display:flex;flex-direction:column;gap:1rem}
+.bluf-item{display:grid;grid-template-columns:2.5rem 1fr;gap:1rem;align-items:start;background:var(--bg-card);border:1px solid var(--border);border-left:3px solid var(--gold);padding:1.2rem 1.4rem}
+.bluf-index{font-family:var(--font-mono);font-size:1.1rem;color:var(--gold-pale);font-weight:600;padding-top:.1rem;background:none;width:auto;height:auto;border-radius:0;display:block}
+.bluf-text{font-size:.88rem;line-height:1.65}
+.bluf-text strong{display:block;font-family:var(--font-sans);font-size:.85rem;font-weight:600;color:var(--gold-pale);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.05em}
+
+.snapshot-grid,.evidence-grid,.scenario-grid,.threshold-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+.snapshot-grid{gap:1px;background:var(--border)}
+.snapshot-cell{background:var(--bg-card);padding:1.2rem 1.4rem;border:none}
+.snapshot-cell .sc-label{font-family:var(--font-mono);font-size:.58rem;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem;display:block;border-bottom:none;padding-bottom:0}
+.snapshot-cell p{color:var(--white-dim);font-size:.85rem;line-height:1.55}
+
+.kj-item{background:var(--bg-card);border:1px solid var(--border);padding:0;overflow:hidden}
+.kj-item.high{border-left:4px solid var(--red)}
+.kj-item.moderate{border-left:4px solid var(--amber)}
+.kj-item.low{border-left:4px solid var(--green)}
+.kj-band{padding:.5rem 1rem;font-family:var(--font-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--border)}
+.kj-item.high .kj-band{background:rgba(217,64,64,.08);color:var(--red)}
+.kj-item.moderate .kj-band{background:rgba(201,129,58,.08);color:var(--amber)}
+.kj-item.low .kj-band{background:rgba(58,154,92,.08);color:var(--green)}
+.kj-body{padding:1rem 1.2rem;font-size:.86rem;line-height:1.6;background:transparent;color:var(--white-dim)}
+.kj-body .kj-id{display:block;font-family:var(--font-mono);font-size:.6rem;color:var(--slate);margin-bottom:.4rem}
+.kj-map{font-family:var(--font-mono);font-size:.6rem;color:var(--slate);margin-top:.5rem;font-style:normal}
+
+.evidence-box,.key-driver-block,.binding-block,.scenario-card,.threshold-cell,.conf-panel{background:var(--bg-card);border:1px solid var(--border);border-radius:0;overflow:hidden}
+.evidence-box-header,.sc-head,.th-head,.conf-header-label,.conf-header-value{padding:.6rem 1rem;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase}
+.evidence-box-header.know{background:rgba(58,154,92,.12);color:var(--green);border-bottom:1px solid var(--green-dim)}
+.evidence-box-header.assess{background:rgba(201,129,58,.12);color:var(--amber);border-bottom:1px solid var(--amber-dim)}
+.evidence-box-header.gap{background:rgba(217,64,64,.12);color:var(--red);border-bottom:1px solid var(--red-dim)}
+.evidence-box ul,.key-driver-block ul,.binding-block ul,.rec-content ul,.conf-body ul,.th-body ul{list-style:none;padding:.8rem 1rem}
+.evidence-box li,.key-driver-block li,.binding-block li,.rec-content li,.conf-body li,.th-body li{color:var(--white-dim);font-size:.82rem;padding:.35rem 0;border-bottom:1px solid rgba(255,255,255,.04);line-height:1.5;position:relative}
+.evidence-box li:last-child,.key-driver-block li:last-child,.binding-block li:last-child,.rec-content li:last-child,.conf-body li:last-child,.th-body li:last-child{border-bottom:none}
+.evidence-box li::before,.rec-content li::before,.th-body li::before{content:"» ";color:var(--slate);position:static}
+.key-driver-block h4,.binding-block h4{font-family:var(--font-mono);font-size:.65rem;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.7rem;padding:1rem 1rem 0}
+.tag-fact,.tag-inf,.tag-struct{font-family:var(--font-mono);font-size:.55rem;padding:.15rem .4rem;border:1px solid;white-space:nowrap;margin-top:.15rem;display:inline-block;align-self:flex-start}
+.tag-fact{color:var(--green);border-color:var(--green-dim);background:var(--green-pale)}
+.tag-inf{color:var(--amber);border-color:var(--amber-dim);background:var(--amber-pale)}
+.tag-struct{color:var(--blue);border-color:rgba(58,122,191,.4);background:var(--blue-pale)}
+.wsi-note,.techniques-declared,.justification-note,.band-key{background:var(--blue-pale);border:1px solid rgba(58,122,191,.3);border-left:3px solid var(--blue);padding:.8rem 1.2rem;margin-top:1.2rem;font-family:var(--font-sans);font-size:.82rem;color:var(--white-dim);line-height:1.65;border-radius:0}
+.wsi-note strong,.band-key strong{display:inline;color:var(--gold-pale);font-family:var(--font-mono);font-size:.68rem;letter-spacing:.07em}
+.techniques-declared,.justification-note{font-style:italic;margin-bottom:1.2rem}
+
+.status-pill,.band-pill{font-family:var(--font-mono);font-size:.55rem;padding:.15rem .5rem;border:1px solid;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap;display:inline-block;border-radius:0}
+.status-pill.red,.band-pill.red{color:var(--red);border-color:var(--red-dim);background:var(--red-pale)}
+.status-pill.amber,.band-pill.amber{color:var(--amber);border-color:var(--amber-dim);background:var(--amber-pale)}
+.status-pill.green,.band-pill.green{color:var(--green);border-color:var(--green-dim);background:var(--green-pale)}
+.status-pill.blue{color:var(--blue);border-color:rgba(58,122,191,.4);background:var(--blue-pale)}
+.status-pill.yellow{color:var(--gold);border-color:var(--gold-dim);background:rgba(201,168,76,.08)}
+
+.scenario-card.best{border-top:3px solid var(--green)}
+.scenario-card.base{border-top:3px solid var(--amber)}
+.scenario-card.worst{border-top:3px solid var(--red)}
+.scenario-card.best .sc-head{color:var(--green);background:rgba(58,154,92,.1);border-bottom:1px solid var(--green-dim)}
+.scenario-card.base .sc-head{color:var(--amber);background:rgba(201,129,58,.1);border-bottom:1px solid var(--amber-dim)}
+.scenario-card.worst .sc-head{color:var(--red);background:rgba(217,64,64,.1);border-bottom:1px solid var(--red-dim)}
+.sc-body{padding:1rem 1.2rem;font-size:.82rem;line-height:1.55;color:var(--white-dim);background:transparent}
+.sc-label{font-family:var(--font-serif);font-size:1rem;color:var(--white);margin-bottom:.7rem}
+.sc-prob{font-family:var(--font-mono);font-size:.65rem;color:var(--slate);margin-top:.7rem}
+
+.behavioral-item{background:var(--bg-card);border:1px solid var(--border);padding:1rem 1.2rem;display:grid;grid-template-columns:2.5rem 1fr;gap:1rem;align-items:start}
+.bi-rank{font-family:var(--font-mono);font-size:1rem;color:var(--gold-pale);font-weight:600;background:none;width:auto;height:auto;border-radius:0;display:block}
+.bi-body strong{display:block;font-family:var(--font-sans);font-size:.82rem;font-weight:600;color:var(--gold-pale);margin-bottom:.3rem;text-transform:uppercase;letter-spacing:.05em}
+.bi-body p{color:var(--white-dim);font-size:.82rem;line-height:1.55}
+
+.rec-block{display:grid;grid-template-columns:180px 1fr;border:1px solid var(--border);border-bottom:none}
+.rec-block:last-child{border-bottom:1px solid var(--border)}
+.rec-time{padding:1.2rem;border-right:1px solid var(--border);display:flex;align-items:center;justify-content:center;text-align:center}
+.rec-time span{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;line-height:1.5;color:var(--white)}
+.rec-block.immediate .rec-time{color:var(--red);background:var(--red-pale)}
+.rec-block.nearterm .rec-time{color:var(--amber);background:var(--amber-pale)}
+.rec-block.medium .rec-time{color:var(--green);background:var(--green-pale)}
+.rec-content{padding:1.2rem;background:var(--bg-card)}
+
+.conf-header{display:grid;grid-template-columns:1fr auto;border-bottom:1px solid var(--border);background:transparent}
+.conf-header-label,.conf-header-value{color:var(--gold);background:rgba(201,168,76,.08)}
+.conf-header-value{border-left:1px solid var(--border)}
+.conf-body{padding:1rem 1.4rem;color:var(--white-dim);font-size:.84rem;line-height:1.6;background:transparent}
+.uncertainty-item{background:rgba(217,64,64,.05);border:1px solid var(--red-dim);border-left:3px solid var(--red);padding:.8rem 1.2rem;color:var(--white-dim);font-size:.84rem;line-height:1.5}
+.uncertainty-item strong{color:var(--red);font-family:var(--font-mono);font-size:.65rem;display:block;margin-bottom:.3rem;letter-spacing:.08em;text-transform:uppercase}
+
+.threshold-cell.green-zone{border-top:4px solid var(--green);background:var(--green-pale)}
+.threshold-cell.amber-zone{border-top:4px solid var(--amber);background:var(--amber-pale)}
+.threshold-cell.red-zone{border-top:4px solid var(--red);background:var(--red-pale)}
+.threshold-cell .th-head{background:transparent;color:inherit;border-bottom:1px solid var(--border)}
+.threshold-cell.green-zone .th-head{color:var(--green)}
+.threshold-cell.amber-zone .th-head{color:var(--amber)}
+.threshold-cell.red-zone .th-head{color:var(--red)}
+.th-body{padding:1rem 1.2rem;font-size:.82rem;line-height:1.6;color:var(--white-dim)}
+.th-body p{margin-bottom:.7rem}
+
+footer{border-top:1px solid var(--border);padding:2rem;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:.2rem;flex-wrap:wrap;background:transparent;text-align:center;color:var(--slate);font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em}
+footer strong{color:var(--gold)}
+
+@media(max-width:900px){nav ul{display:none}}
+@media(max-width:700px){.snapshot-grid,.scenario-grid,.threshold-grid,.evidence-grid{grid-template-columns:1fr}.rec-block,.bluf-item,.behavioral-item{grid-template-columns:1fr}.rec-time{border-right:none;border-bottom:1px solid var(--border)}.hero-running{flex-direction:column;gap:.5rem}.hero{padding-top:5.5rem}}
+
+  </style>
+</head>
+<body>
+<div id="progress"></div>
+
+<nav>
+  <div class="nav-brand">QUANTA ANALYTICA | MNS CONSULTING</div>
+  <ul>
+    <li><a href="#bluf">BLUF</a></li>
+    <li><a href="#judgments">Judgments</a></li>
+    <li><a href="#analysis">Analysis</a></li>
+    <li><a href="#implications">Implications</a></li>
+    <li><a href="#annexa">Annexes</a></li>
+  </ul>
+  <div class="nav-classify">OPEN SOURCE // UNCLASSIFIED</div>
+</nav>
+
+<header class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-running">
+      <span class="hero-running-left">QUANTA ANALYTICA &nbsp;|&nbsp; MNS CONSULTING</span>
+      <span class="hero-running-right">CORPORATE RISK INTELLIGENCE + INFORMATION INTEGRITY &nbsp;//&nbsp; RED SEA CORRIDOR</span>
+    </div>
+    <h1>RED SEA CORRIDOR<span>CORPORATE RISK &amp; COMPLIANCE EXPOSURE</span></h1>
+    <p class="hero-subtitle">Corporate Risk Intelligence + Information Integrity: Executive Intelligence Assessment</p>
+    <div class="hero-meta">
+      <div class="meta-cell">
+        <span class="mc-label">Domain</span>
+        <span class="mc-value">CRI + IIA</span>
+      </div>
+      <div class="meta-cell">
+        <span class="mc-label">Producer</span>
+        <span class="mc-value">QAP / OSPREY</span>
+      </div>
+      <div class="meta-cell">
+        <span class="mc-label">Date</span>
+        <span class="mc-value">27 MAR 2026</span>
+      </div>
+      <div class="meta-cell">
+        <span class="mc-label">Threat Level</span>
+        <span class="mc-value"><span class="threat-badge"><span class="threat-dot"></span>ESCALATING</span></span>
+      </div>
+      <div class="meta-cell">
+        <span class="mc-label">Confidence</span>
+        <span class="mc-value">MODERATE</span>
+      </div>
+      <div class="meta-cell">
+        <span class="mc-label">Classification</span>
+        <span class="mc-value">OPEN SOURCE</span>
+      </div>
+      <div class="meta-cell">
+        <span class="mc-label">Scope</span>
+        <span class="mc-value">GLOBAL / 6 MONTHS</span>
+      </div>
+      <div class="meta-cell">
+        <span class="mc-label">Risk Appetite</span>
+        <span class="mc-value">MEDIUM</span>
+      </div>
+    </div>
+    <div class="hero-meta">
+      <div class="meta-cell">
+        <span class="mc-label">Active Attacks Since</span>
+        <span class="mc-value">NOV 2023</span>
+      </div>
+      <div class="meta-cell">
+        <span class="mc-label">Suez Traffic vs Pre-Crisis</span>
+        <span class="mc-value">~33%</span>
+      </div>
+      <div class="meta-cell">
+        <span class="mc-label">Freight Rate Premium</span>
+        <span class="mc-value">+80%</span>
+      </div>
+      <div class="meta-cell">
+        <span class="mc-label">War Risk Premium (Peak)</span>
+        <span class="mc-value">1.0% Hull</span>
+      </div>
+      <div class="meta-cell">
+        <span class="mc-label">OFAC Statute of Limitations</span>
+        <span class="mc-value">10 YEARS</span>
+      </div>
+      <div class="meta-cell">
+        <span class="mc-label">Sources Consulted</span>
+        <span class="mc-value">15 OSINT</span>
+      </div>
+    </div>
+    <div class="scope-boundary">
+      <strong>ANALYTIC SCOPE BOUNDARY:</strong> This assessment covers the period November 2023 to present, with a forward horizon of six months (to September 2026). Sources are open-source only; no classified streams were consulted. Excluded streams: proprietary carrier contracts, classified naval intelligence, company-specific financial exposure not provided by the client. Confidence is driven by strong multi-source corroboration on logistical and insurance facts, with moderate confidence on escalation trajectories given rapid situational change and active armed conflict involving Iran and the US. The current assessment was finalized 27 March 2026; the Iran-US conflict remains active and the situation is evolving rapidly.
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 BLUF -->
+<section class="section" id="bluf">
+  <span class="section-num">01 // BLUF</span>
+  <h2 class="section-title">Bottom Line Up Front</h2>
+  <p style="font-size:0.9rem;color:var(--slate);margin-bottom:1rem;font-family:'IBM Plex Sans',sans-serif;font-style:italic;">
+    <strong>Problem statement:</strong> A multinational company must assess how concurrent Red Sea shipping disruption, expanding sanctions escalation linked to the 2026 Iran war, insurance and freight volatility, and coordinated narrative pressure could impair its supply chain continuity, compliance exposure, operating costs, reputational position, and executive decision thresholds over the next six months.
+  </p>
+  <div class="bluf-grid">
+    <div class="bluf-item">
+      <div class="bluf-index">01</div>
+      <div class="bluf-text"><strong>Suez transit remains structurally foreclosed for most Western carriers through at least Q3 2026.</strong> The October 2025 ceasefire-driven partial recovery has been reversed by the 2026 Iran-US conflict. Major carriers including Maersk and CMA CGM suspended or reversed Red Sea re-entry plans in late February 2026. <cite>[1,9,10,26]</cite> Cape of Good Hope rerouting adds 10-14 days and 80% freight premium vs pre-crisis baselines; this cost structure is now embedded. <cite>[1,6]</cite></div>
+    </div>
+    <div class="bluf-item">
+      <div class="bluf-index">02</div>
+      <div class="bluf-text"><strong>The Houthi attack threat has not resumed at scale but is assessed as imminent and conditional on Iranian strategic calculation.</strong> Since late February 2026, the Houthis have threatened maritime attacks in response to US-Israeli strikes on Iran but have not yet fired on merchant vessels. <cite>[22,28,29,30]</cite> Analysts assess this as strategic patience rather than capability loss, with Houthi leadership waiting for Iranian authorization. <cite>[21,23]</cite> The window for resumed operations could be 0-12 weeks.</div>
+    </div>
+    <div class="bluf-item">
+      <div class="bluf-index">03</div>
+      <div class="bluf-text"><strong>Insurance and war-risk conditions are severe and worsening in both the Red Sea and Strait of Hormuz simultaneously.</strong> P&I clubs have issued 72-hour cancellation notices on non-poolable war cover for Gulf transits. <cite>[13]</cite> Hapag-Lloyd introduced a $1,500-3,500 per TEU War Risk Surcharge from 2 March 2026. <cite>[15]</cite> War risk for a $100M vessel can reach $1M per voyage at peak. <cite>[20]</cite> Many vessels are now effectively uninsurable for Red Sea transit, creating unhedged cargo exposure for companies relying on spot cover.</div>
+    </div>
+    <div class="bluf-item">
+      <div class="bluf-index">04</div>
+      <div class="bluf-text"><strong>Sanctions exposure for multinationals is materially elevated and expanding.</strong> OFAC's statute of limitations was doubled to 10 years in 2025. <cite>[31]</cite> Shadow fleet proliferation, Iranian oil evasion networks, and compliance gatekeepers are all under intensified enforcement. <cite>[34,37,38]</cite> Companies using third-party logistics providers, port agents, or freight forwarders with undisclosed exposure in Iran, Russia, or affiliated networks face significant downstream risk from indirect touchpoints. Regulators now expect organizations to screen beyond direct counterparties to supply chain relationships. <cite>[36]</cite></div>
+    </div>
+    <div class="bluf-item">
+      <div class="bluf-index">05</div>
+      <div class="bluf-text"><strong>Narrative and reputational risk is a material decision factor, not a secondary concern.</strong> The Houthis have demonstrated systematic exploitation of corporate flags, crew nationality, and port-call history to select and justify targets. <cite>[17]</cite> Companies with Israeli, US, or UK port connections face disproportionate targeting risk and insurance exclusions. <cite>[12,16]</cite> Simultaneously, the conflict has generated secondary narrative pressure: companies continuing Cape routing risk ESG exposure (elevated carbon footprint) while companies returning to Suez risk crew safety liability. Both postures carry reputational downside depending on audience. <cite>[8]</cite></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 KIQs -->
+<section class="section" id="kiqs">
+  <span class="section-num">02 // KIQs</span>
+  <h2 class="section-title">Key Intelligence Questions</h2>
+  <table class="kiq-table">
+    <thead><tr><th>ID</th><th>Intelligence Question</th><th>Links To</th></tr></thead>
+    <tbody>
+      <tr><td class="col-id">KIQ-1</td><td><strong>Will Houthi attacks resume at operational scale within 60 days, and if so, which vessel categories will be targeted?</strong> This frames the core timeline uncertainty: whether rerouting costs are temporary or permanent for the planning period.</td><td>KJ-1, KJ-2, Scenario A/B/C, EWI-1</td></tr>
+      <tr><td class="col-id">KIQ-2</td><td><strong>To what extent are the company's logistics partners, port agents, and freight forwarders exposed to shadow-fleet and Iran-linked networks that could trigger secondary sanctions liability?</strong></td><td>KJ-3, KJ-4, Gap G-1, Recommendations 0-72H</td></tr>
+      <tr><td class="col-id">KIQ-3</td><td><strong>How will dual-theater insurance deterioration (Red Sea + Strait of Hormuz) affect cargo cover, charter liability, and total cost of goods for the next two to three quarters?</strong></td><td>KJ-2, Risk Matrix, Scenario A/B/C</td></tr>
+      <tr><td class="col-id">KIQ-4</td><td><strong>What narrative and perception risks arise from the company's routing and sourcing decisions, and how do these translate into regulatory, reputational, and investor-relations exposure?</strong></td><td>KJ-5, Section 07 Behavioral</td></tr>
+      <tr><td class="col-id">KIQ-5</td><td><strong>What are the structural supply-chain alternatives to Red Sea transit for the company's primary commodity and product flows, and what is the cost-schedule trade-off over six and eighteen months?</strong></td><td>KJ-1, KJ-2, Recommendations 30-180 Days</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 03 SNAPSHOT -->
+<section class="section" id="snapshot">
+  <span class="section-num">03 // SNAPSHOT</span>
+  <h2 class="section-title">Situation Snapshot</h2>
+  <div class="snapshot-grid">
+    <div class="snapshot-cell">
+      <span class="sc-label">Who</span>
+      <p>Primary disruptors: Houthi movement (Yemen, Iran-backed), Iranian armed forces. Affected parties: multinational companies with Asia-Europe supply chains, global shipping carriers, London and regional insurance markets, OFAC/OFSI regulators. Military actors: US, Israel, EU (Operation Aspides), UK.</p>
+    </div>
+    <div class="snapshot-cell">
+      <span class="sc-label">What</span>
+      <p>Sustained disruption to the Suez Canal corridor (10-15% of global seaborne trade) via Houthi maritime attacks (suspended but threatened), concurrent Strait of Hormuz de facto closure, cascading war-risk insurance deterioration, and expanding sanctions enforcement targeting shadow-fleet enablers.</p>
+    </div>
+    <div class="snapshot-cell">
+      <span class="sc-label">Where</span>
+      <p>Bab el-Mandeb Strait, southern Red Sea, Gulf of Aden, Suez Canal, Persian Gulf, Strait of Hormuz. Secondary exposure: Arabian Sea, Gulf of Oman, East Africa (Somali piracy resurgence), Southeast Asia (shadow fleet STS transfers).</p>
+    </div>
+    <div class="snapshot-cell">
+      <span class="sc-label">When</span>
+      <p>Crisis onset: November 2023. Relative pause: October 2025 to February 2026. Current escalation trigger: US-Israeli strikes on Iran, 28 February 2026 (killing Supreme Leader Khamenei). Forward horizon: Through September 2026 at minimum, with structural disruption possibly extending to 2027-2028. <cite>[1,28]</cite></p>
+    </div>
+    <div class="snapshot-cell">
+      <span class="sc-label">Why</span>
+      <p>Immediate driver: Houthi solidarity with Iran following decapitation strikes. Structural drivers: Gaza-linked Houthi mandate for maritime leverage; Iran's use of Houthis as an asymmetric pressure valve on US and allied shipping; US "maximum pressure" sanctions on Iran escalating conflict. <cite>[2,23]</cite></p>
+    </div>
+    <div class="snapshot-cell">
+      <span class="sc-label">How</span>
+      <p>Houthi attack toolkit: anti-ship ballistic missiles, cruise missiles, drones (UAVs and USVs), fast boats, sea mines. Attack selection uses AIS data, port-call history, and ownership screening. <cite>[3,9]</cite> Sanctions evasion: shadow fleet with AIS spoofing, STS transfers, falsified flags. Insurance mechanism: war-risk premium surges, coverage cancellations, voyage-specific exclusions. <cite>[12,37]</cite></p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 KEY JUDGMENTS -->
+<section class="section" id="judgments">
+  <span class="section-num">04 // KEY JUDGMENTS</span>
+  <h2 class="section-title">Key Judgments</h2>
+  <div class="kj-list">
+    <div class="kj-item high">
+      <div class="kj-band">HIGH CONFIDENCE &nbsp;|&nbsp; KJ-1</div>
+      <div class="kj-body">
+        <span class="kj-id">KJ-1 // SUPPLY CHAIN CONTINUITY</span>
+        <p>Red Sea routing is assessed as operationally unavailable for Western-affiliated carriers for the majority of the six-month planning period. The combination of active Houthi threat signaling, insurance market withdrawal, and carrier decisions to shelve re-entry plans means Cape of Good Hope routing is the effective default. <cite>[10,15,24]</cite> Companies should plan logistics and inventory cycles on 40-50 day Asia-Europe transit times rather than 30-day Suez baselines.</p>
+        <p class="kj-map">Maps to: KIQ-1, KIQ-5 | Status: Confirmed</p>
+      </div>
+    </div>
+    <div class="kj-item high">
+      <div class="kj-band">HIGH CONFIDENCE &nbsp;|&nbsp; KJ-2</div>
+      <div class="kj-body">
+        <span class="kj-id">KJ-2 // COST STRUCTURE</span>
+        <p>Freight and insurance cost premiums are structural for the planning period and are now amplified by dual-theater risk (Red Sea and Strait of Hormuz). War risk surcharges of $1,500-3,500 per TEU <cite>[15]</cite>, freight rate premiums of approximately 80% above pre-crisis baselines <cite>[6]</cite>, and potential full insurance unavailability for some routes represent a compounding cost burden. Companies without hedged freight contracts face maximum exposure to spot-market volatility.</p>
+        <p class="kj-map">Maps to: KIQ-3 | Status: Confirmed</p>
+      </div>
+    </div>
+    <div class="kj-item moderate">
+      <div class="kj-band">MODERATE CONFIDENCE &nbsp;|&nbsp; KJ-3</div>
+      <div class="kj-body">
+        <span class="kj-id">KJ-3 // SANCTIONS EXPOSURE</span>
+        <p>Multinationals using third-party logistics, freight forwarders, or port agents in Gulf, Southeast Asian, and African transit hubs face elevated secondary sanctions exposure they may not have mapped. OFAC's expanded enforcement posture, the 10-year statute of limitations, and the shadow fleet's penetration into mainstream logistics networks mean that exposure may already exist undetected. <cite>[31,34,35,37]</cite> Confidence is moderate because company-specific third-party exposure is not known without targeted due diligence.</p>
+        <p class="kj-map">Maps to: KIQ-2 | Status: Active assumption pending client-specific due diligence</p>
+      </div>
+    </div>
+    <div class="kj-item moderate">
+      <div class="kj-band">MODERATE CONFIDENCE &nbsp;|&nbsp; KJ-4</div>
+      <div class="kj-body">
+        <span class="kj-id">KJ-4 // HOUTHI OPERATIONAL RESUMPTION</span>
+        <p>It is assessed that the Houthis will resume maritime attacks within the six-month planning period, with the trigger being either explicit Iranian authorization or autonomous escalation if Iran faces decisive military reversal. <cite>[21,23,28]</cite> The "strategic pause" posture is assessed as temporary: capability remains intact (significant drone stockpile, coastal missile positioning around Hodeidah), and internal Houthi factions are reported as eager to act. <cite>[28,29]</cite> Confidence is moderate due to genuine uncertainty about Iranian command calculus.</p>
+        <p class="kj-map">Maps to: KIQ-1 | Status: Active inference</p>
+      </div>
+    </div>
+    <div class="kj-item moderate">
+      <div class="kj-band">MODERATE CONFIDENCE &nbsp;|&nbsp; KJ-5</div>
+      <div class="kj-body">
+        <span class="kj-id">KJ-5 // REPUTATIONAL AND NARRATIVE RISK</span>
+        <p>The targeting logic the Houthis have applied (port-call history, flag, ownership, US/UK/Israeli nexus) means that a company's operational decisions create auditable narrative exposure. <cite>[17]</cite> ESG investors and some media have already drawn attention to the increased carbon footprint of Cape routing. <cite>[8]</cite> If a vessel linked to the company is targeted, public attribution of corporate nexus follows rapidly due to ship-ownership databases. Executive communications and routing rationale should be war-gamed in advance.</p>
+        <p class="kj-map">Maps to: KIQ-4 | Status: Analyst inference</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 EVIDENCE -->
+<section class="section" id="evidence">
+  <span class="section-num">05 // EVIDENCE</span>
+  <h2 class="section-title">Evidence Summary</h2>
+  <div class="evidence-grid">
+    <div class="evidence-box">
+      <div class="evidence-box-header know">WHAT WE KNOW</div>
+      <ul>
+        <li>Houthi attacks caused 90% decline in container shipping through Suez from December 2023 to February 2024. <cite>[1]</cite></li>
+        <li>Suez Canal transit recovered partially to 26 containerships/week by mid-January 2026, down from 80 before the crisis. <cite>[10]</cite></li>
+        <li>Cape of Good Hope adds 10-14 days and approximately 80% freight premium on Shanghai-Rotterdam lane vs pre-crisis. <cite>[1,6]</cite></li>
+        <li>War risk premiums peaked at 1% of hull value per voyage in July 2025 following Magic Seas sinking. <cite>[20]</cite></li>
+        <li>All 12 P&I clubs issued 72-hour cancellation notices on non-poolable war cover for the Gulf as of early March 2026. <cite>[13]</cite></li>
+        <li>Hapag-Lloyd imposed $1,500/$3,500 per TEU War Risk Surcharge from 2 March 2026. <cite>[15]</cite></li>
+        <li>OFAC doubled statute of limitations for sanctions violations to 10 years in 2025. <cite>[31]</cite></li>
+        <li>OFAC issued Iran General License U on 20 March 2026, permitting limited sale of Iranian crude already at sea. <cite>[32]</cite></li>
+        <li>Houthis threatened resumed attacks on 28 February 2026 following US-Israeli strikes on Iran. <cite>[22,26]</cite></li>
+        <li>As of 27 March 2026, no confirmed Houthi maritime strike has been independently verified since November 2025. <cite>[21]</cite></li>
+      </ul>
+    </div>
+    <div class="evidence-box">
+      <div class="evidence-box-header assess">WHAT WE ASSESS</div>
+      <ul>
+        <li>The Houthi pause reflects Iranian strategic patience, not capability loss or ideological moderation. Analysts assess an "Iran-held card" theory as credible. <cite>[21,29]</cite></li>
+        <li>Houthi weapons stockpiles are partially degraded but the group retains significant drone capability and has been expanding local production and Hodeidah coastal positioning. <cite>[28]</cite></li>
+        <li>Insurance market bifurcation (Chinese/Russian flag vessels receiving lower premiums) creates regulatory inequity and potential shadow-fleet contamination risk for companies sourcing cargo indirectly. <cite>[12,16]</cite></li>
+        <li>A large-scale return to Suez routing, even if security stabilizes, is 12-18 months away at minimum due to carrier governance timelines and insurance market recovery periods. <cite>[12,19]</cite></li>
+        <li>Sanctions evasion activity is migrating from Gulf hubs toward Southeast Asia and East Africa as Gulf states reassess Iranian network exposure. <cite>[31,35]</cite></li>
+        <li>OFAC enforcement will intensify against gatekeepers: logistics, insurance, finance, and professional services firms with indirect Iran/shadow fleet exposure. <cite>[34,38]</cite></li>
+      </ul>
+    </div>
+    <div class="evidence-box">
+      <div class="evidence-box-header gap">WHAT WE DO NOT KNOW</div>
+      <ul>
+        <li><strong>G-1:</strong> Company-specific third-party logistics and freight forwarder exposure to shadow fleet or Iran-linked networks. This is the highest-priority intelligence gap for compliance purposes.</li>
+        <li><strong>G-2:</strong> Precise Iranian command calculus on Houthi maritime activation: the decision threshold and timing remain unknown.</li>
+        <li><strong>G-3:</strong> Whether insurance markets will accept resumed Red Sea transits under any conditions in H2 2026, or whether the market has permanently repriced.</li>
+        <li><strong>G-4:</strong> Company-specific cargo contract terms, force majeure clauses, and charter party exposure under deviation scenarios.</li>
+        <li><strong>G-5:</strong> Extent to which Somali piracy resurgence represents an independent compounding risk vector for Cape routing. <cite>[12]</cite></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="key-driver-block">
+    <h4>Key Drivers</h4>
+    <ul>
+      <li><span class="tag-fact">FACT</span> The Bab el-Mandeb chokepoint remains the only viable Asia-Europe maritime shortcut; there is no equivalent alternative corridor.</li>
+      <li><span class="tag-fact">FACT</span> The 2026 Iran-US conflict killed Khamenei and triggered cascading regional military responses, fundamentally altering the risk calculus for all regional maritime actors. <cite>[28]</cite></li>
+      <li><span class="tag-fact">FACT</span> Insurance and sanctions enforcement mechanisms operate on a 10-year lookback window; decisions made now create long-tail legal exposure. <cite>[31]</cite></li>
+      <li><span class="tag-inf">INFERENCE</span> Houthi leverage over the Red Sea corridor is not contingent on active attacks; the credible threat of resumed attacks is itself sufficient to suppress traffic and sustain premium pricing. <cite>[23,29]</cite></li>
+      <li><span class="tag-inf">INFERENCE</span> The convergence of shadow fleet proliferation with legitimate supply chains creates invisible sanctions risk for companies that have not audited sub-tier logistics providers.</li>
+      <li><span class="tag-inf">INFERENCE</span> Narrative weaponization by the Houthis (targeting based on port-call history and flag) is likely to expand as their political leverage calculus evolves, not contract.</li>
+    </ul>
+  </div>
+
+  <div class="binding-block">
+    <h4>Binding Constraints on Available Responses</h4>
+    <ul>
+      <li><span class="tag-struct">STRUCTURAL</span> No viable maritime shortcut substitute exists for the Suez route; Panama adds cost and time and is not a net-positive alternative for Asia-Europe flows.</li>
+      <li><span class="tag-struct">STRUCTURAL</span> Insurance market recovery is governed by actuarial data accumulation timelines, not diplomatic statements; sustained 6-month no-incident record is a minimum threshold before premiums move materially. <cite>[12]</cite></li>
+      <li><span class="tag-struct">POLITICAL</span> US sanctions enforcement against Iran and Russia-linked networks will not ease under current administration posture; compliance obligations will tighten, not relax. <cite>[34]</cite></li>
+      <li><span class="tag-struct">RESOURCE</span> Board and executive decision thresholds for Suez re-entry require governance committee approval, legal sign-off, and insurance confirmation; realistic timelines are 6-8 weeks minimum even if security improves.</li>
+      <li><span class="tag-struct">TEMPORAL</span> Cape route capacity is absorbed 2.5 million TEU of global container shipping; any rapid forced return to Suez would create vessel glut and port congestion simultaneously. <cite>[24]</cite></li>
+    </ul>
+  </div>
+
+  <div class="wsi-note">
+    <strong>WSI SOURCE INDEPENDENCE NOTE</strong>
+    Key judgments on Houthi capabilities and operational posture are corroborated by at least three independent streams: Wikipedia/crisis timeline (open-source news aggregation), Global Security Review (think-tank analysis), and FDD Long War Journal (defense research). Insurance cost data is corroborated by S&P Global Platts, Kpler, Business Insurance, and Maplecroft as independent market reporting streams. Sanctions enforcement trends are corroborated by Steptoe, Holland &amp; Knight, VinciWorks, and OFAC's own license register as independent legal-regulatory sources. No single-source key judgments are present. The interpretation of Houthi "strategic pause" as Iranian-directed is attributed to International Crisis Group and RUSI analysis as the primary named analytical sources, and is labeled as assessment rather than confirmed fact.
+  </div>
+</section>
+
+<!-- 06 ANALYSIS -->
+<section class="section" id="analysis">
+  <span class="section-num">06 // ANALYSIS</span>
+  <h2 class="section-title">Structured Analytic Tradecraft</h2>
+  <div class="techniques-declared">Techniques applied in this section: Five-Layer Strategic Cognition Map, Key Assumptions Check, Analysis of Competing Hypotheses (ACH), Indicators &amp; Warnings (I&amp;W), Scenario Modeling (Best/Base/Worst).</div>
+
+  <div class="sub-section">Five-Layer Strategic Cognition Map</div>
+  <table class="layer-map">
+    <tbody>
+      <tr>
+        <td class="layer-code">L1</td>
+        <td class="layer-name">FOUNDATIONS</td>
+        <td class="layer-content">The Red Sea corridor handles 10-15% of global seaborne trade. The Bab el-Mandeb is a non-substitutable chokepoint. Iran backs the Houthis as a regional pressure instrument. US sanctions on Iran are at maximum intensity. The 2026 Iran war has killed the Iranian Supreme Leader and destabilized regional deterrence architecture.</td>
+      </tr>
+      <tr>
+        <td class="layer-code">L2</td>
+        <td class="layer-name">MECHANISMS</td>
+        <td class="layer-content">Houthi attack toolkit (missiles, drones, USVs, fast boats) creates asymmetric cost imposition: cheap to threaten, expensive to defend. Insurance markets price risk forward, not backward, so premium elevation persists beyond active attack periods. OFAC enforcement cascades through supply chains via the "indirect exposure" doctrine.</td>
+      </tr>
+      <tr>
+        <td class="layer-code">L3</td>
+        <td class="layer-name">DYNAMICS</td>
+        <td class="layer-content">Iran's calculus on Houthi activation is conditional: they are holding the Red Sea card in reserve. The longer the Iran war continues, the higher the probability of Houthi activation as Iran's military position deteriorates. Simultaneously, the shadow fleet is migrating as Gulf hubs tighten, increasing corporate exposure through sub-tier logistics chains.</td>
+      </tr>
+      <tr>
+        <td class="layer-code">L4</td>
+        <td class="layer-name">LEVERAGE</td>
+        <td class="layer-content">Company leverage points: early supplier contract renegotiation to assign routing risk; proactive third-party logistics audit to neutralize sanctions exposure before OFAC identification; narrative pre-positioning on routing rationale (crew safety as primary driver) to reduce reputational surface area. Insurance pre-placement for contingency scenarios provides optionality not available at point of crisis.</td>
+      </tr>
+      <tr>
+        <td class="layer-code">L5</td>
+        <td class="layer-name">PARADIGMS</td>
+        <td class="layer-content">The Red Sea disruption is not a temporary shock: it is a structural demonstration that non-state actors can permanently reprice global trade arteries. Companies that treat this as a temporary cost event rather than a permanent supply chain architecture question will be systematically disadvantaged. The era of optimized single-corridor global supply chains is over for the Red Sea.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="sub-section">Key Assumptions Check</div>
+  <table class="assumption-table">
+    <thead><tr><th>ID</th><th>Assumption</th><th>Why It Matters</th><th>Risk if Wrong</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td class="col-id">A-1</td><td>Cape of Good Hope routing will remain the dominant carrier posture for Western-affiliated fleets through Q3 2026.</td><td>Drives all cost and schedule projections.</td><td>If rapid Suez re-entry occurs, freight rates collapse 10-15% and alternate inventory strategies may overshoot; financial exposure shifts to excess stock.</td><td><span class="status-pill green">ACTIVE / HIGH CONF</span></td></tr>
+      <tr><td class="col-id">A-2</td><td>The Houthis retain sufficient drone and missile capability to resume effective maritime operations.</td><td>Determines whether the threat is credible or rhetorical.</td><td>If capability is decisively degraded, the threat posture collapses and re-entry risk decreases sharply. Assessment would flip to more optimistic scenario.</td><td><span class="status-pill amber">ACTIVE / MODERATE CONF</span></td></tr>
+      <tr><td class="col-id">A-3</td><td>OFAC sanctions enforcement against supply chain intermediaries will intensify, not ease, in 2026.</td><td>Determines the compliance investment and audit depth required.</td><td>If political pressure or sanctions relief alters enforcement posture, compliance cost can be reduced. However, the 10-year lookback means past exposure remains active regardless.</td><td><span class="status-pill green">CONFIRMED</span></td></tr>
+      <tr><td class="col-id">A-4</td><td>The company does not have direct financial exposure to shadow fleet or Iran-linked networks.</td><td>If wrong, criminal and regulatory liability could be immediate and severe.</td><td>Undisclosed indirect exposure through freight forwarders or port agents would represent an acute compliance failure requiring immediate disclosure to counsel.</td><td><span class="status-pill red">UNVERIFIED - GAP G-1</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="sub-section">Analysis of Competing Hypotheses (ACH)</div>
+  <table class="ach-table">
+    <thead><tr><th>Hypothesis</th><th>Evidence For</th><th>Evidence Against</th><th>Diagnosticity</th><th>Verdict</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>H-1:</strong> Houthis will resume large-scale maritime attacks within 60 days.</td>
+        <td>Active threat signaling; Iranian strategic interest in Red Sea pressure; Houthi hard-liner faction is "spoiling for a fight"; Hodeidah coastal fortification signals readiness. <cite>[28,29,30]</cite></td>
+        <td>No confirmed attack in nearly 5 months; US deal and Saudi understanding may constrain; internal Houthi debate; weapons stockpile partially degraded. <cite>[21,28]</cite></td>
+        <td>HIGH: Outcome is binary and highly visible. Available indicators (see I&amp;W) can provide early warning 24-96 hours in advance.</td>
+        <td><span class="status-pill amber">POSSIBLE (40-55%)</span></td>
+      </tr>
+      <tr>
+        <td><strong>H-2:</strong> Houthis will maintain strategic pause through the planning period, using the threat rhetorically.</td>
+        <td>Three-week pause during active Iran-US fighting; deal with US; Saudi Arabian pressure; internal governance priorities. <cite>[21,23]</cite></td>
+        <td>Ideological and political incentives strongly favor action if Iran is under pressure; precedent shows rapid escalation capability. <cite>[5]</cite></td>
+        <td>MODERATE: Absence of attack is consistent with both capability degradation and strategic patience. Hard to distinguish until action occurs.</td>
+        <td><span class="status-pill blue">POSSIBLE (30-40%)</span></td>
+      </tr>
+      <tr>
+        <td><strong>H-3:</strong> A diplomatic resolution stabilizes the corridor within 90 days.</td>
+        <td>Iran issued limited nuclear-related General Licenses; US-Iran indirect contact ongoing; historical precedent of rapid de-escalation.</td>
+        <td>Iran rejected the 15-point US peace plan; Strait of Hormuz de facto closed; active multi-front war ongoing. <cite>[28]</cite></td>
+        <td>LOW: Evidence strongly weighs against near-term diplomatic resolution given active armed conflict and leadership decapitation of Iran.</td>
+        <td><span class="status-pill red">UNLIKELY (&lt;15%)</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.85rem;color:var(--slate);margin-top:0.7rem;font-family:'IBM Plex Sans',sans-serif;font-style:italic;">Selected hypothesis for planning purposes: H-1 carries sufficient probability to warrant full contingency activation. H-2 as the planning optimum for cost modeling. Recommend planning to H-1 tolerances while monitoring for H-2 signals.</p>
+
+  <div class="sub-section">Indicators &amp; Warnings</div>
+  <table class="iw-table">
+    <thead><tr><th>Indicator</th><th>Direction</th><th>Current Status</th><th>Threshold</th><th>Cadence</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Houthi official public declaration of resumed attacks</strong></td><td>Escalation</td><td><span class="status-pill amber">THREATENED, NOT DECLARED</span></td><td>Any formal announcement triggers 24H response protocol</td><td>Daily monitoring</td></tr>
+      <tr><td><strong>Confirmed maritime strike on merchant vessel</strong></td><td>Escalation</td><td><span class="status-pill green">NONE SINCE NOV 2025</span></td><td>Single confirmed strike triggers emergency routing review and insurer contact</td><td>Real-time (UKMTO/MARAD feeds)</td></tr>
+      <tr><td><strong>War risk premium movement at Lloyd's</strong></td><td>Escalation / De-escalation</td><td><span class="status-pill red">ELEVATED / RISING</span></td><td>Premium exceeding 0.7% of hull value for standard risk profile = Red threshold</td><td>Weekly</td></tr>
+      <tr><td><strong>P&I club war cover reinstatement for Gulf</strong></td><td>De-escalation</td><td><span class="status-pill red">NOT REINSTATED</span></td><td>All-12-club reinstatement = condition for Suez re-entry assessment</td><td>Weekly</td></tr>
+      <tr><td><strong>Carrier resumption of scheduled Red Sea services</strong></td><td>De-escalation</td><td><span class="status-pill red">SUSPENDED / REVERSED</span></td><td>Two or more Tier-1 carriers resuming scheduled services = positive signal</td><td>Bi-weekly</td></tr>
+      <tr><td><strong>Iran-US ceasefire or peace framework announcement</strong></td><td>De-escalation</td><td><span class="status-pill red">NO FRAMEWORK</span></td><td>Verified framework reduces Houthi motivation materially; reassess within 72H</td><td>Daily</td></tr>
+      <tr><td><strong>OFAC new designations targeting logistics or freight sectors</strong></td><td>Compliance escalation</td><td><span class="status-pill amber">ACTIVE ENFORCEMENT</span></td><td>Any designation touching logistics, insurance, or port agent categories triggers third-party audit acceleration</td><td>Weekly (Steptoe/OFAC feeds)</td></tr>
+      <tr><td><strong>Bab el-Mandeb daily transit count</strong></td><td>Both</td><td><span class="status-pill red">~37/WEEK (WELL BELOW 70+ NORM)</span></td><td>Sustained recovery above 50/week = cautious re-entry signal; below 20/week = extreme disruption</td><td>Weekly (IMF PortWatch)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sub-section">Scenario Modeling</div>
+  <div class="scenario-grid">
+    <div class="scenario-card best">
+      <div class="sc-head">SCENARIO A // BEST CASE</div>
+      <div class="sc-body">
+        <strong>De-escalation Window Opens</strong>
+        <p>Iran-US conflict reaches ceasefire within 60 days. Houthis stand down under Iranian and Saudi pressure. Insurance premiums begin declining by Q3 2026. Limited Suez re-entry by major carriers starts H2 2026.</p>
+        <p><strong>Conditions required:</strong> Verified Iran-US diplomatic framework; sustained 90-day no-attack period; P&I club reinstatement; at least two Tier-1 carriers resuming scheduled services.</p>
+        <p><strong>Corporate implication:</strong> Cape routing costs remain elevated for 6-9 more months before normalization. Compliance risk does not ease due to 10-year lookback.</p>
+        <p class="sc-prob">Probability: 10-15%</p>
+      </div>
+    </div>
+    <div class="scenario-card base">
+      <div class="sc-head">SCENARIO B // BASE CASE</div>
+      <div class="sc-body">
+        <strong>Sustained Strategic Pause with Periodic Escalation</strong>
+        <p>Houthis maintain rhetorical threat posture but resume limited, selective attacks (targeting highest-profile US/Israeli-linked vessels) while avoiding broad campaign. Iran manages Houthi activation as a calibrated pressure instrument. Suez remains effectively closed to most Western carriers through Q3 2026. Insurance premiums remain elevated but not at peak levels.</p>
+        <p><strong>Corporate implication:</strong> Cape routing as default. Elevated freight costs of +60-80%. Companies with any US/Israeli/UK port-call nexus face disproportionate targeting risk and insurance exclusions.</p>
+        <p class="sc-prob">Probability: 45-55%</p>
+      </div>
+    </div>
+    <div class="scenario-card worst">
+      <div class="sc-head">SCENARIO C // WORST CASE</div>
+      <div class="sc-body">
+        <strong>Full Dual-Theater Blockade</strong>
+        <p>Houthis resume large-scale attacks in the Red Sea simultaneously with sustained Strait of Hormuz disruption. Insurance markets withdraw from both corridors. Cape of Good Hope route experiences port congestion from volume surge. Somali piracy compounds exposure. Energy price shock cascades through input costs.</p>
+        <p><strong>Corporate implication:</strong> Near-total Asia-Europe maritime cost shock; spot freight rates spike 200-400%; executive force majeure and business continuity protocols activated immediately. Compliance exposure peaks as sanctions evasion networks proliferate.</p>
+        <p class="sc-prob">Probability: 25-35%</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 BEHAVIORAL -->
+<section class="section" id="behavioral">
+  <span class="section-num">07 // BEHAVIORAL</span>
+  <h2 class="section-title">Applied Behavioral Tradecraft</h2>
+  <div class="justification-note">Behavioral tradecraft is applied here because the Houthi targeting methodology involves systematic narrative framing and identity-based selection, which directly affects corporate routing decisions, reputational exposure, and executive communication strategy. Additionally, the influence environment around the Iran-US conflict involves coordinated perception management that affects how corporate decisions are interpreted by regulators, investors, and media. This section is limited to evidence-based analysis; no psychological speculation.</div>
+
+  <div class="behavioral-grid">
+    <div class="behavioral-item">
+      <div class="bi-rank">01</div>
+      <div class="bi-body">
+        <strong>Target Selection via Corporate Identity Signals</strong>
+        <p>The Houthis have systematically used AIS data, port-call databases, ship registry records, and ownership structures to select and justify targets. Observable: Magic Seas and Eternity C were targeted based on Israeli port calls. <cite>[9,17]</cite> The July 2025 expansion of targeting criteria to "any vessel dealing with Israeli ports" regardless of nationality significantly expands the potential target population. Inference: companies with any operational connection to US, UK, or Israeli logistics infrastructure carry non-trivial targeting risk that is not neutralizable by flag or crew nationality alone.</p>
+      </div>
+    </div>
+    <div class="behavioral-item">
+      <div class="bi-rank">02</div>
+      <div class="bi-body">
+        <strong>Legitimacy Framing as a Strategic Amplifier</strong>
+        <p>The Houthis consistently frame attacks as moral interventions in support of Palestinian civilians, not as piracy or terrorism. <cite>[5,23]</cite> This framing has increased regional sympathy and complicates international diplomatic response. Observable: the Houthi "Humanitarian Operations Coordination Centre" was created to differentiate legitimate from illegitimate targets, reinforcing their political narrative while preserving tactical flexibility. Corporate implication: companies that publicly contest the legitimacy framing risk being identified as a symbolic target; companies that appeal to humanitarian or neutral identity do not gain immunity but may reduce symbolic value as a target.</p>
+      </div>
+    </div>
+    <div class="behavioral-item">
+      <div class="bi-rank">03</div>
+      <div class="bi-body">
+        <strong>Dual-Audience Executive Communication Risk</strong>
+        <p>Routing decisions communicate different things to different audiences simultaneously. Cape routing signals crew safety responsibility (positive to ESG investors, NGOs, crew unions) but signals increased carbon footprint (negative to net-zero commitments and some regulators). <cite>[8]</cite> Suez re-entry signals cost discipline (positive to shareholders) but exposes the company to crew safety criticism if an incident occurs. Inference: executives who have not pre-positioned a clear routing rationale hierarchy will face reactive, inconsistent communication that compounds reputational damage if an incident occurs.</p>
+      </div>
+    </div>
+    <div class="behavioral-item">
+      <div class="bi-rank">04</div>
+      <div class="bi-body">
+        <strong>Sanctions Narrative Weaponization</strong>
+        <p>The sanctions evasion environment has created a secondary narrative risk: companies that unknowingly engage shadow fleet logistics providers may be publicly named in OFAC enforcement actions or media investigations, associating them with Iranian or Russian sanctions evasion without intent. Observable: OFAC enforcement actions in 2025-2026 named manufacturers and logistics providers for "diversionary sales and services support," not just financial firms. <cite>[38]</cite> The reputational damage of being publicly named even in a civil, non-egregious settlement is material for publicly listed multinationals.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 IMPLICATIONS -->
+<section class="section" id="implications">
+  <span class="section-num">08 // IMPLICATIONS, RISK &amp; RECOMMENDATIONS</span>
+  <h2 class="section-title">Strategic Implications, Risk &amp; Recommendations</h2>
+
+  <div class="sub-section">A. Strategic Implications</div>
+  <div style="background:var(--navy);border:1px solid var(--border);border-radius:6px;padding:1.2rem;margin-bottom:1.2rem;font-size:0.9rem;line-height:1.75;">
+    <p><strong>For the multinational company (local operational level):</strong> Cape routing is now the default operational architecture for Asia-Europe supply chains. Inventory buffers must be recalibrated to 40-50 day transit times. Supplier contracts should be renegotiated to assign routing deviation costs. Third-party logistics audits are a compliance imperative, not a best practice. Executive teams must have pre-approved decision trees for Suez re-entry, covering insurance confirmation, legal sign-off, and board threshold criteria.</p>
+    <br>
+    <p><strong>For international partners, investors, and counterparties:</strong> Companies with strong Red Sea dependency in their supply chains face persistent cost headwinds that will compress margins and may trigger covenant stress in leveraged structures. Counterparties in the shipping, logistics, and insurance sectors face structural repricing of their business models. ESG-conscious investors are watching carbon footprint increases from Cape routing and compliance posture on shadow fleet exposure simultaneously.</p>
+    <br>
+    <p><strong>For the regional operating environment:</strong> The Iran-US conflict has created simultaneous multi-theater maritime disruption (Red Sea and Strait of Hormuz) with no historical precedent in the modern container shipping era. Egypt has lost an estimated $10 billion in Suez Canal revenue. <cite>[21]</cite> Gulf logistics hubs (Dubai, Abu Dhabi) are experiencing port congestion and infrastructure attack spillover. Companies with Gulf regional operations face compound disruption to both inbound supply and regional distribution.</p>
+  </div>
+
+  <div class="sub-section">B. Risk Scoring Matrix</div>
+  <table class="risk-matrix">
+    <thead><tr><th>Risk</th><th>Likelihood (1-5)</th><th>Impact (1-5)</th><th>Score</th><th>Mitigant</th></tr></thead>
+    <tbody>
+      <tr class="row-red"><td><strong>Houthi attacks resume, forcing full Cape rerouting with 200-400% freight spike</strong></td><td>4</td><td>5</td><td>20</td><td>Pre-negotiate freight contracts with deviation clauses; build 60-day buffer stock on critical SKUs; pre-place war risk insurance renewal.</td></tr>
+      <tr class="row-red"><td><strong>Secondary OFAC sanctions liability via undisclosed third-party logistics exposure</strong></td><td>3</td><td>5</td><td>15</td><td>Immediate third-party logistics audit; retain sanctions counsel; document all due diligence for 10-year lookback compliance.</td></tr>
+      <tr class="row-red"><td><strong>Insurance unavailability for critical cargo routes (both Red Sea and Strait of Hormuz)</strong></td><td>4</td><td>4</td><td>16</td><td>Map current policy coverage; identify uninsurable route gaps; arrange captive or government-backed cover where possible; review force majeure protections in customer contracts.</td></tr>
+      <tr><td><strong>Supplier failure or delivery default due to transit time extension</strong></td><td>3</td><td>4</td><td>12</td><td>Identify Tier-1 and Tier-2 supplier delivery dependency on Red Sea routing; trigger safety stock protocols for critical inputs.</td></tr>
+      <tr><td><strong>ESG and carbon footprint regulatory pressure from Cape routing</strong></td><td>2</td><td>3</td><td>6</td><td>Prepare quantified sustainability statement on routing rationale; offset through Scope 3 emissions reporting with routing attribution; engage proactively with ESG investors.</td></tr>
+      <tr><td><strong>Reputational targeting: company vessel or cargo linked to Houthi attack by media</strong></td><td>2</td><td>4</td><td>8</td><td>Pre-develop crisis communications holding statement; establish media monitoring on vessel and cargo movements; ensure crew safety protocols are documented and current.</td></tr>
+      <tr><td><strong>Charter party/force majeure disputes with suppliers or customers over routing deviation costs</strong></td><td>3</td><td>3</td><td>9</td><td>Legal review of all charter parties and customer contracts for deviation clause enforceability under current threat environment; seek amendments before disruption materializes.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sub-section">C. Recommendations by Time Horizon</div>
+  <div class="rec-timeline">
+    <div class="rec-block immediate">
+      <div class="rec-time"><span>0-72H<br>IMMEDIATE</span></div>
+      <div class="rec-content">
+        <ul>
+          <li><strong>Activate supply chain war room:</strong> Convene logistics, procurement, legal, compliance, and communications leads to assess current vessel/cargo exposure in the Red Sea, Gulf of Aden, and Persian Gulf.</li>
+          <li><strong>Pull current insurance policy documentation:</strong> Confirm war risk coverage status, any 72-hour cancellation notices received from P&I clubs, and identify uninsured cargo exposure in transit now.</li>
+          <li><strong>Screen all vessels chartered or contracted:</strong> Run flag, ownership, and recent port-call history through OFAC/MARAD screening tools to identify any US, UK, or Israeli nexus that creates elevated targeting exposure.</li>
+          <li><strong>Brief legal counsel on third-party logistics exposure:</strong> Instruct sanctions counsel to begin preliminary mapping of freight forwarder and port agent relationships in Gulf, Southeast Asia, and East Africa hubs.</li>
+          <li><strong>Prepare CEO/Board holding briefing:</strong> Develop a one-page executive summary of current exposure and decision thresholds for board awareness.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="rec-block nearterm">
+      <div class="rec-time"><span>3-30 DAYS<br>NEAR-TERM</span></div>
+      <div class="rec-content">
+        <ul>
+          <li><strong>Conduct full third-party logistics audit:</strong> Map all sub-tier freight forwarders, port agents, and bunkering/provisioning suppliers for sanctions risk using OFAC SDN list, EU consolidated list, and MARAD shadow fleet advisories. Retain audit documentation for 10-year OFAC lookback compliance.</li>
+          <li><strong>Renegotiate critical supplier contracts:</strong> Insert deviation clauses, force majeure protections for routing change costs, and extended delivery tolerances for Red Sea-dependent supply lines. Prioritize highest-criticality inputs and longest lead-time components.</li>
+          <li><strong>Build strategic safety stock on critical SKUs:</strong> Identify items with Red Sea supply dependency and no domestic or near-shore alternative. Authorize 60-day buffer stock build-up.</li>
+          <li><strong>Pre-place insurance for contingency scenarios:</strong> Engage brokers on contingency war risk placement for Cape routing extension scenarios and any partial Suez re-entry scenarios. Document insurer consent thresholds for board decision-making.</li>
+          <li><strong>Pre-position executive communications:</strong> Draft routing rationale statement, crew safety policy, and carbon offset communications. War-game narrative scenarios including vessel incident and sanctions enforcement inquiry.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="rec-block medium">
+      <div class="rec-time"><span>30-180 DAYS<br>MEDIUM-TERM</span></div>
+      <div class="rec-content">
+        <ul>
+          <li><strong>Develop Red Sea Suez re-entry decision framework:</strong> Define the specific conditions (P&I reinstatement, 2+ Tier-1 carrier resumption, 90-day no-incident record, UKMTO green signal, insurer consent) that must be met before any vessel is authorized for Suez transit. Assign ownership to the Chief Risk Officer with board-level escalation authority.</li>
+          <li><strong>Assess near-shore and alternative sourcing:</strong> Commission a structured review of whether high-risk inputs can be partly sourced from suppliers in Europe, the Americas, or closer-to-market Asia hubs that reduce Red Sea dependency for the most critical supply lines.</li>
+          <li><strong>Establish real-time maritime threat monitoring:</strong> Subscribe to UKMTO, MARAD, and at least one commercial maritime intelligence service (Dryad Global, Ambrey, or equivalent). Set automated alerts for Bab el-Mandeb transit count thresholds and insurance market trigger events.</li>
+          <li><strong>Integrate sanctions compliance into procurement platform:</strong> Upgrade third-party screening to include dynamic AIS-based vessel risk scoring (not static watchlists) consistent with OFAC's shift to predictive compliance expectations. <cite>[37]</cite></li>
+          <li><strong>Engage proactively with ESG investors on routing rationale:</strong> Publish a clear policy statement that frames Cape routing as a crew safety and compliance decision, with committed carbon offset or Sea Change offset mechanisms to address Scope 3 emissions concerns. <cite>[8]</cite></li>
+          <li><strong>Conduct tabletop exercise:</strong> Run a board-level tabletop scenario for Scenario C (full dual-theater blockade) including financial impact quantification, communications response, and decision authority cascade.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 CONFIDENCE -->
+<section class="section" id="confidence">
+  <span class="section-num">09 // CONFIDENCE &amp; UNCERTAINTIES</span>
+  <h2 class="section-title">Confidence Statement and Uncertainties</h2>
+
+  <div class="conf-panel">
+    <div class="conf-header">
+      <div class="conf-header-label">OVERALL CONFIDENCE ASSESSMENT</div>
+      <div class="conf-header-value">MODERATE</div>
+    </div>
+    <div class="conf-body">
+      <ul>
+        <li>Logistical and insurance cost facts are corroborated by multiple independent market sources and are assessed at HIGH confidence. These drive the near-term cost and operational implications.</li>
+        <li>Houthi attack trajectory is assessed at MODERATE confidence because the decisive variable (Iranian command authorization) is unknown and rapidly evolving. The "strategic patience" interpretation is analysis, not confirmed intelligence.</li>
+        <li>Sanctions enforcement trajectory is assessed at HIGH confidence given OFAC's own published enforcement actions, statutory changes, and regulatory guidance. The company-specific compliance gap (G-1) remains unverified and constitutes the primary intelligence gap affecting compliance confidence.</li>
+        <li>Scenario probability estimates are indicative analyst inferences based on open-source reporting. They carry inherent uncertainty bands of plus or minus 10-15 percentage points. The situation is changing rapidly; this assessment should be reassessed within 30 days or upon any confirmed Houthi maritime strike.</li>
+        <li>The absence of a Houthi attack since November 2025 is ambiguous: it is consistent with both strategic restraint and partial capability degradation. This ambiguity limits confidence in attack timing projections.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sub-section">Three Uncertainties That Could Flip the Assessment</div>
+  <div class="uncertainty-list">
+    <div class="uncertainty-item">
+      <strong>FLIP RISK 1: RAPID IRAN-US DIPLOMATIC RESOLUTION</strong>
+      If a credible Iran-US ceasefire framework is verified within 60 days, Houthi motivation to attack shipping collapses materially, insurance premiums decline, and carriers begin Suez re-entry planning. All cost and timeline projections would shift to a fundamentally more favorable base case. Corporate capital allocated to Cape routing buffer stock and alternative sourcing would represent an overinvestment. Likelihood: low (less than 15%) given current military posture.
+    </div>
+    <div class="uncertainty-item">
+      <strong>FLIP RISK 2: DECISIVE HOUTHI CAPABILITY DEGRADATION</strong>
+      If US or Israeli strikes achieve a decisive, verifiable degradation of Houthi missile and drone capability (analogous to Hezbollah's degradation in 2024), the attack threat becomes rhetorical rather than operational. Shipping carriers and insurers would reassess within weeks, and a conditional Suez re-entry process could begin within 90 days. Current evidence (AP March 2026 report on partially degraded stockpiles <cite>[28]</cite>) does not support this scenario, but a capability assessment flip would fundamentally change the operational picture.
+    </div>
+    <div class="uncertainty-item">
+      <strong>FLIP RISK 3: UNDISCLOSED COMPANY SANCTIONS EXPOSURE</strong>
+      If the third-party logistics audit (Gap G-1) reveals material indirect exposure to shadow fleet or Iran-linked networks, the compliance risk picture becomes acute and immediate, overriding the operational planning timeline. OFAC enforcement, voluntary self-disclosure obligations, and potential for criminal referral would constitute the dominant risk, eclipsing logistics cost considerations. This uncertainty uniquely has a directional flip risk toward a significantly more adverse scenario.
+    </div>
+  </div>
+
+  <div class="sub-section">Assumption Failure Drill</div>
+  <table class="assumption-table">
+    <thead><tr><th>Assumption</th><th>Failure Signal</th><th>Consequence</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>A-1:</strong> Cape routing remains dominant through Q3 2026.</td>
+        <td>Two or more Tier-1 carriers announce resumed scheduled Red Sea services with insurance confirmation; Bab el-Mandeb weekly transits recover above 55.</td>
+        <td>Freight rate expectations collapse 10-15%; safety stock overbuild creates capital tie-up; supplier contracts renegotiated back to Suez-baseline delivery schedules. Financial exposure is manageable but requires rapid execution to avoid inventory excess.</td>
+      </tr>
+      <tr>
+        <td><strong>A-4:</strong> Company has no direct exposure to shadow fleet or Iran-linked logistics networks.</td>
+        <td>Third-party audit reveals active freight forwarder or port agent relationships with OFAC-designated entities or vessels in the shadow fleet MARAD/State Department list.</td>
+        <td>Immediate escalation to General Counsel and Board; voluntary self-disclosure consideration to OFAC; suspension of implicated relationships; 10-year records retention review; potential public reputational exposure depending on OFAC enforcement posture. This is the highest-consequence assumption failure in the assessment.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 10 REFERENCES -->
+<section class="section" id="references">
+  <span class="section-num">10 // REFERENCES</span>
+  <h2 class="section-title">Source Register &amp; WSI Audit</h2>
+  <div style="overflow-x:auto;">
+  <table class="ref-table">
+    <thead><tr><th>#</th><th>Source</th><th>Type</th><th>Band</th><th>Independence Note</th><th>URL / Locator</th><th>Atomic Claim / Falsifiability</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Wikipedia — Red Sea crisis article</td><td>Open-source aggregation</td><td><span class="band-pill amber">AMBER</span></td><td>Secondary aggregator; underlying claims traceable to primary news sources. Updated 2 days before report date.</td><td>wikipedia.org/wiki/Red_Sea_crisis</td><td>90% Suez container decline; 877 monthly transits by Oct 2024; Cape adds 11,000nm.</td></tr>
+      <tr><td>2</td><td>Washington Institute for Near East Policy</td><td>Think-tank analysis</td><td><span class="band-pill green">GREEN</span></td><td>Independent of sources 1, 9, 10. Primary policy analysis organization with verified maritime data.</td><td>washingtoninstitute.org</td><td>Houthi 5-phase campaign structure; Iran-US tension as driver of maritime risk.</td></tr>
+      <tr><td>3</td><td>US MARAD Advisory 2025-012</td><td>Government advisory</td><td><span class="band-pill green">GREEN</span></td><td>Primary regulatory source. Independent from all commercial/media sources.</td><td>maritime.dot.gov</td><td>AIS guidance; US-flagged vessel risk designation; NAVCENT protocol.</td></tr>
+      <tr><td>5</td><td>Eurasia Review — Houthis and Maritime Vulnerability</td><td>Policy analysis</td><td><span class="band-pill amber">AMBER</span></td><td>Published Jan 2026; independent analytical perspective but not primary data source.</td><td>eurasiareview.com (Jan 2026)</td><td>Asymmetric cost structure; narrative and legitimacy as strategic amplifier.</td></tr>
+      <tr><td>6</td><td>Coface — Suez Canal Crisis analysis</td><td>Commercial risk/insurance research</td><td><span class="band-pill green">GREEN</span></td><td>Independent commercial risk provider. Primary market data from shipping lanes.</td><td>coface.com</td><td>+80% freight rates Shanghai-Rotterdam; Suez share fell from 12% to 9%.</td></tr>
+      <tr><td>7</td><td>UN Security Council Resolution 2787 (2025)</td><td>Intergovernmental document</td><td><span class="band-pill green">GREEN</span></td><td>Primary source. Independent from all commercial and media sources.</td><td>press.un.org/en/2025/sc16120</td><td>Operating cost doubling claim; Security Council consensus; abstention pattern.</td></tr>
+      <tr><td>8</td><td>Frontiers in Political Science — Environmental impacts</td><td>Peer-reviewed journal</td><td><span class="band-pill green">GREEN</span></td><td>Independent academic source. Corroborates logistics facts from different methodological angle.</td><td>frontiersin.org (Nov 2025)</td><td>Carbon footprint increase; Cape routing sustainability implications; Suez revival tentative.</td></tr>
+      <tr><td>9</td><td>Maritime Education — Red Sea Shipping Attacks 2025</td><td>Industry publication</td><td><span class="band-pill amber">AMBER</span></td><td>Industry-adjacent publication. Claims generally corroborated by primary sources. Used for synthesis, not primary claims.</td><td>maritimeducation.com</td><td>Magic Seas/Eternity C sinking details; BIMCO market warning; two-tier shipping system.</td></tr>
+      <tr><td>10</td><td>gCaptain — Red Sea Corridor Slips Back Into Crisis</td><td>Specialist maritime journalism</td><td><span class="band-pill green">GREEN</span></td><td>Industry primary reporting outlet with documented source network. Independent from think-tank and government sources.</td><td>gcaptain.com (4 weeks ago)</td><td>Maersk Q4 2025 loss; Suez transit recovery to 26/week; BIMCO insurance warnings.</td></tr>
+      <tr><td>12</td><td>Kpler — Red Sea Risk: Maritime Insurance Won't Return to Normal</td><td>Commercial maritime intelligence</td><td><span class="band-pill green">GREEN</span></td><td>Independent commercial intelligence provider. Primary market analysis, not derived from other outlets.</td><td>kpler.com (Nov 2025)</td><td>Fleet bifurcation by flag; Somali piracy resurgence; carrier governance timeline 6-8 weeks.</td></tr>
+      <tr><td>13</td><td>S&P Global Market Intelligence — Marine war insurance for Hormuz</td><td>Specialist financial journalism</td><td><span class="band-pill green">GREEN</span></td><td>Primary market reporting with named broker and underwriter sources. Independent from gCaptain and Kpler.</td><td>spglobal.com (2 weeks ago)</td><td>P&I club 72-hour cancellation notices; Hormuz de facto closed for insurance; Houthi reactivation risk.</td></tr>
+      <tr><td>15</td><td>The National — Strait of Hormuz escalation and War Risk Surcharges</td><td>Regional quality news</td><td><span class="band-pill green">GREEN</span></td><td>Independent regional outlet with primary carrier source (Hapag-Lloyd advisory). Corroborated by FreightWaves.</td><td>thenationalnews.com (4 weeks ago)</td><td>Hapag-Lloyd $1,500/$3,500 per TEU WRS; CMA CGM Emergency Conflict Surcharge; Xeneta analyst quote.</td></tr>
+      <tr><td>17</td><td>Maplecroft — War Premiums and Shipping Risks</td><td>Political risk consultancy</td><td><span class="band-pill green">GREEN</span></td><td>Independent commercial risk consultancy. Primary analytical source on targeting patterns and insurance peaks.</td><td>maplecroft.com</td><td>Magic Seas targeting rationale; July 2025 expanded targeting criteria; 1% hull value peak premium.</td></tr>
+      <tr><td>20</td><td>Business Insurance — Red Sea insurance costs soar</td><td>Insurance industry publication</td><td><span class="band-pill amber">AMBER</span></td><td>Industry publication citing FT as upstream source. One step removed from primary data for premium figures.</td><td>businessinsurance.com (Jul 2025)</td><td>War risk premium peaked at 1% hull value per voyage ($1M per $100M vessel).</td></tr>
+      <tr><td>21</td><td>The National — Mystery of no Houthi attacks in Iran war</td><td>Quality regional journalism</td><td><span class="band-pill green">GREEN</span></td><td>Primary reporting with named ICG expert (Michael Hanna) and named strategic analysts. Independent from Wikipedia and defense journals.</td><td>thenationalnews.com (1 week ago)</td><td>Strategic patience theory; US deal constraint; Houthi domestic priorities; $10B Egyptian Suez revenue loss.</td></tr>
+      <tr><td>23</td><td>Global Security Review — Red Sea Uncertainty 2026 Forecast</td><td>Security analysis</td><td><span class="band-pill amber">AMBER</span></td><td>Analytical publication without primary data. Synthesizes open-source reporting. Used for scenario framing only.</td><td>globalsecurityreview.com (2 weeks ago)</td><td>Houthi Red Sea as pressure valve; three structural factors for persistent volatility.</td></tr>
+      <tr><td>26</td><td>FreightWaves — Iran-backed Houthi warn of new Red Sea attacks</td><td>Specialist freight journalism</td><td><span class="band-pill green">GREEN</span></td><td>Industry primary reporting. Independent from gCaptain. Both outlets corroborate the late February 2026 threat announcement via different sourcing.</td><td>freightwaves.com (1 month ago)</td><td>CMA CGM service suspension; Maersk voyage withdrawals; Houthi threat announcement to media.</td></tr>
+      <tr><td>28</td><td>Wikipedia — 2026 Iran war article</td><td>Open-source aggregation</td><td><span class="band-pill amber">AMBER</span></td><td>Secondary aggregator for active conflict. Updated 8 hours before report date. Claims traceable to AP, Reuters, Times, and government releases.</td><td>wikipedia.org/wiki/2026_Iran_war</td><td>Khamenei killing; Iran war timeline; Houthi weapons degradation (AP Mar 15 report); Hodeidah positioning.</td></tr>
+      <tr><td>31</td><td>VinciWorks — Compliance fallout from the 2026 Iran war</td><td>Legal/compliance training firm</td><td><span class="band-pill amber">AMBER</span></td><td>Compliance advisory publication. OFAC statute of limitations fact is corroborated by OFAC primary source. Used for synthesis of compliance environment.</td><td>vinciworks.com (1 month ago)</td><td>10-year OFAC statute of limitations; crypto capital flight risk; shadow banking network migration.</td></tr>
+      <tr><td>32</td><td>Steptoe — Weekly Sanctions Update, March 23 2026</td><td>Law firm sanctions update</td><td><span class="band-pill green">GREEN</span></td><td>Primary legal source with direct reference to OFAC general licenses. Independent from VinciWorks.</td><td>steptoe.com</td><td>OFAC General License U (Mar 20 2026); Indian refiner Iranian crude assessment; Russian fuel oil to Asia.</td></tr>
+      <tr><td>34</td><td>Holland &amp; Knight — OFAC Sanctions Top 5 Trends for 2026</td><td>Law firm regulatory analysis</td><td><span class="band-pill green">GREEN</span></td><td>Independent large law firm analysis. Primary regulatory interpretation, not secondary commentary.</td><td>hklaw.com</td><td>Maximum pressure Iran posture; shadow fleet enforcement; gatekeeper crackdown expansion.</td></tr>
+      <tr><td>37</td><td>Kpler — Maritime Compliance Landscape Shifting Reactive to Predictive</td><td>Commercial maritime intelligence</td><td><span class="band-pill green">GREEN</span></td><td>Same provider as source 12 but separate report on compliance theme. Independent from law firm sources. Corroborates predictive compliance expectations from market data angle.</td><td>kpler.com (Jan 2026)</td><td>2025 sanctions cycle record; 180 shadow fleet tankers designated Jan 2025 package; predictive compliance imperative.</td></tr>
+      <tr><td>38</td><td>Corporate Compliance Insights / Paul Weiss — OFAC Enforcement in 2025-26</td><td>Legal analysis / law firm</td><td><span class="band-pill green">GREEN</span></td><td>Paul Weiss primary law firm analysis with OFAC enforcement data. Independent from Holland &amp; Knight. Corroborates gatekeeper enforcement trend.</td><td>corporatecomplianceinsights.com (1 week ago)</td><td>1,300+ OFAC designations in 2025; manufacturer and logistics provider enforcement actions; Florida school precedent.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="band-key">
+    <strong>Band Key:</strong> <span class="band-pill green">GREEN</span> = high credibility, corroborated, named primary sources or primary regulatory documents. <span class="band-pill amber">AMBER</span> = single credible source, secondary aggregation, or partial corroboration; used for synthesis or context, not as sole basis for key judgments. <span class="band-pill red">RED</span> = contested, unverified, or single low-reliability source — no Red-band sources used in this assessment.
+    <br><br>
+    <strong>Independence Test Statement:</strong> The WSI independence test was applied throughout. The primary narrative on Houthi threat posture draws on four independent streams: Wikipedia crisis article (news aggregation), Washington Institute (policy think-tank), Global Security Review (security analysis), and gCaptain/FreightWaves (specialist maritime journalism). These are assessed as independent because they draw on different primary sourcing networks. Insurance cost data is corroborated by S&P Global, Kpler, Business Insurance, and Maplecroft as four independent commercial market reporting streams. Sanctions enforcement analysis draws on OFAC primary sources, Steptoe, Holland &amp; Knight, VinciWorks, and Corporate Compliance Insights as independent legal/compliance streams. No single-source key judgment is present in this assessment.
+  </div>
+</section>
+
+<!-- ANNEX A -->
+<section class="section" id="annexa">
+  <span class="section-num">ANNEX A // EARLY WARNING INDICATORS</span>
+  <h2 class="section-title">Early Warning Indicators</h2>
+  <div style="overflow-x:auto;">
+  <table>
+    <thead><tr><th>ID</th><th>Trigger Event</th><th>Scenario Signal</th><th>Leading Indicators</th><th>Analytic Action Required</th></tr></thead>
+    <tbody>
+      <tr><td class="col-id">EWI-1</td><td><strong>Confirmed Houthi missile/drone strike on merchant vessel</strong></td><td>Scenario B/C activation; base case to worst case shift</td><td>Houthi formal attack declaration; UKMTO security alert upgrade; AIS distress signal in Bab el-Mandeb; MARAD maritime advisory update</td><td>Immediately activate emergency logistics protocol; contact insurer within 24H; brief CEO and board; suspend any pending Suez routing decisions; reassess all in-transit cargo.</td></tr>
+      <tr><td class="col-id">EWI-2</td><td><strong>P&I clubs lift Gulf war cover cancellation and reinstate</strong></td><td>Scenario A signal; de-escalation window opening</td><td>Formal P&I club communication; Xeneta freight rate movement; Bab el-Mandeb daily transits above 55/week for 2+ consecutive weeks</td><td>Begin Suez re-entry feasibility assessment; engage insurance brokers for competitive placement; activate governance approval process.</td></tr>
+      <tr><td class="col-id">EWI-3</td><td><strong>OFAC enforcement action naming logistics provider or port agent in company's supply chain</strong></td><td>Compliance crisis activation</td><td>OFAC SDN list update; Steptoe/Holland &amp; Knight sanctions alert; media investigation referencing logistics sector; internal audit flag</td><td>Immediately retain sanctions counsel; suspend implicated relationships; evaluate voluntary self-disclosure; activate board-level notification protocol.</td></tr>
+      <tr><td class="col-id">EWI-4</td><td><strong>Iran-US ceasefire framework announced and verified</strong></td><td>Scenario A probability increases materially; Houthi pressure to stand down</td><td>State Department announcement; Iranian acceptance statement; UN Special Envoy confirmation; IRGC communication halt</td><td>Reassess all scenario probabilities within 48H; hold on safety stock build if still in progress; engage carriers on Suez re-entry timeline.</td></tr>
+      <tr><td class="col-id">EWI-5</td><td><strong>Second major carrier announces resumed scheduled Red Sea services with insurer backing</strong></td><td>Market sentiment shift toward de-escalation</td><td>Carrier press releases; Lloyd's of London Red Sea re-rating; Bab el-Mandeb transit count recovery; UKMTO threat level downgrade</td><td>Present board with formal Suez re-entry decision framework; initiate governance approval process per pre-agreed thresholds.</td></tr>
+      <tr><td class="col-id">EWI-6</td><td><strong>Houthi attack targeting a vessel in company's sector or with similar port-call profile</strong></td><td>Elevated direct targeting risk; narrative exposure risk</td><td>Incident reporting via UKMTO; AIS tracking data; carrier security advisories; industry association alerts</td><td>Screen all active company-contracted voyages within 24H for similarity to targeted vessel profile; engage communications team on pre-prepared holding statement; brief insurers.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ANNEX B -->
+<section class="section" id="annexb">
+  <span class="section-num">ANNEX B // PRIORITY INTELLIGENCE GAPS &amp; ACTION THRESHOLDS</span>
+  <h2 class="section-title">Priority Intelligence Gaps &amp; Action Thresholds</h2>
+
+  <div class="sub-section">B.1 Priority Intelligence Gaps</div>
+  <table class="pig-table">
+    <thead><tr><th>Gap ID</th><th>Intelligence Question</th><th>Why It Matters</th><th>Collection Recommendation</th></tr></thead>
+    <tbody>
+      <tr><td class="col-id">G-1</td><td>Does the company have indirect exposure to OFAC-designated shadow fleet vessels or Iran-linked logistics networks through its freight forwarders, port agents, or bunkering providers?</td><td>This is the highest-priority compliance gap. Exposure triggers 10-year lookback liability, voluntary self-disclosure obligations, and potential criminal referral. The cost of discovery by regulators is orders of magnitude greater than the cost of proactive audit.</td><td>Commission immediate third-party logistics sanctions audit using dynamic AIS-based vessel screening tools (Kpler, Windward, or equivalent), cross-referenced with OFAC SDN list, MARAD shadow fleet advisories, and State Department shipping evasion designations. Retain external sanctions counsel to manage privilege.</td></tr>
+      <tr><td class="col-id">G-2</td><td>What is Iran's precise decision threshold for authorizing Houthi maritime attack resumption, and what is the intelligence basis for assessing that threshold?</td><td>This drives attack timeline uncertainty (KJ-4). A 30-day vs 90-day resumption window has materially different inventory and routing implications.</td><td>Subscribe to OSINT threat intelligence services with MENA maritime focus (Ambrey, Dryad Global). Monitor Iranian state media and official communications for operational signals. Track Houthi military media for capability demonstrations.</td></tr>
+      <tr><td class="col-id">G-3</td><td>What are the specific terms, force majeure provisions, and deviation clauses in the company's charter parties and customer contracts that govern Red Sea routing changes and associated cost allocation?</td><td>Without this, the company cannot quantify legal and financial exposure under Scenarios B or C, or determine whether cost recovery from suppliers and customers is possible.</td><td>Legal review of all active charter parties, supplier contracts, and customer delivery agreements by maritime and commercial counsel. Map deviation clause enforceability under the current UKMTO/MARAD threat designation.</td></tr>
+      <tr><td class="col-id">G-4</td><td>What is the insurance market's specific coverage status for the company's cargo on Cape of Good Hope routing, including any Somali piracy exclusions or east Africa area clauses?</td><td>Companies often discover coverage gaps only at point of claim. Cape routing is not free of risk; Somali piracy resurgence has created a secondary exposure layer for vessels transiting the Horn of Africa.</td><td>Full policy review with current marine insurance broker, including hull, cargo, and P&I club coverage confirmation for all active voyages. Identify any geographic area exclusions or war risk endorsements that affect Cape routing.</td></tr>
+      <tr><td class="col-id">G-5</td><td>Which of the company's critical supply inputs have no viable alternative source outside the Red Sea corridor, and what is the lead time for near-shoring or inventory substitution?</td><td>Identifies the hardest chokepoints in the supply chain that create irreducible vulnerability to Red Sea disruption scenarios.</td><td>Procurement-led supply chain mapping exercise at Tier-1 and Tier-2 supplier level, with geographic sourcing attribution and transit-corridor dependency scoring. Prioritize top-10 inputs by criticality and Red Sea dependency.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sub-section">B.2 Executive Action Thresholds</div>
+  <div class="threshold-grid">
+    <div class="threshold-cell green-zone">
+      <div class="th-head">GREEN // MONITOR</div>
+      <div class="th-body">
+        <p><strong>Trigger condition:</strong> No confirmed Houthi maritime strikes; Bab el-Mandeb transits stable above 35/week; insurance premiums declining; Iran-US active hostilities at current level with no escalation to Red Sea.</p>
+        <ul>
+          <li>Maintain Cape routing as default; no change to operational posture.</li>
+          <li>Continue weekly monitoring of I&W indicators.</li>
+          <li>Progress third-party logistics audit (G-1) on normal timeline.</li>
+          <li>Maintain safety stock build program.</li>
+        </ul>
+        <p style="font-size:0.78rem;color:var(--slate-muted);margin-top:0.5rem;font-family:'IBM Plex Sans',sans-serif;"><strong>Responsible:</strong> Chief Supply Chain Officer; weekly reporting to C-suite.</p>
+      </div>
+    </div>
+    <div class="threshold-cell amber-zone">
+      <div class="th-head">AMBER // ACT NOW</div>
+      <div class="th-body">
+        <p><strong>Trigger condition:</strong> Houthi formal attack declaration issued (without confirmed strike); war risk premium rises above 0.7% hull for standard risk; P&I club cancellations expand; Iranian military rhetoric explicitly designates Red Sea as retaliation theater; MARAD advisory upgrade.</p>
+        <ul>
+          <li>Immediately brief CEO and board; activate crisis logistics working group.</li>
+          <li>Accelerate third-party logistics audit to 72-hour emergency review.</li>
+          <li>Contact marine insurer to confirm cargo and hull coverage status.</li>
+          <li>Review all in-transit vessels for US/UK/Israeli nexus and exposure.</li>
+          <li>Pre-position crisis communications holding statement.</li>
+          <li>Halt any pending Suez routing decisions; apply precautionary Cape default.</li>
+        </ul>
+        <p style="font-size:0.78rem;color:var(--slate-muted);margin-top:0.5rem;font-family:'IBM Plex Sans',sans-serif;"><strong>Responsible:</strong> Chief Risk Officer; convenes within 4 hours of trigger; reports to CEO daily.</p>
+      </div>
+    </div>
+    <div class="threshold-cell red-zone">
+      <div class="th-head">RED // EMERGENCY</div>
+      <div class="th-body">
+        <p><strong>Trigger condition:</strong> Confirmed Houthi strike on a merchant vessel; OFAC action naming logistics partner in company's supply chain; insurance withdrawal from Cape routing for area below the Horn of Africa; dual-theater blockade (Red Sea and Hormuz) confirmed with no alternative routing available.</p>
+        <ul>
+          <li>Activate Board-level emergency session within 24 hours.</li>
+          <li>Retain external sanctions counsel immediately; freeze implicated supply relationships.</li>
+          <li>Invoke force majeure notifications to affected customers and suppliers per contract terms.</li>
+          <li>Engage government affairs function on export control and sanctions waiver options.</li>
+          <li>Execute pre-approved crisis communications plan; CEO public statement within 48 hours.</li>
+          <li>Commission full business continuity impact assessment across all product lines.</li>
+        </ul>
+        <p style="font-size:0.78rem;color:var(--slate-muted);margin-top:0.5rem;font-family:'IBM Plex Sans',sans-serif;"><strong>Responsible:</strong> CEO and Board; General Counsel; Chief Risk Officer. External counsel retained pre-emptively.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div style="margin-bottom:0.5rem;"><strong>QUANTA ANALYTICA PROCESS™ &nbsp;|&nbsp; MNS CONSULTING</strong></div>
+  <div>Document ID: <strong>QAP-CRI-IIA-REDSEA-2026-0327</strong></div>
+  <div>Domain: Corporate Risk Intelligence + Information Integrity &amp; Influence Analysis &nbsp;|&nbsp; Scope: Red Sea Corridor, 6-Month Forward Horizon</div>
+  <div>Confidence: <strong>MODERATE</strong> &nbsp;|&nbsp; Classification: <strong>OPEN SOURCE // UNCLASSIFIED</strong> &nbsp;|&nbsp; Risk Appetite: <strong>MEDIUM</strong></div>
+  <div style="margin-top:0.5rem;font-style:italic;color:#4A5568;font-size:0.7rem;">Produced under the Quanta Analytica Process™. All claims traced to open-source evidence or labelled as analyst inference. No fabricated sources, quotes, or data. This assessment is for decision support purposes only and does not constitute legal or financial advice. Reassess within 30 days or upon any confirmed Houthi maritime strike.</div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    const p = h > 0 ? (window.scrollY / h) * 100 : 0;
+    document.getElementById('progress').style.width = p + '%';
+  });
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.section').forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
