@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>CARVER | Quanta Analytica</title>
+  <meta name="description" content="CARVER at Quanta Analytica: how and why we use CARVER to structure, justify, and prioritize risk inside the Quanta Analytica Process™." />
+  <meta name="keywords" content="CARVER, risk prioritization, Quanta Analytica, ISO risk matrix, likelihood impact, vulnerability analysis, MNS Consulting" />
+  <meta name="author" content="M. Nuri Shakoor, MNS Consulting" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="CARVER | Quanta Analytica" />
+  <meta property="og:description" content="How Quanta Analytica uses CARVER to turn diffuse threats into structured, defensible, decision-ready risk prioritization." />
+  <meta property="og:site_name" content="Quanta Analytica" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CARVER | Quanta Analytica" />
+  <meta name="twitter:description" content="Structured risk prioritization inside the Quanta Analytica Process™." />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow+Condensed:wght@300;400;500;600&family=Barlow:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --obsidian:   #0a0c10;
+      --deep-navy:  #0d1220;
+      --midnight:   #111827;
+      --panel:      rgba(255,255,255,0.04);
+      --panel2:     rgba(255,255,255,0.07);
+      --gold:       #c8a96e;
+      --gold-light: #e2c98a;
+      --gold-dim:   rgba(200,169,110,0.12);
+      --gold-line:  rgba(200,169,110,0.28);
+      --text:       rgba(245,242,236,0.95);
+      --muted:      rgba(245,242,236,0.68);
+      --muted2:     rgba(245,242,236,0.40);
+      --border:     rgba(200,169,110,0.14);
+      --border-soft:rgba(255,255,255,0.07);
+      --shadow:     0 16px 56px rgba(0,0,0,0.5);
+      --a1: rgba(168,216,234,0.15); --a1t: rgba(168,216,234,0.85);
+      --a2: rgba(250,186,100,0.14); --a2t: rgba(250,186,100,0.85);
+      --a3: rgba(130,185,235,0.14); --a3t: rgba(130,185,235,0.85);
+      --a4: rgba(100,210,170,0.14); --a4t: rgba(100,210,170,0.85);
+      --a5: rgba(190,170,255,0.14); --a5t: rgba(190,170,255,0.85);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-ui:      'Barlow Condensed', sans-serif;
+      --font-body:    'Barlow', sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+      --max: 1200px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--obsidian); color: var(--text); font-family: var(--font-body); font-weight: 300; line-height: 1.7; overflow-x: hidden; cursor: crosshair; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:999; opacity:0.55; }
+
+    a { color:inherit; text-decoration:none; }
+    a:hover { text-decoration:underline; text-underline-offset:3px; }
+    .skip-link { position:absolute; left:-999px; top:10px; background:var(--panel2); padding:10px 12px; border:1px solid var(--border); z-index:9999; font-family:var(--font-ui); }
+    .skip-link:focus { left:12px; }
+    .container { width:min(var(--max),calc(100% - 32px)); margin:0 auto; }
+
+    header { position:sticky; top:0; z-index:100; backdrop-filter:blur(14px); background:linear-gradient(to bottom,rgba(10,12,16,.95),rgba(10,12,16,.72)); border-bottom:1px solid var(--border); }
+    .nav { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:14px 0; }
+    .brand { display:flex; align-items:center; gap:12px; flex-shrink:0; }
+    .brand:hover { text-decoration:none; }
+    .brand-name { display:flex; flex-direction:column; line-height:1.15; }
+    .brand-name strong { font-family:var(--font-ui); font-size:.92rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase; color:var(--text); }
+    .brand-name span { font-family:var(--font-ui); font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); }
+    .nav-links { display:flex; align-items:center; gap:4px; flex-wrap:wrap; }
+    .nav-links a { padding:7px 11px; font-family:var(--font-ui); font-size:.7rem; font-weight:400; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); border:1px solid transparent; transition:color .25s,border-color .25s,background .25s; }
+    .nav-links a:hover, .nav-links a.current { color:var(--gold); border-color:var(--gold-line); background:var(--gold-dim); text-decoration:none; }
+    .nav-right { display:flex; align-items:center; gap:10px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:9px 16px; border:1px solid var(--gold-line); background:var(--gold-dim); color:var(--gold); cursor:pointer; font-family:var(--font-ui); font-weight:500; font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; transition:background .2s,border-color .2s,transform .1s; user-select:none; text-decoration:none; }
+    .btn:hover { background:rgba(200,169,110,.22); border-color:var(--gold); text-decoration:none; }
+    .btn:active { transform:translateY(1px); }
+    .btn.primary { background:var(--gold); color:var(--obsidian); border-color:var(--gold); }
+    .btn.primary:hover { background:var(--gold-light); border-color:var(--gold-light); }
+    .btn.ghost { background:transparent; color:var(--muted); border-color:var(--border-soft); }
+    .btn.ghost:hover { background:var(--panel); color:var(--text); border-color:var(--border); }
+    .btn.small { padding:6px 12px; font-size:.66rem; }
+
+    main { padding:36px 0 80px; }
+    section { padding:52px 0; }
+    h1,h2,h3,h4 { margin:0; }
+    h1 { font-family:var(--font-display); font-size:clamp(2.8rem,5.5vw,6.5rem); font-weight:300; line-height:.93; letter-spacing:-.01em; }
+    h2 { font-family:var(--font-display); font-size:clamp(1.7rem,2.8vw,2.8rem); font-weight:300; line-height:1.05; }
+    h3 { font-family:var(--font-ui); font-size:.78rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); }
+    h4 { font-family:var(--font-display); font-size:1.2rem; font-weight:400; }
+    em { font-style:italic; color:var(--gold-light); }
+    p { margin:10px 0 0; color:var(--muted); }
+
+    .divider { display:flex; align-items:center; gap:1.2rem; margin-bottom:1.4rem; }
+    .divider-num { font-family:var(--font-ui); font-size:.63rem; letter-spacing:.28em; color:var(--gold); opacity:.55; }
+    .divider-rule { width:48px; height:1px; background:var(--gold-line); flex-shrink:0; }
+    .divider-label { font-family:var(--font-ui); font-size:.68rem; font-weight:600; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); }
+
+    .kicker { font-family:var(--font-ui); font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+    .pill { display:inline-flex; align-items:center; gap:7px; padding:5px 11px; border:1px solid var(--gold-line); background:var(--gold-dim); color:var(--muted); font-family:var(--font-ui); font-size:.66rem; letter-spacing:.15em; text-transform:uppercase; }
+    .dot { width:6px; height:6px; background:var(--gold); border-radius:50%; box-shadow:0 0 0 4px rgba(200,169,110,.14); animation:pulse 3s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:.35;transform:scale(1)} 50%{opacity:1;transform:scale(1.4)} }
+
+    .grid { display:grid; gap:14px; }
+    .cols-2 { grid-template-columns:repeat(2,1fr); }
+    .cols-3 { grid-template-columns:repeat(3,1fr); }
+    .cols-4 { grid-template-columns:repeat(4,1fr); }
+    @media(max-width:980px){ .cols-3,.cols-4{ grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:620px){ .cols-2,.cols-3,.cols-4{ grid-template-columns:1fr; } }
+
+    .card { background:var(--panel); border:1px solid var(--border); padding:22px; position:relative; transition:background .3s; }
+    .card::before { content:''; position:absolute; top:0; left:0; width:0; height:2px; background:var(--gold); transition:width .4s ease; }
+    .card:hover { background:var(--panel2); }
+    .card:hover::before { width:100%; }
+    .list { margin:10px 0 0; padding:0 0 0 18px; color:var(--muted); }
+    .list li { margin:5px 0; font-size:.91rem; }
+    .note { font-family:var(--font-ui); font-size:.68rem; letter-spacing:.1em; color:var(--muted2); margin-top:6px; }
+
+    #hero { position:relative; min-height:86vh; display:flex; flex-direction:column; justify-content:center; padding:6rem 0 4rem; overflow:hidden; }
+    .hero-geo { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+    .bg-hex { position:absolute; right:-6vw; top:50%; transform:translateY(-50%); width:52vw; max-width:740px; opacity:.05; animation:spin 100s linear infinite; }
+    @keyframes spin { from{transform:translateY(-50%) rotate(0deg)} to{transform:translateY(-50%) rotate(360deg)} }
+    .scan { position:absolute; left:0; right:0; height:1px; background:linear-gradient(to right,transparent,var(--gold-line),transparent); }
+    .scan.t{top:15%;} .scan.b{top:83%;}
+
+    .hero-eyebrow { font-family:var(--font-ui); font-size:.7rem; font-weight:500; letter-spacing:.38em; text-transform:uppercase; color:var(--gold); margin-bottom:1.4rem; opacity:0; animation:slideUp .8s ease .15s forwards; }
+    .hero-title { opacity:0; animation:slideUp .9s ease .3s forwards; margin-bottom:.8rem; }
+    .hero-trademark { font-family:var(--font-ui); font-size:.7rem; letter-spacing:.28em; text-transform:uppercase; color:rgba(200,169,110,.5); margin-bottom:1.8rem; opacity:0; animation:slideUp .9s ease .44s forwards; }
+    .hero-sub { max-width:680px; font-size:1.02rem; line-height:1.88; color:var(--muted); margin-bottom:2.2rem; opacity:0; animation:slideUp .9s ease .56s forwards; }
+    .hero-pills { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:2rem; opacity:0; animation:slideUp .9s ease .68s forwards; }
+    .hero-ctas { display:flex; gap:12px; flex-wrap:wrap; opacity:0; animation:slideUp .9s ease .80s forwards; }
+    @keyframes slideUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+
+    .flow-diagram { background:var(--deep-navy); border:1px solid var(--border); padding:32px; overflow-x:auto; margin-bottom:14px; }
+    .flow-diagram svg { display:block; max-width:100%; height:auto; }
+
+    .phase { display:grid; grid-template-columns:64px 1fr; gap:0; border:1px solid var(--border); position:relative; overflow:hidden; transition:background .3s; background:var(--panel); margin-bottom:10px; }
+    .phase::before { content:''; position:absolute; top:0; left:0; width:0; height:2px; background:var(--gold); transition:width .4s ease; }
+    .phase:hover { background:var(--panel2); }
+    .phase:hover::before { width:100%; }
+    .ph-accent { display:flex; align-items:center; justify-content:center; border-right:1px solid var(--border); padding:24px 0; flex-direction:column; gap:6px; }
+    .ph-num { font-family:var(--font-display); font-size:2.2rem; font-weight:300; line-height:1; }
+    .ph-roman { font-family:var(--font-ui); font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; }
+    .ph-body { padding:20px 26px; }
+    .ph-title { font-family:var(--font-ui); font-size:.8rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; margin-bottom:6px; }
+    .ph-sub { font-family:var(--font-ui); font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted2); margin-bottom:12px; }
+    .ph-desc { font-size:.92rem; color:var(--muted); line-height:1.78; }
+    .ph-steps { margin:12px 0 0; padding:0 0 0 18px; color:var(--muted); }
+    .ph-steps li { margin:5px 0; font-size:.9rem; }
+    .ph-badge { display:inline-block; margin-top:10px; font-family:var(--mono); font-size:.63rem; color:var(--gold); border:1px solid var(--gold-line); background:var(--panel); padding:3px 9px; letter-spacing:.06em; }
+    .ph1 .ph-accent{background:var(--a1);} .ph1 .ph-num,.ph1 .ph-roman{color:var(--a1t);} .ph1 .ph-title{color:var(--a1t);}
+    .ph2 .ph-accent{background:var(--a2);} .ph2 .ph-num,.ph2 .ph-roman{color:var(--a2t);} .ph2 .ph-title{color:var(--a2t);}
+    .ph3 .ph-accent{background:var(--a3);} .ph3 .ph-num,.ph3 .ph-roman{color:var(--a3t);} .ph3 .ph-title{color:var(--a3t);}
+    .ph4 .ph-accent{background:var(--a4);} .ph4 .ph-num,.ph4 .ph-roman{color:var(--a4t);} .ph4 .ph-title{color:var(--a4t);}
+    .ph5 .ph-accent{background:var(--a5);} .ph5 .ph-num,.ph5 .ph-roman{color:var(--a5t);} .ph5 .ph-title{color:var(--a5t);}
+
+    .cap-table { width:100%; border-collapse:collapse; border:1px solid var(--border); }
+    .cap-table th { font-family:var(--font-ui); font-size:.68rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); padding:11px 16px; border-bottom:1px solid var(--border); background:var(--gold-dim); text-align:left; }
+    .cap-table td { padding:11px 16px; border-bottom:1px solid var(--border-soft); font-size:.9rem; color:var(--muted); vertical-align:top; }
+    .cap-table tr:last-child td { border-bottom:none; }
+    .cap-table tr:hover td { background:rgba(200,169,110,.03); }
+    .cap-table td:first-child { font-family:var(--font-ui); font-size:.7rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase; color:var(--text); white-space:nowrap; }
+
+    .matrix-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+    @media(max-width:780px){ .matrix-grid { grid-template-columns:1fr; } }
+
+    .score-card { border:1px solid var(--border); background:var(--panel); padding:22px; position:relative; overflow:hidden; }
+    .score-card::before { content:''; position:absolute; top:0; left:0; width:100%; height:2px; background:var(--gold-line); }
+    .score-label { font-family:var(--font-ui); font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+    .formula { font-family:var(--font-display); font-size:1.55rem; color:var(--text); line-height:1.2; margin-bottom:10px; }
+
+    .pullquote { padding:28px 32px; border-left:3px solid var(--gold); background:var(--gold-dim); position:relative; }
+    .pullquote blockquote { font-family:var(--font-display); font-size:1.4rem; font-style:italic; font-weight:300; line-height:1.65; color:var(--text); }
+    .pullquote cite { display:block; margin-top:14px; font-family:var(--font-ui); font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); }
+
+    .callout { padding:30px; border:1px solid var(--gold-line); background:linear-gradient(135deg,rgba(200,169,110,.07),rgba(10,12,16,.6)); position:relative; overflow:hidden; }
+    .callout::after { content:''; position:absolute; top:-80px; right:-80px; width:220px; height:220px; border-radius:50%; background:radial-gradient(circle,rgba(200,169,110,.1),transparent 70%); pointer-events:none; }
+
+    .footer { padding:28px 0 38px; border-top:1px solid var(--border); }
+    .footer .row { display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; }
+    .footer-brand { font-family:var(--font-ui); font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
+    .footer-brand .gold { color:var(--gold); }
+
+    .reveal { opacity:0; transform:translateY(18px); transition:opacity .75s ease,transform .75s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .d1{transition-delay:.08s} .d2{transition-delay:.16s} .d3{transition-delay:.24s} .d4{transition-delay:.32s} .d5{transition-delay:.40s}
+
+    @media(max-width:900px){ .nav-links{display:none;} }
+    @media(max-width:760px){ section>div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;} }
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<header>
+  <div class="container">
+    <div class="nav" role="navigation" aria-label="Primary">
+      <a class="brand" href="#hero" aria-label="Quanta Analytica home">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <polygon points="18,2 32,10 32,26 18,34 4,26 4,10" fill="none" stroke="#c8a96e" stroke-width="1.2"/>
+          <circle cx="18" cy="18" r="4" fill="#c8a96e" opacity="0.75"/>
+        </svg>
+        <div class="brand-name">
+          <strong>Quanta Analytica</strong>
+          <span>MNS Consulting</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Page sections">
+        <a href="#hero" class="current">CARVER</a>
+        <a href="#overview">Overview</a>
+        <a href="#dimensions">Dimensions</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#matrix">ISO Mapping</a>
+      </nav>
+
+      <div class="nav-right">
+        <a class="btn ghost small" href="#matrix">ISO Logic</a>
+        <a class="btn primary small" href="#engage">Use CARVER</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="content">
+  <div class="container">
+    <section id="hero" aria-label="CARVER hero">
+      <div class="hero-geo" aria-hidden="true">
+        <svg class="bg-hex" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="250,20 460,140 460,360 250,480 40,360 40,140" fill="none" stroke="#c8a96e" stroke-width="1"/>
+          <polygon points="250,60 430,158 430,342 250,440 70,342 70,158" fill="none" stroke="#c8a96e" stroke-width="0.5"/>
+          <polygon points="250,95 400,176 400,324 250,405 100,324 100,176" fill="none" stroke="#c8a96e" stroke-width="0.3"/>
+          <circle cx="250" cy="250" r="3" fill="#c8a96e" opacity="0.9"/>
+          <line x1="250" y1="20" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.28"/>
+          <line x1="460" y1="140" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.28"/>
+          <line x1="460" y1="360" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.28"/>
+          <line x1="250" y1="480" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.28"/>
+          <line x1="40"  y1="360" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.28"/>
+          <line x1="40"  y1="140" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.28"/>
+        </svg>
+        <div class="scan t"></div>
+        <div class="scan b"></div>
+      </div>
+
+      <div style="position:relative;z-index:2;">
+        <p class="hero-eyebrow">Structured Analytic Tradecraft · Quanta Analytica Process™</p>
+        <h1 class="hero-title">CARVER<br /><em>Structured<br />Risk<br />Prioritization</em></h1>
+        <p class="hero-trademark">Criticality · Accessibility · Recuperability · Vulnerability · Effect · Recognizability</p>
+        <p class="hero-sub">
+          At Quanta Analytica, CARVER is used to structure, justify, and prioritize risk. We use it to convert diffuse threat environments into transparent, defensible, decision-ready priorities inside the Quanta Analytica Process™.
+        </p>
+        <div class="hero-pills">
+          <span class="pill"><span class="dot" aria-hidden="true"></span> Structured Analytic Tradecraft</span>
+          <span class="pill">Risk Prioritization Engine</span>
+          <span class="pill">Likelihood + Impact Mapping</span>
+          <span class="pill">ISO Matrix Support</span>
+          <span class="pill">Decision-Ready Intelligence</span>
+        </div>
+        <div class="hero-ctas">
+          <a class="btn primary" href="#overview">Why We Use It</a>
+          <a class="btn" href="#workflow">How We Apply It</a>
+          <a class="btn ghost" href="#matrix">ISO Mapping</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="overview" aria-label="CARVER overview">
+      <div class="divider reveal">
+        <span class="divider-num">00</span>
+        <div class="divider-rule"></div>
+        <span class="divider-label">Overview</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;" class="reveal">
+        <div>
+          <h2>Why CARVER matters<br /><em>inside Quanta Analytica</em></h2>
+          <p style="margin-top:1.4rem;font-size:1rem;line-height:1.9;">CARVER is one of the structured analytic tools we use to move from vague concern to disciplined risk prioritization. It helps us break down complex threats, assets, vulnerabilities, and exposure points into an analytic model that leadership can actually use.</p>
+          <p style="font-size:1rem;line-height:1.9;">Within the Quanta Analytica Process™, CARVER sits inside the Structured Analytic Tradecraft Layer alongside ACH, Key Assumptions Checks, scenario modeling, and risk matrix scoring. We do not use CARVER to produce abstract numbers. We use it to support clearer judgment, stronger prioritization, and more defensible decisions.</p>
+          <p style="font-size:1rem;line-height:1.9;">In practice, CARVER helps answer five core questions: what matters most, what is easiest to exploit, what would be hardest to recover, where mitigation should be focused first, and which vulnerabilities are operationally significant rather than merely visible.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div class="card">
+            <h3>Why We Use It</h3>
+            <ul class="list">
+              <li>To turn diffuse threats into ranked priorities</li>
+              <li>To make scoring logic transparent rather than impressionistic</li>
+              <li>To connect narrative intelligence to measurable prioritization</li>
+              <li>To distinguish visible risks from consequential risks</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Where It Sits</h3>
+            <ul class="list">
+              <li>Problem framing first</li>
+              <li>Evidence harmonization second</li>
+              <li>CARVER inside structured analytic tradecraft</li>
+              <li>Then decision thresholds, scenarios, and recommendations</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>What It Supports</h3>
+            <ul class="list">
+              <li>Security risk assessments</li>
+              <li>Conflict and infrastructure analysis</li>
+              <li>Enterprise risk reviews</li>
+              <li>Insider threat and vulnerability mapping</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="dimensions" aria-label="CARVER dimensions">
+      <div class="divider reveal">
+        <span class="divider-num">01</span>
+        <div class="divider-rule"></div>
+        <span class="divider-label">Dimensions</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:1.4rem;" class="reveal">
+        <h2>The Six <em>CARVER Dimensions</em></h2>
+        <span class="kicker">How we decompose priority and exposure</span>
+      </div>
+
+      <div class="grid cols-3">
+        <div class="card reveal d1"><h3>Criticality</h3><p>How important the asset, function, node, or risk is to the wider system. High criticality means disruption would matter materially.</p></div>
+        <div class="card reveal d2"><h3>Accessibility</h3><p>How easy the target is to reach, access, or engage. High accessibility usually raises the probability of exploitation.</p></div>
+        <div class="card reveal d3"><h3>Recuperability</h3><p>How quickly and effectively the system can recover after disruption. Low recuperability increases downstream consequence.</p></div>
+        <div class="card reveal d1"><h3>Vulnerability</h3><p>How exposed the system is to attack, pressure, compromise, or failure. High vulnerability means less resistance to disruption.</p></div>
+        <div class="card reveal d2"><h3>Effect</h3><p>The severity of consequences if the event occurs. This captures disruption scale, operational loss, and broader systemic impact.</p></div>
+        <div class="card reveal d3"><h3>Recognizability</h3><p>How easily an actor can identify the target, weakness, or opportunity. Highly recognizable targets are easier to exploit.</p></div>
+      </div>
+    </section>
+
+    <section aria-label="CARVER flow diagram">
+      <div class="divider reveal">
+        <span class="divider-num">02</span>
+        <div class="divider-rule"></div>
+        <span class="divider-label">Logic Flow</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:1.4rem;" class="reveal">
+        <h2>The <em>CARVER Decision Flow</em></h2>
+        <span class="kicker">Decompose → score → translate → decide</span>
+      </div>
+
+      <div class="flow-diagram reveal">
+        <svg width="100%" viewBox="0 0 820 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CARVER decision flow diagram">
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M2 1L8 5L2 9" fill="none" stroke="rgba(200,169,110,0.55)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </marker>
+          </defs>
+
+          <rect x="30" y="40" width="150" height="62" rx="3" fill="rgba(168,216,234,0.12)" stroke="rgba(168,216,234,0.40)"/>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="11" font-weight="600" letter-spacing="1.5" fill="rgba(168,216,234,0.9)" x="105" y="62" text-anchor="middle">1 · DECOMPOSE THE RISK</text>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="9" fill="rgba(245,242,236,0.5)" x="105" y="80" text-anchor="middle">Asset · threat · weakness · consequence</text>
+
+          <line x1="180" y1="71" x2="205" y2="71" stroke="rgba(200,169,110,0.45)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <rect x="205" y="40" width="160" height="62" rx="3" fill="rgba(250,186,100,0.12)" stroke="rgba(250,186,100,0.40)"/>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="11" font-weight="600" letter-spacing="1.5" fill="rgba(250,186,100,0.9)" x="285" y="62" text-anchor="middle">2 · SCORE CARVER</text>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="9" fill="rgba(245,242,236,0.5)" x="285" y="80" text-anchor="middle">C · A · R · V · E · Rz on a 1–5 scale</text>
+
+          <line x1="365" y1="71" x2="390" y2="71" stroke="rgba(200,169,110,0.45)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <rect x="390" y="40" width="180" height="62" rx="3" fill="rgba(130,185,235,0.12)" stroke="rgba(130,185,235,0.40)"/>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="11" font-weight="600" letter-spacing="1.5" fill="rgba(130,185,235,0.9)" x="480" y="62" text-anchor="middle">3 · TRANSLATE TO ISO LOGIC</text>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="9" fill="rgba(245,242,236,0.5)" x="480" y="80" text-anchor="middle">Likelihood and Impact from dimension groups</text>
+
+          <line x1="570" y1="71" x2="595" y2="71" stroke="rgba(200,169,110,0.45)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <rect x="595" y="40" width="190" height="62" rx="3" fill="rgba(100,210,170,0.12)" stroke="rgba(100,210,170,0.40)"/>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="11" font-weight="600" letter-spacing="1.5" fill="rgba(100,210,170,0.9)" x="690" y="62" text-anchor="middle">4 · DECISION PRIORITIZATION</text>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="9" fill="rgba(245,242,236,0.5)" x="690" y="80" text-anchor="middle">Rank · compare · threshold · mitigate</text>
+
+          <rect x="70" y="165" width="680" height="108" rx="3" fill="rgba(200,169,110,0.08)" stroke="rgba(200,169,110,0.25)"/>
+          <text font-family="'Cormorant Garamond',serif" font-size="26" fill="rgba(245,242,236,0.92)" x="410" y="200" text-anchor="middle">CARVER is the analytic substrate.</text>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="12" letter-spacing="1.5" fill="rgba(200,169,110,0.75)" x="410" y="226" text-anchor="middle">The ISO matrix is the decision display.</text>
+          <text font-family="'Barlow',sans-serif" font-size="13" fill="rgba(245,242,236,0.56)" x="410" y="254" text-anchor="middle">We use CARVER to structure and justify Likelihood and Impact, then use the matrix to communicate</text>
+          <text font-family="'Barlow',sans-serif" font-size="13" fill="rgba(245,242,236,0.56)" x="410" y="274" text-anchor="middle">priority, thresholds, and mitigation focus in executive decision form.</text>
+        </svg>
+      </div>
+    </section>
+
+    <section id="workflow" aria-label="How Quanta Analytica uses CARVER">
+      <div class="divider reveal">
+        <span class="divider-num">03</span>
+        <div class="divider-rule"></div>
+        <span class="divider-label">Workflow</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:1.4rem;" class="reveal">
+        <h2>How We <em>Apply CARVER</em></h2>
+        <span class="kicker">Structured judgment inside a governed process</span>
+      </div>
+
+      <div class="phase ph1 reveal d1">
+        <div class="ph-accent"><span class="ph-num">1</span><span class="ph-roman">Step I</span></div>
+        <div class="ph-body">
+          <div class="ph-title">Problem Framing</div>
+          <div class="ph-sub">Define the target system, exposure points, and operational question</div>
+          <div class="ph-desc">We begin by defining what is actually being assessed: an asset, a corridor, an organization, a platform, a site, a leadership node, or an operating environment. This matters because CARVER is only as strong as the object of analysis and the decision question attached to it.</div>
+          <span class="ph-badge">Output: analytic object and decision question</span>
+        </div>
+      </div>
+
+      <div class="phase ph2 reveal d2">
+        <div class="ph-accent"><span class="ph-num">2</span><span class="ph-roman">Step II</span></div>
+        <div class="ph-body">
+          <div class="ph-title">Dimension Scoring</div>
+          <div class="ph-sub">Assess Criticality, Accessibility, Recuperability, Vulnerability, Effect, Recognizability</div>
+          <div class="ph-desc">Each dimension is scored on a defined scale, usually 1 to 5. The goal is not pseudo-precision. The goal is disciplined decomposition: forcing the analyst to explain what exactly makes the risk important, exploitable, harmful, or difficult to recover from.</div>
+          <span class="ph-badge">Output: transparent CARVER profile</span>
+        </div>
+      </div>
+
+      <div class="phase ph3 reveal d3">
+        <div class="ph-accent"><span class="ph-num">3</span><span class="ph-roman">Step III</span></div>
+        <div class="ph-body">
+          <div class="ph-title">Comparative Prioritization</div>
+          <div class="ph-sub">Rank assets, threats, or vulnerabilities against each other</div>
+          <div class="ph-desc">Once scored, CARVER helps identify where the greatest exposure or consequence actually sits. This is where the method becomes operationally useful: not in describing a single risk, but in showing why one problem deserves more attention, resources, or monitoring than another.</div>
+          <span class="ph-badge">Output: ranked risk priorities</span>
+        </div>
+      </div>
+
+      <div class="phase ph4 reveal d4">
+        <div class="ph-accent"><span class="ph-num">4</span><span class="ph-roman">Step IV</span></div>
+        <div class="ph-body">
+          <div class="ph-title">Risk Matrix Translation</div>
+          <div class="ph-sub">Map CARVER into Likelihood and Impact for executive display</div>
+          <div class="ph-desc">Rather than assign Likelihood and Impact impressionistically, we derive them from the CARVER dimensions. This creates a more defensible ISO-style matrix and makes the rationale visible instead of implicit.</div>
+          <span class="ph-badge">Output: matrix-ready risk score</span>
+        </div>
+      </div>
+
+      <div class="phase ph5 reveal d5">
+        <div class="ph-accent"><span class="ph-num">5</span><span class="ph-roman">Step V</span></div>
+        <div class="ph-body">
+          <div class="ph-title">Decision Support</div>
+          <div class="ph-sub">Use the ranked output to inform thresholds, mitigation, and resource focus</div>
+          <div class="ph-desc">The endpoint is not a table. The endpoint is action. CARVER helps determine where mitigation should start, what must be protected first, and which risks demand executive attention because recovery cost, consequence, or exploitability is materially higher.</div>
+          <span class="ph-badge">Output: defensible prioritization for action</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="matrix" aria-label="CARVER and ISO matrix">
+      <div class="divider reveal">
+        <span class="divider-num">04</span>
+        <div class="divider-rule"></div>
+        <span class="divider-label">ISO Mapping</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:1.4rem;" class="reveal">
+        <h2>CARVER and the <em>ISO Risk Matrix</em></h2>
+        <span class="kicker">Pre-matrix scoring engine</span>
+      </div>
+
+      <div class="matrix-grid reveal">
+        <div class="score-card">
+          <div class="score-label">Likelihood</div>
+          <div class="formula">Accessibility + Vulnerability + Recognizability</div>
+          <p>These dimensions tell us how easy the target is to reach, identify, and exploit. High scores increase the probability of occurrence or compromise.</p>
+        </div>
+        <div class="score-card">
+          <div class="score-label">Impact</div>
+          <div class="formula">Criticality + Effect + Recuperability</div>
+          <p>These dimensions tell us how damaging the event will be if realized, including operational importance, disruption severity, and recovery burden.</p>
+        </div>
+      </div>
+
+      <div class="grid cols-2 reveal" style="margin-top:14px;">
+        <div class="card">
+          <h3>Practical Interpretation</h3>
+          <ul class="list">
+            <li>Likelihood answers: can it happen and how easily?</li>
+            <li>Impact answers: how bad is it if it does?</li>
+            <li>Both are normalized to a standard 1–5 matrix scale</li>
+            <li>The matrix then becomes the executive display layer</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Why Recuperability Matters</h3>
+          <ul class="list">
+            <li>It expands impact beyond immediate damage</li>
+            <li>It captures recovery time, resilience drag, and restoration burden</li>
+            <li>Two equal shocks may have very different impact if one takes months to recover</li>
+            <li>This is where CARVER strengthens conventional matrix logic</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="reveal" style="overflow-x:auto;margin-top:24px;">
+        <table class="cap-table" aria-label="CARVER to ISO mapping table">
+          <thead>
+            <tr><th>CARVER Dimension</th><th>Primary ISO Role</th><th>What It Adds</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Criticality</td><td>Impact</td><td>How essential the asset, system, or node is to the wider mission or operating environment</td></tr>
+            <tr><td>Accessibility</td><td>Likelihood</td><td>How easy it is for the threat or stressor to reach the target</td></tr>
+            <tr><td>Recuperability</td><td>Impact</td><td>How difficult, slow, or expensive recovery will be after disruption</td></tr>
+            <tr><td>Vulnerability</td><td>Likelihood</td><td>How exposed the target is to exploitation or failure</td></tr>
+            <tr><td>Effect</td><td>Impact</td><td>The severity and operational consequence of compromise or disruption</td></tr>
+            <tr><td>Recognizability</td><td>Likelihood</td><td>How visible or discoverable the target or weakness is to an adversary or hazard pathway</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-label="Examples and use cases">
+      <div class="divider reveal">
+        <span class="divider-num">05</span>
+        <div class="divider-rule"></div>
+        <span class="divider-label">Use Cases</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:1.4rem;" class="reveal">
+        <h2>Where CARVER is <em>Most Useful</em></h2>
+        <span class="kicker">Anywhere priorities must be explicit</span>
+      </div>
+      <div class="grid cols-4">
+        <div class="card reveal d1"><h3>Security Risk</h3><p>Facilities, routes, personnel exposure, and protective resource prioritization.</p></div>
+        <div class="card reveal d2"><h3>Conflict Environments</h3><p>Corridors, infrastructure, escalation nodes, and critical operating vulnerabilities.</p></div>
+        <div class="card reveal d3"><h3>Corporate Risk</h3><p>Supply chain chokepoints, geopolitical exposure, and business continuity planning.</p></div>
+        <div class="card reveal d4"><h3>Insider Threat</h3><p>Processes, access pathways, sensitive nodes, and recovery burden after compromise.</p></div>
+      </div>
+    </section>
+
+    <section aria-label="Defining principle">
+      <div class="pullquote reveal">
+        <blockquote>CARVER is not used to replace judgment. It is used to structure and justify it.</blockquote>
+        <cite>Quanta Analytica · MNS Consulting</cite>
+      </div>
+    </section>
+
+    <section id="engage" aria-label="Engagement">
+      <div class="callout reveal">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:12px;">
+          <h2>Use <em>CARVER</em> in a Quanta Analytica Assessment</h2>
+          <span class="kicker">Structured intelligence · transparent prioritization</span>
+        </div>
+        <p style="max-width:620px;font-size:.97rem;line-height:1.88;margin-top:10px;">We apply CARVER when clients need a defensible way to rank risks, justify mitigations, and move from narrative description to operational prioritization. It is especially useful when leadership needs to know not just what is risky, but what matters most right now.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;">
+          <a class="btn primary" href="#hero">Back to Top</a>
+          <a class="btn" href="#matrix">See ISO Mapping</a>
+          <a class="btn ghost" href="#workflow">Review Workflow</a>
+        </div>
+        <p class="note" style="margin-top:16px;">CARVER is one of the structured analytic tools used inside the Quanta Analytica Process™ to produce decision-ready risk intelligence.</p>
+      </div>
+    </section>
+
+    <div class="footer" role="contentinfo">
+      <div class="row">
+        <div class="footer-brand">
+          <span class="gold">Quanta Analytica</span> · CARVER · MNS Consulting · &copy; <span id="year"></span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+          <a class="pill" href="#hero" style="color:var(--gold);border-color:var(--gold-line);">Top</a>
+          <a class="pill" href="#overview" style="color:var(--gold);border-color:var(--gold-line);">Overview</a>
+          <a class="pill" href="#dimensions" style="color:var(--gold);border-color:var(--gold-line);">Dimensions</a>
+          <a class="pill" href="#matrix" style="color:var(--gold);border-color:var(--gold-line);">ISO Mapping</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  reveals.forEach(el => obs.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener("click", e => {
+      const id = a.getAttribute("href");
+      if (!id || id === "#") return;
+      const el = document.querySelector(id);
+      if (!el) return;
+      e.preventDefault();
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      history.replaceState(null, "", id);
+    });
+  });
+</script>
+</body>
+</html>
