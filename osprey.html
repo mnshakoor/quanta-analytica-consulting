@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OSPREY™ Model | Quanta Analytica</title>
+  <meta name="description" content="The OSPREY™ Model by Quanta Analytica: a framework-governed human-AI strategy architecture showing how the Cognition Model is integrated into the Quanta Analytica Process™ through governance, metacognitive routing, workflow discipline, challenge, and Five-Layer Strategic Cognition." />
+  <meta name="keywords" content="OSPREY Model, QAP, Quanta Analytica Process, Five-Layer Strategic Cognition, PROVOKE, Oxford Challenge Overlay, metacognitive routing, human AI strategy, MNS Consulting" />
+  <meta name="author" content="M. Nuri Shakoor, MNS Consulting" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://quanta-analytica.com/opsrey.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://quanta-analytica.com/opsrey.html" />
+  <meta property="og:title" content="OSPREY™ Model | Quanta Analytica" />
+  <meta property="og:description" content="How the Cognition Model is integrated into the Quanta Analytica Process™ through governance, routing, workflow, challenge, and reasoning depth." />
+  <meta property="og:image" content="https://quanta-analytica.com/og-image.png" />
+  <meta property="og:site_name" content="Quanta Analytica" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="OSPREY™ Model | Quanta Analytica" />
+  <meta name="twitter:description" content="Framework-governed human-AI strategy production for disciplined, decision-ready judgment." />
+  <meta name="twitter:image" content="https://quanta-analytica.com/og-image.png" />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow+Condensed:wght@300;400;500;600&family=Barlow:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --obsidian: #0a0c10;
+      --deep-navy: #0d1220;
+      --panel: rgba(255,255,255,0.04);
+      --panel2: rgba(255,255,255,0.07);
+      --gold: #c8a96e;
+      --gold-light: #e2c98a;
+      --gold-dim: rgba(200,169,110,0.12);
+      --gold-line: rgba(200,169,110,0.28);
+      --text: rgba(245,242,236,0.95);
+      --muted: rgba(245,242,236,0.68);
+      --muted2: rgba(245,242,236,0.40);
+      --border: rgba(200,169,110,0.14);
+      --border-soft: rgba(255,255,255,0.07);
+      --a1: rgba(168,216,234,0.15); --a1t: rgba(168,216,234,0.85);
+      --a2: rgba(250,186,100,0.14); --a2t: rgba(250,186,100,0.85);
+      --a3: rgba(130,185,235,0.14); --a3t: rgba(130,185,235,0.85);
+      --a4: rgba(100,210,170,0.14); --a4t: rgba(100,210,170,0.85);
+      --a5: rgba(190,170,255,0.14); --a5t: rgba(190,170,255,0.85);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-ui: 'Barlow Condensed', sans-serif;
+      --font-body: 'Barlow', sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+      --max: 1200px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--obsidian);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+      cursor: crosshair;
+    }
+
+    body::before {
+      content:'';
+      position:fixed;
+      inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events:none;
+      z-index:999;
+      opacity:0.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    .container { width:min(var(--max),calc(100% - 32px)); margin:0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom,rgba(10,12,16,.95),rgba(10,12,16,.72));
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:14px 0;
+    }
+
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-shrink:0;
+    }
+
+    .brand-name {
+      display:flex;
+      flex-direction:column;
+      line-height:1.15;
+    }
+
+    .brand-name strong {
+      font-family:var(--font-ui);
+      font-size:.92rem;
+      font-weight:600;
+      letter-spacing:.15em;
+      text-transform:uppercase;
+      color:var(--text);
+    }
+
+    .brand-name span {
+      font-family:var(--font-ui);
+      font-size:.68rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--gold);
+    }
+
+    .nav-links {
+      display:flex;
+      align-items:center;
+      gap:4px;
+      flex-wrap:wrap;
+    }
+
+    .nav-links a {
+      padding:7px 11px;
+      font-family:var(--font-ui);
+      font-size:.7rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--muted);
+      border:1px solid transparent;
+      transition:color .25s,border-color .25s,background .25s;
+    }
+
+    .nav-links a:hover, .nav-links a.current {
+      color:var(--gold);
+      border-color:var(--gold-line);
+      background:var(--gold-dim);
+      text-decoration:none;
+    }
+
+    .nav-right {
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:9px 16px;
+      border:1px solid var(--gold-line);
+      background:var(--gold-dim);
+      color:var(--gold);
+      cursor:pointer;
+      font-family:var(--font-ui);
+      font-weight:500;
+      font-size:.7rem;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      transition:background .2s,border-color .2s,transform .1s;
+      text-decoration:none;
+    }
+
+    .btn:hover { background:rgba(200,169,110,.22); border-color:var(--gold); text-decoration:none; }
+    .btn.primary { background:var(--gold); color:var(--obsidian); border-color:var(--gold); }
+    .btn.primary:hover { background:var(--gold-light); border-color:var(--gold-light); }
+    .btn.ghost { background:transparent; color:var(--muted); border-color:var(--border-soft); }
+    .btn.ghost:hover { background:var(--panel); color:var(--text); border-color:var(--border); }
+    .btn.small { padding:6px 12px; font-size:.66rem; }
+
+    main { padding:36px 0 80px; }
+    section { padding:52px 0; }
+
+    h1 { font-family:var(--font-display); font-size:clamp(2.8rem,5.5vw,6.5rem); font-weight:300; line-height:.93; letter-spacing:-.01em; }
+    h2 { font-family:var(--font-display); font-size:clamp(1.7rem,2.8vw,2.8rem); font-weight:300; line-height:1.05; }
+    h3 { font-family:var(--font-ui); font-size:.78rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); }
+    p { margin:10px 0 0; color:var(--muted); }
+    em { font-style:italic; color:var(--gold-light); }
+
+    .divider {
+      display:flex;
+      align-items:center;
+      gap:1.2rem;
+      margin-bottom:1.4rem;
+    }
+
+    .divider-num {
+      font-family:var(--font-ui);
+      font-size:.63rem;
+      letter-spacing:.28em;
+      color:var(--gold);
+      opacity:.55;
+    }
+
+    .divider-rule {
+      width:48px;
+      height:1px;
+      background:var(--gold-line);
+      flex-shrink:0;
+    }
+
+    .divider-label {
+      font-family:var(--font-ui);
+      font-size:.68rem;
+      font-weight:600;
+      letter-spacing:.3em;
+      text-transform:uppercase;
+      color:var(--gold);
+    }
+
+    .kicker {
+      font-family:var(--font-ui);
+      font-size:.7rem;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    .pill {
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      padding:5px 11px;
+      border:1px solid var(--gold-line);
+      background:var(--gold-dim);
+      color:var(--muted);
+      font-family:var(--font-ui);
+      font-size:.66rem;
+      letter-spacing:.15em;
+      text-transform:uppercase;
+    }
+
+    .dot {
+      width:6px;
+      height:6px;
+      background:var(--gold);
+      border-radius:50%;
+      box-shadow:0 0 0 4px rgba(200,169,110,.14);
+      animation:pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { opacity:.35; transform:scale(1); }
+      50% { opacity:1; transform:scale(1.4); }
+    }
+
+    .grid { display:grid; gap:14px; }
+    .cols-2 { grid-template-columns:repeat(2,1fr); }
+    .pathway-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+
+    .card, .path-card {
+      background:var(--panel);
+      border:1px solid var(--border);
+      position:relative;
+      transition:background .3s;
+    }
+
+    .card { padding:22px; }
+    .path-card { overflow:hidden; }
+
+    .card::before, .path-card::before, .phase::before {
+      content:'';
+      position:absolute;
+      top:0;
+      left:0;
+      width:0;
+      height:2px;
+      background:var(--gold);
+      transition:width .4s ease;
+    }
+
+    .card:hover, .path-card:hover, .phase:hover { background:var(--panel2); }
+    .card:hover::before, .path-card:hover::before, .phase:hover::before { width:100%; }
+
+    .list, .path-list, .ph-steps {
+      margin:10px 0 0;
+      padding:0 0 0 18px;
+      color:var(--muted);
+    }
+
+    .list li, .path-list li, .ph-steps li {
+      margin:5px 0;
+      font-size:.91rem;
+    }
+
+    #hero {
+      position:relative;
+      min-height:86vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      padding:6rem 0 4rem;
+      overflow:hidden;
+    }
+
+    .hero-geo {
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      overflow:hidden;
+    }
+
+    .bg-hex {
+      position:absolute;
+      right:-6vw;
+      top:50%;
+      transform:translateY(-50%);
+      width:52vw;
+      max-width:740px;
+      opacity:.05;
+      animation:spin 100s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform:translateY(-50%) rotate(0deg); }
+      to { transform:translateY(-50%) rotate(360deg); }
+    }
+
+    .scan {
+      position:absolute;
+      left:0;
+      right:0;
+      height:1px;
+      background:linear-gradient(to right,transparent,var(--gold-line),transparent);
+    }
+
+    .scan.t { top:15%; }
+    .scan.b { top:83%; }
+
+    .hero-eyebrow,.hero-title,.hero-trademark,.hero-sub,.hero-pills,.hero-ctas {
+      opacity:0;
+      animation:slideUp .9s ease forwards;
+    }
+
+    .hero-eyebrow {
+      font-family:var(--font-ui);
+      font-size:.7rem;
+      font-weight:500;
+      letter-spacing:.38em;
+      text-transform:uppercase;
+      color:var(--gold);
+      margin-bottom:1.4rem;
+      animation-delay:.15s;
+    }
+
+    .hero-title { margin-bottom:.8rem; animation-delay:.3s; }
+
+    .hero-trademark {
+      font-family:var(--font-ui);
+      font-size:.7rem;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      color:rgba(200,169,110,.5);
+      margin-bottom:1.8rem;
+      animation-delay:.44s;
+    }
+
+    .hero-sub {
+      max-width:700px;
+      font-size:1.02rem;
+      line-height:1.88;
+      color:var(--muted);
+      margin-bottom:2.2rem;
+      animation-delay:.56s;
+    }
+
+    .hero-pills {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:2rem;
+      animation-delay:.68s;
+    }
+
+    .hero-ctas {
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      animation-delay:.80s;
+    }
+
+    @keyframes slideUp {
+      from { opacity:0; transform:translateY(22px); }
+      to { opacity:1; transform:translateY(0); }
+    }
+
+    .flow-diagram {
+      background:var(--deep-navy);
+      border:1px solid var(--border);
+      padding:32px;
+      overflow-x:auto;
+      margin-bottom:14px;
+    }
+
+    .flow-diagram svg { display:block; max-width:100%; height:auto; }
+
+    .phase {
+      display:grid;
+      grid-template-columns:64px 1fr;
+      border:1px solid var(--border);
+      position:relative;
+      overflow:hidden;
+      transition:background .3s;
+      background:var(--panel);
+      margin-bottom:10px;
+    }
+
+    .ph-accent {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-right:1px solid var(--border);
+      padding:24px 0;
+      flex-direction:column;
+      gap:6px;
+    }
+
+    .ph-num { font-family:var(--font-display); font-size:2.2rem; font-weight:300; line-height:1; }
+    .ph-roman { font-family:var(--font-ui); font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; }
+    .ph-body { padding:20px 26px; }
+    .ph-title { font-family:var(--font-ui); font-size:.8rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; margin-bottom:6px; }
+    .ph-sub { font-family:var(--font-ui); font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted2); margin-bottom:12px; }
+    .ph-desc { font-size:.92rem; color:var(--muted); line-height:1.78; }
+
+    .ph-badge {
+      display:inline-block;
+      margin-top:10px;
+      font-family:var(--mono);
+      font-size:.63rem;
+      color:var(--gold);
+      border:1px solid var(--gold-line);
+      background:var(--panel);
+      padding:3px 9px;
+      letter-spacing:.06em;
+    }
+
+    .ph1 .ph-accent { background:var(--a1); } .ph1 .ph-num,.ph1 .ph-roman,.ph1 .ph-title { color:var(--a1t); }
+    .ph2 .ph-accent { background:var(--a2); } .ph2 .ph-num,.ph2 .ph-roman,.ph2 .ph-title { color:var(--a2t); }
+    .ph3 .ph-accent { background:var(--a3); } .ph3 .ph-num,.ph3 .ph-roman,.ph3 .ph-title { color:var(--a3t); }
+    .ph4 .ph-accent { background:var(--a4); } .ph4 .ph-num,.ph4 .ph-roman,.ph4 .ph-title { color:var(--a4t); }
+    .ph5 .ph-accent { background:var(--a5); } .ph5 .ph-num,.ph5 .ph-roman,.ph5 .ph-title { color:var(--a5t); }
+
+    .path-head {
+      padding:14px 18px;
+      border-bottom:1px solid var(--border);
+    }
+
+    .path-code {
+      font-family:var(--font-ui);
+      font-size:.82rem;
+      font-weight:600;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      color:var(--gold);
+    }
+
+    .path-sub {
+      font-family:var(--font-ui);
+      font-size:.62rem;
+      letter-spacing:.12em;
+      color:var(--muted2);
+      margin-top:4px;
+      text-transform:uppercase;
+    }
+
+    .path-body { padding:14px 18px; }
+
+    .cap-table, .matrix-table {
+      width:100%;
+      border-collapse:collapse;
+      border:1px solid var(--border);
+    }
+
+    .cap-table th, .matrix-table th {
+      font-family:var(--font-ui);
+      font-size:.68rem;
+      font-weight:600;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      color:var(--gold);
+      padding:11px 16px;
+      border-bottom:1px solid var(--border);
+      background:var(--gold-dim);
+      text-align:left;
+    }
+
+    .cap-table td, .matrix-table td {
+      padding:11px 16px;
+      border-bottom:1px solid var(--border-soft);
+      font-size:.9rem;
+      color:var(--muted);
+      vertical-align:top;
+    }
+
+    .cap-table tr:last-child td, .matrix-table tr:last-child td { border-bottom:none; }
+    .cap-table tr:hover td, .matrix-table tr:hover td { background:rgba(200,169,110,.03); }
+
+    .cap-table td:first-child, .matrix-table td:first-child {
+      font-family:var(--font-ui);
+      font-size:.7rem;
+      font-weight:600;
+      letter-spacing:.15em;
+      text-transform:uppercase;
+      color:var(--text);
+      white-space:nowrap;
+    }
+
+    .code-wrap {
+      background:var(--deep-navy);
+      border:1px solid var(--border);
+      overflow:hidden;
+    }
+
+    .code-header {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:10px 18px;
+      border-bottom:1px solid var(--border);
+      background:var(--gold-dim);
+    }
+
+    .code-lang { font-family:var(--mono); font-size:.68rem; color:var(--gold); letter-spacing:.1em; }
+    .code-desc { font-family:var(--font-ui); font-size:.66rem; letter-spacing:.15em; text-transform:uppercase; color:var(--muted2); }
+
+    .code-block { margin:0; padding:20px; overflow:auto; max-height:480px; }
+    .code-block code { font-family:var(--mono); font-size:.78rem; line-height:1.55; color:rgba(245,242,236,.8); display:block; white-space:pre; }
+
+    .kw { color:rgba(190,170,255,.9); }
+    .fn { color:rgba(168,216,234,.9); }
+    .st { color:rgba(100,210,170,.9); }
+    .cm { color:rgba(245,242,236,.32); font-style:italic; }
+
+    .pullquote {
+      padding:28px 32px;
+      border-left:3px solid var(--gold);
+      background:var(--gold-dim);
+      position:relative;
+    }
+
+    .pullquote blockquote {
+      font-family:var(--font-display);
+      font-size:1.4rem;
+      font-style:italic;
+      font-weight:300;
+      line-height:1.65;
+      color:var(--text);
+    }
+
+    .pullquote cite {
+      display:block;
+      margin-top:14px;
+      font-family:var(--font-ui);
+      font-size:.7rem;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      color:var(--gold);
+    }
+
+    .callout {
+      padding:30px;
+      border:1px solid var(--gold-line);
+      background:linear-gradient(135deg,rgba(200,169,110,.07),rgba(10,12,16,.6));
+      position:relative;
+      overflow:hidden;
+    }
+
+    .callout::after {
+      content:'';
+      position:absolute;
+      top:-80px;
+      right:-80px;
+      width:220px;
+      height:220px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(200,169,110,.1),transparent 70%);
+      pointer-events:none;
+    }
+
+    .footer {
+      padding:28px 0 38px;
+      border-top:1px solid var(--border);
+    }
+
+    .footer .row {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .footer-brand {
+      font-family:var(--font-ui);
+      font-size:.7rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    .footer-brand .gold { color:var(--gold); }
+
+    .reveal {
+      opacity:0;
+      transform:translateY(18px);
+      transition:opacity .75s ease,transform .75s ease;
+    }
+
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .d1 { transition-delay:.08s; }
+    .d2 { transition-delay:.16s; }
+    .d3 { transition-delay:.24s; }
+    .d4 { transition-delay:.32s; }
+    .d5 { transition-delay:.40s; }
+
+    @media(max-width:1100px) { .pathway-grid { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:980px) { .cols-2 { grid-template-columns:1fr; } }
+    @media(max-width:900px) { .nav-links { display:none; } }
+    @media(max-width:620px) { .pathway-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="nav" role="navigation" aria-label="Primary">
+        <a class="brand" href="index.html" aria-label="Quanta Analytica home">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+            <polygon points="18,2 32,10 32,26 18,34 4,26 4,10" fill="none" stroke="#c8a96e" stroke-width="1.2"/>
+            <circle cx="18" cy="18" r="4" fill="#c8a96e" opacity="0.75"/>
+          </svg>
+          <div class="brand-name">
+            <strong>Quanta Analytica</strong>
+            <span>MNS Consulting</span>
+          </div>
+        </a>
+
+        <nav class="nav-links" aria-label="Site pages">
+          <a href="index.html">Home</a>
+          <a href="mns-lbs.html">MNS · LBS Advisory</a>
+          <a href="qa-process.html">QA Process™</a>
+          <a href="cognition-model.html">Cognition Model</a>
+          <a href="qa-csrf.html">QA-CSRF™</a>
+          <a href="opsrey.html" class="current" aria-current="page">OSPREY™</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#routing">Routing</a>
+        </nav>
+
+        <div class="nav-right">
+          <a class="btn ghost small" href="cognition-model.html">Cognition Model</a>
+          <a class="btn primary small" href="mns-lbs.html#contact">Get in Touch</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="content">
+    <div class="container">
+
+      <section id="hero" aria-label="OSPREY hero">
+        <div class="hero-geo" aria-hidden="true">
+          <svg class="bg-hex" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="250,20 460,140 460,360 250,480 40,360 40,140" fill="none" stroke="#c8a96e" stroke-width="1"/>
+            <polygon points="250,60 430,158 430,342 250,440 70,342 70,158" fill="none" stroke="#c8a96e" stroke-width="0.5"/>
+            <polygon points="250,95 400,176 400,324 250,405 100,324 100,176" fill="none" stroke="#c8a96e" stroke-width="0.3"/>
+            <circle cx="250" cy="250" r="3" fill="#c8a96e" opacity="0.9"/>
+          </svg>
+          <div class="scan t"></div>
+          <div class="scan b"></div>
+        </div>
+
+        <div style="position:relative;z-index:2;">
+          <p class="hero-eyebrow">Proprietary Framework · Quanta Analytica · MNS Consulting</p>
+          <h1 class="hero-title">OSPREY™<br /><em>Operational Strategy<br />Process for Reasoning,<br />Execution &amp; Yield</em></h1>
+          <p class="hero-trademark">The OSPREY™ Model · QAP Integration Architecture</p>
+          <p class="hero-sub"><em>OSPREY™, <i>a conceptual internal model</i></em>, shows how the Cognition Model is integrated into the Quanta Analytica Process™. It is a layered human-AI strategy architecture that combines QAP governance, metacognitive routing, PROVOKE workflow discipline, Oxford-style challenging methods, and Five-Layer Strategic Cognition into a single operating system for decision-ready judgment.</p>
+          <div class="hero-pills">
+            <span class="pill"><span class="dot"></span> QAP governance backbone</span>
+            <span class="pill">Metacognitive routing layer</span>
+            <span class="pill">PROVOKE workflow engine</span>
+            <span class="pill">Oxford challenge overlay</span>
+            <span class="pill">Five-Layer Strategic Cognition</span>
+          </div>
+          <div class="hero-ctas">
+            <a class="btn primary" href="#architecture">Explore the Model</a>
+            <a class="btn" href="#routing">Routing Modes</a>
+            <a class="btn ghost" href="#workflow">Workflow Logic</a>
+          </div>
+        </div>
+      </section>
+
+      <section aria-label="Problem and purpose">
+        <div class="divider reveal">
+          <span class="divider-num">00</span>
+          <div class="divider-rule"></div>
+          <span class="divider-label">Purpose</span>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;" class="reveal">
+          <div>
+            <h2>Why <em>OSPREY™</em> Exists</h2>
+            <p style="margin-top:1.4rem;font-size:1rem;line-height:1.9;">Most organizations do not fail because they lack information. They fail because they lack an architecture for turning information into disciplined judgment. AI has accelerated drafting, summarization, and content production, but speed has outpaced structure. Teams still drift into weak framing, shallow synthesis, conceptual confusion, and recommendations that sound stronger than the reasoning beneath them.</p>
+            <p style="font-size:1rem;line-height:1.9;">OSPREY™ solves that problem by showing how Quanta Analytica's Cognition Model is embedded inside QAP. It formalizes a governed pathway from ambiguity to defensible judgment: governance first, routing second, workflow third, challenge fourth, and deep reasoning throughout.</p>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div class="card">
+              <h3>The Four Failure Modes</h3>
+              <ul class="list">
+                <li><strong style="color:var(--text);font-weight:400;">Decision blindness</strong> — teams begin with documents instead of the actual decision problem</li>
+                <li><strong style="color:var(--text);font-weight:400;">Mode confusion</strong> — claim disputes, decision problems, and communication tasks get treated as the same thing</li>
+                <li><strong style="color:var(--text);font-weight:400;">Premature convergence</strong> — synthesis turns into recommendations before assumptions and alternatives are stressed</li>
+                <li><strong style="color:var(--text);font-weight:400;">Surface-only analysis</strong> — outputs stop at description instead of mechanism, dynamics, leverage, and paradigm</li>
+              </ul>
+            </div>
+
+            <div class="card">
+              <h3>What OSPREY™ Adds</h3>
+              <ul class="list">
+                <li>A metacognitive routing layer that selects the correct reasoning mode before work begins</li>
+                <li>A clear integration path between QAP and the Five-Layer Strategic Cognition Model</li>
+                <li>A challenge-and-clarification overlay to stress-test concepts and arguments</li>
+                <li>A repeatable human-AI operating system for decision-ready outputs</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="architecture" aria-label="OSPREY architecture diagram">
+        <div class="divider reveal">
+          <span class="divider-num">01</span>
+          <div class="divider-rule"></div>
+          <span class="divider-label">System Architecture</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:1.4rem;" class="reveal">
+          <h2>The <em>Five-Part</em> Architecture</h2>
+          <span class="kicker">Governance → routing → workflow → challenge → depth</span>
+        </div>
+
+        <div class="flow-diagram reveal">
+          <svg width="100%" viewBox="0 0 860 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="OSPREY five-part architecture diagram">
+            <defs>
+              <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M2 1L8 5L2 9" fill="none" stroke="rgba(200,169,110,0.55)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </marker>
+            </defs>
+
+            <rect x="30" y="26" width="800" height="46" rx="3" fill="rgba(200,169,110,0.08)" stroke="rgba(200,169,110,0.30)" stroke-width="1"/>
+            <text font-family="'Barlow Condensed',sans-serif" font-size="11" font-weight="600" letter-spacing="2" fill="rgba(200,169,110,0.75)" x="430" y="49" text-anchor="middle" dominant-baseline="central">AMBIGUITY · MULTI-SOURCE INPUTS · HUMAN TASKING · AI AUGMENTATION</text>
+
+            <line x1="430" y1="72" x2="430" y2="95" stroke="rgba(200,169,110,0.45)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+            <rect x="30" y="95" width="148" height="58" rx="3" fill="rgba(168,216,234,0.12)" stroke="rgba(168,216,234,0.40)" stroke-width="1"/>
+            <text font-family="'Barlow Condensed',sans-serif" font-size="10" font-weight="600" letter-spacing="1.5" fill="rgba(168,216,234,0.9)" x="104" y="115" text-anchor="middle">1 · QAP</text>
+            <text font-family="'Barlow Condensed',sans-serif" font-size="9" fill="rgba(168,216,234,0.6)" x="104" y="132" text-anchor="middle">Govern the process</text>
+
+            <line x1="178" y1="124" x2="194" y2="124" stroke="rgba(200,169,110,0.45)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+            <rect x="194" y="95" width="148" height="58" rx="3" fill="rgba(250,186,100,0.12)" stroke="rgba(250,186,100,0.40)" stroke-width="1"/>
+            <text font-family="'Barlow Condensed',sans-serif" font-size="10" font-weight="600" letter-spacing="1.5" fill="rgba(250,186,100,0.9)" x="268" y="115" text-anchor="middle">2 · ROUTING</text>
+            <text font-family="'Barlow Condensed',sans-serif" font-size="9" fill="rgba(250,186,100,0.6)" x="268" y="132" text-anchor="middle">Select cognitive mode</text>
+
+            <line x1="342" y1="124" x2="358" y2="124" stroke="rgba(200,169,110,0.45)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+            <rect x="358" y="95" width="148" height="58" rx="3" fill="rgba(130,185,235,0.12)" stroke="rgba(130,185,235,0.40)" stroke-width="1"/>
+            <text font-family="'Barlow Condensed',sans-serif" font-size="10" font-weight="600" letter-spacing="1.5" fill="rgba(130,185,235,0.9)" x="432" y="115" text-anchor="middle">3 · PROVOKE</text>
+            <text font-family="'Barlow Condensed',sans-serif" font-size="9" fill="rgba(130,185,235,0.6)" x="432" y="132" text-anchor="middle">Run the workflow</text>
+
+            <line x1="506" y1="124" x2="522" y2="124" stroke="rgba(200,169,110,0.45)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+            <rect x="522" y="95" width="148" height="58" rx="3" fill="rgba(100,210,170,0.12)" stroke="rgba(100,210,170,0.40)" stroke-width="1"/>
+            <text font-family="'Barlow Condensed',sans-serif" font-size="10" font-weight="600" letter-spacing="1.5" fill="rgba(100,210,170,0.9)" x="596" y="115" text-anchor="middle">4 · OXFORD</text>
+            <text font-family="'Barlow Condensed',sans-serif" font-size="9" fill="rgba(100,210,170,0.6)" x="596" y="132" text-anchor="middle">Challenge the reasoning</text>
+
+            <line x1="670" y1="124" x2="686" y2="124" stroke="rgba(200,169,110,0.45)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+            <rect x="686" y="95" width="144" height="58" rx="3" fill="rgba(190,170,255,0.12)" stroke="rgba(190,170,255,0.40)" stroke-width="1"/>
+            <text font-family="'Barlow Condensed',sans-serif" font-size="10" font-weight="600" letter-spacing="1.5" fill="rgba(190,170,255,0.9)" x="758" y="115" text-anchor="middle">5 · FIVE-LAYER</text>
+            <text font-family="'Barlow Condensed',sans-serif" font-size="9" fill="rgba(190,170,255,0.6)" x="758" y="132" text-anchor="middle">Deepen the analysis</text>
+          </svg>
+        </div>
+      </section>
+
+      <section id="routing" aria-label="Metacognitive routing modes">
+        <div class="divider reveal">
+          <span class="divider-num">02</span>
+          <div class="divider-rule"></div>
+          <span class="divider-label">Routing Layer</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:1.4rem;" class="reveal">
+          <h2>The Four <em>Cognitive Modes</em></h2>
+          <span class="kicker">The root question: what am I trying to do right now?</span>
+        </div>
+
+        <div class="pathway-grid">
+          <div class="path-card reveal d1">
+            <div class="path-head">
+              <div class="path-code">Mode 1</div>
+              <div class="path-sub">Evaluating a Claim</div>
+            </div>
+            <div class="path-body">
+              <ul class="path-list">
+                <li>Separate descriptive from normative claims</li>
+                <li>Choose deductive or inductive logic</li>
+                <li>Use falsification and competing hypotheses</li>
+                <li>Test denotative vs connotative disagreement</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="path-card reveal d2">
+            <div class="path-head">
+              <div class="path-code">Mode 2</div>
+              <div class="path-sub">Making a Decision</div>
+            </div>
+            <div class="path-body">
+              <ul class="path-list">
+                <li>Apply expected value and cost-benefit logic</li>
+                <li>Compare scenarios and thresholds</li>
+                <li>Use maximin or maximax framing</li>
+                <li>Choose under uncertainty, not proof</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="path-card reveal d3">
+            <div class="path-head">
+              <div class="path-code">Mode 3</div>
+              <div class="path-sub">Solving a Problem</div>
+            </div>
+            <div class="path-body">
+              <ul class="path-list">
+                <li>Distinguish knowledge problems from structure problems</li>
+                <li>Restructure goals and constraints</li>
+                <li>Map bottlenecks and system incentives</li>
+                <li>Generate and test competing hypotheses</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="path-card reveal d4">
+            <div class="path-head">
+              <div class="path-code">Mode 4</div>
+              <div class="path-sub">Communicating Something</div>
+            </div>
+            <div class="path-body">
+              <ul class="path-list">
+                <li>Identify adversarial vs cooperative setting</li>
+                <li>Adjust framing, tone, and audience logic</li>
+                <li>Avoid stat-bombing emotional conflicts</li>
+                <li>Use questioning and articulation discipline</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="workflow" aria-label="Workflow integration">
+        <div class="divider reveal">
+          <span class="divider-num">03</span>
+          <div class="divider-rule"></div>
+          <span class="divider-label">Workflow Integration</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:1.4rem;" class="reveal">
+          <h2>How the <em>Cognition Model</em> Enters QAP</h2>
+          <span class="kicker">Five-Layer reasoning inside PROVOKE</span>
+        </div>
+
+        <div class="grid cols-2">
+          <div class="card reveal d1">
+            <h3>Inside Variable Mapping</h3>
+            <ul class="list">
+              <li><strong style="color:var(--text);font-weight:400;">Foundations</strong>: identify actors, constraints, resources, baseline conditions</li>
+              <li><strong style="color:var(--text);font-weight:400;">Mechanisms</strong>: isolate the causal engines and incentive structures</li>
+              <li><strong style="color:var(--text);font-weight:400;">Dynamics</strong>: map feedback loops, adaptation, and escalation cycles</li>
+            </ul>
+          </div>
+
+          <div class="card reveal d2">
+            <h3>Inside Adjudication &amp; Synthesis</h3>
+            <ul class="list">
+              <li><strong style="color:var(--text);font-weight:400;">Leverage</strong>: identify where intervention has disproportionate effect</li>
+              <li><strong style="color:var(--text);font-weight:400;">Paradigms</strong>: determine the worldview shaping the problem space</li>
+              <li><strong style="color:var(--text);font-weight:400;">Executive writing</strong>: convert layered reasoning into concise decision-ready judgment</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section aria-label="Human and AI roles">
+        <div class="divider reveal">
+          <span class="divider-num">04</span>
+          <div class="divider-rule"></div>
+          <span class="divider-label">Division of Labor</span>
+        </div>
+
+        <div class="grid cols-2">
+          <div class="card reveal d1">
+            <h3>AI is best used for</h3>
+            <ul class="list">
+              <li>Summarization under constraints</li>
+              <li>Contradiction surfacing across sources</li>
+              <li>Provocation and counterargument generation</li>
+              <li>Structured reformulation and compression drafts</li>
+              <li>Alternative hypothesis generation</li>
+            </ul>
+          </div>
+
+          <div class="card reveal d2">
+            <h3>Humans remain responsible for</h3>
+            <ul class="list">
+              <li>Defining the problem and selecting the cognitive mode</li>
+              <li>Evaluating source quality and evidence weight</li>
+              <li>Judging which variables actually matter</li>
+              <li>Adjudicating tradeoffs and approving recommendations</li>
+              <li>Owning accountability for final judgment</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section aria-label="Defining statement">
+        <div class="pullquote reveal">
+          <blockquote>“QAP governs the workflow. The Cognition Model governs the depth of reasoning inside that workflow.”</blockquote>
+          <cite>Quanta Analytica · OSPREY™ Integration Principle</cite>
+        </div>
+      </section>
+
+      <section aria-label="Engagement">
+        <div class="callout reveal">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:12px;">
+            <h2>Deploy <em>OSPREY™</em></h2>
+            <span class="kicker">Advisory · framework design · AI governance</span>
+          </div>
+          <p style="max-width:620px;font-size:.97rem;line-height:1.88;margin-top:10px;">OSPREY™ is designed for organizations that want more than AI productivity. It is for teams that need governed, repeatable, challenge-resistant judgment. Whether the need is strategic analysis, executive memo production, structured research, or AI-assisted decision support, the starting point is the architecture.</p>
+        </div>
+      </section>
+
+      <div class="footer" role="contentinfo">
+        <div class="row">
+          <div class="footer-brand">
+            <span class="gold">Quanta Analytica</span> · OSPREY™ · MNS Consulting · &copy; <span id="year"></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.07 });
+    reveals.forEach(el => obs.observe(el));
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", e => {
+        const id = a.getAttribute("href");
+        if (!id || id === "#") return;
+        const el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        history.replaceState(null, "", id);
+      });
+    });
+  </script>
+</body>
+</html>
