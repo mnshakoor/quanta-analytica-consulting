@@ -1,5 +1,10 @@
 User-agent: *
 Allow: /
+Allow: /report
 
-# Replace with your actual sitemap URL
+Disallow: /tools/
+
+Disallow: /CNAME
+
+
 Sitemap: https://quanta-analytica.com/sitemap.xml
