@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Palm Sunday Attack & Escalating Conflict in Nigeria's Middle Belt | Quanta Analytica Process™ | 31 MAR 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --obsidian: #0a0c10;
+      --obsidian-2: #10141c;
+      --obsidian-3: #161b26;
+      --obsidian-4: #1e2535;
+      --obsidian-5: #252d3d;
+      --gold: #c8a96e;
+      --gold-dim: #a08550;
+      --gold-faint: rgba(200, 169, 110, 0.08);
+      --gold-faint2: rgba(200, 169, 110, 0.14);
+      --slate: #8896b0;
+      --slate-light: #b0bdd0;
+      --white: #f0f4fa;
+      --white-dim: #c8d0de;
+      --red: #e05555;
+      --red-faint: rgba(224, 85, 85, 0.10);
+      --amber: #d4a53a;
+      --amber-faint: rgba(212, 165, 58, 0.12);
+      --green: #4caf82;
+      --green-faint: rgba(76, 175, 130, 0.10);
+      --blue: #4a9fd4;
+      --blue-faint: rgba(74, 159, 212, 0.10);
+      --yellow: #e8d55a;
+      --yellow-faint: rgba(232, 213, 90, 0.10);
+      --text-body: #B8B0A0;
+      --mono: 'IBM Plex Mono', monospace;
+      --sans: 'IBM Plex Sans', sans-serif;
+      --serif: 'Libre Baskerville', Georgia, serif;
+      --radius: 4px;
+      --section-gap: 4rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--obsidian);
+      color: var(--text-body);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    #progress {
+      position: fixed; top: 0; left: 0; height: 3px;
+      width: 0; background: var(--gold); z-index: 9999;
+      transition: width 0.1s linear;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 3px; left: 0; right: 0;
+      background: rgba(10, 12, 16, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200,169,110,0.12);
+      z-index: 1000; display: flex; align-items: center;
+      justify-content: space-between; padding: 0 2rem;
+      height: 52px;
+    }
+    .nav-brand {
+      font-family: var(--mono); font-size: 11px;
+      color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .nav-classify {
+      font-family: var(--mono); font-size: 10px;
+      color: var(--red); letter-spacing: 0.1em;
+      border: 1px solid rgba(224,85,85,0.35);
+      padding: 2px 10px; border-radius: 2px;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 7rem 2rem 4rem;
+      overflow: hidden;
+      background: linear-gradient(160deg, #0e1220 0%, var(--obsidian) 55%, #0a0c10 100%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; opacity: 0.06;
+      background-image:
+        linear-gradient(var(--gold) 1px, transparent 1px),
+        linear-gradient(90deg, var(--gold) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      max-width: 1000px; margin: 0 auto; width: 100%;
+    }
+    .hero-running {
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: var(--mono); font-size: 10px; color: var(--gold-dim);
+      letter-spacing: 0.14em; text-transform: uppercase;
+      border-bottom: 1px solid rgba(200,169,110,0.18); padding-bottom: 0.75rem; margin-bottom: 2rem;
+    }
+    .hero h1 {
+      font-family: var(--serif); font-size: clamp(1.9rem, 4vw, 3.1rem);
+      font-weight: 700; color: var(--white); line-height: 1.18;
+      margin-bottom: 1rem;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero-subtitle {
+      font-family: var(--sans); font-size: 1.05rem; color: var(--slate-light);
+      max-width: 700px; line-height: 1.6; margin-bottom: 1.8rem;
+    }
+    .hero-meta {
+      display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.8rem;
+    }
+    .meta-cell {
+      background: var(--obsidian-3);
+      border: 1px solid rgba(200,169,110,0.16);
+      padding: 0.6rem 1.1rem; border-radius: var(--radius);
+    }
+    .meta-cell .label {
+      font-family: var(--mono); font-size: 9px; color: var(--gold-dim);
+      letter-spacing: 0.12em; text-transform: uppercase; display: block;
+      margin-bottom: 3px;
+    }
+    .meta-cell .value {
+      font-family: var(--mono); font-size: 12px; color: var(--white);
+      font-weight: 600; letter-spacing: 0.05em;
+    }
+    .threat-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(224,85,85,0.12); border: 1px solid rgba(224,85,85,0.4);
+      padding: 0.6rem 1.1rem; border-radius: var(--radius);
+    }
+    .threat-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--red);
+      animation: blink 1.2s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+    .threat-badge .label { font-family: var(--mono); font-size: 9px; color: rgba(224,85,85,0.8); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0; }
+    .threat-badge .value { font-family: var(--mono); font-size: 12px; color: var(--red); font-weight: 600; }
+
+    .scope-boundary {
+      background: rgba(74,159,212,0.06);
+      border-left: 3px solid rgba(74,159,212,0.35);
+      padding: 1rem 1.25rem; border-radius: 0 var(--radius) var(--radius) 0;
+      font-style: italic; font-size: 0.88rem; color: var(--slate-light);
+      line-height: 1.65; margin-top: 1.5rem;
+    }
+
+    /* MAIN */
+    main { max-width: 1000px; margin: 0 auto; padding: 0 2rem var(--section-gap); }
+
+    /* SECTION */
+    .section {
+      margin-top: var(--section-gap);
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .section.visible { opacity: 1; transform: translateY(0); }
+
+    .section-header {
+      display: flex; align-items: center; gap: 1rem;
+      border-bottom: 1px solid rgba(200,169,110,0.18);
+      padding-bottom: 0.75rem; margin-bottom: 2rem;
+    }
+    .section-num {
+      font-family: var(--mono); font-size: 10px; color: var(--gold);
+      background: var(--gold-faint2); border: 1px solid rgba(200,169,110,0.22);
+      padding: 3px 10px; border-radius: 2px; letter-spacing: 0.1em;
+      white-space: nowrap;
+    }
+    .section-title {
+      font-family: var(--sans); font-size: 0.78rem; color: var(--slate);
+      letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600;
+    }
+
+    /* SUB SECTION */
+    .sub-section {
+      margin-top: 2.5rem; padding-top: 2rem;
+      position: relative;
+    }
+    .sub-section::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(200,169,110,0.25), transparent);
+    }
+    .sub-section h3 {
+      font-family: var(--mono); font-size: 11px; color: var(--gold);
+      letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.25rem;
+    }
+
+    p { margin-bottom: 1rem; }
+    p:last-child { margin-bottom: 0; }
+
+    /* BLUF */
+    .bluf-grid { display: flex; flex-direction: column; gap: 1.5rem; }
+    .bluf-item {
+      display: flex; gap: 1.25rem;
+      background: var(--obsidian-3);
+      border: 1px solid rgba(200,169,110,0.14);
+      border-left: 3px solid var(--gold);
+      padding: 1.25rem 1.5rem; border-radius: var(--radius);
+    }
+    .bluf-index {
+      font-family: var(--mono); font-size: 1.4rem; color: rgba(200,169,110,0.3);
+      font-weight: 600; min-width: 2rem; line-height: 1;
+      padding-top: 2px;
+    }
+    .bluf-text { flex: 1; }
+    .bluf-text strong {
+      display: block; font-family: var(--sans); font-size: 0.95rem;
+      color: var(--text-body); font-weight: 700; margin-bottom: 0.5rem;
+    }
+    .bluf-text p { font-size: 0.9rem; color: var(--slate-light); margin-bottom: 0; }
+
+    cite {
+      font-style: normal; font-family: var(--mono); font-size: 10px;
+      color: var(--gold-dim); background: var(--gold-faint);
+      padding: 1px 5px; border-radius: 2px; vertical-align: super;
+    }
+
+    /* KIQ TABLE */
+    .kiq-table, .assumption-table, .ach-table, .iw-table, .pig-table, .risk-matrix {
+      width: 100%; border-collapse: collapse; font-size: 0.875rem;
+      margin-top: 0.5rem;
+    }
+    .kiq-table th, .assumption-table th, .ach-table th, .iw-table th, .pig-table th, .risk-matrix th {
+      font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--gold-dim);
+      background: var(--obsidian-4); padding: 0.6rem 0.9rem;
+      text-align: left; border-bottom: 1px solid rgba(200,169,110,0.18);
+    }
+    .kiq-table td, .assumption-table td, .ach-table td, .iw-table td, .pig-table td, .risk-matrix td {
+      padding: 0.7rem 0.9rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      color: var(--slate-light); vertical-align: top; line-height: 1.55;
+    }
+    .kiq-table tr:last-child td, .assumption-table tr:last-child td, .ach-table tr:last-child td,
+    .iw-table tr:last-child td, .pig-table tr:last-child td, .risk-matrix tr:last-child td {
+      border-bottom: none;
+    }
+    .kiq-table tr:hover td, .assumption-table tr:hover td, .ach-table tr:hover td,
+    .iw-table tr:hover td, .pig-table tr:hover td, .risk-matrix tr:hover td {
+      background: var(--obsidian-4);
+    }
+    .kiq-id {
+      font-family: var(--mono); font-size: 10px; color: var(--gold);
+      white-space: nowrap;
+    }
+
+    /* SNAPSHOT */
+    .snapshot-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+    }
+    @media (max-width: 600px) { .snapshot-grid { grid-template-columns: 1fr; } }
+    .snapshot-cell {
+      background: var(--obsidian-3);
+      border: 1px solid rgba(200,169,110,0.14);
+      padding: 1.1rem 1.25rem; border-radius: var(--radius);
+    }
+    .snapshot-label {
+      font-family: var(--mono); font-size: 9px; color: var(--gold);
+      letter-spacing: 0.14em; text-transform: uppercase;
+      margin-bottom: 0.5rem; display: block;
+    }
+    .snapshot-cell p { font-size: 0.875rem; color: var(--slate-light); margin-bottom: 0; }
+
+    /* KEY JUDGMENTS */
+    .kj-list { display: flex; flex-direction: column; gap: 1.25rem; }
+    .kj-item {
+      border-radius: var(--radius); padding: 1.25rem 1.5rem;
+      border-left: 4px solid;
+    }
+    .kj-item.high { border-color: var(--red); background: rgba(224,85,85,0.06); }
+    .kj-item.moderate { border-color: var(--amber); background: rgba(212,165,58,0.06); }
+    .kj-item.low { border-color: var(--green); background: rgba(76,175,130,0.06); }
+    .kj-item.watch { border-color: var(--blue); background: rgba(74,159,212,0.06); }
+    .kj-header {
+      display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .kj-band {
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 2px;
+    }
+    .high .kj-band { color: var(--red); border: 1px solid rgba(224,85,85,0.35); background: rgba(224,85,85,0.12); }
+    .moderate .kj-band { color: var(--amber); border: 1px solid rgba(212,165,58,0.35); background: rgba(212,165,58,0.12); }
+    .low .kj-band { color: var(--green); border: 1px solid rgba(76,175,130,0.35); background: rgba(76,175,130,0.12); }
+    .watch .kj-band { color: var(--blue); border: 1px solid rgba(74,159,212,0.35); background: rgba(74,159,212,0.12); }
+    .kj-id { font-family: var(--mono); font-size: 10px; color: var(--slate); }
+    .kj-text { font-size: 0.9rem; color: var(--white-dim); line-height: 1.65; }
+    .kj-map { font-family: var(--mono); font-size: 10px; color: var(--gold-dim); margin-top: 0.5rem; }
+
+    /* EVIDENCE */
+    .evidence-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+    }
+    @media (max-width: 700px) { .evidence-grid { grid-template-columns: 1fr; } }
+    .evidence-box {
+      background: var(--obsidian-3); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius); overflow: hidden;
+    }
+    .evidence-box-header {
+      padding: 0.6rem 1rem;
+      font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .evidence-box-header.know { background: rgba(76,175,130,0.15); color: var(--green); }
+    .evidence-box-header.assess { background: rgba(212,165,58,0.15); color: var(--amber); }
+    .evidence-box-header.gap { background: rgba(224,85,85,0.15); color: var(--red); }
+    .evidence-box ul { list-style: none; padding: 1rem; }
+    .evidence-box li {
+      font-size: 0.855rem; color: var(--slate-light); padding: 0.45rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05); line-height: 1.5;
+    }
+    .evidence-box li:last-child { border-bottom: none; }
+    .evidence-box li::before { content: '-- '; color: var(--gold-dim); font-family: var(--mono); font-size: 10px; }
+
+    .wsi-note {
+      background: rgba(74,159,212,0.07); border: 1px solid rgba(74,159,212,0.25);
+      border-radius: var(--radius); padding: 1rem 1.25rem; margin-top: 1.5rem;
+      font-size: 0.875rem;
+    }
+    .wsi-note strong { color: var(--blue); font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 0.4rem; }
+
+    /* STATUS PILLS */
+    .status-pill {
+      display: inline-block; font-family: var(--mono); font-size: 9px;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 2px 8px; border-radius: 2px;
+    }
+    .status-pill.red { color: var(--red); background: rgba(224,85,85,0.12); border: 1px solid rgba(224,85,85,0.3); }
+    .status-pill.amber { color: var(--amber); background: rgba(212,165,58,0.12); border: 1px solid rgba(212,165,58,0.3); }
+    .status-pill.green { color: var(--green); background: rgba(76,175,130,0.12); border: 1px solid rgba(76,175,130,0.3); }
+    .status-pill.blue { color: var(--blue); background: rgba(74,159,212,0.12); border: 1px solid rgba(74,159,212,0.3); }
+    .status-pill.yellow { color: var(--yellow); background: rgba(232,213,90,0.12); border: 1px solid rgba(232,213,90,0.3); }
+
+    /* LAYER MAP */
+    .layer-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    .layer-table tr { border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .layer-table td { padding: 0.75rem 1rem; vertical-align: top; line-height: 1.55; }
+    .layer-code {
+      font-family: var(--mono); font-size: 10px; color: var(--gold);
+      background: var(--gold-faint); padding: 3px 8px; border-radius: 2px;
+      white-space: nowrap; letter-spacing: 0.08em;
+    }
+    .layer-name { font-weight: 700; color: var(--white); font-size: 0.85rem; }
+    .layer-content { color: var(--slate-light); }
+
+    /* SCENARIO CARDS */
+    .scenario-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    @media (max-width: 700px) { .scenario-grid { grid-template-columns: 1fr; } }
+    .scenario-card {
+      border-radius: var(--radius); padding: 1.25rem; border: 1px solid;
+    }
+    .scenario-card.best { border-color: rgba(76,175,130,0.3); background: rgba(76,175,130,0.05); }
+    .scenario-card.base { border-color: rgba(212,165,58,0.3); background: rgba(212,165,58,0.05); }
+    .scenario-card.worst { border-color: rgba(224,85,85,0.3); background: rgba(224,85,85,0.05); }
+    .scenario-card .sc-label {
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em;
+      text-transform: uppercase; margin-bottom: 0.5rem;
+    }
+    .best .sc-label { color: var(--green); }
+    .base .sc-label { color: var(--amber); }
+    .worst .sc-label { color: var(--red); }
+    .scenario-card .sc-title { font-weight: 700; color: var(--white); font-size: 0.9rem; margin-bottom: 0.6rem; }
+    .scenario-card p { font-size: 0.85rem; color: var(--slate-light); margin-bottom: 0.5rem; }
+    .sc-prob {
+      font-family: var(--mono); font-size: 10px; margin-top: 0.75rem;
+    }
+    .best .sc-prob { color: var(--green); }
+    .base .sc-prob { color: var(--amber); }
+    .worst .sc-prob { color: var(--red); }
+
+    /* BEHAVIORAL */
+    .behavioral-grid { display: flex; flex-direction: column; gap: 1rem; }
+    .behavioral-item {
+      background: var(--obsidian-3); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius); padding: 1.1rem 1.25rem;
+      display: grid; grid-template-columns: auto 1fr; gap: 1rem;
+    }
+    .bi-rank {
+      font-family: var(--mono); font-size: 1.5rem; color: var(--gold-dim);
+      font-weight: 700; line-height: 1; padding-top: 2px;
+    }
+    .bi-label { font-weight: 700; color: var(--white); font-size: 0.9rem; margin-bottom: 0.3rem; }
+    .bi-text { font-size: 0.875rem; color: var(--slate-light); }
+
+    /* RISK MATRIX */
+    .risk-high { background: rgba(224,85,85,0.12); }
+
+    /* RECOMMENDATIONS */
+    .rec-timeline { display: flex; flex-direction: column; gap: 1.25rem; }
+    .rec-block {
+      display: flex; gap: 1.25rem; align-items: flex-start;
+    }
+    .rec-time {
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 4px 10px; border-radius: 2px;
+      white-space: nowrap; min-width: 130px; text-align: center;
+      line-height: 1.4;
+    }
+    .rec-time.red { color: var(--red); background: rgba(224,85,85,0.12); border: 1px solid rgba(224,85,85,0.35); }
+    .rec-time.gold { color: var(--gold); background: var(--gold-faint); border: 1px solid rgba(200,169,110,0.3); }
+    .rec-time.green { color: var(--green); background: var(--green-faint); border: 1px solid rgba(76,175,130,0.3); }
+    .rec-content { flex: 1; font-size: 0.875rem; color: var(--slate-light); line-height: 1.6; }
+
+    /* CONFIDENCE */
+    .conf-panel {
+      background: var(--obsidian-3); border: 1px solid rgba(200,169,110,0.18);
+      border-radius: var(--radius); overflow: hidden; margin-bottom: 1.5rem;
+    }
+    .conf-header {
+      background: var(--gold-faint2); padding: 0.75rem 1.25rem;
+      font-family: var(--mono); font-size: 10px; color: var(--gold);
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .conf-body { padding: 1.25rem; font-size: 0.9rem; color: var(--slate-light); }
+
+    .uncertainty-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .uncertainty-item {
+      background: rgba(224,85,85,0.06); border: 1px solid rgba(224,85,85,0.2);
+      border-radius: var(--radius); padding: 0.9rem 1.1rem;
+      font-size: 0.875rem; color: var(--slate-light); line-height: 1.6;
+    }
+    .uncertainty-item strong { color: var(--red); display: block; margin-bottom: 0.3rem; font-size: 0.85rem; }
+
+    /* REFERENCES */
+    .ref-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+    .ref-table th {
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--gold-dim);
+      background: var(--obsidian-4); padding: 0.5rem 0.7rem;
+      text-align: left; border-bottom: 1px solid rgba(200,169,110,0.18);
+    }
+    .ref-table td {
+      padding: 0.55rem 0.7rem;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: var(--slate-light); vertical-align: top; line-height: 1.45;
+    }
+    .ref-table tr:last-child td { border-bottom: none; }
+    .band-pill {
+      display: inline-block; font-family: var(--mono); font-size: 9px;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 1px 7px; border-radius: 2px;
+    }
+    .band-pill.green { color: var(--green); background: var(--green-faint); border: 1px solid rgba(76,175,130,0.3); }
+    .band-pill.amber { color: var(--amber); background: var(--amber-faint); border: 1px solid rgba(212,165,58,0.3); }
+    .band-pill.red { color: var(--red); background: var(--red-faint); border: 1px solid rgba(224,85,85,0.3); }
+
+    /* THRESHOLD GRID */
+    .threshold-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem; }
+    @media (max-width: 650px) { .threshold-grid { grid-template-columns: 1fr; } }
+    .threshold-cell {
+      border-radius: var(--radius); padding: 1.25rem; border: 1px solid;
+    }
+    .threshold-cell.green-zone { border-color: rgba(76,175,130,0.35); background: rgba(76,175,130,0.05); }
+    .threshold-cell.amber-zone { border-color: rgba(212,165,58,0.35); background: rgba(212,165,58,0.05); }
+    .threshold-cell.red-zone { border-color: rgba(224,85,85,0.35); background: rgba(224,85,85,0.05); }
+    .threshold-cell .tc-label {
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em;
+      text-transform: uppercase; margin-bottom: 0.6rem; display: block;
+    }
+    .green-zone .tc-label { color: var(--green); }
+    .amber-zone .tc-label { color: var(--amber); }
+    .red-zone .tc-label { color: var(--red); }
+    .threshold-cell ul { list-style: none; }
+    .threshold-cell li {
+      font-size: 0.84rem; color: var(--slate-light); padding: 0.3rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05); line-height: 1.5;
+    }
+    .threshold-cell li:last-child { border-bottom: none; }
+
+    /* ANNEX */
+    .annex-label {
+      display: inline-block; font-family: var(--mono); font-size: 10px;
+      color: var(--gold); background: var(--gold-faint2);
+      border: 1px solid rgba(200,169,110,0.25);
+      padding: 2px 10px; border-radius: 2px; letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(200,169,110,0.12);
+      padding: 2rem; text-align: center;
+      font-family: var(--mono); font-size: 10px; color: var(--slate);
+      letter-spacing: 0.1em;
+    }
+    footer .doc-id { color: var(--gold-dim); margin-bottom: 0.5rem; }
+
+    /* DRIVER/CONSTRAINT BLOCKS */
+    .driver-block, .constraint-block {
+      background: var(--obsidian-3); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius); padding: 1.1rem 1.25rem; margin-top: 1rem;
+    }
+    .driver-block h4, .constraint-block h4 {
+      font-family: var(--mono); font-size: 10px; color: var(--gold-dim);
+      letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem;
+    }
+    .driver-block ul, .constraint-block ul { list-style: none; }
+    .driver-block li, .constraint-block li {
+      font-size: 0.875rem; color: var(--slate-light); padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04); line-height: 1.55;
+    }
+    .driver-block li:last-child, .constraint-block li:last-child { border-bottom: none; }
+    .tag-fact { font-family: var(--mono); font-size: 9px; color: var(--green); background: var(--green-faint); padding: 1px 6px; border-radius: 2px; margin-right: 6px; }
+    .tag-inf { font-family: var(--mono); font-size: 9px; color: var(--amber); background: var(--amber-faint); padding: 1px 6px; border-radius: 2px; margin-right: 6px; }
+    .tag-struct { font-family: var(--mono); font-size: 9px; color: var(--blue); background: var(--blue-faint); padding: 1px 6px; border-radius: 2px; margin-right: 6px; }
+
+    /* IW TABLE WRAPPER */
+    .table-wrapper { overflow-x: auto; }
+
+    a { color: var(--gold-dim); text-decoration: none; }
+    a:hover { color: var(--gold); text-decoration: underline; }
+
+    strong.label-fact { color: var(--green); }
+    strong.label-allegation { color: var(--amber); }
+    strong.label-inference { color: var(--blue); }
+    strong.label-unknown { color: var(--red); }
+
+    blockquote {
+      border-left: 3px solid rgba(200,169,110,0.3);
+      padding: 0.75rem 1rem; margin: 1rem 0;
+      font-style: italic; color: var(--slate-light); font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="progress"></div>
+
+  <nav>
+    <div class="nav-brand">Quanta Analytica | MNS Consulting</div>
+    <div class="nav-classify">UNCLASSIFIED // OPEN SOURCE ANALYSIS</div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-inner">
+      <div class="hero-running">
+        <span>QUANTA ANALYTICA | MNS CONSULTING</span>
+        <span>CONFLICT SYSTEMS ANALYSIS // NIGERIA MIDDLE BELT</span>
+      </div>
+
+      <h1>Palm Sunday Attack in Jos &amp; <span>Escalating Conflict in Nigeria's Middle Belt</span></h1>
+      <p class="hero-subtitle">A Quanta Analytica Process™ structured intelligence assessment examining the 29 March 2026 Jos North mass-casualty attack, prior warning indicators, alleged security force inaction, contested actor attribution, and forward escalation risk across Plateau, Benue, Southern Kaduna, and Taraba States. Religious targeting is assessed as plausible but not conclusively established as the primary driver; the conflict ecology is blended.</p>
+
+      <div class="hero-meta">
+        <div class="meta-cell">
+          <span class="label">Primary Domain</span>
+          <span class="value">Conflict Systems Analysis</span>
+        </div>
+        <div class="meta-cell">
+          <span class="label">Stacked Domains</span>
+          <span class="value">Fragility &amp; Governance | NGO Security Risk</span>
+        </div>
+        <div class="meta-cell">
+          <span class="label">Date of Issue</span>
+          <span class="value">31 MAR 2026</span>
+        </div>
+        <div class="threat-badge">
+          <div class="threat-dot"></div>
+          <div>
+            <div class="label">Threat Level</div>
+            <div class="value">HIGH // ACTIVE ESCALATION</div>
+          </div>
+        </div>
+        <div class="meta-cell">
+          <span class="label">Classification</span>
+          <span class="value">Unclassified // Open Source</span>
+        </div>
+      </div>
+
+      <div class="hero-meta">
+        <div class="meta-cell">
+          <span class="label">Confirmed Dead (Jos)</span>
+          <span class="value">27 -- 40+ (Contested)</span>
+        </div>
+        <div class="meta-cell">
+          <span class="label">Kagarko (Kaduna)</span>
+          <span class="value">13 Killed | 28+ Abducted</span>
+        </div>
+        <div class="meta-cell">
+          <span class="label">Curfew Imposed</span>
+          <span class="value">Jos North, 48-Hour</span>
+        </div>
+        <div class="meta-cell">
+          <span class="label">Warning Sources</span>
+          <span class="value">3+ Prior Indicators (Unverified)</span>
+        </div>
+        <div class="meta-cell">
+          <span class="label">Forward Horizon</span>
+          <span class="value">6 -- 12 Months</span>
+        </div>
+      </div>
+
+      <div class="scope-boundary">
+        <strong>Analytic Scope Boundary:</strong> This assessment covers the Palm Sunday attack of 29 March 2026 in Jos North, Plateau State, with concurrent analysis of the Kagarko, Kaduna attack and forward escalation risk across Plateau, Benue, Southern Kaduna, Chikun, Kafanchan, Kajuru, and Taraba States. The forward outlook covers six to twelve months from the date of issue. The lead collection trigger is the Daily Caller article of 31 March 2026; that article is treated as a collection cue only, not as an evidentiary base for key judgments. All key judgments require independent triangulation. Excluded from this assessment: classified government intelligence products, verified Nigerian military operational planning documents, and forensic forensic analysis of weapons recovered at attack sites. Confidence limits are explicitly stated throughout. Social media footage is treated as lead-only and is not load-bearing for any key judgment.
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- 01 BLUF -->
+    <section class="section" id="bluf">
+      <div class="section-header">
+        <span class="section-num">01 // BLUF</span>
+        <span class="section-title">Bottom Line Up Front</span>
+      </div>
+      <div class="bluf-grid">
+
+        <div class="bluf-item">
+          <div class="bluf-index">1</div>
+          <div class="bluf-text">
+            <strong>The Palm Sunday attack in Jos is confirmed at a mass-casualty threshold; religious targeting is plausible but not yet conclusively established as the primary driver.</strong>
+            <p>On the evening of 29 March 2026, armed gunmen on motorcycles attacked the Angwan Rukuba community in Jos North, Plateau State. Confirmed casualty figures range from 27 to 40+ killed, depending on the reporting source, with 14 dead at the scene and 13 dying in hospital per the most corroborated account. A simultaneous attack in Kagarko, Kaduna killed 13 and involved mass abductions. The Jos attack occurred in a predominantly Christian area on a principal Christian holiday; eyewitness accounts include reports of attackers shouting religious phrases. However, Open Doors has explicitly noted that not all victims are confirmed to be Christians, and no armed group has claimed the attack. Attribution remains contested between Fulani ethnic militia, Boko Haram, and hybrid criminal actors. <cite>[2,6]</cite></p>
+          </div>
+        </div>
+
+        <div class="bluf-item">
+          <div class="bluf-index">2</div>
+          <div class="bluf-text">
+            <strong>A credible pattern of pre-attack warning indicators exists; the evidence for a specific, actionable intelligence product being formally ignored is present but derives from single-track advocacy sources and requires independent verification.</strong>
+            <p>A Washington, D.C. intelligence briefing on 25 March 2026, hosted by Equipping the Persecuted, reportedly presented information on Fulani Ethnic Militia (FEM) gathering and planned attacks. The briefing organizer, Judd Saul, alleges that the Nigerian military verified the location of armed gatherings but took no preemptive action. This claim is single-source and originates from an organization with an explicit advocacy position. However, it sits within a documented pattern: International Christian Concern records that prior warnings before the New Year's Eve 2025 attack in Jos South were similarly not acted upon, and community leader Solomon Dalyop stated publicly that warnings were issued before that attack with no response. The pattern of prior warnings followed by attacks is corroborated across multiple cycles; the specific claim of formal military verification before the Palm Sunday attack is not independently confirmed. <cite>[10,11,12]</cite></p>
+          </div>
+        </div>
+
+        <div class="bluf-item">
+          <div class="bluf-index">3</div>
+          <div class="bluf-text">
+            <strong>The most analytically defensible explanation for security force behavior is institutional failure, structural incapacity, and command-level paralysis -- not provable state-directed complicity, though the impunity environment is consistent with either explanation.</strong>
+            <p>One eyewitness, Samson Chiroma, reported that Nigerian army trucks arrived minutes after the attackers withdrew and did not pursue them, and that soldiers fired on local community members who attempted to give chase. This is a single-witness account and has not been independently corroborated by journalists or human rights monitors. Cambridge and LSE scholarship confirms that Nigerian security forces in Plateau State have historically failed to protect communities due to overstretching, ethnic command tensions, and political interference in the peacebuilding process -- factors consistent with incapacity. Complicity at the command level cannot be ruled out but rests on highly contested evidence. <cite>[16,18,20]</cite></p>
+          </div>
+        </div>
+
+        <div class="bluf-item">
+          <div class="bluf-index">4</div>
+          <div class="bluf-text">
+            <strong>The violence ecology is blended: resource competition, ethnic militia mobilization, jihadist fringe participation, and political-criminal extraction networks are operating simultaneously -- a single causal frame is insufficient.</strong>
+            <p>ACLED data indicates that explicitly religious targeting accounts for approximately 5% of civilian-targeting events; peer-reviewed research documents that land scarcity, climate-induced migration, and political opportunity structures have all contributed to escalating violence since 2014. Simultaneously, LSE and Amnesty International analyses confirm that churches are disproportionately targeted in some attack sequences, and Genocide Watch has elevated Nigeria to Stage 9 of its genocide model. The conflict ecology cannot be reduced to either "farmer-herder resource dispute" or "jihad against Christians" without evidentiary loss; it is a layered system with multiple reinforcing drivers. <cite>[14,15,17,18,20]</cite></p>
+          </div>
+        </div>
+
+        <div class="bluf-item">
+          <div class="bluf-index">5</div>
+          <div class="bluf-text">
+            <strong>Forward attack risk in identified flashpoint areas is HIGH for the Easter period and the 6-12 month outlook; NGOs and civil society actors should treat the current window as a confirmed elevated-threat environment.</strong>
+            <p>Post-attack warnings from Equipping the Persecuted allege continued FEM massing in Benue, Plateau, Southern Kaduna (Chikun, Kafanchan, Kajuru), and Taraba. The Taraba attack on St. James the Great Catholic Church in Adu (Takum District) during the same week, causing mass displacement of over 90,000 Christians according to some estimates, confirms a geographically dispersed attack pattern. Historical precedent confirms Easter-season attacks are not random: prior Palm Sunday (2025), Easter (2025 Bassa LGA), and Christmas (2024, 2025) attacks confirm seasonal targeting logic. The immediate post-attack period is a high-risk window for retaliatory and follow-on strikes. <cite>[7,8]</cite></p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 02 KIQs -->
+    <section class="section" id="kiqs">
+      <div class="section-header">
+        <span class="section-num">02 // KIQs</span>
+        <span class="section-title">Key Intelligence Questions</span>
+      </div>
+      <div class="table-wrapper">
+        <table class="kiq-table">
+          <thead>
+            <tr>
+              <th>Question ID</th>
+              <th>Intelligence Question</th>
+              <th>Links To</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="kiq-id">KIQ-01</td>
+              <td>Was there credible, actionable pre-attack intelligence or warning, and if so, to whom was it communicated and what response was taken?</td>
+              <td>KJ-02, GAP-01, GAP-02</td>
+            </tr>
+            <tr>
+              <td class="kiq-id">KIQ-02</td>
+              <td>What is the strongest available evidence for or against a deliberate security stand-down, versus institutional failure, incapacity, or local command breakdown?</td>
+              <td>KJ-03, ACH, GAP-03</td>
+            </tr>
+            <tr>
+              <td class="kiq-id">KIQ-03</td>
+              <td>Which actor set is most plausibly responsible: Fulani ethnic militia, jihadist-linked actors (Boko Haram / ISWAP), local communal militias, criminal armed groups, or a hybrid network?</td>
+              <td>KJ-01, ACH, GAP-04</td>
+            </tr>
+            <tr>
+              <td class="kiq-id">KIQ-04</td>
+              <td>Is the violence primarily identity-targeted anti-Christian violence, resource conflict, political violence, or blended conflict ecology -- and what is the evidentiary basis for each framing?</td>
+              <td>KJ-04, L2, L3</td>
+            </tr>
+            <tr>
+              <td class="kiq-id">KIQ-05</td>
+              <td>What indicators suggest immediate follow-on attack risk in Plateau, Benue, Southern Kaduna, or Taraba States over the next 6-12 months?</td>
+              <td>KJ-05, I&amp;W, Annex A</td>
+            </tr>
+            <tr>
+              <td class="kiq-id">KIQ-06</td>
+              <td>What protection and contingency actions should NGOs, civil society actors, and local authorities prioritize immediately and over the medium term?</td>
+              <td>KJ-05, Section 08-C, Annex B</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 03 SNAPSHOT -->
+    <section class="section" id="snapshot">
+      <div class="section-header">
+        <span class="section-num">03 // SNAPSHOT</span>
+        <span class="section-title">Situation Snapshot</span>
+      </div>
+      <div class="snapshot-grid">
+        <div class="snapshot-cell">
+          <span class="snapshot-label">WHO</span>
+          <p>Unidentified gunmen on motorcycles (Jos); heavily armed bandits (Kagarko). Eyewitnesses variously attributed to Fulani ethnic militia, Boko Haram, and hybrid criminal actors. Victims: residents of Angwan Rukuba (Jos North), predominantly Christian community; wedding guests (Kagarko, largely Christian district). No group has claimed responsibility for either attack.</p>
+        </div>
+        <div class="snapshot-cell">
+          <span class="snapshot-label">WHAT</span>
+          <p>Coordinated, multi-group nighttime attack in Jos North using motorcycle-borne gunmen firing indiscriminately into a densely populated gathering area. Simultaneous wedding attack in Kagarko with mass abduction. Taraba church attack (Takum District) in the same week. Estimated 40-55+ total killed across the Palm Sunday night attacks in multiple states.</p>
+        </div>
+        <div class="snapshot-cell">
+          <span class="snapshot-label">WHERE</span>
+          <p>Angwan Rukuba, Jos North LGA, Plateau State (primary); Kahir village, Kagarko LGA, Kaduna State (simultaneous); Adu, Takum District, Taraba State (same week). All locations are in the Nigeria Middle Belt -- the ethno-religious fault line between Nigeria's Muslim-majority north and Christian-majority south.</p>
+        </div>
+        <div class="snapshot-cell">
+          <span class="snapshot-label">WHEN</span>
+          <p>29 March 2026 (Palm Sunday), approximately 19:30-20:00 local time (Jos). Kagarko attack: 23:47 local time on 29 March. Pattern is consistent with prior Easter and Christmas-season attacks documented in 2023, 2024, and 2025. Attacks follow a March 25 intelligence briefing in Washington, D.C. by Equipping the Persecuted.</p>
+        </div>
+        <div class="snapshot-cell">
+          <span class="snapshot-label">WHY</span>
+          <p>Competing explanations: (1) religiously motivated anti-Christian violence timed to Holy Week; (2) land-displacement campaign by herder militias exploiting security gaps; (3) jihadist opportunism leveraging festive-period security reductions; (4) criminal extortion network activity. Likely a hybrid of multiple drivers. No single explanation is independently confirmed.</p>
+        </div>
+        <div class="snapshot-cell">
+          <span class="snapshot-label">HOW</span>
+          <p>Motorcycle-borne attackers (3 per bike, AK-47 rifles and machetes per witness accounts). Attack reportedly split into three groups targeting celebrations and commercial areas simultaneously. Duration approximately 30-45 minutes before withdrawal toward mountainous terrain. Soldiers reportedly arrived post-withdrawal. Curfew imposed within hours by Plateau State Governor Muftwang.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 KEY JUDGMENTS -->
+    <section class="section" id="key-judgments">
+      <div class="section-header">
+        <span class="section-num">04 // KEY JUDGMENTS</span>
+        <span class="section-title">Key Judgments</span>
+      </div>
+      <div class="kj-list">
+
+        <div class="kj-item high">
+          <div class="kj-header">
+            <span class="kj-band">High Confidence</span>
+            <span class="kj-id">KJ-01</span>
+          </div>
+          <div class="kj-text">
+            The Palm Sunday attack in Jos North is a confirmed mass-casualty event. The most corroborated figure is 27 killed (14 at scene, 13 in hospital per Open Doors local contacts), with some sources citing up to 40+. The attack was coordinated, motorcycle-borne, and occurred in a predominantly Christian neighborhood on a principal Christian holiday. The attack is consistent with a documented multi-year pattern of seasonal, high-casualty violence in Plateau State during Christian observance periods. Confirmation of the attack's basic facts is supported by multiple independent reporting streams including Open Doors, AFP, Channels Television, Daily Post Nigeria, and academic conflict monitoring data.
+          </div>
+          <div class="kj-map">Maps to: KIQ-01, KIQ-03 | Sources: [1,2,3,4,6,35,37]</div>
+        </div>
+
+        <div class="kj-item moderate">
+          <div class="kj-header">
+            <span class="kj-band">Moderate Confidence</span>
+            <span class="kj-id">KJ-02</span>
+          </div>
+          <div class="kj-text">
+            There is a credible and documented pattern of pre-attack intelligence warnings in Plateau State that were not followed by visible preventive security deployment. This pattern predates the Palm Sunday attack: community leaders issued public warnings before the New Year's Eve 2025 attack in Jos South that were not acted upon; prior Christmas-season 2025 warnings were dismissed as false before attacks materialized. Whether a specific, formally verified intelligence product about the Palm Sunday attack existed and was deliberately ignored -- as alleged by Judd Saul -- cannot be confirmed at moderate confidence. That specific claim is single-source, advocacy-originated, and unverified by independent journalists or human rights monitors. The broader pattern is corroborated; the specific act of willful ignored warning is an allegation.
+          </div>
+          <div class="kj-map">Maps to: KIQ-01 | Sources: [11,12,14,16,45] | Confidence ceiling: lack of independent corroboration of the specific March 25 briefing claim</div>
+        </div>
+
+        <div class="kj-item moderate">
+          <div class="kj-header">
+            <span class="kj-band">Moderate Confidence</span>
+            <span class="kj-id">KJ-03</span>
+          </div>
+          <div class="kj-text">
+            The most analytically defensible explanation for security force behavior is institutional failure, structural incapacity, and command-level paralysis -- not state-directed complicity. Peer-reviewed research (Cambridge, LSE) documents that peace commissions in Plateau State have failed due to poor funding, undue political interference, and ethnic polarization within the security apparatus. Witnesses describe soldiers arriving after attacks, not during, with no pursuit of fleeing attackers -- a pattern consistent with poor rapid-reaction capacity rather than coordinated stand-down. The single eyewitness claim that soldiers fired on community pursuers (Samson Chiroma) is unverified. State-level complicity or political facilitation of attacks is a plausible hypothesis that cannot be ruled out, but the current evidence base does not clear the threshold for an affirmative judgment. The impunity environment is structurally consistent with either explanation.
+          </div>
+          <div class="kj-map">Maps to: KIQ-02 | Sources: [26,28,41,42,46] | Flip risk: confirmed evidence of military coordination with attackers would elevate this to High-Confidence Complicity finding</div>
+        </div>
+
+        <div class="kj-item moderate">
+          <div class="kj-header">
+            <span class="kj-band">Moderate Confidence</span>
+            <span class="kj-id">KJ-04</span>
+          </div>
+          <div class="kj-text">
+            The most plausible actor set for the Jos attack is Fulani ethnic militia or a hybrid formation with jihadist ideological framing, operating in the context of a multi-driver conflict ecology. Eyewitness accounts diverge (some say Boko Haram, others Fulani militia); no group has claimed the attack. The Kagarko attack is more consistently attributed to armed bandits, a distinct but overlapping actor category. The broader conflict ecology is characterized by blended drivers: resource competition (land, cattle routes), ethnic militia mobilization, jihadist ideological overlay (evidenced in attack timing and reported verbal cues), and criminal extraction networks. ACLED data indicates that explicit religious targeting constitutes approximately 5% of civilian-targeting events, but this does not preclude religious identity being a primary target-selection criterion in specific attack cycles.
+          </div>
+          <div class="kj-map">Maps to: KIQ-03, KIQ-04 | Sources: [4,10,22,27,37,42,47]</div>
+        </div>
+
+        <div class="kj-item high">
+          <div class="kj-header">
+            <span class="kj-band">High Confidence</span>
+            <span class="kj-id">KJ-05</span>
+          </div>
+          <div class="kj-text">
+            Follow-on attack risk in Plateau, Benue, Southern Kaduna, and Taraba States during the Easter period (through 5 April 2026) and the subsequent 6-12 months is HIGH. The Palm Sunday attack follows a confirmed multi-year pattern of Easter-season and holiday-season attacks. Post-attack retaliatory dynamics, community youth anger, and displacement pressures increase secondary escalation risk. Equipping the Persecuted's post-attack warning (treated as an allegation, not confirmed intelligence) alleges continued FEM massing across all identified flashpoint areas. The Taraba church attack in the same week indicates geographic spread of the attack pattern. NGOs and civil society actors operating in these areas should treat the current window as a confirmed elevated-threat environment requiring immediate contingency review.
+          </div>
+          <div class="kj-map">Maps to: KIQ-05, KIQ-06 | Sources: [7,8,11,28,38,47]</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 05 EVIDENCE -->
+    <section class="section" id="evidence">
+      <div class="section-header">
+        <span class="section-num">05 // EVIDENCE</span>
+        <span class="section-title">Evidence Summary</span>
+      </div>
+
+      <div class="evidence-grid">
+        <div class="evidence-box">
+          <div class="evidence-box-header know">WHAT WE KNOW</div>
+          <ul>
+            <li>An armed attack occurred in Angwan Rukuba, Jos North, on 29 March 2026 at approximately 19:30-20:00 local time</li>
+            <li>Open Doors local contacts confirmed 27 dead: 14 at scene, 13 in hospital [2,6]</li>
+            <li>Plateau State Governor Muftwang imposed a 48-hour curfew and condemned the attack [2]</li>
+            <li>A simultaneous attack in Kahir, Kagarko (Kaduna) killed 13 and involved abductions; confirmed by AFP, Channels TV, police spokesperson, and Vanguard [35,36,37]</li>
+            <li>Gunmen used motorcycles and AK-47 rifles; some carried machetes per eyewitness [5]</li>
+            <li>A Washington D.C. briefing on Christian killings in Nigeria was held on 25 March 2026 [11]</li>
+            <li>A Taraba church attack (Adu, Takum District) occurred the same week [7,38]</li>
+            <li>Nigeria's Middle Belt has experienced recurrent mass-casualty attacks during Easter and Christmas periods in 2023, 2024, and 2025 [8,13]</li>
+            <li>Between 2023 and May 2025, over 6,800 people were killed in Benue State and over 2,600 in Plateau State [28]</li>
+            <li>No armed group has claimed responsibility for the Jos attack [2]</li>
+          </ul>
+        </div>
+
+        <div class="evidence-box">
+          <div class="evidence-box-header assess">WHAT WE ASSESS</div>
+          <ul>
+            <li>The attack was likely planned and coordinated in advance, given the three-group split and simultaneous targeting of multiple areas [INFERENCE: consistent with coordinated TTPs documented in prior attacks]</li>
+            <li>The timing on Palm Sunday and target selection of a Christian-majority gathering area likely reflects intentional symbolic amplification, regardless of whether religious identity is the primary motivation [INFERENCE: consistent with historical pattern]</li>
+            <li>Security force response failure reflects a combination of structural incapacity and command-level paralysis; deliberate state-directed stand-down is plausible but not confirmed [INFERENCE: from institutional analysis]</li>
+            <li>The actor set is most likely Fulani ethnic militia or a hybrid formation; the Boko Haram attribution in some eyewitness accounts may reflect confusion or fear-projection [INFERENCE: based on geographic pattern, TTP match, and lack of Boko Haram claim]</li>
+            <li>The conflict ecology is blended: religious targeting, land-seizure, and criminal extraction are simultaneously active [INFERENCE: from multi-source academic and monitoring data]</li>
+            <li>Easter follow-on attack risk is elevated; the post-massacre period historically generates retaliatory dynamics from both sides [INFERENCE: from prior cycle analysis]</li>
+          </ul>
+        </div>
+
+        <div class="evidence-box">
+          <div class="evidence-box-header gap">WHAT WE DON'T KNOW</div>
+          <ul>
+            <li>Whether a formally verified Nigerian military intelligence product on the Jos attack existed before Palm Sunday [GAP-01]</li>
+            <li>Whether the eyewitness account of soldiers firing on community pursuers is accurate or isolated [GAP-02]</li>
+            <li>The precise identity and organizational affiliation of the attackers [GAP-04]</li>
+            <li>The actual casualty count, which ranges from 14 to 55+ across reporting sources [GAP-05]</li>
+            <li>Whether the Kagarko and Jos attacks were operationally linked or coincidentally timed [GAP-06]</li>
+            <li>The disposition, strength, and command structure of any FEM gathering alleged in post-attack warnings [GAP-07]</li>
+            <li>What retaliatory actions, if any, were taken by community youth or vigilante groups after the curfew [GAP-08]</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="driver-block">
+        <h4>Key Drivers</h4>
+        <ul>
+          <li><span class="tag-fact">FACT</span> Documented multi-year pattern of mass-casualty attacks on Christian communities in Plateau and Benue States during Christian holiday periods</li>
+          <li><span class="tag-fact">FACT</span> Structural security incapacity: Nigerian military overstretched across multiple simultaneous insurgency and banditry fronts</li>
+          <li><span class="tag-fact">FACT</span> Near-zero prosecution rate for perpetrators of Middle Belt attacks, sustaining impunity cycle</li>
+          <li><span class="tag-inf">INFERENCE</span> Seasonal attack timing reflects deliberate exploitation of holiday-period security reductions and community vulnerability windows</li>
+          <li><span class="tag-inf">INFERENCE</span> Blended conflict ecology (resource, ethnic, jihadist, criminal) provides multiple parallel motivations for different actor subsets within attack formations</li>
+          <li><span class="tag-inf">INFERENCE</span> International attention (U.S. CPC designation, congressional pressure, Tomahawk strikes in Dec. 2025) has not translated into deterrence at the tactical level</li>
+          <li><span class="tag-inf">INFERENCE</span> Ethnic polarization within the Nigerian security apparatus may reduce operational willingness to confront Fulani-attributed threats</li>
+        </ul>
+      </div>
+
+      <div class="constraint-block">
+        <h4>Binding Constraints on Available Responses</h4>
+        <ul>
+          <li><span class="tag-struct">STRUCTURAL</span> Nigerian military is simultaneously engaged in ISWAP counterinsurgency (northeast), bandit suppression (northwest), and community protection (Middle Belt) -- force generation is constrained</li>
+          <li><span class="tag-struct">POLITICAL</span> President Tinubu's Muslim-Muslim ticket and political dependency on northern constituencies create structural disincentives for aggressive military action against Fulani-attributed actors</li>
+          <li><span class="tag-struct">STRUCTURAL</span> Absence of functioning local early warning and rapid-response systems in affected LGAs; Operation Rainbow community security initiative is nascent and underfunded</li>
+          <li><span class="tag-struct">RESOURCE</span> IDP camps in Plateau and Benue are at or near capacity; further displacement would overload humanitarian infrastructure</li>
+          <li><span class="tag-struct">POLITICAL</span> U.S. pressure (CPC designation, congressional legislation, Tomahawk precedent) creates diplomatic leverage but also risks counter-productive Nigerian government defensiveness</li>
+        </ul>
+      </div>
+
+      <div class="wsi-note">
+        <strong>WSI Source Independence Note</strong>
+        The core factual claim (mass-casualty attack in Jos North on Palm Sunday) is corroborated by seven or more independent reporting streams spanning wire services (AFP), Nigerian mainstream media (Daily Post, Vanguard, Channels Television, TheCable), international Christian advocacy organizations (Open Doors, ICC), and Plateau State government statements. These constitute multiple independent corroboration streams. The specific intelligence-warning allegation (Judd Saul / Equipping the Persecuted) derives from a single originating source with an explicit advocacy position and is reported through downstream outlets that syndicate that source. This does not constitute independent corroboration. All key judgments relying on this specific claim are caveated accordingly. Academic and policy sources (Cambridge Core, LSE Africa at LSE, ScienceDirect, ACLED, Genocide Watch) provide independent structural context and do not originate from the advocacy ecosystem. The lead article (Daily Caller, 31 March 2026) aggregates multiple inputs including the Saul briefing and eyewitness accounts; it is treated as a collection cue, not as a stand-alone evidentiary source.
+      </div>
+    </section>
+
+    <!-- 06 ANALYSIS -->
+    <section class="section" id="analysis">
+      <div class="section-header">
+        <span class="section-num">06 // ANALYSIS</span>
+        <span class="section-title">Structured Analytic Tradecraft</span>
+      </div>
+
+      <p style="font-style:italic; color: var(--slate); font-size:0.88rem; margin-bottom:1.5rem;">
+        Techniques Applied: Five-Layer Strategic Cognition Map | Key Assumptions Check | Analysis of Competing Hypotheses (ACH) | Indicators and Warnings (I&amp;W) | Scenario Modeling
+      </p>
+
+      <!-- LAYER MAP -->
+      <div class="sub-section">
+        <h3>Five-Layer Strategic Cognition Map</h3>
+        <div class="table-wrapper">
+          <table class="layer-table">
+            <tbody>
+              <tr>
+                <td style="width:120px;"><span class="layer-code">L1 // FOUNDATIONS</span></td>
+                <td>
+                  <div class="layer-name">Structural Roots</div>
+                  <div class="layer-content">Colonial-era settler/indigene land tenure divisions in Plateau State have never been legally resolved. The Middle Belt's position as the demographic boundary between Nigeria's Muslim-majority north and Christian-majority south creates persistent identity-resource conflict interaction. Structural adjustment in the 1980s-90s intensified competition for land by collapsing state agricultural support. Climate-induced southward migration of Fulani herders from desertified northern pasturelands has amplified pressure on Middle Belt farming communities since the early 2000s. <cite>[15,16,17]</cite></div>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="layer-code">L2 // MECHANISMS</span></td>
+                <td>
+                  <div class="layer-name">Operating Mechanisms</div>
+                  <div class="layer-content">Armed groups exploit seasonal security windows (holiday periods) and geographic blind spots (proximity to mountain terrain for withdrawal). Motorcycle-borne formations enable rapid strike-and-withdraw tactics across distances exceeding local security response capacity. Criminal financing through kidnap-for-ransom sustains operational capability independent of ideological motivation. Impunity -- near-zero prosecution rate for attackers -- removes deterrence and enables repeat cycles. Political alignment between federal-level Muslim-majority political networks and non-response to Fulani-attributed attacks reduces accountability pressure at the command level. <cite>[15,16,17,18]</cite></div>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="layer-code">L3 // DYNAMICS</span></td>
+                <td>
+                  <div class="layer-name">Current Dynamics</div>
+                  <div class="layer-content">Since 2023, violence has intensified in both frequency and scale in Benue and Plateau States. The December 2025 U.S. Tomahawk strikes in Sokoto (targeting ISSP/Lakurawa) appear to have had no deterrent effect on Middle Belt militia attacks. U.S. CPC redesignation of Nigeria and congressional pressure have elevated the diplomatic stakes but not produced observable operational behavior change. Community youth in Plateau State are increasingly armed and organized for self-defense (Operation Rainbow), raising reprisal and retaliatory attack risk. The post-Palm Sunday curfew and public protests signal elevated community mobilization. <cite>[13,15,18]</cite></div>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="layer-code">L4 // LEVERAGE</span></td>
+                <td>
+                  <div class="layer-name">Points of Leverage</div>
+                  <div class="layer-content">U.S. pressure (CPC designation, Nigeria Religious Freedom Accountability Act, congressional delegations to Benue and Plateau) represents meaningful diplomatic leverage on the Tinubu government. Bilateral security cooperation frameworks offer conditionality mechanisms. The Plateau State governor (Muftwang, a Christian) has condemned the attack and imposed curfew, indicating some state-level political will. Local civil society early warning networks (BYM, COCIN, community leaders) have proven capable of generating advance warnings -- the gap is in converting warnings into security response. <cite>[10,13,16]</cite></div>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="layer-code">L5 // PARADIGMS</span></td>
+                <td>
+                  <div class="layer-name">Narrative &amp; Framing Contests</div>
+                  <div class="layer-content">Two dominant and contested framings operate simultaneously: (A) "Christian genocide by Islamist and Fulani jihadists" -- promoted by U.S. Republican advocacy networks, Christian organizations, and affected communities; and (B) "farmer-herder resource conflict exacerbated by climate change and criminality" -- promoted by the Nigerian federal government, ECOWAS, and some Western analysts. Neither framing is complete. The LSE analysis (2025) documents that the "farmer-herder" frame functions as political camouflage for the federal government, while the "genocide" frame can obscure criminal and resource dimensions and complicate interfaith peacebuilding. Intelligence products must navigate this framing contest without being captured by either pole. <cite>[15,18,20,21]</cite></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- KEY ASSUMPTIONS CHECK -->
+      <div class="sub-section">
+        <h3>Key Assumptions Check</h3>
+        <div class="table-wrapper">
+          <table class="assumption-table">
+            <thead>
+              <tr><th>ID</th><th>Assumption</th><th>Why It Matters</th><th>Risk if Wrong</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="kiq-id">A-01</td>
+                <td>The attack in Jos was carried out by armed non-state actors, not elements of Nigerian security forces</td>
+                <td>Shapes actor attribution and accountability framing for all downstream analysis</td>
+                <td>If wrong, the complicity hypothesis becomes confirmed; all governance and diplomatic recommendations shift</td>
+                <td><span class="status-pill amber">Active / Unverified</span></td>
+              </tr>
+              <tr>
+                <td class="kiq-id">A-02</td>
+                <td>The seasonal timing (Palm Sunday) reflects attacker target selection logic, not coincidence</td>
+                <td>If confirmed, it strengthens the religious targeting hypothesis and improves I&amp;W accuracy for future cycles</td>
+                <td>If wrong, the religious framing is overstated and conflict ecology analysis should weight other drivers more heavily</td>
+                <td><span class="status-pill amber">Plausible / Pattern-supported</span></td>
+              </tr>
+              <tr>
+                <td class="kiq-id">A-03</td>
+                <td>Security force non-response reflects incapacity and structural failure, not deliberate stand-down</td>
+                <td>Determines whether recommendations should target capacity (resources, training) or political will (conditionality, sanctions)</td>
+                <td>If wrong (stand-down confirmed), the political risk calculus for diplomatic partners shifts dramatically; sanctions become appropriate</td>
+                <td><span class="status-pill red">Contested / Unverified</span></td>
+              </tr>
+              <tr>
+                <td class="kiq-id">A-04</td>
+                <td>Forward attack warnings from Equipping the Persecuted reflect genuine intelligence, not advocacy amplification</td>
+                <td>If confirmed, immediate protective action in named flashpoints is warranted; if not, over-response risks resource misallocation</td>
+                <td>If wrong, NGO security planning may be misdirected; if accurate and ignored again, mass-casualty events will follow</td>
+                <td><span class="status-pill red">Single-source / Unverified</span></td>
+              </tr>
+              <tr>
+                <td class="kiq-id">A-05</td>
+                <td>The conflict ecology is blended (resource + ethnic + jihadist + criminal), not mono-causal</td>
+                <td>If correct, interventions targeting only one driver will fail; multi-track approaches are required</td>
+                <td>If the conflict is more purely jihadist-driven, counterterrorism-only responses become more defensible</td>
+                <td><span class="status-pill green">Confirmed by academic evidence</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ACH -->
+      <div class="sub-section">
+        <h3>Analysis of Competing Hypotheses (ACH)</h3>
+        <div class="table-wrapper">
+          <table class="ach-table">
+            <thead>
+              <tr><th>Hypothesis</th><th>Evidence For</th><th>Evidence Against</th><th>Diagnosticity</th><th>Verdict</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>H1: Fulani Ethnic Militia (FEM) -- land-seizure campaign</strong></td>
+                <td>Consistent with multi-year TTP pattern; motorcycle-borne, AK-47 + machete kit matches prior FEM attacks; mountainous withdrawal route used in prior Plateau FEM incidents; Saul briefing alleges FEM massing; community leaders in Plateau routinely identify FEM</td>
+                <td>Some eyewitnesses said "Boko Haram not Fulani"; no confirmed FEM claim; Kagarko attack attributed to bandits not FEM</td>
+                <td>HIGH -- TTP and geographic pattern are strongly diagnostic</td>
+                <td><span class="status-pill green">Most Plausible</span></td>
+              </tr>
+              <tr>
+                <td><strong>H2: Boko Haram / ISWAP -- jihadist religious targeting</strong></td>
+                <td>Some eyewitness attribution; reported "Allahu Akbar" verbal cues; Boko Haram has historically targeted Christian holidays; ISWAP is active in broader region; ICC notes ISWAP attacks on Christian communities</td>
+                <td>ISWAP primarily active in northeast, not Middle Belt; no ISWAP claim; U.S. Christmas strikes targeted Lakurawa (northwest) not BH; BYM says "Boko Haram" attribution may reflect community confusion; Jos North is not a typical ISWAP operating zone</td>
+                <td>MODERATE -- verbal cues are suggestive but not dispositive; geographic mismatch reduces probability</td>
+                <td><span class="status-pill amber">Possible but lower probability</span></td>
+              </tr>
+              <tr>
+                <td><strong>H3: Hybrid FEM/Jihadist network with ideological overlay</strong></td>
+                <td>Academic literature documents "herdsmen militancy" as a hybrid that blends ethnic, economic, and jihadist motivations; attack timing and target selection suggests ideological framing; some FEM factions have documented links to wider jihadist networks</td>
+                <td>Analytically difficult to operationalize; may conflate distinct actors; risks overstating organizational coherence</td>
+                <td>MODERATE -- consistent with blended conflict ecology finding</td>
+                <td><span class="status-pill amber">Plausible secondary explanation</span></td>
+              </tr>
+              <tr>
+                <td><strong>H4: Criminal armed group / bandits without ideological driver</strong></td>
+                <td>Kagarko attack is consistently described as banditry; criminal groups in Southern Kaduna regularly use kidnap-for-ransom; looting reported in Kagarko attack</td>
+                <td>No ransom demand or abduction reported in the Jos attack; mass-casualty indiscriminate fire is inconsistent with profit-maximizing criminal logic; target was a community gathering area not a financial institution</td>
+                <td>LOW for Jos; HIGH for Kagarko -- different attack profiles</td>
+                <td><span class="status-pill red">Low probability for Jos attack</span></td>
+              </tr>
+              <tr>
+                <td><strong>H5: State-directed or state-facilitated attack</strong></td>
+                <td>Pattern of impunity; single-witness report of soldiers firing on local pursuers; Saul's complicity allegation; analyst Umeagbalasi claims systematic sabotage; near-zero prosecution rate</td>
+                <td>No documentary evidence of state direction; state-directed attacks against own citizens are high-risk politically; Plateau State governor (Christian) condemned attack; impunity is consistent with incapacity as well as complicity</td>
+                <td>LOW -- impunity evidence is consistent with multiple hypotheses; not diagnostic for this specific hypothesis</td>
+                <td><span class="status-pill red">Cannot be confirmed; cannot be ruled out</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin-top:1rem; font-size:0.875rem; color:var(--slate-light); font-style:italic;">
+          <strong>Selected Hypothesis:</strong> H1 (Fulani Ethnic Militia as primary actor) with H3 (jihadist ideological overlay) as a secondary explanatory layer. This combination is most consistent with the available evidence base, geographic and TTP pattern, and blended conflict ecology finding. H5 (state complicity) is retained as a monitoring hypothesis requiring additional intelligence collection to confirm or refute.
+        </p>
+      </div>
+
+      <!-- INDICATORS AND WARNINGS -->
+      <div class="sub-section">
+        <h3>Indicators and Warnings</h3>
+        <div class="table-wrapper">
+          <table class="iw-table">
+            <thead>
+              <tr><th>Indicator</th><th>Direction</th><th>Current Status</th><th>Threshold</th><th>Cadence</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Reported FEM/armed group massing near Plateau, Benue, or Kaduna borders</td>
+                <td>Increasing</td>
+                <td><span class="status-pill red">Alleged (unverified) -- post-attack warnings active</span></td>
+                <td>Any confirmed military or community intelligence of massing within 50km of named flashpoints = immediate alert</td>
+                <td>Daily during Easter period; weekly thereafter</td>
+              </tr>
+              <tr>
+                <td>Attack frequency in Plateau, Benue, Southern Kaduna, Taraba</td>
+                <td>Increasing</td>
+                <td><span class="status-pill red">Active escalation -- multiple attacks Palm Sunday week</span></td>
+                <td>2+ mass-casualty events (5+ deaths) per week = escalation threshold crossed</td>
+                <td>Real-time monitoring</td>
+              </tr>
+              <tr>
+                <td>MACBAN (Miyetti Allah) suspension of market participation in affected LGAs</td>
+                <td>Watch</td>
+                <td><span class="status-pill amber">Prior precedent: suspension before New Year Eve attack in Jos South</span></td>
+                <td>Any MACBAN market suspension in flashpoint LGA = 72H elevated alert</td>
+                <td>Weekly</td>
+              </tr>
+              <tr>
+                <td>Nigerian military deployment visible in named flashpoint LGAs</td>
+                <td>Stable / Insufficient</td>
+                <td><span class="status-pill red">Reports of forces arriving post-attack, not pre-positioned</span></td>
+                <td>Absence of visible pre-positioned security in flashpoint areas during major Christian observances = high-risk indicator</td>
+                <td>Weekly</td>
+              </tr>
+              <tr>
+                <td>Community youth vigilante mobilization and self-arming</td>
+                <td>Increasing</td>
+                <td><span class="status-pill amber">Operation Rainbow nascent; post-attack protests signal high mobilization</span></td>
+                <td>Visible community arming beyond defensive posture = retaliatory attack risk elevated</td>
+                <td>Weekly</td>
+              </tr>
+              <tr>
+                <td>Church cancellations or Christian community movement restrictions</td>
+                <td>Watch</td>
+                <td><span class="status-pill amber">Precedent: churches canceled crossover services in Adamawa, Dec. 2025</span></td>
+                <td>Any mass church cancellation in Middle Belt = credible threat signal; recommend treat as actionable</td>
+                <td>Real-time during Holy Week</td>
+              </tr>
+              <tr>
+                <td>U.S.-Nigeria diplomatic temperature (CPC enforcement actions, sanctions threats)</td>
+                <td>Escalating</td>
+                <td><span class="status-pill amber">Rep. Moore warning of "significant consequences"; Nigeria designated CPC</span></td>
+                <td>U.S. sanctions on named Nigerian officials = major escalation in diplomatic pressure environment</td>
+                <td>Monthly</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SCENARIOS -->
+      <div class="sub-section">
+        <h3>Scenario Modeling: 6-12 Month Outlook</h3>
+        <div class="scenario-grid">
+          <div class="scenario-card best">
+            <div class="sc-label">Best Case</div>
+            <div class="sc-title">Constrained Escalation with Diplomatic Intervention</div>
+            <p>U.S. pressure translates into verifiable Nigerian security force deployments in Plateau, Benue, and Southern Kaduna. Easter passes without additional mass-casualty events. Nigeria's National Security Adviser activates Operation Rainbow and provides community early warning systems with resources and response capacity. FEM massing is disrupted by increased military presence.</p>
+            <p><strong>Trigger:</strong> Nigerian government responds to U.S. "significant consequences" warning with observable security deployments before Easter; prosecution of identified perpetrators begins.</p>
+            <div class="sc-prob">Probability: 10-20% | Conditions: requires political will at federal level currently not in evidence</div>
+          </div>
+          <div class="scenario-card base">
+            <div class="sc-label">Base Case</div>
+            <div class="sc-title">Continued Attrition with Seasonal Escalation Peaks</div>
+            <p>Violence continues at the current elevated frequency, with peak events during Ramadan (concurrent with Easter), and subsequent seasonal windows. Easter 2026 sees at least one additional mass-casualty attack in Plateau or Benue. NGOs and humanitarian actors are increasingly unable to operate safely in rural flashpoint areas. U.S. pressure intensifies but does not change behavioral outcomes on the ground. IDP population grows. Retaliatory community attacks occur in 1-2 incidents. International attention spikes and fades without structural change.</p>
+            <p><strong>Trigger:</strong> Nigerian government continues tactical security deployments without structural reform; impunity continues; diplomatic pressure cycles without conditionality.</p>
+            <div class="sc-prob">Probability: 55-65% | Conditions: consistent with current trajectory</div>
+          </div>
+          <div class="scenario-card worst">
+            <div class="sc-label">Worst Case</div>
+            <div class="sc-title">Compound Escalation and Humanitarian Collapse</div>
+            <p>Easter week produces multiple simultaneous mass-casualty attacks across Plateau, Benue, Kaduna, and Taraba. Community youth vigilantes conduct retaliatory attacks on Fulani-identified settlements, triggering a full retaliatory cycle. Humanitarian access to IDP camps collapses in 1-2 affected LGAs. Security forces withdraw from flashpoint areas. U.S.-Nigeria relations deteriorate sharply following sanctions or further military action. Taraba displacement crisis (90,000+ reported) deepens, with spillover into Cameroon border areas.</p>
+            <p><strong>Trigger:</strong> Coordinated Easter attacks in 3+ states; community reprisal cycle initiated; security force presence collapses in rural areas.</p>
+            <div class="sc-prob">Probability: 20-30% | Conditions: current trajectory, post-massacre community anger, and alleged continued FEM massing all support this band</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 BEHAVIORAL -->
+    <section class="section" id="behavioral">
+      <div class="section-header">
+        <span class="section-num">07 // BEHAVIORAL</span>
+        <span class="section-title">Applied Behavioral Tradecraft</span>
+      </div>
+
+      <p style="font-style:italic; color: var(--slate); font-size:0.88rem; margin-bottom:1.5rem;">
+        Justification: Behavioral tradecraft is applied here because the conflict system involves multiple actor groups whose decision-making is shaped by identity triggers, symbolic timing logic, and narrative framing contests that materially affect escalation risk and protection planning. All analysis is evidence-based and derived from observable indicators. No psychological speculation beyond available evidence.
+      </p>
+
+      <div class="behavioral-grid">
+        <div class="behavioral-item">
+          <div class="bi-rank">1</div>
+          <div>
+            <div class="bi-label">Symbolic Holiday Targeting as Force Multiplier</div>
+            <div class="bi-text">
+              <p style="margin-bottom:0.5rem;"><strong style="color:var(--gold-dim); font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase;">Evidence Signals:</strong> Palm Sunday 2026 attack (Jos North); Easter 2025 Bassa LGA attack (43 killed); Christmas 2024-2025 attacks across Plateau and Benue; church crossover service cancellations in Adamawa (Dec 2025). The pattern of holiday-timed attacks across multiple years is not random. <cite>[8,11]</cite></p>
+              <p style="margin-bottom:0.5rem;"><strong style="color:var(--gold-dim); font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase;">Risk Effect:</strong> Deliberate exploitation of peak congregation periods maximizes casualty potential; media attention during sacred holidays amplifies psychological impact; the contrast between sacred observance and massacre maximizes community terror. This functions as an influence operation embedded in kinetic violence -- symbolic timing serves a behavioral and strategic purpose independent of any single actor's ideology.</p>
+              <p style="margin-bottom:0.5rem;"><strong style="color:var(--gold-dim); font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase;">Confirmation Indicators:</strong> Attacks against Christian-majority gatherings during Pentecost (May 2026), mid-year observances, or Christmas 2026 in the same geography would confirm this driver is persistent and seasonal. Absence of attacks during non-Christian observance periods in the same regions would strengthen confirmation.</p>
+              <p style="margin-bottom:0;"><strong style="color:var(--gold-dim); font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase;">Decision Relevance:</strong> NGO and civil society protection planning must treat all major Christian holidays as elevated-threat windows requiring pre-positioned security review and contingency activation, not reactive response. The Easter 2026 window (through April 5) is the immediate operational priority.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="behavioral-item">
+          <div class="bi-rank">2</div>
+          <div>
+            <div class="bi-label">Post-Attack Retaliatory Cycle Risk</div>
+            <div class="bi-text">
+              <p style="margin-bottom:0.5rem;"><strong style="color:var(--gold-dim); font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase;">Evidence Signals:</strong> Plateau State youth protests blocking roads post-Palm Sunday; Easter 2025 attack followed by NEMA-confirmed reprisal attacks killing 52 and displacing 2,000; community leaders publicly calling for self-defense; Operation Rainbow's nascent armed capacity. The 48-72 hour post-attack window has a documented behavioral pattern of elevated retaliatory risk before grief transitions to organized mourning. <cite>[15,18]</cite></p>
+              <p style="margin-bottom:0.5rem;"><strong style="color:var(--gold-dim); font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase;">Risk Effect:</strong> Community armed groups conducting retaliatory strikes on Fulani-identified settlements trigger a secondary attack cycle that can exceed the original event in total casualties and displacement. Operation Rainbow's armed capacity, if deployed offensively rather than defensively, is the primary structural risk factor for triggering a full inter-communal cycle.</p>
+              <p style="margin-bottom:0.5rem;"><strong style="color:var(--gold-dim); font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase;">Confirmation Indicators:</strong> Community youth roadblocks with vehicle searches; Operation Rainbow deployed beyond settlement perimeter; reports of Fulani settlement burning or cattle killing; inter-community violence in Plateau or Benue within 72 hours of a mass-casualty event. Any of these constitutes escalation threshold EW-05 (Annex A).</p>
+              <p style="margin-bottom:0;"><strong style="color:var(--gold-dim); font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase;">Decision Relevance:</strong> State authorities should maintain curfew enforcement through the 72-hour post-attack window and deploy community religious leaders as active mediators. NGOs must treat retaliatory cycle indicators as equivalent in operational urgency to new attack indicators for security posture decisions.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="behavioral-item">
+          <div class="bi-rank">3</div>
+          <div>
+            <div class="bi-label">Impunity as Behavioral Disinhibitor for Perpetrators</div>
+            <div class="bi-text">
+              <p style="margin-bottom:0.5rem;"><strong style="color:var(--gold-dim); font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase;">Evidence Signals:</strong> Near-zero prosecution rate for Middle Belt attackers across multiple documented cycles; no arrests announced following Palm Sunday attack or Kagarko attack; community leaders consistently report perpetrators are "never held accountable"; Cambridge and LSE scholarship confirms structural impunity as a documented feature of the conflict system. <cite>[16,18]</cite></p>
+              <p style="margin-bottom:0.5rem;"><strong style="color:var(--gold-dim); font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase;">Risk Effect:</strong> Sustained impunity signals that the cost of violence is effectively zero -- a structural behavioral disinhibitor that makes deterrence arguments inapplicable. It may explain the operationally bold pattern of attacking densely populated areas near urban centers. It is also structurally consistent with the complicity hypothesis (A-03), without confirming it.</p>
+              <p style="margin-bottom:0.5rem;"><strong style="color:var(--gold-dim); font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase;">Confirmation Indicators:</strong> If the Nigerian government announces arrests and initiates prosecutions within 30 days of the Palm Sunday attack, this driver would be partially disrupted for this cycle. Absence of any prosecutorial action within 60 days confirms the impunity cycle is continuing at baseline and strengthens the case for international conditionality pressure.</p>
+              <p style="margin-bottom:0;"><strong style="color:var(--gold-dim); font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase;">Decision Relevance:</strong> International actors should treat prosecution of identifiable perpetrators as a concrete, verifiable deliverable in engagement with the Tinubu government -- not a background expectation. The medium-term recommendations (Section 08-C) include pressing Nigeria's ICPC and EFCC to open investigations specifically on this gap.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="behavioral-item">
+          <div class="bi-rank">4</div>
+          <div>
+            <div class="bi-label">Narrative Capture Risk for International Actors</div>
+            <div class="bi-text">
+              <p style="margin-bottom:0.5rem;"><strong style="color:var(--gold-dim); font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase;">Evidence Signals:</strong> U.S. Republican framing of "Christian genocide" vs. Nigerian government "farmer-herder clash" framing; NYT dispute with Rep. Moore; Genocide Watch Stage 9 classification vs. ACLED data showing approximately 5% explicit religious targeting; both framings actively contested by respected independent institutions. Advocacy organizations with explicit positions are primary information providers to international actors. <cite>[20,21]</cite></p>
+              <p style="margin-bottom:0.5rem;"><strong style="color:var(--gold-dim); font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase;">Risk Effect:</strong> International actors risk being captured by either frame in ways that distort operational decisions. Accepting the genocide frame without qualification overstates attacker organizational coherence and may misallocate counterterrorism resources. Accepting the climate/resource frame without qualification ignores observable religious target selection and church destruction patterns. Either capture degrades policy quality.</p>
+              <p style="margin-bottom:0.5rem;"><strong style="color:var(--gold-dim); font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase;">Confirmation Indicators:</strong> Frame capture is evidenced by: U.S. policy actions premised exclusively on one framing; NGO advocacy materials omitting the contested attribution findings; or Nigerian government response using climate framing to deflect accountability. Any of these indicate the behavioral risk is active and affecting decision quality.</p>
+              <p style="margin-bottom:0;"><strong style="color:var(--gold-dim); font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase;">Decision Relevance:</strong> Intelligence products serving this conflict system must maintain frame independence, explicitly acknowledging both religious targeting patterns and blended conflict drivers. The 3-30 day diplomatic recommendation (Section 08-C) specifically addresses the risk of policy actors using single-source advocacy intelligence without independent verification.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 IMPLICATIONS -->
+    <section class="section" id="implications">
+      <div class="section-header">
+        <span class="section-num">08 // IMPLICATIONS, RISK &amp; RECOMMENDATIONS</span>
+        <span class="section-title">Strategic Implications, Risk Scoring &amp; Recommendations</span>
+      </div>
+
+      <!-- STRATEGIC IMPLICATIONS -->
+      <div class="sub-section">
+        <h3>A. Strategic Implications</h3>
+        <p><strong>Local Actors (Plateau, Benue, Kaduna State Governments):</strong> The Palm Sunday attack places Plateau Governor Muftwang in a politically untenable position: he has condemned the attack and imposed curfew, but has limited autonomous security force capacity. State governments face the compounding challenge of community youth mobilization (potential retaliatory actors), an overwhelmed IDP system, and federal-level political constraints on aggressive security action against Fulani-attributed groups. The absence of a functioning local early warning-to-response pipeline remains the most immediate structural failure.</p>
+        <p><strong>Federal Government of Nigeria:</strong> The Tinubu administration faces simultaneous pressure from the U.S. government (CPC designation, congressional legislation threatening sanctions), from affected Christian communities and opposition political actors, and from its own northern political base which is sensitive to military action against Fulani communities. This creates a structural incentive for performative condemnation without substantive security response -- the pattern observed across multiple prior attack cycles. The diplomatic cost of continued inaction is rising with each mass-casualty event that generates U.S. congressional attention.</p>
+        <p><strong>Regional and International Actors:</strong> The U.S. has established a precedent with the December 2025 Tomahawk strikes in Sokoto; this precedent creates both a deterrence signal and an escalation risk if misapplied to Middle Belt dynamics, where the actor set (Fulani militia, bandits) is fundamentally different from the ISSP/Lakurawa targets struck in December. Congressional pressure for further military action or sanctions creates a secondary conflict: Nigerian sovereignty concerns could push Abuja toward limiting U.S. security cooperation access. NGOs operating in Middle Belt states face a narrowing operational space and must treat current conditions as a sustained high-risk environment requiring contingency planning.</p>
+      </div>
+
+      <!-- RISK MATRIX -->
+      <div class="sub-section">
+        <h3>B. Risk Scoring Matrix</h3>
+        <div class="table-wrapper">
+          <table class="risk-matrix">
+            <thead>
+              <tr><th>Risk</th><th>Likelihood (1-5)</th><th>Impact (1-5)</th><th>Score</th><th>Mitigant</th></tr>
+            </thead>
+            <tbody>
+              <tr class="risk-high">
+                <td>Additional mass-casualty attack during Easter week (Plateau, Benue, Taraba)</td>
+                <td>5</td><td>5</td><td><strong>25</strong></td>
+                <td>Emergency pre-positioning of security forces; NGO contingency evacuation plans; community movement restriction advisories</td>
+              </tr>
+              <tr class="risk-high">
+                <td>Retaliatory community violence triggering full escalation cycle</td>
+                <td>4</td><td>5</td><td><strong>20</strong></td>
+                <td>Curfew enforcement; community leader mediation; 72-hour crisis period monitoring; Operation Rainbow command restraint</td>
+              </tr>
+              <tr class="risk-high">
+                <td>Humanitarian access collapse in rural Plateau/Benue LGAs</td>
+                <td>4</td><td>4</td><td><strong>16</strong></td>
+                <td>Preemptive supply positioning; contingency evacuation protocols for humanitarian staff; UN OCHA coordination</td>
+              </tr>
+              <tr>
+                <td>Nigerian government sanctions threat from U.S. Congress triggers restriction of U.S. security cooperation access</td>
+                <td>3</td><td>4</td><td><strong>12</strong></td>
+                <td>Diplomatic engagement emphasizing shared counterterrorism interest; maintain cooperation frameworks while applying political pressure</td>
+              </tr>
+              <tr>
+                <td>IDP camp overflow and displacement spillover to urban areas</td>
+                <td>4</td><td>3</td><td><strong>12</strong></td>
+                <td>Emergency capacity assessment; UNHCR/IOM coordination; state government support for temporary sites</td>
+              </tr>
+              <tr>
+                <td>Abduction-for-ransom network expansion in Kagarko/Southern Kaduna</td>
+                <td>4</td><td>3</td><td><strong>12</strong></td>
+                <td>Staff movement restriction in Southern Kaduna; kidnap &amp; ransom protocols; emergency contact registry</td>
+              </tr>
+              <tr>
+                <td>Confirmed FEM massing in Benue/Nasarawa border ahead of planting season</td>
+                <td>3</td><td>5</td><td><strong>15</strong></td>
+                <td>Intelligence collection priority; community early warning activation; pre-positioning security in Guma, Logo, Makurdi LGAs</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- RECOMMENDATIONS -->
+      <div class="sub-section">
+        <h3>C. Recommendations by Time Horizon</h3>
+        <div class="rec-timeline">
+
+          <div class="rec-block">
+            <div class="rec-time red">0-72H // IMMEDIATE</div>
+            <div class="rec-content">
+              <strong style="color:var(--white);">NGOs and civil society in Plateau, Benue, Taraba, Southern Kaduna:</strong> Activate contingency plans immediately. Conduct headcount and safe-location verification for all staff in Jos North, Kagarko, Takum/Taraba districts, and Guma/Logo LGAs in Benue. Suspend non-essential field operations in named flashpoints through the Easter period (through 5 April 2026). Pre-position emergency communications and evacuation logistics. Review all staff movement protocols -- restrict travel on unlit rural roads after 17:00 local time. Establish emergency contact protocols with state security contacts (where available) and U.S. Embassy warden systems.
+            </div>
+          </div>
+
+          <div class="rec-block">
+            <div class="rec-time red">0-72H // IMMEDIATE</div>
+            <div class="rec-content">
+              <strong style="color:var(--white);">Community protection (local authorities and civil society):</strong> Maintain curfew enforcement in Jos North through Easter; extend if retaliatory incidents emerge. Activate Operation Rainbow in its current form as a community surveillance (not offensive) asset. Deploy community leaders as mediators between youth groups and security forces. Issue public messaging through community religious leaders urging restraint and rejecting retaliatory action. Ensure IDP camp security capacity is reinforced before any post-curfew movement.
+            </div>
+          </div>
+
+          <div class="rec-block">
+            <div class="rec-time gold">3-30 DAYS // NEAR-TERM</div>
+            <div class="rec-content">
+              <strong style="color:var(--white);">Security and intelligence collection:</strong> Prioritize independent verification of the FEM massing allegations via local civil society networks, BYM, and COCIN. This is the highest-priority intelligence gap (GAP-07). Any confirmed massing should trigger immediate escalation to state security councils and U.S. Embassy. Conduct structured interviews with Palm Sunday survivors to document attack TTPs and attacker descriptors; this data is critical for actor attribution and I&amp;W calibration. Document the eyewitness account of security force behavior post-attack through a human rights monitor with appropriate safeguards.
+            </div>
+          </div>
+
+          <div class="rec-block">
+            <div class="rec-time gold">3-30 DAYS // NEAR-TERM</div>
+            <div class="rec-content">
+              <strong style="color:var(--white);">Diplomatic and advocacy:</strong> U.S. congressional actors should prioritize verification of the March 25 briefing's specific claims before using them as the basis for policy actions; single-source advocacy intelligence that cannot be independently verified should not carry the same weight as corroborated human rights monitoring. Maintain CPC designation pressure while preserving security cooperation access as a lever. Push for Nigeria's National Security Council to activate a formal, time-bound early warning response protocol for flagged flashpoint areas, with consequences for non-response.
+            </div>
+          </div>
+
+          <div class="rec-block">
+            <div class="rec-time green">30-180 DAYS // MEDIUM-TERM</div>
+            <div class="rec-content">
+              <strong style="color:var(--white);">Structural and systemic:</strong> Fund and resource Operation Rainbow with formal legal authority, proper ROE (rules of engagement), and accountability to state police, not community militias -- to reduce retaliatory escalation risk from armed community groups operating outside the law. Establish a Nigeria Middle Belt Early Warning Center with CSI, BYM, COCIN, and COCIN affiliates as collection nodes feeding into a common platform accessible to Plateau and Benue state governors and the National Security Adviser. Press Nigeria's ICPC and EFCC to open investigations into the prosecution gap for Middle Belt perpetrators. Support international documentation efforts by Amnesty International and ICG in Plateau, Benue, Taraba, and Southern Kaduna, including camera-equipped field teams, to close the forensic documentation gap that prevents attribution.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 CONFIDENCE -->
+    <section class="section" id="confidence">
+      <div class="section-header">
+        <span class="section-num">09 // CONFIDENCE</span>
+        <span class="section-title">Confidence Statement and Uncertainties</span>
+      </div>
+
+      <div class="conf-panel">
+        <div class="conf-header">Overall Confidence: MODERATE</div>
+        <div class="conf-body">
+          <p>The factual foundation of this assessment (attack occurred, mass casualties confirmed, concurrent attacks in Kaduna and Taraba) rests on a high-confidence multi-source evidentiary base. The structural analysis (blended conflict ecology, incapacity as primary security failure explanation, seasonal targeting logic, forward escalation risk) draws on peer-reviewed academic literature and corroborated monitoring data and is assessed at moderate-to-high confidence. The specific claims about pre-attack intelligence being formally verified and ignored, the security stand-down allegation, and the forward massing warning all derive from single-source advocacy inputs and are assessed at low confidence. Overall confidence is capped at MODERATE because the most consequential specific claims -- which would shift the political and policy response significantly -- remain unverified.</p>
+          <p>Stated reasons for confidence ceiling: (1) No verified Nigerian military or independent intelligence product confirming pre-attack massing or formal warning receipt; (2) Single-witness account of security force firing on pursuers is unverified and uncorroborated; (3) Actor attribution remains contested between Fulani militia and Boko Haram with no forensic or claimed evidence to resolve the dispute; (4) Total casualty count varies by a factor of 2x across reporting sources, indicating significant uncertainty about the basic facts of the event at the margins.</p>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h3>Flip-Risk Uncertainties</h3>
+        <div class="uncertainty-list">
+          <div class="uncertainty-item">
+            <strong>FLIP RISK 1: State Complicity Confirmation</strong>
+            If independent human rights monitors or a Nigerian judicial inquiry confirm that security forces received specific, verified intelligence about the Palm Sunday attack and deliberately withheld protective response, all governance, diplomatic, and structural recommendations shift fundamentally. The policy response would require targeted sanctions on named officials, not capacity-building support. This would also strengthen the most severe interpretation of the "genocide" framing, with corresponding implications for international legal obligations.
+          </div>
+          <div class="uncertainty-item">
+            <strong>FLIP RISK 2: Easter Attack Scale Exceeds Worst-Case Scenario</strong>
+            If FEM massing allegations are accurate and coordinated Easter-week attacks occur simultaneously across Plateau, Benue, Taraba, and Southern Kaduna with a combined casualty toll exceeding 200, the humanitarian and political situation would escalate beyond the scenario range modeled here. This could trigger U.S. military action in the Middle Belt (not just northwest), collapse of U.S.-Nigeria security cooperation, and potentially mass displacement events requiring UNHCR emergency declaration.
+          </div>
+          <div class="uncertainty-item">
+            <strong>FLIP RISK 3: Attack Perpetrator Identified as ISWAP / Boko Haram</strong>
+            If forensic evidence, captured fighters, or a credible ISWAP claim confirms Boko Haram/ISWAP as the primary perpetrators rather than Fulani militia, the conflict ecology analysis shifts significantly. The counterterrorism response framework (including further U.S. military engagement) would become more applicable to the Middle Belt specifically, and the resource/ethnic framing would be substantially weakened. This would also change the accountability framing for Nigerian military inaction (counterterrorism failure vs. Fulani militia tolerance).
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h3>Assumption Failure Drill</h3>
+        <div class="table-wrapper">
+          <table class="assumption-table">
+            <thead>
+              <tr><th>Assumption</th><th>Failure Signal</th><th>Consequence</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Security force non-response reflects incapacity, not deliberate stand-down (A-03)</td>
+                <td>Human rights monitor or judicial inquiry documents that officers received specific orders not to deploy; CCTV or radio intercept evidence of command-level stand-down communication</td>
+                <td>Diplomatic response shifts from capacity-building to sanctions; the political risk for Tinubu administration increases dramatically; U.S.-Nigeria relationship enters acute crisis phase; complicity narrative becomes the consensus analytic position</td>
+              </tr>
+              <tr>
+                <td>The conflict ecology is blended, not mono-causal religious targeting (A-05)</td>
+                <td>Forensic pattern analysis confirms attacks are exclusively targeting church-attending Christians with no land-seizure or ransom dimension; ISWAP claims attacks with religious justification; perpetrators are confirmed to return land to Christian communities after attacks</td>
+                <td>The "genocide" framing becomes analytically defensible under UN Convention criteria; international legal obligations for third-party states escalate; counterterrorism-only responses become more defensible; resource-based diplomatic arguments lose credibility</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 REFERENCES -->
+    <section class="section" id="references">
+      <div class="section-header">
+        <span class="section-num">10 // REFERENCES</span>
+        <span class="section-title">Source Register &amp; WSI Audit</span>
+      </div>
+      <div class="table-wrapper">
+        <table class="ref-table">
+          <thead>
+            <tr><th>#</th><th>Source</th><th>Type</th><th>Band</th><th>Independence Note</th><th>URL / Locator</th><th>Atomic Claim / Falsifiability</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>International Christian Concern (ICC) -- Dozens Killed Palm Sunday</td>
+              <td>Christian Advocacy NGO</td>
+              <td><span class="band-pill amber">AMBER</span></td>
+              <td>Advocacy organization with documented pro-Christian position; corroborates attack occurrence but carries institutional framing bias. Independent of Nigerian government sources.</td>
+              <td>persecution.org, 30 Mar 2026</td>
+              <td>Atomic claim: 30 killed, Angwan Rukuba, Jos North; 48-hour curfew imposed. Falsifiable by: official Nigerian police casualty report or hospital discharge records.</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Open Doors UK -- 27 Killed Palm Sunday Attack</td>
+              <td>Christian Aid Organization</td>
+              <td><span class="band-pill amber">AMBER</span></td>
+              <td>Advocacy-affiliated; most forensically precise account reviewed -- explicitly states "not all victims are confirmed Christians"; local field contacts verified 14 at scene, 13 in hospital. Does not originate from the Daily Caller / Saul advocacy ecosystem.</td>
+              <td>opendoorsuk.org, 30 Mar 2026</td>
+              <td>Atomic claim: 27 total killed (14 at scene, 13 in hospital per local contacts); Governor Muftwang condemnation; curfew confirmed. Falsifiable by: Jos University Teaching Hospital admission records.</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Aleteia -- Deadly Palm Sunday Attack, Death Toll Uncertain</td>
+              <td>Catholic News Organization</td>
+              <td><span class="band-pill amber">AMBER</span></td>
+              <td>Catholic-affiliated; independent of ICC and Open Doors; reports CAN condemnation and acknowledges death toll uncertainty (11 minimum). Cross-corroborates attack occurrence from a distinct organizational stream.</td>
+              <td>aleteia.org, 31 Mar 2026</td>
+              <td>Atomic claim: Attack confirmed; minimum 11 killed; no group claimed responsibility; CAN issued condemnation. Falsifiable by: verified incident report from Plateau State government.</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Breitbart News -- Palm Sunday Massacre, 30 Killed</td>
+              <td>Right-leaning Political Media</td>
+              <td><span class="band-pill red">RED</span></td>
+              <td>Strong advocacy framing; not an independent originating source -- aggregates Open Doors UK, Daily Trust, Vanguard, and social media content. Used only for witness quote aggregation and pattern context, not for load-bearing key judgments. Counts as one corroboration stream with its sourced inputs, not an additional independent stream.</td>
+              <td>breitbart.com, 30 Mar 2026</td>
+              <td>Atomic claim: Aggregates Ryan Brown (Open Doors CEO) statistics on 2025-2026 attack patterns. Falsifiable by: cross-check against Open Doors primary publications (see [2]).</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Daily Caller -- Nigerian Leaders Allegedly Ignore Intelligence</td>
+              <td>Right-leaning Political Media</td>
+              <td><span class="band-pill red">RED</span></td>
+              <td>Lead collection cue only per analytic scope boundary. Primary originating vehicle for the Saul/Equipping the Persecuted FEM massing allegation and the Chiroma soldier-on-pursuer account. Not an independent source: its core claims trace to Saul and Chiroma, both single-source. Not load-bearing for any key judgment. Downstream outlets citing the Daily Caller are counted as part of this single stream, not as independent corroboration.</td>
+              <td>dailycaller.com, 31 Mar 2026</td>
+              <td>Atomic claims requiring independent verification: (1) Saul FEM massing allegation; (2) March 25 D.C. briefing content and Nigerian military verification claim; (3) Chiroma eyewitness account of soldiers firing on community pursuers. None is independently verified as of date of issue.</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Open Doors Australia -- Attack on Palm Sunday</td>
+              <td>Christian Aid Organization</td>
+              <td><span class="band-pill amber">AMBER</span></td>
+              <td>Same parent organization as [2]; Australian branch constitutes partial but not fully independent corroboration (shared organizational network, distinct editorial verification). Consistent with [2] on all factual claims.</td>
+              <td>opendoors.org.au, 30 Mar 2026</td>
+              <td>Atomic claim: 14 at scene, 13 in hospital; attack at approximately 20:00 local, Angwan Rukuba. Consistent with [2]; not counted as a fully independent stream for independence test purposes.</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Hungarian Conservative -- NYT Denies Nigeria Christian Genocide</td>
+              <td>Conservative Political Media</td>
+              <td><span class="band-pill red">RED</span></td>
+              <td>Advocacy-heavy secondary aggregator; aggregates TruthNigeria, Arise News, and Taraba displacement estimates. Used only for Taraba attack documentation and the NYT/Rep. Moore framing dispute. Not independent of the sources it cites. The 90,000 displacement figure originates from this source and has no independent corroboration reviewed.</td>
+              <td>hungarianconservative.com, 31 Mar 2026</td>
+              <td>Atomic claim: Taraba church attack (Adu, Takum District) occurred same week as Jos attack; 90,000 displacement estimate. Taraba attack confirmed independently by [8]; the 90,000 figure is single-source and should be treated as unverified.</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>CSI-International -- Nigeria: 120+ Christians Killed in Plateau</td>
+              <td>Christian Aid Organization</td>
+              <td><span class="band-pill amber">AMBER</span></td>
+              <td>Advocacy-affiliated but contains field-documented data; documents 2025 Palm Sunday attack (Zike, Bassa LGA) with field manager report. Independent of ICC and Open Doors organizational networks. Provides prior-cycle attack pattern data for I&amp;W calibration.</td>
+              <td>csi-int.org, April 2025</td>
+              <td>Atomic claims: 56 killed at Zike, Bassa LGA, Palm Sunday 2025; 56 killed in Hurti, April 2 2025. Falsifiable by: Nigerian Red Cross 2025 incident logs or ACLED event database entries for Bassa LGA April 2025.</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>Truth Nigeria -- Palm Sunday Horror</td>
+              <td>Nigerian Christian-aligned News</td>
+              <td><span class="band-pill amber">AMBER</span></td>
+              <td>On-the-ground Nigerian reporting; independent of international Christian advocacy organizations; captures eyewitness divergence between Boko Haram and Fulani attribution. Valuable for documenting contested attribution at scene level.</td>
+              <td>truthnigeria.com, 30 Mar 2026</td>
+              <td>Atomic claim: Eyewitness stated attackers identified as "Boko Haram not Fulani"; areas affected include Angwa Rukuba, Eto Baba, student areas. Falsifiable by: additional structured survivor interviews.</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>Daily Caller -- Saul FEM Post-Attack Massing Warning</td>
+              <td>Political Media (same source as [5])</td>
+              <td><span class="band-pill red">RED</span></td>
+              <td>Same originating outlet as [5]; listed separately because the massing warning is a distinct post-attack claim from the pre-attack intelligence allegation. Both are single-source from within the Equipping the Persecuted ecosystem. Counting [5] and [10] as two sources for this claim would fail the independence test; they are treated as one stream.</td>
+              <td>dailycaller.com, 31 Mar 2026</td>
+              <td>Atomic claim: Post-attack Saul warning alleges continued FEM massing in Benue, Plateau, Southern Kaduna (Chikun, Kafanchan, Kajuru), Taraba. Falsifiable by: independent community or military surveillance confirmation in named locations.</td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td>ICC -- Nigerian Officials Ignored Early Warnings Before New Year's Eve Attack</td>
+              <td>Christian Advocacy NGO</td>
+              <td><span class="band-pill amber">AMBER</span></td>
+              <td>Same organization as [1] but documents a distinct prior event (Dec 31 2025, Jos South). Provides the closest available independent corroboration of the pattern-of-ignored-warnings claim from a different incident cycle than Palm Sunday. Does not independently confirm the specific Palm Sunday pre-attack warning allegation.</td>
+              <td>persecution.org, Jan 3 2026</td>
+              <td>Atomic claim: Intelligence reports before Dec 31 2025 attack warned of shoot-and-run tactics in Jos South; no preventive security action taken. Falsifiable by: Plateau State security force deployment logs for Dec 30-31 2025.</td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td>CSI-International -- Nigeria: Scores Killed over Christmas and New Year</td>
+              <td>Christian Aid Organization</td>
+              <td><span class="band-pill amber">AMBER</span></td>
+              <td>Same organization as [8] but covers a distinct event cycle (Dec 2025-Jan 2026). Contains named community leader quote (Solomon Dalyop, Benue Youth Movement) corroborating warning-without-response pattern. Independent of ICC organizational network.</td>
+              <td>csi-int.org, Jan 12 2026</td>
+              <td>Atomic claim: Community leader Dalyop (BYM) publicly stated warnings were issued before New Year attacks with no security response. Falsifiable by: BYM records of formal warning submissions to Plateau State security authorities.</td>
+            </tr>
+            <tr>
+              <td>13</td>
+              <td>Wikipedia -- 2025 United States Strikes in Nigeria</td>
+              <td>Encyclopedia (Secondary Aggregator)</td>
+              <td><span class="band-pill amber">AMBER</span></td>
+              <td>Secondary aggregator; useful for establishing factual baseline on Dec 2025 Tomahawk strikes. Wikipedia material cross-checked against the AFP reports and AFRICOM statements cited within the article. Not an independent source; all load-bearing claims traced to primary sources cited in the article (AFP, AFRICOM). Counts as one stream with its sourced inputs.</td>
+              <td>en.wikipedia.org/wiki/2025_United_States_strikes_in_Nigeria (accessed Mar 2026)</td>
+              <td>Atomic claims: Dec 26 2025 U.S. strikes targeted Lakurawa/ISSP in Sokoto State; 155-200+ fighters killed per AFRICOM; 100 U.S. troops deployed to Nigeria Feb 2026. Falsifiable by: AFRICOM official press releases and U.S. DoD congressional notifications.</td>
+            </tr>
+            <tr>
+              <td>14</td>
+              <td>Taylor &amp; Francis -- Violent Herder-Farmer Conflicts and Human Security</td>
+              <td>Peer-Reviewed Academic</td>
+              <td><span class="band-pill green">GREEN</span></td>
+              <td>Fully independent; peer-reviewed journal; no advocacy affiliation. Provides quantified casualty baseline for Middle Belt conflict 2015-2021.</td>
+              <td>tandfonline.com, published Nov 2025</td>
+              <td>Atomic claims: Benue State 7,000 fatalities 2015-2020; Plateau State 78 casualties in 14 incidents 2021. Falsifiable by: Nigeria Watch database for same period and states.</td>
+            </tr>
+            <tr>
+              <td>15</td>
+              <td>Wikipedia -- Herder-Farmer Conflicts in Nigeria</td>
+              <td>Encyclopedia (Secondary Aggregator)</td>
+              <td><span class="band-pill amber">AMBER</span></td>
+              <td>Secondary aggregator; synthesizes Genocide Watch, ACLED, ECOWAS, and Amnesty International positions. The ACLED 5% religious-targeting figure and Genocide Watch Stage 9 classification are derived from primary sources cited within; those primary sources, not Wikipedia, are the load-bearing references. Wikipedia counted as one stream with its sourced inputs, not as independent corroboration of those inputs.</td>
+              <td>en.wikipedia.org/wiki/Herder%E2%80%93farmer_conflicts_in_Nigeria (accessed Mar 2026)</td>
+              <td>Atomic claims: Genocide Watch Stage 9 classification for Nigeria; ACLED data showing 53,000+ total killed since 2009 (both Muslim and Christian). Falsifiable by: direct Genocide Watch report download and ACLED event database query for Nigeria 2009-2026.</td>
+            </tr>
+            <tr>
+              <td>16</td>
+              <td>Cambridge University Press -- Dynamics of Herder-Farmer Conflicts in Plateau State</td>
+              <td>Peer-Reviewed Academic</td>
+              <td><span class="band-pill green">GREEN</span></td>
+              <td>Fully independent; field-study based; peer-reviewed in African Studies Review. Documents peace commission failures, security force role in exacerbating conflict, and indigene/settler political dynamics. Core structural analysis source.</td>
+              <td>cambridge.org, African Studies Review, 2024</td>
+              <td>Atomic claims: State officials and security agents contributed to conflict intensification in documented incidents; Plateau State peace commissions failed due to poor funding and political interference. Falsifiable by: peace commission official records and Plateau State Assembly archives.</td>
+            </tr>
+            <tr>
+              <td>17</td>
+              <td>Taylor &amp; Francis -- Politics of Eco-Violence: Why Is Conflict Escalating?</td>
+              <td>Peer-Reviewed Academic</td>
+              <td><span class="band-pill green">GREEN</span></td>
+              <td>Fully independent; applies Homer-Dixon resource conflict model to Nigerian case; peer-reviewed. Documents political opportunity structure changes post-2014 as the primary escalation catalyst and elite-militia alliance patterns.</td>
+              <td>tandfonline.com, 2022</td>
+              <td>Atomic claim: Post-2014 political opportunity structure change is the leading escalation driver in the Middle Belt conflict system. Falsifiable by: conflict frequency data pre/post 2014 from ACLED or Nigeria Watch.</td>
+            </tr>
+            <tr>
+              <td>18</td>
+              <td>LSE Africa at LSE -- Violence in Nigeria's Middle Belt Has Long Historical Roots</td>
+              <td>Academic Commentary (LSE)</td>
+              <td><span class="band-pill green">GREEN</span></td>
+              <td>Independent academic commentary; fully independent of advocacy organizations; documents the "farmer-herder" framing as federal political camouflage; cites Tor Tiv and Tinubu government response timeline. High-quality source for structural and political analysis.</td>
+              <td>blogs.lse.ac.uk, Aug 11 2025</td>
+              <td>Atomic claims: 6,800 killed in Benue 2023-May 2025; 2,600 in Plateau same period; "farmer-herder" framing functions as political cover per author's documented analysis. Falsifiable by: ACLED/Nigeria Watch direct query for Benue and Plateau States 2023-May 2025.</td>
+            </tr>
+            <tr>
+              <td>19</td>
+              <td>Champion News / Channels TV / Daily Post Nigeria / AFP-EWN -- Kagarko Wedding Attack</td>
+              <td>Nigerian Mainstream Media + International Wire</td>
+              <td><span class="band-pill green">GREEN</span></td>
+              <td>Four independently operating outlets from distinct organizational ecosystems (Nigerian print, Nigerian broadcast, Nigerian digital, AFP international wire) all confirming the same event facts. This constitutes multi-stream corroboration meeting the GREEN band threshold. Police spokesperson confirmation (Kaduna State police) provides official source independent of media.</td>
+              <td>championnews.ng; channelstv.com; dailypost.ng; ewn.co.za -- Mar 30-31 2026</td>
+              <td>Atomic claims: 13 killed in Kahir village, Kagarko LGA, Kaduna State; timing 23:47 local; mass abductions; police confirmed; operation lasted approximately one hour with no security response during attack. Falsifiable by: Kaduna State police formal incident report.</td>
+            </tr>
+            <tr>
+              <td>20</td>
+              <td>Wikipedia -- Religious Violence in Nigeria</td>
+              <td>Encyclopedia (Secondary Aggregator)</td>
+              <td><span class="band-pill amber">AMBER</span></td>
+              <td>Secondary aggregator; synthesizes ACLED, AP, BBC, Al Jazeera, Deutsche Welle, and multiple academic sources. The ACLED 5% religious-targeting figure is the most analytically significant data point; it derives from ACLED directly, not from Wikipedia independently. Used for balanced conflict framing context. Counted as one stream with its sourced inputs.</td>
+              <td>en.wikipedia.org/wiki/Religious_violence_in_Nigeria (accessed Mar 2026)</td>
+              <td>Atomic claim: ACLED data shows approximately 5% of civilian-targeting events in Nigeria are explicitly religious in motivation; UN Genocide Convention Article II criteria cited for comparative framing. Falsifiable by: direct ACLED Nigeria dataset download filtered by targeting motive classification.</td>
+            </tr>
+            <tr>
+              <td>21</td>
+              <td>Al Jazeera -- US Bombs Target ISIL in Nigeria</td>
+              <td>International Broadcast News</td>
+              <td><span class="band-pill green">GREEN</span></td>
+              <td>Fully independent international wire; no advocacy affiliation; documents geographic and operational distinction between U.S. strike targets (ISSP, northwest Nigeria) and the Middle Belt farmer-herder conflict zone. Represents analyst and government voices from multiple governments.</td>
+              <td>aljazeera.com, Dec 26 2025</td>
+              <td>Atomic claim: U.S. December 2025 strikes targeted ISSP/Lakurawa in Sokoto State (northwest), a geographically and operationally distinct theater from the Plateau/Benue Middle Belt conflict. Falsifiable by: AFRICOM target coordinates and area of operations disclosure.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-top:1.5rem; background:var(--obsidian-3); border:1px solid rgba(200,169,110,0.14); border-radius:var(--radius); padding:1.1rem 1.25rem;">
+        <p style="font-family:var(--mono); font-size:10px; color:var(--gold-dim); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.75rem;">Band Key</p>
+        <p style="font-size:0.875rem; color:var(--slate-light);">
+          <span class="band-pill green">GREEN</span> Peer-reviewed academic, multi-confirmed wire, or official government record. Load-bearing for key judgments without additional caveats.
+          &nbsp;&nbsp;
+          <span class="band-pill amber">AMBER</span> Credible reporting with potential advocacy framing or partial independence. Load-bearing only when corroborated by Green-band or independent Amber-band source.
+          &nbsp;&nbsp;
+          <span class="band-pill red">RED</span> Single-source, advocacy-primary, or politically framed. Used for collection cueing only; not load-bearing for key judgments.
+        </p>
+        <p style="font-size:0.875rem; color:var(--slate-light); margin-top:0.75rem;">
+          <strong style="color:var(--white);">WSI Independence Test Statement:</strong> The core factual claims in this assessment (attack confirmed, mass casualties, Kagarko simultaneous attack, curfew imposed, pattern of prior ignored warnings) are corroborated by at least two independent sources from different organizational ecosystems. The specific intelligence-warning allegations (FEM massing, military verification and stand-down) are single-source from within the Equipping the Persecuted / Truth Nigeria advocacy ecosystem. They are treated as unverified allegations throughout and do not serve as the basis for any High-Confidence key judgment. Confidence levels throughout this report reflect evidence quality and source independence, not volume of reporting.
+        </p>
+      </div>
+    </section>
+
+    <!-- ANNEX A -->
+    <section class="section" id="annex-a">
+      <div class="section-header">
+        <div>
+          <div class="annex-label">ANNEX A</div>
+          <span class="section-title" style="margin-left:0;">Early Warning Indicators</span>
+        </div>
+      </div>
+      <div class="table-wrapper">
+        <table class="iw-table">
+          <thead>
+            <tr><th>ID</th><th>Trigger Event</th><th>Scenario Signal</th><th>Leading Indicators</th><th>Analytic Action Required</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="kiq-id">EW-01</td>
+              <td>MACBAN announces market suspension in flashpoint LGA</td>
+              <td>Pre-attack mobilization (precedent: Jos South New Year's Eve 2025)</td>
+              <td>Market suspension announcement; Fulani community withdrawal from mixed-use areas; removal of cattle from communal grazing areas near settlements</td>
+              <td>Immediate alert to state security council and NGO partners; 72-hour elevated monitoring; pre-position emergency evacuation for vulnerable communities</td>
+            </tr>
+            <tr>
+              <td class="kiq-id">EW-02</td>
+              <td>Community early warning system reports armed group massing within 50km of named flashpoints</td>
+              <td>Imminent attack (base or worst case)</td>
+              <td>BYM, COCIN, or community leaders report unusual armed presence; motorcycle accumulation; strangers in area; unusual night movement patterns</td>
+              <td>Escalate to Plateau / Benue State Security Council immediately; notify U.S. Embassy; activate NGO evacuation protocols; press for security deployment</td>
+            </tr>
+            <tr>
+              <td class="kiq-id">EW-03</td>
+              <td>Church cancellations or worship restriction in Middle Belt during major Christian observance</td>
+              <td>Credible threat environment (pre-attack or post-attack fear cycle)</td>
+              <td>CAN or COCIN advises communities to suspend gatherings; local pastors warn congregations; crossover services canceled (precedent: Adamawa Dec 2025)</td>
+              <td>Treat as actionable signal; inform all NGO partners; suspend field operations in affected areas; heightened monitoring for 5 days</td>
+            </tr>
+            <tr>
+              <td class="kiq-id">EW-04</td>
+              <td>Attack on IDP camp or humanitarian convoy in Plateau, Benue, or Taraba</td>
+              <td>Escalation threshold crossed; humanitarian access collapse</td>
+              <td>Threats against humanitarian workers; previous convoy interceptions; IDP camp perimeter breaches; armed groups seen near camp locations</td>
+              <td>Immediate suspension of field operations; staff evacuation from affected LGA; OCHA notification; Red Cross humanitarian law alert</td>
+            </tr>
+            <tr>
+              <td class="kiq-id">EW-05</td>
+              <td>Retaliatory community youth attack on Fulani-identified settlement</td>
+              <td>Escalation to full inter-communal cycle (worst case acceleration)</td>
+              <td>Community youth armed mobilization beyond defensive posture; Operation Rainbow deployed offensively; vigilante groups blocking roads and searching vehicles</td>
+              <td>Mediation team activation; state government emergency session; curfew extension; press for security presence to separate communities; suspend NGO field teams</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ANNEX B -->
+    <section class="section" id="annex-b">
+      <div class="section-header">
+        <div>
+          <div class="annex-label">ANNEX B</div>
+          <span class="section-title" style="margin-left:0;">Priority Intelligence Gaps &amp; Action Thresholds</span>
+        </div>
+      </div>
+
+      <div class="sub-section" style="margin-top:0;">
+        <h3>B.1 Priority Intelligence Gaps</h3>
+        <div class="table-wrapper">
+          <table class="pig-table">
+            <thead>
+              <tr><th>Gap ID</th><th>Intelligence Question</th><th>Why It Matters</th><th>Collection Recommendation</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="kiq-id">GAP-01</td>
+                <td>Did the Nigerian military receive and formally verify a specific intelligence product about FEM massing before the Palm Sunday attack, and what response decision was made?</td>
+                <td>Determines whether the failure was structural incapacity or deliberate stand-down; directly affects policy and diplomatic recommendations</td>
+                <td>Independent human rights monitoring (Amnesty International, HRW) should conduct structured interviews with military and police personnel in Jos North; FOIA-equivalent requests through Nigerian National Human Rights Commission</td>
+              </tr>
+              <tr>
+                <td class="kiq-id">GAP-02</td>
+                <td>Is the eyewitness account of soldiers firing on community pursuers (Chiroma account) accurate, and are there additional witnesses?</td>
+                <td>If confirmed, strengthens the stand-down hypothesis; if refuted, clarifies security force behavior</td>
+                <td>Field interviews with Jos North community members by independent researchers; request Plateau State government inquiry findings; document additional eyewitness accounts</td>
+              </tr>
+              <tr>
+                <td class="kiq-id">GAP-03</td>
+                <td>What was the actual attack sequence, number of attackers, and withdrawal route from the Angwan Rukuba attack?</td>
+                <td>Enables TTP documentation, actor attribution, and early warning indicator development for future cycles</td>
+                <td>Structured survivor interviews; physical site documentation; police forensic report (if accessible); weapons identification from community reports</td>
+              </tr>
+              <tr>
+                <td class="kiq-id">GAP-04</td>
+                <td>What is the specific organizational affiliation of the Palm Sunday attackers: FEM, Boko Haram, ISWAP, hybrid, or other?</td>
+                <td>Shapes counterterrorism vs. community security approach; affects diplomatic framing and international response</td>
+                <td>Weapons forensics; survivor descriptions cross-referenced with known actor TTP databases; capture and debriefing of suspects (requires security force cooperation); jihadist media monitoring</td>
+              </tr>
+              <tr>
+                <td class="kiq-id">GAP-05</td>
+                <td>What is the verified total casualty count from the Palm Sunday Jos attack?</td>
+                <td>Variance from 14 to 55+ is analytically significant; affects severity assessment and resource mobilization</td>
+                <td>Hospital records at Jos University Teaching Hospital; Plateau State government official report; International Red Cross/ICRC access to body count documentation</td>
+              </tr>
+              <tr>
+                <td class="kiq-id">GAP-07</td>
+                <td>Is FEM or any armed group currently massing in named flashpoint areas (Benue-Plateau border, Southern Kaduna, Taraba)?</td>
+                <td>Highest-priority forward-looking intelligence requirement; if confirmed, immediate protective action is warranted</td>
+                <td>Community surveillance networks (BYM, COCIN); satellite imagery review of suspected massing areas; Nigerian military reconnaissance (requires political willingness); journalist field reporting in Bokkos, Riyom, Barkin Ladi, Guma/Logo</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h3>B.2 Action Thresholds</h3>
+        <div class="threshold-grid">
+          <div class="threshold-cell green-zone">
+            <span class="tc-label">GREEN // MONITOR</span>
+            <ul>
+              <li>No confirmed massing reports from community early warning networks</li>
+              <li>Post-curfew Jos situation stable; no retaliatory attacks</li>
+              <li>NGO field operations in rural flashpoints resumed with enhanced protocols</li>
+              <li>Nigerian military deployment visible in Jos North and key Benue LGAs</li>
+              <li><strong>Actions:</strong> Weekly monitoring; incident log maintenance; staff wellbeing checks; contingency plan review</li>
+              <li><strong>Responsible:</strong> NGO security focal points; state civil society partners</li>
+            </ul>
+          </div>
+          <div class="threshold-cell amber-zone">
+            <span class="tc-label">AMBER // ACT NOW</span>
+            <ul>
+              <li>Any confirmed massing report from community network (EW-02) or MACBAN market suspension (EW-01)</li>
+              <li>Additional attack with 5+ casualties in Plateau, Benue, Taraba, or Southern Kaduna</li>
+              <li>Church cancellations or community movement restrictions issued by CAN or COCIN</li>
+              <li>Community youth armed mobilization beyond defensive posture</li>
+              <li><strong>Actions:</strong> Suspend non-essential field operations; NGO staff consolidation to safe locations; emergency brief to donors and HQ; escalate to state government and U.S. Embassy; activate evacuation standby</li>
+              <li><strong>Responsible:</strong> NGO country directors; Plateau/Benue State Security Councils</li>
+            </ul>
+          </div>
+          <div class="threshold-cell red-zone">
+            <span class="tc-label">RED // EMERGENCY</span>
+            <ul>
+              <li>Coordinated mass-casualty attacks (20+ dead) in two or more states simultaneously</li>
+              <li>Attack on IDP camp or humanitarian convoy</li>
+              <li>Full retaliatory inter-communal cycle initiated with security force withdrawal</li>
+              <li>Humanitarian access blocked in one or more LGAs for 48+ hours</li>
+              <li><strong>Actions:</strong> Full NGO staff evacuation from affected LGAs; OCHA emergency declaration; Red Cross humanitarian law notification; U.S. Embassy emergency warden message; donor emergency funding activation; UN Security Council briefing request</li>
+              <li><strong>Responsible:</strong> NGO HQ emergency coordinators; UN OCHA Nigeria; U.S. Embassy Abuja</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="doc-id">QAP-CSA-FGM-NGA-2026-0331</div>
+    <div>Produced by MNS Consulting | Quanta Analytica Process™ | Unclassified // Open Source Analysis</div>
+    <div style="margin-top:0.5rem; color:rgba(136,150,176,0.6);">This report is an open-source intelligence assessment for decision-support purposes. It does not represent the views of any government or regulatory body. All judgments reflect the analyst's assessment of available open-source evidence at time of issue.</div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      const p = h > 0 ? (window.scrollY / h) * 100 : 0;
+      document.getElementById('progress').style.width = p + '%';
+    });
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.section').forEach(s => obs.observe(s));
+  </script>
+</body>
+</html>
