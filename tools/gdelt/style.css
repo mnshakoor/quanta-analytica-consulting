@@ -1,0 +1,446 @@
+/* ------------------------------------------------------------------
+   Quanta Analytica Branding
+   This stylesheet has been updated to better align with the visual
+   identity of the Quanta Analytica website. Key additions include a
+   dark colour palette, gold accents and imported typefaces similar to
+   those used on the corporate site. Root CSS variables make it easy
+   to adjust colours consistently across the application.
+   ------------------------------------------------------------------ */
+
+/* Import Quanta Analytica fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Barlow+Condensed:wght@300;400;500;600&family=Barlow:wght@300;400;500&display=swap');
+
+/* Define colour palette and typography variables */
+:root {
+    --obsidian: #0a0c10;
+    --deep-navy: #0d1220;
+    --midnight: #111827;
+    --gold: #c8a96e;
+    --gold-light: #e2c98a;
+    --gold-dim: rgba(200, 169, 110, 0.15);
+    --gold-line: rgba(200, 169, 110, 0.3);
+    --white: #f5f2ec;
+    --grey: #8a8f9a;
+    --grey-light: #c2c4c8;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-ui: 'Barlow Condensed', sans-serif;
+    --font-body: 'Barlow', sans-serif;
+}
+
+/* Global styles */
+body {
+    font-family: var(--font-body);
+    background-color: var(--obsidian);
+    color: var(--white);
+    line-height: 1.6;
+}
+
+/* Navbar styling */
+.navbar {
+    background-color: var(--midnight) !important;
+    border-bottom: 1px solid var(--gold-line);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+/* Navbar brand */
+.navbar .navbar-brand {
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+/* Navbar subtitle */
+.navbar span.text-light {
+    color: var(--grey);
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+}
+
+/* Navigation tabs */
+.nav-tabs {
+    border-bottom: 1px solid var(--gold-line);
+}
+
+.nav-tabs .nav-link {
+    background-color: var(--deep-navy);
+    border: 1px solid var(--gold-line);
+    color: var(--grey-light);
+    font-family: var(--font-ui);
+    font-weight: 400;
+    margin-right: 0.25rem;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: var(--midnight);
+    border-color: var(--gold);
+    color: var(--gold);
+    border-bottom: 2px solid var(--gold);
+}
+
+.nav-tabs .nav-link:hover {
+    color: var(--gold-light);
+    background-color: var(--deep-navy);
+}
+
+/* Card components */
+.card {
+    background-color: var(--deep-navy);
+    color: var(--white);
+    border: 1px solid var(--gold-line);
+}
+
+.card-header {
+    background-color: var(--midnight);
+    color: var(--gold);
+    border-bottom: 1px solid var(--gold-line);
+    font-family: var(--font-ui);
+    font-weight: 500;
+}
+
+.card-body {
+    background-color: var(--deep-navy);
+    color: var(--white);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--gold);
+    border-color: var(--gold);
+    color: var(--obsidian);
+    font-family: var(--font-ui);
+}
+
+.btn-primary:hover {
+    background-color: var(--gold-light);
+    border-color: var(--gold-light);
+    color: var(--obsidian);
+}
+
+.btn-outline-secondary {
+    border-color: var(--gold-line);
+    color: var(--gold);
+    font-family: var(--font-ui);
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--gold-dim);
+    color: var(--gold-light);
+    border-color: var(--gold-light);
+}
+
+/* Query Buttons */
+/* Override default outline-primary style with branding */
+#queryButtons .btn {
+    text-align: left;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    white-space: normal;
+    word-wrap: break-word;
+    background-color: var(--deep-navy);
+    border: 1px solid var(--gold-line);
+    color: var(--grey-light);
+    font-family: var(--font-body);
+}
+
+#queryButtons .btn:hover {
+    transform: translateX(5px);
+    transition: transform 0.2s ease;
+    background-color: var(--midnight);
+    color: var(--gold);
+}
+
+#queryButtons .btn.active {
+    background-color: var(--gold);
+    color: var(--obsidian);
+    border-color: var(--gold);
+}
+
+/* Query Buttons */
+#queryButtons .btn {
+    text-align: left;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+#queryButtons .btn:hover {
+    transform: translateX(5px);
+    transition: transform 0.2s ease;
+}
+
+#queryButtons .btn.active {
+    background-color: #0d6efd;
+    color: white;
+    border-color: #0d6efd;
+}
+
+/* Results Container */
+#resultsContainer {
+    max-height: 600px;
+    overflow-y: auto;
+    background-color: var(--deep-navy);
+    color: var(--white);
+}
+
+/* Article cards */
+.article-card {
+    border: 1px solid var(--gold-line);
+    border-radius: 0.25rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: var(--midnight);
+    transition: box-shadow 0.2s ease;
+}
+
+.article-card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.article-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+    font-family: var(--font-display);
+}
+
+.article-meta {
+    font-size: 0.85rem;
+    color: var(--grey);
+    margin-bottom: 0.5rem;
+    font-family: var(--font-body);
+}
+
+.article-url {
+    font-size: 0.8rem;
+    word-break: break-all;
+    font-family: var(--font-body);
+}
+
+.article-tone {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+}
+
+/* Tone indicators using Quanta colour palette */
+.tone-positive {
+    background-color: rgba(200, 169, 110, 0.25);
+    color: var(--gold-light);
+    border: 1px solid var(--gold-line);
+}
+
+.tone-negative {
+    background-color: rgba(220, 53, 69, 0.15);
+    color: #e16d7a;
+    border: 1px solid rgba(220, 53, 69, 0.3);
+}
+
+.tone-neutral {
+    background-color: rgba(13, 110, 253, 0.15);
+    color: #7aa0e4;
+    border: 1px solid rgba(13, 110, 253, 0.3);
+}
+
+/* Map Styles */
+#mapContainer {
+    border-radius: 0.25rem;
+    overflow: hidden;
+    border: 1px solid var(--gold-line);
+}
+
+.leaflet-popup-content {
+    font-size: 0.9rem;
+    font-family: var(--font-body);
+    color: var(--obsidian);
+}
+
+.leaflet-popup-content h6 {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-family: var(--font-ui);
+}
+
+/* Network Styles */
+#networkContainer {
+    border: 1px solid var(--gold-line);
+    border-radius: 0.25rem;
+    background-color: var(--deep-navy);
+    position: relative;
+    color: var(--white);
+}
+
+.network-node {
+    cursor: pointer;
+}
+
+.network-node:hover {
+    stroke: var(--gold);
+    stroke-width: 3px;
+}
+
+.network-link {
+    stroke: #888;
+    stroke-opacity: 0.6;
+}
+
+.network-text {
+    font-size: 12px;
+    pointer-events: none;
+    fill: var(--white);
+    font-family: var(--font-body);
+}
+
+/* QA Results */
+.qa-item {
+    border: 1px solid var(--gold-line);
+    border-radius: 0.25rem;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    background-color: var(--midnight);
+    color: var(--white);
+}
+
+.qa-item.success {
+    border-left: 4px solid #198754;
+}
+
+.qa-item.error {
+    border-left: 4px solid #dc3545;
+}
+
+.qa-item.warning {
+    border-left: 4px solid #ffc107;
+}
+
+.qa-status {
+    font-weight: 600;
+    margin-right: 0.5rem;
+    font-family: var(--font-ui);
+}
+
+.qa-status.success {
+    color: #198754;
+}
+
+.qa-status.error {
+    color: #dc3545;
+}
+
+.qa-status.warning {
+    color: #ffc107;
+}
+
+/* Loading Spinner */
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+}
+
+/* Status and Error Bars */
+#statusBar, #errorBar {
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    z-index: 1050;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+    border: 1px solid var(--gold-line);
+}
+
+/* Adjust colours for status and error bars */
+#statusBar {
+    background-color: rgba(25, 135, 84, 0.15);
+    color: #198754;
+    border-left: 4px solid #198754;
+}
+
+#errorBar {
+    background-color: rgba(220, 53, 69, 0.15);
+    color: #dc3545;
+    border-left: 4px solid #dc3545;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .col-md-3, .col-md-9 {
+        margin-bottom: 1rem;
+    }
+    
+    #statusBar, #errorBar {
+        left: 20px;
+        right: 20px;
+        max-width: none;
+    }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Card Enhancements */
+.card {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border: none;
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    font-weight: 600;
+}
+
+/* Button Enhancements */
+.btn {
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Attribution */
+.gdelt-attribution {
+    font-size: 0.75rem;
+    color: #6c757d;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+.gdelt-attribution a {
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+.gdelt-attribution a:hover {
+    text-decoration: underline;
+}
+

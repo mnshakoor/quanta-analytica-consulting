@@ -1,0 +1,111 @@
+[
+  {
+    "id": 1,
+    "name": "Humanitarian Crisis",
+    "description": "Search for humanitarian crisis, food insecurity, aid access, and human rights violations",
+    "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22humanitarian%20crisis%22%20OR%20%22food%20insecurity%22%20OR%20%22aid%20access%22%20OR%20%22human%20rights%20violation%22%29&mode=ArtList&format=JSON&maxrecords=250&sort=DateDesc"
+  },
+  {
+    "id": 2,
+    "name": "Influence Operations",
+    "description": "Search for influence operations, information warfare, psychological operations, and cognitive warfare",
+    "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22influence%20operations%22%20OR%20%22information%20warfare%22%20OR%20%22psychological%20operations%22%20OR%20%22cognitive%20warfare%22%29&mode=ArtList&format=JSON&maxrecords=250&sort=DateDesc"
+  },
+  {
+    "id": 3,
+    "name": "Sahel Conflict",
+    "description": "Search for conflict and combat in Sahel region (Mali, Niger, Burkina Faso)",
+    "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28fight%20OR%20battle%20OR%20defend%20OR%20attack%20OR%20%22war%20on%22%20OR%20combat%29%20AND%20%28Sahel%20OR%20Mali%20OR%20Niger%20OR%20%22Burkina%20Faso%22%29&mode=ArtList&format=JSON&maxrecords=250&sort=DateDesc"
+  },
+  {
+    "id": 4,
+    "name": "ReliefWeb Humanitarian",
+    "description": "Humanitarian crisis coverage from ReliefWeb",
+    "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22humanitarian%20crisis%22%20OR%20%22aid%20access%22%20OR%20%22food%20insecurity%22%29%20AND%20domain%3Areliefweb.int&mode=ArtList&format=JSON&maxrecords=250&sort=DateDesc"
+  },
+  {
+    "id": 5,
+    "name": "Disinformation Contagion",
+    "description": "Disease/contagion framing of disinformation",
+    "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28virus%20OR%20infection%20OR%20spread%20OR%20toxic%20OR%20contagion%29%20AND%20%28disinformation%20OR%20%22social%20media%22%29&mode=ArtList&format=JSON&maxrecords=250&sort=DateDesc"
+  },
+  {
+    "id": 6,
+    "name": "Information Operations & Social Media",
+    "description": "Near and repeat query for information operations and social media",
+    "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=near20%3A%22information%20operations%22%20%22social%20media%22%20AND%20repeat2%3A%22disinformation%22&mode=ArtList&format=JSON&maxrecords=250&sort=DateDesc"
+  },
+  {
+    "id": 7,
+    "name": "Narrative Conflict",
+    "description": "Transitional frame: contagion to conflict in narratives",
+    "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28spread%20OR%20infection%29%20AND%20%28battle%20OR%20fight%20OR%20combat%29%20AND%20%28narrative%20OR%20information%29&mode=ArtList&format=JSON&maxrecords=250&sort=DateDesc"
+  },
+  {
+    "id": 8,
+    "name": "Censorship & Control",
+    "description": "Control/container framing of censorship",
+    "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28contain%20OR%20firewall%20OR%20restriction%20OR%20lockdown%20OR%20censorship%29%20AND%20%28internet%20OR%20media%20OR%20speech%29&mode=ArtList&format=JSON&maxrecords=250&sort=DateDesc"
+  },
+  {
+    "id": 9,
+    "name": "UN Peacekeeping & Human Rights",
+    "description": "Peacekeeping and human rights from UN News",
+    "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22peacekeeping%22%20OR%20%22human%20rights%22%29%20AND%20domain%3Anews.un.org&mode=ArtList&format=JSON&maxrecords=250&sort=DateDesc"
+  },
+  {
+    "id": 10,
+    "name": "Conflict Prevention",
+    "description": "Conflict prevention and humanitarian assistance from ReliefWeb and UN News",
+    "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22conflict%20prevention%22%20OR%20%22humanitarian%20assistance%22%29%20AND%20%28domain%3Areliefweb.int%20OR%20domain%3Anews.un.org%29&mode=ArtList&format=JSON&maxrecords=250&sort=DateDesc"
+  },
+  {
+    "id": 11,
+    "name": "Armed Conflict",
+    "description": "General armed clashes and military conflict",
+    "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28armed%20conflict%20OR%20military%20clash%20OR%20hostilities%20OR%20combat%20OR%20%22ground%20offensive%22%29&mode=ArtList&format=JSON&maxrecords=250&sort=DateDesc"
+  },
+  {
+    "id": 12,
+    "name": "Regional Armed Conflict",
+    "description": "Armed conflict in Sahel and Horn of Africa",
+    "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22armed%20conflict%22%20OR%20%22military%20offensive%22%29%20AND%20%28Sahel%20OR%20%22Burkina%20Faso%22%20OR%20Sudan%20OR%20Somalia%20OR%20Ethiopia%29&mode=ArtList&format=JSON&maxrecords=250&sort=DateDesc"
+  },
+  {
+    "id": 13,
+    "name": "Civil Unrest",
+    "description": "Global civil unrest, protests, and demonstrations",
+    "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28protest%20OR%20demonstration%20OR%20riot%20OR%20%22civil%20unrest%22%20OR%20strike%29&mode=ArtList&format=JSON&maxrecords=250&sort=DateDesc"
+  },
+  {
+    "id": 14,
+    "name": "African Civil Unrest",
+    "description": "Civil unrest in Nigeria, Kenya, South Africa, and Sudan",
+    "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28protest%20OR%20%22civil%20unrest%22%29%20AND%20%28Nigeria%20OR%20Kenya%20OR%20%22South%20Africa%22%20OR%20Sudan%29&mode=ArtList&format=JSON&maxrecords=250&sort=DateDesc"
+  },
+  {
+    "id": 15,
+    "name": "Humanitarian-Political Intersection",
+    "description": "Protests related to food insecurity, inflation, and corruption",
+    "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28protest%20OR%20demonstration%29%20AND%20%28%22food%20insecurity%22%20OR%20inflation%20OR%20corruption%29&mode=ArtList&format=JSON&maxrecords=250&sort=DateDesc"
+  },
+  {
+    "id": 16,
+    "name": "Protest Escalation",
+    "description": "Near and repeat query for protest escalation to violence",
+    "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=near15%3A%22protest%22%20%22violence%22%20AND%20repeat2%3A%22clash%22&mode=ArtList&format=JSON&maxrecords=250&sort=DateDesc"
+  },
+  {
+    "id": 17,
+    "name": "Peace Agreements",
+    "description": "Ceasefire and peace talks in Sudan, South Sudan, and Mali",
+    "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28ceasefire%20OR%20peace%20talks%20OR%20%22peace%20agreement%22%29%20AND%20%28Sudan%20OR%20%22South%20Sudan%22%20OR%20Mali%29&mode=ArtList&format=JSON&maxrecords=250&sort=DateDesc"
+  },
+  {
+    "id": 18,
+    "name": "Conflict-Cognitive Framing",
+    "description": "War on Information or Narrative Battlespace metaphors",
+    "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28battle%20OR%20fight%20OR%20war%20OR%20attack%29%20AND%20%28narrative%20OR%20disinformation%29&mode=ArtList&format=JSON&maxrecords=250&sort=DateDesc"
+  }
+]
+

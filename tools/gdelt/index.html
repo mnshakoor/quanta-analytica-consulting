@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDELT Event Search & Analysis - Quanta Analytica</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Leaflet CSS for mapping -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">
+                <i class="bi bi-globe2"></i> GDELT Event Search & Analysis
+            </span>
+            <span class="text-light">
+                <small>Quanta Analytica (MNS Consulting)</small>
+            </span>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-3">
+        <!-- Status Bar -->
+        <div id="statusBar" class="alert alert-info" role="alert" style="display: none;">
+            <span id="statusMessage"></span>
+        </div>
+
+        <!-- Error Bar -->
+        <div id="errorBar" class="alert alert-danger" role="alert" style="display: none;">
+            <span id="errorMessage"></span>
+        </div>
+
+        <!-- Main Tabs -->
+        <ul class="nav nav-tabs" id="mainTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="search-tab" data-bs-toggle="tab" data-bs-target="#search" type="button" role="tab">
+                    📄 Search & Results
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="map-tab" data-bs-toggle="tab" data-bs-target="#map" type="button" role="tab">
+                    🗺️ Map View
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="network-tab" data-bs-toggle="tab" data-bs-target="#network" type="button" role="tab">
+                    🌐 Link Network View
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="debug-tab" data-bs-toggle="tab" data-bs-target="#debug" type="button" role="tab">
+                    🔧 Debug & QA
+                </button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="mainTabContent">
+            <!-- Search & Results Tab -->
+            <div class="tab-pane fade show active" id="search" role="tabpanel">
+                <div class="row mt-3">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Query Selection</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="maxRecords" class="form-label">Max Records:</label>
+                                    <input type="number" class="form-control" id="maxRecords" value="250" min="1" max="250">
+                                </div>
+                                <div class="mb-3">
+                                    <button class="btn btn-primary w-100" id="refreshBtn">
+                                        🔄 Refresh Results
+                                    </button>
+                                </div>
+                                <hr>
+                                <h6>Predefined Queries</h6>
+                                <div id="queryButtons" class="d-grid gap-2">
+                                    <!-- Query buttons will be dynamically loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5>Results</h5>
+                                <div class="btn-group" role="group">
+                                    <button class="btn btn-sm btn-outline-secondary" id="exportJSON">
+                                        Export JSON
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-secondary" id="exportCSV">
+                                        Export CSV
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-secondary" id="exportXML">
+                                        Export XML
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="resultsContainer">
+                                    <p class="text-muted text-center">Select a query to view results</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map View Tab -->
+            <div class="tab-pane fade" id="map" role="tabpanel">
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Geographic Event Distribution</h5>
+                            </div>
+                            <div class="card-body">
+                                <div id="mapContainer" style="height: 600px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Network View Tab -->
+            <div class="tab-pane fade" id="network" role="tabpanel">
+                <div class="row mt-3">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Network Controls</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="networkSearch" class="form-label">Search Node:</label>
+                                    <input type="text" class="form-control" id="networkSearch" placeholder="Enter keyword...">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="networkFilter" class="form-label">Filter by:</label>
+                                    <input type="text" class="form-control" id="networkFilter" placeholder="Filter keyword...">
+                                </div>
+                                <button class="btn btn-primary w-100" id="refreshNetwork">
+                                    🔄 Refresh Network
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Actor & Keyword Network</h5>
+                            </div>
+                            <div class="card-body">
+                                <div id="networkContainer" style="height: 600px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Debug & QA Tab -->
+            <div class="tab-pane fade" id="debug" role="tabpanel">
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5>Quality Assurance & Debug</h5>
+                                <button class="btn btn-sm btn-primary" id="runQATests">
+                                    Run QA Tests
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <div id="qaResults">
+                                    <p class="text-muted">Click "Run QA Tests" to validate all queries</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- D3.js for network visualization -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+    <!-- GDELT Attribution -->
+    <div class="gdelt-attribution">
+        <p>
+            Data provided by <a href="https://www.gdeltproject.org/" target="_blank" rel="noopener">The GDELT Project</a> |
+            Application by Quanta Analytica (MNS Consulting) |
+            <a href="https://github.com" target="_blank" rel="noopener">View on GitHub</a>
+        </p>
+    </div>
+
+    <!-- Main App JS -->
+    <script src="app.js"></script>
+</body>
+</html>
+
