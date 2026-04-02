@@ -1,0 +1,2474 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sahel Trade Fragmentation After the AES-ECOWAS Split | Quanta Analytica Process™ | 02 Apr 2026</title>
+  <meta name="description" content="QAP web intelligence assessment on Sahel trade fragmentation, corridor risk, food stress, and trafficking dynamics after the AES-ECOWAS split.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+/* ============================================================
+   QAP WEB REPORT - CANONICAL STYLESHEET
+   Quanta Analytica Process™ | MNS Consulting
+   quanta-analytica.com/reports/
+   Version: 2.0 | Design System Reference
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. ROOT VARIABLES - Color, Typography, Spacing
+   ------------------------------------------------------------ */
+:root {
+  /* Core Palette */
+  --obsidian:         #0a0c10;
+  --obsidian-mid:     #10131a;
+  --obsidian-card:    #13161f;
+  --obsidian-border:  #1c2030;
+  --obsidian-surface: #181b26;
+  --obsidian-lift:    #1e2235;
+
+  /* Gold Scale */
+  --gold:             #c8a96e;
+  --gold-light:       #dfc28e;
+  --gold-pale:        #e8d5aa;
+  --gold-dim:         #9a7f52;
+  --gold-muted:       #6b5838;
+  --gold-glow:        rgba(200, 169, 110, 0.12);
+  --gold-glow-strong: rgba(200, 169, 110, 0.22);
+
+  /* Alert / Status Colors */
+  --red:              #c0392b;
+  --red-light:        #e74c3c;
+  --red-bg:           rgba(192, 57, 43, 0.12);
+  --amber:            #d4820a;
+  --amber-light:      #f39c12;
+  --amber-bg:         rgba(212, 130, 10, 0.12);
+  --green:            #27ae60;
+  --green-light:      #2ecc71;
+  --green-bg:         rgba(39, 174, 96, 0.12);
+  --blue:             #2980b9;
+  --blue-light:       #3498db;
+  --blue-bg:          rgba(41, 128, 185, 0.12);
+  --yellow:           #f1c40f;
+  --yellow-bg:        rgba(241, 196, 15, 0.12);
+  --slate:            #5d7a9a;
+  --slate-light:      #7f9ab8;
+
+  /* Text Scale */
+  --text-primary:     #e8e4dc;
+  --text-secondary:   #b8b0a0;
+  --text-muted:       #7a7264;
+  --text-faint:       #4a4640;
+
+  /* Typography */
+  --font-display:     'Libre Baskerville', Georgia, serif;
+  --font-body:        'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:        'IBM Plex Mono', 'Courier New', monospace;
+
+  /* Spacing */
+  --space-xs:         0.25rem;
+  --space-sm:         0.5rem;
+  --space-md:         1rem;
+  --space-lg:         1.5rem;
+  --space-xl:         2rem;
+  --space-2xl:        3rem;
+  --space-3xl:        4rem;
+
+  /* Borders & Radius */
+  --radius-sm:        3px;
+  --radius-md:        6px;
+  --radius-lg:        10px;
+  --border-default:   1px solid var(--obsidian-border);
+  --border-gold:      1px solid var(--gold-dim);
+
+  /* Transitions */
+  --transition-fast:  0.15s ease;
+  --transition-base:  0.25s ease;
+  --transition-slow:  0.4s ease;
+
+  /* Shadows */
+  --shadow-card:      0 2px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lift:      0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* ------------------------------------------------------------
+   2. RESET & BASE
+   ------------------------------------------------------------ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--obsidian);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--gold-light);
+}
+
+p {
+  margin-bottom: var(--space-md);
+  color: var(--text-secondary);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+strong, b {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+em, i {
+  color: var(--slate-light);
+  font-style: italic;
+}
+
+cite {
+  font-style: normal;
+  color: var(--gold-dim);
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  vertical-align: super;
+  line-height: 0;
+}
+
+/* ------------------------------------------------------------
+   3. SCROLL PROGRESS BAR
+   ------------------------------------------------------------ */
+#progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-light));
+  z-index: 9999;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 8px var(--gold-glow-strong);
+}
+
+/* ------------------------------------------------------------
+   4. NAVIGATION
+   ------------------------------------------------------------ */
+nav {
+  position: fixed;
+  top: 3px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(10, 12, 16, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--obsidian-border);
+  padding: 0 var(--space-xl);
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.nav-brand span {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+.nav-classify {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  border: 1px solid var(--amber);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--amber-bg);
+}
+
+/* ------------------------------------------------------------
+   5. HERO BLOCK
+   ------------------------------------------------------------ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 140px var(--space-xl) var(--space-3xl);
+  overflow: hidden;
+  background: radial-gradient(ellipse at 20% 60%, rgba(200, 169, 110, 0.05) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(41, 128, 185, 0.04) 0%, transparent 50%),
+              var(--obsidian);
+}
+
+/* Animated background grid */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(200, 169, 110, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 169, 110, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridDrift 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes gridDrift {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(40px, 40px); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-running-head {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--obsidian-border);
+  padding-bottom: var(--space-sm);
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 .title-gold {
+  color: var(--gold); 
+  display: block;      /* Ensures it starts on a new line */
+  margin-top: 0.5rem;  /* Optional: adds a small gap between lines */
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+  max-width: 720px;
+  line-height: 1.6;
+}
+
+/* Hero Metadata Row */
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  align-items: center;
+}
+
+.meta-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.meta-cell .label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.meta-cell .value {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+}
+
+.meta-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--obsidian-border);
+  align-self: center;
+}
+
+/* Threat Badge */
+.threat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.threat-badge.critical  { color: var(--red-light);   border-color: var(--red);   background: var(--red-bg);   }
+.threat-badge.high      { color: var(--amber-light);  border-color: var(--amber); background: var(--amber-bg); }
+.threat-badge.elevated  { color: var(--yellow);       border-color: var(--yellow);background: var(--yellow-bg);}
+.threat-badge.moderate  { color: var(--blue-light);   border-color: var(--blue);  background: var(--blue-bg);  }
+.threat-badge.low       { color: var(--green-light);  border-color: var(--green); background: var(--green-bg); }
+
+.threat-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+
+/* Analytic Scope Boundary */
+.scope-boundary {
+  border-left: 3px solid var(--slate);
+  padding: var(--space-sm) var(--space-lg);
+  background: rgba(93, 122, 154, 0.08);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin-top: var(--space-lg);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--slate-light);
+  line-height: 1.6;
+}
+
+/* Key Metrics Strip */
+.metrics-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--obsidian-border);
+}
+
+.metric-block {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-top: 2px solid var(--gold-dim);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  min-width: 140px;
+}
+
+.metric-block .metric-value {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.metric-block .metric-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ------------------------------------------------------------
+   6. MAIN CONTENT WRAPPER
+   ------------------------------------------------------------ */
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--space-3xl) var(--space-xl);
+}
+
+/* ------------------------------------------------------------
+   7. SECTION WRAPPER & SCROLL REVEAL
+   ------------------------------------------------------------ */
+.section {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  margin-bottom: var(--space-3xl);
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section Header */
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--obsidian-border);
+}
+
+.section-num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  background: var(--gold-glow);
+  border: 1px solid var(--gold-muted);
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+/* Sub-section divider */
+.sub-section {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+}
+
+.sub-section::before {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-muted), transparent);
+  margin-bottom: var(--space-lg);
+}
+
+.sub-section h3 {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-md);
+}
+
+/* ------------------------------------------------------------
+   8. BLUF - Bottom Line Up Front
+   ------------------------------------------------------------ */
+.bluf-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.bluf-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-left: 3px solid var(--gold-dim);
+  border-radius: var(--radius-md);
+}
+
+.bluf-index {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--gold-pale);
+  opacity: 0.4;
+  line-height: 1;
+  padding-top: 4px;
+}
+
+.bluf-text .bluf-claim {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 0.98rem;
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.bluf-text p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------
+   9. SNAPSHOT GRID - Who / What / Where / When / Why / How
+   ------------------------------------------------------------ */
+.snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.snapshot-cell {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.snapshot-cell .snap-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: var(--space-sm);
+  display: block;
+}
+
+.snapshot-cell .snap-content {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------------------
+   10. KEY JUDGMENTS
+   ------------------------------------------------------------ */
+.kj-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.kj-item {
+  padding: var(--space-lg);
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  border-left: 4px solid;
+  position: relative;
+}
+
+.kj-item.high     { border-left-color: var(--red);   }
+.kj-item.moderate { border-left-color: var(--amber);  }
+.kj-item.low      { border-left-color: var(--blue);   }
+.kj-item.watch    { border-left-color: var(--yellow);  }
+
+.kj-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.kj-id {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.kj-conf {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.kj-item.high     .kj-conf { color: var(--red-light);   border-color: var(--red);   background: var(--red-bg);   }
+.kj-item.moderate .kj-conf { color: var(--amber-light);  border-color: var(--amber); background: var(--amber-bg); }
+.kj-item.low      .kj-conf { color: var(--blue-light);   border-color: var(--blue);  background: var(--blue-bg);  }
+.kj-item.watch    .kj-conf { color: var(--yellow);        border-color: var(--yellow);background: var(--yellow-bg);}
+
+.kj-text {
+  font-size: 0.93rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: var(--space-sm);
+}
+
+.kj-mapping {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+/* ------------------------------------------------------------
+   11. EVIDENCE GRID - Know / Assess / Gap
+   ------------------------------------------------------------ */
+.evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.evidence-box {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.evidence-box-header {
+  padding: var(--space-sm) var(--space-lg);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.evidence-box-header.know   { background: var(--green-bg);  color: var(--green-light);  border-bottom: 1px solid var(--green);  }
+.evidence-box-header.assess { background: var(--amber-bg);  color: var(--amber-light);  border-bottom: 1px solid var(--amber);  }
+.evidence-box-header.gap    { background: var(--red-bg);    color: var(--red-light);    border-bottom: 1px solid var(--red);    }
+
+.evidence-box-body {
+  padding: var(--space-lg);
+}
+
+.evidence-box-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+.evidence-box-body li {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid var(--obsidian-border);
+  padding-left: var(--space-md);
+  position: relative;
+}
+
+.evidence-box-body li::before {
+  content: '//';
+  position: absolute;
+  left: 0;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+
+.evidence-box-body li:last-child {
+  border-bottom: none;
+}
+
+/* WSI Source Independence Note */
+.wsi-note {
+  background: rgba(93, 122, 154, 0.1);
+  border: 1px solid rgba(93, 122, 154, 0.3);
+  border-left: 3px solid var(--slate);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  font-size: 0.83rem;
+  color: var(--slate-light);
+  font-style: italic;
+  margin-top: var(--space-lg);
+}
+
+.wsi-note strong {
+  color: var(--slate-light);
+  font-style: normal;
+}
+
+/* ------------------------------------------------------------
+   12. TABLES - Assumption, ACH, IW, KIQ, Risk, PIGs
+   ------------------------------------------------------------ */
+.table-wrapper {
+  overflow-x: auto;
+  margin-bottom: var(--space-lg);
+  border-radius: var(--radius-md);
+  border: var(--border-default);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.87rem;
+}
+
+thead th {
+  background: var(--obsidian-surface);
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  border-bottom: 1px solid var(--obsidian-border);
+  white-space: nowrap;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--obsidian-border);
+  transition: background var(--transition-fast);
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: var(--obsidian-lift);
+}
+
+tbody td {
+  padding: var(--space-sm) var(--space-md);
+  color: var(--text-secondary);
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+tbody td:first-child {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Assumption Table */
+.assumption-table { }
+
+/* ACH Table */
+.ach-table thead th:nth-child(4) { text-align: center; }
+.ach-table tbody td:nth-child(4) { text-align: center; font-family: var(--font-mono); }
+
+/* IW Table - Indicators & Warnings */
+.iw-table { }
+
+/* Risk Matrix - high-score rows */
+.risk-matrix tbody tr.risk-high {
+  background: var(--red-bg);
+}
+
+.risk-matrix tbody tr.risk-high td {
+  color: var(--text-primary);
+}
+
+.risk-score {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.risk-score.score-high   { color: var(--red-light);   }
+.risk-score.score-medium { color: var(--amber-light);  }
+.risk-score.score-low    { color: var(--green-light);  }
+
+/* KIQ Table */
+.kiq-table { }
+
+/* Priority Intelligence Gaps Table */
+.pig-table { }
+
+/* KPI Table (optional - fragility reports) */
+.kpi-table { }
+
+.pillar-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--obsidian-border);
+  color: var(--text-muted);
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+
+/* ------------------------------------------------------------
+   13. SCENARIO CARDS
+   ------------------------------------------------------------ */
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.scenario-card {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-top: 3px solid;
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.scenario-card.best  { border-top-color: var(--green);  }
+.scenario-card.base  { border-top-color: var(--amber);  }
+.scenario-card.worst { border-top-color: var(--red);    }
+
+.scenario-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  display: block;
+}
+
+.scenario-card.best  .scenario-label { color: var(--green-light);  }
+.scenario-card.base  .scenario-label { color: var(--amber-light);  }
+.scenario-card.worst .scenario-label { color: var(--red-light);    }
+
+.scenario-card h4 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.scenario-card p {
+  font-size: 0.87rem;
+}
+
+.scenario-prob {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: var(--space-sm);
+  display: block;
+  letter-spacing: 0.06em;
+}
+
+/* ------------------------------------------------------------
+   14. BEHAVIORAL GRID
+   ------------------------------------------------------------ */
+.behavioral-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.behavioral-item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+}
+
+.behavioral-rank {
+  font-family: var(--font-mono);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--gold-pale);
+  opacity: 0.25;
+  line-height: 1;
+  text-align: center;
+  padding-top: 4px;
+}
+
+.behavioral-content h4 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.behavioral-content p {
+  font-size: 0.88rem;
+  margin-bottom: var(--space-xs);
+}
+
+.behavioral-inference {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--slate-light);
+  font-style: italic;
+  letter-spacing: 0.02em;
+  display: block;
+}
+
+/* ------------------------------------------------------------
+   15. RECOMMENDATION TIMELINE
+   ------------------------------------------------------------ */
+.rec-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-left: 2px solid var(--obsidian-border);
+  margin-left: var(--space-md);
+  padding-left: var(--space-xl);
+}
+
+.rec-block {
+  position: relative;
+  margin-bottom: var(--space-xl);
+}
+
+.rec-block::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * var(--space-xl) - 1px);
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--obsidian-border);
+  border: 2px solid;
+}
+
+.rec-block.immediate  ::before { border-color: var(--red);   background: var(--red-bg);   }
+.rec-block.near-term  ::before { border-color: var(--amber); background: var(--amber-bg); }
+.rec-block.medium-term::before { border-color: var(--green); background: var(--green-bg); }
+
+.rec-time {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+  margin-bottom: var(--space-md);
+}
+
+.rec-block.immediate   .rec-time { color: var(--red-light);  border: 1px solid var(--red);   background: var(--red-bg);   }
+.rec-block.near-term   .rec-time { color: var(--amber-light);border: 1px solid var(--amber); background: var(--amber-bg); }
+.rec-block.medium-term .rec-time { color: var(--green-light);border: 1px solid var(--green); background: var(--green-bg); }
+
+.rec-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.rec-content p {
+  font-size: 0.9rem;
+}
+
+/* ------------------------------------------------------------
+   16. CONFIDENCE PANEL
+   ------------------------------------------------------------ */
+.conf-panel {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--space-lg);
+}
+
+.conf-header {
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  border-bottom: 1px solid var(--obsidian-border);
+}
+
+.conf-band {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.conf-band.high     { color: var(--green-light);  border-color: var(--green);  background: var(--green-bg);  }
+.conf-band.moderate { color: var(--amber-light);  border-color: var(--amber);  background: var(--amber-bg);  }
+.conf-band.low      { color: var(--red-light);    border-color: var(--red);    background: var(--red-bg);    }
+
+.conf-header-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+.conf-body {
+  padding: var(--space-lg);
+}
+
+.conf-body p {
+  font-size: 0.9rem;
+}
+
+/* Uncertainty / Flip Risk List */
+.uncertainty-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.uncertainty-item {
+  background: var(--red-bg);
+  border: 1px solid var(--red);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+}
+
+.uncertainty-item .u-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red-light);
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.uncertainty-item p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------
+   17. THRESHOLD GRID - Green / Amber / Red Zones
+   ------------------------------------------------------------ */
+.threshold-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.threshold-cell {
+  border-radius: var(--radius-md);
+  border: 1px solid;
+  overflow: hidden;
+}
+
+.threshold-cell.green-zone { border-color: var(--green);  background: var(--green-bg);  }
+.threshold-cell.amber-zone { border-color: var(--amber);  background: var(--amber-bg);  }
+.threshold-cell.red-zone   { border-color: var(--red);    background: var(--red-bg);    }
+
+.threshold-header {
+  padding: var(--space-sm) var(--space-md);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid;
+}
+
+.threshold-cell.green-zone .threshold-header { color: var(--green-light);  border-color: var(--green);  background: rgba(39, 174, 96, 0.18);  }
+.threshold-cell.amber-zone .threshold-header { color: var(--amber-light);  border-color: var(--amber);  background: rgba(212, 130, 10, 0.18);  }
+.threshold-cell.red-zone   .threshold-header { color: var(--red-light);    border-color: var(--red);    background: rgba(192, 57, 43, 0.18);    }
+
+.threshold-body {
+  padding: var(--space-md);
+}
+
+.threshold-body p {
+  font-size: 0.85rem;
+  margin-bottom: var(--space-sm);
+}
+
+.threshold-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+.threshold-body li {
+  font-size: 0.83rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding: 3px 0;
+  padding-left: var(--space-md);
+  position: relative;
+}
+
+.threshold-body li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--text-faint);
+}
+
+/* ------------------------------------------------------------
+   18. STATUS & BAND PILLS (inline)
+   ------------------------------------------------------------ */
+.status-pill {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+.status-pill.red    { color: var(--red-light);   border-color: var(--red);   background: var(--red-bg);    }
+.status-pill.amber  { color: var(--amber-light);  border-color: var(--amber); background: var(--amber-bg);  }
+.status-pill.green  { color: var(--green-light);  border-color: var(--green); background: var(--green-bg);  }
+.status-pill.blue   { color: var(--blue-light);   border-color: var(--blue);  background: var(--blue-bg);   }
+.status-pill.yellow { color: var(--yellow);        border-color: var(--yellow);background: var(--yellow-bg); }
+.status-pill.gold   { color: var(--gold);          border-color: var(--gold-dim); background: var(--gold-glow); }
+
+/* Band Pills (source register table) */
+.band-pill {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.band-pill.green { color: var(--green-light);  border-color: var(--green);  background: var(--green-bg);  }
+.band-pill.amber { color: var(--amber-light);  border-color: var(--amber);  background: var(--amber-bg);  }
+.band-pill.red   { color: var(--red-light);    border-color: var(--red);    background: var(--red-bg);    }
+
+/* Inline fact/inference labels */
+.label-fact {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--blue-light);
+  border: 1px solid var(--blue);
+  background: var(--blue-bg);
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  margin-right: 6px;
+}
+
+.label-inference {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  border: 1px solid var(--gold-dim);
+  background: var(--gold-glow);
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  margin-right: 6px;
+}
+
+/* Structural constraint labels */
+.label-structural { color: var(--red-light);    }
+.label-political  { color: var(--amber-light);  }
+.label-resource   { color: var(--blue-light);   }
+.label-temporal   { color: var(--green-light);  }
+
+/* Analytic technique declaration block */
+.technique-declaration {
+  background: var(--obsidian-surface);
+  border: var(--border-default);
+  border-left: 3px solid var(--gold-dim);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  margin-bottom: var(--space-xl);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.technique-declaration strong {
+  color: var(--gold-dim);
+  font-style: normal;
+}
+
+/* ------------------------------------------------------------
+   19. FOOTER
+   ------------------------------------------------------------ */
+footer {
+  border-top: 1px solid var(--obsidian-border);
+  padding: var(--space-xl);
+  text-align: center;
+}
+
+.footer-brand {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: var(--space-sm);
+}
+
+.footer-doc-id {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  margin-bottom: var(--space-sm);
+}
+
+.footer-legal {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* ------------------------------------------------------------
+   20. RESPONSIVE BREAKPOINTS
+   ------------------------------------------------------------ */
+@media (max-width: 768px) {
+  nav {
+    padding: 0 var(--space-md);
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    padding: 100px var(--space-md) var(--space-2xl);
+  }
+
+  main {
+    padding: var(--space-2xl) var(--space-md);
+  }
+
+  .snapshot-grid,
+  .evidence-grid,
+  .scenario-grid,
+  .threshold-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bluf-item {
+    grid-template-columns: 28px 1fr;
+    gap: var(--space-md);
+  }
+
+  .behavioral-item {
+    grid-template-columns: 1fr;
+  }
+
+  .behavioral-rank {
+    font-size: 1rem;
+    text-align: left;
+    padding-top: 0;
+    opacity: 0.35;
+  }
+
+  .hero-running-head {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .hero-meta {
+    gap: var(--space-sm);
+  }
+
+  .metrics-strip {
+    gap: var(--space-sm);
+  }
+
+  table {
+    font-size: 0.8rem;
+  }
+
+  thead th,
+  tbody td {
+    padding: var(--space-xs) var(--space-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .section-title {
+    font-size: 1.15rem;
+  }
+}
+
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, rgba(0,0,0,0.12) 0px, transparent 1px, transparent 3px);
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.28;
+}
+.rec-block.immediate::before { border-color: var(--red); background: var(--red-bg); }
+.rec-block.near-term::before { border-color: var(--amber); background: var(--amber-bg); }
+.rec-block.medium-term::before { border-color: var(--green); background: var(--green-bg); }
+.hero-seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 118px;
+  height: 118px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-dim);
+  background: radial-gradient(circle at 30% 30%, var(--gold-glow), transparent 65%), var(--obsidian-card);
+  box-shadow: 0 0 0 8px rgba(200,169,110,0.03);
+  margin-bottom: var(--space-xl);
+  font-family: var(--font-mono);
+  color: var(--gold-light);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  text-align: center;
+}
+.hero-provenance {
+  margin-top: var(--space-md);
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  font-style: italic;
+}
+.section-intro {
+  margin-bottom: var(--space-lg);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+.implication-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+.implication-card {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-top: 3px solid var(--slate);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+.implication-card h4 {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+  font-size: 1rem;
+}
+.implication-card p {
+  font-size: 0.88rem;
+}
+.references-note {
+  margin-top: var(--space-md);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+@media (max-width: 768px) {
+  .implication-grid { grid-template-columns: 1fr; }
+}
+
+  </style>
+</head>
+<body>
+  <div id="progress"></div>
+  <nav>
+    <div class="nav-brand">QUANTA ANALYTICA <span>| MNS CONSULTING</span></div>
+    <ul class="nav-links">
+      <li><a href="#s1">BLUF</a></li>
+      <li><a href="#s4">Judgments</a></li>
+      <li><a href="#s6">Analysis</a></li>
+      <li><a href="#s10">Sources</a></li>
+      <li><a href="#annex-a">Annex A</a></li>
+    </ul>
+    <div class="nav-classify">Open Source</div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-running-head">
+        <span>QUANTA ANALYTICA | MNS CONSULTING</span>
+        <span>CONFLICT SYSTEMS ANALYSIS // CENTRAL SAHEL CORRIDOR RISK</span>
+      </div>
+      <div class="hero-seal">QAP<br>Report<br>Apr2026</div>
+      <h1>QAP Assessment: <br><span class="title-gold">Sahel Trade Fragmentation After the AES-ECOWAS Split</span></h1>
+      <p class="hero-subtitle">A public-facing QAP intelligence assessment of corridor friction, market stress, informal diversion, and the risk of criminalized regionalization across the central Sahel.</p>
+
+      <div class="hero-meta">
+        <div class="meta-cell">
+          <span class="label">Domain</span>
+          <span class="value">Conflict Systems Analysis</span>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell">
+          <span class="label">Producer</span>
+          <span class="value">Quanta Analytica | MNS Consulting</span>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell">
+          <span class="label">Framework</span>
+          <span class="value">QAP™ / OSPREY</span>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell">
+          <span class="label">Date</span>
+          <span class="value">02 Apr 2026</span>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell">
+          <span class="label">Confidence</span>
+          <span class="value">Moderate</span>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell">
+          <span class="label">Classification</span>
+          <span class="value">Open Source</span>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell">
+          <span class="label">Threat Level</span>
+          <span class="threat-badge elevated"><span class="threat-dot"></span>ELEVATED</span>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell">
+          <span class="label">Scope</span>
+          <span class="value">Sahel corridor trade and market dynamics</span>
+        </div>
+      </div>
+
+      <div class="scope-boundary">
+        <strong>Analytic scope boundary:</strong> Time range covers the effective ECOWAS withdrawal date of 29 January 2025 through 2 April 2026. Forward horizon runs 30 to 180 days. This assessment uses open-source institutional reporting, reputable wire services, and public economic and food-security assessments only. Excluded streams include classified reporting, proprietary customs microdata, and undisclosed field collection. Overall confidence is moderate because the political baseline and market stress signals are clear, while the exact scale of informal diversion remains insufficiently quantified.
+      </div>
+
+      <div class="metrics-strip">
+        <div class="metric-block">
+          <div class="metric-value">3</div>
+          <div class="metric-label">AES states</div>
+        </div>
+        <div class="metric-block">
+          <div class="metric-value">5</div>
+          <div class="metric-label">Key intelligence questions</div>
+        </div>
+        <div class="metric-block">
+          <div class="metric-value">6</div>
+          <div class="metric-label">Active indicators</div>
+        </div>
+        <div class="metric-block">
+          <div class="metric-value">12</div>
+          <div class="metric-label">Audited sources</div>
+        </div>
+        <div class="metric-block">
+          <div class="metric-value">180d</div>
+          <div class="metric-label">Forward horizon</div>
+        </div>
+      </div>
+
+      <div class="hero-provenance">Produced under the Quanta Analytica Process™. All claims are traced to open-source evidence or explicitly framed as analytic inference.</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="s1">
+      <div class="section-header">
+        <span class="section-num">01 // BLUF</span>
+        <div class="section-title">Bottom Line Up Front</div>
+      </div>
+      <div class="bluf-grid">
+        <div class="bluf-item">
+          <div class="bluf-index">01</div>
+          <div class="bluf-text">
+            <span class="bluf-claim">Managed fragmentation is the most defensible baseline.</span>
+            <p>The AES-ECOWAS split has increased corridor friction and governance uncertainty, but current evidence supports a hybrid trade order rather than total formal collapse. ECOWAS preserved limited continuity in movement and trade treatment even after the withdrawal became effective.<cite>[1][2]</cite></p>
+          </div>
+        </div>
+        <div class="bluf-item">
+          <div class="bluf-index">02</div>
+          <div class="bluf-text">
+            <span class="bluf-claim">Near-term sovereignty gains remain under-supported.</span>
+            <p>World Bank assessments for Burkina Faso, Mali, and Niger point toward higher financing pressure, trade disruption risk, and institutional friction, while AES policy steps such as the 0.5 percent import levy appear more consistent with cost layering than rapid self-sufficiency.<cite>[3][4][5][6]</cite></p>
+          </div>
+        </div>
+        <div class="bluf-item">
+          <div class="bluf-index">03</div>
+          <div class="bluf-text">
+            <span class="bluf-claim">Food and market stress are real, but geographically uneven.</span>
+            <p>Conflict-exposed markets remain the principal stress points. FEWS NET reporting supports high cereal prices and supply disruption in insecure areas, while some conflict-unaffected areas of Niger have shown more easing than the wider regional narrative implies.<cite>[8][9][10]</cite></p>
+          </div>
+        </div>
+        <div class="bluf-item">
+          <div class="bluf-index">04</div>
+          <div class="bluf-text">
+            <span class="bluf-claim">The highest strategic risk is criminalized regionalization.</span>
+            <p>As corridor visibility weakens, trafficking networks and armed actors gain more room to capture rents, tax movement, or exploit rerouted trade. UNODC-linked seizure data and Reuters reporting on JNIM revenue behavior both reinforce this risk pathway.<cite>[11][12]</cite></p>
+          </div>
+        </div>
+        <div class="bluf-item">
+          <div class="bluf-index">05</div>
+          <div class="bluf-text">
+            <span class="bluf-claim">Decision advantage now depends on monitoring which adaptation pathway wins.</span>
+            <p>The decisive question is whether technical accommodation and alternative routing can contain corridor friction before food stress, trafficking, and coercive rent extraction become the dominant operating logic in the central Sahel.<cite>[1][6][7][11]</cite></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s2">
+      <div class="section-header">
+        <span class="section-num">02 // KIQS</span>
+        <div class="section-title">Key Intelligence Questions</div>
+      </div>
+      <div class="table-wrapper">
+        <table class="kiq-table">
+          <thead>
+            <tr>
+              <th>Question ID</th>
+              <th>Intelligence Question</th>
+              <th>Links To</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>KIQ-1</td>
+              <td>Is the current trade pattern best described as adaptation, fragmentation, or collapse?</td>
+              <td>KJ-1 | GAP-1</td>
+            </tr>
+            <tr>
+              <td>KIQ-2</td>
+              <td>Are new AES trade measures reducing exposure or adding cost and administrative friction?</td>
+              <td>KJ-2 | GAP-3</td>
+            </tr>
+            <tr>
+              <td>KIQ-3</td>
+              <td>Where is food-price stress most likely to become politically or operationally destabilizing?</td>
+              <td>KJ-3 | EW-2</td>
+            </tr>
+            <tr>
+              <td>KIQ-4</td>
+              <td>Is corridor opacity increasing the financial operating space for trafficking and armed actors?</td>
+              <td>KJ-4 | EW-4 | GAP-2</td>
+            </tr>
+            <tr>
+              <td>KIQ-5</td>
+              <td>What indicators would signal movement toward accommodation, stabilization, or criminalized regionalization?</td>
+              <td>KJ-1 to KJ-4 | Annex A</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="s3">
+      <div class="section-header">
+        <span class="section-num">03 // SNAPSHOT</span>
+        <div class="section-title">Situation Snapshot</div>
+      </div>
+      <div class="snapshot-grid">
+        <div class="snapshot-cell">
+          <span class="snap-label">Who</span>
+          <div class="snap-content">Burkina Faso, Mali, and Niger within the AES; ECOWAS; corridor traders and transporters; local consumers; trafficking networks; and armed actors operating along insecure routes.<cite>[1][2][11][12]</cite></div>
+        </div>
+        <div class="snapshot-cell">
+          <span class="snap-label">What</span>
+          <div class="snap-content">A regional political split is increasing uncertainty over customs treatment, market access, and transport predictability while leaving enough legal continuity to prevent a clean economic break.<cite>[1][2]</cite></div>
+        </div>
+        <div class="snapshot-cell">
+          <span class="snap-label">Where</span>
+          <div class="snap-content">The central Sahel and its interfaces with WAEMU systems, coastal West African routes, and emerging Atlantic access concepts routed through Morocco.<cite>[3][4][5][7]</cite></div>
+        </div>
+        <div class="snapshot-cell">
+          <span class="snap-label">When</span>
+          <div class="snap-content">Assessment period runs from the effective withdrawal date of 29 January 2025 through the operating environment as of 2 April 2026, with a forward horizon of up to 180 days.<cite>[1][2]</cite></div>
+        </div>
+        <div class="snapshot-cell">
+          <span class="snap-label">Why</span>
+          <div class="snap-content">The issue combines sovereignty signaling, corridor dependence, insecurity, and institutional fragmentation in economies that are landlocked, import-sensitive, and highly exposed to transport disruption.<cite>[3][4][5]</cite></div>
+        </div>
+        <div class="snapshot-cell">
+          <span class="snap-label">How</span>
+          <div class="snap-content">The most likely mechanism is layered friction: incomplete regional arrangements, new levies, corridor insecurity, trader rerouting, and rising opportunity for predatory or illicit actors to capture rents.<cite>[5][6][11][12]</cite></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s4">
+      <div class="section-header">
+        <span class="section-num">04 // KEY JUDGMENTS</span>
+        <div class="section-title">Ranked Key Judgments</div>
+      </div>
+      <div class="kj-list">
+        <div class="kj-item moderate">
+          <div class="kj-header">
+            <span class="kj-conf">Moderate</span>
+            <span class="kj-id">KJ-1</span>
+          </div>
+          <div class="kj-text"><strong>The central Sahel is moving toward managed fragmentation rather than total rupture.</strong> That judgment is better supported than a full-collapse narrative because ECOWAS preserved limited continuity after the withdrawal became effective, even as institutional assessments warn that incomplete arrangements can still raise costs and constrain movement.<cite>[1][2][3][4][5]</cite></div>
+          <div class="kj-mapping">Maps to: KIQ-1 | KIQ-5</div>
+        </div>
+        <div class="kj-item moderate">
+          <div class="kj-header">
+            <span class="kj-conf">Moderate</span>
+            <span class="kj-id">KJ-2</span>
+          </div>
+          <div class="kj-text"><strong>The sovereignty-through-separation thesis remains under-supported in the near term.</strong> The March 2025 levy and the April 2025 Atlantic access push show bloc-level institution building, but they also indicate that the AES is still compensating for structural exposure rather than having already reduced it.<cite>[6][7]</cite></div>
+          <div class="kj-mapping">Maps to: KIQ-2</div>
+        </div>
+        <div class="kj-item moderate">
+          <div class="kj-header">
+            <span class="kj-conf">Moderate</span>
+            <span class="kj-id">KJ-3</span>
+          </div>
+          <div class="kj-text"><strong>Food and market stress will remain uneven, corridor-sensitive, and conflict-conditioned.</strong> Current evidence supports sustained price and supply stress in insecure zones, but it does not support a single uniform regional spiral across all markets.<cite>[8][9][10]</cite></div>
+          <div class="kj-mapping">Maps to: KIQ-3</div>
+        </div>
+        <div class="kj-item high">
+          <div class="kj-header">
+            <span class="kj-conf">Moderate</span>
+            <span class="kj-id">KJ-4</span>
+          </div>
+          <div class="kj-text"><strong>The most dangerous downstream effect is criminal-political convergence around trade corridors.</strong> The evidence base supports a growing risk that weaker visibility over routes will expand room for trafficking networks, corrupt intermediaries, and armed groups to tax or shape movement.<cite>[11][12]</cite></div>
+          <div class="kj-mapping">Maps to: KIQ-4 | KIQ-5</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s5">
+      <div class="section-header">
+        <span class="section-num">05 // EVIDENCE</span>
+        <div class="section-title">Evidence Summary</div>
+      </div>
+      <div class="evidence-grid">
+        <div class="evidence-box">
+          <div class="evidence-box-header know">What We Know</div>
+          <div class="evidence-box-body">
+            <ul>
+              <li>ECOWAS recognized the AES withdrawal on 29 January 2025 and simultaneously preserved limited continuity on movement and trade treatment.<cite>[1][2]</cite></li>
+              <li>The AES imposed a 0.5 percent levy on imports from outside the bloc in March 2025.<cite>[6]</cite></li>
+              <li>The three Sahel states publicly backed Morocco’s Atlantic access initiative in April 2025.<cite>[7]</cite></li>
+              <li>Institutional reporting flags food-price stress and market supply disruption in conflict-affected zones.<cite>[8][9][10]</cite></li>
+              <li>UNODC-linked reporting showed a sharp rise in cocaine seizures across the Sahel, while Reuters documented JNIM revenue extraction behavior.<cite>[11][12]</cite></li>
+            </ul>
+          </div>
+        </div>
+        <div class="evidence-box">
+          <div class="evidence-box-header assess">What We Assess</div>
+          <div class="evidence-box-body">
+            <ul>
+              <li>The trade system is fragmenting faster than it is stabilizing.</li>
+              <li>Informal adaptation by traders is likely expanding even where legal channels remain nominally open.</li>
+              <li>Security-linked trade opacity is becoming more strategically important than the legal exit event itself.</li>
+              <li>Technical accommodation is still possible, but it is not yet the dominant trajectory.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="evidence-box">
+          <div class="evidence-box-header gap">What We Do Not Know</div>
+          <div class="evidence-box-body">
+            <ul>
+              <li>The actual proportion of trade volume shifting from formal to informal channels.</li>
+              <li>The exact share of informal-route rents captured by insurgents versus officials, intermediaries, or criminal networks.</li>
+              <li>Whether alternative corridors can materially reduce transaction costs inside the next 12 months.</li>
+              <li>How durable current ECOWAS continuity measures will remain under new political stress.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h3>Key Drivers</h3>
+        <p><span class="label-fact">FACT</span> Corridor dependence and landlocked exposure remain structural realities for all three AES states.<cite>[3][4][5]</cite></p>
+        <p><span class="label-fact">FACT</span> Policy friction has increased through new bloc-level trade measures and continued political estrangement from ECOWAS.<cite>[1][6][7]</cite></p>
+        <p><span class="label-inference">INFERENCE</span> Trader rerouting and informal adaptation are likely expanding because the current governance environment rewards workaround behavior more than rule-based predictability.</p>
+        <p><span class="label-inference">INFERENCE</span> Corridor opacity raises the chance that trafficking, predation, and coercive rent extraction will become more mutually reinforcing over time.</p>
+      </div>
+
+      <div class="sub-section">
+        <h3>Binding Constraints on Available Responses</h3>
+        <p><span class="status-pill red">Structural</span> Landlocked geography, corridor dependence, and weak state reach in insecure zones limit rapid policy gains.</p>
+        <p><span class="status-pill amber">Political</span> Sovereignty signaling raises the cost of visible policy reversal even when technical accommodation would ease friction.</p>
+        <p><span class="status-pill blue">Resource</span> Limited logistics, financing, and domestic processing capacity constrain fast substitution of lost trade efficiencies.</p>
+        <p><span class="status-pill green">Temporal</span> Market stress can intensify faster than institutional workarounds can be negotiated or implemented.</p>
+      </div>
+
+      <div class="wsi-note"><strong>WSI source independence note:</strong> KJ-1 rests on three distinct corroboration pathways: independent newsroom reporting on the withdrawal event, institutional economic assessment, and institutional market-stress reporting. KJ-4 rests on two distinct pathways: UNODC-linked trafficking reporting and Reuters field reporting on insurgent revenue behavior. No key judgment depends on social media, AI-generated material, or a single unattributed source.</div>
+    </section>
+
+    <section class="section" id="s6">
+      <div class="section-header">
+        <span class="section-num">06 // ANALYSIS</span>
+        <div class="section-title">Structured Analytic Tradecraft</div>
+      </div>
+      <div class="technique-declaration"><strong>Techniques applied:</strong> Five-Layer Strategic Cognition Map, Key Assumptions Check, Analysis of Competing Hypotheses, Indicators and Warnings, scenario modeling, and decision-threshold monitoring.</div>
+
+      <div class="sub-section">
+        <h3>Five-Layer Strategic Cognition Map</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Layer</th>
+                <th>Assessment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>L1 Foundations</td>
+                <td>Three landlocked AES states remain dependent on external corridors, vulnerable to insecurity, and exposed to market and financing shocks.<cite>[3][4][5]</cite></td>
+              </tr>
+              <tr>
+                <td>L2 Mechanisms</td>
+                <td>Policy friction, corridor insecurity, levy-based cost layering, and trader rerouting are the main processes converting political separation into market distortion.<cite>[5][6]</cite></td>
+              </tr>
+              <tr>
+                <td>L3 Dynamics</td>
+                <td>A reinforcing loop is emerging in which opacity enables predation, predation raises route uncertainty, and route uncertainty drives more off-book adaptation.<cite>[11][12]</cite></td>
+              </tr>
+              <tr>
+                <td>L4 Leverage</td>
+                <td>The most useful intervention points are technical transit accommodation, corridor security prioritization, and joint monitoring of market and trafficking indicators.</td>
+              </tr>
+              <tr>
+                <td>L5 Paradigms</td>
+                <td>The contest is between a sovereignty-first separation model and a managed interdependence model that accepts political distance but still protects trade functionality.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h3>Key Assumptions Check</h3>
+        <div class="table-wrapper">
+          <table class="assumption-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Assumption</th>
+                <th>Why It Matters</th>
+                <th>Risk if Wrong</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>A-1</td>
+                <td>ECOWAS continuity measures will preserve some formal trade functionality in practice.</td>
+                <td>This prevents overstating rupture and supports the managed-fragmentation baseline.</td>
+                <td>If wrong, corridor disruption and formal-trade loss could be sharper than assessed.</td>
+                <td><span class="status-pill amber">Active</span></td>
+              </tr>
+              <tr>
+                <td>A-2</td>
+                <td>AES alternative trade measures will add friction before they add resilience.</td>
+                <td>This underpins the judgment that sovereignty gains remain under-supported in the near term.</td>
+                <td>If wrong, adaptation could stabilize faster than expected.</td>
+                <td><span class="status-pill amber">Active</span></td>
+              </tr>
+              <tr>
+                <td>A-3</td>
+                <td>Insecurity remains a major determinant of market access and route choice.</td>
+                <td>This links trade outcomes to trafficking and coercive rent extraction.</td>
+                <td>If wrong, the security-trade nexus would be overstated.</td>
+                <td><span class="status-pill green">Confirmed</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h3>Analysis of Competing Hypotheses</h3>
+        <div class="table-wrapper">
+          <table class="ach-table">
+            <thead>
+              <tr>
+                <th>Hypothesis</th>
+                <th>Evidence For</th>
+                <th>Evidence Against</th>
+                <th>Diagnosticity</th>
+                <th>Verdict</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>H1</td>
+                <td>Legal continuity coexists with rising cost pressure, new AES trade measures, uneven food stress, and growing illicit-route risk.<cite>[1][2][6][8][9][11]</cite></td>
+                <td>No direct public dataset yet quantifies the scale of formal-to-informal shift.</td>
+                <td>High</td>
+                <td>Best supported</td>
+              </tr>
+              <tr>
+                <td>H2</td>
+                <td>AES institution building and alternative routing efforts show real political intent.<cite>[6][7]</cite></td>
+                <td>Institutional assessments still point toward higher costs and downside risk rather than demonstrated efficiency gains.<cite>[3][4][5]</cite></td>
+                <td>Moderate</td>
+                <td>Weakly supported</td>
+              </tr>
+              <tr>
+                <td>H3</td>
+                <td>ECOWAS has preserved some practical continuity after the formal withdrawal.<cite>[1][2]</cite></td>
+                <td>The AES continues to build separate political and economic pathways, making rapid normalization less likely.<cite>[6][7]</cite></td>
+                <td>Moderate</td>
+                <td>Less likely near term</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h3>Indicators and Warnings</h3>
+        <div class="table-wrapper">
+          <table class="iw-table">
+            <thead>
+              <tr>
+                <th>Indicator</th>
+                <th>Direction</th>
+                <th>Current Status</th>
+                <th>Threshold</th>
+                <th>Cadence</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>New AES customs, tariff, or transit restrictions</td>
+                <td>Negative</td>
+                <td><span class="status-pill amber">Watch</span></td>
+                <td>Any bloc-wide restriction beyond the March 2025 levy</td>
+                <td>Weekly</td>
+              </tr>
+              <tr>
+                <td>ECOWAS-AES technical accommodation</td>
+                <td>Positive</td>
+                <td><span class="status-pill blue">Mixed</span></td>
+                <td>Public customs or transit arrangements at major crossings</td>
+                <td>Weekly</td>
+              </tr>
+              <tr>
+                <td>Price spikes in insecure markets</td>
+                <td>Negative</td>
+                <td><span class="status-pill amber">Active</span></td>
+                <td>Above-average cereal spikes across two reporting cycles</td>
+                <td>Biweekly</td>
+              </tr>
+              <tr>
+                <td>Evidence of easing in conflict-unaffected Niger markets</td>
+                <td>Positive</td>
+                <td><span class="status-pill green">Present</span></td>
+                <td>Repeated downward movement in non-conflict markets</td>
+                <td>Monthly</td>
+              </tr>
+              <tr>
+                <td>Large trafficking seizures or route disruption</td>
+                <td>Negative</td>
+                <td><span class="status-pill amber">Elevated</span></td>
+                <td>Multiple high-volume seizures or credible route-shift signals</td>
+                <td>Monthly</td>
+              </tr>
+              <tr>
+                <td>Armed-group extraction from trade routes</td>
+                <td>Negative</td>
+                <td><span class="status-pill amber">Elevated</span></td>
+                <td>Credible reporting of taxation, hijacking, or coercive checkpointing</td>
+                <td>Weekly</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h3>Scenario Modeling</h3>
+        <div class="scenario-grid">
+          <div class="scenario-card best">
+            <span class="scenario-label">Best Case</span>
+            <h4>Managed Accommodation</h4>
+            <p>Limited technical arrangements preserve most legal trade functionality, food stress remains localized, and alternative routes reduce some exposure without fully replacing ECOWAS-centered trade.</p>
+            <span class="scenario-prob">Probability band: Lower probability, moderate upside</span>
+          </div>
+          <div class="scenario-card base">
+            <span class="scenario-label">Base Case</span>
+            <h4>Managed Fragmentation</h4>
+            <p>Legal trade continues unevenly, informal diversion expands, corridor costs stay elevated, and market stress remains conflict-linked rather than fully generalized.</p>
+            <span class="scenario-prob">Probability band: Most likely</span>
+          </div>
+          <div class="scenario-card worst">
+            <span class="scenario-label">Worst Case</span>
+            <h4>Criminalized Regionalization</h4>
+            <p>Trade opacity deepens, trafficking and coercive rent capture expand, and corridor insecurity begins to overwhelm remaining formal arrangements.</p>
+            <span class="scenario-prob">Probability band: Lower probability, high impact</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s7">
+      <div class="section-header">
+        <span class="section-num">07 // BEHAVIORAL</span>
+        <div class="section-title">Applied Behavioral Tradecraft</div>
+      </div>
+      <p class="section-intro"><em>Behavioral analysis is relevant here because sovereignty signaling, trader adaptation, and legitimacy competition all shape how actors respond to corridor friction and uncertainty.</em></p>
+      <div class="behavioral-grid">
+        <div class="behavioral-item">
+          <div class="behavioral-rank">1</div>
+          <div class="behavioral-content">
+            <h4>Sovereignty framing and elite commitment</h4>
+            <p>AES leadership has strong incentive to frame separation as autonomy and dignity. That raises the political cost of visible reversal even when practical market friction persists.<cite>[1][2][6]</cite></p>
+            <span class="behavioral-inference">Analytic inference: policy rigidity may outlast immediate market utility because identity signaling is itself a political output.</span>
+          </div>
+        </div>
+        <div class="behavioral-item">
+          <div class="behavioral-rank">2</div>
+          <div class="behavioral-content">
+            <h4>Trader normalization of workaround behavior</h4>
+            <p>When rules become uncertain and routes insecure, traders rationally normalize side payments, rerouting, and off-book transactions. This does not require ideology. It only requires repeated exposure to unreliable formal systems.</p>
+            <span class="behavioral-inference">Analytic inference: once workaround behavior becomes routine, restoring legal-channel trust becomes harder and slower.</span>
+          </div>
+        </div>
+        <div class="behavioral-item">
+          <div class="behavioral-rank">3</div>
+          <div class="behavioral-content">
+            <h4>Legitimacy competition around corridor control</h4>
+            <p>Where states cannot guarantee predictable passage, non-state actors can gain influence by offering coercive but reliable access, protection, or dispute resolution along routes.<cite>[11][12]</cite></p>
+            <span class="behavioral-inference">Analytic inference: even partial non-state reliability can erode state legitimacy faster than formal policy messaging can repair it.</span>
+          </div>
+        </div>
+      </div>
+      <div class="sub-section">
+        <h3>Influence and Narrative Vulnerabilities</h3>
+        <p>External corridor initiatives can be framed domestically as proof that separation is working even before measurable trade gains appear. Conversely, any short-term easing in selected markets can be over-generalized into a broader sovereignty-success narrative, masking continued distortion in insecure or marginal zones.<cite>[7][8][9][10]</cite></p>
+      </div>
+    </section>
+
+    <section class="section" id="s8">
+      <div class="section-header">
+        <span class="section-num">08 // IMPLICATIONS</span>
+        <div class="section-title">Strategic Implications, Risk, and Recommendations</div>
+      </div>
+
+      <div class="sub-section">
+        <h3>Strategic Implications</h3>
+        <div class="implication-grid">
+          <div class="implication-card">
+            <h4>Local</h4>
+            <p>Consumers, traders, and market-dependent communities are likely to absorb the first-order costs through higher transaction uncertainty, localized price spikes, and weaker visibility into who controls route access.</p>
+          </div>
+          <div class="implication-card">
+            <h4>Regional</h4>
+            <p>For ECOWAS and neighboring states, the main strategic challenge is no longer the formal exit itself. It is whether corridor governance can still compete with off-book adaptation and coercive extraction.</p>
+          </div>
+          <div class="implication-card">
+            <h4>International</h4>
+            <p>External partners should expect a more fragmented operating environment in which trade, access, food security, and security assistance become more tightly coupled than traditional sector stovepipes allow.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h3>Risk Scoring Matrix</h3>
+        <div class="table-wrapper">
+          <table class="risk-matrix">
+            <thead>
+              <tr>
+                <th>Risk</th>
+                <th>Likelihood</th>
+                <th>Impact</th>
+                <th>Score</th>
+                <th>Mitigant</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="risk-high">
+                <td>Persistent regional trade fragmentation</td>
+                <td>4</td>
+                <td>4</td>
+                <td><span class="risk-score score-high">16</span></td>
+                <td>Technical customs accommodation and corridor-facilitation measures</td>
+              </tr>
+              <tr class="risk-high">
+                <td>Localized food-price shocks in insecure zones</td>
+                <td>4</td>
+                <td>4</td>
+                <td><span class="risk-score score-high">16</span></td>
+                <td>Market monitoring, targeted logistics support, and early-warning action</td>
+              </tr>
+              <tr class="risk-high">
+                <td>Trafficking and armed rent capture</td>
+                <td>3</td>
+                <td>5</td>
+                <td><span class="risk-score score-high">15</span></td>
+                <td>Route monitoring, interdiction coordination, and local legitimacy support</td>
+              </tr>
+              <tr>
+                <td>Political overconfidence from partial market easing</td>
+                <td>3</td>
+                <td>3</td>
+                <td><span class="risk-score score-medium">9</span></td>
+                <td>Granular market reporting that separates local easing from regional trends</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h3>Recommendations</h3>
+        <div class="rec-timeline">
+          <div class="rec-block immediate">
+            <div class="rec-time">0-72H Immediate</div>
+            <div class="rec-content">
+              <p>Use the core line: <strong>the AES-ECOWAS split is producing managed fragmentation and informal diversion, not total formal trade collapse.</strong></p>
+              <p>Treat exact volume claims on smuggling or corridor diversion as <strong>unknown</strong> unless independently verified.</p>
+            </div>
+          </div>
+          <div class="rec-block near-term">
+            <div class="rec-time">3-30 Days Near-Term</div>
+            <div class="rec-content">
+              <p>Track trade, food, and security indicators together rather than in separate analytic lanes.</p>
+              <p>Build a corridor watchlist focused on markets and routes where price stress and predation overlap.</p>
+            </div>
+          </div>
+          <div class="rec-block medium-term">
+            <div class="rec-time">30-180 Days Medium-Term</div>
+            <div class="rec-content">
+              <p>Maintain standing scenarios for managed accommodation, managed fragmentation, and criminalized regionalization.</p>
+              <p>Prioritize collection on who captures rents from informal adaptation and whether alternative routing through Morocco becomes operationally meaningful.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s9">
+      <div class="section-header">
+        <span class="section-num">09 // CONFIDENCE</span>
+        <div class="section-title">Confidence and Uncertainties</div>
+      </div>
+      <div class="conf-panel">
+        <div class="conf-header">
+          <span class="conf-band moderate">Moderate</span>
+          <span class="conf-header-label">Overall confidence</span>
+        </div>
+        <div class="conf-body">
+          <p><strong>Reason 1:</strong> The political baseline is clear. The withdrawal became effective on 29 January 2025 and ECOWAS also preserved limited continuity.<cite>[1][2]</cite></p>
+          <p><strong>Reason 2:</strong> The macroeconomic direction is consistently supported by institutional reporting across Burkina Faso, Mali, and Niger.<cite>[3][4][5]</cite></p>
+          <p><strong>Reason 3:</strong> The food-stress and trafficking dimensions are independently supported even if the exact scale of informal diversion remains unquantified.<cite>[8][9][10][11][12]</cite></p>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h3>Uncertainties That Could Flip the Assessment</h3>
+        <div class="uncertainty-list">
+          <div class="uncertainty-item">
+            <span class="u-label">Uncertainty 1</span>
+            <p>A substantive ECOWAS-AES technical accommodation could lower corridor friction faster than expected.</p>
+          </div>
+          <div class="uncertainty-item">
+            <span class="u-label">Uncertainty 2</span>
+            <p>Alternative routing through Morocco or other access arrangements could begin to reduce costs in a measurable way within the forecast horizon.</p>
+          </div>
+          <div class="uncertainty-item">
+            <span class="u-label">Uncertainty 3</span>
+            <p>Stronger-than-expected evidence may show that informal diversion is economically manageable and not heavily captured by coercive actors.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h3>Assumption Failure Drill</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Assumption</th>
+                <th>Failure Signal</th>
+                <th>Consequence</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>A-1: ECOWAS continuity remains meaningful</td>
+                <td>New restrictions on movement or trade treatment; visible corridor disruption</td>
+                <td>The managed-fragmentation baseline becomes too optimistic</td>
+              </tr>
+              <tr>
+                <td>A-2: AES adaptation remains slower than AES political signaling</td>
+                <td>Measured reduction in corridor costs; credible evidence of stabilized flows</td>
+                <td>The sovereignty-through-separation critique weakens</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s10">
+      <div class="section-header">
+        <span class="section-num">10 // REFERENCES</span>
+        <div class="section-title">Source Register and WSI Audit</div>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Source</th>
+              <th>Type</th>
+              <th>Band</th>
+              <th>Independence Note</th>
+              <th>URL / Locator</th>
+              <th>Atomic Claim / Falsifiability</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Reuters, 29 Jan 2025: West Africa bloc announces formal exit of three junta-led states</td>
+              <td>Secondary reporting</td>
+              <td><span class="band-pill green">Green</span></td>
+              <td>Independent newsroom reporting on the legal exit event</td>
+              <td><a href="https://www.reuters.com/world/africa/west-africa-bloc-announces-formal-exit-three-junta-led-states-2025-01-29/" target="_blank" rel="noopener noreferrer">reuters.com/.../2025-01-29/</a></td>
+              <td>Claim: withdrawal became effective on 29 January 2025 and ECOWAS preserved some practical continuity. Falsifier: official ECOWAS record showing different effective status.</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Associated Press, 29 Jan 2025: ECOWAS keeps door open after AES exit</td>
+              <td>Secondary reporting</td>
+              <td><span class="band-pill green">Green</span></td>
+              <td>Separate newsroom stream confirming event and continuity measures</td>
+              <td><a href="https://apnews.com/article/672c3db44eb28fd4a181840f5ba00296" target="_blank" rel="noopener noreferrer">apnews.com/article/672c3db44eb28fd4a181840f5ba00296</a></td>
+              <td>Claim: ECOWAS requested member states to continue extending membership privileges. Falsifier: bloc-level revocation or contradictory official text.</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>World Bank, Oct 2024: Macro Poverty Outlook for Burkina Faso</td>
+              <td>Institutional economic assessment</td>
+              <td><span class="band-pill green">Green</span></td>
+              <td>Separate institutional analytic pathway</td>
+              <td><a href="https://documents.worldbank.org/pt/publication/documents-reports/documentdetail/099515510142426393" target="_blank" rel="noopener noreferrer">documents.worldbank.org/.../099515510142426393</a></td>
+              <td>Claim: insecurity and potential ECOWAS-withdrawal frictions are downside risks. Falsifier: later official assessment showing no such risk channel.</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>World Bank, Apr 2024: Macro Poverty Outlook for Mali</td>
+              <td>Institutional economic assessment</td>
+              <td><span class="band-pill green">Green</span></td>
+              <td>Country-specific institutional source distinct from media coverage</td>
+              <td><a href="https://documents.worldbank.org/en/publication/documents-reports/documentdetail/099539404052415338" target="_blank" rel="noopener noreferrer">documents.worldbank.org/.../099539404052415338</a></td>
+              <td>Claim: rising insecurity, financing costs, and announced ECOWAS withdrawal are downside risks. Falsifier: revised macro outlook removing these drivers.</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>World Bank, 2025: Macro Poverty Outlook for Sub-Saharan Africa</td>
+              <td>Institutional economic assessment</td>
+              <td><span class="band-pill green">Green</span></td>
+              <td>Regional macro source with Niger-specific discussion, separate from wires</td>
+              <td><a href="https://thedocs.worldbank.org/en/doc/77351105a334213c64122e44c2efe523-0500072021/related/mpo-sm25-ssa.pdf" target="_blank" rel="noopener noreferrer">thedocs.worldbank.org/.../mpo-sm25-ssa.pdf</a></td>
+              <td>Claim: Niger formally exited ECOWAS on 29 January 2025 and retained key benefits pending further decisions. Falsifier: formal reversal or contradictory institutional update.</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Reuters, 30 Mar 2025: West African juntas impose levy on imported goods</td>
+              <td>Secondary reporting</td>
+              <td><span class="band-pill green">Green</span></td>
+              <td>Independent reporting on bloc-level trade measure</td>
+              <td><a href="https://www.reuters.com/world/africa/west-african-juntas-impose-levy-imported-goods-2025-03-30/" target="_blank" rel="noopener noreferrer">reuters.com/.../2025-03-30/</a></td>
+              <td>Claim: AES imposed a 0.5 percent levy on imports from outside the bloc. Falsifier: official repeal or contradictory decree text.</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Reuters, 28 Apr 2025: Landlocked Burkina, Mali, Niger back sea access through Morocco</td>
+              <td>Secondary reporting</td>
+              <td><span class="band-pill green">Green</span></td>
+              <td>Separate reporting stream on alternative corridor initiative</td>
+              <td><a href="https://www.reuters.com/world/africa/landlocked-burkina-mali-niger-back-sea-access-through-morocco-2025-04-28/" target="_blank" rel="noopener noreferrer">reuters.com/.../2025-04-28/</a></td>
+              <td>Claim: AES foreign ministers endorsed Morocco’s Atlantic access initiative. Falsifier: official denial or non-implementation statement overturning support claim.</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>FEWS NET, May 2024: Niger Key Message Update</td>
+              <td>Institutional food-security assessment</td>
+              <td><span class="band-pill green">Green</span></td>
+              <td>Separate technical pathway on prices and food security</td>
+              <td><a href="https://fews.net/west-africa/niger/key-message-update/may-2024" target="_blank" rel="noopener noreferrer">fews.net/.../niger/key-message-update/may-2024</a></td>
+              <td>Claim: national average staple prices in Niger were materially above the five-year average. Falsifier: corrected FEWS data reversing those price deviations.</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>FEWS NET, Jan 2026: Burkina Faso Key Message Update</td>
+              <td>Institutional food-security assessment</td>
+              <td><span class="band-pill green">Green</span></td>
+              <td>Technical market-stress reporting distinct from Reuters and AP</td>
+              <td><a href="https://fews.net/west-africa/burkina-faso/key-message-update/january-2026" target="_blank" rel="noopener noreferrer">fews.net/.../burkina-faso/key-message-update/january-2026</a></td>
+              <td>Claim: northern and eastern Burkina Faso faced persistent market-supply challenges and severe price pressure. Falsifier: later FEWS update showing broad normalization across those zones.</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>FEWS NET, Jan 2026: Niger Key Message Update</td>
+              <td>Institutional food-security assessment</td>
+              <td><span class="band-pill green">Green</span></td>
+              <td>Second technical market source for geographic variation inside Niger</td>
+              <td><a href="https://fews.net/west-africa/niger/key-message-update/january-2026" target="_blank" rel="noopener noreferrer">fews.net/.../niger/key-message-update/january-2026</a></td>
+              <td>Claim: crisis outcomes persisted in conflict-affected zones while some non-conflict markets eased. Falsifier: later update showing uniform deterioration or reversal.</td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td>Associated Press, 19 Apr 2024: The West African Sahel is becoming a drug smuggling corridor</td>
+              <td>Secondary reporting based on UNODC findings</td>
+              <td><span class="band-pill green">Green</span></td>
+              <td>IO-linked trafficking evidence, separate from Reuters field reporting</td>
+              <td><a href="https://apnews.com/article/71b56f03fcb6660a8df43e68e77e8996" target="_blank" rel="noopener noreferrer">apnews.com/article/71b56f03fcb6660a8df43e68e77e8996</a></td>
+              <td>Claim: cocaine seizures in the Sahel rose sharply and armed groups benefit from trafficking. Falsifier: revised UNODC data or corrected attribution.</td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td>Reuters, 17 Jul 2025: Rise in Al Qaeda attacks revives spectre of West African caliphate</td>
+              <td>Secondary reporting</td>
+              <td><span class="band-pill green">Green</span></td>
+              <td>Separate field and analyst reporting on JNIM operational and revenue behavior</td>
+              <td><a href="https://www.reuters.com/world/europe/rise-al-qaeda-attacks-revives-spectre-west-african-caliphate-2025-07-17/" target="_blank" rel="noopener noreferrer">reuters.com/.../2025-07-17/</a></td>
+              <td>Claim: JNIM has expanded attacks and extracts resources through multiple coercive revenue streams. Falsifier: credible reporting showing sustained rollback or contrary group financing evidence.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="references-note">Band key: Green = strong and usable for load-bearing claims; Amber = mixed and caveated; Red = lead-only unless independently verified. Independence was assessed using the QAP WSI anti-echo test before counting corroboration.</p>
+    </section>
+
+    <section class="section" id="annex-a">
+      <div class="section-header">
+        <span class="section-num">A // EARLY WARNING</span>
+        <div class="section-title">Early Warning Indicators</div>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Trigger Event</th>
+              <th>Scenario Signal</th>
+              <th>Leading Indicators</th>
+              <th>Analytic Action Required</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>EW-1</td>
+              <td>New bloc-level restrictions beyond the March 2025 levy</td>
+              <td>Base case drifting toward worst case</td>
+              <td>Official customs decrees, border delays, trader workarounds</td>
+              <td>Raise risk score for fragmentation and update recommendations within 72 hours</td>
+            </tr>
+            <tr>
+              <td>EW-2</td>
+              <td>Repeated cereal price spikes in insecure markets</td>
+              <td>Worsening food-stress pathway</td>
+              <td>FEWS NET updates, local market bulletins, humanitarian alerts</td>
+              <td>Escalate food-security watch and reassess second-order instability risk</td>
+            </tr>
+            <tr>
+              <td>EW-3</td>
+              <td>Credible ECOWAS-AES technical transit arrangements</td>
+              <td>Movement toward best case</td>
+              <td>Communiques, customs notices, corridor facilitation measures</td>
+              <td>Downgrade immediate friction risk if implementation is observable</td>
+            </tr>
+            <tr>
+              <td>EW-4</td>
+              <td>High-volume seizures or route-shift evidence tied to inland corridors</td>
+              <td>Trafficking expansion signal</td>
+              <td>UNODC, reputable reporting, enforcement releases</td>
+              <td>Reassess criminalized regionalization probability and widen collection focus</td>
+            </tr>
+            <tr>
+              <td>EW-5</td>
+              <td>Credible reporting of taxation, hijacking, or coercive checkpointing</td>
+              <td>Escalation in armed-group rent capture</td>
+              <td>Reuters, local reporting with corroboration, humanitarian access notes</td>
+              <td>Shift threshold status toward Red and prioritize contingency planning</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="annex-b">
+      <div class="section-header">
+        <span class="section-num">B // INTEL GAPS</span>
+        <div class="section-title">Priority Intelligence Gaps and Action Thresholds</div>
+      </div>
+
+      <div class="sub-section">
+        <h3>Priority Intelligence Gaps</h3>
+        <div class="table-wrapper">
+          <table class="pig-table">
+            <thead>
+              <tr>
+                <th>Gap ID</th>
+                <th>Intelligence Question</th>
+                <th>Why It Matters</th>
+                <th>Collection Recommendation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>GAP-1</td>
+                <td>What share of current trade volume has shifted from formal to informal channels?</td>
+                <td>Without this, the magnitude of fragmentation remains estimated rather than measured.</td>
+                <td>Seek customs proxies, transport surveys, market chain interviews, and price-gap analysis.</td>
+              </tr>
+              <tr>
+                <td>GAP-2</td>
+                <td>Who captures the rents from informal adaptation and route opacity?</td>
+                <td>This determines whether the dominant risk is commercial inefficiency, corruption, or insurgent finance.</td>
+                <td>Triangulate trafficking, checkpoint, humanitarian access, and local security reporting.</td>
+              </tr>
+              <tr>
+                <td>GAP-3</td>
+                <td>Can alternative Atlantic access measurably reduce costs within the forecast horizon?</td>
+                <td>This is the most important falsifier for the current skepticism toward near-term resilience gains.</td>
+                <td>Track implementation milestones, shipping arrangements, and corridor cost comparisons.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h3>Action Thresholds</h3>
+        <div class="threshold-grid">
+          <div class="threshold-cell green-zone">
+            <div class="threshold-header">Green</div>
+            <div class="threshold-body">
+              <p>Formal arrangements hold and price stress remains localized.</p>
+              <ul>
+                <li>Maintain routine monitoring cadence</li>
+                <li>Keep base-case probability dominant</li>
+                <li>Review assumptions monthly</li>
+              </ul>
+            </div>
+          </div>
+          <div class="threshold-cell amber-zone">
+            <div class="threshold-header">Amber</div>
+            <div class="threshold-body">
+              <p>New restrictions, repeated market spikes, or credible route predation appear.</p>
+              <ul>
+                <li>Increase reporting cadence</li>
+                <li>Re-score risk matrix within 7 days</li>
+                <li>Push corridor watchlist to decision-makers</li>
+              </ul>
+            </div>
+          </div>
+          <div class="threshold-cell red-zone">
+            <div class="threshold-header">Red</div>
+            <div class="threshold-body">
+              <p>Multiple negative indicators converge across trade, food, and security streams.</p>
+              <ul>
+                <li>Escalate to contingency planning</li>
+                <li>Prepare corridor-risk mitigation package</li>
+                <li>Reassess scenario probabilities inside 72 hours</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand">QUANTA ANALYTICA PROCESS™ | MNS CONSULTING</div>
+    <div class="footer-doc-id">Document ID: QA-WEB-SAHEL-AES-ECOWAS-2026-04-02</div>
+    <div class="footer-legal">This public-facing assessment applies the Quanta Analytica Process™ to open-source material only. Facts are separated from judgments, confidence is tied to evidence quality, and no internal production notes or unpublished project files are cited in the public record.</div>
+  </footer>
+
+  <script>
+    const progress = document.getElementById('progress');
+    const updateProgress = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progressWidth = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progress.style.width = progressWidth + '%';
+    };
+    window.addEventListener('scroll', updateProgress);
+    updateProgress();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.section').forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
