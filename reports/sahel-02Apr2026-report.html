@@ -258,8 +258,8 @@ nav {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(200, 169, 110, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(200, 169, 110, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(200, 169, 110, 0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 169, 110, 0.10) 1px, transparent 1px);
   background-size: 40px 40px;
   animation: gridDrift 20s linear infinite;
   pointer-events: none;
@@ -350,7 +350,7 @@ nav {
 .meta-divider {
   width: 1px;
   height: 36px;
-  background: var(--obsidian-border);
+  background: var(--gold-dim);
   align-self: center;
 }
 
@@ -1392,6 +1392,30 @@ body::before {
   line-height: 1.45;
   text-align: center;
 }
+
+.hero-seal2 {
+  display: inline-block;
+  width: 118px;
+  height: 118px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-dim);
+  background: url('https://quanta-analytica/logo.png') no-repeat center;
+  background-size: contain;
+  margin-bottom: var(--space-xl);
+}
+
+.hero-seal3 {
+  display: inline-block;
+  width: 118px;
+  height: 118px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-dim);
+  background: url('https://quanta-analytica/favicon.png') no-repeat center;
+  background-size: 70%; /* Adjusted for favicon icon scale */
+  background-color: var(--obsidian-card);
+  margin-bottom: var(--space-xl);
+}
+
 .hero-provenance {
   margin-top: var(--space-md);
   font-size: 0.78rem;
