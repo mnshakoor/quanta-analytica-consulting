@@ -85,7 +85,24 @@ cite{font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:0.58rem;f
 .bluf-index{width:44px;min-width:44px;display:flex;align-items:flex-start;justify-content:center;padding:1.1rem 0;border-right:1px solid var(--border-dim);font-family:'IBM Plex Mono',monospace;font-size:0.62rem;font-weight:600;color:var(--amber);background:var(--amber-pale);}
 .bluf-text{padding:0.9rem 1.3rem;font-family:'IBM Plex Sans',sans-serif;font-size:0.9rem;line-height:1.65;color:var(--text-body);}
 .bluf-text strong{color:var(--text-primary);font-weight:600;}
-.snapshot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:2rem;}
+.snapshot-grid {
+  display: grid;
+  /* Forces exactly 3 columns of equal width */
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+/* Optional: Add a media query for mobile devices */
+@media (max-width: 768px) {
+  .snapshot-grid {
+    /* Switches to 1 column on small screens so text remains readable */
+    grid-template-columns: 1fr; 
+  }
 .snapshot-cell{background:var(--bg-card);padding:1.1rem 1.3rem;}
 .snapshot-label{font-family:'IBM Plex Mono',monospace;font-size:0.58rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber-dim);margin-bottom:0.4rem;}
 .snapshot-content{font-family:'IBM Plex Sans',sans-serif;font-size:0.85rem;color:var(--text-body);line-height:1.5;}
