@@ -359,7 +359,8 @@ main {
 /* ── SNAPSHOT TABLE ────────────────────────────────────────────────────── */
 .snapshot-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  /* Forces exactly 3 columns of equal width */
+  grid-template-columns: repeat(3, 1fr); 
   gap: 1px;
   background: var(--border);
   border: 1px solid var(--border);
