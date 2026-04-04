@@ -268,6 +268,49 @@ nav {
   100% { transform: translate(40px, 40px); }
 }
 
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .section-title {
+    font-size: 1.15rem;
+  }
+}
+
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, rgba(0,0,0,0.12) 0px, transparent 1px, transparent 3px);
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.28;
+}
+.rec-block.immediate::before { border-color: var(--red); background: var(--red-bg); }
+.rec-block.near-term::before { border-color: var(--amber); background: var(--amber-bg); }
+.rec-block.medium-term::before { border-color: var(--green); background: var(--green-bg); }
+.hero-seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 118px;
+  height: 118px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-dim);
+  background: radial-gradient(circle at 30% 30%, var(--gold-glow), transparent 65%), var(--obsidian-card);
+  box-shadow: 0 0 0 8px rgba(200,169,110,0.03);
+  margin-bottom: var(--space-xl);
+  font-family: var(--font-mono);
+  color: var(--gold-light);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
 .hero-content {
   position: relative;
   z-index: 2;
@@ -287,6 +330,31 @@ nav {
   margin-bottom: var(--space-lg);
   border-bottom: 1px solid var(--obsidian-border);
   padding-bottom: var(--space-sm);
+}
+
+.hero-container {
+  display: flex;          /* Enables side-by-side layout */
+  align-items: center;    /* Vertically centers the image with the text */
+  gap: 30px;              /* Creates space between the image and the text */
+  margin: 20px 0;
+}
+
+.hero-image {
+  max-width: 200px;       /* Adjust this size to fit your design */
+  height: auto;           /* Maintains aspect ratio */
+  border-radius: 8px;     /* Optional: rounds the corners of your image */
+}
+
+.hero-text {
+  flex: 1;                /* Allows text to take up remaining space */
+}
+
+/* Optional: Mobile Responsiveness */
+@media (max-width: 600px) {
+  .hero-container {
+    flex-direction: column; /* Stacks image on top of text on small screens */
+    text-align: center;
+  }
 }
 
 .hero h1 {
@@ -1502,8 +1570,14 @@ footer {
         <span>QUANTA ANALYTICA | MNS CONSULTING</span>
         <span>FRAGILITY &amp; GOVERNANCE MODELING // GLOBAL</span>
       </div>
-      <h1>Comparative Global Strategic Assessment:<br><span class="title-gold">Elite Capture and Global Instability</span></h1>
-      <p class="hero-subtitle">A QAP Special Analysis assessing whether elite capture is strongly, conditionally, weakly, or symptomatically related to instability across the contemporary international system.</p>
+<div class="hero-container">
+  <img src="https://quanta-analytica.com/logo.PNG" alt="Assessment Icon" class="hero-image">
+  
+  <div class="hero-text">
+    <h1>Comparative Global Strategic Assessment:<br><span class="title-gold">Elite Capture and Global Instability (Special Report)</span></h1>
+    <p class="hero-subtitle">A QAP structured analysis assessing whether elite capture is strongly, conditionally, weakly, or symptomatically related to instability across the contemporary international system.</p>
+  </div>
+</div>
       <div class="hero-meta">
         <div class="meta-cell"><span class="label">Domain</span><span class="value">Fragility &amp; Governance Modeling</span></div>
         <div class="meta-divider"></div>
