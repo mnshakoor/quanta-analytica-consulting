@@ -1,0 +1,2072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Authoritarian AI | Quanta Analytica Process™ | 06 Apr 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+/* ============================================================
+   QAP WEB REPORT — CANONICAL STYLESHEET
+   Quanta Analytica Process™ | MNS Consulting
+   quanta-analytica.com/reports/
+   Version: 2.0 | Design System Reference
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. ROOT VARIABLES — Color, Typography, Spacing
+   ------------------------------------------------------------ */
+:root {
+  /* Core Palette */
+  --obsidian:         #0a0c10;
+  --obsidian-mid:     #10131a;
+  --obsidian-card:    #13161f;
+  --obsidian-border:  #1c2030;
+  --obsidian-surface: #181b26;
+  --obsidian-lift:    #1e2235;
+
+  /* Gold Scale */
+  --gold:             #c8a96e;
+  --gold-light:       #dfc28e;
+  --gold-pale:        #e8d5aa;
+  --gold-dim:         #9a7f52;
+  --gold-muted:       #6b5838;
+  --gold-glow:        rgba(200, 169, 110, 0.12);
+  --gold-glow-strong: rgba(200, 169, 110, 0.22);
+
+  /* Alert / Status Colors */
+  --red:              #c0392b;
+  --red-light:        #e74c3c;
+  --red-bg:           rgba(192, 57, 43, 0.12);
+  --amber:            #d4820a;
+  --amber-light:      #f39c12;
+  --amber-bg:         rgba(212, 130, 10, 0.12);
+  --green:            #27ae60;
+  --green-light:      #2ecc71;
+  --green-bg:         rgba(39, 174, 96, 0.12);
+  --blue:             #2980b9;
+  --blue-light:       #3498db;
+  --blue-bg:          rgba(41, 128, 185, 0.12);
+  --yellow:           #f1c40f;
+  --yellow-bg:        rgba(241, 196, 15, 0.12);
+  --slate:            #5d7a9a;
+  --slate-light:      #7f9ab8;
+
+  /* Text Scale */
+  --text-primary:     #e8e4dc;
+  --text-secondary:   #b8b0a0;
+  --text-muted:       #7a7264;
+  --text-faint:       #4a4640;
+
+  /* Typography */
+  --font-display:     'Libre Baskerville', Georgia, serif;
+  --font-body:        'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:        'IBM Plex Mono', 'Courier New', monospace;
+
+  /* Spacing */
+  --space-xs:         0.25rem;
+  --space-sm:         0.5rem;
+  --space-md:         1rem;
+  --space-lg:         1.5rem;
+  --space-xl:         2rem;
+  --space-2xl:        3rem;
+  --space-3xl:        4rem;
+
+  /* Borders & Radius */
+  --radius-sm:        3px;
+  --radius-md:        6px;
+  --radius-lg:        10px;
+  --border-default:   1px solid var(--obsidian-border);
+  --border-gold:      1px solid var(--gold-dim);
+
+  /* Transitions */
+  --transition-fast:  0.15s ease;
+  --transition-base:  0.25s ease;
+  --transition-slow:  0.4s ease;
+
+  /* Shadows */
+  --shadow-card:      0 2px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lift:      0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* ------------------------------------------------------------
+   2. RESET & BASE
+   ------------------------------------------------------------ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--obsidian);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--gold-light);
+}
+
+p {
+  margin-bottom: var(--space-md);
+  color: var(--text-secondary);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+strong, b {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+em, i {
+  color: var(--slate-light);
+  font-style: italic;
+}
+
+cite {
+  font-style: normal;
+  color: var(--gold-dim);
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  vertical-align: super;
+  line-height: 0;
+}
+
+/* ------------------------------------------------------------
+   3. SCROLL PROGRESS BAR
+   ------------------------------------------------------------ */
+#progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-light));
+  z-index: 9999;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 8px var(--gold-glow-strong);
+}
+
+/* ------------------------------------------------------------
+   4. NAVIGATION
+   ------------------------------------------------------------ */
+nav {
+  position: fixed;
+  top: 3px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(10, 12, 16, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--obsidian-border);
+  padding: 0 var(--space-xl);
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.nav-brand span {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+.nav-classify {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  border: 1px solid var(--amber);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--amber-bg);
+}
+
+/* ------------------------------------------------------------
+   5. HERO BLOCK
+   ------------------------------------------------------------ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 140px var(--space-xl) var(--space-3xl);
+  overflow: hidden;
+  background: radial-gradient(ellipse at 20% 60%, rgba(200, 169, 110, 0.05) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(41, 128, 185, 0.04) 0%, transparent 50%),
+              var(--obsidian);
+}
+
+/* Animated background grid */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(200, 169, 110, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 169, 110, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridDrift 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes gridDrift {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(40px, 40px); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-running-head {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--obsidian-border);
+  padding-bottom: var(--space-sm);
+}
+
+.hero-container {
+  display: flex;          /* Enables side-by-side layout */
+  align-items: center;    /* Vertically centers the image with the text */
+  gap: 30px;              /* Creates space between the image and the text */
+  margin: 20px 0;
+}
+/* ----------------------------------------------------------------------
+   DEFAULT HERO IMG URL TO BE USED 'https://quanta-analytica.com/logo.PNG
+   -------Place image to the left of h1 title in hero section--------- */
+
+.hero-image {
+  max-width: 200px;       /* Adjust this size to fit your design */
+  height: auto;           /* Maintains aspect ratio */
+  border-radius: 8px;     /* Optional: rounds the corners of your image */
+}
+
+.hero-text {
+  flex: 1;                /* Allows text to take up remaining space */
+}
+
+/* Optional: Mobile Responsiveness */
+@media (max-width: 600px) {
+  .hero-container {
+    flex-direction: column; /* Stacks image on top of text on small screens */
+    text-align: center;
+  }
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 .title-gold {
+  color: var(--gold); 
+  display: block;      /* Ensures it starts on a new line */
+  margin-top: 0.5rem;  /* Optional: adds a small gap between lines */
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+  max-width: 720px;
+  line-height: 1.6;
+}
+
+/* Hero Metadata Row */
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  align-items: center;
+}
+
+.meta-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.meta-cell .label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.meta-cell .value {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+}
+
+.meta-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--gold-dim);
+  align-self: center;
+}
+
+/* Threat Badge */
+.threat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.threat-badge.critical  { color: var(--red-light);   border-color: var(--red);   background: var(--red-bg);   }
+.threat-badge.high      { color: var(--amber-light);  border-color: var(--amber); background: var(--amber-bg); }
+.threat-badge.elevated  { color: var(--yellow);       border-color: var(--yellow);background: var(--yellow-bg);}
+.threat-badge.moderate  { color: var(--blue-light);   border-color: var(--blue);  background: var(--blue-bg);  }
+.threat-badge.low       { color: var(--green-light);  border-color: var(--green); background: var(--green-bg); }
+
+.threat-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+
+/* Analytic Scope Boundary */
+.scope-boundary {
+  border-left: 3px solid var(--slate);
+  padding: var(--space-sm) var(--space-lg);
+  background: rgba(93, 122, 154, 0.08);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin-top: var(--space-lg);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--slate-light);
+  line-height: 1.6;
+}
+
+/* Key Metrics Strip */
+.metrics-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--obsidian-border);
+}
+
+.metric-block {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-top: 2px solid var(--gold-dim);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  min-width: 140px;
+}
+
+.metric-block .metric-value {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.metric-block .metric-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ------------------------------------------------------------
+   6. MAIN CONTENT WRAPPER
+   ------------------------------------------------------------ */
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--space-3xl) var(--space-xl);
+}
+
+/* ------------------------------------------------------------
+   7. SECTION WRAPPER & SCROLL REVEAL
+   ------------------------------------------------------------ */
+.section {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  margin-bottom: var(--space-3xl);
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section Header */
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--obsidian-border);
+}
+
+.section-num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  background: var(--gold-glow);
+  border: 1px solid var(--gold-muted);
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+/* Sub-section divider */
+.sub-section {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+}
+
+.sub-section::before {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-muted), transparent);
+  margin-bottom: var(--space-lg);
+}
+
+.sub-section h3 {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-md);
+}
+
+/* ------------------------------------------------------------
+   8. BLUF — Bottom Line Up Front
+   ------------------------------------------------------------ */
+.bluf-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.bluf-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-left: 3px solid var(--gold-dim);
+  border-radius: var(--radius-md);
+}
+
+.bluf-index {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--gold-pale);
+  opacity: 0.4;
+  line-height: 1;
+  padding-top: 4px;
+}
+
+.bluf-text .bluf-claim {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 0.98rem;
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.bluf-text p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------
+   9. SNAPSHOT GRID — Who / What / Where / When / Why / How
+   ------------------------------------------------------------ */
+.snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.snapshot-cell {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.snapshot-cell .snap-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: var(--space-sm);
+  display: block;
+}
+
+.snapshot-cell .snap-content {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------------------
+   10. KEY JUDGMENTS
+   ------------------------------------------------------------ */
+.kj-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.kj-item {
+  padding: var(--space-lg);
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  border-left: 4px solid;
+  position: relative;
+}
+
+.kj-item.high     { border-left-color: var(--red);   }
+.kj-item.moderate { border-left-color: var(--amber);  }
+.kj-item.low      { border-left-color: var(--blue);   }
+.kj-item.watch    { border-left-color: var(--yellow);  }
+
+.kj-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.kj-id {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.kj-conf {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.kj-item.high     .kj-conf { color: var(--red-light);   border-color: var(--red);   background: var(--red-bg);   }
+.kj-item.moderate .kj-conf { color: var(--amber-light);  border-color: var(--amber); background: var(--amber-bg); }
+.kj-item.low      .kj-conf { color: var(--blue-light);   border-color: var(--blue);  background: var(--blue-bg);  }
+.kj-item.watch    .kj-conf { color: var(--yellow);        border-color: var(--yellow);background: var(--yellow-bg);}
+
+.kj-text {
+  font-size: 0.93rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: var(--space-sm);
+}
+
+.kj-mapping {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+/* ------------------------------------------------------------
+   11. EVIDENCE GRID — Know / Assess / Gap
+   ------------------------------------------------------------ */
+.evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.evidence-box {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.evidence-box-header {
+  padding: var(--space-sm) var(--space-lg);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.evidence-box-header.know   { background: var(--green-bg);  color: var(--green-light);  border-bottom: 1px solid var(--green);  }
+.evidence-box-header.assess { background: var(--amber-bg);  color: var(--amber-light);  border-bottom: 1px solid var(--amber);  }
+.evidence-box-header.gap    { background: var(--red-bg);    color: var(--red-light);    border-bottom: 1px solid var(--red);    }
+
+.evidence-box-body {
+  padding: var(--space-lg);
+}
+
+.evidence-box-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+.evidence-box-body li {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid var(--obsidian-border);
+  padding-left: var(--space-md);
+  position: relative;
+}
+
+.evidence-box-body li::before {
+  content: '//';
+  position: absolute;
+  left: 0;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+
+.evidence-box-body li:last-child {
+  border-bottom: none;
+}
+
+/* WSI Source Independence Note */
+.wsi-note {
+  background: rgba(93, 122, 154, 0.1);
+  border: 1px solid rgba(93, 122, 154, 0.3);
+  border-left: 3px solid var(--slate);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  font-size: 0.83rem;
+  color: var(--slate-light);
+  font-style: italic;
+  margin-top: var(--space-lg);
+}
+
+.wsi-note strong {
+  color: var(--slate-light);
+  font-style: normal;
+}
+
+/* ------------------------------------------------------------
+   12. TABLES — Assumption, ACH, IW, KIQ, Risk, PIGs
+   ------------------------------------------------------------ */
+.table-wrapper {
+  overflow-x: auto;
+  margin-bottom: var(--space-lg);
+  border-radius: var(--radius-md);
+  border: var(--border-default);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.87rem;
+}
+
+thead th {
+  background: var(--obsidian-surface);
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  border-bottom: 1px solid var(--obsidian-border);
+  white-space: nowrap;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--obsidian-border);
+  transition: background var(--transition-fast);
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: var(--obsidian-lift);
+}
+
+tbody td {
+  padding: var(--space-sm) var(--space-md);
+  color: var(--text-secondary);
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+tbody td:first-child {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Assumption Table */
+.assumption-table { }
+
+/* ACH Table */
+.ach-table thead th:nth-child(4) { text-align: center; }
+.ach-table tbody td:nth-child(4) { text-align: center; font-family: var(--font-mono); }
+
+/* IW Table — Indicators & Warnings */
+.iw-table { }
+
+/* Risk Matrix — high-score rows */
+.risk-matrix tbody tr.risk-high {
+  background: var(--red-bg);
+}
+
+.risk-matrix tbody tr.risk-high td {
+  color: var(--text-primary);
+}
+
+.risk-score {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.risk-score.score-high   { color: var(--red-light);   }
+.risk-score.score-medium { color: var(--amber-light);  }
+.risk-score.score-low    { color: var(--green-light);  }
+
+/* KIQ Table */
+.kiq-table { }
+
+/* Priority Intelligence Gaps Table */
+.pig-table { }
+
+/* KPI Table (optional — fragility reports) */
+.kpi-table { }
+
+.pillar-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--obsidian-border);
+  color: var(--text-muted);
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+
+/* ------------------------------------------------------------
+   13. SCENARIO CARDS
+   ------------------------------------------------------------ */
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.scenario-card {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-top: 3px solid;
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.scenario-card.best  { border-top-color: var(--green);  }
+.scenario-card.base  { border-top-color: var(--amber);  }
+.scenario-card.worst { border-top-color: var(--red);    }
+
+.scenario-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  display: block;
+}
+
+.scenario-card.best  .scenario-label { color: var(--green-light);  }
+.scenario-card.base  .scenario-label { color: var(--amber-light);  }
+.scenario-card.worst .scenario-label { color: var(--red-light);    }
+
+.scenario-card h4 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.scenario-card p {
+  font-size: 0.87rem;
+}
+
+.scenario-prob {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: var(--space-sm);
+  display: block;
+  letter-spacing: 0.06em;
+}
+
+/* ------------------------------------------------------------
+   14. BEHAVIORAL GRID
+   ------------------------------------------------------------ */
+.behavioral-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.behavioral-item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+}
+
+.behavioral-rank {
+  font-family: var(--font-mono);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--gold-pale);
+  opacity: 0.25;
+  line-height: 1;
+  text-align: center;
+  padding-top: 4px;
+}
+
+.behavioral-content h4 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.behavioral-content p {
+  font-size: 0.88rem;
+  margin-bottom: var(--space-xs);
+}
+
+.behavioral-inference {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--slate-light);
+  font-style: italic;
+  letter-spacing: 0.02em;
+  display: block;
+}
+
+/* ------------------------------------------------------------
+   15. RECOMMENDATION TIMELINE
+   ------------------------------------------------------------ */
+.rec-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-left: 2px solid var(--obsidian-border);
+  margin-left: var(--space-md);
+  padding-left: var(--space-xl);
+}
+
+.rec-block {
+  position: relative;
+  margin-bottom: var(--space-xl);
+}
+
+.rec-block::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * var(--space-xl) - 1px);
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--obsidian-border);
+  border: 2px solid;
+}
+
+.rec-block.immediate  ::before { border-color: var(--red);   background: var(--red-bg);   }
+.rec-block.near-term  ::before { border-color: var(--amber); background: var(--amber-bg); }
+.rec-block.medium-term::before { border-color: var(--green); background: var(--green-bg); }
+
+.rec-time {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+  margin-bottom: var(--space-md);
+}
+
+.rec-block.immediate   .rec-time { color: var(--red-light);  border: 1px solid var(--red);   background: var(--red-bg);   }
+.rec-block.near-term   .rec-time { color: var(--amber-light);border: 1px solid var(--amber); background: var(--amber-bg); }
+.rec-block.medium-term .rec-time { color: var(--green-light);border: 1px solid var(--green); background: var(--green-bg); }
+
+.rec-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.rec-content p {
+  font-size: 0.9rem;
+}
+
+/* ------------------------------------------------------------
+   16. CONFIDENCE PANEL
+   ------------------------------------------------------------ */
+.conf-panel {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--space-lg);
+}
+
+.conf-header {
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  border-bottom: 1px solid var(--obsidian-border);
+}
+
+.conf-band {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.conf-band.high     { color: var(--green-light);  border-color: var(--green);  background: var(--green-bg);  }
+.conf-band.moderate { color: var(--amber-light);  border-color: var(--amber);  background: var(--amber-bg);  }
+.conf-band.low      { color: var(--red-light);    border-color: var(--red);    background: var(--red-bg);    }
+
+.conf-header-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+.conf-body {
+  padding: var(--space-lg);
+}
+
+.conf-body p {
+  font-size: 0.9rem;
+}
+
+/* Uncertainty / Flip Risk List */
+.uncertainty-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.uncertainty-item {
+  background: var(--red-bg);
+  border: 1px solid var(--red);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+}
+
+.uncertainty-item .u-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red-light);
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.uncertainty-item p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------
+   17. THRESHOLD GRID — Green / Amber / Red Zones
+   ------------------------------------------------------------ */
+.threshold-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.threshold-cell {
+  border-radius: var(--radius-md);
+  border: 1px solid;
+  overflow: hidden;
+}
+
+.threshold-cell.green-zone { border-color: var(--green);  background: var(--green-bg);  }
+.threshold-cell.amber-zone { border-color: var(--amber);  background: var(--amber-bg);  }
+.threshold-cell.red-zone   { border-color: var(--red);    background: var(--red-bg);    }
+
+.threshold-header {
+  padding: var(--space-sm) var(--space-md);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid;
+}
+
+.threshold-cell.green-zone .threshold-header { color: var(--green-light);  border-color: var(--green);  background: rgba(39, 174, 96, 0.18);  }
+.threshold-cell.amber-zone .threshold-header { color: var(--amber-light);  border-color: var(--amber);  background: rgba(212, 130, 10, 0.18);  }
+.threshold-cell.red-zone   .threshold-header { color: var(--red-light);    border-color: var(--red);    background: rgba(192, 57, 43, 0.18);    }
+
+.threshold-body {
+  padding: var(--space-md);
+}
+
+.threshold-body p {
+  font-size: 0.85rem;
+  margin-bottom: var(--space-sm);
+}
+
+.threshold-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+.threshold-body li {
+  font-size: 0.83rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding: 3px 0;
+  padding-left: var(--space-md);
+  position: relative;
+}
+
+.threshold-body li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--text-faint);
+}
+
+/* ------------------------------------------------------------
+   18. STATUS & BAND PILLS (inline)
+   ------------------------------------------------------------ */
+.status-pill {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+.status-pill.red    { color: var(--red-light);   border-color: var(--red);   background: var(--red-bg);    }
+.status-pill.amber  { color: var(--amber-light);  border-color: var(--amber); background: var(--amber-bg);  }
+.status-pill.green  { color: var(--green-light);  border-color: var(--green); background: var(--green-bg);  }
+.status-pill.blue   { color: var(--blue-light);   border-color: var(--blue);  background: var(--blue-bg);   }
+.status-pill.yellow { color: var(--yellow);        border-color: var(--yellow);background: var(--yellow-bg); }
+.status-pill.gold   { color: var(--gold);          border-color: var(--gold-dim); background: var(--gold-glow); }
+
+/* Band Pills (source register table) */
+.band-pill {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.band-pill.green { color: var(--green-light);  border-color: var(--green);  background: var(--green-bg);  }
+.band-pill.amber { color: var(--amber-light);  border-color: var(--amber);  background: var(--amber-bg);  }
+.band-pill.red   { color: var(--red-light);    border-color: var(--red);    background: var(--red-bg);    }
+
+/* Inline fact/inference labels */
+.label-fact {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--blue-light);
+  border: 1px solid var(--blue);
+  background: var(--blue-bg);
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  margin-right: 6px;
+}
+
+.label-inference {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  border: 1px solid var(--gold-dim);
+  background: var(--gold-glow);
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  margin-right: 6px;
+}
+
+/* Structural constraint labels */
+.label-structural { color: var(--red-light);    }
+.label-political  { color: var(--amber-light);  }
+.label-resource   { color: var(--blue-light);   }
+.label-temporal   { color: var(--green-light);  }
+
+/* Analytic technique declaration block */
+.technique-declaration {
+  background: var(--obsidian-surface);
+  border: var(--border-default);
+  border-left: 3px solid var(--gold-dim);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  margin-bottom: var(--space-xl);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.technique-declaration strong {
+  color: var(--gold-dim);
+  font-style: normal;
+}
+
+/* ------------------------------------------------------------
+   19. FOOTER
+   ------------------------------------------------------------ */
+footer {
+  border-top: 1px solid var(--obsidian-border);
+  padding: var(--space-xl);
+  text-align: center;
+}
+
+.footer-brand {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: var(--space-sm);
+}
+
+.footer-doc-id {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  margin-bottom: var(--space-sm);
+}
+
+.footer-legal {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* ------------------------------------------------------------
+   20. RESPONSIVE BREAKPOINTS
+   ------------------------------------------------------------ */
+@media (max-width: 768px) {
+  nav {
+    padding: 0 var(--space-md);
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    padding: 100px var(--space-md) var(--space-2xl);
+  }
+
+  main {
+    padding: var(--space-2xl) var(--space-md);
+  }
+
+  .snapshot-grid,
+  .evidence-grid,
+  .scenario-grid,
+  .threshold-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bluf-item {
+    grid-template-columns: 28px 1fr;
+    gap: var(--space-md);
+  }
+
+  .behavioral-item {
+    grid-template-columns: 1fr;
+  }
+
+  .behavioral-rank {
+    font-size: 1rem;
+    text-align: left;
+    padding-top: 0;
+    opacity: 0.35;
+  }
+
+  .hero-running-head {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .hero-meta {
+    gap: var(--space-sm);
+  }
+
+  .metrics-strip {
+    gap: var(--space-sm);
+  }
+
+  table {
+    font-size: 0.8rem;
+  }
+
+  thead th,
+  tbody td {
+    padding: var(--space-xs) var(--space-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .section-title {
+    font-size: 1.15rem;
+  }
+}
+
+
+/* report-specific utility refinements */
+.hero.no-image { min-height: 82vh; }
+.hero h1 { max-width: 900px; }
+.report-note { margin-top: 1rem; max-width: 820px; color: var(--text-secondary); }
+.bluf-grid, .kj-list, .evidence-grid, .scenario-grid, .behavioral-grid { display: grid; gap: 1rem; }
+.bluf-item, .kj-item, .evidence-box, .scenario-card, .behavioral-item, .conf-panel, .wsi-note, .rec-block {
+  background: var(--obsidian-card);
+  border: 1px solid var(--obsidian-border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.1rem;
+  box-shadow: var(--shadow-card);
+}
+.bluf-item { display:grid; grid-template-columns: 56px 1fr; gap: 1rem; align-items: start; }
+.bluf-index {
+  font-family: var(--font-mono); font-weight: 700; color: var(--gold);
+  background: var(--gold-glow); border: 1px solid var(--gold-dim); border-radius: var(--radius-sm);
+  display:flex; align-items:center; justify-content:center; min-height: 52px;
+}
+.section p + ul, .section p + ol { margin-top: .6rem; }
+.section ul, .section ol { margin-left: 1.2rem; color: var(--text-secondary); }
+.section li { margin-bottom: .45rem; }
+.kiq-table, .assumption-table, .ach-table, .iw-table, .risk-table, .refs-table, .matrix-table, .gap-table {
+  width:100%; border-collapse: collapse; background: var(--obsidian-card); border:1px solid var(--obsidian-border);
+  border-radius: var(--radius-md); overflow:hidden; box-shadow: var(--shadow-card); font-size: .92rem;
+}
+.kiq-table th, .assumption-table th, .ach-table th, .iw-table th, .risk-table th, .refs-table th, .matrix-table th, .gap-table th,
+.kiq-table td, .assumption-table td, .ach-table td, .iw-table td, .risk-table td, .refs-table td, .matrix-table td, .gap-table td {
+  padding: .8rem .85rem; border-bottom:1px solid var(--obsidian-border); vertical-align: top;
+}
+.kiq-table th, .assumption-table th, .ach-table th, .iw-table th, .risk-table th, .refs-table th, .matrix-table th, .gap-table th {
+  background: var(--obsidian-surface);
+  color: var(--gold);
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+}
+.kiq-table td:first-child, .refs-table td:first-child, .assumption-table td:first-child {
+  font-family: var(--font-mono);
+  color: var(--gold-light);
+  white-space: nowrap;
+}
+.kj-meta {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .08em;
+  color: var(--text-muted);
+  margin-bottom: .5rem;
+  text-transform: uppercase;
+}
+.evidence-grid { grid-template-columns: repeat(3, 1fr); }
+.evidence-box-header {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin: -1rem -1.1rem .8rem;
+  padding: .7rem 1.1rem;
+  border-bottom: 1px solid var(--obsidian-border);
+}
+.evidence-box-header.know { color: var(--green-light); background: var(--green-bg); }
+.evidence-box-header.assess { color: var(--amber-light); background: var(--amber-bg); }
+.evidence-box-header.gap { color: var(--blue-light); background: var(--blue-bg); }
+.kj-list { display:grid; gap: 1rem; }
+.kj-item.high { border-left: 4px solid var(--red); }
+.kj-item.moderate { border-left: 4px solid var(--amber); }
+.kj-item.low { border-left: 4px solid var(--blue); }
+.kj-item.watch { border-left: 4px solid var(--yellow); }
+.kj-text { color: var(--text-secondary); }
+.wsi-note {
+  border-left: 4px solid var(--slate);
+  color: var(--slate-light);
+  background: rgba(93,122,154,0.08);
+  font-style: italic;
+}
+.scenario-grid { grid-template-columns: repeat(3, 1fr); }
+.scenario-card.best { border-top: 3px solid var(--green); }
+.scenario-card.base { border-top: 3px solid var(--amber); }
+.scenario-card.worst { border-top: 3px solid var(--red); }
+.scenario-card h4 {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  margin-bottom: .55rem;
+}
+.behavioral-grid { grid-template-columns: 1fr 1fr; }
+.behavioral-item {
+  display:grid;
+  grid-template-columns: 56px 1fr;
+  gap: .9rem;
+}
+.behavioral-rank {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  color: var(--gold);
+  opacity: .6;
+}
+.rec-timeline { display:grid; gap: 1rem; }
+.rec-block {
+  position: relative;
+  padding-left: 1.3rem;
+}
+.rec-block::before {
+  content:'';
+  position:absolute;
+  left: 0;
+  top: 1rem;
+  bottom: 1rem;
+  width: 4px;
+  border-radius: 4px;
+}
+.rec-block.immediate::before { background: var(--red); }
+.rec-block.near-term::before { background: var(--amber); }
+.rec-block.medium-term::before { background: var(--green); }
+.rec-time {
+  font-family: var(--font-mono);
+  color: var(--gold);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  font-size: .72rem;
+  margin-bottom: .45rem;
+}
+.conf-header {
+  font-family: var(--font-mono);
+  color: var(--gold);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: .6rem;
+}
+.uncertainty-list { display:grid; gap: 1rem; margin-top: 1rem; }
+.uncertainty-item {
+  background: var(--red-bg);
+  border: 1px solid rgba(192,57,43,.35);
+  border-radius: var(--radius-md);
+  padding: .95rem 1rem;
+}
+.threshold-grid {
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.threshold-cell {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--obsidian-border);
+  padding: 1rem 1.1rem;
+  background: var(--obsidian-card);
+}
+.threshold-cell.green-zone { border-top: 3px solid var(--green); }
+.threshold-cell.amber-zone { border-top: 3px solid var(--amber); }
+.threshold-cell.red-zone { border-top: 3px solid var(--red); }
+.band-pill {
+  display:inline-block; padding:.18rem .45rem; border-radius:999px; font-family: var(--font-mono); font-size:.68rem;
+  letter-spacing:.08em; text-transform: uppercase; border:1px solid;
+}
+.band-pill.green { color: var(--green-light); border-color: var(--green); background: var(--green-bg); }
+.band-pill.amber { color: var(--amber-light); border-color: var(--amber); background: var(--amber-bg); }
+.band-pill.red { color: var(--red-light); border-color: var(--red); background: var(--red-bg); }
+.status-pill {
+  display:inline-block; padding:.16rem .5rem; border-radius:999px; font-family: var(--font-mono); font-size:.68rem;
+  letter-spacing:.08em; text-transform: uppercase; border:1px solid;
+}
+.status-pill.red { color: var(--red-light); border-color: var(--red); background: var(--red-bg); }
+.status-pill.amber { color: var(--amber-light); border-color: var(--amber); background: var(--amber-bg); }
+.status-pill.green { color: var(--green-light); border-color: var(--green); background: var(--green-bg); }
+.status-pill.blue { color: var(--blue-light); border-color: var(--blue); background: var(--blue-bg); }
+.status-pill.yellow { color: var(--yellow); border-color: var(--yellow); background: var(--yellow-bg); }
+.ref-anchor { scroll-margin-top: 90px; }
+.footer-note {
+  color: var(--text-muted);
+  font-size: .82rem;
+  margin-top: 1.25rem;
+}
+@media (max-width: 960px) {
+  .evidence-grid, .scenario-grid, .behavioral-grid, .threshold-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .nav-links { display:none; }
+  .hero { padding: 100px var(--space-md) var(--space-2xl); }
+  main { padding: var(--space-2xl) var(--space-md); }
+  .bluf-item { grid-template-columns: 42px 1fr; }
+  .behavioral-item { grid-template-columns: 42px 1fr; }
+  .hero-running-head { flex-direction: column; gap: .2rem; }
+}
+  </style>
+</head>
+<body>
+  <div id="progress"></div>
+  <nav>
+    <div class="nav-brand">QUANTA ANALYTICA <span>| MNS CONSULTING</span></div>
+    <ul class="nav-links">
+      <li><a href="#s1">BLUF</a></li>
+      <li><a href="#s6">Analysis</a></li>
+      <li><a href="#s10">References</a></li>
+      <li><a href="#annex-a">Annex A</a></li>
+      <li><a href="#annex-b">Annex B</a></li>
+    </ul>
+    <div class="nav-classify">Open Source</div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-running-head">
+        <span>QUANTA ANALYTICA | MNS CONSULTING</span>
+        <span>INFORMATION INTEGRITY &amp; INFLUENCE ANALYSIS // AUTHORITARIAN AI</span>
+      </div>
+
+      <div class="hero-container">
+        <img class="hero-image" src="https://quanta-analytica.com/logo.PNG" alt="Quanta Analytica logo">
+        <div class="hero-text">
+          <h1>AUTHORITARIAN AI<span class="title-gold">Operational Gains, Structural Limits, and Strategic Implications</span></h1>
+          <div class="hero-subtitle">Information Integrity &amp; Influence Analysis: Intelligence Assessment</div>
+
+          <div class="hero-meta">
+            <div class="meta-cell"><span class="label">Domain</span><span class="value">Information Integrity &amp; Influence Analysis</span></div>
+            <div class="meta-divider"></div>
+            <div class="meta-cell"><span class="label">Producer</span><span class="value">Quanta Analytica Process™ Reconstruction</span></div>
+            <div class="meta-divider"></div>
+            <div class="meta-cell"><span class="label">Framework</span><span class="value">QAP™ / OSPREY</span></div>
+            <div class="meta-divider"></div>
+            <div class="meta-cell"><span class="label">Date</span><span class="value">06 Apr 2026</span></div>
+            <div class="meta-divider"></div>
+            <div class="meta-cell"><span class="label">Classification</span><span class="value">Open Source // Unclassified</span></div>
+            <div class="meta-divider"></div>
+            <div class="meta-cell"><span class="label">Threat Level</span><span class="value"><span class="threat-badge high"><span class="threat-dot"></span>High</span></span></div>
+            <div class="meta-divider"></div>
+            <div class="meta-cell"><span class="label">Confidence</span><span class="value">Moderate</span></div>
+          </div>
+
+          <div class="scope-boundary">
+            This assessment covers authoritarian uses of AI-enabled surveillance, biometric identification, automated censorship, and predictive policing logic across the 2020 to 2026 period, with a forward horizon of 12 to 24 months. It relies on open-source reporting, official documents, court records, peer-reviewed research, and methodological guidance only. Excluded streams include classified intelligence, proprietary platform telemetry, and covert collection. Overall confidence is driven by strong support for narrow-task coercive gains and moderate support for broader claims about regime-level brittleness and strategic overconfidence.
+          </div>
+
+          <div class="metrics-strip">
+            <div class="metric-block"><div class="metric-value">3</div><div class="metric-label">Core Cases</div></div>
+            <div class="metric-block"><div class="metric-value">14</div><div class="metric-label">Sources Used</div></div>
+            <div class="metric-block"><div class="metric-value">4</div><div class="metric-label">KIQs</div></div>
+            <div class="metric-block"><div class="metric-value">5</div><div class="metric-label">Key Judgments</div></div>
+            <div class="metric-block"><div class="metric-value">12–24m</div><div class="metric-label">Forward Horizon</div></div>
+          </div>
+
+          <p class="report-note"><em>Produced under the Quanta Analytica Process™. All claims are traced to open-source evidence or labeled as analyst inference. No fabricated sources, quotes, or data are used.</em></p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section visible" id="s1">
+      <div class="section-header"><span class="section-num">01 // BLUF</span><div class="section-title">Bottom Line Up Front</div></div>
+      <div class="bluf-grid">
+        <div class="bluf-item">
+          <div class="bluf-index">01</div>
+          <div class="bluf-text">
+            <span class="bluf-claim">AI is already improving authoritarian operational capacity.</span>
+            <p>Across censorship, biometric identification, protest monitoring, and selective repression, AI is delivering real tactical advantages to capable authoritarian systems. The strongest evidence supports gains in finding, classifying, filtering, and targeting rather than broad predictive omniscience.<cite>[1]</cite><cite>[3]</cite><cite>[7]</cite><cite>[14]</cite></p>
+          </div>
+        </div>
+        <div class="bluf-item">
+          <div class="bluf-index">02</div>
+          <div class="bluf-text">
+            <span class="bluf-claim">Authoritarian AI is strongest in narrow-task environments and weaker in predictive population-scale environments.</span>
+            <p>Systems perform better when asked to identify known people or filter known categories of content than when asked to infer latent dissent across large populations. Base-rate problems, feedback loops, deployment-context drift, and biometric differentials limit predictive reliability.<cite>[4]</cite><cite>[5]</cite><cite>[6]</cite></p>
+          </div>
+        </div>
+        <div class="bluf-item">
+          <div class="bluf-index">03</div>
+          <div class="bluf-text">
+            <span class="bluf-claim">The main strategic danger is synthetic precision.</span>
+            <p>AI can improve enforcement throughput while degrading strategic situational awareness if leaders overtrust quantified outputs, subordinates game metrics, or collected data recursively distort later model behavior. This creates overconfidence risk rather than frictionless control.<cite>[4]</cite><cite>[5]</cite><cite>[8]</cite><cite>[9]</cite></p>
+          </div>
+        </div>
+        <div class="bluf-item">
+          <div class="bluf-index">04</div>
+          <div class="bluf-text">
+            <span class="bluf-claim">Visible misuse can generate political costs, but not necessarily enough to erase coercive gains.</span>
+            <p>China’s Henan health-code abuse, rapid post-protest recalibration, Russia’s facial-recognition protest policing case, and Iran’s surveillance enforcement pattern all show that AI-enabled control can be contestable, abused, and politically costly without becoming strategically irrelevant.<cite>[8]</cite><cite>[9]</cite><cite>[10]</cite><cite>[11]</cite><cite>[12]</cite><cite>[13]</cite><cite>[14]</cite></p>
+          </div>
+        </div>
+        <div class="bluf-item">
+          <div class="bluf-index">05</div>
+          <div class="bluf-text">
+            <span class="bluf-claim">The best-supported hypothesis is task dependence plus regime-capacity dependence.</span>
+            <p>The available evidence does not support a simple “AI always strengthens autocracy” or “AI inherently weakens autocracy” conclusion. The more defensible judgment is that the net effect depends on the task, institutional discipline, integration with human review, and the regime’s tolerance for error and backlash.<cite>[1]</cite><cite>[2]</cite><cite>[4]</cite><cite>[5]</cite><cite>[7]</cite></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s2">
+      <div class="section-header"><span class="section-num">02 // KIQs</span><div class="section-title">Key Intelligence Questions</div></div>
+      <table class="kiq-table">
+        <thead>
+          <tr><th>Question ID</th><th>Intelligence Question</th><th>Links To</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>KIQ-1</td><td>Does AI materially improve authoritarian control in practice?</td><td>KJ-1, KJ-5</td></tr>
+          <tr><td>KIQ-2</td><td>Does AI enable reliable predictive, population-scale control of dissent?</td><td>KJ-2, KJ-3</td></tr>
+          <tr><td>KIQ-3</td><td>Are the limits of authoritarian AI politically consequential?</td><td>KJ-4, Gap-2</td></tr>
+          <tr><td>KIQ-4</td><td>What is the net strategic effect over the next 12 to 24 months?</td><td>KJ-5, Annex A, Annex B</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="s3">
+      <div class="section-header"><span class="section-num">03 // SNAPSHOT</span><div class="section-title">Situation Snapshot</div></div>
+      <div class="snapshot-grid">
+        <div class="snapshot-cell"><span class="snap-label">Who</span><div class="snap-content">Authoritarian governments, internal security services, local officials, platform regulators, surveillance vendors, monitored publics, civil society actors, and external rights institutions.</div></div>
+        <div class="snapshot-cell"><span class="snap-label">What</span><div class="snap-content">AI-enabled repression through facial recognition, administrative data fusion, automated censorship, protest tracking, and predictive-risk logic.</div></div>
+        <div class="snapshot-cell"><span class="snap-label">Where</span><div class="snap-content">Most clearly evidenced in China, Russia, and Iran, with broader relevance across digitally capable authoritarian and hybrid regimes.</div></div>
+        <div class="snapshot-cell"><span class="snap-label">When</span><div class="snap-content">Acceleration from the late 2010s through 2026, with sharp operationalization during COVID-era controls, protest crackdowns, and expanded biometric governance.</div></div>
+        <div class="snapshot-cell"><span class="snap-label">Why</span><div class="snap-content">To lower monitoring costs, shrink anonymity margins, speed classification and intervention, and reinforce regime security through more selective coercion.</div></div>
+        <div class="snapshot-cell"><span class="snap-label">How</span><div class="snap-content">By linking platform data, biometric systems, administrative controls, and AI-assisted triage into faster state decision pipelines under varying degrees of human review.</div></div>
+      </div>
+    </section>
+
+    <section class="section" id="s4">
+      <div class="section-header"><span class="section-num">04 // KEY JUDGMENTS</span><div class="section-title">Ranked Key Judgments</div></div>
+      <div class="kj-list">
+        <div class="kj-item high">
+          <div class="kj-meta">HIGH CONFIDENCE | KJ-1 | KIQ-1</div>
+          <p class="kj-text"><strong>AI is already strengthening authoritarian operational capacity.</strong> Comparative reporting, UN concern, and China-focused scholarship all support the judgment that AI enables more scalable censorship, better identification, and more targeted repression.<cite>[1]</cite><cite>[3]</cite><cite>[7]</cite><cite>[14]</cite></p>
+        </div>
+        <div class="kj-item high">
+          <div class="kj-meta">HIGH CONFIDENCE | KJ-2 | KIQ-2</div>
+          <p class="kj-text"><strong>Authoritarian AI is strongest in narrow-task environments and weaker in predictive population-scale environments.</strong> This distinction is the most analytically important boundary condition in the evidence base.<cite>[4]</cite><cite>[5]</cite><cite>[6]</cite></p>
+        </div>
+        <div class="kj-item moderate">
+          <div class="kj-meta">MODERATE CONFIDENCE | KJ-3 | KIQ-2 KIQ-4</div>
+          <p class="kj-text"><strong>The most serious strategic vulnerability is the illusion of precision.</strong> Tactical gains can coexist with degraded strategic awareness if state systems mistake quantified risk outputs for ground truth.<cite>[4]</cite><cite>[5]</cite></p>
+        </div>
+        <div class="kj-item moderate">
+          <div class="kj-meta">MODERATE CONFIDENCE | KJ-4 | KIQ-3</div>
+          <p class="kj-text"><strong>Visible misuse can impose political costs, but those costs do not automatically outweigh operational benefits.</strong> The evidence shows calibration costs, abuse risk, and contestation. It does not show systematic self-defeat.<cite>[8]</cite><cite>[9]</cite><cite>[10]</cite><cite>[12]</cite><cite>[14]</cite></p>
+        </div>
+        <div class="kj-item moderate">
+          <div class="kj-meta">MODERATE CONFIDENCE | KJ-5 | KIQ-1 KIQ-4</div>
+          <p class="kj-text"><strong>The net strategic effect is regime-capacity dependent and task dependent.</strong> High-capacity regimes can absorb more error and still gain from AI, especially when systems remain integrated with human review, coercive institutions, and legal-administrative leverage.<cite>[1]</cite><cite>[2]</cite><cite>[4]</cite><cite>[7]</cite></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s5">
+      <div class="section-header"><span class="section-num">05 // EVIDENCE</span><div class="section-title">Evidence Summary</div></div>
+      <div class="evidence-grid">
+        <div class="evidence-box">
+          <div class="evidence-box-header know">What We Know</div>
+          <ul>
+            <li>China formalized algorithmic recommendation governance effective March 1, 2022.<cite>[2]</cite></li>
+            <li>Henan health codes were reportedly turned red to disrupt protest travel, and officials were later punished.<cite>[8]</cite><cite>[9]</cite></li>
+            <li>Russia used facial recognition against a peaceful protester in the Glukhin case.<cite>[12]</cite><cite>[13]</cite></li>
+            <li>Iran has used electronic surveillance, roadway cameras, and facial-recognition-adjacent enforcement against women under hijab rules.<cite>[14]</cite></li>
+            <li>NIST continues to document demographic differentials in face-recognition performance.<cite>[6]</cite></li>
+          </ul>
+        </div>
+        <div class="evidence-box">
+          <div class="evidence-box-header assess">What We Assess</div>
+          <ul>
+            <li>Authoritarian AI delivers real tactical gains in filtering, matching, ranking, and targeting.</li>
+            <li>Predictive population-scale repression remains structurally constrained by base-rate and feedback-loop problems.</li>
+            <li>Visible overreach can create legitimacy costs and force recalibration, especially when coercive misuse becomes socially legible.</li>
+            <li>Over the next 12 to 24 months, the most consequential risk is false confidence induced by quantified but distorted control systems.</li>
+          </ul>
+        </div>
+        <div class="evidence-box">
+          <div class="evidence-box-header gap">What We Do Not Know</div>
+          <ul>
+            <li>The hidden operational error rates of live authoritarian surveillance deployments.</li>
+            <li>The extent of current multimodal fusion across video, telecom, platform, location, and payment data.</li>
+            <li>How consistently human review offsets model weakness in practice.</li>
+            <li>How often central leaders receive sanitized or politically shaped outputs from subordinate bureaucracies.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h3>Key Drivers</h3>
+        <p><strong>[FACT]</strong> Expanding biometric and data-fusion capacity. <strong>[FACT]</strong> Regulatory and administrative consolidation of algorithmic oversight. <strong>[INFERENCE]</strong> Growing pressure on regimes to move from reactive censorship toward preemptive disruption. <strong>[INFERENCE]</strong> Rising dependence on quantified outputs for political stability management.</p>
+      </div>
+
+      <div class="sub-section">
+        <h3>Binding Constraints</h3>
+        <p><strong>Structural:</strong> Rare-event detection and model drift. <strong>Political:</strong> Visibility of misuse and backlash risk. <strong>Resource:</strong> Data integration, compute concentration, and implementation quality. <strong>Temporal:</strong> Fast adaptation cycles between monitored publics and state controls.</p>
+      </div>
+
+      <div class="wsi-note">
+        WSI Source Independence Note: The assessment’s core judgments rest on at least three distinct corroboration pathways: official or quasi-official materials, peer-reviewed or technical evaluation, and reputable wire or court-based reporting. No key judgment relies on a single-source social-media stream. Single-source uncertainty remains on hidden operational error rates and live multimodal fusion scale.
+      </div>
+    </section>
+
+    <section class="section" id="s6">
+      <div class="section-header"><span class="section-num">06 // ANALYSIS</span><div class="section-title">Structured Analytic Tradecraft</div></div>
+      <p><strong>Techniques applied:</strong> Five-Layer Strategic Cognition Map, Key Assumptions Check, Analysis of Competing Hypotheses, Indicators &amp; Warnings, Scenario Modeling, and Risk Matrix.</p>
+
+      <div class="sub-section">
+        <h3>Five-Layer Strategic Cognition Map</h3>
+        <table class="matrix-table">
+          <thead><tr><th>Layer</th><th>Assessment</th></tr></thead>
+          <tbody>
+            <tr><td>L1 // Foundations</td><td>Authoritarian regimes possess growing data collection and integration capacity, but deployment quality and institutional coherence vary significantly across cases.</td></tr>
+            <tr><td>L2 // Mechanisms</td><td>AI improves filtering, identification, and triage while creating incentive pathways for more selective repression and more confidence in quantified control outputs.</td></tr>
+            <tr><td>L3 // Dynamics</td><td>State control and citizen adaptation interact recursively. Feedback loops, concept drift, and data recycling can amplify distortion over time rather than eliminate it.</td></tr>
+            <tr><td>L4 // Leverage</td><td>Effective interventions target auditability, legal challenge capacity, secure civic technologies, and public exposure of misuse rather than assuming systemic failure on its own.</td></tr>
+            <tr><td>L5 // Paradigms</td><td>The deepest contest is between governance-by-legibility and governance-by-contestation. AI extends the high-modernist ambition to classify and govern society as if it were fully legible.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sub-section">
+        <h3>Key Assumptions Check</h3>
+        <table class="assumption-table">
+          <thead><tr><th>ID</th><th>Assumption</th><th>Why It Matters</th><th>Risk if Wrong</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>A-1</td><td>Predictive dissent detection remains a rare-event problem.</td><td>Supports the judgment that false positives remain structurally significant.</td><td>If wrong, predictive AI may scale more effectively than assessed.</td><td>Active</td></tr>
+            <tr><td>A-2</td><td>Human review does not fully overcome model weakness.</td><td>Preserves the argument that tactical gains do not equal strategic omniscience.</td><td>If wrong, regime control quality may be understated.</td><td>Unverified</td></tr>
+            <tr><td>A-3</td><td>Visible misuse can impose political costs on at least some regimes.</td><td>Supports the judgment that calibration failures matter politically.</td><td>If wrong, coercive benefits may dominate even under frequent abuse.</td><td>Active</td></tr>
+            <tr><td>A-4</td><td>Bureaucratic incentives distort at least some stability metrics.</td><td>Central to the synthetic precision and overconfidence judgment.</td><td>If wrong, regimes may be more strategically informed than assessed.</td><td>Active</td></tr>
+            <tr><td>A-5</td><td>Cases reviewed here are analytically informative beyond themselves.</td><td>Allows cautious cross-case inference.</td><td>If wrong, cross-regime generalization becomes weaker.</td><td>Active</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sub-section">
+        <h3>Analysis of Competing Hypotheses</h3>
+        <table class="ach-table">
+          <thead><tr><th>Hypothesis</th><th>Evidence For</th><th>Evidence Against</th><th>Diagnosticity</th><th>Verdict</th></tr></thead>
+          <tbody>
+            <tr><td>H1: AI structurally strengthens authoritarian control overall.</td><td>Strong support from targeted repression, censorship scale, protest monitoring, and current deployment trends.<cite>[1]</cite><cite>[3]</cite><cite>[7]</cite><cite>[14]</cite></td><td>Does not explain feedback-loop distortion, error differentials, or visible misuse episodes well.<cite>[4]</cite><cite>[6]</cite><cite>[8]</cite><cite>[9]</cite></td><td>Moderate</td><td>Partially supported</td></tr>
+            <tr><td>H2: AI structurally weakens authoritarian control through brittleness.</td><td>Supported by base-rate logic, feedback loops, misidentification risk, and abuse visibility.<cite>[4]</cite><cite>[5]</cite><cite>[6]</cite><cite>[8]</cite></td><td>Understates immediate coercive gains and ongoing regime investment in these systems.<cite>[1]</cite><cite>[7]</cite><cite>[14]</cite></td><td>Moderate</td><td>Partially supported</td></tr>
+            <tr><td>H3: AI’s effect is task dependent and regime-capacity dependent.</td><td>Best fits the coexistence of tactical gains, predictive limits, and uneven political consequences across cases.<cite>[1]</cite><cite>[2]</cite><cite>[4]</cite><cite>[5]</cite><cite>[7]</cite></td><td>Remains less rhetorically simple and depends on contextual reading.</td><td>High</td><td><strong>Selected hypothesis</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sub-section">
+        <h3>Indicators &amp; Warnings</h3>
+        <table class="iw-table">
+          <thead><tr><th>Indicator</th><th>Direction</th><th>Current Status</th><th>Threshold</th><th>Cadence</th></tr></thead>
+          <tbody>
+            <tr><td>Mandatory biometric integration across civic services</td><td>Up</td><td><span class="status-pill amber">watch</span></td><td>National-scale integration with protest policing or welfare access controls</td><td>Quarterly</td></tr>
+            <tr><td>Arrests explicitly linked to digital monitoring trails</td><td>Up</td><td><span class="status-pill amber">elevated</span></td><td>Sustained increase across multiple regions or issue areas</td><td>Monthly</td></tr>
+            <tr><td>Public exposure of AI-enabled misclassification or political repurposing</td><td>Mixed</td><td><span class="status-pill blue">episodic</span></td><td>Multiple high-visibility scandals in a six-month period</td><td>Monthly</td></tr>
+            <tr><td>Rapid policy reversals after digitally enforced crackdowns</td><td>Mixed</td><td><span class="status-pill blue">episodic</span></td><td>Two or more major reversals tied to backlash</td><td>Quarterly</td></tr>
+            <tr><td>Evidence of multimodal fusion plus reduced human review latency</td><td>Up</td><td><span class="status-pill amber">uncertain</span></td><td>Reliable reporting of integrated cross-domain triage at national scale</td><td>Quarterly</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sub-section">
+        <h3>Scenario Outlook</h3>
+        <div class="scenario-grid">
+          <div class="scenario-card best">
+            <h4>Best Case</h4>
+            <p>Legal, civic, and technical countermeasures raise the costs of opaque biometric mass surveillance. Visible misuse produces more audit and accountability pressure than control gains. Probability: Low to Moderate.</p>
+          </div>
+          <div class="scenario-card base">
+            <h4>Base Case</h4>
+            <p>Authoritarian systems continue extracting tactical gains while suffering manageable but persistent information distortion and episodic backlash. Probability: Moderate to High.</p>
+          </div>
+          <div class="scenario-card worst">
+            <h4>Worst Case</h4>
+            <p>Multimodal fusion, stronger human-machine integration, and higher regime tolerance for false positives materially narrow today’s visible limits, increasing preemptive repression without equivalent accountability expansion. Probability: Low to Moderate.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s7">
+      <div class="section-header"><span class="section-num">07 // BEHAVIORAL</span><div class="section-title">Applied Behavioral Tradecraft</div></div>
+      <p><em>Behavioral analysis is relevant here because authoritarian AI does not operate only as a technical control system. It also shapes fear, compliance, self-censorship, legitimacy cues, and adaptation behavior across monitored populations.</em></p>
+
+      <div class="behavioral-grid">
+        <div class="behavioral-item">
+          <div class="behavioral-rank">01</div>
+          <div><strong>Perceived omniscience effect</strong><p>Even imperfect surveillance can widen compliance if monitored populations believe systems are more accurate and more ubiquitous than they are.</p></div>
+        </div>
+        <div class="behavioral-item">
+          <div class="behavioral-rank">02</div>
+          <div><strong>Adaptive concealment</strong><p>Once surveillance cues become socially legible, publics change language, routes, channels, and coordination methods, degrading static models and generating concept drift.</p></div>
+        </div>
+        <div class="behavioral-item">
+          <div class="behavioral-rank">03</div>
+          <div><strong>Legitimacy friction from visible misuse</strong><p>Abuse that becomes narratively visible can reframe systems from “security infrastructure” to “political convenience tool,” raising anger and reducing trust.</p></div>
+        </div>
+        <div class="behavioral-item">
+          <div class="behavioral-rank">04</div>
+          <div><strong>Authority signaling through automation</strong><p>Automated systems can create a pseudo-scientific aura around coercion, making arbitrary or biased enforcement appear procedurally neutral.</p></div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h3>Influence and Narrative Vulnerabilities</h3>
+        <p>Authoritarian AI is vulnerable to narrative contestation when citizens can see that its outputs are fallible, politically repurposed, or selectively applied. The strongest counters are not abstract claims that “AI is bad,” but concrete demonstrations that systems misclassify, overreach, and hide power inside technical language. Conversely, the regime’s most effective narrative is that algorithmic control is inevitable, objective, and total.</p>
+      </div>
+    </section>
+
+    <section class="section" id="s8">
+      <div class="section-header"><span class="section-num">08 // IMPLICATIONS</span><div class="section-title">Strategic Implications, Risk &amp; Recommendations</div></div>
+
+      <div class="sub-section">
+        <h3>Strategic Implications</h3>
+        <p><strong>Local actors:</strong> Civic actors face a shrinking anonymity margin and higher risk of selective enforcement, especially where platform, camera, and administrative systems converge.</p>
+        <p><strong>Regional and international actors:</strong> The regulatory and hardware ecosystem matters. Export controls, audit standards, and legal precedent can shape the friction environment around repressive deployment.</p>
+        <p><strong>Analytic community:</strong> The principal analytic risk is binary framing. Analysts should examine task-specific utility, institutional context, and hidden error tolerance rather than treating “authoritarian AI” as a monolithic capability.</p>
+      </div>
+
+      <div class="sub-section">
+        <h3>Risk Scoring Matrix</h3>
+        <table class="risk-table">
+          <thead><tr><th>Risk</th><th>Likelihood (1-5)</th><th>Impact (1-5)</th><th>Score</th><th>Mitigant</th></tr></thead>
+          <tbody>
+            <tr><td>Expansion of selective repression through AI-assisted targeting</td><td>4</td><td>4</td><td>16</td><td>Audit trails, legal challenge capacity, stronger digital protection and monitoring of arrest patterns</td></tr>
+            <tr><td>Strategic overconfidence from distorted or gamed metrics</td><td>3</td><td>5</td><td>15</td><td>Independent validation, cross-stream monitoring, and stress-testing of official indicators</td></tr>
+            <tr><td>Public backlash after visible misuse or misclassification</td><td>3</td><td>4</td><td>12</td><td>Rapid transparency measures, appeals mechanisms, and external scrutiny</td></tr>
+            <tr><td>Reduction in civic-space coordination capacity</td><td>4</td><td>3</td><td>12</td><td>Secure communications, privacy-preserving tools, and resilience training</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sub-section">
+        <h3>Recommendations</h3>
+        <div class="rec-timeline">
+          <div class="rec-block immediate">
+            <div class="rec-time">0–72h Immediate</div>
+            <div class="rec-content">
+              <ul>
+                <li>Track any new legal or administrative moves that expand biometric identification or platform identity requirements.</li>
+                <li>Flag all visible misuse incidents as potential calibration-failure indicators rather than isolated anomalies.</li>
+                <li>Separate confirmed operational capability from perceived omniscience in all executive briefings.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="rec-block near-term">
+            <div class="rec-time">3–30 Days Near-Term</div>
+            <div class="rec-content">
+              <ul>
+                <li>Develop a standing indicator set for AI-enabled repression: integration, targeting, backlash, legal contestation, and adaptation behavior.</li>
+                <li>Build a case-tracking matrix for China, Russia, Iran, and one additional comparative regime to test transferability of findings.</li>
+                <li>Review export-control, platform-governance, and court-action developments that may alter the risk environment.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="rec-block medium-term">
+            <div class="rec-time">30–180 Days Medium-Term</div>
+            <div class="rec-content">
+              <ul>
+                <li>Institutionalize a QAP monitoring cadence that distinguishes tactical gains from strategic blind spots.</li>
+                <li>Expand collection against hidden variables: human-review intensity, appeals mechanisms, and local metric-gaming practices.</li>
+                <li>Produce a follow-on scenario pack assessing whether multimodal fusion is narrowing the limits identified in this report.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s9">
+      <div class="section-header"><span class="section-num">09 // CONFIDENCE</span><div class="section-title">Confidence &amp; Uncertainties</div></div>
+
+      <div class="conf-panel">
+        <div class="conf-header">Overall Confidence: Moderate</div>
+        <div class="conf-body">
+          <p>Confidence is <strong>high</strong> that AI is strengthening authoritarian tactical capability in censorship, identification, and selective repression. Confidence is also <strong>high</strong> that predictive systems remain constrained by feedback-loop pathologies, error tradeoffs, and deployment-context limitations. Confidence is only <strong>moderate</strong> on the long-term net strategic balance because outcomes depend on state capacity, institutional discipline, human review, public fear tolerance, and the extent to which regimes can absorb false positives without meaningful political penalty.<cite>[1]</cite><cite>[4]</cite><cite>[5]</cite><cite>[6]</cite><cite>[7]</cite><cite>[14]</cite></p>
+        </div>
+      </div>
+
+      <div class="uncertainty-list">
+        <div class="uncertainty-item"><strong>Flip Risk 1:</strong> If leading regimes are already integrating multimodal data streams at scale with low-latency human review, current estimates of brittleness may be too conservative.</div>
+        <div class="uncertainty-item"><strong>Flip Risk 2:</strong> If political cost tolerance is higher than assessed, recurring false positives and visible misuse may not materially constrain coercive deployment.</div>
+        <div class="uncertainty-item"><strong>Flip Risk 3:</strong> If independent oversight, litigation, and exposure mechanisms weaken faster than surveillance capability expands, the operating balance may tilt more decisively toward durable control.</div>
+      </div>
+
+      <div class="sub-section">
+        <h3>Assumption Failure Drill</h3>
+        <table class="assumption-table">
+          <thead><tr><th>Assumption</th><th>Failure Signal</th><th>Consequence</th></tr></thead>
+          <tbody>
+            <tr><td>Predictive dissent detection remains structurally noisy</td><td>Reliable reporting of materially lower false-positive burdens in live political deployments</td><td>Would raise confidence in stronger authoritarian predictive control</td></tr>
+            <tr><td>Bureaucratic distortion remains a meaningful drag on strategic awareness</td><td>Evidence of strong cross-validation systems and reduced local metric gaming</td><td>Would weaken the synthetic precision judgment</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="s10">
+      <div class="section-header"><span class="section-num">10 // REFERENCES</span><div class="section-title">Source Register &amp; WSI Audit</div></div>
+      <table class="refs-table">
+        <thead><tr><th>#</th><th>Source</th><th>Type</th><th>Band</th><th>Independence Note</th><th>Locator</th><th>Atomic Claim / Use</th></tr></thead>
+        <tbody>
+          <tr id="ref1" class="ref-anchor"><td>[1]</td><td>Freedom House. <em>Freedom on the Net 2024: The Struggle for Trust Online</em>.</td><td>Secondary / methodological annual report</td><td><span class="band-pill green">Green</span></td><td>Independent comparative reporting stream</td><td>Freedom House, 2024</td><td>Used for current global pattern confirmation on digitally enabled repression and deteriorating internet freedom.</td></tr>
+          <tr id="ref2" class="ref-anchor"><td>[2]</td><td>DigiChina. <em>Translation: Internet Information Service Algorithmic Recommendation Management Provisions</em>.</td><td>Primary-adjacent legal translation</td><td><span class="band-pill green">Green</span></td><td>Independent legal-policy stream</td><td>DigiChina, 10 Jan 2022</td><td>Used to verify PRC algorithmic governance and bureaucratic oversight of recommendation systems.</td></tr>
+          <tr id="ref3" class="ref-anchor"><td>[3]</td><td>OHCHR. <em>Call for Input on the Impact of Digital and AI-Assisted Surveillance on Assembly and Association Rights</em>.</td><td>Primary official UN process document</td><td><span class="band-pill green">Green</span></td><td>Independent official multilateral stream</td><td>OHCHR, 2025</td><td>Used for current UN framing of AI-assisted surveillance, chilling effects, and activist targeting.</td></tr>
+          <tr id="ref4" class="ref-anchor"><td>[4]</td><td>Ensign, D. et al. <em>Runaway Feedback Loops in Predictive Policing</em>.</td><td>Peer-reviewed technical research</td><td><span class="band-pill green">Green</span></td><td>Independent scholarly stream</td><td>PMLR 81, 2018</td><td>Used to support the feedback-loop mechanism and dataset-distortion logic in predictive systems.</td></tr>
+          <tr id="ref5" class="ref-anchor"><td>[5]</td><td>Stumborg, M. F. et al. <em>Goodhart’s Law: Recognizing and Mitigating the Manipulation of Measures in Analysis</em>.</td><td>Professional analytic methods report</td><td><span class="band-pill green">Green</span></td><td>Independent methods stream</td><td>CNA, Sep 2022</td><td>Used to support metric gaming, distortion risk, and the synthetic precision judgment.</td></tr>
+          <tr id="ref6" class="ref-anchor"><td>[6]</td><td>Grother, P., Ngan, M., &amp; Hanaoka, K. <em>Face Recognition Vendor Test Part 8: Summarizing Demographic Differentials</em>.</td><td>Primary U.S. government technical evaluation</td><td><span class="band-pill green">Green</span></td><td>Independent technical evaluation stream</td><td>NISTIR 8429, 2022</td><td>Used for documented biometric error differentials and deployment caution.</td></tr>
+          <tr id="ref7" class="ref-anchor"><td>[7]</td><td>Xu, X. <em>To Repress or to Co-opt? Authoritarian Control in the Age of Digital Surveillance</em>.</td><td>Peer-reviewed academic article</td><td><span class="band-pill green">Green</span></td><td>Independent scholarly case stream</td><td>AJPS 65(2), 2021</td><td>Used as strongest empirical support that surveillance can increase targeted repression and arrests of activists in China.</td></tr>
+          <tr id="ref8" class="ref-anchor"><td>[8]</td><td>Reuters. <em>China bank protest stopped by health codes turning red, depositors say</em>.</td><td>Reputable wire service event reporting</td><td><span class="band-pill green">Green</span></td><td>Independent reporting stream one</td><td>Reuters, 16 Jun 2022</td><td>Used to verify initial reporting on the Henan health-code misuse episode.</td></tr>
+          <tr id="ref9" class="ref-anchor"><td>[9]</td><td>Reuters. <em>Chinese officials punished for changing health codes of bank depositors, state media</em>.</td><td>Reputable wire service follow-up</td><td><span class="band-pill green">Green</span></td><td>Follow-up on same event, not counted as separate independence for core event truth</td><td>Reuters, 23 Jun 2022</td><td>Used to confirm official punishment and strengthen confidence that the Henan episode was political misuse rather than rumor.</td></tr>
+          <tr id="ref10" class="ref-anchor"><td>[10]</td><td>Reuters. <em>China set to loosen COVID curbs after week of protests</em>.</td><td>Reputable wire service event reporting</td><td><span class="band-pill green">Green</span></td><td>Independent reporting stream on policy reversal</td><td>Reuters, 01 Dec 2022</td><td>Used to verify rapid post-protest recalibration pressure.</td></tr>
+          <tr id="ref11" class="ref-anchor"><td>[11]</td><td>Reuters. <em>China announces sweeping changes to anti-COVID regime</em>.</td><td>Reputable wire service event reporting</td><td><span class="band-pill green">Green</span></td><td>Follow-up confirmation on same policy sequence</td><td>Reuters, 07 Dec 2022</td><td>Used to confirm the scale of the December 2022 zero-COVID relaxation.</td></tr>
+          <tr id="ref12" class="ref-anchor"><td>[12]</td><td>Global Freedom of Expression, Columbia University. <em>Glukhin v. Russia</em>.</td><td>Legal case summary</td><td><span class="band-pill green">Green</span></td><td>Independent legal analysis stream</td><td>Columbia, 2023</td><td>Used for concise rights-focused summary of facial-recognition protest policing in Russia.</td></tr>
+          <tr id="ref13" class="ref-anchor"><td>[13]</td><td>European Court of Human Rights. <em>Judgment: Glukhin v. Russia</em>.</td><td>Primary court record</td><td><span class="band-pill green">Green</span></td><td>Primary legal source</td><td>ECHR, 04 Jul 2023</td><td>Used for authoritative legal finding on facial recognition, privacy, and protest rights.</td></tr>
+          <tr id="ref14" class="ref-anchor"><td>[14]</td><td>Associated Press. <em>Iran electronically surveils women over headscarf laws, UN says</em>.</td><td>Reputable wire service reporting on UN findings</td><td><span class="band-pill green">Green</span></td><td>Independent reporting stream with UN attribution</td><td>AP, 14 Mar 2025</td><td>Used for recent evidence of Iranian electronic surveillance enforcement and continued state investment in such systems.</td></tr>
+        </tbody>
+      </table>
+      <p class="footer-note">Independence statement: Multiple reports on the same event were tested for shared upstream sourcing. Follow-up Reuters pieces on Henan and zero-COVID were treated as confirmatory sequence reporting, not fully independent corroboration streams. No Wikipedia source was used. No social-media post was used as evidentiary support.</p>
+    </section>
+
+    <section class="section" id="annex-a">
+      <div class="section-header"><span class="section-num">ANNEX A // EARLY WARNING</span><div class="section-title">Early Warning Indicators</div></div>
+      <table class="iw-table">
+        <thead><tr><th>Indicator</th><th>Scenario Link</th><th>Binary Trigger</th><th>Meaning</th><th>Owner / Cadence</th></tr></thead>
+        <tbody>
+          <tr><td>New national law mandating cross-platform identity linkage</td><td>Base to Worst</td><td>Yes / No</td><td>Would suggest movement toward broader preemptive disruption capacity.</td><td>Analyst / Monthly</td></tr>
+          <tr><td>Documented protest-related arrests from fused CCTV + platform or telecom evidence</td><td>Base to Worst</td><td>Yes / No</td><td>Would indicate stronger operational integration of AI-assisted targeting.</td><td>Analyst / Monthly</td></tr>
+          <tr><td>High-visibility misclassification scandal with national media resonance</td><td>Base to Best</td><td>Yes / No</td><td>Would raise the probability that visible misuse produces political friction and oversight pressure.</td><td>Analyst / Monthly</td></tr>
+          <tr><td>Evidence of systemic appeals or review mechanisms reducing arbitrary enforcement</td><td>Base to Best</td><td>Yes / No</td><td>Would lower near-term coercive risk and improve accountability.</td><td>Analyst / Quarterly</td></tr>
+          <tr><td>Credible reporting of low-latency multimodal fusion at national scale</td><td>Worst</td><td>Yes / No</td><td>Would narrow currently assessed predictive limitations.</td><td>Analyst / Quarterly</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="annex-b">
+      <div class="section-header"><span class="section-num">ANNEX B // INTEL GAPS</span><div class="section-title">Priority Intelligence Gaps &amp; Action Thresholds</div></div>
+      <table class="gap-table">
+        <thead><tr><th>Gap ID</th><th>Priority Intelligence Gap</th><th>Why It Matters</th><th>Collection Priority</th></tr></thead>
+        <tbody>
+          <tr><td>Gap-1</td><td>What are the real operational error rates in live authoritarian deployments?</td><td>Would materially affect judgments on predictive reliability and collateral repression risk.</td><td>High</td></tr>
+          <tr><td>Gap-2</td><td>How often does visible misuse impose measurable political cost?</td><td>Central to judging whether calibration failures remain strategically consequential.</td><td>High</td></tr>
+          <tr><td>Gap-3</td><td>How much human review is retained in live systems?</td><td>Key variable for judging whether current AI limits are operationally mitigated.</td><td>High</td></tr>
+          <tr><td>Gap-4</td><td>How far has multimodal fusion progressed in China, Russia, Iran, and adjacent cases?</td><td>Could sharply raise or lower concern depending on evidence quality and scale.</td><td>Medium to High</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-section">
+        <h3>Action Threshold Grid</h3>
+        <div class="threshold-grid">
+          <div class="threshold-cell green-zone">
+            <h4>Green</h4>
+            <p>Evidence remains limited to narrow-task utility, with no credible sign of substantial predictive improvement or broader civic-space collapse.</p>
+          </div>
+          <div class="threshold-cell amber-zone">
+            <h4>Amber</h4>
+            <p>Integration expands, arrests linked to digital trails rise, and visible misuse episodes remain episodic but recurring. Increase monitoring cadence and executive warning language.</p>
+          </div>
+          <div class="threshold-cell red-zone">
+            <h4>Red</h4>
+            <p>Credible evidence shows large-scale multimodal fusion, reduced review latency, and strong preemptive targeting capacity with limited political cost. Escalate as a priority strategic-control threat.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="max-width:1000px;margin:0 auto;padding:0 2rem 3rem;color:var(--text-muted);font-size:.82rem;">
+    <div style="border-top:1px solid var(--obsidian-border);padding-top:1.2rem;">
+      <p>Quanta Analytica Process™ | MNS Consulting | Single-file HTML report with embedded canonical QAP stylesheet</p>
+    </div>
+  </footer>
+
+  <script>
+    const progress = document.getElementById('progress');
+    const updateProgress = () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+      progress.style.width = scrolled + '%';
+    };
+    window.addEventListener('scroll', updateProgress);
+    updateProgress();
+
+    const sections = document.querySelectorAll('.section');
+    const reveal = () => {
+      const trigger = window.innerHeight * 0.92;
+      sections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top < trigger) sec.classList.add('visible');
+      });
+    };
+    window.addEventListener('scroll', reveal);
+    reveal();
+  </script>
+</body>
+</html>
