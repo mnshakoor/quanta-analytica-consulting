@@ -1,0 +1,1840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Northern Escalation Watch | Quanta Analytica Process™ | 07 Apr 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+/* ============================================================
+   QAP WEB REPORT — CANONICAL STYLESHEET
+   Quanta Analytica Process™ | MNS Consulting
+   quanta-analytica.com/reports/
+   Version: 2.0 | Design System Reference
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. ROOT VARIABLES — Color, Typography, Spacing
+   ------------------------------------------------------------ */
+:root {
+  /* Core Palette */
+  --obsidian:         #0a0c10;
+  --obsidian-mid:     #10131a;
+  --obsidian-card:    #13161f;
+  --obsidian-border:  #1c2030;
+  --obsidian-surface: #181b26;
+  --obsidian-lift:    #1e2235;
+
+  /* Gold Scale */
+  --gold:             #c8a96e;
+  --gold-light:       #dfc28e;
+  --gold-pale:        #e8d5aa;
+  --gold-dim:         #9a7f52;
+  --gold-muted:       #6b5838;
+  --gold-glow:        rgba(200, 169, 110, 0.12);
+  --gold-glow-strong: rgba(200, 169, 110, 0.22);
+
+  /* Alert / Status Colors */
+  --red:              #c0392b;
+  --red-light:        #e74c3c;
+  --red-bg:           rgba(192, 57, 43, 0.12);
+  --amber:            #d4820a;
+  --amber-light:      #f39c12;
+  --amber-bg:         rgba(212, 130, 10, 0.12);
+  --green:            #27ae60;
+  --green-light:      #2ecc71;
+  --green-bg:         rgba(39, 174, 96, 0.12);
+  --blue:             #2980b9;
+  --blue-light:       #3498db;
+  --blue-bg:          rgba(41, 128, 185, 0.12);
+  --yellow:           #f1c40f;
+  --yellow-bg:        rgba(241, 196, 15, 0.12);
+  --slate:            #5d7a9a;
+  --slate-light:      #7f9ab8;
+
+  /* Text Scale */
+  --text-primary:     #e8e4dc;
+  --text-secondary:   #b8b0a0;
+  --text-muted:       #7a7264;
+  --text-faint:       #4a4640;
+
+  /* Typography */
+  --font-display:     'Libre Baskerville', Georgia, serif;
+  --font-body:        'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:        'IBM Plex Mono', 'Courier New', monospace;
+
+  /* Spacing */
+  --space-xs:         0.25rem;
+  --space-sm:         0.5rem;
+  --space-md:         1rem;
+  --space-lg:         1.5rem;
+  --space-xl:         2rem;
+  --space-2xl:        3rem;
+  --space-3xl:        4rem;
+
+  /* Borders & Radius */
+  --radius-sm:        3px;
+  --radius-md:        6px;
+  --radius-lg:        10px;
+  --border-default:   1px solid var(--obsidian-border);
+  --border-gold:      1px solid var(--gold-dim);
+
+  /* Transitions */
+  --transition-fast:  0.15s ease;
+  --transition-base:  0.25s ease;
+  --transition-slow:  0.4s ease;
+
+  /* Shadows */
+  --shadow-card:      0 2px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lift:      0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* ------------------------------------------------------------
+   2. RESET & BASE
+   ------------------------------------------------------------ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--obsidian);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--gold-light);
+}
+
+p {
+  margin-bottom: var(--space-md);
+  color: var(--text-secondary);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+strong, b {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+em, i {
+  color: var(--slate-light);
+  font-style: italic;
+}
+
+cite {
+  font-style: normal;
+  color: var(--gold-dim);
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  vertical-align: super;
+  line-height: 0;
+}
+
+/* ------------------------------------------------------------
+   3. SCROLL PROGRESS BAR
+   ------------------------------------------------------------ */
+#progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-light));
+  z-index: 9999;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 8px var(--gold-glow-strong);
+}
+
+/* ------------------------------------------------------------
+   4. NAVIGATION
+   ------------------------------------------------------------ */
+nav {
+  position: fixed;
+  top: 3px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(10, 12, 16, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--obsidian-border);
+  padding: 0 var(--space-xl);
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.nav-brand span {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+.nav-classify {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  border: 1px solid var(--amber);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--amber-bg);
+}
+
+/* ------------------------------------------------------------
+   5. HERO BLOCK
+   ------------------------------------------------------------ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 140px var(--space-xl) var(--space-3xl);
+  overflow: hidden;
+  background: radial-gradient(ellipse at 20% 60%, rgba(200, 169, 110, 0.05) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(41, 128, 185, 0.04) 0%, transparent 50%),
+              var(--obsidian);
+}
+
+/* Animated background grid */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(200, 169, 110, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 169, 110, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridDrift 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes gridDrift {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(40px, 40px); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-running-head {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--obsidian-border);
+  padding-bottom: var(--space-sm);
+}
+
+.hero-container {
+  display: flex;          /* Enables side-by-side layout */
+  align-items: center;    /* Vertically centers the image with the text */
+  gap: 30px;              /* Creates space between the image and the text */
+  margin: 20px 0;
+}
+/* ----------------------------------------------------------------------
+   DEFAULT HERO IMG URL TO BE USED 'https://quanta-analytica.com/logo.PNG
+   -------Place image to the left of h1 title in hero section--------- */
+
+.hero-image {
+  max-width: 200px;       /* Adjust this size to fit your design */
+  height: auto;           /* Maintains aspect ratio */
+  border-radius: 8px;     /* Optional: rounds the corners of your image */
+}
+
+.hero-text {
+  flex: 1;                /* Allows text to take up remaining space */
+}
+
+/* Optional: Mobile Responsiveness */
+@media (max-width: 600px) {
+  .hero-container {
+    flex-direction: column; /* Stacks image on top of text on small screens */
+    text-align: center;
+  }
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 .title-gold {
+  color: var(--gold); 
+  display: block;      /* Ensures it starts on a new line */
+  margin-top: 0.5rem;  /* Optional: adds a small gap between lines */
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+  max-width: 720px;
+  line-height: 1.6;
+}
+
+/* Hero Metadata Row */
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  align-items: center;
+}
+
+.meta-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.meta-cell .label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.meta-cell .value {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+}
+
+.meta-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--gold-dim);
+  align-self: center;
+}
+
+/* Threat Badge */
+.threat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.threat-badge.critical  { color: var(--red-light);   border-color: var(--red);   background: var(--red-bg);   }
+.threat-badge.high      { color: var(--amber-light);  border-color: var(--amber); background: var(--amber-bg); }
+.threat-badge.elevated  { color: var(--yellow);       border-color: var(--yellow);background: var(--yellow-bg);}
+.threat-badge.moderate  { color: var(--blue-light);   border-color: var(--blue);  background: var(--blue-bg);  }
+.threat-badge.low       { color: var(--green-light);  border-color: var(--green); background: var(--green-bg); }
+
+.threat-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+
+/* Analytic Scope Boundary */
+.scope-boundary {
+  border-left: 3px solid var(--slate);
+  padding: var(--space-sm) var(--space-lg);
+  background: rgba(93, 122, 154, 0.08);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin-top: var(--space-lg);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--slate-light);
+  line-height: 1.6;
+}
+
+/* Key Metrics Strip */
+.metrics-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--obsidian-border);
+}
+
+.metric-block {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-top: 2px solid var(--gold-dim);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  min-width: 140px;
+}
+
+.metric-block .metric-value {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.metric-block .metric-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ------------------------------------------------------------
+   6. MAIN CONTENT WRAPPER
+   ------------------------------------------------------------ */
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--space-3xl) var(--space-xl);
+}
+
+/* ------------------------------------------------------------
+   7. SECTION WRAPPER & SCROLL REVEAL
+   ------------------------------------------------------------ */
+.section {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  margin-bottom: var(--space-3xl);
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section Header */
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--obsidian-border);
+}
+
+.section-num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  background: var(--gold-glow);
+  border: 1px solid var(--gold-muted);
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+/* Sub-section divider */
+.sub-section {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+}
+
+.sub-section::before {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-muted), transparent);
+  margin-bottom: var(--space-lg);
+}
+
+.sub-section h3 {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-md);
+}
+
+/* ------------------------------------------------------------
+   8. BLUF — Bottom Line Up Front
+   ------------------------------------------------------------ */
+.bluf-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.bluf-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-left: 3px solid var(--gold-dim);
+  border-radius: var(--radius-md);
+}
+
+.bluf-index {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--gold-pale);
+  opacity: 0.4;
+  line-height: 1;
+  padding-top: 4px;
+}
+
+.bluf-text .bluf-claim {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 0.98rem;
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.bluf-text p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------
+   9. SNAPSHOT GRID — Who / What / Where / When / Why / How
+   ------------------------------------------------------------ */
+.snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.snapshot-cell {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.snapshot-cell .snap-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: var(--space-sm);
+  display: block;
+}
+
+.snapshot-cell .snap-content {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------------------
+   10. KEY JUDGMENTS
+   ------------------------------------------------------------ */
+.kj-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.kj-item {
+  padding: var(--space-lg);
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  border-left: 4px solid;
+  position: relative;
+}
+
+.kj-item.high     { border-left-color: var(--red);   }
+.kj-item.moderate { border-left-color: var(--amber);  }
+.kj-item.low      { border-left-color: var(--blue);   }
+.kj-item.watch    { border-left-color: var(--yellow);  }
+
+.kj-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.kj-id {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.kj-conf {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.kj-item.high     .kj-conf { color: var(--red-light);   border-color: var(--red);   background: var(--red-bg);   }
+.kj-item.moderate .kj-conf { color: var(--amber-light);  border-color: var(--amber); background: var(--amber-bg); }
+.kj-item.low      .kj-conf { color: var(--blue-light);   border-color: var(--blue);  background: var(--blue-bg);  }
+.kj-item.watch    .kj-conf { color: var(--yellow);        border-color: var(--yellow);background: var(--yellow-bg);}
+
+.kj-text {
+  font-size: 0.93rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: var(--space-sm);
+}
+
+.kj-mapping {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+/* ------------------------------------------------------------
+   11. EVIDENCE GRID — Know / Assess / Gap
+   ------------------------------------------------------------ */
+.evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.evidence-box {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.evidence-box-header {
+  padding: var(--space-sm) var(--space-lg);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.evidence-box-header.know   { background: var(--green-bg);  color: var(--green-light);  border-bottom: 1px solid var(--green);  }
+.evidence-box-header.assess { background: var(--amber-bg);  color: var(--amber-light);  border-bottom: 1px solid var(--amber);  }
+.evidence-box-header.gap    { background: var(--red-bg);    color: var(--red-light);    border-bottom: 1px solid var(--red);    }
+
+.evidence-box-body {
+  padding: var(--space-lg);
+}
+
+.evidence-box-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+.evidence-box-body li {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid var(--obsidian-border);
+  padding-left: var(--space-md);
+  position: relative;
+}
+
+.evidence-box-body li::before {
+  content: '//';
+  position: absolute;
+  left: 0;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+
+.evidence-box-body li:last-child {
+  border-bottom: none;
+}
+
+/* WSI Source Independence Note */
+.wsi-note {
+  background: rgba(93, 122, 154, 0.1);
+  border: 1px solid rgba(93, 122, 154, 0.3);
+  border-left: 3px solid var(--slate);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  font-size: 0.83rem;
+  color: var(--slate-light);
+  font-style: italic;
+  margin-top: var(--space-lg);
+}
+
+.wsi-note strong {
+  color: var(--slate-light);
+  font-style: normal;
+}
+
+/* ------------------------------------------------------------
+   12. TABLES — Assumption, ACH, IW, KIQ, Risk, PIGs
+   ------------------------------------------------------------ */
+.table-wrapper {
+  overflow-x: auto;
+  margin-bottom: var(--space-lg);
+  border-radius: var(--radius-md);
+  border: var(--border-default);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.87rem;
+}
+
+thead th {
+  background: var(--obsidian-surface);
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  border-bottom: 1px solid var(--obsidian-border);
+  white-space: nowrap;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--obsidian-border);
+  transition: background var(--transition-fast);
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: var(--obsidian-lift);
+}
+
+tbody td {
+  padding: var(--space-sm) var(--space-md);
+  color: var(--text-secondary);
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+tbody td:first-child {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Assumption Table */
+.assumption-table { }
+
+/* ACH Table */
+.ach-table thead th:nth-child(4) { text-align: center; }
+.ach-table tbody td:nth-child(4) { text-align: center; font-family: var(--font-mono); }
+
+/* IW Table — Indicators & Warnings */
+.iw-table { }
+
+/* Risk Matrix — high-score rows */
+.risk-matrix tbody tr.risk-high {
+  background: var(--red-bg);
+}
+
+.risk-matrix tbody tr.risk-high td {
+  color: var(--text-primary);
+}
+
+.risk-score {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.risk-score.score-high   { color: var(--red-light);   }
+.risk-score.score-medium { color: var(--amber-light);  }
+.risk-score.score-low    { color: var(--green-light);  }
+
+/* KIQ Table */
+.kiq-table { }
+
+/* Priority Intelligence Gaps Table */
+.pig-table { }
+
+/* KPI Table (optional — fragility reports) */
+.kpi-table { }
+
+.pillar-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--obsidian-border);
+  color: var(--text-muted);
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+
+/* ------------------------------------------------------------
+   13. SCENARIO CARDS
+   ------------------------------------------------------------ */
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.scenario-card {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-top: 3px solid;
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.scenario-card.best  { border-top-color: var(--green);  }
+.scenario-card.base  { border-top-color: var(--amber);  }
+.scenario-card.worst { border-top-color: var(--red);    }
+
+.scenario-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  display: block;
+}
+
+.scenario-card.best  .scenario-label { color: var(--green-light);  }
+.scenario-card.base  .scenario-label { color: var(--amber-light);  }
+.scenario-card.worst .scenario-label { color: var(--red-light);    }
+
+.scenario-card h4 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.scenario-card p {
+  font-size: 0.87rem;
+}
+
+.scenario-prob {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: var(--space-sm);
+  display: block;
+  letter-spacing: 0.06em;
+}
+
+/* ------------------------------------------------------------
+   14. BEHAVIORAL GRID
+   ------------------------------------------------------------ */
+.behavioral-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.behavioral-item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+}
+
+.behavioral-rank {
+  font-family: var(--font-mono);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--gold-pale);
+  opacity: 0.25;
+  line-height: 1;
+  text-align: center;
+  padding-top: 4px;
+}
+
+.behavioral-content h4 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.behavioral-content p {
+  font-size: 0.88rem;
+  margin-bottom: var(--space-xs);
+}
+
+.behavioral-inference {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--slate-light);
+  font-style: italic;
+  letter-spacing: 0.02em;
+  display: block;
+}
+
+/* ------------------------------------------------------------
+   15. RECOMMENDATION TIMELINE
+   ------------------------------------------------------------ */
+.rec-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-left: 2px solid var(--obsidian-border);
+  margin-left: var(--space-md);
+  padding-left: var(--space-xl);
+}
+
+.rec-block {
+  position: relative;
+  margin-bottom: var(--space-xl);
+}
+
+.rec-block::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * var(--space-xl) - 1px);
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--obsidian-border);
+  border: 2px solid;
+}
+
+.rec-block.immediate::before { border-color: var(--red);   background: var(--red-bg);   }
+.rec-block.near-term::before { border-color: var(--amber); background: var(--amber-bg); }
+.rec-block.medium-term::before { border-color: var(--green); background: var(--green-bg); }
+
+.rec-time {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+  margin-bottom: var(--space-md);
+}
+
+.rec-block.immediate   .rec-time { color: var(--red-light);  border: 1px solid var(--red);   background: var(--red-bg);   }
+.rec-block.near-term   .rec-time { color: var(--amber-light);border: 1px solid var(--amber); background: var(--amber-bg); }
+.rec-block.medium-term .rec-time { color: var(--green-light);border: 1px solid var(--green); background: var(--green-bg); }
+
+.rec-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.rec-content p {
+  font-size: 0.9rem;
+}
+
+/* ------------------------------------------------------------
+   16. CONFIDENCE PANEL
+   ------------------------------------------------------------ */
+.conf-panel {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--space-lg);
+}
+
+.conf-header {
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  border-bottom: 1px solid var(--obsidian-border);
+}
+
+.conf-band {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.conf-band.high     { color: var(--green-light);  border-color: var(--green);  background: var(--green-bg);  }
+.conf-band.moderate { color: var(--amber-light);  border-color: var(--amber);  background: var(--amber-bg);  }
+.conf-band.low      { color: var(--red-light);    border-color: var(--red);    background: var(--red-bg);    }
+
+.conf-header-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+.conf-body {
+  padding: var(--space-lg);
+}
+
+.conf-body p {
+  font-size: 0.9rem;
+}
+
+/* Uncertainty / Flip Risk List */
+.uncertainty-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.uncertainty-item {
+  background: var(--red-bg);
+  border: 1px solid var(--red);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+}
+
+.uncertainty-item .u-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red-light);
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.uncertainty-item p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------
+   17. THRESHOLD GRID — Green / Amber / Red Zones
+   ------------------------------------------------------------ */
+.threshold-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.threshold-cell {
+  border-radius: var(--radius-md);
+  border: 1px solid;
+  overflow: hidden;
+}
+
+.threshold-cell.green-zone { border-color: var(--green);  background: var(--green-bg);  }
+.threshold-cell.amber-zone { border-color: var(--amber);  background: var(--amber-bg);  }
+.threshold-cell.red-zone   { border-color: var(--red);    background: var(--red-bg);    }
+
+.threshold-header {
+  padding: var(--space-sm) var(--space-md);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid;
+}
+
+.threshold-cell.green-zone .threshold-header { color: var(--green-light);  border-color: var(--green);  background: rgba(39, 174, 96, 0.18);  }
+.threshold-cell.amber-zone .threshold-header { color: var(--amber-light);  border-color: var(--amber);  background: rgba(212, 130, 10, 0.18);  }
+.threshold-cell.red-zone   .threshold-header { color: var(--red-light);    border-color: var(--red);    background: rgba(192, 57, 43, 0.18);    }
+
+.threshold-body {
+  padding: var(--space-md);
+}
+
+.threshold-body p {
+  font-size: 0.85rem;
+  margin-bottom: var(--space-sm);
+}
+
+.threshold-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+.threshold-body li {
+  font-size: 0.83rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding: 3px 0;
+  padding-left: var(--space-md);
+  position: relative;
+}
+
+.threshold-body li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--text-faint);
+}
+
+/* ------------------------------------------------------------
+   18. STATUS & BAND PILLS (inline)
+   ------------------------------------------------------------ */
+.status-pill {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+.status-pill.red    { color: var(--red-light);   border-color: var(--red);   background: var(--red-bg);    }
+.status-pill.amber  { color: var(--amber-light);  border-color: var(--amber); background: var(--amber-bg);  }
+.status-pill.green  { color: var(--green-light);  border-color: var(--green); background: var(--green-bg);  }
+.status-pill.blue   { color: var(--blue-light);   border-color: var(--blue);  background: var(--blue-bg);   }
+.status-pill.yellow { color: var(--yellow);        border-color: var(--yellow);background: var(--yellow-bg); }
+.status-pill.gold   { color: var(--gold);          border-color: var(--gold-dim); background: var(--gold-glow); }
+
+/* Band Pills (source register table) */
+.band-pill {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.band-pill.green { color: var(--green-light);  border-color: var(--green);  background: var(--green-bg);  }
+.band-pill.amber { color: var(--amber-light);  border-color: var(--amber);  background: var(--amber-bg);  }
+.band-pill.red   { color: var(--red-light);    border-color: var(--red);    background: var(--red-bg);    }
+
+/* Inline fact/inference labels */
+.label-fact {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--blue-light);
+  border: 1px solid var(--blue);
+  background: var(--blue-bg);
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  margin-right: 6px;
+}
+
+.label-inference {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  border: 1px solid var(--gold-dim);
+  background: var(--gold-glow);
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  margin-right: 6px;
+}
+
+/* Structural constraint labels */
+.label-structural { color: var(--red-light);    }
+.label-political  { color: var(--amber-light);  }
+.label-resource   { color: var(--blue-light);   }
+.label-temporal   { color: var(--green-light);  }
+
+/* Analytic technique declaration block */
+.technique-declaration {
+  background: var(--obsidian-surface);
+  border: var(--border-default);
+  border-left: 3px solid var(--gold-dim);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  margin-bottom: var(--space-xl);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.technique-declaration strong {
+  color: var(--gold-dim);
+  font-style: normal;
+}
+
+/* ------------------------------------------------------------
+   19. FOOTER
+   ------------------------------------------------------------ */
+footer {
+  border-top: 1px solid var(--obsidian-border);
+  padding: var(--space-xl);
+  text-align: center;
+}
+
+.footer-brand {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: var(--space-sm);
+}
+
+.footer-doc-id {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  margin-bottom: var(--space-sm);
+}
+
+.footer-legal {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* ------------------------------------------------------------
+   20. RESPONSIVE BREAKPOINTS
+   ------------------------------------------------------------ */
+@media (max-width: 768px) {
+  nav {
+    padding: 0 var(--space-md);
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    padding: 100px var(--space-md) var(--space-2xl);
+  }
+
+  main {
+    padding: var(--space-2xl) var(--space-md);
+  }
+
+  .snapshot-grid,
+  .evidence-grid,
+  .scenario-grid,
+  .threshold-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bluf-item {
+    grid-template-columns: 28px 1fr;
+    gap: var(--space-md);
+  }
+
+  .behavioral-item {
+    grid-template-columns: 1fr;
+  }
+
+  .behavioral-rank {
+    font-size: 1rem;
+    text-align: left;
+    padding-top: 0;
+    opacity: 0.35;
+  }
+
+  .hero-running-head {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .hero-meta {
+    gap: var(--space-sm);
+  }
+
+  .metrics-strip {
+    gap: var(--space-sm);
+  }
+
+  table {
+    font-size: 0.8rem;
+  }
+
+  thead th,
+  tbody td {
+    padding: var(--space-xs) var(--space-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .section-title {
+    font-size: 1.15rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div id="progress"></div>
+  <nav>
+    <div class="nav-brand">QUANTA ANALYTICA <span>| MNS CONSULTING</span></div>
+    <ul class="nav-links">
+      <li><a href="#s1">BLUF</a></li>
+      <li><a href="#s6">Analysis</a></li>
+      <li><a href="#s10">References</a></li>
+    </ul>
+    <div class="nav-classify">Open Source</div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-running-head">
+        <span>QUANTA ANALYTICA | MNS CONSULTING</span>
+        <span>CONFLICT SYSTEMS ANALYSIS // ETHIOPIA, ERITREA, TIGRAY</span>
+      </div>
+      <div class="hero-container">
+        <img src="https://quanta-analytica.com/logo.PNG" alt="Quanta Analytica logo" class="hero-image">
+        <div class="hero-text">
+          <h1>Northern Escalation Watch:<br><span class="title-gold">Ethiopia, Eritrea, and Tigray</span></h1>
+          <p class="hero-subtitle">A QAP strategic assessment of whether the current trajectory is likely to remain a militarized standoff or tip into a renewed Tigray-centered war with wider Ethiopia-Eritrea implications.</p>
+        </div>
+      </div>
+      <div class="hero-meta">
+        <div class="meta-cell"><span class="label">Domain</span><span class="value">Conflict Systems Analysis</span></div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell"><span class="label">Date</span><span class="value">07 Apr 2026</span></div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell"><span class="label">Confidence</span><span class="value">Moderate</span></div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell"><span class="label">Framework</span><span class="value">QAP™ / Cognition Model</span></div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell"><span class="label">Classification</span><span class="value">Open Source</span></div>
+        <div class="meta-divider"></div>
+        <div class="threat-badge high"><span class="threat-dot"></span>High Escalation Risk</div>
+      </div>
+      <div class="scope-boundary">Time range: primary focus on January to 7 April 2026, with baseline context from the 2022 Pretoria agreement and key political developments in 2025. Forward horizon: 30 to 90 days for near-term escalation and 180 days for strategic implications. Source limits: open-source reporting, UN and humanitarian material, and method-transparent analytical publications. Excluded streams: classified reporting, covert-source validation, and private military disposition data. Confidence note: moderate, strongest on structural drivers and recent escalation signals, weaker on exact troop posture, covert coordination, and private leadership intent.</div>
+      <div class="metrics-strip">
+        <div class="metric-block"><div class="metric-value">5</div><div class="metric-label">KIQs</div></div>
+        <div class="metric-block"><div class="metric-value">4</div><div class="metric-label">Risk Vectors</div></div>
+        <div class="metric-block"><div class="metric-value">&gt;1M</div><div class="metric-label">Displaced Civilians</div></div>
+        <div class="metric-block"><div class="metric-value">90d</div><div class="metric-label">Primary Horizon</div></div>
+      </div>
+      <p class="provenance">Produced under the Quanta Analytica Process™. All claims are traced to open-source evidence or labelled as analyst inference. No personal notes were used as evidentiary sources.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="section visible" id="s1">
+      <div class="section-header"><span class="section-num">01 // BLUF</span><div class="section-title">Bottom Line Up Front</div></div>
+      <div class="bluf-grid">
+        <div class="bluf-item"><div class="bluf-index">01</div><div><p><strong>[J] Primary judgment:</strong> The most likely near-term trajectory is a militarized standoff with episodic clashes, but the most dangerous plausible path is a Tigray-centered war that could pull Eritrea into direct confrontation with Ethiopia. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref5">[5]</a></cite> <cite><a href="#ref6">[6]</a></cite> <cite><a href="#ref9">[9]</a></cite> <cite><a href="#ref12">[12]</a></cite></p></div></div>
+        <div class="bluf-item"><div class="bluf-index">02</div><div><p><strong>[J] Center of gravity:</strong> Tigray, rather than Assab alone, remains the operational center of gravity because unresolved territorial control, incomplete postwar implementation, and Tigray’s internal political fracture are the most immediate conflict multipliers. <cite><a href="#ref3">[3]</a></cite> <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref7">[7]</a></cite> <cite><a href="#ref8">[8]</a></cite> <cite><a href="#ref12">[12]</a></cite></p></div></div>
+        <div class="bluf-item"><div class="bluf-index">03</div><div><p><strong>[F] Escalation already visible:</strong> Fighting around Tselemti, drone strikes in Tigray, and the February 2026 exchange of Ethiopia-Eritrea accusations show the environment has moved beyond rhetorical tension. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref2">[2]</a></cite> <cite><a href="#ref3">[3]</a></cite> <cite><a href="#ref9">[9]</a></cite></p></div></div>
+        <div class="bluf-item"><div class="bluf-index">04</div><div><p><strong>[J] Immediate decision implication:</strong> The most decision-relevant warning indicators are force concentration, renewed drone or artillery use, flight or communications disruption, and any attempt to alter control in contested districts by force. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref2">[2]</a></cite> <cite><a href="#ref3">[3]</a></cite> <cite><a href="#ref5">[5]</a></cite> <cite><a href="#ref9">[9]</a></cite> <cite><a href="#ref12">[12]</a></cite></p></div></div>
+        <div class="bluf-item"><div class="bluf-index">05</div><div><p><strong>[J] Humanitarian effect:</strong> Even without a full interstate war, humanitarian deterioration is already strategically significant because displacement, rights risks, and aid funding shortfalls are constraining resilience across Ethiopia, including conflict-affected northern areas. <cite><a href="#ref9">[9]</a></cite> <cite><a href="#ref10">[10]</a></cite></p></div></div>
+      </div>
+    </section>
+
+    <section class="section visible" id="s2">
+      <div class="section-header"><span class="section-num">02 // KIQS</span><div class="section-title">Key Intelligence Questions</div></div>
+      <table class="kiq-table">
+        <thead><tr><th>Question ID</th><th>Intelligence Question</th><th>Links To</th></tr></thead>
+        <tbody>
+          <tr><td>KIQ-1</td><td>Is the current crisis better understood as a prelude to direct Ethiopia-Eritrea war, or as a Tigray-centered escalation that could later widen?</td><td>KJ-1, KJ-2</td></tr>
+          <tr><td>KIQ-2</td><td>Which unresolved post-Pretoria issues are most likely to trigger renewed fighting?</td><td>KJ-2, KJ-3</td></tr>
+          <tr><td>KIQ-3</td><td>How does Tigray’s internal political fracture affect escalation risk and bargaining coherence?</td><td>KJ-3, Analysis</td></tr>
+          <tr><td>KIQ-4</td><td>What indicators would signal a shift from coercive posturing to imminent sustained combat?</td><td>KJ-4, Annex A</td></tr>
+          <tr><td>KIQ-5</td><td>What are the most decision-relevant humanitarian and regional implications if fighting resumes?</td><td>KJ-5, Recommendations</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section visible" id="s3">
+      <div class="section-header"><span class="section-num">03 // SNAPSHOT</span><div class="section-title">Situation Snapshot</div></div>
+      <div class="snapshot-grid">
+        <div class="snapshot-cell"><span class="snap-label">Who</span><div class="snap-content">Ethiopian federal authorities, Eritrean leadership, Tigray’s interim administration, rival TPLF factions, Tigrayan security actors, and external diplomatic actors attempting restraint. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref7">[7]</a></cite> <cite><a href="#ref8">[8]</a></cite> <cite><a href="#ref9">[9]</a></cite> <cite><a href="#ref12">[12]</a></cite></div></div>
+        <div class="snapshot-cell"><span class="snap-label">What</span><div class="snap-content">A high-risk escalation environment marked by localized clashes, drone strikes, mutual accusations, and a fraying postwar political settlement. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref2">[2]</a></cite> <cite><a href="#ref3">[3]</a></cite> <cite><a href="#ref9">[9]</a></cite></div></div>
+        <div class="snapshot-cell"><span class="snap-label">Where</span><div class="snap-content">Western and northwestern Tigray, the Amhara-Tigray fault line, southern Tigray areas such as Alamata and Korem, and the Ethiopia-Eritrea border belt. <cite><a href="#ref2">[2]</a></cite> <cite><a href="#ref3">[3]</a></cite> <cite><a href="#ref5">[5]</a></cite> <cite><a href="#ref12">[12]</a></cite></div></div>
+        <div class="snapshot-cell"><span class="snap-label">When</span><div class="snap-content">The current escalation cycle became acute in late January and February 2026, though its roots lie in unresolved Pretoria implementation and TPLF political fracture in 2025. <cite><a href="#ref3">[3]</a></cite> <cite><a href="#ref7">[7]</a></cite> <cite><a href="#ref8">[8]</a></cite> <cite><a href="#ref12">[12]</a></cite></div></div>
+        <div class="snapshot-cell"><span class="snap-label">Why</span><div class="snap-content">The crisis is rooted in unresolved territorial control, incomplete demobilization, contested political legitimacy, Eritrea’s exclusion from Pretoria, and sharpened sovereignty rhetoric over sea access. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref5">[5]</a></cite> <cite><a href="#ref11">[11]</a></cite> <cite><a href="#ref12">[12]</a></cite></div></div>
+        <div class="snapshot-cell"><span class="snap-label">How</span><div class="snap-content">A classic security dilemma is forming in which each actor reads the others’ preparations as confirmation of hostile intent, incentivizing harder signaling and pre-emptive posturing. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref5">[5]</a></cite> <cite><a href="#ref6">[6]</a></cite></div></div>
+      </div>
+    </section>
+
+    <section class="section visible" id="s4">
+      <div class="section-header"><span class="section-num">04 // KEY JUDGMENTS</span><div class="section-title">Ranked Key Judgments</div></div>
+      <div class="kj-list">
+        <div class="kj-item moderate">
+          <div class="kj-header"><span class="kj-id">KJ-1</span><span class="kj-conf">Moderate Confidence</span></div>
+          <div class="kj-text">The present condition is best assessed as an unstable militarized standoff, not yet full war, but one in which localized combat is already occurring and could expand quickly if a new clash changes control on the ground. <cite><a href="#ref2">[2]</a></cite> <cite><a href="#ref3">[3]</a></cite> <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref6">[6]</a></cite> <cite><a href="#ref9">[9]</a></cite></div>
+          <div class="kj-mapping">Links to: KIQ-1, KIQ-4</div>
+        </div>
+        <div class="kj-item moderate">
+          <div class="kj-header"><span class="kj-id">KJ-2</span><span class="kj-conf">Moderate Confidence</span></div>
+          <div class="kj-text">The highest-probability escalatory pathway is a Tigray-centered conflict that widens outward, not a clean conventional Ethiopia-Eritrea war beginning at the interstate border. <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref5">[5]</a></cite> <cite><a href="#ref6">[6]</a></cite> <cite><a href="#ref9">[9]</a></cite> <cite><a href="#ref12">[12]</a></cite></div>
+          <div class="kj-mapping">Links to: KIQ-1, KIQ-2</div>
+        </div>
+        <div class="kj-item moderate">
+          <div class="kj-header"><span class="kj-id">KJ-3</span><span class="kj-conf">Moderate Confidence</span></div>
+          <div class="kj-text">Pretoria stabilized the theater but did not settle the issues that now matter most: western Tigray, demobilization, return of displaced populations, and the legitimacy of Tigray’s transitional order. <cite><a href="#ref3">[3]</a></cite> <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref6">[6]</a></cite> <cite><a href="#ref9">[9]</a></cite> <cite><a href="#ref12">[12]</a></cite></div>
+          <div class="kj-mapping">Links to: KIQ-2, KIQ-3</div>
+        </div>
+        <div class="kj-item moderate">
+          <div class="kj-header"><span class="kj-id">KJ-4</span><span class="kj-conf">Moderate Confidence</span></div>
+          <div class="kj-text">Abiy Ahmed’s Red Sea and Assab rhetoric has increased the strategic salience of the Ethiopia-Eritrea rivalry, but it becomes most dangerous when fused with unresolved Tigray grievances and proxy or quasi-proxy alignments. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref5">[5]</a></cite> <cite><a href="#ref11">[11]</a></cite></div>
+          <div class="kj-mapping">Links to: KIQ-1, KIQ-4</div>
+        </div>
+        <div class="kj-item high">
+          <div class="kj-header"><span class="kj-id">KJ-5</span><span class="kj-conf">High Confidence</span></div>
+          <div class="kj-text">Renewed conflict would rapidly worsen humanitarian conditions even before any large campaign because displacement, fear, transport disruption, and aid shortfalls are already present. <cite><a href="#ref9">[9]</a></cite> <cite><a href="#ref10">[10]</a></cite></div>
+          <div class="kj-mapping">Links to: KIQ-5</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section visible" id="s5">
+      <div class="section-header"><span class="section-num">05 // EVIDENCE</span><div class="section-title">Evidence Summary</div></div>
+      <div class="evidence-grid">
+        <div class="evidence-box">
+          <div class="evidence-box-header know">What We Know</div>
+          <div class="evidence-box-body">
+            <ul>
+              <li>Reuters reported recent fighting between Ethiopian national forces and Tigrayan regional forces around Tselemti and nearby areas. <cite><a href="#ref2">[2]</a></cite> <cite><a href="#ref3">[3]</a></cite></li>
+              <li>Drone strikes in Tigray killed at least one person and injured another in late January 2026. <cite><a href="#ref2">[2]</a></cite> <cite><a href="#ref9">[9]</a></cite></li>
+              <li>Ethiopia formally accused Eritrea in February 2026 of aggression, occupation of border territory, and support to armed groups; Eritrea publicly rejected the accusations. <cite><a href="#ref1">[1]</a></cite></li>
+              <li>OHCHR warned of a highly volatile environment and continuing human rights risk in Tigray. <cite><a href="#ref9">[9]</a></cite></li>
+            </ul>
+          </div>
+        </div>
+        <div class="evidence-box">
+          <div class="evidence-box-header assess">What We Assess</div>
+          <div class="evidence-box-body">
+            <ul>
+              <li>The crisis should be treated as a multi-actor escalation system rather than a single bilateral dispute. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref6">[6]</a></cite> <cite><a href="#ref12">[12]</a></cite></li>
+              <li>Tigray’s political fracture raises war risk because it multiplies veto players and weakens coherent bargaining. <cite><a href="#ref7">[7]</a></cite> <cite><a href="#ref8">[8]</a></cite> <cite><a href="#ref12">[12]</a></cite></li>
+              <li>The Red Sea issue is a strategic amplifier rather than the sole causal driver. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref5">[5]</a></cite> <cite><a href="#ref11">[11]</a></cite></li>
+              <li>Risk is highest where territorial disputes, militia alignment, and interstate fear intersect. <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref5">[5]</a></cite> <cite><a href="#ref12">[12]</a></cite></li>
+            </ul>
+          </div>
+        </div>
+        <div class="evidence-box">
+          <div class="evidence-box-header gap">What We Do Not Know</div>
+          <div class="evidence-box-body">
+            <ul>
+              <li>The true depth of Eritrea-Tigrayan coordination beyond public accusation and denial. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref5">[5]</a></cite></li>
+              <li>The exact scale, readiness, and disposition of troop concentrations near the main fault lines.</li>
+              <li>The private red lines of Abiy Ahmed and Isaias Afwerki regarding pre-emption or escalation.</li>
+              <li>Whether internal Tigrayan political accommodation is still feasible before security events outrun politics. <cite><a href="#ref7">[7]</a></cite> <cite><a href="#ref8">[8]</a></cite> <cite><a href="#ref12">[12]</a></cite></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p><span class="label-fact">FACT</span><strong>Key Drivers:</strong> unresolved territorial control; incomplete postwar implementation; TPLF political fracture; Ethiopia-Eritrea hostility; and sovereignty signaling over sea access. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref3">[3]</a></cite> <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref7">[7]</a></cite> <cite><a href="#ref8">[8]</a></cite> <cite><a href="#ref11">[11]</a></cite> <cite><a href="#ref12">[12]</a></cite></p>
+      <p><span class="label-inference">INFERENCE</span><strong>Binding Constraints:</strong> <span class="label-structural">structural</span> weak postwar settlement architecture; <span class="label-political">political</span> fragmented legitimacy inside Tigray; <span class="label-resource">resource</span> humanitarian funding gaps and institutional fatigue; <span class="label-temporal">temporal</span> compressed warning time once kinetic indicators appear. <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref9">[9]</a></cite> <cite><a href="#ref10">[10]</a></cite> <cite><a href="#ref12">[12]</a></cite></p>
+      <div class="wsi-note"><strong>WSI independence note:</strong> Core judgments draw on Reuters and AP field reporting, OHCHR and WFP primary institutional material, CFR and Crisis Group synthesis, and the Rift Valley Institute Peace Research Facility. No single Reuters or AP article was used alone for load-bearing judgments.</div>
+    </section>
+
+    <section class="section visible" id="s6">
+      <div class="section-header"><span class="section-num">06 // ANALYSIS</span><div class="section-title">Structured Analytic Tradecraft</div></div>
+      <div class="technique-declaration"><strong>Tradecraft applied:</strong> Five-Layer Strategic Cognition Map | Key Assumptions Check | ACH-lite | Indicators &amp; Warnings | Scenario Modeling | Risk Matrix</div>
+
+      <h3 style="margin:1.2rem 0 .75rem; font-family:var(--font-display);">Five-Layer Strategic Cognition Map</h3>
+      <table class="assumption-table">
+        <thead><tr><th>Layer</th><th>Assessment</th></tr></thead>
+        <tbody>
+          <tr><td>L1 // Foundations</td><td>The structural reality is a postwar settlement that ended large-scale fighting but left western Tigray, demobilization, displaced return, and local political legitimacy unresolved. <cite><a href="#ref3">[3]</a></cite> <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref9">[9]</a></cite> <cite><a href="#ref12">[12]</a></cite></td></tr>
+          <tr><td>L2 // Mechanisms</td><td>Escalation is being driven by clashes in disputed zones, factional competition inside Tigray, mutual accusation and mobilization between Ethiopia and Eritrea, and coercive sovereignty signaling. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref2">[2]</a></cite> <cite><a href="#ref7">[7]</a></cite> <cite><a href="#ref8">[8]</a></cite> <cite><a href="#ref11">[11]</a></cite></td></tr>
+          <tr><td>L3 // Dynamics</td><td>The system behaves like an escalation spiral: each side reads the others’ preparations as evidence of hostile intent, lowering the threshold for harder signaling or pre-emption. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref5">[5]</a></cite> <cite><a href="#ref6">[6]</a></cite></td></tr>
+          <tr><td>L4 // Leverage</td><td>The most promising leverage points are targeted de-escalation measures around contested districts, a roadmap on Tigray’s political status, and protection of humanitarian access. <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref9">[9]</a></cite> <cite><a href="#ref12">[12]</a></cite></td></tr>
+          <tr><td>L5 // Paradigms</td><td>The dominant frame is shifting from post-Pretoria stabilization toward zero-sum strategic competition, which rewards hardliners and makes compromise appear politically costly. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref5">[5]</a></cite> <cite><a href="#ref11">[11]</a></cite></td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin:1.2rem 0 .75rem; font-family:var(--font-display);">Key Assumptions Check</h3>
+      <table class="assumption-table">
+        <thead><tr><th>ID</th><th>Assumption</th><th>Why It Matters</th><th>Risk if Wrong</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>A-1</td><td>Ethiopia still prefers coercive leverage and deterrent signaling to immediate full-scale war.</td><td>Shapes warning-time estimate and base-case scenario.</td><td>Operational warning time compresses sharply.</td><td>Active / Unverified</td></tr>
+          <tr><td>A-2</td><td>Eritrea is seeking strategic advantage through pressure or deniable support rather than openly initiating major interstate combat at once.</td><td>Determines whether the border threat is immediate or contingent.</td><td>Direct interstate confrontation becomes more likely.</td><td>Active / Unverified</td></tr>
+          <tr><td>A-3</td><td>Tigray’s internal fracture will continue to weaken unified political control.</td><td>Raises likelihood of localized actors outrunning formal leadership decisions.</td><td>A more unified Tigrayan front could either stabilize the region or escalate faster.</td><td>Active / Partially Supported</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin:1.2rem 0 .75rem; font-family:var(--font-display);">Analysis of Competing Hypotheses</h3>
+      <table class="ach-table">
+        <thead><tr><th>Hypothesis</th><th>Evidence For</th><th>Evidence Against</th><th>Diagnosticity</th><th>Verdict</th></tr></thead>
+        <tbody>
+          <tr><td>H1 // Controlled militarized standoff</td><td>Localized clashes, resumed flights, ongoing diplomatic language, no public confirmation of open campaign launch. <cite><a href="#ref3">[3]</a></cite> <cite><a href="#ref6">[6]</a></cite> <cite><a href="#ref9">[9]</a></cite></td><td>Drone strikes, accusatory state rhetoric, and Tigrayan fragmentation show the system is already deteriorating. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref2">[2]</a></cite> <cite><a href="#ref7">[7]</a></cite> <cite><a href="#ref8">[8]</a></cite></td><td>Moderate</td><td>Best fit for the current surface condition</td></tr>
+          <tr><td>H2 // Localized but consequential Tigray-centered war</td><td>Recent fighting, unresolved territorial disputes, TPLF fracture, and recurring fear of Eritrea-linked escalation. <cite><a href="#ref2">[2]</a></cite> <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref5">[5]</a></cite> <cite><a href="#ref9">[9]</a></cite> <cite><a href="#ref12">[12]</a></cite></td><td>Open-source reporting still lacks confirmation of sustained multi-axis offensive preparation.</td><td>High</td><td>Most likely escalation pathway</td></tr>
+          <tr><td>H3 // Immediate direct Ethiopia-Eritrea interstate war</td><td>Formal accusations, Assab-related tension, and mutual hardening rhetoric. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref5">[5]</a></cite> <cite><a href="#ref11">[11]</a></cite></td><td>Public evidence remains stronger on Tigray-centered instability than on a confirmed interstate campaign launch.</td><td>Moderate</td><td>Plausible but not the lead hypothesis</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin:1.2rem 0 .75rem; font-family:var(--font-display);">Indicators &amp; Warnings</h3>
+      <table class="iw-table">
+        <thead><tr><th>Indicator</th><th>Direction</th><th>Current Status</th><th>Threshold</th><th>Cadence</th></tr></thead>
+        <tbody>
+          <tr><td>Large ENDF or Eritrean force concentration near Tigray-facing corridors</td><td>Upward risk</td><td>Concern present, public confirmation incomplete</td><td>Verified surge in deployed combat power</td><td>Daily</td></tr>
+          <tr><td>Renewed drone or artillery strikes in Tigray</td><td>Upward risk</td><td>Already observed in January 2026 <cite><a href="#ref2">[2]</a></cite> <cite><a href="#ref9">[9]</a></cite></td><td>Repeat strikes or broader strike geography</td><td>Daily</td></tr>
+          <tr><td>Flight suspension, telecom disruption, or abnormal cash and fuel stress in Mekele</td><td>Upward risk</td><td>Temporary flight disruption already occurred <cite><a href="#ref3">[3]</a></cite> <cite><a href="#ref5">[5]</a></cite></td><td>Multi-day service interruption</td><td>Daily</td></tr>
+          <tr><td>Forceful changes to control or administration in contested districts</td><td>Upward risk</td><td>Contested governance remains unresolved</td><td>Confirmed change in territorial or administrative control</td><td>Event-driven</td></tr>
+          <tr><td>Public reserve mobilization or emergency security measures</td><td>Upward risk</td><td>No confirmed regional emergency trigger in this product</td><td>Formal mobilization decree or mass call-up</td><td>Daily</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin:1.2rem 0 .75rem; font-family:var(--font-display);">Scenario Outlook</h3>
+      <div class="scenario-grid">
+        <div class="scenario-card best">
+          <span class="scenario-label">De-escalatory Case</span>
+          <h4>Managed de-escalation</h4>
+          <p>External mediation stabilizes the theater, force postures soften, and a sequenced roadmap emerges on elections, displaced return, and contested territories. <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref9">[9]</a></cite> <cite><a href="#ref12">[12]</a></cite></p>
+          <span class="scenario-prob">Estimated probability: 5%</span>
+        </div>
+        <div class="scenario-card base">
+          <span class="scenario-label">Base Case</span>
+          <h4>Militarized standoff with recurring clashes</h4>
+          <p>Troop posture, propaganda, and local fighting continue, but no immediate broad offensive emerges. Warning time remains thin. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref3">[3]</a></cite> <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref6">[6]</a></cite></p>
+          <span class="scenario-prob">Estimated probability: 45%</span>
+        </div>
+        <div class="scenario-card worst">
+          <span class="scenario-label">Escalatory Case</span>
+          <h4>Tigray-centered war with wider spillover</h4>
+          <p>Localized fighting expands into a consequential northern war, with direct Ethiopia-Eritrea confrontation becoming materially more plausible. <cite><a href="#ref2">[2]</a></cite> <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref5">[5]</a></cite> <cite><a href="#ref9">[9]</a></cite> <cite><a href="#ref12">[12]</a></cite></p>
+          <span class="scenario-prob">Estimated probability: 35% | worst case interstate expansion: 15%</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section visible" id="s7">
+      <div class="section-header"><span class="section-num">07 // BEHAVIORAL</span><div class="section-title">Applied Behavioral Tradecraft</div></div>
+      <p style="font-style:italic; color:var(--slate-light); margin-bottom:1rem;">Behavioral analysis is relevant here because the crisis is not only military. It is also driven by legitimacy, betrayal, identity protection, sovereignty framing, and reciprocal threat perception.</p>
+      <div class="behavioral-grid">
+        <div class="behavioral-item">
+          <div class="behavioral-rank">1</div>
+          <div class="behavioral-content">
+            <h4>Sovereignty-loss framing</h4>
+            <p>Sea-access and Assab rhetoric make bargaining space feel like an identity contest. Once framed this way, compromise can be portrayed domestically as humiliation rather than strategic restraint. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref11">[11]</a></cite></p>
+            <span class="behavioral-inference">Analytic inference: increases reputational cost of de-escalation for top leadership.</span>
+          </div>
+        </div>
+        <div class="behavioral-item">
+          <div class="behavioral-rank">2</div>
+          <div class="behavioral-content">
+            <h4>Postwar betrayal and legitimacy competition inside Tigray</h4>
+            <p>Rival claims over who truly protects Tigrayan interests create incentives for political outbidding, symbolic hardline moves, and rejection of compromise seen as capitulation. <cite><a href="#ref7">[7]</a></cite> <cite><a href="#ref8">[8]</a></cite> <cite><a href="#ref12">[12]</a></cite></p>
+            <span class="behavioral-inference">Analytic inference: raises the risk that local actions outrun central political control.</span>
+          </div>
+        </div>
+        <div class="behavioral-item">
+          <div class="behavioral-rank">3</div>
+          <div class="behavioral-content">
+            <h4>Security-dilemma cognition</h4>
+            <p>Each side’s defensive preparation increases the other side’s fear of surprise attack, which then justifies additional preparation and lower tolerance for ambiguity. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref5">[5]</a></cite> <cite><a href="#ref6">[6]</a></cite></p>
+            <span class="behavioral-inference">Analytic inference: makes miscalculation more likely than deliberate all-out war planning.</span>
+          </div>
+        </div>
+      </div>
+      <div class="sub-section">
+        <h3>Influence &amp; Narrative Vulnerabilities</h3>
+        <p>The most mobilizing narratives are likely to remain sovereignty, betrayal of Pretoria, protection of displaced communities, and resistance to external or internal domination. These themes matter because they fuse strategic grievance with emotional salience and can rapidly compress political space for moderation. <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref9">[9]</a></cite> <cite><a href="#ref11">[11]</a></cite> <cite><a href="#ref12">[12]</a></cite></p>
+      </div>
+    </section>
+
+    <section class="section visible" id="s8">
+      <div class="section-header"><span class="section-num">08 // IMPLICATIONS</span><div class="section-title">Strategic Implications, Risk &amp; Recommendations</div></div>
+
+      <div class="sub-section">
+        <h3>Strategic Implications</h3>
+        <p><strong>For Ethiopia:</strong> northern escalation would reopen a catastrophic front while other internal security pressures continue to strain state bandwidth. <cite><a href="#ref6">[6]</a></cite> <cite><a href="#ref11">[11]</a></cite></p>
+        <p><strong>For Eritrea:</strong> pressure tactics or perceived strategic gains could produce the very confrontation Asmara says it wants to avoid, while increasing international scrutiny. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref11">[11]</a></cite></p>
+        <p><strong>For Tigray:</strong> even limited renewed fighting would hit a society already carrying unresolved displacement, institutional limbo, and economic weakness. <cite><a href="#ref9">[9]</a></cite> <cite><a href="#ref10">[10]</a></cite> <cite><a href="#ref12">[12]</a></cite></p>
+        <p><strong>For the wider Horn:</strong> escalation would compound regional fragility and intersect with broader Sudan and Red Sea security concerns. <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref6">[6]</a></cite> <cite><a href="#ref11">[11]</a></cite></p>
+      </div>
+
+      <div class="sub-section">
+        <h3>Risk Scoring Matrix</h3>
+        <table class="risk-matrix">
+          <thead><tr><th>Risk</th><th>Likelihood (1-5)</th><th>Impact (1-5)</th><th>Score</th><th>Mitigant</th></tr></thead>
+          <tbody>
+            <tr class="risk-high"><td>Renewed localized war in Tigray</td><td>4</td><td>5</td><td><span class="risk-score score-high">20</span></td><td>Focused de-escalation around contested districts and rapid monitoring of kinetic indicators.</td></tr>
+            <tr class="risk-high"><td>Direct Ethiopia-Eritrea interstate clash</td><td>3</td><td>5</td><td><span class="risk-score score-high">15</span></td><td>Border communication channels and early diplomatic pressure.</td></tr>
+            <tr class="risk-high"><td>Humanitarian deterioration without major new front</td><td>5</td><td>4</td><td><span class="risk-score score-high">20</span></td><td>Pre-position aid assumptions and protect access corridors.</td></tr>
+            <tr><td>Regional spillover and diplomatic rupture</td><td>3</td><td>4</td><td><span class="risk-score score-medium">12</span></td><td>Separate local de-escalation from broader Red Sea positioning rhetoric.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sub-section">
+        <h3>Recommendations</h3>
+        <div class="rec-timeline">
+          <div class="rec-block immediate">
+            <div class="rec-time">0-72H Immediate</div>
+            <div class="rec-content">
+              <p>Move to event-driven monitoring of Tselemti, western Tigray, Alamata-Korem, and Eritrea-facing corridors. Treat verified drone use, reserve mobilization, or renewed flight suspensions as posture-change indicators. <cite><a href="#ref2">[2]</a></cite> <cite><a href="#ref3">[3]</a></cite> <cite><a href="#ref5">[5]</a></cite> <cite><a href="#ref9">[9]</a></cite></p>
+              <p>Push immediate de-escalation messaging through UN, AU, and Pretoria-linked diplomatic channels focused on concrete restraint rather than broad peace language alone. <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref9">[9]</a></cite></p>
+            </div>
+          </div>
+          <div class="rec-block near-term">
+            <div class="rec-time">3-30 Days Near-Term</div>
+            <div class="rec-content">
+              <p>Press for a sequenced roadmap on Tigray’s constitutional status, elections, contested constituencies, and return of displaced populations. <cite><a href="#ref3">[3]</a></cite> <cite><a href="#ref12">[12]</a></cite></p>
+              <p>Seek practical military risk-reduction steps such as local communication channels, border clarification, and third-party observation where feasible. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref9">[9]</a></cite></p>
+              <p>Prioritize aid pipeline continuity and contingency funding for northern Ethiopia because humanitarian decline is not a downstream issue. <cite><a href="#ref9">[9]</a></cite> <cite><a href="#ref10">[10]</a></cite></p>
+            </div>
+          </div>
+          <div class="rec-block medium-term">
+            <div class="rec-time">30-180 Days Medium-Term</div>
+            <div class="rec-content">
+              <p>Re-anchor Tigray stabilization around linked milestones: demobilization, return, local legitimacy, and dispute-management. Treat these as one system rather than separate workstreams. <cite><a href="#ref3">[3]</a></cite> <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref12">[12]</a></cite></p>
+              <p>Separate the Assab and Red Sea question from immediate coercive signaling if broader regional diplomacy is to retain credibility. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref11">[11]</a></cite></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section visible" id="s9">
+      <div class="section-header"><span class="section-num">09 // CONFIDENCE</span><div class="section-title">Confidence &amp; Uncertainties</div></div>
+      <div class="conf-panel">
+        <div class="conf-header">
+          <span class="conf-band moderate">Moderate Confidence</span>
+          <span class="conf-header-label">Overall Assessment</span>
+        </div>
+        <div class="conf-body">
+          <p>Confidence is strongest on the structural drivers of escalation and on the existence of recent conflict signals. Confidence is weaker on exact troop dispositions, covert coordination, and the private decision thresholds of the principal actors. Core judgments are supported by multiple independent streams, including UN, humanitarian, wire-service, and method-transparent analytical sources. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref5">[5]</a></cite> <cite><a href="#ref6">[6]</a></cite> <cite><a href="#ref9">[9]</a></cite> <cite><a href="#ref10">[10]</a></cite> <cite><a href="#ref12">[12]</a></cite></p>
+        </div>
+      </div>
+
+      <h3 style="margin:1.2rem 0 .75rem; font-family:var(--font-display);">Flip-Risk Uncertainties</h3>
+      <div class="uncertainty-list">
+        <div class="uncertainty-item"><span class="u-label">Uncertainty 1</span><p>Whether Eritrea and Tigrayan hardliners are coordinating tactically beyond public accusation and denial. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref5">[5]</a></cite></p></div>
+        <div class="uncertainty-item"><span class="u-label">Uncertainty 2</span><p>Whether Ethiopia’s sea-access posture is coercive diplomacy or preparation for a materially riskier course. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref11">[11]</a></cite></p></div>
+        <div class="uncertainty-item"><span class="u-label">Uncertainty 3</span><p>Whether a political accommodation inside Tigray is still feasible before security events outrun politics. <cite><a href="#ref7">[7]</a></cite> <cite><a href="#ref8">[8]</a></cite> <cite><a href="#ref12">[12]</a></cite></p></div>
+      </div>
+
+      <h3 style="margin:1.2rem 0 .75rem; font-family:var(--font-display);">Assumption Failure Drill</h3>
+      <table class="assumption-table">
+        <thead><tr><th>Assumption</th><th>Failure Signal</th><th>Consequence</th></tr></thead>
+        <tbody>
+          <tr><td>A-1: Ethiopia still prefers coercive leverage to immediate large war.</td><td>Open reserve mobilization, cross-axis force surge, broader strike pattern.</td><td>Warning time collapses and worst-case probability rises.</td></tr>
+          <tr><td>A-2: Eritrea seeks leverage before open interstate combat.</td><td>Confirmed forward deployment, direct cross-border strike, or public war framing.</td><td>Direct interstate confrontation becomes a lead scenario rather than a contingent one.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section visible" id="s10">
+      <div class="section-header"><span class="section-num">10 // REFERENCES</span><div class="section-title">Source Register &amp; WSI Audit</div></div>
+      <table class="refs-table">
+        <thead><tr><th>#</th><th>Source</th><th>Type</th><th>Band</th><th>Independence Note</th><th>Locator</th><th>Atomic Claim / Use</th></tr></thead>
+        <tbody>
+          <tr id="ref1" class="ref-anchor"><td>[1]</td><td><a href="https://www.reuters.com/world/africa/ethiopia-accuses-eritrea-military-aggression-backing-armed-groups-2026-02-08/" target="_blank" rel="noopener">Reuters: Ethiopia accuses Eritrea of military aggression, backing armed groups</a></td><td>Secondary</td><td><span class="band-pill amber">Amber</span></td><td>Used with AP, OHCHR, CFR, and Crisis Group. Not used alone for load-bearing judgments.</td><td>Reuters | 8 Feb 2026</td><td>Accusations of aggression, armed-group support, occupation claims, and strategic context on sea-access rhetoric.</td></tr>
+          <tr id="ref2" class="ref-anchor"><td>[2]</td><td><a href="https://www.reuters.com/world/africa/drone-strikes-ethiopias-tigray-region-kill-one-injure-another-2026-01-31/" target="_blank" rel="noopener">Reuters: Drone strikes in Ethiopia's Tigray region kill one, injure another</a></td><td>Secondary</td><td><span class="band-pill amber">Amber</span></td><td>Event reporting cross-checked against OHCHR concern and other reporting.</td><td>Reuters | 31 Jan 2026</td><td>Drone strike event, localized kinetic escalation, and immediate warning signal.</td></tr>
+          <tr id="ref3" class="ref-anchor"><td>[3]</td><td><a href="https://www.reuters.com/world/africa/ethiopian-airlines-restarts-flights-tigray-region-official-says-2026-02-03/" target="_blank" rel="noopener">Reuters: Ethiopian Airlines restarts flights to Tigray region, official says</a></td><td>Secondary</td><td><span class="band-pill amber">Amber</span></td><td>Used for chronology and implementation issues, not as a stand-alone judgment source.</td><td>Reuters | 3 Feb 2026</td><td>Flight suspension and restart, recent clashes, unresolved western Tigray and demobilization issues.</td></tr>
+          <tr id="ref4" class="ref-anchor"><td>[4]</td><td><a href="https://www.crisisgroup.org/africa/horn-africa/ethiopia-eritrea/b210-ethiopia-eritrea-and-tigray-powder-keg-horn-africa" target="_blank" rel="noopener">International Crisis Group: Ethiopia, Eritrea and Tigray: A powder keg in the Horn of Africa</a></td><td>Secondary Analytical</td><td><span class="band-pill green">Green</span></td><td>Method-transparent conflict analysis paired with field reporting and primary institutional sources.</td><td>Crisis Group | 18 Feb 2026</td><td>Structural drivers, escalation pathways, and de-escalation levers.</td></tr>
+          <tr id="ref5" class="ref-anchor"><td>[5]</td><td><a href="https://apnews.com/article/142daa3702199385ab5a66478af752b1" target="_blank" rel="noopener">AP: Ethiopia's national carrier cancels flights to Tigray region as fears grow of renewed fighting</a></td><td>Secondary</td><td><span class="band-pill amber">Amber</span></td><td>Field-based contextual reporting. Used with Reuters and analytical sources.</td><td>AP | 2 Feb 2026</td><td>Public fear, movement pressure, and possible shift toward broader conflict.</td></tr>
+          <tr id="ref6" class="ref-anchor"><td>[6]</td><td><a href="https://www.cfr.org/global-conflict-tracker/conflict/conflict-ethiopia" target="_blank" rel="noopener">Council on Foreign Relations: Conflict in Ethiopia</a></td><td>Secondary Synthesis</td><td><span class="band-pill amber">Amber</span></td><td>Useful synthesis source, not used as primary confirmation for contested events.</td><td>CFR Global Conflict Tracker</td><td>Structured overview of Ethiopia conflict environment and ongoing pressures.</td></tr>
+          <tr id="ref7" class="ref-anchor"><td>[7]</td><td><a href="https://www.reuters.com/world/africa/ethiopias-tigray-region-urges-federal-intervention-after-town-seized-2025-03-12/" target="_blank" rel="noopener">Reuters: Ethiopia's Tigray region urges federal intervention after town seized</a></td><td>Secondary</td><td><span class="band-pill amber">Amber</span></td><td>Used for TPLF split and local political fracture, combined with AP and RVI context.</td><td>Reuters | 12 Mar 2025</td><td>Factional seizure of Adigrat and evidence of internal Tigrayan fracture.</td></tr>
+          <tr id="ref8" class="ref-anchor"><td>[8]</td><td><a href="https://www.reuters.com/world/africa/ethiopias-pm-abiy-appoints-new-leader-tigray-administration-2025-04-08/" target="_blank" rel="noopener">Reuters: Ethiopia's PM Abiy appoints new leader of Tigray administration</a></td><td>Secondary</td><td><span class="band-pill amber">Amber</span></td><td>Used for leadership transition and political-order context, not in isolation.</td><td>Reuters | 8 Apr 2025</td><td>Interim leadership change, Eritrea exclusion from Pretoria context, and mobilization concerns.</td></tr>
+          <tr id="ref9" class="ref-anchor"><td>[9]</td><td><a href="https://www.ohchr.org/en/press-releases/2026/02/ethiopia-turk-urges-restraint-and-steps-towards-de-escalation-amid" target="_blank" rel="noopener">OHCHR: Ethiopia: Türk urges restraint and steps towards de-escalation amid volatility in Tigray</a></td><td>Primary</td><td><span class="band-pill green">Green</span></td><td>Independent UN source used directly for rights conditions, volatility, and displacement context.</td><td>OHCHR | 10 Feb 2026</td><td>Human rights risk, volatility, and scale of displacement in the Tigray theater.</td></tr>
+          <tr id="ref10" class="ref-anchor"><td>[10]</td><td><a href="https://www.wfp.org/emergencies/ethiopia-emergency" target="_blank" rel="noopener">World Food Programme: Ethiopia emergency</a></td><td>Primary</td><td><span class="band-pill green">Green</span></td><td>Independent humanitarian operations source.</td><td>WFP | 2026 emergency page</td><td>Food insecurity, assistance needs, and funding shortfalls affecting resilience.</td></tr>
+          <tr id="ref11" class="ref-anchor"><td>[11]</td><td><a href="https://apnews.com/article/108f32cdd0c24ed009bb623b597b7c96" target="_blank" rel="noopener">AP: Ethiopia's prime minister accuses Eritrea of mass killings during Tigray war</a></td><td>Secondary</td><td><span class="band-pill amber">Amber</span></td><td>Used for Red Sea and Eritrea strategic context alongside Reuters and Crisis Group.</td><td>AP | Feb 2026</td><td>Deepening Ethiopia-Eritrea hostility, mass-killings accusation, and strategic narrative hardening.</td></tr>
+          <tr id="ref12" class="ref-anchor"><td>[12]</td><td><a href="https://riftvalley.net/wp-content/uploads/2026/03/RVI-20260326-Tigray-CTA-PRF-Final.pdf" target="_blank" rel="noopener">Peace Research Facility / Rift Valley Institute: Peace and instability: Tigray since the Pretoria Agreement</a></td><td>Secondary Analytical</td><td><span class="band-pill green">Green</span></td><td>Method-transparent research product used for structural and post-Pretoria analysis.</td><td>RVI / PRF | Mar 2026</td><td>Territorial disputes, implementation gaps, political fracture, and conflict trend analysis.</td></tr>
+        </tbody>
+      </table>
+      <p class="report-note">Final bottom-line judgment: the current environment is best understood as a high-risk pre-war escalation system whose most likely flashpoint remains inside or adjacent to Tigray rather than at the interstate border alone. <cite><a href="#ref1">[1]</a></cite> <cite><a href="#ref4">[4]</a></cite> <cite><a href="#ref5">[5]</a></cite> <cite><a href="#ref9">[9]</a></cite> <cite><a href="#ref12">[12]</a></cite></p>
+    </section>
+
+    <section class="section visible" id="annex-a">
+      <div class="section-header"><span class="section-num">A // EARLY WARNING</span><div class="section-title">Early Warning Indicators</div></div>
+      <table class="pig-table">
+        <thead><tr><th>ID</th><th>Trigger Event</th><th>Scenario Signal</th><th>Leading Indicators</th><th>Analytic Action Required</th></tr></thead>
+        <tbody>
+          <tr><td>EW-1</td><td>Renewed drone or artillery strikes in Tigray</td><td>Localized war pathway strengthening</td><td>Repeat strike patterns, broader strike geography, civilian panic movement</td><td>Move to Amber monitoring and activate humanitarian contingency review</td></tr>
+          <tr><td>EW-2</td><td>Flight suspension, telecom disruption, or abnormal cash and fuel stress in Mekele</td><td>Pre-conflict or conflict-onset environment</td><td>Service interruption, bank queues, abnormal outbound civilian traffic</td><td>Shift to daily operations watch</td></tr>
+          <tr><td>EW-3</td><td>Confirmed ENDF or Eritrean force surge near main fault lines</td><td>Transition from deterrence to offensive readiness</td><td>Reserve call-up, logistics surge, checkpoint expansion, local movement restrictions</td><td>Switch to Red monitoring and reassess scenario weights</td></tr>
+          <tr><td>EW-4</td><td>Forceful administrative or territorial change in contested districts</td><td>Political trigger with high military spillover risk</td><td>Competing decrees, armed escorts, local governance replacement, retaliation rhetoric</td><td>Escalate diplomatic intervention warning</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section visible" id="annex-b">
+      <div class="section-header"><span class="section-num">B // INTEL GAPS</span><div class="section-title">Priority Intelligence Gaps &amp; Action Thresholds</div></div>
+      <table class="pig-table">
+        <thead><tr><th>Gap ID</th><th>Intelligence Question</th><th>Why It Matters</th><th>Collection Recommendation</th></tr></thead>
+        <tbody>
+          <tr><td>G-1</td><td>How deep is any Eritrea-Tigrayan tactical coordination beyond public accusation and denial?</td><td>Determines whether proxy pressure or direct widening conflict is more likely.</td><td>Track corroborated logistics, meeting patterns, and distinct reporting pathways.</td></tr>
+          <tr><td>G-2</td><td>What are the current ENDF, Eritrean, and Tigrayan force postures near the key fault lines?</td><td>This is the clearest discriminator between a standoff and imminent larger combat.</td><td>Monitor transport, reserve activity, local testimony, and imagery-derived indicators where available.</td></tr>
+          <tr><td>G-3</td><td>Can Tigray’s political order still produce a credible roadmap on elections, contested territories, and return of the displaced?</td><td>Without political coherence, localized security shocks are more likely to outrun bargaining.</td><td>Track transitional governance moves, elite statements, and mediation engagement.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-section">
+        <h3>Action Threshold Grid</h3>
+        <div class="threshold-grid">
+          <div class="threshold-cell green-zone">
+            <div class="threshold-header">Green // Monitor</div>
+            <div class="threshold-body">
+              <p>Rhetoric remains high but verified violence does not spread.</p>
+              <ul>
+                <li>Maintain weekly strategic watch.</li>
+                <li>Track Tigray political reconciliation signals.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="threshold-cell amber-zone">
+            <div class="threshold-header">Amber // Act Now</div>
+            <div class="threshold-body">
+              <p>New clashes, strike activity, or flight and telecom disruptions appear.</p>
+              <ul>
+                <li>Shift to daily monitoring cadence.</li>
+                <li>Trigger humanitarian and movement contingency review.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="threshold-cell red-zone">
+            <div class="threshold-header">Red // Emergency</div>
+            <div class="threshold-body">
+              <p>Multi-axis combat, sustained drone use, or confirmed direct Ethiopia-Eritrea engagement emerges.</p>
+              <ul>
+                <li>Reweight scenarios immediately.</li>
+                <li>Issue crisis update and leadership alert.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand">Prepared by MNS Consulting under the Quanta Analytica Process™</div>
+    <div class="footer-doc-id">QAP | Conflict Systems Analysis | Ethiopia-Eritrea-Tigray | 07 Apr 2026</div>
+    <div class="footer-legal">Open-source strategic assessment. All judgments are evidence-bound and uncertainties are stated explicitly. This product is formatted to the Quanta Analytica web report standard.</div>
+  </footer>
+
+  <script>
+    const progress = document.getElementById('progress');
+    window.addEventListener('scroll', () => {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      progress.style.width = pct + '%';
+    });
+  </script>
+</body>
+</html>
