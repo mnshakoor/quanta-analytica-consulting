@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ethiopia-Sudan Escalation Risk Assessment | Quanta Analytica Process™ | 09 Apr 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <style>/* ============================================================
+   QAP WEB REPORT — CANONICAL STYLESHEET
+   Quanta Analytica Process™ | MNS Consulting
+   quanta-analytica.com/reports/
+   Version: 2.0 | Design System Reference
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. ROOT VARIABLES — Color, Typography, Spacing
+   ------------------------------------------------------------ */
+:root {
+  /* Core Palette */
+  --obsidian:         #0a0c10;
+  --obsidian-mid:     #10131a;
+  --obsidian-card:    #13161f;
+  --obsidian-border:  #1c2030;
+  --obsidian-surface: #181b26;
+  --obsidian-lift:    #1e2235;
+
+  /* Gold Scale */
+  --gold:             #c8a96e;
+  --gold-light:       #dfc28e;
+  --gold-pale:        #e8d5aa;
+  --gold-dim:         #9a7f52;
+  --gold-muted:       #6b5838;
+  --gold-glow:        rgba(200, 169, 110, 0.12);
+  --gold-glow-strong: rgba(200, 169, 110, 0.22);
+
+  /* Alert / Status Colors */
+  --red:              #c0392b;
+  --red-light:        #e74c3c;
+  --red-bg:           rgba(192, 57, 43, 0.12);
+  --amber:            #d4820a;
+  --amber-light:      #f39c12;
+  --amber-bg:         rgba(212, 130, 10, 0.12);
+  --green:            #27ae60;
+  --green-light:      #2ecc71;
+  --green-bg:         rgba(39, 174, 96, 0.12);
+  --blue:             #2980b9;
+  --blue-light:       #3498db;
+  --blue-bg:          rgba(41, 128, 185, 0.12);
+  --yellow:           #f1c40f;
+  --yellow-bg:        rgba(241, 196, 15, 0.12);
+  --slate:            #5d7a9a;
+  --slate-light:      #7f9ab8;
+
+  /* Text Scale */
+  --text-primary:     #e8e4dc;
+  --text-secondary:   #b8b0a0;
+  --text-muted:       #7a7264;
+  --text-faint:       #4a4640;
+
+  /* Typography */
+  --font-display:     'Libre Baskerville', Georgia, serif;
+  --font-body:        'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:        'IBM Plex Mono', 'Courier New', monospace;
+
+  /* Spacing */
+  --space-xs:         0.25rem;
+  --space-sm:         0.5rem;
+  --space-md:         1rem;
+  --space-lg:         1.5rem;
+  --space-xl:         2rem;
+  --space-2xl:        3rem;
+  --space-3xl:        4rem;
+
+  /* Borders & Radius */
+  --radius-sm:        3px;
+  --radius-md:        6px;
+  --radius-lg:        10px;
+  --border-default:   1px solid var(--obsidian-border);
+  --border-gold:      1px solid var(--gold-dim);
+
+  /* Transitions */
+  --transition-fast:  0.15s ease;
+  --transition-base:  0.25s ease;
+  --transition-slow:  0.4s ease;
+
+  /* Shadows */
+  --shadow-card:      0 2px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lift:      0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* ------------------------------------------------------------
+   2. RESET & BASE
+   ------------------------------------------------------------ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--obsidian);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--gold-light);
+}
+
+p {
+  margin-bottom: var(--space-md);
+  color: var(--text-secondary);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+strong, b {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+em, i {
+  color: var(--slate-light);
+  font-style: italic;
+}
+
+cite {
+  font-style: normal;
+  color: var(--gold-dim);
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  vertical-align: super;
+  line-height: 0;
+}
+
+/* ------------------------------------------------------------
+   3. SCROLL PROGRESS BAR
+   ------------------------------------------------------------ */
+#progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-light));
+  z-index: 9999;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 8px var(--gold-glow-strong);
+}
+
+/* ------------------------------------------------------------
+   4. NAVIGATION
+   ------------------------------------------------------------ */
+nav {
+  position: fixed;
+  top: 3px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(10, 12, 16, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--obsidian-border);
+  padding: 0 var(--space-xl);
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.nav-brand span {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+.nav-classify {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  border: 1px solid var(--amber);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--amber-bg);
+}
+
+/* ------------------------------------------------------------
+   5. HERO BLOCK
+   ------------------------------------------------------------ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 140px var(--space-xl) var(--space-3xl);
+  overflow: hidden;
+  background: radial-gradient(ellipse at 20% 60%, rgba(200, 169, 110, 0.05) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(41, 128, 185, 0.04) 0%, transparent 50%),
+              var(--obsidian);
+}
+
+/* Animated background grid */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(200, 169, 110, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 169, 110, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridDrift 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes gridDrift {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(40px, 40px); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-running-head {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--obsidian-border);
+  padding-bottom: var(--space-sm);
+}
+
+.hero-container {
+  display: flex;          /* Enables side-by-side layout */
+  align-items: center;    /* Vertically centers the image with the text */
+  gap: 30px;              /* Creates space between the image and the text */
+  margin: 20px 0;
+}
+/* ----------------------------------------------------------------------
+   DEFAULT HERO IMG URL TO BE USED 'https://quanta-analytica.com/logo.PNG
+   -------Place image to the left of h1 title in hero section--------- */
+
+.hero-image {
+  max-width: 200px;       /* Adjust this size to fit your design */
+  height: auto;           /* Maintains aspect ratio */
+  border-radius: 8px;     /* Optional: rounds the corners of your image */
+}
+
+.hero-text {
+  flex: 1;                /* Allows text to take up remaining space */
+}
+
+/* Optional: Mobile Responsiveness */
+@media (max-width: 600px) {
+  .hero-container {
+    flex-direction: column; /* Stacks image on top of text on small screens */
+    text-align: center;
+  }
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 .title-gold {
+  color: var(--gold); 
+  display: block;      /* Ensures it starts on a new line */
+  margin-top: 0.5rem;  /* Optional: adds a small gap between lines */
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+  max-width: 720px;
+  line-height: 1.6;
+}
+
+/* Hero Metadata Row */
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  align-items: center;
+}
+
+.meta-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.meta-cell .label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.meta-cell .value {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+}
+
+.meta-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--gold-dim);
+  align-self: center;
+}
+
+/* Threat Badge */
+.threat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.threat-badge.critical  { color: var(--red-light);   border-color: var(--red);   background: var(--red-bg);   }
+.threat-badge.high      { color: var(--amber-light);  border-color: var(--amber); background: var(--amber-bg); }
+.threat-badge.elevated  { color: var(--yellow);       border-color: var(--yellow);background: var(--yellow-bg);}
+.threat-badge.moderate  { color: var(--blue-light);   border-color: var(--blue);  background: var(--blue-bg);  }
+.threat-badge.low       { color: var(--green-light);  border-color: var(--green); background: var(--green-bg); }
+
+.threat-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+
+/* Analytic Scope Boundary */
+.scope-boundary {
+  border-left: 3px solid var(--slate);
+  padding: var(--space-sm) var(--space-lg);
+  background: rgba(93, 122, 154, 0.08);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin-top: var(--space-lg);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--slate-light);
+  line-height: 1.6;
+}
+
+/* Key Metrics Strip */
+.metrics-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--obsidian-border);
+}
+
+.metric-block {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-top: 2px solid var(--gold-dim);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  min-width: 140px;
+}
+
+.metric-block .metric-value {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.metric-block .metric-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ------------------------------------------------------------
+   6. MAIN CONTENT WRAPPER
+   ------------------------------------------------------------ */
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--space-3xl) var(--space-xl);
+}
+
+/* ------------------------------------------------------------
+   7. SECTION WRAPPER & SCROLL REVEAL
+   ------------------------------------------------------------ */
+.section {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  margin-bottom: var(--space-3xl);
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section Header */
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--obsidian-border);
+}
+
+.section-num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  background: var(--gold-glow);
+  border: 1px solid var(--gold-muted);
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+/* Sub-section divider */
+.sub-section {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+}
+
+.sub-section::before {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-muted), transparent);
+  margin-bottom: var(--space-lg);
+}
+
+.sub-section h3 {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-md);
+}
+
+/* ------------------------------------------------------------
+   8. BLUF — Bottom Line Up Front
+   ------------------------------------------------------------ */
+.bluf-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.bluf-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-left: 3px solid var(--gold-dim);
+  border-radius: var(--radius-md);
+}
+
+.bluf-index {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--gold-pale);
+  opacity: 0.4;
+  line-height: 1;
+  padding-top: 4px;
+}
+
+.bluf-text .bluf-claim {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 0.98rem;
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.bluf-text p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------
+   9. SNAPSHOT GRID — Who / What / Where / When / Why / How
+   ------------------------------------------------------------ */
+.snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.snapshot-cell {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.snapshot-cell .snap-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: var(--space-sm);
+  display: block;
+}
+
+.snapshot-cell .snap-content {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------------------
+   10. KEY JUDGMENTS
+   ------------------------------------------------------------ */
+.kj-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.kj-item {
+  padding: var(--space-lg);
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  border-left: 4px solid;
+  position: relative;
+}
+
+.kj-item.high     { border-left-color: var(--red);   }
+.kj-item.moderate { border-left-color: var(--amber);  }
+.kj-item.low      { border-left-color: var(--blue);   }
+.kj-item.watch    { border-left-color: var(--yellow);  }
+
+.kj-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.kj-id {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.kj-conf {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.kj-item.high     .kj-conf { color: var(--red-light);   border-color: var(--red);   background: var(--red-bg);   }
+.kj-item.moderate .kj-conf { color: var(--amber-light);  border-color: var(--amber); background: var(--amber-bg); }
+.kj-item.low      .kj-conf { color: var(--blue-light);   border-color: var(--blue);  background: var(--blue-bg);  }
+.kj-item.watch    .kj-conf { color: var(--yellow);        border-color: var(--yellow);background: var(--yellow-bg);}
+
+.kj-text {
+  font-size: 0.93rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: var(--space-sm);
+}
+
+.kj-mapping {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+/* ------------------------------------------------------------
+   11. EVIDENCE GRID — Know / Assess / Gap
+   ------------------------------------------------------------ */
+.evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.evidence-box {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.evidence-box-header {
+  padding: var(--space-sm) var(--space-lg);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.evidence-box-header.know   { background: var(--green-bg);  color: var(--green-light);  border-bottom: 1px solid var(--green);  }
+.evidence-box-header.assess { background: var(--amber-bg);  color: var(--amber-light);  border-bottom: 1px solid var(--amber);  }
+.evidence-box-header.gap    { background: var(--red-bg);    color: var(--red-light);    border-bottom: 1px solid var(--red);    }
+
+.evidence-box-body {
+  padding: var(--space-lg);
+}
+
+.evidence-box-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+.evidence-box-body li {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid var(--obsidian-border);
+  padding-left: var(--space-md);
+  position: relative;
+}
+
+.evidence-box-body li::before {
+  content: '//';
+  position: absolute;
+  left: 0;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+
+.evidence-box-body li:last-child {
+  border-bottom: none;
+}
+
+/* WSI Source Independence Note */
+.wsi-note {
+  background: rgba(93, 122, 154, 0.1);
+  border: 1px solid rgba(93, 122, 154, 0.3);
+  border-left: 3px solid var(--slate);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  font-size: 0.83rem;
+  color: var(--slate-light);
+  font-style: italic;
+  margin-top: var(--space-lg);
+}
+
+.wsi-note strong {
+  color: var(--slate-light);
+  font-style: normal;
+}
+
+/* ------------------------------------------------------------
+   12. TABLES — Assumption, ACH, IW, KIQ, Risk, PIGs
+   ------------------------------------------------------------ */
+.table-wrapper {
+  overflow-x: auto;
+  margin-bottom: var(--space-lg);
+  border-radius: var(--radius-md);
+  border: var(--border-default);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.87rem;
+}
+
+thead th {
+  background: var(--obsidian-surface);
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  border-bottom: 1px solid var(--obsidian-border);
+  white-space: nowrap;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--obsidian-border);
+  transition: background var(--transition-fast);
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: var(--obsidian-lift);
+}
+
+tbody td {
+  padding: var(--space-sm) var(--space-md);
+  color: var(--text-secondary);
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+tbody td:first-child {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Assumption Table */
+.assumption-table { }
+
+/* ACH Table */
+.ach-table thead th:nth-child(4) { text-align: center; }
+.ach-table tbody td:nth-child(4) { text-align: center; font-family: var(--font-mono); }
+
+/* IW Table — Indicators & Warnings */
+.iw-table { }
+
+/* Risk Matrix — high-score rows */
+.risk-matrix tbody tr.risk-high {
+  background: var(--red-bg);
+}
+
+.risk-matrix tbody tr.risk-high td {
+  color: var(--text-primary);
+}
+
+.risk-score {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.risk-score.score-high   { color: var(--red-light);   }
+.risk-score.score-medium { color: var(--amber-light);  }
+.risk-score.score-low    { color: var(--green-light);  }
+
+/* KIQ Table */
+.kiq-table { }
+
+/* Priority Intelligence Gaps Table */
+.pig-table { }
+
+/* KPI Table (optional — fragility reports) */
+.kpi-table { }
+
+.pillar-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--obsidian-border);
+  color: var(--text-muted);
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+
+/* ------------------------------------------------------------
+   13. SCENARIO CARDS
+   ------------------------------------------------------------ */
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.scenario-card {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-top: 3px solid;
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.scenario-card.best  { border-top-color: var(--green);  }
+.scenario-card.base  { border-top-color: var(--amber);  }
+.scenario-card.worst { border-top-color: var(--red);    }
+
+.scenario-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  display: block;
+}
+
+.scenario-card.best  .scenario-label { color: var(--green-light);  }
+.scenario-card.base  .scenario-label { color: var(--amber-light);  }
+.scenario-card.worst .scenario-label { color: var(--red-light);    }
+
+.scenario-card h4 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.scenario-card p {
+  font-size: 0.87rem;
+}
+
+.scenario-prob {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: var(--space-sm);
+  display: block;
+  letter-spacing: 0.06em;
+}
+
+/* ------------------------------------------------------------
+   14. BEHAVIORAL GRID
+   ------------------------------------------------------------ */
+.behavioral-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.behavioral-item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+}
+
+.behavioral-rank {
+  font-family: var(--font-mono);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--gold-pale);
+  opacity: 0.25;
+  line-height: 1;
+  text-align: center;
+  padding-top: 4px;
+}
+
+.behavioral-content h4 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.behavioral-content p {
+  font-size: 0.88rem;
+  margin-bottom: var(--space-xs);
+}
+
+.behavioral-inference {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--slate-light);
+  font-style: italic;
+  letter-spacing: 0.02em;
+  display: block;
+}
+
+/* ------------------------------------------------------------
+   15. RECOMMENDATION TIMELINE
+   ------------------------------------------------------------ */
+.rec-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-left: 2px solid var(--obsidian-border);
+  margin-left: var(--space-md);
+  padding-left: var(--space-xl);
+}
+
+.rec-block {
+  position: relative;
+  margin-bottom: var(--space-xl);
+}
+
+.rec-block::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * var(--space-xl) - 1px);
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--obsidian-border);
+  border: 2px solid;
+}
+
+.rec-block.immediate  ::before { border-color: var(--red);   background: var(--red-bg);   }
+.rec-block.near-term  ::before { border-color: var(--amber); background: var(--amber-bg); }
+.rec-block.medium-term::before { border-color: var(--green); background: var(--green-bg); }
+
+.rec-time {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+  margin-bottom: var(--space-md);
+}
+
+.rec-block.immediate   .rec-time { color: var(--red-light);  border: 1px solid var(--red);   background: var(--red-bg);   }
+.rec-block.near-term   .rec-time { color: var(--amber-light);border: 1px solid var(--amber); background: var(--amber-bg); }
+.rec-block.medium-term .rec-time { color: var(--green-light);border: 1px solid var(--green); background: var(--green-bg); }
+
+.rec-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.rec-content p {
+  font-size: 0.9rem;
+}
+
+/* ------------------------------------------------------------
+   16. CONFIDENCE PANEL
+   ------------------------------------------------------------ */
+.conf-panel {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--space-lg);
+}
+
+.conf-header {
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  border-bottom: 1px solid var(--obsidian-border);
+}
+
+.conf-band {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.conf-band.high     { color: var(--green-light);  border-color: var(--green);  background: var(--green-bg);  }
+.conf-band.moderate { color: var(--amber-light);  border-color: var(--amber);  background: var(--amber-bg);  }
+.conf-band.low      { color: var(--red-light);    border-color: var(--red);    background: var(--red-bg);    }
+
+.conf-header-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+.conf-body {
+  padding: var(--space-lg);
+}
+
+.conf-body p {
+  font-size: 0.9rem;
+}
+
+/* Uncertainty / Flip Risk List */
+.uncertainty-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.uncertainty-item {
+  background: var(--red-bg);
+  border: 1px solid var(--red);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+}
+
+.uncertainty-item .u-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red-light);
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.uncertainty-item p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------
+   17. THRESHOLD GRID — Green / Amber / Red Zones
+   ------------------------------------------------------------ */
+.threshold-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.threshold-cell {
+  border-radius: var(--radius-md);
+  border: 1px solid;
+  overflow: hidden;
+}
+
+.threshold-cell.green-zone { border-color: var(--green);  background: var(--green-bg);  }
+.threshold-cell.amber-zone { border-color: var(--amber);  background: var(--amber-bg);  }
+.threshold-cell.red-zone   { border-color: var(--red);    background: var(--red-bg);    }
+
+.threshold-header {
+  padding: var(--space-sm) var(--space-md);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid;
+}
+
+.threshold-cell.green-zone .threshold-header { color: var(--green-light);  border-color: var(--green);  background: rgba(39, 174, 96, 0.18);  }
+.threshold-cell.amber-zone .threshold-header { color: var(--amber-light);  border-color: var(--amber);  background: rgba(212, 130, 10, 0.18);  }
+.threshold-cell.red-zone   .threshold-header { color: var(--red-light);    border-color: var(--red);    background: rgba(192, 57, 43, 0.18);    }
+
+.threshold-body {
+  padding: var(--space-md);
+}
+
+.threshold-body p {
+  font-size: 0.85rem;
+  margin-bottom: var(--space-sm);
+}
+
+.threshold-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+.threshold-body li {
+  font-size: 0.83rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding: 3px 0;
+  padding-left: var(--space-md);
+  position: relative;
+}
+
+.threshold-body li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--text-faint);
+}
+
+/* ------------------------------------------------------------
+   18. STATUS & BAND PILLS (inline)
+   ------------------------------------------------------------ */
+.status-pill {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+.status-pill.red    { color: var(--red-light);   border-color: var(--red);   background: var(--red-bg);    }
+.status-pill.amber  { color: var(--amber-light);  border-color: var(--amber); background: var(--amber-bg);  }
+.status-pill.green  { color: var(--green-light);  border-color: var(--green); background: var(--green-bg);  }
+.status-pill.blue   { color: var(--blue-light);   border-color: var(--blue);  background: var(--blue-bg);   }
+.status-pill.yellow { color: var(--yellow);        border-color: var(--yellow);background: var(--yellow-bg); }
+.status-pill.gold   { color: var(--gold);          border-color: var(--gold-dim); background: var(--gold-glow); }
+
+/* Band Pills (source register table) */
+.band-pill {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.band-pill.green { color: var(--green-light);  border-color: var(--green);  background: var(--green-bg);  }
+.band-pill.amber { color: var(--amber-light);  border-color: var(--amber);  background: var(--amber-bg);  }
+.band-pill.red   { color: var(--red-light);    border-color: var(--red);    background: var(--red-bg);    }
+
+/* Inline fact/inference labels */
+.label-fact {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--blue-light);
+  border: 1px solid var(--blue);
+  background: var(--blue-bg);
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  margin-right: 6px;
+}
+
+.label-inference {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  border: 1px solid var(--gold-dim);
+  background: var(--gold-glow);
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  margin-right: 6px;
+}
+
+/* Structural constraint labels */
+.label-structural { color: var(--red-light);    }
+.label-political  { color: var(--amber-light);  }
+.label-resource   { color: var(--blue-light);   }
+.label-temporal   { color: var(--green-light);  }
+
+/* Analytic technique declaration block */
+.technique-declaration {
+  background: var(--obsidian-surface);
+  border: var(--border-default);
+  border-left: 3px solid var(--gold-dim);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  margin-bottom: var(--space-xl);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.technique-declaration strong {
+  color: var(--gold-dim);
+  font-style: normal;
+}
+
+/* ------------------------------------------------------------
+   19. FOOTER
+   ------------------------------------------------------------ */
+footer {
+  border-top: 1px solid var(--obsidian-border);
+  padding: var(--space-xl);
+  text-align: center;
+}
+
+.footer-brand {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: var(--space-sm);
+}
+
+.footer-doc-id {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  margin-bottom: var(--space-sm);
+}
+
+.footer-legal {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* ------------------------------------------------------------
+   20. RESPONSIVE BREAKPOINTS
+   ------------------------------------------------------------ */
+@media (max-width: 768px) {
+  nav {
+    padding: 0 var(--space-md);
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    padding: 100px var(--space-md) var(--space-2xl);
+  }
+
+  main {
+    padding: var(--space-2xl) var(--space-md);
+  }
+
+  .snapshot-grid,
+  .evidence-grid,
+  .scenario-grid,
+  .threshold-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bluf-item {
+    grid-template-columns: 28px 1fr;
+    gap: var(--space-md);
+  }
+
+  .behavioral-item {
+    grid-template-columns: 1fr;
+  }
+
+  .behavioral-rank {
+    font-size: 1rem;
+    text-align: left;
+    padding-top: 0;
+    opacity: 0.35;
+  }
+
+  .hero-running-head {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .hero-meta {
+    gap: var(--space-sm);
+  }
+
+  .metrics-strip {
+    gap: var(--space-sm);
+  }
+
+  table {
+    font-size: 0.8rem;
+  }
+
+  thead th,
+  tbody td {
+    padding: var(--space-xs) var(--space-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .section-title {
+    font-size: 1.15rem;
+  }
+}
+
+
+/* --- Custom extensions for this report --- */
+.kiq-table, .trace-table, .source-register, .wsi-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.kiq-table th, .kiq-table td,
+.trace-table th, .trace-table td,
+.source-register th, .source-register td,
+.wsi-table th, .wsi-table td,
+.assumption-table th, .assumption-table td,
+.ach-table th, .ach-table td,
+.iw-table th, .iw-table td,
+.risk-table th, .risk-table td {
+  padding: 0.85rem 0.9rem;
+  border-bottom: 1px solid var(--obsidian-border);
+  text-align: left;
+  vertical-align: top;
+}
+.kiq-table th, .trace-table th, .source-register th, .wsi-table th,
+.assumption-table th, .ach-table th, .iw-table th, .risk-table th {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: var(--obsidian-surface);
+}
+.kiq-table td, .trace-table td, .source-register td, .wsi-table td,
+.assumption-table td, .ach-table td, .iw-table td, .risk-table td {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+}
+.table-wrap { overflow-x: auto; }
+.note-card, .wsi-note, .audit-card {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-left: 3px solid var(--slate);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  color: var(--text-secondary);
+}
+.card-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: var(--space-md);
+}
+.card-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: var(--space-md);
+}
+.mini-card {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+.mini-card .label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.mini-card p, .mini-card li { font-size: 0.88rem; }
+.section ul { margin: 0.35rem 0 0 1.1rem; color: var(--text-secondary); }
+.section li { margin-bottom: 0.35rem; }
+.band-strong { color: var(--green-light); }
+.band-mixed { color: var(--amber-light); }
+.band-weak { color: var(--red-light); }
+.kj-map, .src-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  display: inline-block;
+  margin-top: 0.45rem;
+}
+.hero-meta .meta-cell.wide { min-width: 180px; }
+.footer-note {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-style: italic;
+}
+@media (max-width: 900px) {
+  .card-grid-2, .card-grid-3, .snapshot-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+  <div id="progress"></div>
+  <nav>
+    <div class="nav-brand">Quanta Analytica <span>| MNS Consulting</span></div>
+    <ul class="nav-links">
+      <li><a href="#bluf">BLUF</a></li>
+      <li><a href="#analysis">Analysis</a></li>
+      <li><a href="#references">References</a></li>
+    </ul>
+    <div class="nav-classify">Open Source</div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-running-head">
+        <span>QUANTA ANALYTICA | MNS CONSULTING</span>
+        <span>CONFLICT SYSTEMS ANALYSIS // ETHIOPIA-SUDAN</span>
+      </div>
+      <div class="hero-container">
+        <img class="hero-image" src="https://quanta-analytica.com/logo.PNG" alt="Quanta Analytica Process logo">
+        <div class="hero-text">
+          <h1>Ethiopia-Sudan Escalation Risk Assessment <span class="title-gold">Blue Nile Spillover, Rear Basing, and Regional Conflict Convergence</span></h1>
+          <p class="hero-subtitle">A QAP intelligence assessment of whether Ethiopia has crossed from strategic hedging into politically consequential support for anti-SAF operations, and what that means for regional escalation risk over the next 30 to 90 days.</p>
+        </div>
+      </div>
+      <div class="hero-meta">
+        <div class="meta-cell"><span class="label">Domain</span><span class="value">Conflict Systems Analysis</span></div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell"><span class="label">Date</span><span class="value">09 Apr 2026</span></div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell"><span class="label">Framework</span><span class="value">QAP™ / WSI SOP</span></div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell"><span class="label">Confidence</span><span class="value">Moderate</span></div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell wide"><span class="label">Threat Level</span><span class="value"><span class="threat-badge high"><span class="threat-dot"></span>High Escalation Risk</span></span></div>
+      </div>
+      <div class="scope-boundary"><strong>Analytic Scope Boundary:</strong> This assessment covers the Ethiopia-Sudan-Blue Nile interaction space from late 2025 through 9 April 2026 with a forward-looking horizon of 30 to 90 days. It relies on open-source reporting, conflict-monitoring datasets, humanitarian reporting, and think-tank analysis only. No classified, proprietary commercial imagery feeds, or closed diplomatic reporting were available. Overall confidence is moderated by opacity around command-and-control and by uncertainty over how far state-level coordination extends beyond permissive support.</div>
+      <div class="metrics-strip">
+        <div class="metric-block"><div class="metric-value">4,300</div><div class="metric-label">RSF trainees reported at camp</div></div>
+        <div class="metric-block"><div class="metric-value">28,020</div><div class="metric-label">Blue Nile displaced since 11 Jan</div></div>
+        <div class="metric-block"><div class="metric-value">&gt;9M</div><div class="metric-label">Internally displaced in Sudan</div></div>
+        <div class="metric-block"><div class="metric-value">30-90D</div><div class="metric-label">Forward risk horizon</div></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="bluf" class="section">
+      <div class="section-header"><span class="section-num">01 // BLUF</span><h2 class="section-title">Bottom Line Up Front</h2></div>
+      <div class="bluf-grid">
+        <div class="bluf-item"><div class="bluf-index">01</div><div class="bluf-text"><span class="bluf-claim">Ethiopia has likely moved beyond passive hedging and into politically consequential support space for anti-SAF operations tied to Sudan’s eastern theater.</span><p>The strongest public evidence is Reuters’ February 2026 investigation into a covert RSF training camp in Benishangul-Gumuz, followed by Sudan’s March 2026 accusation that Ethiopia allowed attacks to originate from its territory. Public evidence does not yet prove direct Ethiopian battlefield command-and-control, so the judgment remains moderate confidence rather than high confidence.<cite>[1][2]</cite></p></div></div>
+        <div class="bluf-item"><div class="bluf-index">02</div><div class="bluf-text"><span class="bluf-claim">Blue Nile is no longer a peripheral front. It is a strategic hinge.</span><p>If RSF and allied fighters retain or expand pressure around Kurmuk and adjacent corridors, they gain a more viable eastern logistics axis into central Sudan while simultaneously increasing the probability of Sudan-Ethiopia interstate retaliation dynamics.<cite>[3][4]</cite></p></div></div>
+        <div class="bluf-item"><div class="bluf-index">03</div><div class="bluf-text"><span class="bluf-claim">The most plausible near-term pathway is not immediate total regional war, but a tightening cycle of covert support, proxy retaliation, cross-border strikes, and alliance hardening.</span><p>The escalation engine is a compound rivalry structure that links Sudan’s war to Ethiopia-Sudan border tensions, Egypt-Ethiopia Nile competition, Eritrean deterrence logic, and Gulf patron competition around the RSF and SAF.<cite>[2][4][7][8]</cite></p></div></div>
+        <div class="bluf-item"><div class="bluf-index">04</div><div class="bluf-text"><span class="bluf-claim">Humanitarian conditions sharply raise the strategic cost of further spillover.</span><p>Sudan remains the world’s largest internal displacement crisis, while Blue Nile alone has recorded at least 28,020 newly displaced persons since 11 January 2026. Any eastern-front expansion would strike already degraded civilian survival systems and cross-border refuge capacity.<cite>[5][6]</cite></p></div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header"><span class="section-num">02 // KIQs</span><h2 class="section-title">Key Intelligence Questions</h2></div>
+      <div class="table-wrap">
+        <table class="kiq-table">
+          <thead><tr><th>Question ID</th><th>Intelligence Question</th><th>Links To</th></tr></thead>
+          <tbody>
+            <tr><td>KIQ-1</td><td>Has Ethiopia crossed from permissive rear-area tolerance into active operational support for RSF-linked operations in Sudan?</td><td>KJ-1, KJ-2</td></tr>
+            <tr><td>KIQ-2</td><td>Why does Blue Nile matter strategically beyond local territorial control?</td><td>KJ-2</td></tr>
+            <tr><td>KIQ-3</td><td>What mechanisms most credibly link Blue Nile fighting to broader interstate escalation?</td><td>KJ-3</td></tr>
+            <tr><td>KIQ-4</td><td>Which rivalries are most likely to widen the conflict: Ethiopia-Sudan, Ethiopia-Eritrea, Egypt-Ethiopia, or Gulf patron competition inside Sudan?</td><td>KJ-3</td></tr>
+            <tr><td>KIQ-5</td><td>Which indicators would show movement from covert spillover to overt regional confrontation?</td><td>KJ-4, Annex A</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header"><span class="section-num">03 // SNAPSHOT</span><h2 class="section-title">Situation Snapshot</h2></div>
+      <div class="snapshot-grid">
+        <div class="snapshot-cell"><span class="snap-label">Who</span><div class="snap-content">SAF, RSF, SPLM-N al-Hilu, Ethiopian state actors, the UAE, Egypt, Eritrea, and affected civilian populations in Blue Nile and border zones.<cite>[1][2][3][4][8]</cite></div></div>
+        <div class="snapshot-cell"><span class="snap-label">What</span><div class="snap-content">A likely shift from deniable hedging to politically consequential Ethiopian support space for anti-SAF operations, with Blue Nile emerging as a strategic hinge rather than a sideshow.<cite>[1][2][3]</cite></div></div>
+        <div class="snapshot-cell"><span class="snap-label">Where</span><div class="snap-content">Benishangul-Gumuz and Asosa in western Ethiopia; Kurmuk, Geissan, Bau locality, and Blue Nile state in southeastern Sudan; broader Ethiopia-Sudan frontier including Al Fashaga.<cite>[1][3][7]</cite></div></div>
+        <div class="snapshot-cell"><span class="snap-label">When</span><div class="snap-content">Visible escalation pattern from late 2025 through 9 April 2026, with sharper signaling after Reuters’ 10 February investigation and Sudan’s 3 March accusation.<cite>[1][2][6]</cite></div></div>
+        <div class="snapshot-cell"><span class="snap-label">Why</span><div class="snap-content">Blue Nile offers operational depth, a route toward central Sudan, and leverage inside a broader rivalry matrix involving GERD, Al Fashaga, Eritrean deterrence, and Gulf patron competition.<cite>[3][4][7][8]</cite></div></div>
+        <div class="snapshot-cell"><span class="snap-label">How</span><div class="snap-content">Through alleged training infrastructure, rear basing, logistics corridors, proxy integration, and political signaling layered atop older territorial and hydro-political disputes.<cite>[1][2][4][7]</cite></div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header"><span class="section-num">04 // KEY JUDGMENTS</span><h2 class="section-title">Key Judgments</h2></div>
+      <div class="kj-list">
+        <div class="kj-item moderate"><div class="kj-header"><span class="kj-id">KJ-1</span><span class="kj-conf">Moderate Confidence</span></div><div class="kj-text">Ethiopia is likely enabling a level of anti-SAF military activity that Sudan now interprets as hostile intervention, even if the public evidentiary threshold for proving direct Ethiopian battlefield command remains unmet. Reuters’ camp investigation and Sudan’s subsequent accusation are the central public signals.<cite>[1][2]</cite><div class="kj-map">Maps to KIQ-1</div></div></div>
+        <div class="kj-item moderate"><div class="kj-header"><span class="kj-id">KJ-2</span><span class="kj-conf">Moderate Confidence</span></div><div class="kj-text">Blue Nile has shifted from a peripheral front to a strategic hinge because it can reopen access toward Sennar and central Sudan while relieving pressure on RSF-aligned forces elsewhere. ACLED and Critical Threats both assess the theater as strategically meaningful beyond local tactical control.<cite>[3][4]</cite><div class="kj-map">Maps to KIQ-2</div></div></div>
+        <div class="kj-item moderate"><div class="kj-header"><span class="kj-id">KJ-3</span><span class="kj-conf">Moderate Confidence</span></div><div class="kj-text">The principal escalation engine is a compound rivalry structure, not a single bilateral dispute. Ethiopia-Sudan border grievances, Egypt-Ethiopia Nile competition, Eritrean deterrence logic, and UAE pressure and partnership dynamics all interact to shrink compromise space.<cite>[2][4][7][8]</cite><div class="kj-map">Maps to KIQ-3 and KIQ-4</div></div></div>
+        <div class="kj-item high"><div class="kj-header"><span class="kj-id">KJ-4</span><span class="kj-conf">High Confidence</span></div><div class="kj-text">Humanitarian vulnerability in Sudan and Blue Nile means even limited eastern spillover would impose disproportionate civilian costs. Displacement levels and atrocities elsewhere in Sudan show that the conflict system is already operating with extreme humanitarian fragility.<cite>[5][6][9]</cite><div class="kj-map">Maps to KIQ-5</div></div></div>
+      </div>
+
+      <div class="sub-section">
+        <h3>KIQ to Key Judgment Trace Matrix</h3>
+        <div class="table-wrap">
+          <table class="trace-table">
+            <thead><tr><th>KIQ</th><th>Related Key Judgment</th><th>Status</th><th>Evidence Strength</th></tr></thead>
+            <tbody>
+              <tr><td>KIQ-1</td><td>KJ-1</td><td>Answered</td><td class="band-mixed">Moderate-Strong</td></tr>
+              <tr><td>KIQ-2</td><td>KJ-2</td><td>Answered</td><td class="band-mixed">Moderate-Strong</td></tr>
+              <tr><td>KIQ-3</td><td>KJ-3</td><td>Answered</td><td class="band-mixed">Moderate</td></tr>
+              <tr><td>KIQ-4</td><td>KJ-3</td><td>Answered</td><td class="band-mixed">Moderate</td></tr>
+              <tr><td>KIQ-5</td><td>KJ-4, Annex A</td><td>Answered</td><td class="band-strong">Strong</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header"><span class="section-num">05 // EVIDENCE</span><h2 class="section-title">Evidence Summary</h2></div>
+      <div class="evidence-grid">
+        <div class="evidence-box"><div class="evidence-box-header know">What We Know</div><div class="evidence-box-body"><ul>
+          <li>Reuters reported on 10 February 2026 that Ethiopia was hosting a covert camp in Benishangul-Gumuz to train RSF fighters, citing multiple sources, internal documents, and satellite imagery.<cite>[1]</cite></li>
+          <li>Sudan publicly accused Ethiopia on 3 March 2026 of allowing attacks to be launched from its territory into Sudan.<cite>[2]</cite></li>
+          <li>ACLED assessed on 26 January 2026 that Blue Nile had moved to the center of the Sudan conflict.<cite>[3]</cite></li>
+          <li>OCHA states that Sudan has more than 9 million internally displaced people, making it the world’s largest internal displacement crisis.<cite>[5]</cite></li>
+        </ul></div></div>
+        <div class="evidence-box"><div class="evidence-box-header assess">What We Assess</div><div class="evidence-box-body"><ul>
+          <li><strong>Assessment:</strong> Ethiopia’s behavior is best explained by mixed motives: regime-security dependence on the UAE, fear of encirclement, and willingness to use Sudan’s fragmentation to offset older security and border grievances.<cite>[1][4][7][8]</cite></li>
+          <li><strong>Assessment:</strong> Sudan is increasingly likely to interpret Blue Nile developments through an interstate lens, which raises the probability of retaliatory logic even if Ethiopia continues to prefer deniable rather than overt intervention.<cite>[2][3][4]</cite></li>
+        </ul></div></div>
+        <div class="evidence-box"><div class="evidence-box-header gap">What We Do Not Know</div><div class="evidence-box-body"><ul>
+          <li>The current size, chain of command, and rules of engagement for the alleged training and logistics infrastructure remain opaque.<cite>[1]</cite></li>
+          <li>The precise threshold at which Egypt or Eritrea would shift from indirect balancing to more overt support remains uncertain.<cite>[4][8]</cite></li>
+          <li>It is still not publicly verifiable how much of the support architecture is centrally directed by Addis Ababa versus mediated through permissive or decentralized channels.<cite>[1][2]</cite></li>
+        </ul></div></div>
+      </div>
+
+      <div class="sub-section">
+        <h3>Key Drivers and Binding Constraints</h3>
+        <div class="card-grid-2">
+          <div class="mini-card"><span class="label">Key Drivers</span><ul>
+            <li><strong>[FACT]</strong> Reported RSF training and logistics activity in western Ethiopia.<cite>[1]</cite></li>
+            <li><strong>[FACT]</strong> Blue Nile front expansion and Kurmuk-centered fighting.<cite>[3]</cite></li>
+            <li><strong>[INFERENCE]</strong> Ethiopian threat perception shaped by encirclement and deterrence logic.<cite>[4][7][8]</cite></li>
+            <li><strong>[FACT]</strong> Extreme humanitarian vulnerability in Sudan.<cite>[5][6][9]</cite></li>
+          </ul></div>
+          <div class="mini-card"><span class="label">Binding Constraints</span><ul>
+            <li><strong>Structural:</strong> Border porosity and multiple armed actors complicate attribution.</li>
+            <li><strong>Political:</strong> Overt intervention remains costly for Ethiopia, Sudan, Egypt, and Eritrea.</li>
+            <li><strong>Resource:</strong> Humanitarian systems are already overstretched.<cite>[5][6]</cite></li>
+            <li><strong>Temporal:</strong> Escalation could move faster than formal diplomacy can respond.</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h3>Evidence to Judgment Trace Matrix</h3>
+        <div class="table-wrap">
+          <table class="trace-table">
+            <thead><tr><th>Judgment</th><th>Evidence IDs</th><th>Independence Count</th><th>Confidence Contribution</th></tr></thead>
+            <tbody>
+              <tr><td>KJ-1: Ethiopian facilitation likely</td><td>S1, S2, S3</td><td>3</td><td>Moderate-High</td></tr>
+              <tr><td>KJ-2: Blue Nile strategic corridor relevance</td><td>S3, S4</td><td>2</td><td>Moderate-High</td></tr>
+              <tr><td>KJ-3: Regional bloc and rivalry dynamics</td><td>S4, S7, S8</td><td>3</td><td>Moderate</td></tr>
+              <tr><td>KJ-4: Humanitarian risk severity</td><td>S5, S6, S9</td><td>3</td><td>High</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h3>WSI Source Independence Note</h3>
+        <div class="wsi-note">All load-bearing judgments rely on at least two, and in most cases three, independent collection pathways. Rewrites, syndicated summaries, social posts, and commentary dependent on a single upstream source were excluded from corroboration counts. Social media was treated as lead-only and not used as evidentiary support, consistent with the WSI SOP.</div>
+      </div>
+    </section>
+
+    <section id="analysis" class="section">
+      <div class="section-header"><span class="section-num">06 // ANALYSIS</span><h2 class="section-title">Structured Analytic Tradecraft</h2></div>
+      <p class="footer-note">Tradecraft applied: Five-Layer Strategic Cognition Map, Key Assumptions Check, ACH, Indicators and Warnings, Scenario Modeling, and Risk Matrix.</p>
+
+      <div class="sub-section">
+        <h3>Five-Layer Strategic Cognition Map</h3>
+        <div class="table-wrap">
+          <table class="trace-table">
+            <thead><tr><th>Layer</th><th>Assessment</th></tr></thead>
+            <tbody>
+              <tr><td>L1 Foundations</td><td>Sudan’s war is already regionalized by patronage, border porosity, and humanitarian collapse. Al Fashaga, GERD tensions, Eritrean deterrence logic, and UAE-RSF ties all predate the latest Blue Nile fighting.<cite>[1][5][7][8]</cite></td></tr>
+              <tr><td>L2 Mechanisms</td><td>Rear basing, training networks, logistics corridors, and political signaling convert structural rivalry into battlefield movement. Blue Nile matters because it joins border access to operational reach into central Sudan.<cite>[1][3][4]</cite></td></tr>
+              <tr><td>L3 Dynamics</td><td>Each move creates counter-alignment. Ethiopian facilitation raises Sudanese retaliation risk; Sudanese retaliation invites Egyptian and Eritrean balancing; that in turn deepens Ethiopian threat perceptions and reinforces proxy logic.<cite>[2][4][8]</cite></td></tr>
+              <tr><td>L4 Leverage</td><td>The most effective intervention points are not generic diplomacy alone. They are specific leverage nodes: logistics-corridor transparency, border deconfliction channels, patron signaling restraint, airspace and drone monitoring, and humanitarian access corridors. Small improvements in visibility and signaling at these nodes could disproportionately reduce escalation probability because the system is highly sensitive to ambiguity.<cite>[1][2][4][5]</cite></td></tr>
+              <tr><td>L5 Paradigms</td><td>Actors are increasingly interpreting developments through paradigm frames rather than only tactical military calculations. Ethiopia is likely operating inside an encirclement-avoidance frame; Sudan’s SAF inside a sovereignty-restoration frame; Egypt inside a hydro-security defense frame; the UAE inside an influence-network optimization frame; and Eritrea inside a deterrence-preservation frame. These paradigm collisions narrow compromise space and lower escalation thresholds.<cite>[2][4][7][8]</cite></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h3>Key Assumptions Check</h3>
+        <div class="table-wrap">
+          <table class="assumption-table">
+            <thead><tr><th>ID</th><th>Assumption</th><th>Why It Matters</th><th>Risk if Wrong</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>A1</td><td>The Reuters reporting is substantially accurate on the existence and purpose of the camp.</td><td>It underpins the claim of Ethiopian material involvement.</td><td>The assessment would shift from active facilitation to ambiguous permissiveness.</td><td>Active, moderately corroborated</td></tr>
+              <tr><td>A2</td><td>Blue Nile remains strategically usable for sustained RSF-linked operations rather than episodic raids only.</td><td>It shapes escalation forecasting and corridor relevance.</td><td>The theater may prove diversionary rather than strategic.</td><td>Active, plausible</td></tr>
+              <tr><td>A3</td><td>External patrons retain enough influence over local actors to shape escalation tempo.</td><td>This affects the viability of leverage-point recommendations.</td><td>De-escalation policy would have less effect than assumed.</td><td>Unverified but reasonable</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h3>Analysis of Competing Hypotheses</h3>
+        <div class="table-wrap">
+          <table class="ach-table">
+            <thead><tr><th>Hypothesis</th><th>Evidence For</th><th>Evidence Against</th><th>Diagnosticity</th><th>Verdict</th></tr></thead>
+            <tbody>
+              <tr><td>H1: Ethiopia is now an active covert participant<br> supporting RSF-linked operations.</td><td>Reuters investigation, Sudan’s public accusation, and conflict-monitoring analysis all point to more than passive tolerance.<cite>[1][2][3][4]</cite></td><td>No public proof yet of direct Ethiopian battlefield command.</td><td>High</td><td>Most plausible</td></tr>
+              <tr><td>H2: Sudan is mainly externalizing<br> internal setbacks by blaming Ethiopia.</td><td>Belligerents often blame outside actors for losses.</td><td>The Reuters reporting and ACLED analysis make a purely externalization explanation too weak.<cite>[1][3]</cite></td><td>Moderate</td><td>Less plausible</td></tr>
+              <tr><td>H3: Ethiopia is involved mainly through deniable<br> facilitation shaped by UAE pressure rather<br> than autonomous war-entry logic.</td><td>Reuters ties the camp to UAE financing and logistics. Wider analyses show patron competition around Sudan’s war.<cite>[1][8]</cite></td><td>Border grievances and encirclement fears suggest Ethiopia also has autonomous incentives.<cite>[4][7]</cite></td><td>High</td><td>Highly plausible sub-variant of H1</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h3>Indicators and Warnings</h3>
+        <div class="table-wrap">
+          <table class="iw-table">
+            <thead><tr><th>Indicator</th><th>Direction</th><th>Current Status</th><th>Threshold</th><th>Cadence</th><th>Owner</th></tr></thead>
+            <tbody>
+              <tr><td>Recurrent SAF public accusations<br> naming Ethiopia</td><td>Up</td><td>Present</td><td>2+ formal statements in 14 days</td><td>Daily</td><td>Regional analysis lead</td></tr>
+              <tr><td>Verified strikes near <br>Ethiopian-border logistics nodes</td><td>Up</td><td>Not verified publicly</td><td>Any confirmed strike near Asosa or adjacent corridors</td><td>Daily</td><td>OSINT lead</td></tr>
+              <tr><td>RSF and SPLM-N consolidation<br> near Kurmuk-Geissan axis</td><td>Up</td><td>Active theater pressure</td><td>Sustained control plus forward movement toward Damazin</td><td>Daily</td><td>Conflict monitor</td></tr>
+              <tr><td>Egyptian or Eritrean military<br> signaling tied to Ethiopia</td><td>Up</td><td>Background concern</td><td>New deployments, air activity, or formal security messaging</td><td>48h</td><td>Regional warning cell</td></tr>
+              <tr><td>New Blue Nile displacement surge</td><td>Up</td><td>Severe baseline</td><td>10,000+ additional displaced in 7 days</td><td>Weekly</td><td>Humanitarian analyst</td></tr>
+              <tr><td>Verified deconfliction or<br> third-party mediation</td><td>Down</td><td>Not visible</td><td>Formal mechanism or confidence-building measure</td><td>Weekly</td><td>Diplomatic tracking lead</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h3>Scenario Modeling</h3>
+        <div class="scenario-grid">
+          <div class="scenario-card best"><div class="scenario-header">Best Case</div><div class="scenario-body"><p>Blue Nile stabilizes into a contested but limited front. Ethiopia maintains deniability, Sudan avoids direct retaliation, and external patrons prioritize containment over escalation.<cite>[2][3]</cite></p><p><strong>Probability band:</strong> Low</p></div></div>
+          <div class="scenario-card base"><div class="scenario-header">Base Case</div><div class="scenario-body"><p>Covert facilitation, local offensives, cross-border accusation, and proxy balancing continue. Blue Nile remains active and humanitarian strain worsens without overt interstate war.<cite>[2][3][5][6]</cite></p><p><strong>Probability band:</strong> Most Likely</p></div></div>
+          <div class="scenario-card worst"><div class="scenario-header">Worst Case</div><div class="scenario-body"><p>A verified Sudanese strike on Ethiopian-linked support infrastructure, or an Ethiopian move that kills SAF personnel across the border, triggers overt interstate retaliation and faster Egyptian and Eritrean counter-alignment.<cite>[2][4][8]</cite></p><p><strong>Probability band:</strong> Material but Lower</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header"><span class="section-num">07 // BEHAVIORAL</span><h2 class="section-title">Applied Behavioral Tradecraft</h2></div>
+      <div class="note-card"><strong>Justification Note:</strong> The behavioral layer is relevant because escalation risk is being shaped by sovereignty signaling, deterrence narratives, elite threat perception, and encirclement framing, not only battlefield facts.</div>
+      <div class="behavioral-grid" style="margin-top:1rem;">
+        <div class="behavioral-item"><div class="behavioral-rank">1</div><div><h4>Encirclement Perception in Addis Ababa</h4><p><strong>Assessment:</strong> Ethiopia is likely interpreting Sudanese, Egyptian, and Eritrean patterns through a siege or containment lens. That makes deniable externalization more attractive than passivity.<cite>[4][7][8]</cite></p></div></div>
+        <div class="behavioral-item"><div class="behavioral-rank">2</div><div><h4>Sovereignty-Humiliation Framing in SAF Circles</h4><p><strong>Assessment:</strong> Once Sudan publicly frames Ethiopia as violating sovereignty, domestic and coalition pressure to respond rises even if military prudence argues for restraint.<cite>[2]</cite></p></div></div>
+        <div class="behavioral-item"><div class="behavioral-rank">3</div><div><h4>External-Patron Overconfidence</h4><p><strong>Assessment:</strong> Rival patrons may overestimate proxy utility and underestimate the system interaction effects of deniable support, especially where logistics assistance appears lower risk than direct intervention.<cite>[1][8]</cite></p></div></div>
+      </div>
+      <div class="sub-section">
+        <h3>Influence and Narrative Vulnerabilities</h3>
+        <p>The most dangerous narrative shift would be from “Sudan civil war with external meddling” to “anti-Ethiopian coalition” or “Ethiopian encirclement campaign.” Either frame lowers compromise space and normalizes retaliation as self-defense. That paradigm collision increases the probability of miscalculation even if no actor currently prefers a full regional war.<cite>[2][4][8]</cite></p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header"><span class="section-num">08 // IMPLICATIONS</span><h2 class="section-title">Strategic Implications, Risk & Recommendations</h2></div>
+      <div class="card-grid-3">
+        <div class="mini-card"><span class="label">Local Implication</span><p>Blue Nile civilians face rising displacement and exposure to multi-actor violence in a theater already under acute stress.<cite>[6]</cite></p></div>
+        <div class="mini-card"><span class="label">Regional Implication</span><p>Sudan’s war is increasingly entangled with Ethiopia’s western border security, Egypt’s Nile calculus, Eritrea’s deterrence posture, and Gulf rivalry.<cite>[4][7][8]</cite></p></div>
+        <div class="mini-card"><span class="label">International Implication</span><p>Eastern spillover would worsen an already severe humanitarian crisis and complicate ceasefire diplomacy by adding new veto players and logistics chains.<cite>[5][9]</cite></p></div>
+      </div>
+
+      <div class="sub-section">
+        <h3>Risk Matrix</h3>
+        <div class="table-wrap">
+          <table class="risk-table">
+            <thead><tr><th>Risk</th><th>Likelihood (1-5)</th><th>Impact (1-5)</th><th>Score</th><th>Mitigant</th></tr></thead>
+            <tbody>
+              <tr><td>Continued covert Ethiopian facilitation</td><td>4</td><td>4</td><td>16</td><td>Border monitoring, patron pressure, aviation transparency</td></tr>
+              <tr><td>Blue Nile front expands toward Damazin corridor</td><td>3</td><td>4</td><td>12</td><td>Early warning, humanitarian prepositioning</td></tr>
+              <tr><td>Sudan-Ethiopia direct strike or counter-strike cycle</td><td>2</td><td>5</td><td>10</td><td>Deconfliction channel, disciplined signaling</td></tr>
+              <tr><td>Egypt or Eritrea deepen counter-balancing</td><td>3</td><td>4</td><td>12</td><td>External mediation, crisis messaging restraint</td></tr>
+              <tr><td>Mass civilian harm spike in east</td><td>4</td><td>5</td><td>20</td><td>Protection planning, relief surge, access negotiation</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h3>Recommendations</h3>
+        <div class="rec-timeline">
+          <div class="rec-block immediate"><div class="rec-time">0-72H Immediate</div><div class="rec-content">Establish a standing monitoring cell focused on Kurmuk, Asosa, Blue Nile displacement, and official Sudanese and Ethiopian signaling. Owner: regional analysis lead.</div></div>
+          <div class="rec-block near-term"><div class="rec-time">3-30 Days Near-Term</div><div class="rec-content">Prioritize collection on three questions: camp status, logistics routes, and thresholds for SAF retaliation. Owner: OSINT and conflict monitoring team.</div></div>
+          <div class="rec-block medium-term"><div class="rec-time">30-180 Days Medium-Term</div><div class="rec-content">Build a regional escalation tracker that fuses frontier indicators, Blue Nile territorial shifts, Egypt and Eritrea signaling, and humanitarian stress markers into one decision dashboard. Owner: strategic warning lead.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header"><span class="section-num">09 // CONFIDENCE</span><h2 class="section-title">Confidence & Uncertainties</h2></div>
+      <div class="card-grid-2">
+        <div class="mini-card"><span class="label">Confidence Assessment</span><p><strong>Overall Confidence: Moderate.</strong> Confidence is supported by strong Reuters investigative reporting, subsequent event confirmation from Sudan’s accusation, conflict-monitoring analysis from ACLED, and humanitarian corroboration from OCHA and IOM.<cite>[1][2][3][5][6]</cite></p><ul><li>Direct Ethiopian battlefield command remains publicly unproven.</li><li>Several escalation judgments depend on actor intent under stress.</li><li>External-patron behavior can shift quickly and nonlinearly.</li></ul></div>
+        <div class="mini-card"><span class="label">Uncertainties That Could Flip the Assessment</span><ul>
+          <li>The alleged camp may no longer be active at the same scale.</li>
+          <li>Sudan may decide covert containment is preferable to overt retaliation.</li>
+          <li>Egypt and Eritrea may remain deterrent backers only, rather than move toward more direct operational involvement.</li>
+        </ul></div>
+      </div>
+      <div class="sub-section">
+        <h3>Assumption Failure Drill</h3>
+        <div class="table-wrap">
+          <table class="trace-table">
+            <thead><tr><th>Assumption</th><th>Failure Signal</th><th>Consequence</th></tr></thead>
+            <tbody>
+              <tr><td>Reuters camp reporting reflects ongoing, not historical-only, support.</td><td>Verified drawdown, closure, or re-tasking of the site.</td><td>Downgrade assessment from active facilitation to episodic or ambiguous support.</td></tr>
+              <tr><td>Blue Nile can sustain a meaningful eastern axis.</td><td>RSF and SPLM-N lose ground or fail to expand beyond tactical raids.</td><td>Lower interstate escalation probability in the near term.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header"><span class="section-num">10 // REFERENCES</span><h2 class="section-title">Source Register & WSI Audit</h2></div>
+      <div class="sub-section">
+        <h3>Hardened Source Register</h3>
+        <div class="table-wrap">
+          <table class="source-register">
+            <thead><tr><th>ID</th><th>Source</th><th>Type</th><th>Independence</th><th>Evidence Role</th><th>Band</th><th>Key Use</th></tr></thead>
+            <tbody>
+              <tr><td>S1</td><td>Reuters investigation on RSF training camp</td><td>Investigative reporting</td><td>High</td><td>Direct reporting</td><td class="band-strong">Green</td><td>Core evidence for Ethiopian facilitation claim</td></tr>
+              <tr><td>S2</td><td>Reuters report on Sudan’s accusation</td><td>Event reporting</td><td>Medium-High</td><td>Official statement confirmation</td><td class="band-strong">Green</td><td>Corroborates political escalation and attribution dynamics</td></tr>
+              <tr><td>S3</td><td>ACLED Blue Nile conflict analysis</td><td>Conflict-monitoring analysis</td><td>High</td><td>Structural and trend evidence</td><td class="band-strong">Green</td><td>Supports Blue Nile strategic hinge judgment</td></tr>
+              <tr><td>S4</td><td>Critical Threats Africa File</td><td>Think-tank analysis</td><td>Medium</td><td>Interpretive strategic context</td><td class="band-mixed">Amber</td><td>Supports escalation pathway assessment</td></tr>
+              <tr><td>S5</td><td>OCHA Sudan overview</td><td>Institutional reporting</td><td>High</td><td>Quantitative humanitarian validation</td><td class="band-strong">Green</td><td>Supports displacement severity and system strain</td></tr>
+              <tr><td>S6</td><td>IOM DTM Blue Nile Flash Alert</td><td>Institutional dataset reporting</td><td>High</td><td>Displacement metric</td><td class="band-strong">Green</td><td>Supports Blue Nile humanitarian impact</td></tr>
+              <tr><td>S7</td><td>Chatham House on Ethiopia-Sudan border</td><td>Policy research</td><td>High</td><td>Historical structural context</td><td class="band-strong">Green</td><td>Supports Al Fashaga grievance and border securitization logic</td></tr>
+              <tr><td>S8</td><td>Washington Institute analysis</td><td>Think-tank analysis</td><td>Medium</td><td>Interpretive context</td><td class="band-mixed">Amber</td><td>Supports Gulf patron and Egypt-UAE competition framing</td></tr>
+              <tr><td>S9</td><td>Reuters on al-Fashir atrocities</td><td>Event reporting citing UN findings</td><td>High</td><td>Conflict severity indicator</td><td class="band-strong">Green</td><td>Supports humanitarian and atrocity-risk weighting</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h3>WSI Audit Block</h3>
+        <div class="audit-card">
+          <p><strong>Triangulation threshold met:</strong> Yes. Major claims rely on at least three independent streams where feasible.</p>
+          <div class="table-wrap" style="margin-top:1rem;">
+            <table class="wsi-table">
+              <thead><tr><th>Cluster</th><th>Sources</th><th>Independence Rationale</th></tr></thead>
+              <tbody>
+                <tr><td>Operational claim cluster</td><td>S1, S2</td><td>Independent origin streams: investigative reporting plus official-state accusation reporting.</td></tr>
+                <tr><td>Structural conflict cluster</td><td>S3, S7</td><td>Independent analytic frameworks with different methods and objectives.</td></tr>
+                <tr><td>Humanitarian severity cluster</td><td>S5, S6, S9</td><td>Independent institutional and event-reporting pathways.</td></tr>
+                <tr><td>Strategic context cluster</td><td>S4, S8</td><td>Independent think-tank synthesis used as contextual support, not sole proof.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-grid-3" style="margin-top:1rem;">
+            <div class="mini-card"><span class="label">Bias Risk</span><p>Media amplification risk mitigated by dataset and institutional cross-checking.</p></div>
+            <div class="mini-card"><span class="label">Echo-Chamber Check</span><p>Rewrites and commentary dependent on Reuters were not counted as independent corroboration.</p></div>
+            <div class="mini-card"><span class="label">Residual Uncertainty</span><p>Proxy command ambiguity, opaque logistics chains, and limited visibility into closed state deliberations.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="references" class="sub-section">
+        <h3>References</h3>
+        <div class="note-card">
+          <ol>
+            <li>Paravicini, G., &amp; Levinson, R. (2026, February 10). <em>Ethiopia builds secret camp to train Sudan RSF fighters, sources say</em>. Reuters. <a href="https://www.reuters.com/investigations/ethiopia-builds-secret-camp-train-sudan-rsf-fighters-sources-say-2026-02-10/">https://www.reuters.com/investigations/ethiopia-builds-secret-camp-train-sudan-rsf-fighters-sources-say-2026-02-10/</a></li>
+            <li>Reuters. (2026, March 3). <em>Sudan accuses Ethiopia for the first time of involvement in its civil war</em>. Reuters. <a href="https://www.reuters.com/business/media-telecom/sudan-accuses-ethiopia-first-time-involvement-its-civil-war-2026-03-03/">https://www.reuters.com/business/media-telecom/sudan-accuses-ethiopia-first-time-involvement-its-civil-war-2026-03-03/</a></li>
+            <li>ACLED. (2026, January 26). <em>Blue Nile: From peripheral front to central battleground in the Sudan conflict</em>. <a href="https://acleddata.com/report/blue-nile-peripheral-front-central-battleground-sudan-conflict">https://acleddata.com/report/blue-nile-peripheral-front-central-battleground-sudan-conflict</a></li>
+            <li>Critical Threats Project. (2026, March 5). <em>Africa File, March 5, 2026: Ethiopia deepens involvement in Sudan</em>. <a href="https://www.criticalthreats.org/analysis/nigeria-iran-rwanda-m23-ethiopia-sudan-rsf-somalia-africa-file-march-5-2026">https://www.criticalthreats.org/analysis/nigeria-iran-rwanda-m23-ethiopia-sudan-rsf-somalia-africa-file-march-5-2026</a></li>
+            <li>United Nations Office for the Coordination of Humanitarian Affairs. (2026). <em>Sudan</em>. <a href="https://www.unocha.org/sudan">https://www.unocha.org/sudan</a></li>
+            <li>International Organization for Migration. (2026, April 7). <em>DTM Focused Flash Alert: Blue Nile State (1)</em>. <a href="https://dtm.iom.int/reports/dtm-focused-flash-alert-blue-nile-state-1">https://dtm.iom.int/reports/dtm-focused-flash-alert-blue-nile-state-1</a></li>
+            <li>Lannaud, E. (2024, April 4). <em>Securitizing the Ethiopia-Sudan border: How cross-border conflict is shaping trade and the control of land</em>. Chatham House. <a href="https://www.chathamhouse.org/2024/04/securitizing-ethiopia-sudan-border-how-cross-border-conflict-shaping-trade-and-control-land">https://www.chathamhouse.org/2024/04/securitizing-ethiopia-sudan-border-how-cross-border-conflict-shaping-trade-and-control-land</a></li>
+            <li>Elhag, A., &amp; Fishman, B. (2026, January 28). <em>Breaking the Deadlock in Sudan</em>. The Washington Institute. <a href="https://www.washingtoninstitute.org/policy-analysis/breaking-deadlock-sudan">https://www.washingtoninstitute.org/policy-analysis/breaking-deadlock-sudan</a></li>
+            <li>Reuters. (2026, February 19). <em>RSF actions in Sudan's al-Fashir points to genocide, UN probe says</em>. Reuters. <a href="https://www.reuters.com/world/africa/rsf-actions-sudans-al-fashir-points-genocide-un-probe-says-2026-02-19/">https://www.reuters.com/world/africa/rsf-actions-sudans-al-fashir-points-genocide-un-probe-says-2026-02-19/</a></li>
+          </ol>
+          <p style="margin-top:1rem;" class="footer-note">Produced under the Quanta Analytica Process™. All claims are traced to cited open-source evidence or labeled as assessment. No fabricated sources, quotes, or data were used.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header"><span class="section-num">ANNEX A // EARLY WARNING</span><h2 class="section-title">Early Warning Indicators</h2></div>
+      <div class="note-card"><ul>
+        <li>Verified drone or air strikes on facilities near Benishangul-Gumuz or Asosa.</li>
+        <li>Confirmed RSF and SPLM-N advances south or west of Kurmuk toward Damazin approaches.</li>
+        <li>New Egyptian or Eritrean force posture changes explicitly linked to Ethiopia.</li>
+        <li>Public Ethiopian framing that treats Blue Nile developments as a defensive necessity.</li>
+        <li>A sharp rise in Blue Nile displacement above the current IOM baseline.<cite>[6]</cite></li>
+      </ul></div>
+    </section>
+
+    <section class="section">
+      <div class="section-header"><span class="section-num">ANNEX B // INTEL GAPS</span><h2 class="section-title">Priority Intelligence Gaps & Action Thresholds</h2></div>
+      <div class="card-grid-2">
+        <div class="mini-card"><span class="label">Priority Intelligence Gaps</span><ul>
+          <li>Current size, status, and command structure of the alleged RSF training infrastructure in Ethiopia.</li>
+          <li>Degree of Ethiopian state authorization versus deniable permissive facilitation.</li>
+          <li>Egyptian and Eritrean thresholds for deeper operational involvement.</li>
+          <li>Whether Blue Nile is a corridor strategy or a diversionary front.</li>
+        </ul></div>
+        <div class="mini-card"><span class="label">Action Thresholds</span><ul>
+          <li><strong>Green:</strong> Rhetorical accusations continue, but no verified cross-border strikes.</li>
+          <li><strong>Amber:</strong> Verified logistics growth, repeated official accusations, or RSF and SPLM-N gains that threaten Damazin approaches.</li>
+          <li><strong>Red:</strong> Any verified Sudan-Ethiopia direct strike cycle, Egyptian or Eritrean force activation tied to Ethiopia, or a major new atrocity event in the eastern theater.</li>
+        </ul></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">Prepared by MNS Consulting under the Quanta Analytica Process™ | Conflict Systems Analysis | 09 Apr 2026 | quanta-analytica.com</div>
+  </footer>
+
+  <script>
+    const progress = document.getElementById('progress');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      progress.style.width = scrolled + '%';
+    });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
+  </script>
+</body>
+</html>
