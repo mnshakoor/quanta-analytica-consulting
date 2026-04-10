@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1310,6 +1311,10 @@ footer {
   line-height: 1.5;
 }
 
+.footer-inner {
+  color: var(--gold);
+}
+
 /* ------------------------------------------------------------
    20. RESPONSIVE BREAKPOINTS
    ------------------------------------------------------------ */
@@ -1463,6 +1468,19 @@ footer {
 .band-strong { color: var(--green-light); }
 .band-mixed { color: var(--amber-light); }
 .band-weak { color: var(--red-light); }
+
+.source-register td.band-green {
+  color: var(--green-light);
+  font-weight: 700;
+}
+.source-register td.band-amber {
+  color: var(--amber-light);
+  font-weight: 700;
+}
+.source-register td.band-red {
+  color: var(--red-light);
+  font-weight: 700;
+}
 .kj-map, .src-tag {
   font-family: var(--font-mono);
   font-size: 0.65rem;
@@ -1592,6 +1610,50 @@ footer {
           </table>
         </div>
       </div>
+
+      <div class="sub-section">
+        <h3>Judgment Trace Ledger</h3>
+        <div class="table-wrap">
+          <table class="trace-table">
+            <thead><tr><th>Key<br> Judgment</th><th>Facts</th><th>Analyst Inference</th><th>Assumptions</th><th>Confidence Basis</th><th>What Would Change the Judgment</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>KJ-1</td>
+                <td>Reuters reported an Ethiopian training camp for RSF fighters and Sudan later publicly accused Ethiopia of involvement in the war.<cite>[1][2]</cite></td>
+                <td>The combination of reported training infrastructure and formal Sudanese attribution indicates facilitation that Sudan is likely interpreting as hostile intervention.</td>
+                <td>The reported camp remained operational or strategically relevant into the current warning window. Publicly visible evidence still understates covert support relationships.</td>
+                <td class="band-mixed">Moderate confidence based on one high-value investigative stream, one official attribution stream, and contextual fit with broader regional rivalry patterns.</td>
+                <td>Verified closure, drawdown, or repurposing of the camp; credible evidence that Sudan’s accusation was purely coercive signaling without operational basis; or new disconfirming reporting from an independent pathway.</td>
+              </tr>
+              <tr>
+                <td>KJ-2</td>
+                <td>ACLED and Critical Threats assessed Blue Nile as strategically significant beyond a local tactical front.<cite>[3][4]</cite></td>
+                <td>Blue Nile is functioning as an operational hinge because gains there can expand pressure toward central Sudan and alter escalation options for multiple actors.</td>
+                <td>Blue Nile advances can be sustained logistically and translated into follow-on pressure rather than remain episodic raids.</td>
+                <td class="band-mixed">Moderate confidence based on two distinct analytic streams with convergent strategic interpretation and no strong contradictory reporting.</td>
+                <td>Repeated RSF and SPLM-N reversals, failure to exploit the axis operationally, or evidence that other fronts remain decisively more important than Blue Nile in actor planning.</td>
+              </tr>
+              <tr>
+                <td>KJ-3</td>
+                <td>Border securitization, Nile competition, Eritrean deterrence concerns, and Gulf patron dynamics all remain active features of the regional environment.<cite>[2][4][7][8]</cite></td>
+                <td>The escalation engine is multi-actor and compound rather than reducible to one Ethiopia-Sudan dispute, which compresses compromise space and increases miscalculation risk.</td>
+                <td>Regional actors continue to interpret Sudan through linked security and patronage lenses rather than compartmentalize the crisis.</td>
+                <td class="band-mixed">Moderate confidence because the structural pattern is strongly plausible and cross-sourced, but actor intent and trigger thresholds remain partly opaque.</td>
+                <td>Evidence of durable compartmentalization among Ethiopia, Egypt, Eritrea, and Gulf actors; deconfliction channels that absorb shocks; or a clear narrowing of the theater to a local Sudan-only contest.</td>
+              </tr>
+              <tr>
+                <td>KJ-4</td>
+                <td>OCHA, IOM, and Reuters reporting citing UN findings show extreme humanitarian strain, displacement, and atrocity risk across Sudan, including Blue Nile pressures.<cite>[5][6][9]</cite></td>
+                <td>Even limited eastern spillover would produce disproportionate civilian harm because the conflict system is already operating near humanitarian saturation.</td>
+                <td>Current humanitarian coping capacity remains low and eastern escalation would quickly interact with existing displacement and access constraints.</td>
+                <td class="band-strong">High confidence because humanitarian severity is corroborated through multiple institutional and reporting pathways with strong quantitative support.</td>
+                <td>Major sustained humanitarian access expansion, rapid de-escalation in Blue Nile, or evidence that eastern spillover is being contained without new civilian displacement or atrocity exposure.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
     </section>
 
     <section class="section">
@@ -1803,20 +1865,20 @@ footer {
     <section class="section">
       <div class="section-header"><span class="section-num">10 // REFERENCES</span><h2 class="section-title">Source Register & WSI Audit</h2></div>
       <div class="sub-section">
-        <h3>Hardened Source Register</h3>
+        <h3>Source Register</h3>
         <div class="table-wrap">
           <table class="source-register">
             <thead><tr><th>ID</th><th>Source</th><th>Type</th><th>Independence</th><th>Evidence Role</th><th>Band</th><th>Key Use</th></tr></thead>
             <tbody>
-              <tr><td>S1</td><td>Reuters investigation on RSF training camp</td><td>Investigative reporting</td><td>High</td><td>Direct reporting</td><td class="band-strong">Green</td><td>Core evidence for Ethiopian facilitation claim</td></tr>
-              <tr><td>S2</td><td>Reuters report on Sudan’s accusation</td><td>Event reporting</td><td>Medium-High</td><td>Official statement confirmation</td><td class="band-strong">Green</td><td>Corroborates political escalation and attribution dynamics</td></tr>
-              <tr><td>S3</td><td>ACLED Blue Nile conflict analysis</td><td>Conflict-monitoring analysis</td><td>High</td><td>Structural and trend evidence</td><td class="band-strong">Green</td><td>Supports Blue Nile strategic hinge judgment</td></tr>
-              <tr><td>S4</td><td>Critical Threats Africa File</td><td>Think-tank analysis</td><td>Medium</td><td>Interpretive strategic context</td><td class="band-mixed">Amber</td><td>Supports escalation pathway assessment</td></tr>
-              <tr><td>S5</td><td>OCHA Sudan overview</td><td>Institutional reporting</td><td>High</td><td>Quantitative humanitarian validation</td><td class="band-strong">Green</td><td>Supports displacement severity and system strain</td></tr>
-              <tr><td>S6</td><td>IOM DTM Blue Nile Flash Alert</td><td>Institutional dataset reporting</td><td>High</td><td>Displacement metric</td><td class="band-strong">Green</td><td>Supports Blue Nile humanitarian impact</td></tr>
-              <tr><td>S7</td><td>Chatham House on Ethiopia-Sudan border</td><td>Policy research</td><td>High</td><td>Historical structural context</td><td class="band-strong">Green</td><td>Supports Al Fashaga grievance and border securitization logic</td></tr>
-              <tr><td>S8</td><td>Washington Institute analysis</td><td>Think-tank analysis</td><td>Medium</td><td>Interpretive context</td><td class="band-mixed">Amber</td><td>Supports Gulf patron and Egypt-UAE competition framing</td></tr>
-              <tr><td>S9</td><td>Reuters on al-Fashir atrocities</td><td>Event reporting citing UN findings</td><td>High</td><td>Conflict severity indicator</td><td class="band-strong">Green</td><td>Supports humanitarian and atrocity-risk weighting</td></tr>
+              <tr><td>S1</td><td>Reuters investigation on RSF training camp</td><td>Investigative reporting</td><td>High</td><td>Direct reporting</td><td class="band-green">Green</td><td>Core evidence for Ethiopian facilitation claim</td></tr>
+              <tr><td>S2</td><td>Reuters report on Sudan’s accusation</td><td>Event reporting</td><td>Medium-High</td><td>Official statement confirmation</td><td class="band-green">Green</td><td>Corroborates political escalation and attribution dynamics</td></tr>
+              <tr><td>S3</td><td>ACLED Blue Nile conflict analysis</td><td>Conflict-monitoring analysis</td><td>High</td><td>Structural and trend evidence</td><td class="band-green">Green</td><td>Supports Blue Nile strategic hinge judgment</td></tr>
+              <tr><td>S4</td><td>Critical Threats Africa File</td><td>Think-tank analysis</td><td>Medium</td><td>Interpretive strategic context</td><td class="band-amber">Amber</td><td>Supports escalation pathway assessment</td></tr>
+              <tr><td>S5</td><td>OCHA Sudan overview</td><td>Institutional reporting</td><td>High</td><td>Quantitative humanitarian validation</td><td class="band-green">Green</td><td>Supports displacement severity and system strain</td></tr>
+              <tr><td>S6</td><td>IOM DTM Blue Nile Flash Alert</td><td>Institutional dataset reporting</td><td>High</td><td>Displacement metric</td><td class="band-green">Green</td><td>Supports Blue Nile humanitarian impact</td></tr>
+              <tr><td>S7</td><td>Chatham House on Ethiopia-Sudan border</td><td>Policy research</td><td>High</td><td>Historical structural context</td><td class="band-green">Green</td><td>Supports Al Fashaga grievance and border securitization logic</td></tr>
+              <tr><td>S8</td><td>Washington Institute analysis</td><td>Think-tank analysis</td><td>Medium</td><td>Interpretive context</td><td class="band-amber">Amber</td><td>Supports Gulf patron and Egypt-UAE competition framing</td></tr>
+              <tr><td>S9</td><td>Reuters on al-Fashir atrocities</td><td>Event reporting citing UN findings</td><td>High</td><td>Conflict severity indicator</td><td class="band-green">Green</td><td>Supports humanitarian and atrocity-risk weighting</td></tr>
             </tbody>
           </table>
         </div>
@@ -1890,6 +1952,39 @@ footer {
           <li><strong>Red:</strong> Any verified Sudan-Ethiopia direct strike cycle, Egyptian or Eritrean force activation tied to Ethiopia, or a major new atrocity event in the eastern theater.</li>
         </ul></div>
       </div>
+
+      <div class="sub-section">
+        <h3>Decision Threshold Panel</h3>
+        <div class="table-wrap">
+          <table class="trace-table">
+            <thead><tr><th>Status</th><th>Primary Trigger Set</th><th>Decision Owner</th><th>Pre-Agreed Actions</th><th>Monitoring Cadence</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="band-strong"><strong>Green</strong></td>
+                <td>Rhetorical accusations continue but no verified cross-border strike cycle, no major frontier force activation, and no sustained Blue Nile operational breakthrough.</td>
+                <td>Strategic warning lead with country desk concurrence.</td>
+                <td>Maintain enhanced watch. Update dashboard daily. Preserve collection against frontier indicators, Blue Nile force movements, and official signaling. Prepare contingency messaging and partner notification drafts.</td>
+                <td>Daily review with weekly principal update.</td>
+              </tr>
+              <tr>
+                <td class="band-mixed"><strong>Amber</strong></td>
+                <td>Verified logistics growth, repeated official accusations, Blue Nile gains threatening Damazin approaches, or a visible increase in Egyptian or Eritrean signaling tied to Ethiopia.</td>
+                <td>Regional risk lead and senior decision-maker.</td>
+                <td>Shift to warning posture. Convene escalation review cell. Pre-position humanitarian and security contingencies. Increase stakeholder engagement with partners and front-load mitigation options for personnel, access, and communications.</td>
+                <td>Twice-daily review until indicators stabilize.</td>
+              </tr>
+              <tr>
+                <td class="band-weak"><strong>Red</strong></td>
+                <td>Any verified Sudan-Ethiopia direct strike cycle, Egyptian or Eritrean force activation tied to Ethiopia, or a major new atrocity event in the eastern theater.</td>
+                <td>Principal decision-maker with crisis management lead.</td>
+                <td>Activate crisis posture. Issue executive warning. Implement protective and continuity actions. Trigger humanitarian escalation planning, stakeholder notifications, and rapid reassessment of posture, access, and force-protection assumptions.</td>
+                <td>Continuous monitoring with same-day executive brief.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
     </section>
   </main>
 
