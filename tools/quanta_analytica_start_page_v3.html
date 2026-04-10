@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QAP Start Page | Link Hub</title>
+  <meta name="description" content="Quanta Analytica start page with direct links and integrated Google web search." />
+  <script async src="https://cse.google.com/cse.js?cx=a45e8d93bff6a4b84"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow+Condensed:wght@300;400;500;600&family=Barlow:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --obsidian: #0a0c10;
+      --obsidian-mid: #10131a;
+      --obsidian-card: #13161f;
+      --obsidian-border: #1c2030;
+      --obsidian-surface: #181b26;
+      --obsidian-lift: #1e2235;
+      --gold: #c8a96e;
+      --gold-light: #dfc28e;
+      --gold-pale: #e8d5aa;
+      --gold-dim: #9a7f52;
+      --gold-muted: #6b5838;
+      --gold-glow: rgba(200, 169, 110, 0.12);
+      --gold-glow-strong: rgba(200, 169, 110, 0.22);
+      --text-primary: #e8e4dc;
+      --text-secondary: #b8b0a0;
+      --text-muted: #7a7264;
+      --blue-light: #3498db;
+      --green-light: #2ecc71;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Barlow', Arial, sans-serif;
+      --font-mono: 'Barlow Condensed', 'Courier New', monospace;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2rem;
+      --space-2xl: 3rem;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --shadow-card: 0 8px 30px rgba(0,0,0,0.35);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background:
+        radial-gradient(circle at 15% 20%, rgba(200,169,110,0.08), transparent 22%),
+        radial-gradient(circle at 85% 15%, rgba(52,152,219,0.08), transparent 20%),
+        linear-gradient(180deg, #0a0c10 0%, #10131a 100%);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0,0,0,0.12) 0px,
+        transparent 1px,
+        transparent 3px
+      );
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.24;
+    }
+
+    #network-bg {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      opacity: 0.42;
+      pointer-events: none;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 2;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 20px 48px;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(10, 12, 16, 0.88);
+      border-bottom: 1px solid var(--obsidian-border);
+      margin: 0 -20px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-brand {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      border: 1px solid transparent;
+      padding: 7px 10px;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+      border-color: rgba(200,169,110,0.22);
+      background: rgba(200,169,110,0.06);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 86vh;
+      display: flex;
+      align-items: center;
+      padding: 88px 0 46px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10,12,16,0.06) 0%, rgba(10,12,16,0.18) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .geo-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .hex-ring {
+      position: absolute;
+      right: -5vw;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 55vw;
+      max-width: 780px;
+      opacity: 0.30;
+      animation: rotateHex 60s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes rotateHex {
+      from { transform: translateY(-50%) rotate(0deg); }
+      to { transform: translateY(-50%) rotate(360deg); }
+    }
+
+    .hex-network-canvas {
+      position: absolute;
+      right: -5vw;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 55vw;
+      max-width: 780px;
+      aspect-ratio: 1 / 1;
+      pointer-events: none;
+      opacity: 0.82;
+    }
+
+    .hero-line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(200,169,110,0.28), transparent);
+      z-index: 1;
+    }
+
+    .hero-line.top { top: 18%; }
+    .hero-line.bottom { top: 82%; }
+
+    .hero-dot {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.5;
+      animation: pulse 3s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.28; transform: scale(1); }
+      50% { opacity: 0.75; transform: scale(1.4); }
+    }
+
+    .hero-dot:nth-of-type(1) { left: 24%; top: 18%; animation-delay: 0s; }
+    .hero-dot:nth-of-type(2) { left: 76%; top: 18%; animation-delay: 1s; }
+    .hero-dot:nth-of-type(3) { left: 24%; top: 82%; animation-delay: .45s; }
+    .hero-dot:nth-of-type(4) { left: 76%; top: 82%; animation-delay: 1.4s; }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      align-items: start;
+      width: 100%;
+    }
+
+    .hero-main {
+      max-width: 860px;
+    }
+
+    .hero-running-head {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid var(--obsidian-border);
+      padding-bottom: 10px;
+      margin-bottom: 24px;
+    }
+
+    .hero-container {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+
+    .hero-image {
+      width: 132px;
+      height: auto;
+      flex: 0 0 auto;
+      filter: drop-shadow(0 0 18px rgba(200,169,110,0.10));
+    }
+
+    .hero-text {
+      flex: 1 1 auto;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3.8rem, 7vw, 7.3rem);
+      font-weight: 300;
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      margin: 0;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      font-synthesis-weight: none;
+    }
+
+    h1 em {
+      display: block;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--gold-light);
+    }
+
+    .title-gold {
+      display: block;
+      color: var(--gold-light);
+      margin-top: 2px;
+    }
+
+    .hero-subtitle {
+      max-width: 620px;
+      font-size: 1.03rem;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      line-height: 1.85;
+      font-weight: 300;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 0;
+    }
+
+    .meta-cell {
+      border-left: 1px solid var(--obsidian-border);
+      padding-left: 14px;
+    }
+
+    .meta-cell:first-child {
+      border-left: none;
+      padding-left: 0;
+    }
+
+    .meta-label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+
+    .meta-value {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--gold);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+    }
+
+    .search-section {
+      margin-top: 44px;
+    }
+
+    .search-shell,
+    .link-card {
+      background: rgba(19,22,31,0.92);
+      border: 1px solid var(--obsidian-border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-card);
+    }
+
+    .search-shell {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 22px 24px;
+      text-align: center;
+    }
+
+    .search-shell h3 {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .search-shell p {
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+    }
+
+    .gcse-search {
+      min-height: 58px;
+    }
+
+
+
+    .section {
+      margin-top: 34px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      border-bottom: 1px solid var(--obsidian-border);
+      padding-bottom: 10px;
+      margin-bottom: 18px;
+    }
+
+    .section-num {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      background: var(--gold-glow);
+      border: 1px solid var(--gold-muted);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      line-height: 1.2;
+    }
+
+    .section-copy {
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+      max-width: 860px;
+    }
+
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .link-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .link-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold-dim), var(--gold), transparent);
+      opacity: 0.9;
+    }
+
+    .link-card a {
+      display: block;
+      padding: 18px 18px 16px;
+      color: inherit;
+      text-decoration: none;
+      height: 100%;
+    }
+
+    .link-card:hover {
+      background: var(--obsidian-lift);
+      border-color: rgba(200,169,110,0.22);
+      transform: translateY(-1px);
+      transition: 0.2s ease;
+    }
+
+    .link-code {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .link-title {
+      font-family: var(--font-display);
+      font-size: 1.18rem;
+      line-height: 1.15;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+
+    .link-url {
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      word-break: break-word;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-top: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+    }
+
+    footer {
+      margin-top: 42px;
+      padding-top: 18px;
+      border-top: 1px solid var(--obsidian-border);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .links-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hex-ring,
+      .hex-network-canvas {
+        width: 72vw;
+        right: -12vw;
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav { flex-direction: column; align-items: flex-start; }
+      .hero-container { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .hero-image { width: 110px; }
+      .hero-running-head { flex-direction: column; }
+      .links-grid { grid-template-columns: 1fr; }
+      h1 { font-size: clamp(3rem, 14vw, 4.6rem); }
+      .search-shell { padding: 18px 16px; }
+      .hex-ring,
+      .hex-network-canvas {
+        width: 92vw;
+        right: -24vw;
+        opacity: 0.22;
+      }
+    }
+  </style>
+</head>
+<body>
+  <svg id="network-bg" viewBox="0 0 1600 1200" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#c8a96e" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#c8a96e" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+
+    <g stroke="rgba(200,169,110,0.16)" stroke-width="1.3">
+      <line x1="120" y1="220" x2="320" y2="180" />
+      <line x1="320" y1="180" x2="520" y2="260" />
+      <line x1="520" y1="260" x2="730" y2="180" />
+      <line x1="730" y1="180" x2="980" y2="250" />
+      <line x1="980" y1="250" x2="1220" y2="170" />
+      <line x1="1220" y1="170" x2="1440" y2="260" />
+      <line x1="230" y1="520" x2="420" y2="430" />
+      <line x1="420" y1="430" x2="650" y2="520" />
+      <line x1="650" y1="520" x2="920" y2="430" />
+      <line x1="920" y1="430" x2="1180" y2="520" />
+      <line x1="1180" y1="520" x2="1420" y2="450" />
+      <line x1="320" y1="180" x2="420" y2="430" />
+      <line x1="730" y1="180" x2="650" y2="520" />
+      <line x1="980" y1="250" x2="920" y2="430" />
+      <line x1="1220" y1="170" x2="1180" y2="520" />
+    </g>
+
+    <g>
+      <circle cx="120" cy="220" r="18" fill="url(#nodeGlow)">
+        <animate attributeName="r" values="12;20;12" dur="3.6s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="320" cy="180" r="4" fill="#c8a96e"/>
+      <circle cx="520" cy="260" r="4" fill="#3498db"/>
+      <circle cx="730" cy="180" r="5" fill="#c8a96e"/>
+      <circle cx="980" cy="250" r="4" fill="#2ecc71"/>
+      <circle cx="1220" cy="170" r="5" fill="#c8a96e"/>
+      <circle cx="1440" cy="260" r="4" fill="#3498db"/>
+      <circle cx="230" cy="520" r="4" fill="#2ecc71"/>
+      <circle cx="420" cy="430" r="5" fill="#c8a96e"/>
+      <circle cx="650" cy="520" r="4" fill="#3498db"/>
+      <circle cx="920" cy="430" r="5" fill="#c8a96e"/>
+      <circle cx="1180" cy="520" r="4" fill="#2ecc71"/>
+      <circle cx="1420" cy="450" r="5" fill="#c8a96e"/>
+    </g>
+  </svg>
+
+  <div class="wrap">
+    <nav>
+      <div class="nav-brand">QUANTA ANALYTICA | START PAGE</div>
+      <div class="nav-links">
+        <a href="#search">Search</a>
+        <a href="#core">Core</a>
+        <a href="#research">Research</a>
+        <a href="#tools">Tools</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="geo-bg" aria-hidden="true">
+        <canvas class="hex-network-canvas" id="hexNetCanvas"></canvas>
+        <svg class="hex-ring" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="250,30 450,145 450,355 250,470 50,355 50,145" fill="none" stroke="#c8a96e" stroke-width="1"/>
+          <polygon points="250,60 420,162 420,338 250,440 80,338 80,162" fill="none" stroke="#c8a96e" stroke-width="0.5"/>
+          <polygon points="250,90 390,178 390,322 250,410 110,322 110,178" fill="none" stroke="#c8a96e" stroke-width="0.3"/>
+          <circle cx="250" cy="250" r="3" fill="#c8a96e" opacity="0.8"/>
+          <line x1="250" y1="30" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.4"/>
+          <line x1="450" y1="145" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.4"/>
+          <line x1="450" y1="355" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.4"/>
+          <line x1="250" y1="470" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.4"/>
+          <line x1="50" y1="355" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.4"/>
+          <line x1="50" y1="145" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.4" opacity="0.4"/>
+        </svg>
+      </div>
+
+      <div class="hero-line top" aria-hidden="true"></div>
+      <div class="hero-line bottom" aria-hidden="true"></div>
+      <div class="hero-dot" aria-hidden="true"></div>
+      <div class="hero-dot" aria-hidden="true"></div>
+      <div class="hero-dot" aria-hidden="true"></div>
+      <div class="hero-dot" aria-hidden="true"></div>
+
+      <div class="hero-grid">
+        <div class="hero-main">
+          <div class="hero-running-head">
+            <span>QUANTA ANALYTICA | MNS CONSULTING</span>
+            <span>QAP // LINKS START PAGE</span>
+          </div>
+
+          <div class="hero-container">
+            <img class="hero-image" src="https://quanta-analytica.com/logo.PNG" alt="Quanta Analytica logo" />
+            <div class="hero-text">
+              <h1>
+                Quanta Analytica
+                <span class="title-gold"><em>Start Page</em></span>
+              </h1>
+            </div>
+          </div>
+
+          <p class="hero-subtitle">
+            A Quanta Analytica common links and tools.
+          </p>
+
+          <div class="hero-meta">
+            <div class="meta-cell">
+              <span class="meta-label">Mode</span>
+              <span class="meta-value">Link Hub</span>
+            </div>
+            <div class="meta-cell">
+              <span class="meta-label">Theme</span>
+              <span class="meta-value">QAP Styled</span>
+            </div>
+            <div class="meta-cell">
+              <span class="meta-label">Search</span>
+              <span class="meta-value">Google CSE Enabled</span>
+            </div>
+            <div class="meta-cell">
+              <span class="meta-label">Use</span>
+              <span class="meta-value">Daily Start Page</span>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="core">
+      <div class="section-header">
+        <div class="section-num">01 // Core Sites</div>
+        <div class="section-title">Primary Pages</div>
+      </div>
+      <p class="section-copy">Direct QAP-styled buttons for the main sites and publishing destinations you listed.</p>
+      <div class="links-grid">
+        <div class="link-card"><a href="https://quanta-analytica.com" target="_blank" rel="noopener"><span class="link-code">QAP-01</span><div class="link-title">Quanta Analytica</div><div class="link-url">https://quanta-analytica.com</div><div class="tag">Primary Site</div></a></div>
+        <div class="link-card"><a href="https://insights.quanta-analytica.com" target="_blank" rel="noopener"><span class="link-code">QAP-02</span><div class="link-title">Insights</div><div class="link-url">https://insights.quanta-analytica.com</div><div class="tag">Publishing</div></a></div>
+        <div class="link-card"><a href="https://mnshakoor.com" target="_blank" rel="noopener"><span class="link-code">QAP-03</span><div class="link-title">mnshakoor.com</div><div class="link-url">https://mnshakoor.com</div><div class="tag">Personal Site</div></a></div>
+        <div class="link-card"><a href="https://newslettter.arac-international.com" target="_blank" rel="noopener"><span class="link-code">QAP-04</span><div class="link-title">ARAC Newsletter</div><div class="link-url">https://newslettter.arac-international.com</div><div class="tag">Newsletter</div></a></div>
+        <div class="link-card"><a href="https://arac-international.org" target="_blank" rel="noopener"><span class="link-code">QAP-05</span><div class="link-title">ARAC International</div><div class="link-url">https://arac-international.org</div><div class="tag">Organization</div></a></div>
+        <div class="link-card"><a href="https://about.me/nuri.shakoor" target="_blank" rel="noopener"><span class="link-code">QAP-06</span><div class="link-title">About.me</div><div class="link-url">https://about.me/nuri.shakoor</div><div class="tag">Profile</div></a></div>
+      </div>
+    </section>
+
+    <section class="section" id="research">
+      <div class="section-header">
+        <div class="section-num">02 // Research & Monitoring</div>
+        <div class="section-title">Research Destinations</div>
+      </div>
+      <p class="section-copy">Monitoring, NGO security, training, and research environments from your provided list.</p>
+      <div class="links-grid">
+        <div class="link-card"><a href="https://iosi.global" target="_blank" rel="noopener"><span class="link-code">RES-01</span><div class="link-title">IOSI Global</div><div class="link-url">https://iosi.global</div><div class="tag">Security</div></a></div>
+        <div class="link-card"><a href="https://digitalnavigator.mnshakoor.com" target="_blank" rel="noopener"><span class="link-code">RES-02</span><div class="link-title">Digital Navigator</div><div class="link-url">https://digitalnavigator.mnshakoor.com</div><div class="tag">Navigator</div></a></div>
+        <div class="link-card"><a href="https://afsdata.net" target="_blank" rel="noopener"><span class="link-code">RES-03</span><div class="link-title">AFS Data</div><div class="link-url">https://afsdata.net</div><div class="tag">Data</div></a></div>
+        <div class="link-card"><a href="https://inssa.org" target="_blank" rel="noopener"><span class="link-code">RES-04</span><div class="link-title">INSSA</div><div class="link-url">https://inssa.org</div><div class="tag">Association</div></a></div>
+        <div class="link-card"><a href="https://world-monitor.com" target="_blank" rel="noopener"><span class="link-code">RES-05</span><div class="link-title">World Monitor</div><div class="link-url">https://world-monitor.com</div><div class="tag">Commercial Site</div></a></div>
+        <div class="link-card"><a href="https://worldmonitor.app" target="_blank" rel="noopener"><span class="link-code">RES-06</span><div class="link-title">WorldMonitor App</div><div class="link-url">https://worldmonitor.app</div><div class="tag">App</div></a></div>
+        <div class="link-card"><a href="https://gisf.ngo" target="_blank" rel="noopener"><span class="link-code">RES-07</span><div class="link-title">GISF</div><div class="link-url">https://gisf.ngo</div><div class="tag">NGO Security</div></a></div>
+        <div class="link-card"><a href="https://disasterready.org" target="_blank" rel="noopener"><span class="link-code">RES-08</span><div class="link-title">DisasterReady</div><div class="link-url">https://disasterready.org</div><div class="tag">Training</div></a></div>
+        <div class="link-card"><a href="https://usip-global-campus.mn.co/" target="_blank" rel="noopener"><span class="link-code">RES-09</span><div class="link-title">USIP Global Campus</div><div class="link-url">https://usip-global-campus.mn.co/</div><div class="tag">Learning</div></a></div>
+      </div>
+    </section>
+
+    <section class="section" id="tools">
+      <div class="section-header">
+        <div class="section-num">03 // Tools & Platforms</div>
+        <div class="section-title">Common Tools</div>
+      </div>
+      <p class="section-copy">Your AI, storage, mail, code, and platform URLs rendered as direct-access QAP-styled buttons.</p>
+      <div class="links-grid">
+        <div class="link-card"><a href="https://arac-international.teachable.com/" target="_blank" rel="noopener"><span class="link-code">OPS-01</span><div class="link-title">ARAC Teachable</div><div class="link-url">https://arac-international.teachable.com/</div><div class="tag">Training</div></a></div>
+        <div class="link-card"><a href="https://notebooklm.google.com" target="_blank" rel="noopener"><span class="link-code">OPS-02</span><div class="link-title">NotebookLM</div><div class="link-url">https://notebooklm.google.com</div><div class="tag">Notebook</div></a></div>
+        <div class="link-card"><a href="https://gemini.google.com/app" target="_blank" rel="noopener"><span class="link-code">OPS-03</span><div class="link-title">Gemini</div><div class="link-url">https://gemini.google.com/app</div><div class="tag">LLM</div></a></div>
+        <div class="link-card"><a href="https://drive.google.com" target="_blank" rel="noopener"><span class="link-code">OPS-04</span><div class="link-title">Google Drive</div><div class="link-url">https://drive.google.com</div><div class="tag">Storage</div></a></div>
+        <div class="link-card"><a href="https://mail.proton.me" target="_blank" rel="noopener"><span class="link-code">OPS-05</span><div class="link-title">Proton Mail</div><div class="link-url">https://mail.proton.me</div><div class="tag">Mail</div></a></div>
+        <div class="link-card"><a href="https://drive.proton.me/" target="_blank" rel="noopener"><span class="link-code">OPS-06</span><div class="link-title">Proton Drive</div><div class="link-url">https://drive.proton.me/</div><div class="tag">Storage</div></a></div>
+        <div class="link-card"><a href="https://github.com/dashboard" target="_blank" rel="noopener"><span class="link-code">OPS-07</span><div class="link-title">GitHub Dashboard</div><div class="link-url">https://github.com/dashboard</div><div class="tag">Code</div></a></div>
+        <div class="link-card"><a href="https://claude.ai" target="_blank" rel="noopener"><span class="link-code">OPS-08</span><div class="link-title">Claude</div><div class="link-url">https://claude.ai</div><div class="tag">LLM</div></a></div>
+        <div class="link-card"><a href="https://chatgpt.com" target="_blank" rel="noopener"><span class="link-code">OPS-09</span><div class="link-title">ChatGPT</div><div class="link-url">https://chatgpt.com</div><div class="tag">LLM</div></a></div>
+      </div>
+    </section>
+
+
+    <section class="section search-section" id="search">
+      <div class="section-header">
+        <div class="section-num">04 // Web Search</div>
+        <div class="section-title">Google Search</div>
+      </div>
+      <p class="section-copy" style="text-align:center; max-width:760px; margin:0 auto 18px;">Search the web directly from the page and view results in the embedded Google Custom Search panel.</p>
+      <div class="search-shell">
+        <h3>Google Web Search</h3>
+        <p>Search the web directly from the page and view results in the embedded Google Custom Search panel.</p>
+        <div class="gcse-search"></div>
+      </div>
+    </section>
+
+    <footer>
+      <div>QUANTA ANALYTICA PROCESS™ | LINKS START PAGE</div>
+      <div>GOOGLE SEARCH + DIRECT URL BUTTONS</div>
+    </footer>
+  </div>
+
+  
+  <script>
+    (function () {
+      const canvas = document.getElementById('hexNetCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      const GOLD       = '200, 169, 110';
+      const NODE_COUNT = 38;
+      const MAX_DIST   = 0.28;
+      const SPEED      = 0.00028;
+
+      let W, H, cx, cy, hexR, verts, nodes;
+
+      function getHexVertices(cx, cy, r) {
+        const pts = [];
+        const angles = [270, 330, 30, 90, 150, 210];
+        for (const a of angles) {
+          const rad = (a * Math.PI) / 180;
+          pts.push({ x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) });
+        }
+        return pts;
+      }
+
+      function pointInHex(px, py, verts) {
+        let inside = false;
+        const n = verts.length;
+        for (let i = 0, j = n - 1; i < n; j = i++) {
+          const xi = verts[i].x, yi = verts[i].y;
+          const xj = verts[j].x, yj = verts[j].y;
+          const intersect = ((yi > py) !== (yj > py)) &&
+            (px < ((xj - xi) * (py - yi)) / (yj - yi) + xi);
+          if (intersect) inside = !inside;
+        }
+        return inside;
+      }
+
+      function resize() {
+        const rect = canvas.getBoundingClientRect();
+        W = canvas.width  = rect.width  * window.devicePixelRatio;
+        H = canvas.height = rect.height * window.devicePixelRatio;
+        cx = W / 2;
+        cy = H / 2;
+        hexR = Math.min(W, H) * 0.455;
+        verts = getHexVertices(cx, cy, hexR);
+        initNodes();
+      }
+
+      function initNodes() {
+        nodes = [];
+        let attempts = 0;
+        while (nodes.length < NODE_COUNT && attempts < 5000) {
+          attempts++;
+          const x = cx + (Math.random() - 0.5) * hexR * 2;
+          const y = cy + (Math.random() - 0.5) * hexR * 2;
+          if (pointInHex(x, y, verts)) {
+            const angle = Math.random() * Math.PI * 2;
+            const speed = (0.5 + Math.random() * 0.5) * SPEED * Math.min(W, H);
+            nodes.push({ x, y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed });
+          }
+        }
+      }
+
+      function tick() {
+        ctx.clearRect(0, 0, W, H);
+
+        for (const n of nodes) {
+          n.x += n.vx;
+          n.y += n.vy;
+          if (!pointInHex(n.x, n.y, verts)) {
+            n.x -= n.vx * 2;
+            n.y -= n.vy * 2;
+            const angle = Math.atan2(cy - n.y, cx - n.x) + (Math.random() - 0.5) * 0.8;
+            const speed = Math.sqrt(n.vx * n.vx + n.vy * n.vy);
+            n.vx = Math.cos(angle) * speed;
+            n.vy = Math.sin(angle) * speed;
+          }
+        }
+
+        const maxPx = MAX_DIST * Math.min(W, H);
+
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            const dx = nodes[i].x - nodes[j].x;
+            const dy = nodes[i].y - nodes[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < maxPx) {
+              const alpha = (1 - dist / maxPx) * 0.45;
+              ctx.beginPath();
+              ctx.moveTo(nodes[i].x, nodes[i].y);
+              ctx.lineTo(nodes[j].x, nodes[j].y);
+              ctx.strokeStyle = `rgba(${GOLD}, ${alpha})`;
+              ctx.lineWidth = 0.8 * window.devicePixelRatio;
+              ctx.stroke();
+            }
+          }
+        }
+
+        for (const n of nodes) {
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, 2 * window.devicePixelRatio, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${GOLD}, 0.7)`;
+          ctx.fill();
+        }
+
+        requestAnimationFrame(tick);
+      }
+
+      resize();
+      window.addEventListener('resize', resize);
+      requestAnimationFrame(tick);
+    })();
+  </script>
+</body>
+</html>
