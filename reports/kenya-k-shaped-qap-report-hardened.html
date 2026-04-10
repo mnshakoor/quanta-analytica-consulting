@@ -1,0 +1,1946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kenya Dual-Track Recovery | Quanta Analytica Process™ | 09 Apr 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+/* ============================================================
+   QAP WEB REPORT - CANONICAL STYLESHEET
+   Quanta Analytica Process™ | MNS Consulting
+   quanta-analytica.com/reports/
+   Version: 2.0 | Design System Reference
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. ROOT VARIABLES - Color, Typography, Spacing
+   ------------------------------------------------------------ */
+:root {
+  /* Core Palette */
+  --obsidian:         #0a0c10;
+  --obsidian-mid:     #10131a;
+  --obsidian-card:    #13161f;
+  --obsidian-border:  #1c2030;
+  --obsidian-surface: #181b26;
+  --obsidian-lift:    #1e2235;
+
+  /* Gold Scale */
+  --gold:             #c8a96e;
+  --gold-light:       #dfc28e;
+  --gold-pale:        #e8d5aa;
+  --gold-dim:         #9a7f52;
+  --gold-muted:       #6b5838;
+  --gold-glow:        rgba(200, 169, 110, 0.12);
+  --gold-glow-strong: rgba(200, 169, 110, 0.22);
+
+  /* Alert / Status Colors */
+  --red:              #c0392b;
+  --red-light:        #e74c3c;
+  --red-bg:           rgba(192, 57, 43, 0.12);
+  --amber:            #d4820a;
+  --amber-light:      #f39c12;
+  --amber-bg:         rgba(212, 130, 10, 0.12);
+  --green:            #27ae60;
+  --green-light:      #2ecc71;
+  --green-bg:         rgba(39, 174, 96, 0.12);
+  --blue:             #2980b9;
+  --blue-light:       #3498db;
+  --blue-bg:          rgba(41, 128, 185, 0.12);
+  --yellow:           #f1c40f;
+  --yellow-bg:        rgba(241, 196, 15, 0.12);
+  --slate:            #5d7a9a;
+  --slate-light:      #7f9ab8;
+
+  /* Text Scale */
+  --text-primary:     #e8e4dc;
+  --text-secondary:   #b8b0a0;
+  --text-muted:       #7a7264;
+  --text-faint:       #4a4640;
+
+  /* Typography */
+  --font-display:     'Libre Baskerville', Georgia, serif;
+  --font-body:        'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:        'IBM Plex Mono', 'Courier New', monospace;
+
+  /* Spacing */
+  --space-xs:         0.25rem;
+  --space-sm:         0.5rem;
+  --space-md:         1rem;
+  --space-lg:         1.5rem;
+  --space-xl:         2rem;
+  --space-2xl:        3rem;
+  --space-3xl:        4rem;
+
+  /* Borders & Radius */
+  --radius-sm:        3px;
+  --radius-md:        6px;
+  --radius-lg:        10px;
+  --border-default:   1px solid var(--obsidian-border);
+  --border-gold:      1px solid var(--gold-dim);
+
+  /* Transitions */
+  --transition-fast:  0.15s ease;
+  --transition-base:  0.25s ease;
+  --transition-slow:  0.4s ease;
+
+  /* Shadows */
+  --shadow-card:      0 2px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lift:      0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* ------------------------------------------------------------
+   2. RESET & BASE
+   ------------------------------------------------------------ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--obsidian);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--gold-light);
+}
+
+p {
+  margin-bottom: var(--space-md);
+  color: var(--text-secondary);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+strong, b {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+em, i {
+  color: var(--slate-light);
+  font-style: italic;
+}
+
+cite {
+  font-style: normal;
+  color: var(--gold-dim);
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  vertical-align: super;
+  line-height: 0;
+}
+
+/* ------------------------------------------------------------
+   3. SCROLL PROGRESS BAR
+   ------------------------------------------------------------ */
+#progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-light));
+  z-index: 9999;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 8px var(--gold-glow-strong);
+}
+
+/* ------------------------------------------------------------
+   4. NAVIGATION
+   ------------------------------------------------------------ */
+nav {
+  position: fixed;
+  top: 3px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(10, 12, 16, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--obsidian-border);
+  padding: 0 var(--space-xl);
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.nav-brand span {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+.nav-classify {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  border: 1px solid var(--amber);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--amber-bg);
+}
+
+/* ------------------------------------------------------------
+   5. HERO BLOCK
+   ------------------------------------------------------------ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 140px var(--space-xl) var(--space-3xl);
+  overflow: hidden;
+  background: radial-gradient(ellipse at 20% 60%, rgba(200, 169, 110, 0.05) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(41, 128, 185, 0.04) 0%, transparent 50%),
+              var(--obsidian);
+}
+
+/* Animated background grid */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(200, 169, 110, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 169, 110, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridDrift 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes gridDrift {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(40px, 40px); }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .section-title {
+    font-size: 1.15rem;
+  }
+}
+
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, rgba(0,0,0,0.12) 0px, transparent 1px, transparent 3px);
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.28;
+}
+.rec-block.immediate::before { border-color: var(--red); background: var(--red-bg); }
+.rec-block.near-term::before { border-color: var(--amber); background: var(--amber-bg); }
+.rec-block.medium-term::before { border-color: var(--green); background: var(--green-bg); }
+.hero-seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 118px;
+  height: 118px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-dim);
+  background: radial-gradient(circle at 30% 30%, var(--gold-glow), transparent 65%), var(--obsidian-card);
+  box-shadow: 0 0 0 8px rgba(200,169,110,0.03);
+  margin-bottom: var(--space-xl);
+  font-family: var(--font-mono);
+  color: var(--gold-light);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-running-head {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--obsidian-border);
+  padding-bottom: var(--space-sm);
+}
+
+.hero-container {
+  display: flex;          /* Enables side-by-side layout */
+  align-items: center;    /* Vertically centers the image with the text */
+  gap: 30px;              /* Creates space between the image and the text */
+  margin: 20px 0;
+}
+
+.hero-image {
+  max-width: 200px;       /* Adjust this size to fit your design */
+  height: auto;           /* Maintains aspect ratio */
+  border-radius: 8px;     /* Optional: rounds the corners of your image */
+}
+
+.hero-text {
+  flex: 1;                /* Allows text to take up remaining space */
+}
+
+/* Optional: Mobile Responsiveness */
+@media (max-width: 600px) {
+  .hero-container {
+    flex-direction: column; /* Stacks image on top of text on small screens */
+    text-align: center;
+  }
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 .title-gold {
+  color: var(--gold); 
+  display: block;      /* Ensures it starts on a new line */
+  margin-top: 0.5rem;  /* Optional: adds a small gap between lines */
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+  max-width: 720px;
+  line-height: 1.6;
+}
+
+/* Hero Metadata Row */
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  align-items: center;
+}
+
+.meta-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.meta-cell .label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.meta-cell .value {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+}
+
+.meta-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--obsidian-border);
+  align-self: center;
+}
+
+/* Threat Badge */
+.threat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.threat-badge.critical  { color: var(--red-light);   border-color: var(--red);   background: var(--red-bg);   }
+.threat-badge.high      { color: var(--amber-light);  border-color: var(--amber); background: var(--amber-bg); }
+.threat-badge.elevated  { color: var(--yellow);       border-color: var(--yellow);background: var(--yellow-bg);}
+.threat-badge.moderate  { color: var(--blue-light);   border-color: var(--blue);  background: var(--blue-bg);  }
+.threat-badge.low       { color: var(--green-light);  border-color: var(--green); background: var(--green-bg); }
+
+.threat-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+
+/* Analytic Scope Boundary */
+.scope-boundary {
+  border-left: 3px solid var(--slate);
+  padding: var(--space-sm) var(--space-lg);
+  background: rgba(93, 122, 154, 0.08);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin-top: var(--space-lg);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--slate-light);
+  line-height: 1.6;
+}
+
+/* Key Metrics Strip */
+.metrics-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--obsidian-border);
+}
+
+.metric-block {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-top: 2px solid var(--gold-dim);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  min-width: 140px;
+}
+
+.metric-block .metric-value {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.metric-block .metric-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ------------------------------------------------------------
+   6. MAIN CONTENT WRAPPER
+   ------------------------------------------------------------ */
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--space-3xl) var(--space-xl);
+}
+
+/* ------------------------------------------------------------
+   7. SECTION WRAPPER & SCROLL REVEAL
+   ------------------------------------------------------------ */
+.section {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  margin-bottom: var(--space-3xl);
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section Header */
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--obsidian-border);
+}
+
+.section-num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  background: var(--gold-glow);
+  border: 1px solid var(--gold-muted);
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+/* Sub-section divider */
+.sub-section {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+}
+
+.sub-section::before {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-muted), transparent);
+  margin-bottom: var(--space-lg);
+}
+
+.sub-section h3 {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-md);
+}
+
+/* ------------------------------------------------------------
+   8. BLUF - Bottom Line Up Front
+   ------------------------------------------------------------ */
+.bluf-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.bluf-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-left: 3px solid var(--gold-dim);
+  border-radius: var(--radius-md);
+}
+
+.bluf-index {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--gold-pale);
+  opacity: 0.4;
+  line-height: 1;
+  padding-top: 4px;
+}
+
+.bluf-text .bluf-claim {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 0.98rem;
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.bluf-text p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------
+   9. SNAPSHOT GRID - Who / What / Where / When / Why / How
+   ------------------------------------------------------------ */
+.snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.snapshot-cell {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.snapshot-cell .snap-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: var(--space-sm);
+  display: block;
+}
+
+.snapshot-cell .snap-content {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------------------
+   10. KEY JUDGMENTS
+   ------------------------------------------------------------ */
+.kj-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.kj-item {
+  padding: var(--space-lg);
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  border-left: 4px solid;
+  position: relative;
+}
+
+.kj-item.high     { border-left-color: var(--red);   }
+.kj-item.moderate { border-left-color: var(--amber);  }
+.kj-item.low      { border-left-color: var(--blue);   }
+.kj-item.watch    { border-left-color: var(--yellow);  }
+
+.kj-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.kj-id {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.kj-conf {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.kj-item.high     .kj-conf { color: var(--red-light);   border-color: var(--red);   background: var(--red-bg);   }
+.kj-item.moderate .kj-conf { color: var(--amber-light);  border-color: var(--amber); background: var(--amber-bg); }
+.kj-item.low      .kj-conf { color: var(--blue-light);   border-color: var(--blue);  background: var(--blue-bg);  }
+.kj-item.watch    .kj-conf { color: var(--yellow);        border-color: var(--yellow);background: var(--yellow-bg);}
+
+.kj-text {
+  font-size: 0.93rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: var(--space-sm);
+}
+
+.kj-mapping {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+/* ------------------------------------------------------------
+   11. EVIDENCE GRID - Know / Assess / Gap
+   ------------------------------------------------------------ */
+.evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.evidence-box {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.evidence-box-header {
+  padding: var(--space-sm) var(--space-lg);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.evidence-box-header.know   { background: var(--green-bg);  color: var(--green-light);  border-bottom: 1px solid var(--green);  }
+.evidence-box-header.assess { background: var(--amber-bg);  color: var(--amber-light);  border-bottom: 1px solid var(--amber);  }
+.evidence-box-header.gap    { background: var(--red-bg);    color: var(--red-light);    border-bottom: 1px solid var(--red);    }
+
+.evidence-box-body {
+  padding: var(--space-lg);
+}
+
+.evidence-box-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+.evidence-box-body li {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid var(--obsidian-border);
+  padding-left: var(--space-md);
+  position: relative;
+}
+
+.evidence-box-body li::before {
+  content: '//';
+  position: absolute;
+  left: 0;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+
+.evidence-box-body li:last-child {
+  border-bottom: none;
+}
+
+/* WSI Source Independence Note */
+.wsi-note {
+  background: rgba(93, 122, 154, 0.1);
+  border: 1px solid rgba(93, 122, 154, 0.3);
+  border-left: 3px solid var(--slate);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  font-size: 0.83rem;
+  color: var(--slate-light);
+  font-style: italic;
+  margin-top: var(--space-lg);
+}
+
+.wsi-note strong {
+  color: var(--slate-light);
+  font-style: normal;
+}
+
+/* ------------------------------------------------------------
+   12. TABLES - Assumption, ACH, IW, KIQ, Risk, PIGs
+   ------------------------------------------------------------ */
+.table-wrapper {
+  overflow-x: auto;
+  margin-bottom: var(--space-lg);
+  border-radius: var(--radius-md);
+  border: var(--border-default);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.87rem;
+}
+
+thead th {
+  background: var(--obsidian-surface);
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  border-bottom: 1px solid var(--obsidian-border);
+  white-space: nowrap;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--obsidian-border);
+  transition: background var(--transition-fast);
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: var(--obsidian-lift);
+}
+
+tbody td {
+  padding: var(--space-sm) var(--space-md);
+  color: var(--text-secondary);
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+tbody td:first-child {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Assumption Table */
+.assumption-table { }
+
+/* ACH Table */
+.ach-table,
+.iw-table {
+  table-layout: fixed;
+}
+
+.ach-table th:nth-child(1),
+.ach-table td:nth-child(1) {
+  width: 18%;
+  white-space: normal;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+.ach-table th:nth-child(2),
+.ach-table td:nth-child(2) { width: 28%; }
+
+.ach-table th:nth-child(3),
+.ach-table td:nth-child(3) { width: 28%; }
+
+.ach-table thead th:nth-child(4),
+.ach-table tbody td:nth-child(4) {
+  width: 10%;
+  text-align: center;
+}
+
+.ach-table tbody td:nth-child(4) { font-family: var(--font-mono); }
+
+.ach-table th:nth-child(5),
+.ach-table td:nth-child(5) { width: 16%; }
+
+/* IW Table - Indicators & Warnings */
+.iw-table th:nth-child(1),
+.iw-table td:nth-child(1) {
+  width: 22%;
+  white-space: normal;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+.iw-table th:nth-child(2),
+.iw-table td:nth-child(2) {
+  width: 10%;
+  text-align: center;
+  font-family: var(--font-mono);
+}
+
+.iw-table th:nth-child(3),
+.iw-table td:nth-child(3) { width: 26%; }
+
+.iw-table th:nth-child(4),
+.iw-table td:nth-child(4) { width: 28%; }
+
+.iw-table th:nth-child(5),
+.iw-table td:nth-child(5) {
+  width: 14%;
+  text-align: center;
+  font-family: var(--font-mono);
+}
+
+/* Risk Matrix - high-score rows */
+.risk-matrix tbody tr.risk-high {
+  background: var(--red-bg);
+}
+
+.risk-matrix tbody tr.risk-high td {
+  color: var(--text-primary);
+}
+
+.risk-score {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.risk-score.score-high   { color: var(--red-light);   }
+.risk-score.score-medium { color: var(--amber-light);  }
+.risk-score.score-low    { color: var(--green-light);  }
+
+/* KIQ Table */
+.kiq-table { }
+
+/* Priority Intelligence Gaps Table */
+.pig-table { }
+
+/* KPI Table (optional - fragility reports) */
+.kpi-table { }
+
+.pillar-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--obsidian-border);
+  color: var(--text-muted);
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+
+/* ------------------------------------------------------------
+   13. SCENARIO CARDS
+   ------------------------------------------------------------ */
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.scenario-card {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-top: 3px solid;
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.scenario-card.best  { border-top-color: var(--green);  }
+.scenario-card.base  { border-top-color: var(--amber);  }
+.scenario-card.worst { border-top-color: var(--red);    }
+
+.scenario-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  display: block;
+}
+
+.scenario-card.best  .scenario-label { color: var(--green-light);  }
+.scenario-card.base  .scenario-label { color: var(--amber-light);  }
+.scenario-card.worst .scenario-label { color: var(--red-light);    }
+
+.scenario-card h4 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.scenario-card p {
+  font-size: 0.87rem;
+}
+
+.scenario-prob {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: var(--space-sm);
+  display: block;
+  letter-spacing: 0.06em;
+}
+
+/* ------------------------------------------------------------
+   14. BEHAVIORAL GRID
+   ------------------------------------------------------------ */
+.behavioral-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.behavioral-item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+}
+
+.behavioral-rank {
+  font-family: var(--font-mono);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--gold-pale);
+  opacity: 0.25;
+  line-height: 1;
+  text-align: center;
+  padding-top: 4px;
+}
+
+.behavioral-content h4 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.behavioral-content p {
+  font-size: 0.88rem;
+  margin-bottom: var(--space-xs);
+}
+
+.behavioral-inference {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--slate-light);
+  font-style: italic;
+  letter-spacing: 0.02em;
+  display: block;
+}
+
+/* ------------------------------------------------------------
+   15. RECOMMENDATION TIMELINE
+   ------------------------------------------------------------ */
+.rec-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-left: 2px solid var(--obsidian-border);
+  margin-left: var(--space-md);
+  padding-left: var(--space-xl);
+}
+
+.rec-block {
+  position: relative;
+  margin-bottom: var(--space-xl);
+}
+
+.rec-block::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * var(--space-xl) - 1px);
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--obsidian-border);
+  border: 2px solid;
+}
+
+.rec-block.immediate  ::before { border-color: var(--red);   background: var(--red-bg);   }
+.rec-block.near-term  ::before { border-color: var(--amber); background: var(--amber-bg); }
+.rec-block.medium-term::before { border-color: var(--green); background: var(--green-bg); }
+
+.rec-time {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+  margin-bottom: var(--space-md);
+}
+
+.rec-block.immediate   .rec-time { color: var(--red-light);  border: 1px solid var(--red);   background: var(--red-bg);   }
+.rec-block.near-term   .rec-time { color: var(--amber-light);border: 1px solid var(--amber); background: var(--amber-bg); }
+.rec-block.medium-term .rec-time { color: var(--green-light);border: 1px solid var(--green); background: var(--green-bg); }
+
+.rec-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.rec-content p {
+  font-size: 0.9rem;
+}
+
+/* ------------------------------------------------------------
+   16. CONFIDENCE PANEL
+   ------------------------------------------------------------ */
+.conf-panel {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--space-lg);
+}
+
+.conf-header {
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  border-bottom: 1px solid var(--obsidian-border);
+}
+
+.conf-band {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.conf-band.high     { color: var(--green-light);  border-color: var(--green);  background: var(--green-bg);  }
+.conf-band.moderate { color: var(--amber-light);  border-color: var(--amber);  background: var(--amber-bg);  }
+.conf-band.low      { color: var(--red-light);    border-color: var(--red);    background: var(--red-bg);    }
+
+.conf-header-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+.conf-body {
+  padding: var(--space-lg);
+}
+
+.conf-body p {
+  font-size: 0.9rem;
+}
+
+/* Uncertainty / Flip Risk List */
+.uncertainty-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.uncertainty-item {
+  background: var(--red-bg);
+  border: 1px solid var(--red);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+}
+
+.uncertainty-item .u-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red-light);
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.uncertainty-item p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------
+   17. THRESHOLD GRID - Green / Amber / Red Zones
+   ------------------------------------------------------------ */
+.threshold-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.threshold-cell {
+  border-radius: var(--radius-md);
+  border: 1px solid;
+  overflow: hidden;
+}
+
+.threshold-cell.green-zone { border-color: var(--green);  background: var(--green-bg);  }
+.threshold-cell.amber-zone { border-color: var(--amber);  background: var(--amber-bg);  }
+.threshold-cell.red-zone   { border-color: var(--red);    background: var(--red-bg);    }
+
+.threshold-header {
+  padding: var(--space-sm) var(--space-md);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid;
+}
+
+.threshold-cell.green-zone .threshold-header { color: var(--green-light);  border-color: var(--green);  background: rgba(39, 174, 96, 0.18);  }
+.threshold-cell.amber-zone .threshold-header { color: var(--amber-light);  border-color: var(--amber);  background: rgba(212, 130, 10, 0.18);  }
+.threshold-cell.red-zone   .threshold-header { color: var(--red-light);    border-color: var(--red);    background: rgba(192, 57, 43, 0.18);    }
+
+.threshold-body {
+  padding: var(--space-md);
+}
+
+.threshold-body p {
+  font-size: 0.85rem;
+  margin-bottom: var(--space-sm);
+}
+
+.threshold-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+.threshold-body li {
+  font-size: 0.83rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding: 3px 0;
+  padding-left: var(--space-md);
+  position: relative;
+}
+
+.threshold-body li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--text-faint);
+}
+
+/* ------------------------------------------------------------
+   18. STATUS & BAND PILLS (inline)
+   ------------------------------------------------------------ */
+.status-pill {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+.status-pill.red    { color: var(--red-light);   border-color: var(--red);   background: var(--red-bg);    }
+.status-pill.amber  { color: var(--amber-light);  border-color: var(--amber); background: var(--amber-bg);  }
+.status-pill.green  { color: var(--green-light);  border-color: var(--green); background: var(--green-bg);  }
+.status-pill.blue   { color: var(--blue-light);   border-color: var(--blue);  background: var(--blue-bg);   }
+.status-pill.yellow { color: var(--yellow);        border-color: var(--yellow);background: var(--yellow-bg); }
+.status-pill.gold   { color: var(--gold);          border-color: var(--gold-dim); background: var(--gold-glow); }
+
+/* Band Pills (source register table) */
+.band-pill {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.band-pill.green { color: var(--green-light);  border-color: var(--green);  background: var(--green-bg);  }
+.band-pill.amber { color: var(--amber-light);  border-color: var(--amber);  background: var(--amber-bg);  }
+.band-pill.red   { color: var(--red-light);    border-color: var(--red);    background: var(--red-bg);    }
+
+/* Inline fact/inference labels */
+.label-fact {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--blue-light);
+  border: 1px solid var(--blue);
+  background: var(--blue-bg);
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  margin-right: 6px;
+}
+
+.label-inference {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  border: 1px solid var(--gold-dim);
+  background: var(--gold-glow);
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  margin-right: 6px;
+}
+
+/* Structural constraint labels */
+.label-structural { color: var(--red-light);    }
+.label-political  { color: var(--amber-light);  }
+.label-resource   { color: var(--blue-light);   }
+.label-temporal   { color: var(--green-light);  }
+
+/* Analytic technique declaration block */
+.technique-declaration {
+  background: var(--obsidian-surface);
+  border: var(--border-default);
+  border-left: 3px solid var(--gold-dim);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  margin-bottom: var(--space-xl);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.technique-declaration strong {
+  color: var(--gold-dim);
+  font-style: normal;
+}
+
+/* ------------------------------------------------------------
+   19. FOOTER
+   ------------------------------------------------------------ */
+footer {
+  border-top: 1px solid var(--obsidian-border);
+  padding: var(--space-xl);
+  text-align: center;
+}
+
+.footer-brand {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: var(--space-sm);
+}
+
+.footer-doc-id {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  margin-bottom: var(--space-sm);
+}
+
+.footer-legal {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* ------------------------------------------------------------
+   20. RESPONSIVE BREAKPOINTS
+   ------------------------------------------------------------ */
+@media (max-width: 768px) {
+  nav {
+    padding: 0 var(--space-md);
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    padding: 100px var(--space-md) var(--space-2xl);
+  }
+
+  main {
+    padding: var(--space-2xl) var(--space-md);
+  }
+
+  .snapshot-grid,
+  .evidence-grid,
+  .scenario-grid,
+  .threshold-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bluf-item {
+    grid-template-columns: 28px 1fr;
+    gap: var(--space-md);
+  }
+
+  .behavioral-item {
+    grid-template-columns: 1fr;
+  }
+
+  .behavioral-rank {
+    font-size: 1rem;
+    text-align: left;
+    padding-top: 0;
+    opacity: 0.35;
+  }
+
+  .hero-running-head {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .hero-meta {
+    gap: var(--space-sm);
+  }
+
+  .metrics-strip {
+    gap: var(--space-sm);
+  }
+
+  table {
+    font-size: 0.8rem;
+  }
+
+  thead th,
+  tbody td {
+    padding: var(--space-xs) var(--space-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .section-title {
+    font-size: 1.15rem;
+  }
+}
+
+
+    .hero.no-image { min-height: 78vh; }
+    .hero h1 { max-width: 900px; }
+    .report-note { margin-top: 1rem; max-width: 820px; color: var(--text-secondary); }
+    .bluf-grid, .kj-list, .evidence-grid, .scenario-grid, .behavioral-grid { display: grid; gap: 1rem; }
+    .bluf-item, .kj-item, .evidence-box, .scenario-card, .behavioral-item, .conf-panel, .wsi-note, .rec-block {
+      background: var(--obsidian-card);
+      border: 1px solid var(--obsidian-border);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.1rem;
+      box-shadow: var(--shadow-card);
+    }
+    .bluf-item { display:grid; grid-template-columns: 56px 1fr; gap: 1rem; align-items: start; }
+    .bluf-index {
+      font-family: var(--font-mono); font-weight: 700; color: var(--gold);
+      background: var(--gold-glow); border: 1px solid var(--gold-dim); border-radius: var(--radius-sm);
+      display:flex; align-items:center; justify-content:center; min-height: 52px;
+    }
+    .section p + ul, .section p + ol { margin-top: .6rem; }
+    .section ul, .section ol { margin-left: 1.2rem; color: var(--text-secondary); }
+    .section li { margin-bottom: .45rem; }
+    .kiq-table, .assumption-table, .ach-table, .iw-table, .risk-table, .refs-table, .matrix-table, .gap-table {
+      width:100%; border-collapse: collapse; background: var(--obsidian-card); border:1px solid var(--obsidian-border);
+      border-radius: var(--radius-md); overflow:hidden; box-shadow: var(--shadow-card); font-size: .92rem;
+    }
+    .kiq-table th, .assumption-table th, .ach-table th, .iw-table th, .risk-table th, .refs-table th, .matrix-table th, .gap-table th,
+    .kiq-table td, .assumption-table td, .ach-table td, .iw-table td, .risk-table td, .refs-table td, .matrix-table td, .gap-table td {
+      padding: .82rem .85rem; border-bottom:1px solid var(--obsidian-border); vertical-align: top;
+    }
+    .kiq-table th, .assumption-table th, .ach-table th, .iw-table th, .risk-table th, .refs-table th, .matrix-table th, .gap-table th {
+      background: var(--obsidian-surface); color: var(--gold-light); font-family: var(--font-mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
+    }
+    .kiq-table tr:last-child td, .assumption-table tr:last-child td, .ach-table tr:last-child td, .iw-table tr:last-child td,
+    .risk-table tr:last-child td, .refs-table tr:last-child td, .matrix-table tr:last-child td, .gap-table tr:last-child td { border-bottom:none; }
+    .kj-item.high { border-left: 4px solid var(--green); }
+    .kj-item.moderate { border-left: 4px solid var(--amber); }
+    .kj-item.watch { border-left: 4px solid var(--red); }
+    .kj-meta, .mini-label { font-family: var(--font-mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); }
+    .evidence-grid { grid-template-columns: repeat(3, 1fr); }
+    .evidence-box-header { font-family: var(--font-mono); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .6rem; }
+    .evidence-box-header.know { color: var(--green-light); }
+    .evidence-box-header.assess { color: var(--amber-light); }
+    .evidence-box-header.gap { color: var(--red-light); }
+    .tech-list { display:flex; flex-wrap:wrap; gap:.5rem; margin:.8rem 0 1rem; }
+    .tech-list span { font-family: var(--font-mono); font-size:.68rem; color:var(--gold-light); border:1px solid var(--gold-dim); background:var(--gold-glow); padding:.28rem .55rem; border-radius:var(--radius-sm); }
+    .scenario-grid { grid-template-columns: repeat(3, 1fr); }
+    .scenario-card.best { border-top: 3px solid var(--green); }
+    .scenario-card.base { border-top: 3px solid var(--amber); }
+    .scenario-card.worst { border-top: 3px solid var(--red); }
+    .behavioral-grid { grid-template-columns: repeat(2, 1fr); }
+    .rec-timeline { display:grid; gap: 1rem; }
+    .rec-block { display:grid; grid-template-columns: 180px 1fr; gap:1rem; }
+    .rec-time { font-family: var(--font-mono); color: var(--gold-light); }
+    .conf-header { font-family: var(--font-display); font-size:1.15rem; margin-bottom:.75rem; }
+    .uncertainty-list { display:grid; gap:.75rem; margin-top:1rem; }
+    .uncertainty-item { background: var(--red-bg); border:1px solid rgba(192,57,43,.35); border-radius: var(--radius-sm); padding:.8rem .9rem; }
+    .band-pill { display:inline-block; padding:.2rem .5rem; border-radius:999px; font-family:var(--font-mono); font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; }
+    .band-pill.green { color: var(--green-light); background: var(--green-bg); border:1px solid var(--green); }
+    .band-pill.amber { color: var(--amber-light); background: var(--amber-bg); border:1px solid var(--amber); }
+    .band-pill.red { color: var(--red-light); background: var(--red-bg); border:1px solid var(--red); }
+    .ref-anchor { scroll-margin-top: 90px; }
+    cite a { color: inherit; }
+    .provenance { margin-top:1rem; font-size:.82rem; color:var(--text-muted); }
+    footer { max-width:1000px; margin:0 auto; padding:0 2rem 3rem; color:var(--text-muted); }
+    @media (max-width: 900px) {
+      .evidence-grid, .scenario-grid, .behavioral-grid { grid-template-columns: 1fr; }
+      .rec-block, .bluf-item { grid-template-columns: 1fr; }
+    }
+  
+    .kj-meta { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.45rem; }
+    .refs-table a { color: var(--gold-light); word-break: break-word; }
+    .refs-table td strong { color: var(--text-primary); }
+    .wsi-summary { display:grid; grid-template-columns: repeat(4, 1fr); gap:1rem; margin-top:1rem; }
+    .wsi-card { background: var(--obsidian-card); border:1px solid var(--obsidian-border); border-radius: var(--radius-md); padding: .9rem 1rem; box-shadow: var(--shadow-card); }
+    .wsi-card .label { font-family: var(--font-mono); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); display:block; margin-bottom:.35rem; }
+    .wsi-card .value { font-family: var(--font-mono); font-size: 1.1rem; color: var(--gold-light); font-weight:700; }
+    .tight-list li { margin-bottom: .35rem; }
+    @media (max-width: 900px) { .wsi-summary { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .wsi-summary { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+  <div id="progress"></div>
+  <nav>
+    <div class="nav-brand">QUANTA ANALYTICA <span>| MNS CONSULTING</span></div>
+    <ul class="nav-links">
+      <li><a href="#s1">BLUF</a></li>
+      <li><a href="#s6">Analysis</a></li>
+      <li><a href="#s10">References</a></li>
+    </ul>
+    <div class="nav-classify">Open Source</div>
+  </nav>
+
+  <header class="hero no-image">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-running-head">
+        <span>QUANTA ANALYTICA | MNS CONSULTING</span>
+        <span>FRAGILITY &amp; GOVERNANCE MODELING // KENYA</span>
+      </div>
+      <div class="hero-container">
+        <img src="https://quanta-analytica.com/logo.PNG" alt="Quanta Analytica Process logo" class="hero-image">
+        <div class="hero-text">
+          <h1>Kenya Dual-Track Recovery:<br><span class="title-gold">K-Shaped Economic Divergence, Legitimacy Pressure, and Enterprise Exposure</span></h1>
+          <p class="hero-subtitle">A QAP multi-domain assessment examining whether Kenya&#39;s current recovery pattern is becoming a combined governance, corporate, and behavioral risk system rather than a broadly shared growth path.</p>
+        </div>
+      </div>
+      <div class="hero-meta">
+        <div class="meta-cell"><span class="label">Domain</span><span class="value">Fragility &amp; Governance Modeling</span></div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell"><span class="label">Supporting Overlays</span><span class="value">Corporate Risk Intelligence | Behavioral Risk Diagnostics</span></div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell"><span class="label">Date</span><span class="value">09 Apr 2026</span></div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell"><span class="label">Confidence</span><span class="value">Moderate</span></div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell"><span class="label">Framework</span><span class="value">QAP™ / Five-Layer Cognition Model</span></div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell"><span class="label">Classification</span><span class="value">Open Source</span></div>
+        <div class="meta-divider"></div>
+        <div class="threat-badge elevated"><span class="threat-dot"></span>Amber Dual-Track Risk</div>
+      </div>
+      <div class="scope-boundary">Time range: 2024 to 09 Apr 2026. Forward horizon: 6 to 12 months. Source limits: open-source material only. Excluded streams: classified reporting, proprietary household microdata, unpublished bank-supervisory data, and party-internal strategy material. Confidence note: moderate, because the macro, governance, survey, and current-reporting streams align on uneven recovery and legitimacy stress, but the exact household distribution of gains remains incomplete.</div>
+      <div class="metrics-strip">
+        <div class="metric-block"><div class="metric-value">4.7%</div><div class="metric-label">2024 GDP Growth <cite><a href="#ref5">[5]</a></cite></div></div>
+        <div class="metric-block"><div class="metric-value">90%</div><div class="metric-label">New Jobs Informal <cite><a href="#ref2">[2]</a></cite></div></div>
+        <div class="metric-block"><div class="metric-value">39.8%</div><div class="metric-label">Poverty Headcount <cite><a href="#ref3">[3]</a></cite></div></div>
+        <div class="metric-block"><div class="metric-value">27.5%</div><div class="metric-label">Nairobi GVA Share <cite><a href="#ref4">[4]</a></cite></div></div>
+        <div class="metric-block"><div class="metric-value">15.6%</div><div class="metric-label">Banking NPLs <cite><a href="#ref5">[5]</a></cite></div></div>
+        <div class="metric-block"><div class="metric-value">47.7</div><div class="metric-label">Mar 2026 PMI <cite><a href="#ref6">[6]</a></cite></div></div>
+      </div>
+      <p class="provenance">Produced under the Quanta Analytica Process™. All claims are traced to open-source evidence or labelled as analyst inference. No fabricated sources, quotes, or data are used.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="s1">
+      <div class="section-header"><span class="section-num">01 // BLUF</span><div class="section-title">Bottom Line Up Front</div></div>
+      <div class="bluf-grid">
+        <div class="bluf-item"><div class="bluf-index">01</div><div><p><strong>[J] Primary judgment:</strong> Kenya currently fits a <strong>partial K-shaped economy</strong>, not a broad-based recovery. Macro stabilization and selected formal sectors remain comparatively resilient, while informal workers, poorer counties, and demand-sensitive households carry more downside exposure. <cite><a href="#ref1">[1]</a></cite><cite><a href="#ref2">[2]</a></cite><cite><a href="#ref3">[3]</a></cite><cite><a href="#ref4">[4]</a></cite><cite><a href="#ref5">[5]</a></cite><cite><a href="#ref6">[6]</a></cite></p></div></div>
+        <div class="bluf-item"><div class="bluf-index">02</div><div><p><strong>[F] Structural split:</strong> Kenya&#39;s macro core is stable enough to support continued growth, but job creation remains heavily informal, poverty is regionally concentrated, and Nairobi captures a disproportionate share of value creation. <cite><a href="#ref2">[2]</a></cite><cite><a href="#ref3">[3]</a></cite><cite><a href="#ref4">[4]</a></cite><cite><a href="#ref5">[5]</a></cite></p></div></div>
+        <div class="bluf-item"><div class="bluf-index">03</div><div><p><strong>[J] Governance signal:</strong> The most consequential near-term risk is not fiscal collapse. It is <strong>legitimacy erosion</strong> as households interpret adjustment burdens, taxation, and corruption through a fairness lens. <cite><a href="#ref1">[1]</a></cite><cite><a href="#ref7">[7]</a></cite><cite><a href="#ref8">[8]</a></cite><cite><a href="#ref9">[9]</a></cite><cite><a href="#ref11">[11]</a></cite><cite><a href="#ref13">[13]</a></cite></p></div></div>
+        <div class="bluf-item"><div class="bluf-index">04</div><div><p><strong>[J] Enterprise implication:</strong> Formal, capital-linked, and urban-centered segments can still benefit from lower rates and policy stability, while MSMEs and low-income consumer sectors remain more exposed to weak demand, policy friction, and episodic unrest. <cite><a href="#ref5">[5]</a></cite><cite><a href="#ref6">[6]</a></cite></p></div></div>
+        <div class="bluf-item"><div class="bluf-index">05</div><div><p><strong>[J] Behavioral driver:</strong> Cost-of-living pressure, tax distrust, and youth frustration are converting economic divergence into a broader anti-system and anti-misgovernance narrative. <cite><a href="#ref7">[7]</a></cite><cite><a href="#ref8">[8]</a></cite><cite><a href="#ref9">[9]</a></cite><cite><a href="#ref10">[10]</a></cite><cite><a href="#ref11">[11]</a></cite><cite><a href="#ref12">[12]</a></cite></p></div></div>
+        <div class="bluf-item"><div class="bluf-index">06</div><div><p><strong>[J] Base case:</strong> Kenya remains an <strong>Amber dual-track system</strong> over the next 6 to 12 months. The main Red trigger would be a new tax, police-abuse, or affordability flashpoint that produces another lethal nationwide protest cycle while private demand remains weak. <cite><a href="#ref5">[5]</a></cite><cite><a href="#ref6">[6]</a></cite><cite><a href="#ref11">[11]</a></cite><cite><a href="#ref12">[12]</a></cite></p></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="s2">
+      <div class="section-header"><span class="section-num">02 // KIQS</span><div class="section-title">Key Intelligence Questions</div></div>
+      <table class="kiq-table">
+        <thead><tr><th>Question ID</th><th>Intelligence Question</th><th>Links To</th></tr></thead>
+        <tbody>
+          <tr><td>KIQ-1</td><td>Which Kenyan groups, sectors, and geographies occupy the upper and lower branches of the current recovery?</td><td>KJ-1, Snapshot, Evidence</td></tr>
+          <tr><td>KIQ-2</td><td>Is Kenya&#39;s divergence still cyclical, or is it hardening into a durable dual-track system?</td><td>KJ-1, ACH, Scenarios</td></tr>
+          <tr><td>KIQ-3</td><td>At what point does fiscal adjustment begin to materially erode institutional legitimacy and political trust?</td><td>KJ-2, Indicators, Annex A</td></tr>
+          <tr><td>KIQ-4</td><td>Which sectors and firms face the highest exposure to weak demand, informality, and policy volatility?</td><td>KJ-3, Risk Matrix, Recommendations</td></tr>
+          <tr><td>KIQ-5</td><td>How are cost-of-living pressure, youth job frustration, and tax distrust shaping protest risk and anti-system narratives?</td><td>KJ-4, Behavioral, Annex B</td></tr>
+          <tr><td>KIQ-6</td><td>Which indicators would show movement from Amber dualism to Red instability?</td><td>Indicators, Confidence, Annex A</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="s3">
+      <div class="section-header"><span class="section-num">03 // SNAPSHOT</span><div class="section-title">Situation Snapshot</div></div>
+      <div class="snapshot-grid">
+        <div class="snapshot-cell"><span class="snap-label">Who</span><div class="snap-content">Kenyan households, youth cohorts, informal workers, MSMEs, fiscal authorities, commercial banks, and core urban business centers, with Nairobi retaining the highest concentration of value creation. <cite><a href="#ref3">[3]</a></cite><cite><a href="#ref4">[4]</a></cite><cite><a href="#ref5">[5]</a></cite><cite><a href="#ref10">[10]</a></cite></div></div>
+        <div class="snapshot-cell"><span class="snap-label">What</span><div class="snap-content">A recovery pattern in which headline macro conditions are stable enough to support growth, but distributional gains remain uneven and politically sensitive. <cite><a href="#ref1">[1]</a></cite><cite><a href="#ref2">[2]</a></cite><cite><a href="#ref5">[5]</a></cite><cite><a href="#ref6">[6]</a></cite><cite><a href="#ref7">[7]</a></cite></div></div>
+        <div class="snapshot-cell"><span class="snap-label">Where</span><div class="snap-content">National, with the sharpest contrast between Nairobi-centered formal value creation and poorer, more informal, or historically excluded counties, especially in ASAL regions. <cite><a href="#ref3">[3]</a></cite><cite><a href="#ref4">[4]</a></cite></div></div>
+        <div class="snapshot-cell"><span class="snap-label">When</span><div class="snap-content">Assessment window covers 2024 through 09 Apr 2026, with focus on the post-finance-bill protest cycle, 2025 fiscal and governance pressure, and March to April 2026 private-sector softness. <cite><a href="#ref5">[5]</a></cite><cite><a href="#ref6">[6]</a></cite><cite><a href="#ref11">[11]</a></cite><cite><a href="#ref12">[12]</a></cite><cite><a href="#ref13">[13]</a></cite></div></div>
+        <div class="snapshot-cell"><span class="snap-label">Why</span><div class="snap-content">High debt service, uneven growth transmission, tax legitimacy gaps, and labor informality are combining to widen the gap between macro resilience and household resilience. <cite><a href="#ref1">[1]</a></cite><cite><a href="#ref2">[2]</a></cite><cite><a href="#ref5">[5]</a></cite><cite><a href="#ref7">[7]</a></cite><cite><a href="#ref9">[9]</a></cite></div></div>
+        <div class="snapshot-cell"><span class="snap-label">How</span><div class="snap-content">Fiscal pressure raises the political cost of adjustment, weak trust magnifies resistance, and repeated protest or demand shocks feed back into enterprise risk, credit quality, and public confidence. <cite><a href="#ref5">[5]</a></cite><cite><a href="#ref6">[6]</a></cite><cite><a href="#ref7">[7]</a></cite><cite><a href="#ref8">[8]</a></cite><cite><a href="#ref11">[11]</a></cite><cite><a href="#ref12">[12]</a></cite></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="s4">
+      <div class="section-header"><span class="section-num">04 // KEY JUDGMENTS</span><div class="section-title">Ranked Key Judgments</div></div>
+      <div class="kj-list">
+        <div class="kj-item high"><div class="kj-meta">Moderate / KJ-1 | KIQ-1 KIQ-2</div><p>Kenya&#39;s current pattern is best assessed as a <strong>partial K-shape</strong>: a resilient macro and urban-formal core coexists with a wider informal, poorer, and more shock-sensitive lower branch. <cite><a href="#ref2">[2]</a></cite><cite><a href="#ref3">[3]</a></cite><cite><a href="#ref4">[4]</a></cite><cite><a href="#ref5">[5]</a></cite><cite><a href="#ref6">[6]</a></cite></p></div>
+        <div class="kj-item high"><div class="kj-meta">Moderate / KJ-2 | KIQ-3</div><p>The main governance risk is <strong>legitimacy decay</strong>. Survey evidence and protest sequencing show that many Kenyans interpret inflation, taxation, and corruption as failures of government fairness and competence rather than as neutral macro adjustments. <cite><a href="#ref7">[7]</a></cite><cite><a href="#ref8">[8]</a></cite><cite><a href="#ref9">[9]</a></cite><cite><a href="#ref11">[11]</a></cite><cite><a href="#ref12">[12]</a></cite><cite><a href="#ref13">[13]</a></cite></p></div>
+        <div class="kj-item moderate"><div class="kj-meta">Moderate / KJ-3 | KIQ-4</div><p>Enterprise exposure is uneven: firms tied to formal credit, urban demand, or capital-intensive sectors remain better positioned than MSMEs and low-income consumer businesses facing soft demand and high operating friction. <cite><a href="#ref5">[5]</a></cite><cite><a href="#ref6">[6]</a></cite></p></div>
+        <div class="kj-item watch"><div class="kj-meta">Moderate / KJ-4 | KIQ-5 KIQ-6</div><p>Youth frustration is acting as a force multiplier. Weak job creation quality, high youth unemployment, and low approval of government job efforts make economic divergence more likely to translate into mobilized grievance. <cite><a href="#ref10">[10]</a></cite><cite><a href="#ref11">[11]</a></cite><cite><a href="#ref12">[12]</a></cite></p></div>
+      </div>
+    </section>
+
+    <section class="section" id="s5">
+      <div class="section-header"><span class="section-num">05 // EVIDENCE</span><div class="section-title">Evidence Summary</div></div>
+      <div class="evidence-grid">
+        <div class="evidence-box"><div class="evidence-box-header know">What we know</div><ul class="tight-list"><li>[F] Kenya&#39;s 2024 GDP growth was 4.7%, and the CBK estimated 2025 growth at 5.0%. <cite><a href="#ref5">[5]</a></cite></li><li>[F] About 90% of new jobs created in 2024 were informal. <cite><a href="#ref2">[2]</a></cite></li><li>[F] National poverty remained high at 39.8% in 2022, with extreme county inequality. <cite><a href="#ref3">[3]</a></cite></li><li>[F] Nairobi accounted for 27.5% of total GVA in the latest county product release. <cite><a href="#ref4">[4]</a></cite></li><li>[F] March 2026 inflation was 4.4%, NPLs 15.6%, and private-sector credit growth 8.1%. <cite><a href="#ref5">[5]</a></cite></li><li>[F] March 2026 PMI fell to 47.7, citing weak consumer spending and tight household budgets. <cite><a href="#ref6">[6]</a></cite></li></ul></div>
+        <div class="evidence-box"><div class="evidence-box-header assess">What we assess</div><ul class="tight-list"><li>[A] Kenya&#39;s main split is <strong>resilience versus precarity</strong>, not growth versus recession. The upper branch is narrower, more formal, and more capital-linked than the lower branch. <cite><a href="#ref2">[2]</a></cite><cite><a href="#ref3">[3]</a></cite><cite><a href="#ref4">[4]</a></cite><cite><a href="#ref5">[5]</a></cite><cite><a href="#ref6">[6]</a></cite></li><li>[A] Fiscal adjustment is now politically costlier than a purely technical macro reading would imply because 2024 and 2025 protest cycles widened the meaning of tax resistance into a broader anti-governance frame. <cite><a href="#ref7">[7]</a></cite><cite><a href="#ref8">[8]</a></cite><cite><a href="#ref11">[11]</a></cite><cite><a href="#ref12">[12]</a></cite><cite><a href="#ref13">[13]</a></cite></li><li>[A] Corporate exposure is being shaped less by immediate macro collapse than by weak household demand, high informality, and renewed event risk around protests or policing. <cite><a href="#ref5">[5]</a></cite><cite><a href="#ref6">[6]</a></cite><cite><a href="#ref11">[11]</a></cite><cite><a href="#ref12">[12]</a></cite></li></ul></div>
+        <div class="evidence-box"><div class="evidence-box-header gap">What we do not know</div><ul class="tight-list"><li>[U] We do not yet have an updated household-decile map showing which groups captured the largest gains during 2025.</li><li>[U] We do not know how quickly lower lending rates will translate into durable formal job growth outside the informal economy.</li><li>[U] We do not yet know whether a future reform or financing package will improve credibility or deepen perceptions of elite-insulated adjustment. <cite><a href="#ref1">[1]</a></cite><cite><a href="#ref13">[13]</a></cite></li></ul></div>
+      </div>
+      <div class="sub-section"><h3>Key Drivers</h3><ul><li><strong>[FACT]</strong> High debt-service pressure and weak revenue growth constrain fiscal room. <cite><a href="#ref1">[1]</a></cite></li><li><strong>[FACT]</strong> Job creation quality remains weak because new employment is overwhelmingly informal. <cite><a href="#ref2">[2]</a></cite></li><li><strong>[FACT]</strong> Institutional trust is low in the presidency, Parliament, the police, and the electoral commission. <cite><a href="#ref8">[8]</a></cite></li><li><strong>[INFERENCE]</strong> The interaction of soft demand, informality, and distrust makes economic pain more politically salient than headline growth suggests. <cite><a href="#ref5">[5]</a></cite><cite><a href="#ref6">[6]</a></cite><cite><a href="#ref7">[7]</a></cite><cite><a href="#ref8">[8]</a></cite></li></ul></div>
+      <div class="sub-section"><h3>Binding Constraints</h3><ul><li><strong>Structural:</strong> County inequality, informality, and concentration of value creation in Nairobi limit broad-based transmission. <cite><a href="#ref3">[3]</a></cite><cite><a href="#ref4">[4]</a></cite></li><li><strong>Political:</strong> Tax legitimacy is weak, and protest memory makes new burden-sharing measures highly sensitive. <cite><a href="#ref9">[9]</a></cite><cite><a href="#ref11">[11]</a></cite><cite><a href="#ref12">[12]</a></cite></li><li><strong>Resource-based:</strong> Interest payments absorb a large share of tax revenue, shrinking fiscal flexibility. <cite><a href="#ref1">[1]</a></cite></li><li><strong>Temporal:</strong> Soft demand is already visible in current PMI data, reducing the time available for a politically smooth adjustment. <cite><a href="#ref6">[6]</a></cite></li></ul></div>
+      <div class="wsi-note" style="margin-top:1rem;"><strong>WSI Source Independence Note:</strong> This assessment draws on six independent corroboration streams: official Kenyan statistics, the central bank, World Bank diagnostics, IMF governance material, Afrobarometer surveys, and Reuters event reporting. No load-bearing judgment relies on social media, AI-generated articles, or a single anonymous-source report. The Reuters items are used for event confirmation and real-time business conditions, not as stand-alone proof for structural judgments.</div>
+    </section>
+
+    <section class="section" id="s6">
+      <div class="section-header"><span class="section-num">06 // ANALYSIS</span><div class="section-title">Structured Analytic Tradecraft</div></div>
+      <div class="tech-list"><span>ACH</span><span>Key Assumptions Check</span><span>Five-Layer Strategic Cognition</span><span>Indicators &amp; Warnings</span><span>Scenario Modeling</span><span>Risk Matrix</span></div>
+
+      <h3 style="margin:1rem 0 .75rem; font-family:var(--font-display);">Five-Layer Strategic Cognition Map</h3>
+      <table class="assumption-table">
+        <thead><tr><th>Layer</th><th>Assessment</th></tr></thead>
+        <tbody>
+          <tr><td>L1 Foundations</td><td>Kenya combines positive headline growth, contained inflation, and adequate reserves with high poverty, county inequality, and labor informality. The upper branch is anchored in formal finance, Nairobi-centered output, and better-capitalized actors. The lower branch is broader and more exposed to price, wage, and demand shocks. <cite><a href="#ref2">[2]</a></cite><cite><a href="#ref3">[3]</a></cite><cite><a href="#ref4">[4]</a></cite><cite><a href="#ref5">[5]</a></cite></td></tr>
+          <tr><td>L2 Mechanisms</td><td>Debt-service pressure, weak revenue growth, and politically costly taxation constrain redistribution and public confidence. Informality converts job growth into low-security incomes, while uneven credit transmission and soft demand limit how widely macro improvement is felt. <cite><a href="#ref1">[1]</a></cite><cite><a href="#ref2">[2]</a></cite><cite><a href="#ref5">[5]</a></cite><cite><a href="#ref6">[6]</a></cite></td></tr>
+          <tr><td>L3 Dynamics</td><td>Reinforcing loops are visible: adjustment stress raises distrust; distrust raises protest risk; protest or event risk weakens demand and investment confidence; weak demand then falls hardest on lower-branch households and firms, worsening perceived unfairness. <cite><a href="#ref5">[5]</a></cite><cite><a href="#ref6">[6]</a></cite><cite><a href="#ref7">[7]</a></cite><cite><a href="#ref8">[8]</a></cite><cite><a href="#ref11">[11]</a></cite><cite><a href="#ref12">[12]</a></cite></td></tr>
+          <tr><td>L4 Leverage</td><td>Highest-return leverage lies in targeted fairness signals: visible anti-corruption action, predictable tax administration, MSME formalization incentives, arrears management, and youth employment pathways that can be credibly demonstrated rather than rhetorically promised. <cite><a href="#ref1">[1]</a></cite><cite><a href="#ref2">[2]</a></cite><cite><a href="#ref9">[9]</a></cite><cite><a href="#ref10">[10]</a></cite><cite><a href="#ref13">[13]</a></cite></td></tr>
+          <tr><td>L5 Paradigms</td><td>The deepest risk is a narrative shift from “temporary hardship inside a growing economy” to “a system that protects insiders while ordinary people absorb adjustment.” Once that paradigm hardens, even economically rational reform faces higher resistance. <cite><a href="#ref7">[7]</a></cite><cite><a href="#ref8">[8]</a></cite><cite><a href="#ref9">[9]</a></cite><cite><a href="#ref11">[11]</a></cite><cite><a href="#ref12">[12]</a></cite></td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin:1.2rem 0 .75rem; font-family:var(--font-display);">Key Assumptions Check</h3>
+      <table class="assumption-table">
+        <thead><tr><th>ID</th><th>Assumption</th><th>Why It Matters</th><th>Risk if Wrong</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>A-1</td><td>Macro stabilization remains politically usable.</td><td>If true, Kenya can remain an Amber dual-track system rather than escalate toward Red instability.</td><td>Further adjustment could trigger a faster legitimacy crisis than macro indicators imply.</td><td>Active</td></tr>
+          <tr><td>A-2</td><td>Lower lending rates will gradually widen credit transmission.</td><td>This underpins the corporate-risk view that some stress may ease without a systemic downturn.</td><td>Credit recovery may remain narrow and fail to improve job quality or household resilience.</td><td>Partly supported <cite><a href="#ref5">[5]</a></cite><cite><a href="#ref6">[6]</a></cite></td></tr>
+          <tr><td>A-3</td><td>Youth grievance is mobilized but not yet organizationally consolidated into a durable anti-system coalition.</td><td>This shapes whether unrest stays episodic or becomes strategic and sustained.</td><td>Organized protest capacity could deepen faster than current polling or event data show.</td><td>Active <cite><a href="#ref10">[10]</a></cite><cite><a href="#ref11">[11]</a></cite><cite><a href="#ref12">[12]</a></cite></td></tr>
+          <tr><td>A-4</td><td>Tax-legitimacy weakness predates the 2024 crisis and was not created by it.</td><td>This matters because it suggests deeper structural distrust rather than a temporary policy misfire.</td><td>If tax resistance proves mostly event-specific, the lower branch may be more politically manageable than assessed.</td><td>Supported as baseline <cite><a href="#ref9">[9]</a></cite></td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin:1.2rem 0 .75rem; font-family:var(--font-display);">Competing Hypotheses Analysis</h3>
+      <table class="ach-table">
+        <thead><tr><th>Hypothesis</th><th>Evidence For</th><th>Evidence Against</th><th>Diagnosticity</th><th><br>--Verdict--</th></tr></thead>
+        <tbody>
+          <tr><td>H1: Kenya is in a broadly inclusive recovery with only temporary political noise.</td><td>Contained inflation, stable reserves, lower rates, and continued growth support resilience. <cite><a href="#ref5">[5]</a></cite></td><td>Informal job dominance, high poverty, weak trust, and recurrent protest show the pain is not broadly shared. <cite><a href="#ref2">[2]</a></cite><cite><a href="#ref3">[3]</a></cite><cite><a href="#ref7">[7]</a></cite><cite><a href="#ref8">[8]</a></cite><cite><a href="#ref11">[11]</a></cite><cite><a href="#ref12">[12]</a></cite></td><td>High</td><td>Rejected</td></tr>
+          <tr><td>H2: Kenya is a dual-track economy with manageable but rising governance and enterprise risk.</td><td>Best fits the combined macro, distributional, survey, and event record. The economy is still growing, but gains and resilience are uneven. <cite><a href="#ref1">[1]</a></cite><cite><a href="#ref2">[2]</a></cite><cite><a href="#ref3">[3]</a></cite><cite><a href="#ref4">[4]</a></cite><cite><a href="#ref5">[5]</a></cite><cite><a href="#ref6">[6]</a></cite><cite><a href="#ref7">[7]</a></cite><cite><a href="#ref8">[8]</a></cite></td><td>If credit transmission broadens quickly and protest triggers cool, the divergence may narrow faster than expected.</td><td>High</td><td>Best-supported</td></tr>
+          <tr><td>H3: Kenya is moving rapidly toward systemic instability driven by economic divergence.</td><td>Lethal protest episodes and distrust in institutions show real escalation risk. <cite><a href="#ref8">[8]</a></cite><cite><a href="#ref11">[11]</a></cite><cite><a href="#ref12">[12]</a></cite></td><td>Macro buffers still hold, and no evidence yet shows generalized institutional breakdown or financing collapse. <cite><a href="#ref1">[1]</a></cite><cite><a href="#ref5">[5]</a></cite><cite><a href="#ref13">[13]</a></cite></td><td>Medium</td><td>Plausible downside, not base case</td></tr>
+          <tr><td>H4: Kenya&#39;s main problem is corporate and consumer softness, not governance fragility.</td><td>PMI contraction, low demand, and high NPLs are concrete near-term business risks. <cite><a href="#ref5">[5]</a></cite><cite><a href="#ref6">[6]</a></cite></td><td>Survey and protest evidence show households are interpreting economic strain as a governance and fairness issue, not as a neutral market cycle. <cite><a href="#ref7">[7]</a></cite><cite><a href="#ref8">[8]</a></cite><cite><a href="#ref9">[9]</a></cite><cite><a href="#ref10">[10]</a></cite><cite><a href="#ref11">[11]</a></cite><cite><a href="#ref12">[12]</a></cite></td><td>High</td><td>Incomplete on its own</td></tr>
+        </tbody>
+      </table>
+      <p class="report-note"><strong>ACH synthesis:</strong> H2 is the best fit. Kenya is not best described as a crisis economy, but it is also not accurately described as a broadly inclusive recovery. The most decision-useful shorthand is an Amber dual-track system in which macro stabilization coexists with uneven distribution, legitimacy strain, and selective enterprise vulnerability. <cite><a href="#ref1">[1]</a></cite><cite><a href="#ref5">[5]</a></cite><cite><a href="#ref7">[7]</a></cite><cite><a href="#ref8">[8]</a></cite></p>
+
+      <h3 style="margin:1.2rem 0 .75rem; font-family:var(--font-display);">Indicators &amp; Warnings</h3>
+      <table class="iw-table">
+        <thead><tr><th>Indicator</th><th>Direction</th><th>Current Status</th><th>Threshold</th><th>Cadence</th></tr></thead>
+        <tbody>
+          <tr><td>Stanbic PMI</td><td>Down</td><td>Contraction at 47.7 in Mar 2026</td><td>Below 48 for 2 consecutive months</td><td>Monthly</td></tr>
+          <tr><td>Private-sector credit growth</td><td>Up, but fragile</td><td>8.1% in Mar 2026</td><td>Falls below 3% year-on-year</td><td>Monthly</td></tr>
+          <tr><td>NPL ratio</td><td>High</td><td>15.6% in Mar 2026</td><td>Rises above 16.5% while demand stays weak</td><td>Monthly to quarterly</td></tr>
+          <tr><td>Nationwide protest mobilization</td><td>Latent</td><td>Capable of reactivation on tax or policing issues</td><td>Multi-county sustained mobilization with lethal policing</td><td>Event-driven</td></tr>
+          <tr><td>Institutional trust</td><td>Down</td><td>Below 50% for core state and political bodies</td><td>Further sharp decline in trust in presidency, Parliament, or police</td><td>Quarterly to semiannual</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin:1.2rem 0 .75rem; font-family:var(--font-display);">Scenario Set</h3>
+      <div class="scenario-grid">
+        <div class="scenario-card best"><div class="mini-label">Best / Narrowing Dualism</div><p>Lower rates, better policy sequencing, and visible accountability measures broaden confidence enough to ease household and MSME stress without another major protest cycle. <cite><a href="#ref5">[5]</a></cite><cite><a href="#ref13">[13]</a></cite></p></div>
+        <div class="scenario-card base"><div class="mini-label">Base / Amber Dual-Track Continuity</div><p>Growth continues, but gains remain uneven. Demand stays soft, trust stays weak, and protest risk remains episodic but politically meaningful. <cite><a href="#ref1">[1]</a></cite><cite><a href="#ref5">[5]</a></cite><cite><a href="#ref6">[6]</a></cite><cite><a href="#ref7">[7]</a></cite><cite><a href="#ref8">[8]</a></cite></p></div>
+        <div class="scenario-card worst"><div class="mini-label">Worst / Divergence to Instability Loop</div><p>A new tax, police-abuse, or affordability flashpoint produces lethal protests, damages demand and confidence, and forces harsher, less legitimate policy responses. <cite><a href="#ref6">[6]</a></cite><cite><a href="#ref11">[11]</a></cite><cite><a href="#ref12">[12]</a></cite></p></div>
+      </div>
+    </section>
+
+    <section class="section" id="s7">
+      <div class="section-header"><span class="section-num">07 // BEHAVIORAL</span><div class="section-title">Applied Behavioral Tradecraft</div></div>
+      <p class="report-note"><em>Behavioral analysis is relevant because Kenya&#39;s lower-branch stress is not only material. It is being cognitively translated into judgments about fairness, tax legitimacy, elite insulation, and government failure.</em> <cite><a href="#ref7">[7]</a></cite><cite><a href="#ref8">[8]</a></cite><cite><a href="#ref9">[9]</a></cite><cite><a href="#ref10">[10]</a></cite></p>
+      <div class="behavioral-grid">
+        <div class="behavioral-item"><strong>1. Fairness collapse</strong><p>Many Kenyans blame the government, not external shocks, for the cost of living, increasing the political sensitivity of any additional adjustment. <cite><a href="#ref7">[7]</a></cite></p></div>
+        <div class="behavioral-item"><strong>2. Tax legitimacy gap</strong><p>Pre-crisis survey evidence already showed that many citizens believed ordinary people were overtaxed while economic elites paid too little. <cite><a href="#ref9">[9]</a></cite></p></div>
+        <div class="behavioral-item"><strong>3. Youth status frustration</strong><p>Youth are more likely to be unemployed, more likely to want entrepreneurial escape routes, and sharply dissatisfied with government job-creation performance. <cite><a href="#ref10">[10]</a></cite></p></div>
+        <div class="behavioral-item"><strong>4. Institutional distrust</strong><p>Low trust in the presidency, Parliament, the police, and the electoral commission reduces the buffer that might otherwise absorb painful but necessary reforms. <cite><a href="#ref8">[8]</a></cite></p></div>
+      </div>
+      <p class="report-note"><strong>Influence and narrative vulnerabilities:</strong> “ordinary people pay, insiders benefit”; “growth is real only for the connected”; “taxes are visible, accountability is not”; and “police coercion confirms elite impunity.” These frames do not require central coordination to become operationally consequential. They become stronger when current demand softness or new protest triggers confirm them. <cite><a href="#ref7">[7]</a></cite><cite><a href="#ref8">[8]</a></cite><cite><a href="#ref9">[9]</a></cite><cite><a href="#ref10">[10]</a></cite><cite><a href="#ref11">[11]</a></cite><cite><a href="#ref12">[12]</a></cite></p>
+    </section>
+
+    <section class="section" id="s8">
+      <div class="section-header"><span class="section-num">08 // IMPLICATIONS</span><div class="section-title">Strategic Implications, Risk &amp; Recommendations</div></div>
+      <p><strong>Local:</strong> Kenya&#39;s core policy problem is the widening gap between macro credibility and social legitimacy. The state may still stabilize key indicators while simultaneously losing room to ask households for more adjustment. <cite><a href="#ref1">[1]</a></cite><cite><a href="#ref5">[5]</a></cite><cite><a href="#ref7">[7]</a></cite><cite><a href="#ref8">[8]</a></cite></p>
+      <p><strong>Regional:</strong> As one of East Africa&#39;s principal trade and finance anchors, Kenya&#39;s dual-track pattern matters beyond its borders. Recurrent unrest or sustained weak demand would affect logistics, investor sentiment, and regional commercial confidence. <cite><a href="#ref5">[5]</a></cite><cite><a href="#ref6">[6]</a></cite></p>
+      <p><strong>International and corporate:</strong> External partners and risk teams should treat Kenya neither as a collapse case nor as a fully normalized growth story. The correct frame is selective resilience inside a politically sensitive distributional split. <cite><a href="#ref1">[1]</a></cite><cite><a href="#ref2">[2]</a></cite><cite><a href="#ref5">[5]</a></cite><cite><a href="#ref6">[6]</a></cite><cite><a href="#ref13">[13]</a></cite></p>
+
+      <h3 style="margin:1.2rem 0 .75rem; font-family:var(--font-display);">Risk Matrix</h3>
+      <table class="risk-table risk-matrix">
+        <thead><tr><th>Risk</th><th>Likelihood</th><th>Impact</th><th>Score</th><th>Mitigant</th></tr></thead>
+        <tbody>
+          <tr class="risk-high"><td>Legitimacy erosion around tax, corruption, and policing</td><td>4</td><td>4</td><td><span class="risk-score score-high">16</span></td><td>Visible accountability, predictable tax sequencing, de-escalatory protest management</td></tr>
+          <tr><td>Household demand weakness and consumer strain</td><td>4</td><td>3</td><td><span class="risk-score score-medium">12</span></td><td>Credit pass-through, arrears management, targeted affordability relief</td></tr>
+          <tr><td>MSME and lower-income enterprise stress</td><td>3</td><td>4</td><td><span class="risk-score score-medium">12</span></td><td>Working-capital access, formalization incentives, improved payment discipline</td></tr>
+          <tr class="risk-high"><td>Renewed nationwide protest cycle causing business disruption</td><td>3</td><td>5</td><td><span class="risk-score score-high">15</span></td><td>Trigger monitoring, staff movement contingencies, event-driven security posture</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin:1.2rem 0 .75rem; font-family:var(--font-display);">Recommendations</h3>
+      <div class="rec-timeline">
+        <div class="rec-block immediate"><div class="rec-time">0 to 72h Immediate</div><div class="rec-content"><ul><li>Treat Kenya as an Amber dual-track environment in internal governance and market-risk models.</li><li>Distinguish macro resilience from household resilience in all decision briefs and board summaries.</li><li>Flag tax-policy announcements, police-abuse events, and coordinated youth protest calls as high-sensitivity triggers.</li></ul></div></div>
+        <div class="rec-block near-term"><div class="rec-time">3 to 30 days Near-Term</div><div class="rec-content"><ul><li>Build a live dashboard covering PMI, private-sector credit, NPLs, protest events, trust signals, and county exposure.</li><li>Segment enterprise exposure by customer income band, county concentration, and reliance on informal consumer demand.</li><li>Stress-test whether any new revenue measures are paired with visible anti-corruption and service-delivery signals.</li></ul></div></div>
+        <div class="rec-block medium-term"><div class="rec-time">30 to 180 days Medium-Term</div><div class="rec-content"><ul><li>Reassess whether lower rates are producing formal employment gains rather than only easing balance-sheet stress.</li><li>Track whether governance-diagnostic and reform efforts improve credibility or deepen perceptions of elite-insulated adjustment.</li><li>Pre-position scenario responses for a renewed nationwide protest wave or a prolonged soft-demand cycle.</li></ul></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="s9">
+      <div class="section-header"><span class="section-num">09 // CONFIDENCE</span><div class="section-title">Confidence &amp; Uncertainties</div></div>
+      <div class="conf-panel">
+        <div class="conf-header">Overall Confidence: Moderate</div>
+        <div class="conf-body">
+          <ul>
+            <li>Independent macro, survey, multilateral, and current-reporting sources all point to the same broad pattern: Kenya is growing, but the recovery is uneven and politically sensitive. <cite><a href="#ref1">[1]</a></cite><cite><a href="#ref5">[5]</a></cite><cite><a href="#ref6">[6]</a></cite><cite><a href="#ref7">[7]</a></cite><cite><a href="#ref8">[8]</a></cite></li>
+            <li>The strongest claims rely on multiple source types rather than one indicator family, reducing single-stream bias. <cite><a href="#ref1">[1]</a></cite><cite><a href="#ref3">[3]</a></cite><cite><a href="#ref4">[4]</a></cite><cite><a href="#ref5">[5]</a></cite><cite><a href="#ref7">[7]</a></cite><cite><a href="#ref8">[8]</a></cite><cite><a href="#ref10">[10]</a></cite><cite><a href="#ref13">[13]</a></cite></li>
+            <li>The main uncertainty concerns distributional precision, not whether the dual-track structure exists at all. Household-decile gain capture remains incompletely mapped. <cite><a href="#ref3">[3]</a></cite><cite><a href="#ref5">[5]</a></cite></li>
+          </ul>
+        </div>
+      </div>
+      <div class="uncertainty-list">
+        <div class="uncertainty-item">A sharper-than-expected improvement in credit transmission and formal hiring could narrow the lower branch faster than this assessment assumes.</div>
+        <div class="uncertainty-item">A new tax or police-abuse flashpoint could accelerate legitimacy erosion more quickly than the macro data currently signal.</div>
+        <div class="uncertainty-item">External oil, logistics, or trade shocks could worsen consumer stress and enterprise costs without any domestic policy trigger.</div>
+      </div>
+      <h3 style="margin:1.2rem 0 .75rem; font-family:var(--font-display);">Assumption Failure Drill</h3>
+      <table class="assumption-table">
+        <thead><tr><th>Assumption</th><th>Failure Signal</th><th>Consequence</th></tr></thead>
+        <tbody>
+          <tr><td>Lower rates will broaden the recovery.</td><td>PMI stays below 50, household demand remains weak, and formal job growth does not improve.</td><td>The lower branch remains trapped in precarity and the corporate-risk outlook worsens.</td></tr>
+          <tr><td>Adjustment can still be politically sequenced.</td><td>A new revenue or policing shock produces immediate nationwide mobilization.</td><td>Kenya shifts from Amber dualism toward a Red instability pathway.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    
+<section class="section" id="s10">
+  <div class="section-header"><span class="section-num">10 // REFERENCES</span><div class="section-title">Source Register &amp; WSI Audit</div></div>
+  <table class="refs-table">
+    <thead><tr><th>#</th><th>Source</th><th>Type</th><th>Band</th><th>Independence Note</th><th>URL</th><th>Atomic Claim / Use / Falsifiability</th></tr></thead>
+    <tbody>
+      <tr id="ref1" class="ref-anchor"><td>[1]</td><td>World Bank. (2025, May 27). <em>Despite Improvements, Kenya's Fiscal Path is Fragile Amid High Debt Vulnerabilities and Weak Revenue Growth.</em></td><td>Primary / Multilateral</td><td><span class="band-pill green">Green</span></td><td>Independent multilateral fiscal and macro stream</td><td><a href="https://www.worldbank.org/en/news/press-release/2025/05/27/despite-improvements-afe-kenyas-fiscal-path-is-fragile-amid-high-debt-vulnerabilities-and-weak-revenue-growth" target="_blank" rel="noopener noreferrer">https://www.worldbank.org/en/news/press-release/2025/05/27/despite-improvements-afe-kenyas-fiscal-path-is-fragile-amid-high-debt-vulnerabilities-and-weak-revenue-growth</a></td><td><strong>Use:</strong> Debt remains at high risk of distress, interest payments absorb roughly one-third of tax revenue, and reform sequencing must remain equitable and job supportive. <br><strong>Falsifiability:</strong> A revised debt sustainability analysis or fiscal accounts materially improve the debt-service burden. <br><strong>RAPITIS:</strong> R5 A4 P5 M4 T4 I5 S4.</td></tr>
+      <tr id="ref2" class="ref-anchor"><td>[2]</td><td>World Bank. (2025, November 24). <em>Kenya Can Create More Jobs and Enhance Productivity by Adopting Procompetitive Reforms.</em></td><td>High-quality secondary</td><td><span class="band-pill green">Green</span></td><td>Independent World Bank synthesis using official labor data</td><td><a href="https://www.worldbank.org/en/news/feature/2025/11/24/kenya-can-create-more-jobs-and-enhance-productivity-by-adopting-procompetitive-reforms" target="_blank" rel="noopener noreferrer">https://www.worldbank.org/en/news/feature/2025/11/24/kenya-can-create-more-jobs-and-enhance-productivity-by-adopting-procompetitive-reforms</a></td><td><strong>Use:</strong> About 90% of the 782,300 new jobs created in 2024 were informal, supporting the lower-branch vulnerability and low-productivity job-quality judgment. <br><strong>Falsifiability:</strong> KNBS revises the job-creation total or informal share materially. <br><strong>RAPITIS:</strong> R5 A4 P5 M4 T3 I5 S4.</td></tr>
+      <tr id="ref3" class="ref-anchor"><td>[3]</td><td>Kenya National Bureau of Statistics. (2024). <em>The Kenya Poverty Report 2022.</em></td><td>Primary / Official statistics</td><td><span class="band-pill green">Green</span></td><td>Independent official household-welfare stream</td><td><a href="https://www.knbs.or.ke/wp-content/uploads/2024/10/The-Kenya-Poverty-Report-2022.pdf" target="_blank" rel="noopener noreferrer">https://www.knbs.or.ke/wp-content/uploads/2024/10/The-Kenya-Poverty-Report-2022.pdf</a></td><td><strong>Use:</strong> National poverty of 39.8% and severe county divergence, including 82.7% in Turkana and 16.5% in Nairobi, support the structural lower-branch assessment. <br><strong>Falsifiability:</strong> A revised official poverty report materially changes the county or national rates. <br><strong>RAPITIS:</strong> R5 A5 P5 M4 T3 I5 S5.</td></tr>
+      <tr id="ref4" class="ref-anchor"><td>[4]</td><td>Kenya National Bureau of Statistics. (2025). <em>Gross County Product 2024.</em></td><td>Primary / Official statistics</td><td><span class="band-pill green">Green</span></td><td>Independent official regional-output stream</td><td><a href="https://www.knbs.or.ke/wp-content/uploads/2025/01/2024-Gross-County-Product.pdf" target="_blank" rel="noopener noreferrer">https://www.knbs.or.ke/wp-content/uploads/2025/01/2024-Gross-County-Product.pdf</a></td><td><strong>Use:</strong> Nairobi's 27.5% share of national GVA anchors the geographic concentration argument within the upper branch. <br><strong>Falsifiability:</strong> A revised KNBS county-product release materially changes Nairobi's share. <br><strong>RAPITIS:</strong> R5 A5 P5 M4 T4 I5 S4.</td></tr>
+      <tr id="ref5" class="ref-anchor"><td>[5]</td><td>Central Bank of Kenya. (2026, April 8). <em>MPC Press Release: Meeting of April 8, 2026.</em></td><td>Primary / Official central bank</td><td><span class="band-pill green">Green</span></td><td>Independent monetary and banking-system stream</td><td><a href="https://www.centralbank.go.ke/uploads/mpc_press_release/357899469_MPC%20Press%20Release%20-%20Meeting%20of%20April%208%202026.pdf" target="_blank" rel="noopener noreferrer">https://www.centralbank.go.ke/uploads/mpc_press_release/357899469_MPC%20Press%20Release%20-%20Meeting%20of%20April%208%202026.pdf</a></td><td><strong>Use:</strong> CBR, inflation, NPLs, private-sector credit growth, and the 2025 real GDP estimate anchor the macro-resilience side of the assessment. <br><strong>Falsifiability:</strong> Subsequent official revisions materially alter inflation, credit, NPL, or growth figures. <br><strong>RAPITIS:</strong> R5 A5 P5 M4 T5 I5 S5.</td></tr>
+      <tr id="ref6" class="ref-anchor"><td>[6]</td><td>Reuters. (2026, April 7). <em>Kenya private sector activity shrinks for first time since August 2025.</em></td><td>Secondary / Wire service</td><td><span class="band-pill amber">Amber</span></td><td>Independent event and market reporting; never used alone for structural judgments</td><td><a href="https://www.reuters.com/world/africa/kenya-private-sector-activity-shrinks-first-time-since-august-2025-2026-04-07/" target="_blank" rel="noopener noreferrer">https://www.reuters.com/world/africa/kenya-private-sector-activity-shrinks-first-time-since-august-2025-2026-04-07/</a></td><td><strong>Use:</strong> The PMI drop to 47.7 adds near-term demand and business-friction texture to the enterprise overlay. <br><strong>Falsifiability:</strong> A corrected PMI series or materially different survey interpretation is published. <br><strong>RAPITIS:</strong> R4 A4 P4 M3 T5 I4 S5.</td></tr>
+      <tr id="ref7" class="ref-anchor"><td>[7]</td><td>Afrobarometer. (2025, January 9). <em>Majority of Kenyans believe country is headed in the wrong direction, cite government's poor handling of the economy.</em></td><td>Primary / Survey</td><td><span class="band-pill green">Green</span></td><td>Independent nationally representative opinion stream</td><td><a href="https://www.afrobarometer.org/wp-content/uploads/2025/01/AD935-Kenyans-blame-govt-economic-management-for-increasing-cost-of-living-Afrobarometer-9jan25.pdf" target="_blank" rel="noopener noreferrer">https://www.afrobarometer.org/wp-content/uploads/2025/01/AD935-Kenyans-blame-govt-economic-management-for-increasing-cost-of-living-Afrobarometer-9jan25.pdf</a></td><td><strong>Use:</strong> Cost-of-living blame, lived poverty, and inequality perceptions support the fairness and legitimacy argument. <br><strong>Falsifiability:</strong> Survey corrections or later national polling materially reverse the findings. <br><strong>RAPITIS:</strong> R5 A4 P5 M4 T4 I5 S5.</td></tr>
+      <tr id="ref8" class="ref-anchor"><td>[8]</td><td>Afrobarometer. (2025, September 26). <em>In Kenya, public trust in institutions and leaders is on a downward slide.</em></td><td>Primary / Survey</td><td><span class="band-pill green">Green</span></td><td>Independent trust and institutional-legitimacy stream</td><td><a href="https://www.afrobarometer.org/wp-content/uploads/2025/09/AD1052-Kenyans-trust-in-institutions-and-leaders-is-on-a-downward-slide-Afrobarometer-25sept25.pdf" target="_blank" rel="noopener noreferrer">https://www.afrobarometer.org/wp-content/uploads/2025/09/AD1052-Kenyans-trust-in-institutions-and-leaders-is-on-a-downward-slide-Afrobarometer-25sept25.pdf</a></td><td><strong>Use:</strong> Trust levels for the presidency, Parliament, and police support the legitimacy-decay judgment. <br><strong>Falsifiability:</strong> A better-designed or newer national sample shows materially higher institutional trust. <br><strong>RAPITIS:</strong> R5 A4 P5 M4 T4 I5 S5.</td></tr>
+      <tr id="ref9" class="ref-anchor"><td>[9]</td><td>Afrobarometer. (2025, June 4). <em>Kenyans' doubts about tax system predate 2024 crisis.</em></td><td>Primary / Survey baseline</td><td><span class="band-pill green">Green</span></td><td>Independent baseline on tax legitimacy; used with date caveat</td><td><a href="https://www.afrobarometer.org/wp-content/uploads/2025/06/AD993-Kenyans-doubts-about-tax-system-predate-2024-crisis-Afrobarometer-4june25.pdf" target="_blank" rel="noopener noreferrer">https://www.afrobarometer.org/wp-content/uploads/2025/06/AD993-Kenyans-doubts-about-tax-system-predate-2024-crisis-Afrobarometer-4june25.pdf</a></td><td><strong>Use:</strong> Pre-2024 attitudes toward tax fairness and KRA trust supply the baseline for reading later anti-tax mobilization. <br><strong>Falsifiability:</strong> Post-2024 survey evidence shows the baseline no longer fits current attitudes or the 2019 sample is deemed non-comparable. <br><strong>RAPITIS:</strong> R5 A3 P5 M4 T2 I5 S5.</td></tr>
+      <tr id="ref10" class="ref-anchor"><td>[10]</td><td>Afrobarometer. (2025, May 23). <em>Most Kenyan youth see government as failing on their top priorities.</em></td><td>Primary / Survey</td><td><span class="band-pill green">Green</span></td><td>Independent youth-focused survey stream</td><td><a href="https://www.afrobarometer.org/wp-content/uploads/2025/05/AD988-Most-Kenyan-youth-see-government-as-failing-on-their-top-priorities-Afrobarometer-23may25.pdf" target="_blank" rel="noopener noreferrer">https://www.afrobarometer.org/wp-content/uploads/2025/05/AD988-Most-Kenyan-youth-see-government-as-failing-on-their-top-priorities-Afrobarometer-23may25.pdf</a></td><td><strong>Use:</strong> Youth unemployment, entrepreneurship preference, and low approval of government job efforts support the force-multiplier judgment. <br><strong>Falsifiability:</strong> Survey revisions or later nationally representative youth polling materially change the distributions. <br><strong>RAPITIS:</strong> R5 A4 P5 M4 T4 I5 S5.</td></tr>
+      <tr id="ref11" class="ref-anchor"><td>[11]</td><td>Reuters. (2024, June 26). <em>Kenya president backs down on tax hikes after deadly unrest.</em></td><td>Secondary / Wire service</td><td><span class="band-pill amber">Amber</span></td><td>Independent event reporting; paired with official and survey sources</td><td><a href="https://www.reuters.com/world/africa/kenyan-protesters-promise-more-rallies-after-deadly-parliament-violence-2024-06-26/" target="_blank" rel="noopener noreferrer">https://www.reuters.com/world/africa/kenyan-protesters-promise-more-rallies-after-deadly-parliament-violence-2024-06-26/</a></td><td><strong>Use:</strong> The withdrawal of planned tax hikes after parliament was stormed shows how quickly fiscal policy can become a legitimacy flashpoint. <br><strong>Falsifiability:</strong> An authoritative event reconstruction materially contradicts the sequence or scale of events. <br><strong>RAPITIS:</strong> R4 A4 P4 M3 T4 I4 S4.</td></tr>
+      <tr id="ref12" class="ref-anchor"><td>[12]</td><td>Reuters. (2025, June 25). <em>Sixteen deaths recorded in Kenya protests, most killed by police.</em></td><td>Secondary / Wire service</td><td><span class="band-pill amber">Amber</span></td><td>Independent event reporting; not used alone for structural judgments</td><td><a href="https://www.reuters.com/world/africa/kenyans-brace-protests-one-year-after-storming-parliament-2025-06-25/" target="_blank" rel="noopener noreferrer">https://www.reuters.com/world/africa/kenyans-brace-protests-one-year-after-storming-parliament-2025-06-25/</a></td><td><strong>Use:</strong> Anniversary protest deaths show that anti-government mobilization remained capable of renewed nationwide disruption. <br><strong>Falsifiability:</strong> An official or independent casualty audit materially changes the event assessment. <br><strong>RAPITIS:</strong> R4 A4 P4 M3 T4 I4 S4.</td></tr>
+      <tr id="ref13" class="ref-anchor"><td>[13]</td><td>International Monetary Fund. (2025, July 1). <em>IMF Staff Completes Governance Diagnostic Mission to Kenya.</em></td><td>Primary / Multilateral</td><td><span class="band-pill green">Green</span></td><td>Independent governance-diagnostic stream</td><td><a href="https://www.imf.org/en/news/articles/2025/07/02/pr25233-kenya-imf-staff-completes-governance-diagnostic-mission-to-kenya" target="_blank" rel="noopener noreferrer">https://www.imf.org/en/news/articles/2025/07/02/pr25233-kenya-imf-staff-completes-governance-diagnostic-mission-to-kenya</a></td><td><strong>Use:</strong> The governance diagnostic request supports the governance-risk framing and points to acknowledged macro-critical governance weaknesses. <br><strong>Falsifiability:</strong> IMF later narrows or withdraws the diagnostic rationale, or the final report contradicts the stated purpose. <br><strong>RAPITIS:</strong> R5 A4 P5 M4 T4 I5 S4.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sub-section">
+    <h3>WSI Audit Fields</h3>
+    <table class="gap-table">
+      <thead><tr><th>Ref</th><th>Retrieved</th><th>Author / Org</th><th>Type</th><th>MOM / POP / MOSES / EVE</th><th>What Would Change Our Mind?</th></tr></thead>
+      <tbody>
+        <tr><td>[1]</td><td>09 Apr 2026 ET</td><td>World Bank</td><td>Primary</td><td>MOM: limited institutional framing risk. POP: strong methods reputation. MOSES: low spoof risk on official domain. EVE: corroborates CBK, IMF, and KNBS on fiscal strain.</td><td>A materially improved debt or revenue profile in revised official or multilateral data.</td></tr>
+        <tr><td>[2]</td><td>09 Apr 2026 ET</td><td>World Bank</td><td>Secondary</td><td>MOM: moderate reform-advocacy framing risk. POP: strong. MOSES: low. EVE: corroborates KNBS-based labor-quality concerns rather than replacing them.</td><td>Official labor revisions showing materially stronger formal job creation.</td></tr>
+        <tr><td>[3]-[4]</td><td>09 Apr 2026 ET</td><td>KNBS</td><td>Primary</td><td>MOM: low. POP: official statistics baseline. MOSES: low. EVE: jointly establish poverty and county concentration. Independence note: [3] and [4] are separate KNBS products but one official-statistics pathway.</td><td>Revisions to poverty or county-GVA data that materially narrow regional divergence.</td></tr>
+        <tr><td>[5]</td><td>09 Apr 2026 ET</td><td>CBK</td><td>Primary</td><td>MOM: moderate monetary-policy framing risk. POP: strong. MOSES: low. EVE: corroborates the macro-resilience side of the K-shape.</td><td>Subsequent official revisions showing weaker inflation control, lower credit growth, or worse NPLs.</td></tr>
+        <tr><td>[6]</td><td>09 Apr 2026 ET</td><td>Reuters / S&amp;P Global-Stanbic reporting</td><td>Secondary</td><td>MOM: low to moderate framing risk. POP: strong wire-service track record. MOSES: low. EVE: used only as near-term operating texture with official and survey evidence.</td><td>A corrected PMI series or later business-survey data showing immediate rebound.</td></tr>
+        <tr><td>[7]-[10]</td><td>09 Apr 2026 ET</td><td>Afrobarometer</td><td>Primary</td><td>MOM: low. POP: strong survey continuity. MOSES: low. EVE: distinct legitimacy, fairness, tax, and youth pathways. Independence note: these are related but analytically distinct survey releases.</td><td>Later nationally representative polling materially reversing trust, tax-fairness, or youth-opportunity findings.</td></tr>
+        <tr><td>[11]-[12]</td><td>09 Apr 2026 ET</td><td>Reuters</td><td>Secondary</td><td>MOM: low. POP: strong event-reporting track record. MOSES: moderate if used alone. EVE: event confirmation only, not stand-alone proof for structural judgments.</td><td>Independent event reconstructions materially contradict the timing, scale, or casualty counts.</td></tr>
+        <tr><td>[13]</td><td>09 Apr 2026 ET</td><td>IMF</td><td>Primary</td><td>MOM: moderate program-framing risk. POP: strong. MOSES: low. EVE: corroborates governance as a macro-critical issue rather than a purely political narrative.</td><td>Final IMF governance outputs substantially downgrade the seriousness or scope of the identified governance vulnerabilities.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub-section">
+    <h3>Judgment Traceability Matrix</h3>
+    <table class="gap-table">
+      <thead><tr><th>Key Judgment</th><th>Mapped KIQs</th><th>Load-Bearing Evidence</th><th>Counter-Evidence / Limiter</th><th>Threshold Owner</th></tr></thead>
+      <tbody>
+        <tr><td>KJ-1: Kenya is a partial K-shape</td><td>KIQ-1, KIQ-2</td><td>[2], [3], [4], [5]</td><td>Macro stability and credit improvement limit any claim of immediate systemic breakdown.</td><td>Lead analyst and country-risk cell</td></tr>
+        <tr><td>KJ-2: Governance risk is legitimacy decay</td><td>KIQ-3</td><td>[7], [8], [9], [11], [12], [13]</td><td>Institutional functionality persists; this constrains escalation language to Amber rather than Red.</td><td>Governance lead and executive sponsor</td></tr>
+        <tr><td>KJ-3: Enterprise exposure is uneven</td><td>KIQ-4</td><td>[5], [6]</td><td>Formal-credit segments and urban cores retain some resilience, limiting claims of uniform business distress.</td><td>Corporate-risk lead and operations owner</td></tr>
+        <tr><td>KJ-4: Youth frustration is a force multiplier</td><td>KIQ-5, KIQ-6</td><td>[10], [11], [12]</td><td>Youth grievance is not yet equivalent to consolidated nationwide organizational capacity.</td><td>Behavioral-risk lead and security focal point</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="wsi-summary">
+    <div class="wsi-card"><span class="label">Sources Used</span><div class="value">13</div></div>
+    <div class="wsi-card"><span class="label">Green Band</span><div class="value">10</div></div>
+    <div class="wsi-card"><span class="label">Amber Band</span><div class="value">3</div></div>
+    <div class="wsi-card"><span class="label">Single-Source Key Judgments</span><div class="value">0</div></div>
+  </div>
+  <p class="report-note"><strong>Band key:</strong> Green = strong source quality with no fatal weakness for stated use. Amber = usable with caveat and never used alone for load-bearing judgments. Red = lead-only or non-evidentiary. <strong>Independence test statement:</strong> Reuters event and PMI items were counted as one reporting stream and not treated as stand-alone corroboration for structural judgments. KNBS, CBK, IMF, World Bank, and Afrobarometer were treated as separate collection pathways. Social media and AI-generated content were excluded from evidentiary use.</p>
+</section>
+
+
+    <section class="section" id="annex-a">
+      <div class="section-header"><span class="section-num">A // EARLY WARNING</span><div class="section-title">Early Warning Indicators</div></div>
+      <table class="gap-table">
+        <thead><tr><th>ID</th><th>Trigger Event</th><th>Scenario Signal</th><th>Leading Indicators</th><th>Analytic Action Required</th></tr></thead>
+        <tbody>
+          <tr><td>EW-1</td><td>New revenue bill or tax-enforcement controversy</td><td>Legitimacy stress accelerating</td><td>Rapid digital mobilization, anti-tax framing, public confusion about burden sharing</td><td>Switch to event-driven governance and exposure review</td></tr>
+          <tr><td>EW-2</td><td>Police-custody death or protest shooting</td><td>Behavioral grievance intensifying</td><td>Cross-county calls for demonstrations, anti-police slogans, business closures</td><td>Escalate staff movement, protest mapping, and reputational monitoring</td></tr>
+          <tr><td>EW-3</td><td>Second consecutive month of PMI contraction below 48</td><td>Lower-branch demand collapse risk</td><td>Reduced orders, lower cash circulation, inventory buildup, household budget stress</td><td>Reweight corporate and consumer-risk assumptions</td></tr>
+          <tr><td>EW-4</td><td>NPL ratio rises while private-sector credit stalls</td><td>Financial stress transmission</td><td>NPLs above 16.5%, credit growth below 3%, rising concern in trade and household loans</td><td>Elevate enterprise-contagion review</td></tr>
+          <tr><td>EW-5</td><td>Further slide in trust in presidency, Parliament, police, or electoral institutions</td><td>Institutional buffer weakening</td><td>National polling shows another step down in already weak confidence</td><td>Move governance risk status from Amber-watch to Amber-action</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="annex-b">
+      <div class="section-header"><span class="section-num">B // INTEL GAPS</span><div class="section-title">Priority Intelligence Gaps &amp; Action Thresholds</div></div>
+      <table class="gap-table">
+        <thead><tr><th>Gap ID</th><th>Intelligence Question</th><th>Why It Matters</th><th>Collection Recommendation</th></tr></thead>
+        <tbody>
+          <tr><td>G-1</td><td>Which household deciles captured the largest gains during 2025?</td><td>This determines how sharp the real K-shape is rather than relying on macro proxies.</td><td>Track updated KNBS household consumption and labor-distribution releases.</td></tr>
+          <tr><td>G-2</td><td>How much of lower-rate transmission is reaching MSMEs and lower-income households?</td><td>Credit improvement may be too narrow to change lower-branch behavior.</td><td>Monitor bank lending segmentation, rejection rates, and effective borrowing costs.</td></tr>
+          <tr><td>G-3</td><td>How quickly can youth mobilization reactivate outside Nairobi?</td><td>This affects event-risk scale and business continuity exposure.</td><td>Map county protest capacity, digital networks, and trigger narratives.</td></tr>
+          <tr><td>G-4</td><td>Will governance-diagnostic reforms alter public perceptions of fairness?</td><td>Technical reform without legitimacy gains may not reduce risk.</td><td>Track reform messaging, public sentiment, and visible enforcement outcomes.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="threshold-grid" style="margin-top:1rem;">
+        <div class="threshold-cell green-zone">
+          <div class="threshold-header">Green // Monitor</div>
+          <div class="threshold-body">
+            <p>Trigger condition: inflation remains within target, credit growth holds, PMI recovers above 50, and no major nationwide protest wave emerges.</p>
+            <ul>
+              <li>Required actions: keep routine monthly monitoring and maintain sector segmentation.</li>
+              <li>Responsible parties: analyst cell, country desk, and enterprise-risk team.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="threshold-cell amber-zone">
+          <div class="threshold-header">Amber // Act Now</div>
+          <div class="threshold-body">
+            <p>Trigger condition: protests recur episodically, PMI remains weak, trust slides further, or NPL stress rises without broader credit relief.</p>
+            <ul>
+              <li>Required actions: shift to weekly trigger monitoring, review staff and supply-chain exposure, and refresh board-level briefings.</li>
+              <li>Responsible parties: country lead, operations manager, security focal point, and executive sponsor.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="threshold-cell red-zone">
+          <div class="threshold-header">Red // Emergency</div>
+          <div class="threshold-body">
+            <p>Trigger condition: lethal nationwide protests re-emerge, fiscal measures provoke sustained unrest, or financing stress coincides with a sharp demand shock.</p>
+            <ul>
+              <li>Required actions: move to event-driven crisis posture, activate movement and business-continuity contingencies, and reassess exposure daily.</li>
+              <li>Responsible parties: executive leadership, crisis-management team, security lead, and legal or compliance oversight.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Prepared by MNS Consulting under the Quanta Analytica Process™ | QAP-FGM-CRI-BRD-KEN-2026-0409
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      const p = h > 0 ? (window.scrollY / h) * 100 : 0;
+      document.getElementById('progress').style.width = p + '%';
+    });
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.section').forEach(s => obs.observe(s));
+  </script>
+</body>
+</html>
