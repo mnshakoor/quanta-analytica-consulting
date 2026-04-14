@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>QA CARVER Assessment</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --obs:#0d0f14;--obs2:#141720;--obs3:#1c2030;--obs4:#242840;
+  --gold:#c9a84c;--gold2:#e6c96e;--gold3:#f5dfa0;
+  --text:#e8e4d8;--text2:#a89e84;--border:#2a2f45;
+  --low:#2d6a4f;--low-bg:#1a3d2e;--low-t:#74c69d;
+  --med:#b5830a;--med-bg:#3d2c0a;--med-t:#ffc14a;
+  --high:#9e3a1a;--high-bg:#3d1a0a;--high-t:#ff8c42;
+  --crit:#7b1111;--crit-bg:#3d0a0a;--crit-t:#ff4444;
+}
+body{background:var(--obs);color:var(--text);font-family:'Barlow',sans-serif;font-size:14px;min-height:100vh}
+h1,h2,h3{font-family:'Cormorant Garamond',serif}
+
+.header{background:var(--obs2);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.header-brand{display:flex;align-items:center;gap:12px}
+.hex{width:36px;height:36px;background:var(--gold);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:var(--obs);text-align:center;line-height:1.1}
+.brand-text h1{font-size:18px;color:var(--gold2);letter-spacing:.05em}
+.brand-text p{font-size:11px;color:var(--text2);letter-spacing:.12em;text-transform:uppercase}
+.header-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.scale-toggle{display:flex;align-items:center;gap:8px;background:var(--obs3);border:1px solid var(--border);border-radius:20px;padding:4px 12px}
+.scale-toggle label{font-size:11px;color:var(--text2);letter-spacing:.06em;text-transform:uppercase}
+.toggle-wrap{display:flex;background:var(--obs4);border-radius:12px;padding:2px}
+.toggle-opt{padding:4px 12px;border-radius:10px;font-size:11px;cursor:pointer;color:var(--text2);transition:.15s;letter-spacing:.04em}
+.toggle-opt.active{background:var(--gold);color:var(--obs);font-weight:600}
+
+.tabs{display:flex;border-bottom:1px solid var(--border);background:var(--obs2);overflow-x:auto}
+.tab{padding:10px 18px;cursor:pointer;font-size:13px;color:var(--text2);border-bottom:2px solid transparent;transition:.2s;letter-spacing:.05em;white-space:nowrap}
+.tab.active{color:var(--gold2);border-bottom-color:var(--gold);background:var(--obs3)}
+.tab:hover:not(.active){color:var(--text);background:var(--obs3)}
+
+.main{padding:20px 24px}
+.page-section{display:none}
+.page-section.active{display:block}
+
+.sum-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin-bottom:20px}
+.sum-card{background:var(--obs3);border:1px solid var(--border);border-radius:6px;padding:12px;text-align:center}
+.sum-card .val{font-size:24px;font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--gold2)}
+.sum-card .lbl{font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:.1em;margin-top:2px}
+.sum-card.low .val{color:var(--low-t)}
+.sum-card.med .val{color:var(--med-t)}
+.sum-card.high .val{color:var(--high-t)}
+.sum-card.crit .val{color:var(--crit-t)}
+
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;align-items:center}
+.btn{padding:7px 14px;border-radius:5px;border:1px solid var(--border);background:var(--obs3);color:var(--text);cursor:pointer;font-size:12px;font-family:'Barlow',sans-serif;transition:.15s;letter-spacing:.04em}
+.btn:hover{border-color:var(--gold);color:var(--gold2)}
+.btn.primary{background:var(--gold);color:var(--obs);border-color:var(--gold);font-weight:600}
+.btn.primary:hover{background:var(--gold2)}
+.spacer{flex:1}
+.search-box,.filter-sel{padding:7px 10px;border-radius:5px;border:1px solid var(--border);background:var(--obs3);color:var(--text);font-size:12px;font-family:'Barlow',sans-serif;outline:none}
+.search-box{width:180px}
+.search-box:focus,.filter-sel:focus{border-color:var(--gold)}
+
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:6px}
+table{width:100%;border-collapse:collapse;min-width:1100px}
+th{background:var(--obs4);color:var(--gold2);font-size:10px;text-transform:uppercase;letter-spacing:.1em;padding:10px 8px;text-align:left;border-bottom:1px solid var(--border);cursor:pointer;white-space:nowrap;font-family:'Barlow',sans-serif;font-weight:500}
+th:hover{color:var(--gold3)}
+td{padding:8px 8px;border-bottom:1px solid var(--border);vertical-align:middle;font-size:12px;color:var(--text)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(201,168,76,.04)}
+
+.badge{display:inline-flex;align-items:center;justify-content:center;padding:3px 8px;border-radius:12px;font-size:10px;font-weight:600;letter-spacing:.06em;white-space:nowrap}
+.b-low{background:var(--low-bg);color:var(--low-t);border:1px solid var(--low)}
+.b-med{background:var(--med-bg);color:var(--med-t);border:1px solid var(--med)}
+.b-high{background:var(--high-bg);color:var(--high-t);border:1px solid var(--high)}
+.b-crit{background:var(--crit-bg);color:var(--crit-t);border:1px solid var(--crit)}
+.score-num{font-size:15px;font-weight:600;font-family:'Cormorant Garamond',serif;text-align:center}
+.act-btn{padding:4px 8px;border-radius:4px;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;font-size:11px;transition:.15s;margin-right:3px}
+.act-btn:hover{border-color:var(--gold);color:var(--gold)}
+.act-btn.del:hover{border-color:#ff4444;color:#ff4444}
+
+.empty-state{text-align:center;padding:48px 20px;color:var(--text2)}
+.empty-state h3{color:var(--gold2);font-size:18px;margin-bottom:8px}
+
+/* Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.78);display:flex;align-items:center;justify-content:center;z-index:1000;padding:16px}
+.modal{background:var(--obs2);border:1px solid var(--border);border-radius:8px;width:100%;max-width:780px;max-height:92vh;overflow-y:auto}
+.modal-header{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.modal-header h2{font-size:18px;color:var(--gold2)}
+.modal-body{padding:20px}
+.modal-footer{padding:14px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px}
+.close-btn{background:transparent;border:none;color:var(--text2);cursor:pointer;font-size:18px;line-height:1}
+.close-btn:hover{color:var(--text)}
+
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-full{grid-column:1/-1}
+.form-group{display:flex;flex-direction:column;gap:5px}
+label{font-size:11px;color:var(--text2);text-transform:uppercase;letter-spacing:.08em}
+input,select,textarea{padding:8px 10px;border-radius:5px;border:1px solid var(--border);background:var(--obs3);color:var(--text);font-size:13px;font-family:'Barlow',sans-serif;outline:none;transition:.15s}
+input:focus,select:focus,textarea:focus{border-color:var(--gold)}
+select option{background:var(--obs3)}
+textarea{resize:vertical;min-height:60px}
+
+/* CARVER Score Preview */
+.carver-preview{background:var(--obs4);border:1px solid var(--border);border-radius:8px;padding:16px;margin-top:8px}
+.carver-preview-title{font-size:11px;color:var(--text2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;text-align:center}
+.criteria-bars{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.crit-bar{text-align:center}
+.crit-bar-label{font-size:10px;color:var(--text2);letter-spacing:.06em;margin-bottom:4px}
+.crit-bar-val{font-size:18px;font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--gold2)}
+.preview-result{display:flex;align-items:center;justify-content:center;gap:20px;border-top:1px solid var(--border);padding-top:12px}
+.preview-score-block{text-align:center}
+.preview-score-big{font-size:40px;font-family:'Cormorant Garamond',serif;font-weight:600}
+.preview-score-lbl{font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:.1em}
+.preview-pa-block{text-align:center}
+.preview-pa-big{font-size:28px;font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--gold3)}
+.preview-pa-lbl{font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:.1em}
+
+/* DBT Section */
+.dbt-section{background:var(--obs3);border:1px solid var(--border);border-radius:6px;padding:16px;margin-bottom:16px}
+.dbt-section h3{font-size:14px;color:var(--gold2);margin-bottom:12px;letter-spacing:.05em;font-family:'Cormorant Garamond',serif}
+.dbt-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dbt-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+
+/* Scale legend */
+.scale-legend{background:var(--obs3);border:1px solid var(--border);border-radius:6px;padding:16px;margin-bottom:16px}
+.scale-legend h3{font-size:13px;color:var(--gold2);margin-bottom:10px;letter-spacing:.05em}
+.legend-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px}
+.legend-item{font-size:11px;color:var(--text2);display:flex;align-items:center;gap:6px}
+.legend-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+
+/* Upload */
+.upload-zone{border:2px dashed var(--border);border-radius:8px;padding:28px;text-align:center;cursor:pointer;transition:.2s;margin-bottom:16px}
+.upload-zone:hover{border-color:var(--gold);background:rgba(201,168,76,.04)}
+.upload-zone p{color:var(--text2);font-size:13px;margin-top:6px}
+
+/* Notes */
+.notes-section{background:var(--obs3);border:1px solid var(--border);border-radius:6px;padding:16px;margin-bottom:16px}
+.notes-section h3{font-size:14px;color:var(--gold2);margin-bottom:12px;letter-spacing:.05em;font-family:'Cormorant Garamond',serif}
+.notes-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+
+/* Pa gauge bar */
+.pa-bar-wrap{display:flex;align-items:center;gap:8px}
+.pa-bar-bg{flex:1;height:6px;background:var(--obs4);border-radius:3px;overflow:hidden}
+.pa-bar-fill{height:100%;border-radius:3px;transition:.3s}
+.pa-val-txt{font-size:11px;font-weight:600;min-width:38px;text-align:right}
+
+.footer{padding:14px 24px;border-top:1px solid var(--border);background:var(--obs2);font-size:10px;color:var(--text2);text-align:center;letter-spacing:.06em}
+.footer span{color:var(--gold)}
+
+@media print{.tabs,.toolbar,.act-btn,.modal-overlay,.scale-toggle{display:none!important}body{background:white;color:black}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-brand">
+    <div class="hex">QA<br>CVR</div>
+    <div class="brand-text">
+      <h1>Quanta Analytica™ CARVER Assessment</h1>
+      <p>SMI/QAP™ Framework · DBT Integration · Pa Calculation · Critical Infrastructure Protection</p>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="scale-toggle">
+      <label>Scoring Scale</label>
+      <div class="toggle-wrap">
+        <div class="toggle-opt active" id="scale-1-5" onclick="setScale(5)">1–5</div>
+        <div class="toggle-opt" id="scale-1-10" onclick="setScale(10)">1–10</div>
+      </div>
+    </div>
+    <div style="font-size:11px;color:var(--text2);text-align:right">
+      <strong style="color:var(--gold);display:block;font-size:13px" id="reg-title-disp">CARVER Assessment</strong>
+      <span id="date-disp"></span>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('register',this)">Asset Register</div>
+  <div class="tab" onclick="showTab('dbt',this)">Design Basis Threats</div>
+  <div class="tab" onclick="showTab('analysis',this)">Analysis &amp; Notes</div>
+  <div class="tab" onclick="showTab('reference',this)">Scale Reference</div>
+  <div class="tab" onclick="showTab('import',this)">Import Data</div>
+</div>
+
+<div class="main">
+
+<!-- ASSET REGISTER -->
+<div id="tab-register" class="page-section active">
+  <div class="sum-grid" id="sum-cards"></div>
+  <div class="toolbar">
+    <button class="btn primary" onclick="openModal()">+ Add Asset</button>
+    <button class="btn" onclick="exportCSV()">Export CSV</button>
+    <button class="btn" onclick="exportJSON()">Export JSON</button>
+    <button class="btn" onclick="exportExcel()">Export Excel</button>
+    <button class="btn" onclick="exportWord()">Export Word</button>
+    <button class="btn" onclick="window.print()">Print / PDF</button>
+    <div class="spacer"></div>
+    <select class="filter-sel" id="fil-rating" onchange="renderTable()">
+      <option value="">All Ratings</option>
+      <option>Low</option><option>Medium</option><option>High</option><option>Critical</option>
+    </select>
+    <select class="filter-sel" id="fil-dbt" onchange="renderTable()">
+      <option value="">All DBTs</option>
+    </select>
+    <input class="search-box" id="search-box" placeholder="Search assets..." oninput="renderTable()"/>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;font-size:11px;color:var(--text2)" id="legend-strip"></div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th onclick="sortBy('id')"># ↕</th>
+          <th onclick="sortBy('asset')">Asset ↕</th>
+          <th onclick="sortBy('dbt')">DBT ↕</th>
+          <th onclick="sortBy('C')" title="Criticality">C ↕</th>
+          <th onclick="sortBy('A')" title="Accessibility">A ↕</th>
+          <th onclick="sortBy('R')" title="Recoverability">R ↕</th>
+          <th onclick="sortBy('V')" title="Vulnerability">V ↕</th>
+          <th onclick="sortBy('E')" title="Effect">E ↕</th>
+          <th onclick="sortBy('Rec')" title="Recognizability">Rec ↕</th>
+          <th onclick="sortBy('total')">Total ↕</th>
+          <th onclick="sortBy('pa')">Pa ↕</th>
+          <th onclick="sortBy('rating')">Rating ↕</th>
+          <th onclick="sortBy('status')">Status ↕</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="asset-tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- DBT TAB -->
+<div id="tab-dbt" class="page-section">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:20px">
+    <div>
+      <h2 style="color:var(--gold2);font-size:20px;margin-bottom:6px">Design Basis Threats</h2>
+      <p style="color:var(--text2);font-size:13px">Define adversary profiles that drive CARVER scoring. Each DBT characterizes adversary type, capability, equipment, tactics, and objectives.</p>
+    </div>
+    <button class="btn primary" onclick="openDBTModal()">+ Add DBT</button>
+  </div>
+  <div id="dbt-cards"></div>
+</div>
+
+<!-- ANALYSIS TAB -->
+<div id="tab-analysis" class="page-section">
+  <h2 style="color:var(--gold2);font-size:20px;margin-bottom:16px">Assessment Analysis &amp; Analyst Notes</h2>
+  <div class="notes-section">
+    <h3>Vulnerability Assessment Summary</h3>
+    <div class="notes-grid-3">
+      <div class="form-group"><label>Key Findings</label><textarea id="n-findings" placeholder="Primary vulnerabilities identified, highest-risk assets, systemic weaknesses..."></textarea></div>
+      <div class="form-group"><label>Threat Insights</label><textarea id="n-insights" placeholder="Adversary capability observations, DBT relevance, attack vector analysis..."></textarea></div>
+      <div class="form-group"><label>Countermeasure Recommendations</label><textarea id="n-countermeasures" placeholder="Priority countermeasures, deter/detect/delay/respond strategies, resource priorities..."></textarea></div>
+    </div>
+  </div>
+  <div class="notes-section">
+    <h3>Security System Effectiveness (SSE) Notes</h3>
+    <div class="form-group"><textarea id="n-sse" placeholder="Assessment of current physical protection system (PPS) effectiveness against defined DBTs. Address detection, delay, and response capability..." style="min-height:90px"></textarea></div>
+  </div>
+  <div class="notes-section">
+    <h3>Assessment Metadata</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px">
+      <div class="form-group"><label>Assessment Title</label><input id="meta-title" placeholder="e.g. Water Utility VA — Q2 2026" oninput="document.getElementById('reg-title-disp').textContent=this.value||'CARVER Assessment'"/></div>
+      <div class="form-group"><label>Facility / Infrastructure</label><input id="meta-fac" placeholder="e.g. Municipal Water Authority"/></div>
+      <div class="form-group"><label>Lead Assessor</label><input id="meta-assessor" placeholder="e.g. M. Nuri Shakoor"/></div>
+      <div class="form-group"><label>Organization</label><input id="meta-org" placeholder="e.g. ARAC International Inc."/></div>
+      <div class="form-group"><label>Assessment Date</label><input type="date" id="meta-date"/></div>
+      <div class="form-group"><label>Classification</label>
+        <select id="meta-class"><option>Unclassified</option><option>Confidential</option><option>Restricted</option><option>Top Secret</option></select>
+      </div>
+      <div class="form-group"><label>Version</label><input id="meta-ver" placeholder="v1.0"/></div>
+      <div class="form-group"><label>Regulatory Framework</label>
+        <select id="meta-reg"><option value="">— Select if applicable —</option><option>NERC CIP-014</option><option>EPA RAM-W</option><option>RAM-D</option><option>CFATS</option><option>NRC</option><option>DHS NIPP</option><option>ISO 31000</option><option>Other</option></select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCALE REFERENCE TAB -->
+<div id="tab-reference" class="page-section">
+  <h2 style="color:var(--gold2);font-size:20px;margin-bottom:6px">CARVER Scoring Scale Reference</h2>
+  <p style="color:var(--text2);font-size:13px;margin-bottom:20px">Active scale: <span id="active-scale-label" style="color:var(--gold2);font-weight:600">1–5 (SMI/Bencie Standard)</span>. Toggle scale in the header to switch views.</p>
+  <div id="scale-ref-content"></div>
+</div>
+
+<!-- IMPORT TAB -->
+<div id="tab-import" class="page-section">
+  <h2 style="color:var(--gold2);font-size:20px;margin-bottom:8px">Import Asset Data</h2>
+  <p style="color:var(--text2);font-size:13px;margin-bottom:20px">Upload a CSV or JSON file. CARVER scores are auto-validated and Pa is recalculated on ingestion.</p>
+  <div class="upload-zone" onclick="document.getElementById('file-in').click()" ondragover="event.preventDefault();this.style.borderColor='var(--gold)'" ondragleave="this.style.borderColor=''" ondrop="handleDrop(event)">
+    <div style="font-size:28px;margin-bottom:6px">📂</div>
+    <strong style="color:var(--gold2)">Drop file here or click to browse</strong>
+    <p>Accepts .csv and .json · Max 5MB</p>
+    <input type="file" id="file-in" accept=".csv,.json" style="display:none" onchange="handleFile(this.files[0])"/>
+  </div>
+  <div class="notes-section" style="margin-bottom:16px">
+    <h3>CSV Format</h3>
+    <p style="color:var(--text2);font-size:12px;margin-bottom:8px">Required header row:</p>
+    <code style="display:block;background:var(--obs4);padding:10px;border-radius:5px;font-size:11px;color:var(--gold3);overflow-x:auto;white-space:nowrap">asset,dbt,description,location,C,A,R,V,E,Rec,status,notes</code>
+    <p style="color:var(--text2);font-size:11px;margin-top:6px">C/A/R/V/E/Rec must be integers within your selected scale. Total and Pa are auto-calculated.</p>
+  </div>
+  <div class="notes-section">
+    <h3>JSON Format</h3>
+    <code style="display:block;background:var(--obs4);padding:10px;border-radius:5px;font-size:11px;color:var(--gold3);overflow-x:auto">[ { "asset":"Chlorine Storage", "dbt":"Hazmat Release", "description":"...", "location":"Building 3", "C":4, "A":3, "R":4, "V":4, "E":5, "Rec":3, "status":"Open", "notes":"..." } ]</code>
+  </div>
+  <div id="import-log" style="margin-top:14px"></div>
+</div>
+
+</div><!-- /main -->
+
+<!-- ASSET MODAL -->
+<div class="modal-overlay" id="asset-modal" style="display:none" onclick="if(event.target===this)closeModal('asset-modal')">
+<div class="modal">
+  <div class="modal-header">
+    <h2 id="modal-asset-title">Add Asset</h2>
+    <button class="close-btn" onclick="closeModal('asset-modal')">✕</button>
+  </div>
+  <div class="modal-body">
+    <div class="form-grid">
+      <div class="form-group form-full"><label>Asset Name *</label><input id="f-asset" placeholder="e.g. Water Treatment Plant 1 — Chlorine Storage"/></div>
+      <div class="form-group"><label>Design Basis Threat *</label>
+        <select id="f-dbt"><option value="">— Select DBT —</option></select>
+      </div>
+      <div class="form-group"><label>Location / Subsystem</label><input id="f-loc" placeholder="e.g. Building 3, Zone A"/></div>
+      <div class="form-group form-full"><label>Description</label><textarea id="f-desc" placeholder="Asset description, operational importance, single points of failure..."></textarea></div>
+    </div>
+
+    <div style="margin:14px 0 10px;font-size:13px;color:var(--gold2);font-family:'Cormorant Garamond',serif;border-bottom:1px solid var(--border);padding-bottom:6px">
+      CARVER Criteria Scores &nbsp;<span id="modal-scale-note" style="font-size:11px;color:var(--text2);font-family:'Barlow',sans-serif"></span>
+    </div>
+    <div class="form-grid">
+      <div class="form-group"><label>C — Criticality *</label><select id="f-C" onchange="updatePreview()"></select></div>
+      <div class="form-group"><label>A — Accessibility *</label><select id="f-A" onchange="updatePreview()"></select></div>
+      <div class="form-group"><label>R — Recoverability *</label><select id="f-R" onchange="updatePreview()"></select></div>
+      <div class="form-group"><label>V — Vulnerability *</label><select id="f-V" onchange="updatePreview()"></select></div>
+      <div class="form-group"><label>E — Effect *</label><select id="f-E" onchange="updatePreview()"></select></div>
+      <div class="form-group"><label>Rec — Recognizability *</label><select id="f-Rec" onchange="updatePreview()"></select></div>
+    </div>
+    <div class="carver-preview" id="carver-preview">
+      <div class="carver-preview-title">Live Score Preview</div>
+      <div class="criteria-bars" id="preview-bars"></div>
+      <div class="preview-result">
+        <div class="preview-score-block">
+          <div class="preview-score-big" id="prev-total" style="color:var(--text2)">—</div>
+          <div class="preview-score-lbl">CARVER Total</div>
+        </div>
+        <div style="width:1px;height:50px;background:var(--border)"></div>
+        <div class="preview-pa-block">
+          <div class="preview-pa-big" id="prev-pa">—</div>
+          <div class="preview-pa-lbl">Pa (Prob. of Attack)</div>
+        </div>
+        <div style="width:1px;height:50px;background:var(--border)"></div>
+        <div id="prev-badge-wrap"></div>
+      </div>
+    </div>
+
+    <div class="form-grid" style="margin-top:14px">
+      <div class="form-group"><label>Status</label>
+        <select id="f-status"><option>Open</option><option>In Progress</option><option>Mitigated</option><option>Closed</option><option>Escalated</option></select>
+      </div>
+      <div class="form-group"><label>Review Date</label><input type="date" id="f-review"/></div>
+      <div class="form-group form-full"><label>Analyst Notes</label><textarea id="f-notes" placeholder="Observations, confidence level, data sources..."></textarea></div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" onclick="closeModal('asset-modal')">Cancel</button>
+    <button class="btn primary" onclick="saveAsset()">Save Asset</button>
+  </div>
+</div>
+</div>
+
+<!-- DBT MODAL -->
+<div class="modal-overlay" id="dbt-modal" style="display:none" onclick="if(event.target===this)closeModal('dbt-modal')">
+<div class="modal">
+  <div class="modal-header">
+    <h2 id="modal-dbt-title">Add Design Basis Threat</h2>
+    <button class="close-btn" onclick="closeModal('dbt-modal')">✕</button>
+  </div>
+  <div class="modal-body">
+    <div class="form-grid">
+      <div class="form-group form-full"><label>DBT Name *</label><input id="d-name" placeholder="e.g. Domestic Terrorist — VBIED Attack"/></div>
+      <div class="form-group"><label>Adversary Type *</label>
+        <select id="d-type">
+          <option value="">— Select —</option>
+          <option>Outsider — Terrorist (International)</option>
+          <option>Outsider — Terrorist (Domestic)</option>
+          <option>Outsider — Criminal</option>
+          <option>Outsider — Vandal</option>
+          <option>Outsider — Cyber Actor</option>
+          <option>Insider — Disgruntled Employee</option>
+          <option>Insider — Contractor</option>
+          <option>Insider/Outsider — Combination</option>
+          <option>State-Sponsored Actor</option>
+          <option>Hacktivist</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Number of Adversaries</label><input id="d-num" placeholder="e.g. 1–2"/></div>
+      <div class="form-group"><label>Adversary Goal / Objective</label><input id="d-goal" placeholder="e.g. Destroy chlorine tanks to cause HAZMAT release"/></div>
+      <div class="form-group form-full"><label>Capability &amp; Equipment</label><textarea id="d-capability" placeholder="Weapons, tools, vehicles, explosives, technical knowledge..."></textarea></div>
+      <div class="form-group form-full"><label>Tactics / Method of Attack (MO)</label><textarea id="d-tactics" placeholder="Mode of attack, approach vector, deception methods, timing..."></textarea></div>
+      <div class="form-group form-full"><label>Adversary Knowledge Base</label><textarea id="d-knowledge" placeholder="Open-source intel available, insider knowledge, OSINT exposure, SCADA access..."></textarea></div>
+      <div class="form-group"><label>Attack Type</label>
+        <select id="d-attacktype">
+          <option value="">— Select —</option>
+          <option>Physical Destruction</option>
+          <option>VBIED / IED</option>
+          <option>HAZMAT Release</option>
+          <option>Contamination</option>
+          <option>Cyber / SCADA Attack</option>
+          <option>Active Shooter</option>
+          <option>Theft / Espionage</option>
+          <option>Vandalism</option>
+          <option>Suicide Bombing</option>
+          <option>Insider Sabotage</option>
+          <option>Drone / Aerial</option>
+          <option>Multi-Vector</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Threat Level</label>
+        <select id="d-level">
+          <option>High</option><option>Medium</option><option>Low</option>
+        </select>
+      </div>
+      <div class="form-group form-full"><label>DBT Narrative (Paragraph Form)</label><textarea id="d-narrative" placeholder="Full paragraph description of the adversary profile as it would appear in a formal VA report..." style="min-height:90px"></textarea></div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" onclick="closeModal('dbt-modal')">Cancel</button>
+    <button class="btn primary" onclick="saveDBT()">Save DBT</button>
+  </div>
+</div>
+</div>
+
+<div class="footer">
+  <span>QUANTA ANALYTICA™</span> · QAP™ CARVER Assessment · SMI/Bencie Framework · Classification: <span id="footer-class">Unclassified</span>
+</div>
+
+<script>
+let assets = [], dbts = [], editAssetId = null, editDBTId = null;
+let sortKey = 'id', sortDir = 1, idCtr = 1, dbtIdCtr = 1;
+let MAX_SCORE = 5;
+
+const SCALE_DEF = {
+  5: {
+    max: 5,
+    labels: {
+      C:['','Loss would not affect mission performance','Loss might reduce mission performance','Loss would reduce mission performance','Loss would reduce mission performance considerably','Loss would be mission-stopper'],
+      A:['','Very difficult to gain access','Difficult to gain access','Somewhat accessible','Accessible','Easily accessible — no effective security'],
+      R:['','Immediate replacement available','Easily replaced in short time','Can be replaced in relatively short time','Difficult to replace with long down time','Extremely difficult to replace — long down time'],
+      V:['','Adversary does not have capability','Adversary most likely does not have capability','Adversary may have capability and expertise','Adversary most likely has capability and expertise','Adversary has capability and expertise to attack'],
+      E:['','No unfavorable impact','Little impact — no adverse impact on persons','Moderate impact — some adverse impact on persons','High impact — some loss of life or injuries','Very high impact — considerable loss of life/injuries'],
+      Rec:['','Extremely difficult to recognize without assistance','Difficult to recognize — confusion probable','Recognized with some training','Easily recognized by most','Easily recognized by all with no confusion']
+    }
+  },
+  10: {
+    max: 10,
+    labels: {
+      C:['','Negligible — zero mission impact','Trivial operational inconvenience','Minor reduction in performance','Moderate performance degradation','Notable performance reduction','Significant mission compromise','Major operational failure','Near mission-stopper — serious degradation','Mission-stopper — critical loss','Complete mission failure — unrecoverable'],
+      A:['','Hardened — multiple independent layers, no viable path','Near-impenetrable — extreme difficulty','Very high security — significant barriers','High security — controlled access with detection','Moderate security — some barriers and detection','Mixed security — partial coverage gaps','Accessible with planning — security gaps exploitable','Accessible — limited deterrence measures','Easily accessible — minimal security presence','Completely open — no effective security whatsoever'],
+      R:['','Immediate hot-standby redundancy','Full redundancy — minutes to recover','Rapid recovery — hours with spares','Short recovery — 1–2 days with resources','Moderate recovery — less than one week','Extended recovery — 1–4 weeks','Difficult recovery — 1–3 months','Long recovery — 3–12 months','Extremely difficult — over 1 year','Irreplaceable or permanent loss'],
+      V:['','No viable attack path — defenses defeat all DBT capabilities','Attack theoretically possible but near-zero probability','Attack requires exceptional adversary resources','Attack requires significant planning and resources','Attack feasible with sustained effort','Adversary has partial capability and some expertise','Adversary has relevant capability — success likely with effort','Adversary has capability and expertise — good probability','Adversary almost certainly has full capability and expertise','Dedicated adversary can successfully attack with high certainty'],
+      E:['','No meaningful consequence','Negligible consequence — contained locally','Very minor disruption — easily absorbed','Minor impact — limited geographic scope','Moderate impact — manageable disruption','Significant disruption — notable public concern','High impact — possible casualties or major economic effect','Severe impact — casualties likely or major systemic damage','Catastrophic impact — mass casualties or nationwide disruption','Existential/civilization-scale — maximum consequence'],
+      Rec:['','Unrecognizable — requires expert insider knowledge','Requires extensive specialized training to identify','Identifiable only to highly trained professionals','Recognizable with formal training','Recognizable to most security professionals','Recognizable to informed observers','Distinguishable to general public with context','Generally recognizable to most with open-source info','Easily recognized — widely documented and publicized','Universally recognized — publicly prominent target']
+    }
+  }
+};
+
+function getMax(){ return MAX_SCORE * 6; }
+function calcPa(total){ return (total / getMax()).toFixed(2); }
+
+function getRating(pa){
+  const p = parseFloat(pa);
+  if(p < 0.34) return 'Low';
+  if(p < 0.57) return 'Medium';
+  if(p < 0.77) return 'High';
+  return 'Critical';
+}
+function getBadge(r){ return r==='Low'?'b-low':r==='Medium'?'b-med':r==='High'?'b-high':'b-crit'; }
+function getPaColor(pa){
+  const p=parseFloat(pa);
+  if(p<0.34) return 'var(--low-t)';
+  if(p<0.57) return 'var(--med-t)';
+  if(p<0.77) return 'var(--high-t)';
+  return 'var(--crit-t)';
+}
+
+function setScale(n){
+  MAX_SCORE = n;
+  document.getElementById('scale-1-5').classList.toggle('active', n===5);
+  document.getElementById('scale-1-10').classList.toggle('active', n===10);
+  document.getElementById('active-scale-label').textContent = n===5 ? '1–5 (SMI/Bencie Standard)' : '1–10 (Extended Nuanced Analysis)';
+  buildScaleOpts();
+  buildScaleRef();
+  buildLegend();
+  assets.forEach(a=>{
+    const t=a.C+a.A+a.R+a.V+a.E+a.Rec;
+    a.total=t; a.pa=calcPa(t); a.rating=getRating(a.pa);
+  });
+  refresh();
+}
+
+function buildScaleOpts(){
+  const note = `(1–${MAX_SCORE} scale)`;
+  document.getElementById('modal-scale-note').textContent = note;
+  ['C','A','R','V','E','Rec'].forEach(k=>{
+    const sel = document.getElementById('f-'+k);
+    if(!sel) return;
+    const cur = sel.value;
+    sel.innerHTML = `<option value="">—</option>`;
+    const defs = SCALE_DEF[MAX_SCORE].labels[k];
+    for(let i=1;i<=MAX_SCORE;i++){
+      sel.innerHTML += `<option value="${i}">${i} — ${defs[i]}</option>`;
+    }
+    if(cur && parseInt(cur)<=MAX_SCORE) sel.value=cur;
+  });
+}
+
+function buildScaleRef(){
+  const sd = SCALE_DEF[MAX_SCORE];
+  const criteria = [
+    {key:'C',name:'Criticality',desc:'Importance of asset; impact of loss on mission, operations, or system.'},
+    {key:'A',name:'Accessibility',desc:'Ease with which adversary can physically or digitally access the asset.'},
+    {key:'R',name:'Recoverability',desc:'Time and resources required to restore or replace the asset after an attack.'},
+    {key:'V',name:'Vulnerability',desc:'Adversary capability and expertise to damage, destroy, or exploit the asset.'},
+    {key:'E',name:'Effect',desc:'Scope, magnitude, and cascading consequences of a successful attack.'},
+    {key:'Rec',name:'Recognizability',desc:'Degree to which adversary can identify the asset as a valuable target.'}
+  ];
+  let html = '';
+  criteria.forEach(c=>{
+    html += `<div class="notes-section" style="margin-bottom:12px">
+      <h3>${c.name} (${c.key})</h3>
+      <p style="color:var(--text2);font-size:12px;margin-bottom:10px">${c.desc}</p>
+      <div style="display:grid;gap:4px">`;
+    for(let i=MAX_SCORE;i>=1;i--){
+      const col = i>=Math.ceil(MAX_SCORE*0.8)?'var(--crit-t)':i>=Math.ceil(MAX_SCORE*0.6)?'var(--high-t)':i>=Math.ceil(MAX_SCORE*0.4)?'var(--med-t)':'var(--low-t)';
+      html+=`<div style="display:flex;align-items:baseline;gap:10px;padding:5px 8px;background:var(--obs4);border-radius:4px;border-left:3px solid ${col}">
+        <span style="color:${col};font-weight:600;font-size:14px;min-width:20px;font-family:'Cormorant Garamond',serif">${i}</span>
+        <span style="color:var(--text);font-size:12px">${sd.labels[c.key][i]}</span>
+      </div>`;
+    }
+    html += `</div></div>`;
+  });
+  document.getElementById('scale-ref-content').innerHTML = html;
+}
+
+function buildLegend(){
+  const max = getMax();
+  const lo = Math.floor(max*0.33), me = Math.floor(max*0.56), hi = Math.floor(max*0.76);
+  document.getElementById('legend-strip').innerHTML = `
+    <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2)"><div style="width:8px;height:8px;border-radius:2px;background:var(--low)"></div>Low Pa &lt;0.34 (Total ≤${lo})</div>
+    <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2)"><div style="width:8px;height:8px;border-radius:2px;background:var(--med)"></div>Medium Pa 0.34–0.56 (${lo+1}–${me})</div>
+    <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2)"><div style="width:8px;height:8px;border-radius:2px;background:var(--high)"></div>High Pa 0.57–0.76 (${me+1}–${hi})</div>
+    <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2)"><div style="width:8px;height:8px;border-radius:2px;background:var(--crit)"></div>Critical Pa ≥0.77 (${hi+1}–${max})</div>
+    <div style="color:var(--text2)">Max Score: ${max} &nbsp;|&nbsp; Scale: 1–${MAX_SCORE}</div>`;
+}
+
+function showTab(t, el){
+  document.querySelectorAll('.page-section').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  document.getElementById('tab-'+t).classList.add('active');
+  if(el) el.classList.add('active');
+  if(t==='reference') buildScaleRef();
+}
+
+function renderSummary(){
+  const c={total:assets.length,low:0,medium:0,high:0,critical:0};
+  assets.forEach(a=>{const k=a.rating.toLowerCase();if(c[k]!==undefined)c[k]++;});
+  const avgPa = assets.length?(assets.reduce((s,a)=>s+parseFloat(a.pa),0)/assets.length).toFixed(2):'—';
+  document.getElementById('sum-cards').innerHTML=`
+    <div class="sum-card"><div class="val">${c.total}</div><div class="lbl">Total Assets</div></div>
+    <div class="sum-card low"><div class="val">${c.low}</div><div class="lbl">Low Risk</div></div>
+    <div class="sum-card med"><div class="val">${c.medium}</div><div class="lbl">Medium Risk</div></div>
+    <div class="sum-card high"><div class="val">${c.high}</div><div class="lbl">High Risk</div></div>
+    <div class="sum-card crit"><div class="val">${c.critical}</div><div class="lbl">Critical Risk</div></div>
+    <div class="sum-card"><div class="val">${avgPa}</div><div class="lbl">Avg Pa</div></div>
+    <div class="sum-card"><div class="val">${MAX_SCORE}</div><div class="lbl">Scale Max</div></div>`;
+  document.getElementById('footer-class').textContent = document.getElementById('meta-class')?.value||'Unclassified';
+}
+
+function populateFilters(){
+  const dbtNames=[...new Set(assets.map(a=>a.dbt).filter(Boolean))].sort();
+  const sel=document.getElementById('fil-dbt'); const cur=sel.value;
+  sel.innerHTML='<option value="">All DBTs</option>'+dbtNames.map(d=>`<option value="${d}"${d===cur?' selected':''}>${d}</option>`).join('');
+}
+
+function renderTable(){
+  const q=document.getElementById('search-box').value.toLowerCase();
+  const rf=document.getElementById('fil-rating').value;
+  const df=document.getElementById('fil-dbt').value;
+  let filtered=assets.filter(a=>{
+    const txt=`${a.asset} ${a.dbt} ${a.description} ${a.location} ${a.notes}`.toLowerCase();
+    return(!q||txt.includes(q))&&(!rf||a.rating===rf)&&(!df||a.dbt===df);
+  });
+  filtered.sort((a,b)=>{
+    let va=a[sortKey],vb=b[sortKey];
+    if(typeof va==='string') return sortDir*va.localeCompare(vb);
+    return sortDir*(va-vb);
+  });
+  const tb=document.getElementById('asset-tbody');
+  if(!filtered.length){
+    tb.innerHTML=`<tr><td colspan="14"><div class="empty-state"><h3>No Assets Found</h3><p>Add an asset using the button above, or import data.</p></div></td></tr>`;
+    return;
+  }
+  const pct=a=>Math.round(parseFloat(a.pa)*100);
+  tb.innerHTML=filtered.map(a=>`
+    <tr>
+      <td style="color:var(--text2);font-size:11px">${a.id}</td>
+      <td><strong style="color:var(--text)">${esc(a.asset)}</strong>${a.location?`<br><span style="color:var(--text2);font-size:11px">${esc(a.location)}</span>`:''}</td>
+      <td style="color:var(--text2);font-size:11px">${esc(a.dbt)}</td>
+      <td style="text-align:center;color:var(--gold3)">${a.C}</td>
+      <td style="text-align:center;color:var(--gold3)">${a.A}</td>
+      <td style="text-align:center;color:var(--gold3)">${a.R}</td>
+      <td style="text-align:center;color:var(--gold3)">${a.V}</td>
+      <td style="text-align:center;color:var(--gold3)">${a.E}</td>
+      <td style="text-align:center;color:var(--gold3)">${a.Rec}</td>
+      <td class="score-num" style="color:${getPaColor(a.pa)}">${a.total}</td>
+      <td style="min-width:90px">
+        <div class="pa-bar-wrap">
+          <div class="pa-bar-bg"><div class="pa-bar-fill" style="width:${pct(a)}%;background:${getPaColor(a.pa)}"></div></div>
+          <span class="pa-val-txt" style="color:${getPaColor(a.pa)}">${a.pa}</span>
+        </div>
+      </td>
+      <td><span class="badge ${getBadge(a.rating)}">${a.rating.toUpperCase()}</span></td>
+      <td style="font-size:11px;color:${a.status==='Escalated'?'var(--crit-t)':a.status==='Closed'?'var(--text2)':'var(--text)'}">${esc(a.status)}</td>
+      <td style="white-space:nowrap">
+        <button class="act-btn" onclick="openModal(${a.id})">Edit</button>
+        <button class="act-btn del" onclick="delAsset(${a.id})">Del</button>
+      </td>
+    </tr>`).join('');
+}
+
+function sortBy(k){if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=1;}renderTable();}
+
+function renderDBTCards(){
+  const el=document.getElementById('dbt-cards');
+  if(!dbts.length){
+    el.innerHTML=`<div class="empty-state"><h3>No DBTs Defined</h3><p>Add a Design Basis Threat to drive CARVER scoring for your assets.</p></div>`;
+    return;
+  }
+  const lvlCol={High:'var(--crit-t)',Medium:'var(--high-t)',Low:'var(--med-t)'};
+  el.innerHTML=dbts.map(d=>`
+    <div class="dbt-section">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
+        <div>
+          <h3 style="margin-bottom:4px">${esc(d.name)}</h3>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+            <span class="badge" style="background:var(--obs4);color:var(--gold2);border:1px solid var(--border)">${esc(d.type)}</span>
+            <span class="badge" style="background:var(--obs4);color:${lvlCol[d.level]||'var(--text2)'};border:1px solid var(--border)">${d.level} Threat</span>
+            ${d.attacktype?`<span class="badge" style="background:var(--obs4);color:var(--text2);border:1px solid var(--border)">${esc(d.attacktype)}</span>`:''}
+          </div>
+        </div>
+        <div style="white-space:nowrap">
+          <button class="act-btn" onclick="openDBTModal(${d.id})">Edit</button>
+          <button class="act-btn del" onclick="delDBT(${d.id})">Del</button>
+        </div>
+      </div>
+      <div class="dbt-grid">
+        ${d.num?`<div class="form-group"><label>Adversary Numbers</label><div style="color:var(--text);font-size:12px">${esc(d.num)}</div></div>`:''}
+        ${d.goal?`<div class="form-group"><label>Objective</label><div style="color:var(--text);font-size:12px">${esc(d.goal)}</div></div>`:''}
+        ${d.capability?`<div class="form-group form-full" style="grid-column:1/-1"><label>Capability &amp; Equipment</label><div style="color:var(--text2);font-size:12px">${esc(d.capability)}</div></div>`:''}
+        ${d.tactics?`<div class="form-group form-full" style="grid-column:1/-1"><label>Tactics / MO</label><div style="color:var(--text2);font-size:12px">${esc(d.tactics)}</div></div>`:''}
+        ${d.knowledge?`<div class="form-group form-full" style="grid-column:1/-1"><label>Adversary Knowledge</label><div style="color:var(--text2);font-size:12px">${esc(d.knowledge)}</div></div>`:''}
+      </div>
+      ${d.narrative?`<div style="margin-top:10px;padding:10px;background:var(--obs4);border-radius:5px;border-left:3px solid var(--gold);font-size:12px;color:var(--text2);font-style:italic">${esc(d.narrative)}</div>`:''}
+    </div>`).join('');
+}
+
+function populateDBTSelect(){
+  const sel=document.getElementById('f-dbt');
+  const cur=sel.value;
+  sel.innerHTML='<option value="">— Select DBT —</option>'+dbts.map(d=>`<option value="${d.name}"${d.name===cur?' selected':''}>${esc(d.name)}</option>`).join('');
+}
+
+function openModal(id=null){
+  editAssetId=id;
+  document.getElementById('modal-asset-title').textContent=id?'Edit Asset':'Add Asset';
+  buildScaleOpts();
+  populateDBTSelect();
+  const a=id?assets.find(x=>x.id===id):null;
+  ['asset','loc','desc','status','review','notes'].forEach(f=>{
+    const el=document.getElementById('f-'+f); if(el) el.value=a?(a[f]||''):'';
+  });
+  if(a){
+    document.getElementById('f-asset').value=a.asset||'';
+    document.getElementById('f-dbt').value=a.dbt||'';
+    document.getElementById('f-loc').value=a.location||'';
+    document.getElementById('f-desc').value=a.description||'';
+    document.getElementById('f-status').value=a.status||'Open';
+    document.getElementById('f-review').value=a.review||'';
+    document.getElementById('f-notes').value=a.notes||'';
+    ['C','A','R','V','E','Rec'].forEach(k=>{
+      const s=document.getElementById('f-'+k); if(s) s.value=a[k]||'';
+    });
+  }
+  updatePreview();
+  document.getElementById('asset-modal').style.display='flex';
+}
+function closeModal(id){document.getElementById(id).style.display='none';editAssetId=null;editDBTId=null;}
+
+function updatePreview(){
+  const vals={};
+  const keys=['C','A','R','V','E','Rec'];
+  let allSet=true;
+  keys.forEach(k=>{const v=parseInt(document.getElementById('f-'+k)?.value)||0;vals[k]=v;if(!v)allSet=false;});
+  const bars=document.getElementById('preview-bars');
+  bars.innerHTML=keys.map(k=>`<div class="crit-bar"><div class="crit-bar-label">${k}</div><div class="crit-bar-val" style="color:${vals[k]?'var(--gold2)':'var(--text2)'}">${vals[k]||'—'}</div></div>`).join('');
+  if(!allSet){
+    document.getElementById('prev-total').textContent='—';
+    document.getElementById('prev-total').style.color='var(--text2)';
+    document.getElementById('prev-pa').textContent='—';
+    document.getElementById('prev-badge-wrap').innerHTML='';
+    return;
+  }
+  const total=Object.values(vals).reduce((s,v)=>s+v,0);
+  const pa=calcPa(total); const rating=getRating(pa);
+  document.getElementById('prev-total').textContent=total;
+  document.getElementById('prev-total').style.color=getPaColor(pa);
+  document.getElementById('prev-pa').textContent=pa;
+  document.getElementById('prev-pa').style.color=getPaColor(pa);
+  document.getElementById('prev-badge-wrap').innerHTML=`<span class="badge ${getBadge(rating)}">${rating.toUpperCase()}</span>`;
+}
+
+function saveAsset(){
+  const asset=document.getElementById('f-asset').value.trim();
+  const dbt=document.getElementById('f-dbt').value;
+  if(!asset){alert('Asset name required.');return;}
+  const scores={};
+  const keys=['C','A','R','V','E','Rec'];
+  for(const k of keys){
+    const v=parseInt(document.getElementById('f-'+k).value);
+    if(!v||v<1||v>MAX_SCORE){alert(`${k} score required (1–${MAX_SCORE}).`);return;}
+    scores[k]=v;
+  }
+  const total=Object.values(scores).reduce((s,v)=>s+v,0);
+  const pa=calcPa(total);
+  const entry={
+    id:editAssetId||idCtr++,
+    asset,dbt,
+    location:document.getElementById('f-loc').value.trim(),
+    description:document.getElementById('f-desc').value.trim(),
+    ...scores,total,pa,
+    rating:getRating(pa),
+    status:document.getElementById('f-status').value,
+    review:document.getElementById('f-review').value,
+    notes:document.getElementById('f-notes').value.trim(),
+    scale:MAX_SCORE
+  };
+  if(editAssetId){const i=assets.findIndex(x=>x.id===editAssetId);assets[i]=entry;}
+  else assets.push(entry);
+  closeModal('asset-modal');
+  refresh();
+}
+
+function delAsset(id){if(!confirm('Delete this asset?'))return;assets=assets.filter(a=>a.id!==id);refresh();}
+
+function openDBTModal(id=null){
+  editDBTId=id;
+  document.getElementById('modal-dbt-title').textContent=id?'Edit DBT':'Add Design Basis Threat';
+  const d=id?dbts.find(x=>x.id===id):null;
+  ['name','type','num','goal','capability','tactics','knowledge','attacktype','level','narrative'].forEach(f=>{
+    const el=document.getElementById('d-'+f); if(el) el.value=d?(d[f]||''):(f==='level'?'High':'');
+  });
+  document.getElementById('dbt-modal').style.display='flex';
+}
+
+function saveDBT(){
+  const name=document.getElementById('d-name').value.trim();
+  const type=document.getElementById('d-type').value;
+  if(!name){alert('DBT name required.');return;}
+  const entry={
+    id:editDBTId||dbtIdCtr++,
+    name,type,
+    num:document.getElementById('d-num').value.trim(),
+    goal:document.getElementById('d-goal').value.trim(),
+    capability:document.getElementById('d-capability').value.trim(),
+    tactics:document.getElementById('d-tactics').value.trim(),
+    knowledge:document.getElementById('d-knowledge').value.trim(),
+    attacktype:document.getElementById('d-attacktype').value,
+    level:document.getElementById('d-level').value,
+    narrative:document.getElementById('d-narrative').value.trim()
+  };
+  if(editDBTId){const i=dbts.findIndex(x=>x.id===editDBTId);dbts[i]=entry;}
+  else dbts.push(entry);
+  closeModal('dbt-modal');
+  populateDBTSelect();
+  renderDBTCards();
+}
+function delDBT(id){if(!confirm('Delete this DBT?'))return;dbts=dbts.filter(d=>d.id!==id);renderDBTCards();populateDBTSelect();}
+
+function esc(s){return s?(s+'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'):''}
+
+const HDR=['ID','Asset','DBT','Location','C','A','R','V','E','Rec','Total','Pa','Rating','Status','Review','Notes','Scale'];
+function toRow(a){return[a.id,a.asset,a.dbt,a.location,a.C,a.A,a.R,a.V,a.E,a.Rec,a.total,a.pa,a.rating,a.status,a.review||'',a.notes,a.scale];}
+
+function exportCSV(){
+  const rows=[HDR,...assets.map(toRow)];
+  const csv=rows.map(r=>r.map(c=>`"${(c+'').replace(/"/g,'""')}"`).join(',')).join('\n');
+  dl('qa-carver-assessment.csv','text/csv',csv);
+}
+function exportJSON(){ dl('qa-carver-assessment.json','application/json',JSON.stringify(assets,null,2)); }
+function exportExcel(){
+  if(!window.XLSX){alert('XLSX not loaded.');return;}
+  const ws=XLSX.utils.aoa_to_sheet([HDR,...assets.map(toRow)]);
+  const wb=XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb,ws,'CARVER Assessment');
+  XLSX.writeFile(wb,'qa-carver-assessment.xlsx');
+}
+function exportWord(){
+  const meta={title:document.getElementById('meta-title')?.value||'CARVER Assessment',fac:document.getElementById('meta-fac')?.value||'',assessor:document.getElementById('meta-assessor')?.value||'',cls:document.getElementById('meta-class')?.value||'Unclassified'};
+  let html=`<html><head><meta charset="utf-8"><title>${meta.title}</title>
+<style>body{font-family:Calibri,sans-serif;font-size:11pt;margin:1in}h1{font-size:18pt}h2{font-size:14pt;border-bottom:1px solid #ccc;padding-bottom:4px}
+table{width:100%;border-collapse:collapse;font-size:9pt}th{background:#1c2030;color:#e6c96e;padding:6px;border:1px solid #ccc;text-align:left}
+td{padding:5px 6px;border:1px solid #ddd;vertical-align:top}
+.low{background:#e8f5e9}.med{background:#fff8e1}.high{background:#fff3e0}.crit{background:#ffebee}
+</style></head><body>
+<h1>QUANTA ANALYTICA™ — ${meta.title}</h1>
+<p><strong>Facility:</strong> ${meta.fac} &nbsp;|&nbsp; <strong>Assessor:</strong> ${meta.assessor} &nbsp;|&nbsp; <strong>Classification:</strong> ${meta.cls} &nbsp;|&nbsp; <strong>Scale:</strong> 1–${MAX_SCORE} &nbsp;|&nbsp; <strong>Generated:</strong> ${new Date().toLocaleDateString()}</p>
+<h2>CARVER Asset Register</h2>
+<table><tr>${HDR.map(h=>`<th>${h}</th>`).join('')}</tr>
+${assets.map(a=>{const cls=a.rating==='Low'?'low':a.rating==='Medium'?'med':a.rating==='High'?'high':'crit';return`<tr class="${cls}">${toRow(a).map(c=>`<td>${esc(c+'')}</td>`).join('')}</tr>`;}).join('')}</table>`;
+  if(dbts.length){
+    html+=`<h2>Design Basis Threats</h2>`;
+    dbts.forEach(d=>{html+=`<p><strong>${esc(d.name)}</strong> (${esc(d.type)}) — ${esc(d.level)} Threat<br>Objective: ${esc(d.goal)}<br>Capability: ${esc(d.capability)}<br>Tactics: ${esc(d.tactics)}</p>`;});
+  }
+  html+=`</body></html>`;
+  dl('qa-carver-assessment.doc','application/msword',html);
+}
+function dl(name,type,content){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([content],{type}));a.download=name;a.click();}
+
+function handleDrop(ev){ev.preventDefault();const f=ev.dataTransfer.files[0];if(f)handleFile(f);}
+function handleFile(file){
+  if(!file)return;
+  const ext=file.name.split('.').pop().toLowerCase();
+  const reader=new FileReader();
+  reader.onload=e=>{
+    try{
+      if(ext==='json') ingestJSON(e.target.result);
+      else if(ext==='csv') ingestCSV(e.target.result);
+      else{logImport('error','Unsupported file type.');return;}
+      refresh();
+    }catch(err){logImport('error','Parse error: '+err.message);}
+  };
+  reader.readAsText(file);
+}
+function ingestJSON(text){
+  const arr=JSON.parse(text);
+  if(!Array.isArray(arr))throw new Error('Must be array.');
+  let n=0;
+  arr.forEach(r=>{
+    const scores={C:parseInt(r.C)||1,A:parseInt(r.A)||1,R:parseInt(r.R)||1,V:parseInt(r.V)||1,E:parseInt(r.E)||1,Rec:parseInt(r.Rec)||1};
+    const total=Object.values(scores).reduce((s,v)=>s+v,0);
+    const pa=calcPa(total);
+    assets.push({id:idCtr++,asset:r.asset||'Untitled',dbt:r.dbt||'',location:r.location||'',description:r.description||'',...scores,total,pa,rating:getRating(pa),status:r.status||'Open',review:r.review||'',notes:r.notes||'',scale:MAX_SCORE});n++;
+  });
+  logImport('success',`Imported ${n} assets from JSON.`);
+}
+function ingestCSV(text){
+  const lines=text.trim().split('\n');
+  const headers=lines[0].split(',').map(h=>h.trim().replace(/^"|"$/g,'').toLowerCase());
+  const g=(cols,k)=>(cols[headers.indexOf(k)]||'').replace(/^"|"$/g,'').trim();
+  let n=0;
+  for(let i=1;i<lines.length;i++){
+    const cols=lines[i].match(/(".*?"|[^,]+|(?<=,)(?=,)|(?<=,)$|^(?=,))/g)||[];
+    const scores={C:parseInt(g(cols,'c'))||1,A:parseInt(g(cols,'a'))||1,R:parseInt(g(cols,'r'))||1,V:parseInt(g(cols,'v'))||1,E:parseInt(g(cols,'e'))||1,Rec:parseInt(g(cols,'rec'))||1};
+    const total=Object.values(scores).reduce((s,v)=>s+v,0);
+    const pa=calcPa(total);
+    assets.push({id:idCtr++,asset:g(cols,'asset')||'Untitled',dbt:g(cols,'dbt')||'',location:g(cols,'location')||'',description:g(cols,'description')||'',...scores,total,pa,rating:getRating(pa),status:g(cols,'status')||'Open',review:g(cols,'review')||'',notes:g(cols,'notes')||'',scale:MAX_SCORE});n++;
+  }
+  logImport('success',`Imported ${n} assets from CSV.`);
+}
+function logImport(type,msg){
+  document.getElementById('import-log').innerHTML=`<div style="padding:12px 16px;border-radius:6px;font-size:13px;border:1px solid ${type==='success'?'var(--low)':'var(--crit)'};background:${type==='success'?'var(--low-bg)':'var(--crit-bg)'};color:${type==='success'?'var(--low-t)':'var(--crit-t)'}">${msg}</div>`;
+}
+
+function refresh(){renderSummary();populateFilters();renderTable();populateDBTSelect();}
+
+// Seed
+function seedData(){
+  const dbtList=[
+    {id:dbtIdCtr++,name:'Outsider Terrorist — HAZMAT Release',type:'Outsider — Terrorist (International)',num:'1–2',goal:'Destroy chlorine tanks to release gas and cause mass casualties',capability:'Explosives, hand tools, firearms, knowledge of chemical systems via OSINT',tactics:'Perimeter breach using stolen utility uniforms, direct attack on chlorine storage',knowledge:'Open-source facility layout, public SCADA documentation',attacktype:'HAZMAT Release',level:'High',narrative:'An attack planned by 1–2 outsiders with no authorized access but knowledge of chemical manufacturing systems obtained through open-source information and observation. Armed with explosives and hand tools, their objective is to destroy chlorine storage to release hazardous gas into the surrounding area.'},
+    {id:dbtIdCtr++,name:'Outsider — Cyber / SCADA Attack',type:'Outsider — Cyber Actor',num:'1',goal:'Remotely compromise SCADA systems to disrupt operations',capability:'Advanced hacking tools, network exploitation, social engineering',tactics:'Spear-phishing of operations staff, lateral movement to SCADA network',knowledge:'Vendor documentation, network topology from OSINT',attacktype:'Cyber / SCADA Attack',level:'High',narrative:'A single threat actor without authorized access targeting SCADA or industrial control systems remotely, seeking to deny operational control or cause physical damage through digital means.'},
+    {id:dbtIdCtr++,name:'Insider — Disgruntled Employee',type:'Insider — Disgruntled Employee',num:'1',goal:'Sabotage operations or steal sensitive data',capability:'Authorized access, insider knowledge of systems and schedules',tactics:'Off-hours sabotage of critical equipment, data exfiltration',knowledge:'Full operational knowledge, access credentials, security routines',attacktype:'Insider Sabotage',level:'Medium',narrative:'A single insider with authorized access and deep operational knowledge acting alone to disrupt facility operations or steal sensitive information, leveraging legitimate access to bypass external security controls.'},
+  ];
+  dbtList.forEach(d=>dbts.push(d));
+
+  const assetList=[
+    {asset:'Chlorine Storage Facility',dbt:'Outsider Terrorist — HAZMAT Release',location:'Treatment Zone A',description:'Primary chlorine storage — single point of failure for water treatment operations.',C:5,A:4,R:4,V:5,E:5,Rec:3},
+    {asset:'SCADA Command Center',dbt:'Outsider — Cyber / SCADA Attack',location:'HQ Operations Floor',description:'Central control system for all distribution and treatment operations.',C:5,A:3,R:3,V:4,E:5,Rec:2},
+    {asset:'Fresh Water Reservoir — Primary',dbt:'Outsider Terrorist — HAZMAT Release',location:'North Field',description:'Main fresh water storage — accessible from public road perimeter.',C:4,A:4,R:3,V:3,E:4,Rec:4},
+    {asset:'Distribution Network Hub',dbt:'Insider — Disgruntled Employee',location:'Central Pumping Station',description:'Main distribution routing — multiple unguarded access points.',C:4,A:5,R:2,V:3,E:4,Rec:3},
+    {asset:'Pump Station 1',dbt:'Outsider Terrorist — HAZMAT Release',location:'Zone B',description:'Primary pump station serving 40% of distribution capacity.',C:3,A:3,R:3,V:3,E:3,Rec:2},
+  ];
+  assetList.forEach(a=>{
+    const total=a.C+a.A+a.R+a.V+a.E+a.Rec;
+    const pa=calcPa(total);
+    assets.push({id:idCtr++,...a,description:a.description,total,pa,rating:getRating(pa),status:'Open',review:'',notes:'',scale:5});
+  });
+}
+
+document.getElementById('date-disp').textContent=new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+buildScaleOpts();
+buildLegend();
+seedData();
+renderDBTCards();
+refresh();
+</script>
+</body>
+</html>
