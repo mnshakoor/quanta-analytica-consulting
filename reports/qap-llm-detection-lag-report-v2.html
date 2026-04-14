@@ -1,0 +1,1819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Detection Lag as a Strategic Vulnerability | Quanta Analytica Process™</title>
+<meta name="title" content="AI Detection Lag as a Strategic Vulnerability | Quanta Analytica Process™">
+<meta name="description" content="An analytic study on the temporal gap in AI-generated influence detection. Explore how 'Detection Lag' creates windows of opportunity for information operations.">
+<meta name="keywords" content="AI detection lag, influence operations 2026, LLM vulnerability, information integrity, QAP report, M. Nuri Shakoor, adversarial AI">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://quanta-analytica.com/reports/qap-llm-detection-lag_report-v2.html">
+<meta property="og:title" content="The Strategic Window: Analyzing AI Detection Lag in 2026">
+<meta property="og:description" content="New report from Quanta Analytica on why current AI safety benchmarks fail to account for the 'Detection Lag' exploited by sophisticated adversaries.">
+<meta property="og:image" content="https://quanta-analytica.com/qa-mns-logo.PNG">
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://quanta-analytica.com/reports/qap-llm-detection-lag_report-v2.html">
+<meta property="twitter:title" content="AI Detection Lag: A Strategic Vulnerability">
+<meta property="twitter:description" content="Quantifying the temporal vulnerability window in LLM-driven influence campaigns.">
+<meta property="twitter:image" content="https://quanta-analytica.com/qa-mns-logo.PNG">
+
+<meta property="article:published_time" content="2026-04-14">
+<meta property="article:author" content="M. Nuri Shakoor">
+<meta property="article:section" content="Information Integrity">
+
+<link rel="canonical" href="https://quanta-analytica.com/reports/qap-llm-detection-lag_report-v2.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+/* ============================================================
+   QAP WEB REPORT — CANONICAL STYLESHEET
+   Quanta Analytica Process™ | MNS Consulting
+   quanta-analytica.com/reports/
+   Version: 2.0 | Design System Reference
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. ROOT VARIABLES — Color, Typography, Spacing
+   ------------------------------------------------------------ */
+:root {
+  /* Core Palette */
+  --obsidian:         #0a0c10;
+  --obsidian-mid:     #10131a;
+  --obsidian-card:    #13161f;
+  --obsidian-border:  #1c2030;
+  --obsidian-surface: #181b26;
+  --obsidian-lift:    #1e2235;
+
+  /* Gold Scale */
+  --gold:             #c8a96e;
+  --gold-light:       #dfc28e;
+  --gold-pale:        #e8d5aa;
+  --gold-dim:         #9a7f52;
+  --gold-muted:       #6b5838;
+  --gold-glow:        rgba(200, 169, 110, 0.12);
+  --gold-glow-strong: rgba(200, 169, 110, 0.22);
+
+  /* Alert / Status Colors */
+  --red:              #c0392b;
+  --red-light:        #e74c3c;
+  --red-bg:           rgba(192, 57, 43, 0.12);
+  --amber:            #d4820a;
+  --amber-light:      #f39c12;
+  --amber-bg:         rgba(212, 130, 10, 0.12);
+  --green:            #27ae60;
+  --green-light:      #2ecc71;
+  --green-bg:         rgba(39, 174, 96, 0.12);
+  --blue:             #2980b9;
+  --blue-light:       #3498db;
+  --blue-bg:          rgba(41, 128, 185, 0.12);
+  --yellow:           #f1c40f;
+  --yellow-bg:        rgba(241, 196, 15, 0.12);
+  --slate:            #5d7a9a;
+  --slate-light:      #7f9ab8;
+
+  /* Text Scale */
+  --text-primary:     #e8e4dc;
+  --text-secondary:   #b8b0a0;
+  --text-muted:       #7a7264;
+  --text-faint:       #4a4640;
+
+  /* Typography */
+  --font-display:     'Libre Baskerville', Georgia, serif;
+  --font-body:        'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:        'IBM Plex Mono', 'Courier New', monospace;
+
+  /* Spacing */
+  --space-xs:         0.25rem;
+  --space-sm:         0.5rem;
+  --space-md:         1rem;
+  --space-lg:         1.5rem;
+  --space-xl:         2rem;
+  --space-2xl:        3rem;
+  --space-3xl:        4rem;
+
+  /* Borders & Radius */
+  --radius-sm:        3px;
+  --radius-md:        6px;
+  --radius-lg:        10px;
+  --border-default:   1px solid var(--obsidian-border);
+  --border-gold:      1px solid var(--gold-dim);
+
+  /* Transitions */
+  --transition-fast:  0.15s ease;
+  --transition-base:  0.25s ease;
+  --transition-slow:  0.4s ease;
+
+  /* Shadows */
+  --shadow-card:      0 2px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lift:      0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* ------------------------------------------------------------
+   2. RESET & BASE
+   ------------------------------------------------------------ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--obsidian);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--gold-light);
+}
+
+p {
+  margin-bottom: var(--space-md);
+  color: var(--text-secondary);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+strong, b {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+em, i {
+  color: var(--slate-light);
+  font-style: italic;
+}
+
+cite {
+  font-style: normal;
+  color: var(--gold-dim);
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  vertical-align: super;
+  line-height: 0;
+}
+
+/* ------------------------------------------------------------
+   3. SCROLL PROGRESS BAR
+   ------------------------------------------------------------ */
+#progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-light));
+  z-index: 9999;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 8px var(--gold-glow-strong);
+}
+
+/* ------------------------------------------------------------
+   4. NAVIGATION
+   ------------------------------------------------------------ */
+nav {
+  position: fixed;
+  top: 3px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(10, 12, 16, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--obsidian-border);
+  padding: 0 var(--space-xl);
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.nav-brand span {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+.nav-classify {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  border: 1px solid var(--amber);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--amber-bg);
+}
+
+/* ------------------------------------------------------------
+   5. HERO BLOCK
+   ------------------------------------------------------------ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 140px var(--space-xl) var(--space-3xl);
+  overflow: hidden;
+  background: radial-gradient(ellipse at 20% 60%, rgba(200, 169, 110, 0.05) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(41, 128, 185, 0.04) 0%, transparent 50%),
+              var(--obsidian);
+}
+
+/* Animated background grid */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(200, 169, 110, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 169, 110, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridDrift 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes gridDrift {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(40px, 40px); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-running-head {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--obsidian-border);
+  padding-bottom: var(--space-sm);
+}
+
+.hero-container {
+  display: flex;          /* Enables side-by-side layout */
+  align-items: center;    /* Vertically centers the image with the text */
+  gap: 30px;              /* Creates space between the image and the text */
+  margin: 20px 0;
+}
+/* ----------------------------------------------------------------------
+   DEFAULT HERO IMG URL TO BE USED 'https://quanta-analytica.com/logo.PNG
+   -------Place image to the left of h1 title in hero section--------- */
+
+.hero-image {
+  max-width: 200px;       /* Adjust this size to fit your design */
+  height: auto;           /* Maintains aspect ratio */
+  border-radius: 8px;     /* Optional: rounds the corners of your image */
+}
+
+.hero-text {
+  flex: 1;                /* Allows text to take up remaining space */
+}
+
+/* Optional: Mobile Responsiveness */
+@media (max-width: 600px) {
+  .hero-container {
+    flex-direction: column; /* Stacks image on top of text on small screens */
+    text-align: center;
+  }
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 .title-gold {
+  color: var(--gold); 
+  display: block;      /* Ensures it starts on a new line */
+  margin-top: 0.5rem;  /* Optional: adds a small gap between lines */
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+  max-width: 720px;
+  line-height: 1.6;
+}
+
+/* Hero Metadata Row */
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  align-items: center;
+}
+
+.meta-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.meta-cell .label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.meta-cell .value {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+}
+
+.meta-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--gold-dim);
+  align-self: center;
+}
+
+/* Threat Badge */
+.threat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.threat-badge.critical  { color: var(--red-light);   border-color: var(--red);   background: var(--red-bg);   }
+.threat-badge.high      { color: var(--amber-light);  border-color: var(--amber); background: var(--amber-bg); }
+.threat-badge.elevated  { color: var(--yellow);       border-color: var(--yellow);background: var(--yellow-bg);}
+.threat-badge.moderate  { color: var(--blue-light);   border-color: var(--blue);  background: var(--blue-bg);  }
+.threat-badge.low       { color: var(--green-light);  border-color: var(--green); background: var(--green-bg); }
+
+.threat-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+
+/* Analytic Scope Boundary */
+.scope-boundary {
+  border-left: 3px solid var(--slate);
+  padding: var(--space-sm) var(--space-lg);
+  background: rgba(93, 122, 154, 0.08);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin-top: var(--space-lg);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--slate-light);
+  line-height: 1.6;
+}
+
+/* Key Metrics Strip */
+.metrics-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--obsidian-border);
+}
+
+.metric-block {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-top: 2px solid var(--gold-dim);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  min-width: 140px;
+}
+
+.metric-block .metric-value {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.metric-block .metric-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ------------------------------------------------------------
+   6. MAIN CONTENT WRAPPER
+   ------------------------------------------------------------ */
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--space-3xl) var(--space-xl);
+}
+
+/* ------------------------------------------------------------
+   7. SECTION WRAPPER & SCROLL REVEAL
+   ------------------------------------------------------------ */
+.section {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  margin-bottom: var(--space-3xl);
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section Header */
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--obsidian-border);
+}
+
+.section-num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  background: var(--gold-glow);
+  border: 1px solid var(--gold-muted);
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+/* Sub-section divider */
+.sub-section {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+}
+
+.sub-section::before {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-muted), transparent);
+  margin-bottom: var(--space-lg);
+}
+
+.sub-section h3 {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-md);
+}
+
+/* ------------------------------------------------------------
+   8. BLUF — Bottom Line Up Front
+   ------------------------------------------------------------ */
+.bluf-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.bluf-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-left: 3px solid var(--gold-dim);
+  border-radius: var(--radius-md);
+}
+
+.bluf-index {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--gold-pale);
+  opacity: 0.4;
+  line-height: 1;
+  padding-top: 4px;
+}
+
+.bluf-text .bluf-claim {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 0.98rem;
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.bluf-text p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------
+   9. SNAPSHOT GRID — Who / What / Where / When / Why / How
+   ------------------------------------------------------------ */
+.snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.snapshot-cell {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.snapshot-cell .snap-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: var(--space-sm);
+  display: block;
+}
+
+.snapshot-cell .snap-content {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------------------
+   10. KEY JUDGMENTS
+   ------------------------------------------------------------ */
+.kj-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.kj-item {
+  padding: var(--space-lg);
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  border-left: 4px solid;
+  position: relative;
+}
+
+.kj-item.high     { border-left-color: var(--red);   }
+.kj-item.moderate { border-left-color: var(--amber);  }
+.kj-item.low      { border-left-color: var(--blue);   }
+.kj-item.watch    { border-left-color: var(--yellow);  }
+
+.kj-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.kj-id {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.kj-conf {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.kj-item.high     .kj-conf { color: var(--red-light);   border-color: var(--red);   background: var(--red-bg);   }
+.kj-item.moderate .kj-conf { color: var(--amber-light);  border-color: var(--amber); background: var(--amber-bg); }
+.kj-item.low      .kj-conf { color: var(--blue-light);   border-color: var(--blue);  background: var(--blue-bg);  }
+.kj-item.watch    .kj-conf { color: var(--yellow);        border-color: var(--yellow);background: var(--yellow-bg);}
+
+.kj-text {
+  font-size: 0.93rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: var(--space-sm);
+}
+
+.kj-mapping {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+/* ------------------------------------------------------------
+   11. EVIDENCE GRID — Know / Assess / Gap
+   ------------------------------------------------------------ */
+.evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.evidence-box {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.evidence-box-header {
+  padding: var(--space-sm) var(--space-lg);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.evidence-box-header.know   { background: var(--green-bg);  color: var(--green-light);  border-bottom: 1px solid var(--green);  }
+.evidence-box-header.assess { background: var(--amber-bg);  color: var(--amber-light);  border-bottom: 1px solid var(--amber);  }
+.evidence-box-header.gap    { background: var(--red-bg);    color: var(--red-light);    border-bottom: 1px solid var(--red);    }
+
+.evidence-box-body {
+  padding: var(--space-lg);
+}
+
+.evidence-box-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+.evidence-box-body li {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid var(--obsidian-border);
+  padding-left: var(--space-md);
+  position: relative;
+}
+
+.evidence-box-body li::before {
+  content: '//';
+  position: absolute;
+  left: 0;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+
+.evidence-box-body li:last-child {
+  border-bottom: none;
+}
+
+/* WSI Source Independence Note */
+.wsi-note {
+  background: rgba(93, 122, 154, 0.1);
+  border: 1px solid rgba(93, 122, 154, 0.3);
+  border-left: 3px solid var(--slate);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  font-size: 0.83rem;
+  color: var(--slate-light);
+  font-style: italic;
+  margin-top: var(--space-lg);
+}
+
+.wsi-note strong {
+  color: var(--slate-light);
+  font-style: normal;
+}
+
+/* ------------------------------------------------------------
+   12. TABLES — Assumption, ACH, IW, KIQ, Risk, PIGs
+   ------------------------------------------------------------ */
+.table-wrapper {
+  overflow-x: auto;
+  margin-bottom: var(--space-lg);
+  border-radius: var(--radius-md);
+  border: var(--border-default);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.87rem;
+}
+
+thead th {
+  background: var(--obsidian-surface);
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  border-bottom: 1px solid var(--obsidian-border);
+  white-space: nowrap;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--obsidian-border);
+  transition: background var(--transition-fast);
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: var(--obsidian-lift);
+}
+
+tbody td {
+  padding: var(--space-sm) var(--space-md);
+  color: var(--text-secondary);
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+tbody td:first-child {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Assumption Table */
+.assumption-table { }
+
+/* ACH Table */
+.ach-table thead th:nth-child(4) { text-align: center; }
+.ach-table tbody td:nth-child(4) { text-align: center; font-family: var(--font-mono); }
+
+/* IW Table — Indicators & Warnings */
+.iw-table { }
+
+/* Risk Matrix — high-score rows */
+.risk-matrix tbody tr.risk-high {
+  background: var(--red-bg);
+}
+
+.risk-matrix tbody tr.risk-high td {
+  color: var(--text-primary);
+}
+
+.risk-score {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.risk-score.score-high   { color: var(--red-light);   }
+.risk-score.score-medium { color: var(--amber-light);  }
+.risk-score.score-low    { color: var(--green-light);  }
+
+/* KIQ Table */
+.kiq-table { }
+
+/* Priority Intelligence Gaps Table */
+.pig-table { }
+
+/* KPI Table (optional — fragility reports) */
+.kpi-table { }
+
+.pillar-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--obsidian-border);
+  color: var(--text-muted);
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+
+/* ------------------------------------------------------------
+   13. SCENARIO CARDS
+   ------------------------------------------------------------ */
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.scenario-card {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-top: 3px solid;
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.scenario-card.best  { border-top-color: var(--green);  }
+.scenario-card.base  { border-top-color: var(--amber);  }
+.scenario-card.worst { border-top-color: var(--red);    }
+
+.scenario-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  display: block;
+}
+
+.scenario-card.best  .scenario-label { color: var(--green-light);  }
+.scenario-card.base  .scenario-label { color: var(--amber-light);  }
+.scenario-card.worst .scenario-label { color: var(--red-light);    }
+
+.scenario-card h4 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.scenario-card p {
+  font-size: 0.87rem;
+}
+
+.scenario-prob {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: var(--space-sm);
+  display: block;
+  letter-spacing: 0.06em;
+}
+
+/* ------------------------------------------------------------
+   14. BEHAVIORAL GRID
+   ------------------------------------------------------------ */
+.behavioral-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.behavioral-item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+}
+
+.behavioral-rank {
+  font-family: var(--font-mono);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--gold-pale);
+  opacity: 0.25;
+  line-height: 1;
+  text-align: center;
+  padding-top: 4px;
+}
+
+.behavioral-content h4 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.behavioral-content p {
+  font-size: 0.88rem;
+  margin-bottom: var(--space-xs);
+}
+
+.behavioral-inference {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--slate-light);
+  font-style: italic;
+  letter-spacing: 0.02em;
+  display: block;
+}
+
+/* ------------------------------------------------------------
+   15. RECOMMENDATION TIMELINE
+   ------------------------------------------------------------ */
+.rec-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-left: 2px solid var(--obsidian-border);
+  margin-left: var(--space-md);
+  padding-left: var(--space-xl);
+}
+
+.rec-block {
+  position: relative;
+  margin-bottom: var(--space-xl);
+}
+
+.rec-block::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * var(--space-xl) - 1px);
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--obsidian-border);
+  border: 2px solid;
+}
+
+.rec-block.immediate  ::before { border-color: var(--red);   background: var(--red-bg);   }
+.rec-block.near-term  ::before { border-color: var(--amber); background: var(--amber-bg); }
+.rec-block.medium-term::before { border-color: var(--green); background: var(--green-bg); }
+
+.rec-time {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+  margin-bottom: var(--space-md);
+}
+
+.rec-block.immediate   .rec-time { color: var(--red-light);  border: 1px solid var(--red);   background: var(--red-bg);   }
+.rec-block.near-term   .rec-time { color: var(--amber-light);border: 1px solid var(--amber); background: var(--amber-bg); }
+.rec-block.medium-term .rec-time { color: var(--green-light);border: 1px solid var(--green); background: var(--green-bg); }
+
+.rec-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.rec-content p {
+  font-size: 0.9rem;
+}
+
+/* ------------------------------------------------------------
+   16. CONFIDENCE PANEL
+   ------------------------------------------------------------ */
+.conf-panel {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--space-lg);
+}
+
+.conf-header {
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  border-bottom: 1px solid var(--obsidian-border);
+}
+
+.conf-band {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.conf-band.high     { color: var(--green-light);  border-color: var(--green);  background: var(--green-bg);  }
+.conf-band.moderate { color: var(--amber-light);  border-color: var(--amber);  background: var(--amber-bg);  }
+.conf-band.low      { color: var(--red-light);    border-color: var(--red);    background: var(--red-bg);    }
+
+.conf-header-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+.conf-body {
+  padding: var(--space-lg);
+}
+
+.conf-body p {
+  font-size: 0.9rem;
+}
+
+/* Uncertainty / Flip Risk List */
+.uncertainty-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.uncertainty-item {
+  background: var(--red-bg);
+  border: 1px solid var(--red);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+}
+
+.uncertainty-item .u-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red-light);
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.uncertainty-item p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------
+   17. THRESHOLD GRID — Green / Amber / Red Zones
+   ------------------------------------------------------------ */
+.threshold-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.threshold-cell {
+  border-radius: var(--radius-md);
+  border: 1px solid;
+  overflow: hidden;
+}
+
+.threshold-cell.green-zone { border-color: var(--green);  background: var(--green-bg);  }
+.threshold-cell.amber-zone { border-color: var(--amber);  background: var(--amber-bg);  }
+.threshold-cell.red-zone   { border-color: var(--red);    background: var(--red-bg);    }
+
+.threshold-header {
+  padding: var(--space-sm) var(--space-md);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid;
+}
+
+.threshold-cell.green-zone .threshold-header { color: var(--green-light);  border-color: var(--green);  background: rgba(39, 174, 96, 0.18);  }
+.threshold-cell.amber-zone .threshold-header { color: var(--amber-light);  border-color: var(--amber);  background: rgba(212, 130, 10, 0.18);  }
+.threshold-cell.red-zone   .threshold-header { color: var(--red-light);    border-color: var(--red);    background: rgba(192, 57, 43, 0.18);    }
+
+.threshold-body {
+  padding: var(--space-md);
+}
+
+.threshold-body p {
+  font-size: 0.85rem;
+  margin-bottom: var(--space-sm);
+}
+
+.threshold-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+.threshold-body li {
+  font-size: 0.83rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding: 3px 0;
+  padding-left: var(--space-md);
+  position: relative;
+}
+
+.threshold-body li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--text-faint);
+}
+
+/* ------------------------------------------------------------
+   18. STATUS & BAND PILLS (inline)
+   ------------------------------------------------------------ */
+.status-pill {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+.status-pill.red    { color: var(--red-light);   border-color: var(--red);   background: var(--red-bg);    }
+.status-pill.amber  { color: var(--amber-light);  border-color: var(--amber); background: var(--amber-bg);  }
+.status-pill.green  { color: var(--green-light);  border-color: var(--green); background: var(--green-bg);  }
+.status-pill.blue   { color: var(--blue-light);   border-color: var(--blue);  background: var(--blue-bg);   }
+.status-pill.yellow { color: var(--yellow);        border-color: var(--yellow);background: var(--yellow-bg); }
+.status-pill.gold   { color: var(--gold);          border-color: var(--gold-dim); background: var(--gold-glow); }
+
+/* Band Pills (source register table) */
+.band-pill {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.band-pill.green { color: var(--green-light);  border-color: var(--green);  background: var(--green-bg);  }
+.band-pill.amber { color: var(--amber-light);  border-color: var(--amber);  background: var(--amber-bg);  }
+.band-pill.red   { color: var(--red-light);    border-color: var(--red);    background: var(--red-bg);    }
+
+/* Inline fact/inference labels */
+.label-fact {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--blue-light);
+  border: 1px solid var(--blue);
+  background: var(--blue-bg);
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  margin-right: 6px;
+}
+
+.label-inference {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  border: 1px solid var(--gold-dim);
+  background: var(--gold-glow);
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  margin-right: 6px;
+}
+
+/* Structural constraint labels */
+.label-structural { color: var(--red-light);    }
+.label-political  { color: var(--amber-light);  }
+.label-resource   { color: var(--blue-light);   }
+.label-temporal   { color: var(--green-light);  }
+
+/* Analytic technique declaration block */
+.technique-declaration {
+  background: var(--obsidian-surface);
+  border: var(--border-default);
+  border-left: 3px solid var(--gold-dim);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  margin-bottom: var(--space-xl);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.technique-declaration strong {
+  color: var(--gold-dim);
+  font-style: normal;
+}
+
+/* ------------------------------------------------------------
+   19. FOOTER
+   ------------------------------------------------------------ */
+footer {
+  border-top: 1px solid var(--obsidian-border);
+  padding: var(--space-xl);
+  text-align: center;
+}
+
+.footer-brand {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: var(--space-sm);
+}
+
+.footer-doc-id {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  margin-bottom: var(--space-sm);
+}
+
+.footer-legal {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* ------------------------------------------------------------
+   20. RESPONSIVE BREAKPOINTS
+   ------------------------------------------------------------ */
+@media (max-width: 768px) {
+  nav {
+    padding: 0 var(--space-md);
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    padding: 100px var(--space-md) var(--space-2xl);
+  }
+
+  main {
+    padding: var(--space-2xl) var(--space-md);
+  }
+
+  .snapshot-grid,
+  .evidence-grid,
+  .scenario-grid,
+  .threshold-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bluf-item {
+    grid-template-columns: 28px 1fr;
+    gap: var(--space-md);
+  }
+
+  .behavioral-item {
+    grid-template-columns: 1fr;
+  }
+
+  .behavioral-rank {
+    font-size: 1rem;
+    text-align: left;
+    padding-top: 0;
+    opacity: 0.35;
+  }
+
+  .hero-running-head {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .hero-meta {
+    gap: var(--space-sm);
+  }
+
+  .metrics-strip {
+    gap: var(--space-sm);
+  }
+
+  table {
+    font-size: 0.8rem;
+  }
+
+  thead th,
+  tbody td {
+    padding: var(--space-xs) var(--space-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .section-title {
+    font-size: 1.15rem;
+  }
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, rgba(0,0,0,0.12) 0px, transparent 1px, transparent 3px);
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.28;
+}
+.hero-seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 118px;
+  height: 118px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-dim);
+  background: radial-gradient(circle at 30% 30%, var(--gold-glow), transparent 65%), var(--obsidian-card);
+  box-shadow: 0 0 0 8px rgba(200,169,110,0.03);
+  margin-bottom: var(--space-xl);
+  font-family: var(--font-mono);
+  color: var(--gold-light);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  text-align: center;
+}
+.section-note, .wsi-note, .analysis-note {
+  background: rgba(93,122,154,0.08);
+  border-left: 3px solid var(--slate);
+  padding: 0.85rem 1rem;
+  border-radius: 0 6px 6px 0;
+  color: var(--slate-light);
+  font-size: 0.88rem;
+  margin-top: 1rem;
+}
+.kiq-table, .assumption-table, .ach-table, .iw-table, .risk-table, .source-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--obsidian-card);
+  border: 1px solid var(--obsidian-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.kiq-table th, .assumption-table th, .ach-table th, .iw-table th, .risk-table th, .source-table th {
+  text-align: left;
+  background: var(--obsidian-surface);
+  color: var(--gold);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.8rem 0.9rem;
+  border-bottom: 1px solid var(--obsidian-border);
+}
+.kiq-table td, .assumption-table td, .ach-table td, .iw-table td, .risk-table td, .source-table td {
+  padding: 0.85rem 0.9rem;
+  border-bottom: 1px solid var(--obsidian-border);
+  vertical-align: top;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+.kiq-table tr:last-child td, .assumption-table tr:last-child td, .ach-table tr:last-child td, .iw-table tr:last-child td, .risk-table tr:last-child td, .source-table tr:last-child td { border-bottom: none; }
+.evidence-grid, .behavioral-grid, .scenario-grid, .confidence-grid { display:grid; gap:1rem; }
+.evidence-grid { grid-template-columns: repeat(3, 1fr); }
+.behavioral-grid, .scenario-grid, .confidence-grid { grid-template-columns: repeat(3, 1fr); }
+.evidence-box, .behavioral-item, .scenario-card, .confidence-card, .implication-card {
+  background: var(--obsidian-card);
+  border: 1px solid var(--obsidian-border);
+  border-radius: 8px;
+  padding: 1rem;
+}
+.evidence-box-header, .mini-kicker {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.7rem;
+  margin-bottom: 0.65rem;
+}
+.evidence-box-header.know { color: var(--green-light); }
+.evidence-box-header.assess { color: var(--amber-light); }
+.evidence-box-header.gap { color: var(--red-light); }
+.behavioral-rank { color: var(--gold); font-family: var(--font-mono); font-size: 0.72rem; margin-bottom: 0.4rem; }
+.scenario-card.best { border-top: 3px solid var(--green); }
+.scenario-card.base { border-top: 3px solid var(--amber); }
+.scenario-card.worst { border-top: 3px solid var(--red); }
+.implication-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:1rem; margin-bottom:1rem; }
+.threshold-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:1rem; margin-top:1rem; }
+.threshold-card { background: var(--obsidian-card); border: 1px solid var(--obsidian-border); border-radius:8px; padding:1rem; }
+.threshold-card.green { border-left: 4px solid var(--green); }
+.threshold-card.amber { border-left: 4px solid var(--amber); }
+.threshold-card.red { border-left: 4px solid var(--red); }
+.band-green { color: var(--green-light); font-weight:700; }
+.band-amber { color: var(--amber-light); font-weight:700; }
+.band-red { color: var(--red-light); font-weight:700; }
+.band-blue { color: var(--blue-light); font-weight:700; }
+.refs ol { margin-left:1.25rem; color:var(--text-secondary); }
+.refs li { margin-bottom:0.65rem; }
+ul.tight { margin:0; padding-left:1.1rem; }
+ul.tight li { margin-bottom:0.35rem; color:var(--text-secondary); }
+.footer-note { color: var(--text-muted); font-size: 0.82rem; margin-top: 1rem; }
+@media (max-width: 900px) {
+  .snapshot-grid, .evidence-grid, .behavioral-grid, .scenario-grid, .confidence-grid, .implication-grid, .threshold-grid { grid-template-columns: 1fr; }
+}
+  </style>
+</head>
+<body>
+  <div id="progress"></div>
+  <nav>
+    <div class="nav-brand">QUANTA ANALYTICA <span>| MNS CONSULTING</span></div>
+    <ul class="nav-links">
+      <li><a href="#bluf">BLUF</a></li>
+      <li><a href="#analysis">ANALYSIS</a></li>
+      <li><a href="#references">REFERENCES</a></li>
+    </ul>
+    <div class="nav-classify">Open Source</div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-running-head">
+        <span>QUANTA ANALYTICA | MNS CONSULTING</span>
+        <span>INFORMATION INTEGRITY & INFLUENCE ANALYSIS // MULTILINGUAL AI MONITORING</span>
+      </div>
+      <div class="hero-container">
+        <img class="hero-image" src="https://quanta-analytica.com/logo.PNG" alt="Quanta Analytica logo" />
+        <div class="hero-text">
+          <h1>AI Detection Lag as a Strategic Vulnerability <span class="title-gold">in Multilingual Information Competition</span></h1>
+          <p class="hero-subtitle">A QAP intelligence assessment examining whether multilingual LLM performance gaps should be treated as an early-warning vulnerability in NATO-aligned information monitoring, with emphasis on Russian-language detection volatility, adversary exploitation risk, and governance-oriented mitigation.</p>
+        </div>
+      </div>
+      <div class="hero-meta">
+        <div class="meta-cell"><span class="label">Domain</span><span class="value">Information Integrity & Influence Analysis</span></div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell"><span class="label">Date</span><span class="value">14 April 2026</span></div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell"><span class="label">Producer</span><span class="value">OpenAI | QAP-formatted</span></div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell"><span class="label">Framework</span><span class="value">Quanta Analytica Process™</span></div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell"><span class="label">Architecture</span><span class="value">Framework-governed intelligence architecture</span></div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell"><span class="label">Decision Use</span><span class="value">Monitoring governance, procurement controls, multilingual model assurance</span></div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell"><span class="label">Confidence</span><span class="value">Moderate</span></div>
+        <div class="meta-divider"></div>
+        <div class="threat-badge high"><span class="threat-dot"></span> Elevated Monitoring Risk</div>
+      </div>
+      <div class="scope-boundary"><strong>Analytic Scope Boundary:</strong> Time range centers on the NATO StratCom COE April 2026 study and current official NATO and EU policy framing. Forward horizon: 12 months. Source base: official NATO and EEAS material, the uploaded NATO report, and recent peer-reviewed computational linguistics research. Out of scope: cyber intrusion tradecraft, broad AI ethics debate, and classified collection streams. Overall confidence is capped at Moderate because the anchor empirical study is dataset- and language-set bounded and the adversary-exploitation pathway is partly inferential rather than directly measured. <strong>Framework declaration:</strong> This product was structured under the Quanta Analytica Process™.</div>
+      <div class="metrics-strip">
+        <div class="metric-block"><div class="metric-value">9%</div><div class="metric-label">Russian gap vs English</div></div>
+        <div class="metric-block"><div class="metric-value">+38%</div><div class="metric-label">LoRA gain over baseline</div></div>
+        <div class="metric-block"><div class="metric-value">300+</div><div class="metric-label">Extra RU misclassifications / 1k posts</div></div>
+        <div class="metric-block"><div class="metric-value">ABCDE</div><div class="metric-label">NATO threat analysis model</div></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section visible" id="bluf">
+      <div class="section-header"><div class="section-num">01 // BLUF</div><h2 class="section-title">Bottom Line Up Front</h2></div>
+      <div class="bluf-grid">
+        <div class="bluf-item"><div class="bluf-index">1</div><div class="bluf-text"><span class="bluf-claim">[Assessment] Multilingual LLM performance gaps should be treated as a security-relevant early-warning vulnerability, not merely a technical accuracy issue.</span><p>The uploaded NATO StratCom study finds Russian-language stance detection underperforms English by up to 9 percentage points and exhibits much higher volatility, conditions that can obscure emerging narratives in precisely the environments where Alliance monitoring demand is highest. [1]</p></div></div>
+        <div class="bluf-item"><div class="bluf-index">2</div><div class="bluf-text"><span class="bluf-claim">[Assessment] The principal operational danger is detection lag.</span><p>In the report’s hypothetical monitoring scenario, missed Russian-language anti-NATO posts delay campaign recognition until the response window narrows. This is an analytic inference from the NATO evidence base, not a direct live-case measurement. [1]</p></div></div>
+        <div class="bluf-item"><div class="bluf-index">3</div><div class="bluf-text"><span class="bluf-claim">[Assessment] Out-of-the-box reliance on larger proprietary models appears to be a weaker governance posture for multilingual influence monitoring than language-adapted systems validated against task-specific benchmarks.</span><p>The NATO study finds fine-tuned 7 to 9B open-weight models outperform GPT-4.1 when the latter relies on prompting or RAG alone, while peer-reviewed work supports gains from bilingual and specialized multilingual adaptation rather than naïve transfer assumptions. [1][6][8]</p></div></div>
+        <div class="bluf-item"><div class="bluf-index">4</div><div class="bluf-text"><span class="bluf-claim">[Assessment] The best near-term mitigation is not full automation but differentiated review, language-specific adaptation, and explicit threshold ownership.</span><p>This aligns with the NATO recommendation set and with a governance posture of differentiated review, language-specific adaptation, and explicit threshold ownership. [1]</p></div></div>
+      </div>
+    </section>
+
+    <section class="section visible" id="kiqs">
+      <div class="section-header"><div class="section-num">02 // KIQs</div><h2 class="section-title">Key Intelligence Questions</h2></div>
+      <table class="kiq-table">
+        <tr><th>Question ID</th><th>Intelligence Question</th><th>Links To</th></tr>
+        <tr><td>KIQ-1</td><td>How materially do multilingual detection gaps degrade early warning for influence operations in NATO-relevant monitoring environments?</td><td>KJ-1, KJ-2, Annex A</td></tr>
+        <tr><td>KIQ-2</td><td>Which language-specific vulnerabilities appear most exploitable by hostile actors, especially in Russian-language segments?</td><td>KJ-1, KJ-3, Annex B</td></tr>
+        <tr><td>KIQ-3</td><td>At what point does model error become operationally significant enough to distort prioritization, alerting, or response?</td><td>KJ-2, Risk Matrix</td></tr>
+        <tr><td>KIQ-4</td><td>Do language-specific fine-tuned small open-weight models provide a stronger resilience posture than larger proprietary systems using generic prompting?</td><td>KJ-3, Recommendations</td></tr>
+        <tr><td>KIQ-5</td><td>How should capability gaps be integrated into alliance threat modeling, verification cadence, and governance controls?</td><td>KJ-4, Thresholds</td></tr>
+      </table>
+      <div class="wsi-note"><strong>Decision threshold emphasis:</strong> KIQ-3 and KIQ-5 are the principal decision-driving questions because they govern alert thresholds, review burdens, and procurement assurance.</div>
+    </section>
+
+    <section class="section visible" id="snapshot">
+      <div class="section-header"><div class="section-num">03 // SNAPSHOT</div><h2 class="section-title">Situation Snapshot</h2></div>
+      <div class="snapshot-grid">
+        <div class="snapshot-cell"><span class="snap-label">Who</span><div class="snap-content">NATO and EU strategic communications practitioners, multilingual monitoring cells, Russian-speaking information audiences, and hostile actors seeking exploitable seams in Alliance information monitoring. [1][2][4]</div></div>
+        <div class="snapshot-cell"><span class="snap-label">What</span><div class="snap-content">A documented capability gap in stance detection and sentiment analysis across English, Lithuanian, and Russian that can degrade warning, prioritization, and response quality. [1]</div></div>
+        <div class="snapshot-cell"><span class="snap-label">Where</span><div class="snap-content">Baltic and Eastern European information environments, with broader relevance to any multilingual theatre where politically sensitive content must be monitored across uneven language-resource conditions. [1][2]</div></div>
+        <div class="snapshot-cell"><span class="snap-label">When</span><div class="snap-content">Immediate operational relevance. NATO’s official hybrid-threat page was updated in January 2026, and the uploaded empirical study was published in April 2026. [1][3]</div></div>
+        <div class="snapshot-cell"><span class="snap-label">Why</span><div class="snap-content">Because uneven model performance can create blind spots that sophisticated actors exploit, while decision-makers may over-trust dashboards that appear consistent in English but degrade in harder language environments. [1][7]</div></div>
+        <div class="snapshot-cell"><span class="snap-label">How</span><div class="snap-content">Through differential review rates, threshold adjustment, language-specific fine-tuning, benchmarking, bias controls, and governance that treats multilingual model variance as a monitored risk factor rather than a hidden implementation detail. [1][2][8]</div></div>
+      </div>
+    </section>
+
+    <section class="section visible" id="judgments">
+      <div class="section-header"><div class="section-num">04 // KEY JUDGMENTS</div><h2 class="section-title">Key Judgments</h2></div>
+      <div class="kj-list">
+        <div class="kj-item moderate"><div class="kj-header"><span class="kj-id">KJ-1</span><span class="kj-conf">Moderate confidence</span></div><p><strong>[Assessment | Moderate confidence] Russian-language detection weakness is large enough to constitute an operationally meaningful early-warning vulnerability within the studied monitoring context.</strong> The anchor study’s 9-point gap, high variance, and 300-plus extra misclassifications per 1,000 posts indicate the problem is not marginal noise. This judgment is anchored primarily in one NATO empirical stream and should not be generalized beyond the studied context without added benchmarking. [1]</p></div>
+        <div class="kj-item moderate"><div class="kj-header"><span class="kj-id">KJ-2</span><span class="kj-conf">Moderate confidence</span></div><p><strong>[Assessment | Moderate confidence] Detection lag is the most decision-relevant mechanism linking LLM underperformance to strategic risk.</strong> Missed or downgraded signals delay analyst escalation, distort trend baselines, and can conceal coordinated activity until effect evidence arrives too late. This remains an analytically strong inference, but not a directly measured adversary outcome. [1][2]</p></div>
+        <div class="kj-item moderate"><div class="kj-header"><span class="kj-id">KJ-3</span><span class="kj-conf">Moderate confidence</span></div><p><strong>[Assessment | Moderate confidence] Model adaptation and governance matter more than raw model size for multilingual monitoring for this task family and source environment.</strong> Fine-tuned compact models beat generic prompting approaches in the NATO study, while recent peer-reviewed work also points toward gains from bilingual or specialized multilingual adaptation rather than naïve transfer assumptions. [1][6][8]</p></div>
+        <div class="kj-item watch"><div class="kj-header"><span class="kj-id">KJ-4</span><span class="kj-conf">Watch item</span></div><p><strong>[Watch item] Uncontrolled zero-shot stance systems may import bias and stereotype effects into monitoring workflows.</strong> Recent peer-reviewed work shows LLM stance detection can be distorted by stereotype-linked attributes, which raises the risk that apparent performance masks skewed misclassification patterns in politically sensitive environments. This is a watch item because the present report does not directly measure deployment-stage skew in NATO workflows. [7][8]</p></div>
+      </div>
+    </section>
+
+    <section class="section visible" id="evidence">
+      <div class="section-header"><div class="section-num">05 // EVIDENCE</div><h2 class="section-title">Evidence Summary</h2></div>
+      <div class="evidence-grid">
+        <div class="evidence-box"><div class="evidence-box-header know">What we know</div><ul class="tight"><li>The NATO study evaluated English, Lithuanian, and Russian stance and sentiment tasks with approximately 1,000 texts per language. [1]</li><li>Russian stance performance was the weakest and most volatile across tested configurations. [1]</li><li>NATO officially uses an ABCDE model for information-threat analysis. [2]</li><li>The EEAS Rapid Alert System is based on open-source information and shared insights. [5]</li></ul></div>
+        <div class="evidence-box"><div class="evidence-box-header assess">What we assess</div><ul class="tight"><li>Language-specific performance variance can degrade warning fidelity before it becomes visible to decision-makers. [1][2]</li><li>Russian-language spaces are more likely than English-language spaces to generate analytic under-detection in comparable operating conditions. [1]</li><li>[Assessment] Governance controls that ignore language-specific error profiles are likely to produce synthetic confidence. [1]</li></ul></div>
+        <div class="evidence-box"><div class="evidence-box-header gap">What we do not know</div><ul class="tight"><li>How often hostile actors deliberately select lower-performing language environments because they know detection is weaker.</li><li>Whether similar gaps persist at the same magnitude in non-Baltic Russian, Arabic, French, or African multilingual operating environments.</li><li>How model error interacts with analyst workload, staffing levels, and platform-specific noise during live crises.</li></ul></div>
+      </div>
+      <div class="sub-section">
+        <h3>Key Drivers</h3>
+        <p><strong>[FACT]</strong> Low-resource and politically sensitive language tasks produce uneven model performance. [1]</p>
+        <p><strong>[FACT]</strong> Official NATO and EU response architectures depend on open-source monitoring, analysis, and coordinated response. [2][4][5]</p>
+        <p><strong>[INFERENCE]</strong> If review rates, thresholds, and model adaptation remain language-blind, dashboard outputs will systematically understate certain threat streams.</p>
+      </div>
+      <div class="sub-section">
+        <h3>Binding Constraints</h3>
+        <p><strong>Structural:</strong> Limited labeled data and weaker model support in smaller languages. <strong>Political:</strong> Sensitive content around NATO, Russia, and Ukraine raises misclassification costs. <strong>Resource:</strong> Monitoring cells must balance analyst time against higher review rates. <strong>Temporal:</strong> Detection lag shrinks intervention windows. [1][2]</p>
+      </div>
+      <div class="wsi-note"><strong>WSI Source Independence Note:</strong> The central empirical judgment rests on the uploaded NATO report as the primary quantitative stream. Corroboration for policy relevance comes from independent NATO and EEAS doctrine plus separate peer-reviewed research on multilingual adaptation and bias. This supports Moderate confidence for governance implications, but not High confidence for adversary intent or cross-domain generalization.</div>
+    </section>
+
+    <section class="section visible" id="analysis">
+      <div class="section-header"><div class="section-num">06 // ANALYSIS</div><h2 class="section-title">Structured Analytic Tradecraft</h2></div>
+      <div class="analysis-note"><strong>Tradecraft applied:</strong> structured problem framing, Key Assumptions Check, ACH, Indicators and Warnings, Scenario Modeling, Risk Matrix, and a five-layer systems interpretation aid. Behavioral analysis is used narrowly to examine narrative and identity exposure, not to speculate about internal motives.</div>
+      <div class="sub-section">
+        <h3>Five-Layer Strategic Cognition Map</h3>
+        <table class="assumption-table">
+          <tr><th>Layer</th><th>Assessment</th></tr>
+          <tr><td>L1 Foundations</td><td>Multilingual information monitoring relies on uneven language resources, uneven model performance, and human review capacity. [1][2]</td></tr>
+          <tr><td>L2 Mechanisms</td><td>Model underperformance increases false negatives and false neutrals, which suppresses alerting and delays analyst escalation. [1]</td></tr>
+          <tr><td>L3 Dynamics</td><td>As under-detected narratives circulate, effect evidence arrives later than content evidence, creating a lagged feedback loop between campaign activity and institutional response. [1][2][5]</td></tr>
+          <tr><td>L4 Leverage</td><td>Differentiate review rates by language, calibrate thresholds, build language-specific datasets, and use specialized fine-tuning. [1][8]</td></tr>
+          <tr><td>L5 Paradigms</td><td>The prevailing assumption that “strong in English equals deployable everywhere” is analytically unsafe and should be replaced by a language-specific resilience paradigm. [1]</td></tr>
+        </table>
+      </div>
+      <div class="sub-section">
+        <h3>Key Assumptions Check</h3>
+        <table class="assumption-table">
+          <tr><th>ID</th><th>Assumption</th><th>Why It Matters</th><th>Risk if Wrong</th><th>Status</th><th>Validation Path</th></tr>
+          <tr><td>A1</td><td>Russian-language findings generalize directionally to other multilingual monitoring environments.</td><td>Supports external relevance beyond the Baltic sample.</td><td>Could overstate broader alliance exposure.</td><td>Active</td><td>Cross-language benchmarking in additional monitored theatres.</td></tr>
+          <tr><td>A2</td><td>Detection lag materially affects response quality, not just analyst workload.</td><td>Determines whether this is a strategic vulnerability or an efficiency problem.</td><td>Could downgrade the issue from strategic to procedural.</td><td>Active</td><td>Workflow comparison between high-gap and low-gap language streams.</td></tr>
+          <tr><td>A3</td><td>Hostile actors exploit weaker language spaces intentionally rather than incidentally.</td><td>Shapes the strength of the adversary-exploitation judgment.</td><td>Could weaken intent and coordination claims.</td><td>Unverified</td><td>Longitudinal adversary campaign study across language segments.</td></tr>
+          <tr><td>A4</td><td>Governance controls and fine-tuning outperform model-size upgrades alone.</td><td>Directly affects procurement and assurance recommendations.</td><td>Could alter recommended investment priorities.</td><td>Active</td><td>Controlled model governance comparison after benchmark refresh.</td></tr>
+        </table>
+      </div>
+      <div class="sub-section">
+        <h3>ACH</h3>
+        <table class="ach-table">
+          <tr><th>Hypothesis</th><th>Evidence For</th><th>Evidence Against</th><th>Diagnosticity</th><th>Verdict</th></tr>
+          <tr><td>H1: Multilingual LLM gaps are mainly a technical<br> nuisance with limited strategic impact.</td><td>Some tasks such as Lithuanian sentiment perform strongly, showing gaps are not universal. [1]</td><td>Russian variance, 300+ extra misses, and the hypothetical monitoring failure point toward operational relevance. [1]</td><td>Moderate</td><td>Disfavored</td></tr>
+          <tr><td>H2: Multilingual LLM gaps are an early-warning<br> vulnerability requiring governance and mitigation.</td><td>Supported by NATO empirical findings, NATO doctrine on information-threat assessment, and EEAS open-source alert coordination. [1][2][5]</td><td>External validity outside the studied language set is not fully proven.</td><td>High</td><td>Selected</td></tr>
+          <tr><td>H3: Human review alone can fully compensate without<br> language-specific model adaptation.</td><td>Manual review can reduce false negatives in principle.</td><td>NATO recommends both higher review rates and language-specific fine-tuning, implying review alone is insufficient. [1]</td><td>Moderate</td><td>Disfavored</td></tr>
+        </table>
+        <div class="wsi-note"><strong>ACH caveat:</strong> H2 is selected for decision utility, not proven as universal across all languages or monitoring ecosystems.</div>
+      </div>
+      <div class="sub-section">
+        <h3>Indicators & Warnings</h3>
+        <table class="iw-table">
+          <tr><th>Indicator</th><th>Direction</th><th>Current Status</th><th>Threshold</th><th>Cadence</th><th>Owner</th></tr>
+          <tr><td>Russian-language false-neutral rate</td><td>Worsening</td><td>Elevated risk inferred from baseline study.</td><td>&gt;10% drift from established benchmark.</td><td>Weekly</td><td>Model QA lead</td></tr>
+          <tr><td>Analyst override frequency by language</td><td>Watch</td><td>Potential hidden transfer failure.</td><td>Sustained override clustering in one language for 2 review cycles.</td><td>Weekly</td><td>Monitoring cell lead</td></tr>
+          <tr><td>Unmatched narrative emergence before alerting</td><td>Worsening</td><td>Potential lag indicator.</td><td>External effect evidence precedes dashboard flagging twice in 30 days.</td><td>Event-driven</td><td>Intel duty officer</td></tr>
+          <tr><td>Benchmark drift after model update</td><td>Worsening</td><td>Release-governance vulnerability.</td><td>Any single-language performance drop beyond tolerance band after update.</td><td>Per release</td><td>Release governance owner</td></tr>
+        </table>
+      </div>
+      <div class="sub-section">
+        <h3>Scenarios</h3>
+        <div class="scenario-grid">
+          <div class="scenario-card best"><div class="mini-kicker">Best case</div><p>Monitoring cells adopt language-specific benchmarks, differentiated review, and fine-tuned models. False negatives decline, and Russian-language narratives are surfaced earlier with manageable analyst burden.</p></div>
+          <div class="scenario-card base"><div class="mini-kicker">Base case</div><p>Organizations acknowledge the gap but only partially adjust review practices. Warning quality improves unevenly, and response still lags during high-volume information spikes.</p></div>
+          <div class="scenario-card worst"><div class="mini-kicker">Worst case</div><p>Decision-makers continue relying on generic dashboards optimized for English. Coordinated hostile messaging in weaker language spaces accumulates unnoticed until effect evidence, public opinion shift, or crisis escalation reveals the gap.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section visible" id="behavioral">
+      <div class="section-header"><div class="section-num">07 // BEHAVIORAL</div><h2 class="section-title">Applied Behavioral Tradecraft</h2></div>
+      <div class="analysis-note"><strong>Behavioral layer relevance:</strong> This case is not about diagnosing individual psychology. It is relevant because influence operations target identity, legitimacy, and narrative salience, while automated systems can miss those shifts when language-specific framing is under-detected.</div>
+      <div class="behavioral-grid">
+        <div class="behavioral-item"><div class="behavioral-rank">Driver 1</div><p><strong>Identity-linked targeting:</strong> Russian-speaking minority communities represent a distinct audience segment where narrative resonance may not be captured reliably by English-trained assumptions. [1]</p></div>
+        <div class="behavioral-item"><div class="behavioral-rank">Driver 2</div><p><strong>Perception lag:</strong> If dashboards under-detect a hostile narrative stream, leadership can misread the threat picture and assume stability where narrative mobilization is already occurring.</p></div>
+        <div class="behavioral-item"><div class="behavioral-rank">Driver 3</div><p><strong>Bias compounding:</strong> Recent stance-detection research indicates stereotype and bias effects can alter classification behavior, raising the risk of systematic skew rather than random error. [7][8]</p></div>
+      </div>
+      <div class="sub-section">
+        <h3>Influence & Narrative Vulnerabilities</h3>
+        <p>Language asymmetry increases vulnerability where legitimacy contests depend on nuanced stance toward NATO, Russia, Ukraine, or allied institutions. If content is coded neutral when it is oppositional, operators lose the ability to see early clustering, narrative escalation, or cross-platform reinforcement. This is especially consequential when official systems are built to share open-source insights across institutions and partners. [1][2][5]</p>
+      </div>
+    </section>
+
+    <section class="section visible" id="implications">
+      <div class="section-header"><div class="section-num">08 // IMPLICATIONS</div><h2 class="section-title">Strategic Implications, Risk & Recommendations</h2></div>
+      <div class="implication-grid">
+        <div class="implication-card"><div class="mini-kicker">Local / Baltic</div><p>Monitoring blind spots in Russian-language discourse can degrade situational awareness around NATO exercises, alliance legitimacy, and minority audience sentiment. [1]</p></div>
+        <div class="implication-card"><div class="mini-kicker">Alliance / Institutional</div><p>Capability gaps must be built into threat modeling. Otherwise institutions may overestimate the completeness of their open-source information picture. [1][2]</p></div>
+        <div class="implication-card"><div class="mini-kicker">Procurement / Governance</div><p>Procurement logic should shift from “largest model available” to “best benchmarked model for the language-task-theatre combination,” with documented review thresholds and release testing. [1][6][8]</p></div>
+      </div>
+      <table class="risk-table">
+        <tr><th>Risk</th><th>Likelihood (1-5)</th><th>Impact (1-5)</th><th>Score</th><th>Mitigant</th></tr>
+        <tr><td>Under-detection of Russian-language hostile narratives</td><td>4</td><td>4</td><td>16</td><td>Increase review rates, benchmark continuously, adjust thresholds by language.</td></tr>
+        <tr><td>Synthetic confidence from English-dominant dashboards</td><td>4</td><td>5</td><td>20</td><td>Mandatory language-specific KPI dashboard and analyst sign-off.</td></tr>
+        <tr><td>Bias amplification in stance classification</td><td>3</td><td>4</td><td>12</td><td>Bias testing, counterfactual calibration, error-audit sampling. [7][8]</td></tr>
+        <tr><td>Procurement lock-in to black-box systems with weak localization</td><td>3</td><td>4</td><td>12</td><td>Require benchmark evidence before renewal or scale-up.</td></tr>
+      </table>
+      <div class="threshold-grid">
+        <div class="threshold-card green"><div class="mini-kicker">Green</div><p><strong>Trigger:</strong> Language-specific performance stays within 5 points of benchmark and override rates remain stable.</p><p><strong>Action:</strong> Routine monitoring with monthly audit.</p><p><strong>Owner:</strong> Monitoring lead.</p></div>
+        <div class="threshold-card amber"><div class="mini-kicker">Amber</div><p><strong>Trigger:</strong> One monitored language shows >10-point degradation, rising overrides, or unexplained narrative misses.</p><p><strong>Action:</strong> Raise review rate, freeze threshold automation, launch targeted benchmark test.</p><p><strong>Owner:</strong> Analytic cell manager + technical lead.</p></div>
+        <div class="threshold-card red"><div class="mini-kicker">Red</div><p><strong>Trigger:</strong> Effect evidence or external polling indicates coordinated narrative shift that the system failed to flag in time.</p><p><strong>Action:</strong> Declare model reliability incident, suspend autonomous alert weighting for affected language, deploy manual surge review.</p><p><strong>Owner:</strong> Senior mission lead.</p></div>
+      </div>
+      <div class="sub-section">
+        <h3>Recommendations</h3>
+        <ul class="tight">
+          <li><strong>Immediate:</strong> Audit current tool performance by language against labeled samples and set a 50% higher review rate for Russian-language content, echoing the NATO report. [1]</li>
+          <li><strong>Near-term:</strong> Build language-specific fine-tuned models and benchmark them against operationally relevant regional entities, not generic datasets. [1][6][8]</li>
+          <li><strong>Strategic:</strong> Integrate model capability gaps into NATO-style ABCDE threat modeling and into procurement gatekeeping, training, and release management. [2]</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section visible" id="confidence">
+      <div class="section-header"><div class="section-num">09 // CONFIDENCE</div><h2 class="section-title">Confidence & Uncertainties</h2></div>
+      <div class="confidence-grid">
+        <div class="confidence-card"><div class="mini-kicker">Overall confidence</div><p><span class="band-amber">Moderate</span></p><p>The core judgment is well supported by the uploaded NATO report, official NATO doctrine, EEAS operational context, and peer-reviewed literature. Confidence remains below High because the empirical anchor is dataset- and language-set bounded and does not directly measure adversary intent. [1][2][4][5]</p></div>
+        <div class="confidence-card"><div class="mini-kicker">Three reasons</div><ul class="tight"><li>Strong alignment between empirical findings and official doctrine. [1][2]</li><li>Independent peer-reviewed work supports adaptation and bias concerns. [6][7][8]</li><li>External generalization beyond the studied languages remains incomplete.</li></ul></div>
+        <div class="confidence-card"><div class="mini-kicker">What would change our mind</div><ul class="tight"><li>If wider multilingual benchmarks show Russian-like gaps are not operationally consequential in live workflows.</li><li>If future frontier models close the gap without task-specific adaptation.</li><li>If manual review systems already compensate more effectively than public doctrine suggests.</li></ul></div>
+      </div>
+      <div class="sub-section">
+        <h3>Assumption Failure Drill</h3>
+        <table class="assumption-table">
+          <tr><th>Assumption</th><th>Failure Signal</th><th>Consequence</th></tr>
+          <tr><td>A1: Russian-language findings generalize directionally.</td><td>Other monitored languages do not show comparable lag or volatility under similar review conditions.</td><td>Downgrade external generalization claims and narrow the report’s scope.</td></tr>
+          <tr><td>A2: Detection lag materially affects response quality.</td><td>Organizations show no measurable operational difference between high-gap and low-gap language streams.</td><td>The issue downgrades from strategic vulnerability to efficiency problem.</td></tr>
+          <tr><td>A3: Adversaries exploit weaker language spaces intentionally.</td><td>No evidence of concentration or adaptation in lower-performing linguistic domains over time.</td><td>The exploitation argument weakens, though passive vulnerability remains.</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <section class="section visible" id="references">
+      <div class="section-header"><div class="section-num">10 // REFERENCES</div><h2 class="section-title">Source Register & WSI Audit</h2></div>
+      <table class="source-table">
+        <tr><th>#</th><th>Source</th><th>Pub. / Retrieved</th><th>Type</th><th>Band</th><th>Atomic claim(s) used</th><th>Independence</th><th>Validation note</th><th>What would change our mind</th></tr>
+        <tr><td>[1]</td><td>NATO StratCom COE, <em>Understanding LLM Performance Gaps</em></td><td>Apr 2026 / 14 Apr 2026</td><td>Primary / research report</td><td><span class="band-green">Green</span></td><td>Quantifies 9-point Russian gap, volatility, 300+ additional misclassifications, and recommendation set.</td><td>Primary quantitative stream</td><td>R: high institutional credibility; A: direct study access; P: named authors and methods; M: low; EVE: anchor source, not independently duplicated for magnitude.</td><td>Independent multilingual benchmarking or replication showing materially different gap magnitude.</td></tr>
+        <tr><td>[2]</td><td>NATO, <em>NATO’s approach to counter information threats</em></td><td>3 Feb 2025 / 14 Apr 2026</td><td>Primary / official doctrine</td><td><span class="band-green">Green</span></td><td>NATO uses structured response functions and the ABCDE analytic model for information threats.</td><td>Independent from [1]</td><td>POP: official alliance doctrine; MOSES risk low; EVE: used for governance framing, not for empirical gap size.</td><td>If NATO doctrine is revised away from structured threat assessment or ABCDE framing.</td></tr>
+        <tr><td>[3]</td><td>NATO, <em>Countering hybrid threats</em></td><td>29 Jan 2026 / 14 Apr 2026</td><td>Primary / official context</td><td><span class="band-green">Green</span></td><td>NATO treats hybrid threats and resilience as live operational concerns.</td><td>Independent from [1]</td><td>R/P high; used only for current strategic context.</td><td>If alliance framing no longer links information activity to hybrid-threat resilience.</td></tr>
+        <tr><td>[4]</td><td>EEAS, <em>Questions and Answers about the East StratCom Task Force</em></td><td>n.d. / 14 Apr 2026</td><td>Primary / official policy page</td><td><span class="band-green">Green</span></td><td>EU response objectives include forecasting and addressing external disinformation activity.</td><td>Independent from NATO stream</td><td>MOM low, but institutional lens noted; used as policy corroboration only.</td><td>If EEAS mandate language changes or no longer supports the stated response function.</td></tr>
+        <tr><td>[5]</td><td>EEAS, <em>Factsheet: Rapid Alert System</em></td><td>2019 / 14 Apr 2026</td><td>Primary / factsheet</td><td><span class="band-green">Green</span></td><td>Open-source information supports alert-sharing and coordinated response.</td><td>Independent from [1]</td><td>Useful for coordination context; not load-bearing for the gap magnitude.</td><td>If the Rapid Alert System no longer relies on open-source inputs or has been superseded.</td></tr>
+        <tr><td>[6]</td><td>Zhao &amp; Caragea, <em>Bilingual Zero-Shot Stance Detection</em>, ACL 2025</td><td>2025 / 14 Apr 2026</td><td>Secondary / peer reviewed</td><td><span class="band-green">Green</span></td><td>Bilingual or targeted adaptation can outperform naïve cross-lingual transfer.</td><td>Independent academic stream</td><td>P high; theater fit partial; used to support adaptation logic rather than Baltic-specific claims.</td><td>If comparable peer-reviewed work shows no adaptation advantage in politically sensitive stance tasks.</td></tr>
+        <tr><td>[7]</td><td>Dubreuil et al., <em>Are Stereotypes Leading LLMs’ Zero-Shot Stance Detection?</em>, EMNLP 2025</td><td>2025 / 14 Apr 2026</td><td>Secondary / peer reviewed</td><td><span class="band-amber">Amber</span></td><td>Zero-shot stance detection can be skewed by stereotype-linked bias.</td><td>Independent academic stream</td><td>Strong for watch-item framing; not theatre-specific; used as bounded cautionary evidence.</td><td>If deployment-stage audits show no material skew under operational calibration.</td></tr>
+        <tr><td>[8]</td><td>Kmainasi et al., <em>LlamaLens</em>, Findings of NAACL 2025</td><td>2025 / 14 Apr 2026</td><td>Secondary / peer reviewed</td><td><span class="band-green">Green</span></td><td>Specialized multilingual models can materially improve analysis of news and social content.</td><td>Independent academic stream</td><td>Supports specialized multilingual design logic; not load-bearing for NATO-specific magnitude.</td><td>If later evaluations show specialization gains fail to persist under real monitoring conditions.</td></tr>
+        <tr><td>[9]</td><td>IFCN, <em>Code of Principles</em></td><td>n.d. / 14 Apr 2026</td><td>Secondary / standards</td><td><span class="band-amber">Amber</span></td><td>Transparency, methodology, and correction discipline are verification benchmarks.</td><td>Independent standards stream</td><td>Used for verification benchmark only; not evidentiary for substantive judgments.</td><td>If a more authoritative or better-fit operational verification standard supersedes IFCN for this use case.</td></tr>
+      </table>
+      <div class="wsi-note"><strong>Independence statement:</strong> The core claim about performance-gap magnitude remains single-stream empirical evidence from the NATO report and is therefore contextualized, not duplicated, by independent official doctrine and peer-reviewed literature. Confidence is therefore Moderate, not High. Governance implications are multi-source supported; adversary intent remains inferential.</div>
+      <div class="wsi-note"><strong>Framework note:</strong> Produced under the Quanta Analytica Process™ with WSI validation controls. Internal framework files govern product architecture and QA discipline but are not included in the numbered evidence chain.</div>
+      <div class="sub-section refs">
+        <h3>References</h3>
+        <ol>
+          <li>NATO Strategic Communications Centre of Excellence. (2026). <em>Understanding LLM Performance Gaps: Strategic Implications of Stance Detection and Sentiment Analysis in Small Languages</em>. NATO StratCom COE. URL: https://stratcomcoe.org/ and uploaded source report.</li>
+          <li>NATO. (2025, February 3). <em>NATO’s approach to counter information threats</em>. https://www.nato.int/en/what-we-do/wider-activities/natos-approach-to-counter-information-threats</li>
+          <li>NATO. (2026, January 29). <em>Countering hybrid threats</em>. https://www.nato.int/en/what-we-do/deterrence-and-defence/countering-hybrid-threats</li>
+          <li>European External Action Service. (n.d.). <em>Questions and Answers about the East StratCom Task Force</em>. https://www.eeas.europa.eu/eeas/questions-and-answers-about-east-stratcom-task-force_en</li>
+          <li>European External Action Service. (2019). <em>Factsheet: Rapid Alert System</em>. https://www.eeas.europa.eu/node/59644</li>
+          <li>Zhao, C., &amp; Caragea, C. (2025). <em>Bilingual Zero-Shot Stance Detection</em>. Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics. https://aclanthology.org/2025.acl-long.1446.pdf</li>
+          <li>Dubreuil, A., Gourru, A., Largeron, C., &amp; Trabelsi, A. (2025). <em>Are Stereotypes Leading LLMs’ Zero-Shot Stance Detection?</em> Proceedings of EMNLP 2025. https://aclanthology.org/2025.emnlp-main.1605.pdf</li>
+          <li>Kmainasi, M. B., Shahroor, A. E., Hasanain, M., Laskar, S. R., Hassan, N., &amp; Alam, F. (2025). <em>LlamaLens: Specialized Multilingual LLM for Analyzing News and Social Media Content</em>. Findings of NAACL 2025. https://aclanthology.org/2025.findings-naacl.313.pdf</li>
+          <li>International Fact-Checking Network. (n.d.). <em>IFCN Code of Principles</em>. https://ifcncodeofprinciples.poynter.org/</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section visible" id="annex-a">
+      <div class="section-header"><div class="section-num">A // EARLY WARNING</div><h2 class="section-title">Early Warning Indicators</h2></div>
+      <ul class="tight">
+        <li>Dashboard detection for Russian-language anti-NATO or anti-Ukraine narratives diverges sharply from analyst hand-coding for two consecutive weeks.</li>
+        <li>Polling, media uptake, or influencer amplification indicates narrative shift before system alerting occurs.</li>
+        <li>Model update causes a measurable benchmark decline in one monitored language without triggering governance review.</li>
+        <li>Analyst overrides cluster around one language, target, or narrative family, indicating hidden bias or transfer failure.</li>
+      </ul>
+    </section>
+
+    <section class="section visible" id="annex-b">
+      <div class="section-header"><div class="section-num">B // INTEL GAPS</div><h2 class="section-title">Priority Intelligence Gaps & Action Thresholds</h2></div>
+      <table class="assumption-table">
+        <tr><th>Gap</th><th>Why It Matters</th><th>Collection Need</th></tr>
+        <tr><td>Operational error distribution by language and platform</td><td>Needed to understand whether errors cluster around particular communities or topics.</td><td>Platform-specific benchmark datasets and override logs.</td></tr>
+        <tr><td>Adversary adaptation behavior</td><td>Needed to move from vulnerability assessment to exploitation assessment.</td><td>Longitudinal campaign studies across language domains.</td></tr>
+        <tr><td>Human-review compensation effect</td><td>Needed to price the tradeoff between staffing and model adaptation.</td><td>Workflow experiments comparing review regimes.</td></tr>
+      </table>
+      <p class="footer-note">Produced under the Quanta Analytica Process™. All consequential judgments are tied to identified evidence or explicitly labeled as inference. No fabricated sources, quotes, or data were used.</p>
+    </section>
+  </main>
+
+  <footer style="max-width:1000px;margin:0 auto;padding:0 2rem 3rem;color:var(--text-muted);font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;">
+    Quanta Analytica Process™ | Information Integrity & Influence Analysis | 14 Apr 2026
+  </footer>
+
+  <script>
+    const progress = document.getElementById('progress');
+    window.addEventListener('scroll', () => {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+      progress.style.width = pct + '%';
+    });
+  </script>
+</body>
+</html>
