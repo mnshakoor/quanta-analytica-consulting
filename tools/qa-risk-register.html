@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>QA Risk Register</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --obsidian:#0d0f14;
+  --obsidian2:#141720;
+  --obsidian3:#1c2030;
+  --obsidian4:#242840;
+  --gold:#c9a84c;
+  --gold2:#e6c96e;
+  --gold3:#f5dfa0;
+  --text:#e8e4d8;
+  --text2:#a89e84;
+  --border:#2a2f45;
+  --low:#2d6a4f;
+  --low-bg:#1a3d2e;
+  --low-text:#74c69d;
+  --med:#b5830a;
+  --med-bg:#3d2c0a;
+  --med-text:#ffc14a;
+  --high:#9e3a1a;
+  --high-bg:#3d1a0a;
+  --high-text:#ff8c42;
+  --crit:#7b1111;
+  --crit-bg:#3d0a0a;
+  --crit-text:#ff4444;
+}
+body{background:var(--obsidian);color:var(--text);font-family:'Barlow',sans-serif;font-size:14px;min-height:100vh}
+h1,h2,h3{font-family:'Cormorant Garamond',serif}
+
+/* Header */
+.header{background:var(--obsidian2);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.header-brand{display:flex;align-items:center;gap:12px}
+.hex{width:36px;height:36px;background:var(--gold);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:var(--obsidian)}
+.brand-text h1{font-size:18px;color:var(--gold2);letter-spacing:.05em}
+.brand-text p{font-size:11px;color:var(--text2);letter-spacing:.12em;text-transform:uppercase}
+.header-meta{font-size:11px;color:var(--text2);text-align:right}
+.header-meta strong{color:var(--gold);display:block;font-size:13px}
+
+/* Tabs */
+.tabs{display:flex;border-bottom:1px solid var(--border);background:var(--obsidian2)}
+.tab{padding:10px 20px;cursor:pointer;font-size:13px;color:var(--text2);border-bottom:2px solid transparent;transition:.2s;letter-spacing:.05em}
+.tab.active{color:var(--gold2);border-bottom-color:var(--gold);background:var(--obsidian3)}
+.tab:hover:not(.active){color:var(--text);background:var(--obsidian3)}
+
+/* Main */
+.main{padding:20px 24px;max-width:100%}
+
+/* Summary cards */
+.summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:20px}
+.sum-card{background:var(--obsidian3);border:1px solid var(--border);border-radius:6px;padding:12px;text-align:center}
+.sum-card .val{font-size:26px;font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--gold2)}
+.sum-card .lbl{font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:.1em;margin-top:2px}
+.sum-card.low .val{color:var(--low-text)}
+.sum-card.med .val{color:var(--med-text)}
+.sum-card.high .val{color:var(--high-text)}
+.sum-card.crit .val{color:var(--crit-text)}
+
+/* Toolbar */
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;align-items:center}
+.btn{padding:7px 14px;border-radius:5px;border:1px solid var(--border);background:var(--obsidian3);color:var(--text);cursor:pointer;font-size:12px;font-family:'Barlow',sans-serif;transition:.15s;letter-spacing:.04em}
+.btn:hover{border-color:var(--gold);color:var(--gold2)}
+.btn.primary{background:var(--gold);color:var(--obsidian);border-color:var(--gold);font-weight:600}
+.btn.primary:hover{background:var(--gold2)}
+.btn.danger{border-color:#7b1111;color:#ff6b6b}
+.btn.danger:hover{background:#3d0a0a}
+.spacer{flex:1}
+.search-box{padding:7px 12px;border-radius:5px;border:1px solid var(--border);background:var(--obsidian3);color:var(--text);font-size:12px;font-family:'Barlow',sans-serif;width:200px;outline:none}
+.search-box:focus{border-color:var(--gold)}
+.filter-select{padding:7px 10px;border-radius:5px;border:1px solid var(--border);background:var(--obsidian3);color:var(--text);font-size:12px;font-family:'Barlow',sans-serif;cursor:pointer;outline:none}
+.filter-select:focus{border-color:var(--gold)}
+
+/* Table */
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:6px}
+table{width:100%;border-collapse:collapse;min-width:1000px}
+th{background:var(--obsidian4);color:var(--gold2);font-size:10px;text-transform:uppercase;letter-spacing:.1em;padding:10px 10px;text-align:left;border-bottom:1px solid var(--border);cursor:pointer;white-space:nowrap;font-family:'Barlow',sans-serif;font-weight:500}
+th:hover{color:var(--gold3)}
+td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;font-size:12px;color:var(--text)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(201,168,76,.04)}
+.risk-badge{display:inline-flex;align-items:center;justify-content:center;padding:3px 9px;border-radius:12px;font-size:10px;font-weight:600;letter-spacing:.06em;white-space:nowrap}
+.badge-low{background:var(--low-bg);color:var(--low-text);border:1px solid var(--low)}
+.badge-med{background:var(--med-bg);color:var(--med-text);border:1px solid var(--med)}
+.badge-high{background:var(--high-bg);color:var(--high-text);border:1px solid var(--high)}
+.badge-crit{background:var(--crit-bg);color:var(--crit-text);border:1px solid var(--crit)}
+.score-cell{font-size:16px;font-weight:600;font-family:'Cormorant Garamond',serif;text-align:center}
+.act-btn{padding:4px 8px;border-radius:4px;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;font-size:11px;transition:.15s;margin-right:4px}
+.act-btn:hover{border-color:var(--gold);color:var(--gold)}
+.act-btn.del:hover{border-color:#ff4444;color:#ff4444}
+.empty-state{text-align:center;padding:48px 20px;color:var(--text2)}
+.empty-state h3{color:var(--gold2);font-size:18px;margin-bottom:8px}
+
+/* Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);display:flex;align-items:center;justify-content:center;z-index:1000;padding:16px}
+.modal{background:var(--obsidian2);border:1px solid var(--border);border-radius:8px;width:100%;max-width:680px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.8)}
+.modal-header{padding:18px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.modal-header h2{font-size:18px;color:var(--gold2)}
+.modal-body{padding:20px}
+.modal-footer{padding:14px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-full{grid-column:1/-1}
+.form-group{display:flex;flex-direction:column;gap:5px}
+label{font-size:11px;color:var(--text2);text-transform:uppercase;letter-spacing:.08em}
+input,select,textarea{padding:8px 10px;border-radius:5px;border:1px solid var(--border);background:var(--obsidian3);color:var(--text);font-size:13px;font-family:'Barlow',sans-serif;outline:none;transition:.15s}
+input:focus,select:focus,textarea:focus{border-color:var(--gold)}
+select option{background:var(--obsidian3)}
+textarea{resize:vertical;min-height:70px}
+.score-preview{background:var(--obsidian4);border:1px solid var(--border);border-radius:6px;padding:12px;text-align:center;margin-top:8px}
+.score-preview .big-score{font-size:36px;font-family:'Cormorant Garamond',serif;font-weight:600}
+.score-preview .score-label{font-size:11px;color:var(--text2);margin-top:2px}
+.close-btn{background:transparent;border:none;color:var(--text2);cursor:pointer;font-size:18px;line-height:1;padding:2px}
+.close-btn:hover{color:var(--text)}
+
+/* Matrix viz */
+.matrix-container{max-width:480px;margin:0 auto}
+.matrix-title{text-align:center;font-size:13px;color:var(--text2);margin-bottom:12px;letter-spacing:.06em;text-transform:uppercase}
+.matrix-grid{display:grid;grid-template-columns:28px repeat(5,1fr);gap:2px}
+.m-cell{height:46px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500}
+.m-hdr{font-size:9px;color:var(--text2);text-align:center;letter-spacing:.06em}
+.m-axis{font-size:9px;color:var(--text2);text-align:center;writing-mode:horizontal-tb}
+.m-low{background:var(--low-bg);color:var(--low-text);border:1px solid var(--low)}
+.m-med{background:var(--med-bg);color:var(--med-text);border:1px solid var(--med)}
+.m-high{background:var(--high-bg);color:var(--high-text);border:1px solid var(--high)}
+.m-crit{background:var(--crit-bg);color:var(--crit-text);border:1px solid var(--crit)}
+.matrix-labels{display:flex;justify-content:space-between;margin-top:6px;padding-left:30px;font-size:9px;color:var(--text2);text-transform:uppercase;letter-spacing:.06em}
+.y-label{font-size:9px;color:var(--text2);writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;text-transform:uppercase;letter-spacing:.1em;margin-right:4px}
+
+/* Notes section */
+.notes-section{background:var(--obsidian3);border:1px solid var(--border);border-radius:6px;padding:16px;margin-bottom:16px}
+.notes-section h3{font-size:14px;color:var(--gold2);margin-bottom:12px;letter-spacing:.05em}
+.notes-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.notes-grid textarea{min-height:100px}
+
+/* Upload zone */
+.upload-zone{border:2px dashed var(--border);border-radius:8px;padding:32px;text-align:center;cursor:pointer;transition:.2s;margin-bottom:16px}
+.upload-zone:hover{border-color:var(--gold);background:rgba(201,168,76,.04)}
+.upload-zone.dragover{border-color:var(--gold2);background:rgba(201,168,76,.08)}
+.upload-zone p{color:var(--text2);font-size:13px;margin-top:8px}
+.upload-zone .icon{font-size:28px;margin-bottom:6px}
+
+/* Legend */
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2)}
+.legend-dot{width:10px;height:10px;border-radius:2px}
+
+/* Page section */
+.page-section{display:none}
+.page-section.active{display:block}
+
+/* Footer */
+.footer{padding:14px 24px;border-top:1px solid var(--border);background:var(--obsidian2);font-size:10px;color:var(--text2);text-align:center;letter-spacing:.06em}
+.footer span{color:var(--gold)}
+
+/* Print */
+@media print{
+  .tabs,.toolbar,.act-btn,.modal-overlay{display:none!important}
+  body{background:white;color:black}
+  .main{padding:10px}
+  .header{background:white;border-color:#ccc}
+  .brand-text h1{color:#333}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-brand">
+    <div class="hex">QA</div>
+    <div class="brand-text">
+      <h1>Quanta Analytica™ Risk Register</h1>
+      <p>ISO 31000 Compliant · 5×5 Risk Matrix · QAP™ Framework</p>
+    </div>
+  </div>
+  <div class="header-meta">
+    <strong id="reg-title-display">Risk Register</strong>
+    <span id="date-display"></span>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('register')">Risk Register</div>
+  <div class="tab" onclick="showTab('matrix')">Risk Matrix</div>
+  <div class="tab" onclick="showTab('analysis')">Analysis &amp; Notes</div>
+  <div class="tab" onclick="showTab('import')">Import Data</div>
+</div>
+
+<div class="main">
+
+<!-- REGISTER TAB -->
+<div id="tab-register" class="page-section active">
+  <div class="summary-grid" id="summary-cards"></div>
+  <div class="toolbar">
+    <button class="btn primary" onclick="openModal()">+ Add Risk</button>
+    <button class="btn" onclick="exportCSV()">Export CSV</button>
+    <button class="btn" onclick="exportJSON()">Export JSON</button>
+    <button class="btn" onclick="exportExcel()">Export Excel</button>
+    <button class="btn" onclick="exportWord()">Export Word</button>
+    <button class="btn" onclick="window.print()">Print / PDF</button>
+    <div class="spacer"></div>
+    <select class="filter-select" id="filter-rating" onchange="renderTable()">
+      <option value="">All Ratings</option>
+      <option value="Low">Low</option>
+      <option value="Medium">Medium</option>
+      <option value="High">High</option>
+      <option value="Critical">Critical</option>
+    </select>
+    <select class="filter-select" id="filter-category" onchange="renderTable()">
+      <option value="">All Categories</option>
+    </select>
+    <input class="search-box" id="search-box" placeholder="Search risks..." oninput="renderTable()"/>
+  </div>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#2d6a4f"></div> Low (1–4)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#b5830a"></div> Medium (5–9)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#9e3a1a"></div> High (10–16)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#7b1111"></div> Critical (17–25)</div>
+  </div>
+  <div class="table-wrap">
+    <table id="risk-table">
+      <thead>
+        <tr>
+          <th onclick="sortBy('id')"># ↕</th>
+          <th onclick="sortBy('title')">Risk Title ↕</th>
+          <th onclick="sortBy('category')">Category ↕</th>
+          <th onclick="sortBy('owner')">Owner ↕</th>
+          <th onclick="sortBy('likelihood')">Likelihood ↕</th>
+          <th onclick="sortBy('impact')">Impact ↕</th>
+          <th onclick="sortBy('score')">Score ↕</th>
+          <th onclick="sortBy('rating')">Rating ↕</th>
+          <th>Treatment</th>
+          <th onclick="sortBy('status')">Status ↕</th>
+          <th onclick="sortBy('date')">Date ↕</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="risk-tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- MATRIX TAB -->
+<div id="tab-matrix" class="page-section">
+  <div style="margin-bottom:20px">
+    <h2 style="color:var(--gold2);font-size:20px;margin-bottom:6px">5×5 Risk Scoring Matrix</h2>
+    <p style="color:var(--text2);font-size:13px">ISO 31000 aligned. Score = Likelihood × Impact. Click any cell to view associated risks.</p>
+  </div>
+  <div class="matrix-container">
+    <div class="matrix-title">Impact →</div>
+    <div style="display:flex">
+      <div class="y-label">Likelihood ↑</div>
+      <div style="flex:1">
+        <div class="matrix-grid" id="matrix-grid"></div>
+        <div class="matrix-labels"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
+      </div>
+    </div>
+  </div>
+  <div id="matrix-detail" style="margin-top:24px"></div>
+</div>
+
+<!-- ANALYSIS TAB -->
+<div id="tab-analysis" class="page-section">
+  <h2 style="color:var(--gold2);font-size:20px;margin-bottom:16px">Analyst Notes, Insights &amp; Implications</h2>
+  <div class="notes-section">
+    <h3>Summary Analysis</h3>
+    <div class="notes-grid">
+      <div class="form-group">
+        <label>Analyst Notes</label>
+        <textarea id="note-notes" placeholder="General observations, methodology notes, data quality remarks..."></textarea>
+      </div>
+      <div class="form-group">
+        <label>Key Insights</label>
+        <textarea id="note-insights" placeholder="Patterns identified, risk clusters, systemic vulnerabilities..."></textarea>
+      </div>
+      <div class="form-group">
+        <label>Implications &amp; Recommendations</label>
+        <textarea id="note-implications" placeholder="Strategic implications, recommended actions, escalation triggers..."></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="notes-section">
+    <h3>Risk Appetite &amp; Tolerance Statement</h3>
+    <div class="form-group">
+      <textarea id="note-appetite" placeholder="Define the organization's risk appetite and tolerance thresholds relevant to this register..." style="min-height:80px"></textarea>
+    </div>
+  </div>
+  <div class="notes-section">
+    <h3>Register Metadata</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
+      <div class="form-group"><label>Register Title</label><input id="meta-title" placeholder="e.g. Q2 2026 Operational Risk Register" oninput="document.getElementById('reg-title-display').textContent=this.value||'Risk Register'"/></div>
+      <div class="form-group"><label>Organization / Entity</label><input id="meta-org" placeholder="e.g. Quanta Analytica Inc."/></div>
+      <div class="form-group"><label>Analyst / Author</label><input id="meta-analyst" placeholder="e.g. M. Nuri Shakoor"/></div>
+      <div class="form-group"><label>Review Date</label><input type="date" id="meta-review"/></div>
+      <div class="form-group"><label>Classification</label>
+        <select id="meta-class"><option>Unclassified</option><option>Confidential</option><option>Restricted</option><option>Top Secret</option></select>
+      </div>
+      <div class="form-group"><label>Version</label><input id="meta-version" placeholder="e.g. v1.0"/></div>
+    </div>
+  </div>
+</div>
+
+<!-- IMPORT TAB -->
+<div id="tab-import" class="page-section">
+  <h2 style="color:var(--gold2);font-size:20px;margin-bottom:8px">Import Risk Data</h2>
+  <p style="color:var(--text2);font-size:13px;margin-bottom:20px">Upload a CSV or JSON file to bulk-ingest risks. Existing entries are preserved.</p>
+
+  <div class="upload-zone" id="drop-zone" onclick="document.getElementById('file-input').click()" ondragover="ev.preventDefault();this.classList.add('dragover')" ondragleave="this.classList.remove('dragover')" ondrop="handleDrop(event)">
+    <div class="icon">📂</div>
+    <strong style="color:var(--gold2)">Drop file here or click to browse</strong>
+    <p>Accepts .csv and .json · Max 5MB</p>
+    <input type="file" id="file-input" accept=".csv,.json" style="display:none" onchange="handleFile(this.files[0])"/>
+  </div>
+
+  <div class="notes-section" style="margin-bottom:20px">
+    <h3>CSV Format Guide</h3>
+    <p style="color:var(--text2);font-size:12px;margin-bottom:10px">Expected columns (header row required):</p>
+    <code style="display:block;background:var(--obsidian4);padding:10px;border-radius:5px;font-size:11px;color:var(--gold3);overflow-x:auto;white-space:nowrap">title,category,description,owner,likelihood,impact,treatment,status,date,notes</code>
+    <p style="color:var(--text2);font-size:11px;margin-top:8px">Likelihood and Impact must be integers 1–5. Score and rating are auto-calculated.</p>
+  </div>
+
+  <div class="notes-section">
+    <h3>JSON Format Guide</h3>
+    <code style="display:block;background:var(--obsidian4);padding:10px;border-radius:5px;font-size:11px;color:var(--gold3);overflow-x:auto">[ { "title":"...", "category":"...", "description":"...", "owner":"...", "likelihood":3, "impact":4, "treatment":"Mitigate", "status":"Open", "date":"2026-04-14", "notes":"..." } ]</code>
+  </div>
+
+  <div id="import-log" style="margin-top:16px"></div>
+</div>
+
+</div><!-- /main -->
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" style="display:none" onclick="if(event.target===this)closeModal()">
+<div class="modal">
+  <div class="modal-header">
+    <h2 id="modal-title">Add Risk Entry</h2>
+    <button class="close-btn" onclick="closeModal()">✕</button>
+  </div>
+  <div class="modal-body">
+    <div class="form-grid">
+      <div class="form-group form-full">
+        <label>Risk Title *</label>
+        <input id="f-title" placeholder="Concise risk description"/>
+      </div>
+      <div class="form-group">
+        <label>Category *</label>
+        <select id="f-category">
+          <option value="">— Select —</option>
+          <option>Strategic</option>
+          <option>Operational</option>
+          <option>Financial</option>
+          <option>Compliance / Legal</option>
+          <option>Reputational</option>
+          <option>Security / Cyber</option>
+          <option>Geopolitical</option>
+          <option>Environmental</option>
+          <option>Human Resources</option>
+          <option>Technology</option>
+          <option>Supply Chain</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Risk Owner</label>
+        <input id="f-owner" placeholder="Name or department"/>
+      </div>
+      <div class="form-group form-full">
+        <label>Description</label>
+        <textarea id="f-desc" placeholder="Detailed description of the risk..."></textarea>
+      </div>
+      <div class="form-group">
+        <label>Likelihood (1–5) *</label>
+        <select id="f-likelihood" onchange="updateScorePreview()">
+          <option value="">—</option>
+          <option value="1">1 — Rare</option>
+          <option value="2">2 — Unlikely</option>
+          <option value="3">3 — Possible</option>
+          <option value="4">4 — Likely</option>
+          <option value="5">5 — Almost Certain</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Impact (1–5) *</label>
+        <select id="f-impact" onchange="updateScorePreview()">
+          <option value="">—</option>
+          <option value="1">1 — Negligible</option>
+          <option value="2">2 — Minor</option>
+          <option value="3">3 — Moderate</option>
+          <option value="4">4 — Major</option>
+          <option value="5">5 — Catastrophic</option>
+        </select>
+      </div>
+      <div class="form-group form-full">
+        <div class="score-preview" id="score-preview">
+          <div class="score-label">RISK SCORE</div>
+          <div class="big-score" id="preview-score" style="color:var(--text2)">—</div>
+          <div class="score-label" id="preview-rating" style="margin-top:4px">Select Likelihood &amp; Impact</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Treatment Strategy</label>
+        <select id="f-treatment">
+          <option value="">— Select —</option>
+          <option>Avoid</option>
+          <option>Mitigate</option>
+          <option>Transfer</option>
+          <option>Accept</option>
+          <option>Monitor</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Status</label>
+        <select id="f-status">
+          <option>Open</option>
+          <option>In Progress</option>
+          <option>Mitigated</option>
+          <option>Closed</option>
+          <option>Escalated</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Date Identified</label>
+        <input type="date" id="f-date"/>
+      </div>
+      <div class="form-group">
+        <label>Review / Due Date</label>
+        <input type="date" id="f-review"/>
+      </div>
+      <div class="form-group form-full">
+        <label>Risk Notes</label>
+        <textarea id="f-notes" placeholder="Analyst observations, context, data sources..."></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" onclick="closeModal()">Cancel</button>
+    <button class="btn primary" onclick="saveRisk()">Save Risk</button>
+  </div>
+</div>
+</div>
+
+<div class="footer">
+  <span>QUANTA ANALYTICA™</span> · QAP™ Risk Register · ISO 31000 Framework · Classification: <span id="footer-class">Unclassified</span>
+</div>
+
+<script>
+let risks = [];
+let editId = null;
+let sortKey = 'id';
+let sortDir = 1;
+let idCounter = 1;
+
+const CATEGORIES = ['Strategic','Operational','Financial','Compliance / Legal','Reputational','Security / Cyber','Geopolitical','Environmental','Human Resources','Technology','Supply Chain','Other'];
+
+function calcScore(l, i){ return l * i; }
+function getRating(s){
+  if(s <= 4) return 'Low';
+  if(s <= 9) return 'Medium';
+  if(s <= 16) return 'High';
+  return 'Critical';
+}
+function getBadgeClass(r){
+  return r==='Low'?'badge-low':r==='Medium'?'badge-med':r==='High'?'badge-high':'badge-crit';
+}
+function getScoreColor(s){
+  if(s<=4) return 'var(--low-text)';
+  if(s<=9) return 'var(--med-text)';
+  if(s<=16) return 'var(--high-text)';
+  return 'var(--crit-text)';
+}
+
+function showTab(t){
+  document.querySelectorAll('.page-section').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(el=>el.classList.remove('active'));
+  document.getElementById('tab-'+t).classList.add('active');
+  event.target.classList.add('active');
+  if(t==='matrix') renderMatrix();
+}
+
+function updateDateDisplay(){
+  document.getElementById('date-display').textContent = new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+}
+
+function renderSummary(){
+  const counts = {total:risks.length, low:0, medium:0, high:0, critical:0};
+  risks.forEach(r=>{
+    const key = r.rating.toLowerCase();
+    if(counts[key]!==undefined) counts[key]++;
+  });
+  const avgScore = risks.length ? (risks.reduce((a,b)=>a+b.score,0)/risks.length).toFixed(1) : '—';
+  document.getElementById('summary-cards').innerHTML = `
+    <div class="sum-card"><div class="val">${counts.total}</div><div class="lbl">Total Risks</div></div>
+    <div class="sum-card low"><div class="val">${counts.low}</div><div class="lbl">Low</div></div>
+    <div class="sum-card med"><div class="val">${counts.medium}</div><div class="lbl">Medium</div></div>
+    <div class="sum-card high"><div class="val">${counts.high}</div><div class="lbl">High</div></div>
+    <div class="sum-card crit"><div class="val">${counts.critical}</div><div class="lbl">Critical</div></div>
+    <div class="sum-card"><div class="val">${avgScore}</div><div class="lbl">Avg Score</div></div>
+  `;
+  document.getElementById('footer-class').textContent = document.getElementById('meta-class')?.value || 'Unclassified';
+}
+
+function populateCategoryFilter(){
+  const cats = [...new Set(risks.map(r=>r.category).filter(Boolean))].sort();
+  const sel = document.getElementById('filter-category');
+  const cur = sel.value;
+  sel.innerHTML = '<option value="">All Categories</option>' + cats.map(c=>`<option value="${c}"${c===cur?' selected':''}>${c}</option>`).join('');
+}
+
+function renderTable(){
+  const q = document.getElementById('search-box').value.toLowerCase();
+  const ratingF = document.getElementById('filter-rating').value;
+  const catF = document.getElementById('filter-category').value;
+
+  let filtered = risks.filter(r=>{
+    const text = `${r.title} ${r.category} ${r.owner} ${r.description} ${r.notes}`.toLowerCase();
+    return (!q || text.includes(q)) && (!ratingF || r.rating===ratingF) && (!catF || r.category===catF);
+  });
+
+  filtered.sort((a,b)=>{
+    let va=a[sortKey], vb=b[sortKey];
+    if(typeof va==='string') return sortDir*(va.localeCompare(vb));
+    return sortDir*(va-vb);
+  });
+
+  const tbody = document.getElementById('risk-tbody');
+  if(!filtered.length){
+    tbody.innerHTML = `<tr><td colspan="12"><div class="empty-state"><h3>No Risks Found</h3><p>Add a risk using the button above, or import data.</p></div></td></tr>`;
+    return;
+  }
+  tbody.innerHTML = filtered.map(r=>`
+    <tr>
+      <td style="color:var(--text2);font-size:11px">${r.id}</td>
+      <td><strong style="color:var(--text)">${esc(r.title)}</strong>${r.description?`<br><span style="color:var(--text2);font-size:11px">${esc(r.description.substring(0,80))}${r.description.length>80?'…':''}</span>`:''}</td>
+      <td style="color:var(--text2)">${esc(r.category)}</td>
+      <td style="color:var(--text2)">${esc(r.owner)}</td>
+      <td style="text-align:center">${r.likelihood}</td>
+      <td style="text-align:center">${r.impact}</td>
+      <td class="score-cell" style="color:${getScoreColor(r.score)}">${r.score}</td>
+      <td><span class="risk-badge ${getBadgeClass(r.rating)}">${r.rating.toUpperCase()}</span></td>
+      <td style="color:var(--text2);font-size:11px">${esc(r.treatment)}</td>
+      <td><span style="font-size:11px;color:${r.status==='Closed'?'var(--text2)':r.status==='Escalated'?'var(--crit-text)':'var(--text)'}">${esc(r.status)}</span></td>
+      <td style="color:var(--text2);font-size:11px;white-space:nowrap">${r.date||''}</td>
+      <td style="white-space:nowrap">
+        <button class="act-btn" onclick="editRisk(${r.id})">Edit</button>
+        <button class="act-btn del" onclick="deleteRisk(${r.id})">Del</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function esc(s){ return s?(s+'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'):''; }
+
+function sortBy(k){ if(sortKey===k) sortDir*=-1; else{sortKey=k;sortDir=1;} renderTable(); }
+
+function openModal(id=null){
+  editId = id;
+  document.getElementById('modal-title').textContent = id ? 'Edit Risk Entry' : 'Add Risk Entry';
+  const r = id ? risks.find(x=>x.id===id) : null;
+  ['title','category','owner','likelihood','impact','treatment','status','date','review','notes','desc'].forEach(f=>{
+    const el = document.getElementById('f-'+f);
+    if(el) el.value = r ? (r[f]||r.description||'') : (f==='status'?'Open':'');
+  });
+  if(r){
+    document.getElementById('f-title').value = r.title||'';
+    document.getElementById('f-category').value = r.category||'';
+    document.getElementById('f-owner').value = r.owner||'';
+    document.getElementById('f-likelihood').value = r.likelihood||'';
+    document.getElementById('f-impact').value = r.impact||'';
+    document.getElementById('f-treatment').value = r.treatment||'';
+    document.getElementById('f-status').value = r.status||'Open';
+    document.getElementById('f-date').value = r.date||'';
+    document.getElementById('f-review').value = r.review||'';
+    document.getElementById('f-notes').value = r.notes||'';
+    document.getElementById('f-desc').value = r.description||'';
+  }
+  updateScorePreview();
+  document.getElementById('modal').style.display='flex';
+}
+function closeModal(){ document.getElementById('modal').style.display='none'; editId=null; }
+
+function updateScorePreview(){
+  const l = parseInt(document.getElementById('f-likelihood').value)||0;
+  const i = parseInt(document.getElementById('f-impact').value)||0;
+  const el = document.getElementById('preview-score');
+  const rl = document.getElementById('preview-rating');
+  if(!l||!i){ el.textContent='—'; el.style.color='var(--text2)'; rl.textContent='Select Likelihood & Impact'; return; }
+  const s = calcScore(l,i);
+  const r = getRating(s);
+  el.textContent = s;
+  el.style.color = getScoreColor(s);
+  rl.innerHTML = `<span class="risk-badge ${getBadgeClass(r)}" style="font-size:11px">${r.toUpperCase()}</span>`;
+}
+
+function saveRisk(){
+  const title = document.getElementById('f-title').value.trim();
+  const cat = document.getElementById('f-category').value;
+  const l = parseInt(document.getElementById('f-likelihood').value);
+  const i = parseInt(document.getElementById('f-impact').value);
+  if(!title){ alert('Risk title is required.'); return; }
+  if(!cat){ alert('Category is required.'); return; }
+  if(!l||!i){ alert('Likelihood and Impact are required.'); return; }
+  const s = calcScore(l,i);
+  const entry = {
+    id: editId || idCounter++,
+    title,
+    category: cat,
+    owner: document.getElementById('f-owner').value.trim(),
+    description: document.getElementById('f-desc').value.trim(),
+    likelihood: l,
+    impact: i,
+    score: s,
+    rating: getRating(s),
+    treatment: document.getElementById('f-treatment').value,
+    status: document.getElementById('f-status').value,
+    date: document.getElementById('f-date').value,
+    review: document.getElementById('f-review').value,
+    notes: document.getElementById('f-notes').value.trim()
+  };
+  if(editId){ const idx=risks.findIndex(x=>x.id===editId); risks[idx]=entry; }
+  else risks.push(entry);
+  closeModal();
+  refresh();
+}
+
+function deleteRisk(id){
+  if(!confirm('Delete this risk entry?')) return;
+  risks = risks.filter(r=>r.id!==id);
+  refresh();
+}
+
+function editRisk(id){ openModal(id); }
+
+function refresh(){ renderSummary(); populateCategoryFilter(); renderTable(); }
+
+// Matrix
+function renderMatrix(){
+  const grid = document.getElementById('matrix-grid');
+  grid.innerHTML = '';
+  // Header row
+  const blank = document.createElement('div'); blank.className='m-cell m-hdr'; grid.appendChild(blank);
+  for(let j=1;j<=5;j++){ const h=document.createElement('div'); h.className='m-cell m-hdr'; h.textContent='I='+j; grid.appendChild(h); }
+  for(let l=5;l>=1;l--){
+    const ax=document.createElement('div'); ax.className='m-cell m-hdr'; ax.textContent='L='+l; grid.appendChild(ax);
+    for(let imp=1;imp<=5;imp++){
+      const s=l*imp; const r=getRating(s);
+      const cls = r==='Low'?'m-low':r==='Medium'?'m-med':r==='High'?'m-high':'m-crit';
+      const cell=document.createElement('div'); cell.className=`m-cell ${cls}`; cell.textContent=s;
+      cell.style.cursor='pointer';
+      cell.title=`L${l}×I${imp}=${s} (${r})`;
+      const ll=l,ii=imp,ss=s,rr=r;
+      cell.onclick=()=>showMatrixDetail(ll,ii,ss,rr);
+      grid.appendChild(cell);
+    }
+  }
+}
+
+function showMatrixDetail(l,i,s,r){
+  const matching = risks.filter(x=>x.likelihood===l&&x.impact===i);
+  const det = document.getElementById('matrix-detail');
+  det.innerHTML = `<div class="notes-section"><h3>Risks at L${l} × I${i} = ${s} (${r})</h3>${
+    matching.length ? matching.map(x=>`<div style="padding:8px 0;border-bottom:1px solid var(--border)"><strong style="color:var(--text)">${esc(x.title)}</strong> <span class="risk-badge ${getBadgeClass(x.rating)}" style="margin-left:8px">${x.rating.toUpperCase()}</span><div style="color:var(--text2);font-size:12px;margin-top:3px">${esc(x.category)} · ${esc(x.owner)}</div></div>`).join('')
+    : '<p style="color:var(--text2);font-size:13px;margin-top:8px">No risks registered at this coordinate.</p>'
+  }</div>`;
+}
+
+// Export
+function riskToRow(r){ return [r.id,r.title,r.category,r.owner,r.description,r.likelihood,r.impact,r.score,r.rating,r.treatment,r.status,r.date,r.review,r.notes]; }
+const HEADERS = ['ID','Title','Category','Owner','Description','Likelihood','Impact','Score','Rating','Treatment','Status','Date','Review Date','Notes'];
+
+function exportCSV(){
+  const rows = [HEADERS, ...risks.map(riskToRow)];
+  const csv = rows.map(r=>r.map(c=>`"${(c+'').replace(/"/g,'""')}"`).join(',')).join('\n');
+  download('qa-risk-register.csv', 'text/csv', csv);
+}
+function exportJSON(){
+  download('qa-risk-register.json','application/json', JSON.stringify(risks,null,2));
+}
+function exportExcel(){
+  if(!window.XLSX){ alert('XLSX library not loaded.'); return; }
+  const ws = XLSX.utils.aoa_to_sheet([HEADERS,...risks.map(riskToRow)]);
+  const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb,ws,'Risk Register');
+  XLSX.writeFile(wb,'qa-risk-register.xlsx');
+}
+function exportWord(){
+  const meta = {
+    title: document.getElementById('meta-title')?.value || 'Risk Register',
+    org: document.getElementById('meta-org')?.value || '',
+    analyst: document.getElementById('meta-analyst')?.value || '',
+    cls: document.getElementById('meta-class')?.value || 'Unclassified',
+    version: document.getElementById('meta-version')?.value || 'v1.0'
+  };
+  const notes = {
+    notes: document.getElementById('note-notes')?.value || '',
+    insights: document.getElementById('note-insights')?.value || '',
+    implications: document.getElementById('note-implications')?.value || '',
+    appetite: document.getElementById('note-appetite')?.value || ''
+  };
+  let html = `<html><head><meta charset="utf-8"><title>${meta.title}</title>
+<style>body{font-family:Calibri,sans-serif;font-size:11pt;margin:1in}
+h1{font-size:18pt;color:#2c2c2a}h2{font-size:14pt;color:#2c2c2a;border-bottom:1px solid #ccc;padding-bottom:4px}
+table{width:100%;border-collapse:collapse;font-size:9pt}th{background:#1c2030;color:#e6c96e;padding:6px;border:1px solid #ccc;text-align:left}
+td{padding:5px 6px;border:1px solid #ddd;vertical-align:top}
+.low{background:#e8f5e9}.med{background:#fff8e1}.high{background:#fff3e0}.crit{background:#ffebee}
+</style></head><body>
+<h1>QUANTA ANALYTICA™ — ${meta.title}</h1>
+<p><strong>Organization:</strong> ${meta.org} &nbsp;|&nbsp; <strong>Analyst:</strong> ${meta.analyst} &nbsp;|&nbsp; <strong>Classification:</strong> ${meta.cls} &nbsp;|&nbsp; <strong>Version:</strong> ${meta.version}</p>
+<p><strong>Generated:</strong> ${new Date().toLocaleDateString()}</p>
+<h2>Risk Register</h2>
+<table><tr>${HEADERS.map(h=>`<th>${h}</th>`).join('')}</tr>
+${risks.map(r=>{
+  const cls = r.rating==='Low'?'low':r.rating==='Medium'?'med':r.rating==='High'?'high':'crit';
+  return `<tr class="${cls}">${riskToRow(r).map(c=>`<td>${esc(c+'')||''}</td>`).join('')}</tr>`;
+}).join('')}</table>`;
+  if(notes.notes||notes.insights||notes.implications){
+    html+=`<h2>Analyst Notes &amp; Insights</h2>`;
+    if(notes.notes) html+=`<p><strong>Notes:</strong> ${esc(notes.notes)}</p>`;
+    if(notes.insights) html+=`<p><strong>Insights:</strong> ${esc(notes.insights)}</p>`;
+    if(notes.implications) html+=`<p><strong>Implications:</strong> ${esc(notes.implications)}</p>`;
+    if(notes.appetite) html+=`<p><strong>Risk Appetite:</strong> ${esc(notes.appetite)}</p>`;
+  }
+  html+=`</body></html>`;
+  download('qa-risk-register.doc','application/msword',html);
+}
+
+function download(name, type, content){
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([content],{type}));
+  a.download=name; a.click();
+}
+
+// Import
+function handleDrop(ev){ ev.preventDefault(); ev.currentTarget.classList.remove('dragover'); const f=ev.dataTransfer.files[0]; if(f) handleFile(f); }
+function handleFile(file){
+  if(!file) return;
+  const ext = file.name.split('.').pop().toLowerCase();
+  const reader = new FileReader();
+  reader.onload = e => {
+    try{
+      if(ext==='json') ingestJSON(e.target.result);
+      else if(ext==='csv') ingestCSV(e.target.result);
+      else{ logImport('error','Unsupported file type. Use .csv or .json'); return; }
+      refresh();
+    } catch(err){ logImport('error','Parse error: '+err.message); }
+  };
+  reader.readAsText(file);
+}
+function ingestJSON(text){
+  const arr = JSON.parse(text);
+  if(!Array.isArray(arr)) throw new Error('JSON must be an array of objects.');
+  let n=0;
+  arr.forEach(r=>{
+    const l=parseInt(r.likelihood)||1, i=parseInt(r.impact)||1, s=calcScore(l,i);
+    risks.push({id:idCounter++,title:r.title||'Untitled',category:r.category||'',owner:r.owner||'',description:r.description||'',likelihood:l,impact:i,score:s,rating:getRating(s),treatment:r.treatment||'',status:r.status||'Open',date:r.date||'',review:r.review||'',notes:r.notes||''}); n++;
+  });
+  logImport('success',`Imported ${n} risks from JSON.`);
+}
+function ingestCSV(text){
+  const lines = text.trim().split('\n');
+  const headers = lines[0].split(',').map(h=>h.trim().replace(/^"|"$/g,'').toLowerCase());
+  const idx = k => headers.indexOf(k);
+  let n=0;
+  for(let i=1;i<lines.length;i++){
+    const cols = lines[i].match(/(".*?"|[^,]+|(?<=,)(?=,)|(?<=,)$|^(?=,))/g)||[];
+    const g = j => (cols[j]||'').replace(/^"|"$/g,'').trim();
+    const l=parseInt(g(idx('likelihood')))||1, im=parseInt(g(idx('impact')))||1, s=calcScore(l,im);
+    risks.push({id:idCounter++,title:g(idx('title'))||'Untitled',category:g(idx('category'))||'',owner:g(idx('owner'))||'',description:g(idx('description'))||'',likelihood:l,impact:im,score:s,rating:getRating(s),treatment:g(idx('treatment'))||'',status:g(idx('status'))||'Open',date:g(idx('date'))||'',review:g(idx('review'))||'',notes:g(idx('notes'))||''}); n++;
+  }
+  logImport('success',`Imported ${n} risks from CSV.`);
+}
+function logImport(type, msg){
+  const el = document.getElementById('import-log');
+  el.innerHTML = `<div style="padding:12px 16px;border-radius:6px;font-size:13px;border:1px solid ${type==='success'?'var(--low)':'var(--crit)'};background:${type==='success'?'var(--low-bg)':'var(--crit-bg)'};color:${type==='success'?'var(--low-text)':'var(--crit-text)'}">${msg}</div>`;
+}
+
+// Seed sample data
+function seedSamples(){
+  const samples=[
+    {title:'Geopolitical instability in operational region',category:'Geopolitical',owner:'ARAC Intelligence',description:'Escalating conflict dynamics in target region may disrupt field operations.',likelihood:4,impact:5,treatment:'Mitigate',status:'Open',date:'2026-04-01',notes:'Monitor ACLED and GDELT feeds weekly.'},
+    {title:'Cybersecurity breach — client data exposure',category:'Security / Cyber',owner:'IT Security',description:'Unauthorized access to client intelligence files via phishing vector.',likelihood:3,impact:5,treatment:'Mitigate',status:'In Progress',date:'2026-03-15',notes:'MFA rollout in progress.'},
+    {title:'Key analyst departure',category:'Human Resources',owner:'HR Director',description:'Loss of senior QAP analyst with specialized regional knowledge.',likelihood:2,impact:4,treatment:'Accept',status:'Open',date:'2026-02-20',notes:'Succession planning not yet initiated.'},
+    {title:'Regulatory non-compliance — data residency',category:'Compliance / Legal',owner:'General Counsel',description:'Potential violation of data residency requirements under client MOU.',likelihood:2,impact:3,treatment:'Avoid',status:'Open',date:'2026-04-10',notes:'Legal review scheduled.'},
+    {title:'Report delivery delay — supply chain intelligence',category:'Operational',owner:'QA Operations',description:'Upstream data aggregation delays impacting SLA commitments.',likelihood:3,impact:3,treatment:'Monitor',status:'Mitigated',date:'2026-03-01',notes:'Backup data feeds now active.'},
+  ];
+  samples.forEach(s=>{const sc=calcScore(s.likelihood,s.impact);risks.push({id:idCounter++,...s,score:sc,rating:getRating(sc),review:''});});
+}
+
+seedSamples();
+updateDateDisplay();
+refresh();
+</script>
+</body>
+</html>
