@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Quanta Analytica Process™ | Decision-Grade Intelligence</title>
+
+<meta name="title" content="The Quanta Analytica Process™ | Decision-Grade Intelligence">
+<meta name="description" content="Discover QAP™: A structured, human-validated methodology for transforming complex data into decision-ready intelligence. Built for high-stakes environments.">
+
+<title>The Quanta Analytica Process™ | Decision-Grade Intelligence</title>
+<meta name="title" content="The Quanta Analytica Process™ | Decision-Grade Intelligence">
+<meta name="description" content="A structured, human-validated methodology for high-stakes intelligence. Explore the QAP™ framework designed for geopolitical risk and conflict analysis.">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://quanta-analytica.com/qap.html">
+<meta property="og:title" content="QAP™: The Standard for Decision-Grade Intelligence">
+<meta property="og:description" content="Proprietary risk intelligence architecture integrating structured analytic tradecraft with expert human validation. Engineered by M. Nuri Shakoor.">
+<meta property="og:image" content="https://quanta-analytica.com/qa-mns-logo.PNG">
+<meta property="og:image:width" content="2360">
+<meta property="og:image:height" content="1640">
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://quanta-analytica.com/qap.html">
+<meta property="twitter:title" content="The Quanta Analytica Process™">
+<meta property="twitter:description" content="Transforming complex, ambiguous data into validated intelligence for global decision-makers.">
+<meta property="twitter:image" content="https://quanta-analytica.com/qa-mns-logo.PNG">
+
+<link rel="canonical" href="https://quanta-analytica.com/index.html">
+
+<link rel="canonical" href="https://quanta-analytica.com/index.html">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --obsidian:#0a0b0e;
+  --obsidian-2:#0f1014;
+  --obsidian-3:#14161b;
+  --obsidian-4:#1c1f26;
+  --obsidian-5:#252930;
+  --gold:#c9a84c;
+  --gold-light:#e2c47a;
+  --gold-dim:#8a6e2f;
+  --gold-muted:rgba(201,168,76,0.12);
+  --text-primary:#f0ede6;
+  --text-secondary:#9a9690;
+  --text-muted:#5a5750;
+  --border:#1e2128;
+  --border-gold:rgba(201,168,76,0.25);
+}
+html{scroll-behavior:smooth}
+body{background:var(--obsidian);color:var(--text-primary);font-family:'IBM Plex Sans',sans-serif;line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,11,14,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--gold);letter-spacing:0.08em;text-decoration:none}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:13px;color:var(--text-secondary);text-decoration:none;letter-spacing:0.04em;transition:color 0.2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{font-size:12px;padding:7px 18px;border:1px solid var(--gold-dim);color:var(--gold);background:transparent;cursor:pointer;font-family:'IBM Plex Sans',sans-serif;letter-spacing:0.06em;text-decoration:none;transition:all 0.2s}
+.nav-cta:hover{background:var(--gold-muted);border-color:var(--gold)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--text-secondary);transition:all 0.3s}
+@media(max-width:768px){
+  .nav-links,.nav-cta-wrap{display:none}
+  .hamburger{display:flex}
+}
+
+/* Ensure the brand container is a flexbox */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Adjusts the space between text and logo */
+  text-decoration: none;
+}
+
+/* Style the gold text */
+.brand-text {
+  color: var(--gold);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+/* Keep the logo sized correctly */
+.nav-brand img {
+  height: 65px;
+  width: auto;
+  display: block;
+}
+
+/* CANVAS */
+canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.35}
+
+/* SECTIONS */
+section{position:relative;z-index:1}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 2rem 80px}
+.hero-inner{max-width:900px;margin:0 auto;text-align:center}
+.hero-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:2rem;display:flex;align-items:center;justify-content:center;gap:1rem}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';flex:1;max-width:60px;height:1px;background:var(--gold-dim)}
+.hero-title{font-size:clamp(2.4rem,5vw,4rem);font-weight:300;line-height:1.15;letter-spacing:-0.01em;margin-bottom:1.5rem;color:var(--text-primary)}
+.hero-title em{font-style:normal;color:var(--gold);font-family:'IBM Plex Serif',serif;font-style:italic}
+.hero-sub{font-size:1.05rem;color:var(--text-secondary);max-width:620px;margin:0 auto 2.5rem;font-weight:300;line-height:1.75}
+.hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{padding:13px 32px;background:var(--gold);color:var(--obsidian);font-family:'IBM Plex Sans',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.08em;border:none;cursor:pointer;text-decoration:none;transition:all 0.2s}
+.btn-primary:hover{background:var(--gold-light)}
+.btn-ghost{padding:13px 32px;border:1px solid var(--border-gold);color:var(--gold);font-family:'IBM Plex Sans',sans-serif;font-size:13px;letter-spacing:0.08em;background:transparent;cursor:pointer;text-decoration:none;transition:all 0.2s}
+.btn-ghost:hover{background:var(--gold-muted);border-color:var(--gold)}
+.hero-scroll{margin-top:4rem;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:0.15em;display:flex;align-items:center;justify-content:center;gap:0.75rem}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold-dim),transparent);animation:scrollpulse 2s ease-in-out infinite}
+@keyframes scrollpulse{0%,100%{opacity:0.4}50%{opacity:1}}
+
+/* DIVIDER */
+.section-divider{max-width:1100px;margin:0 auto;padding:0 2rem;height:1px;background:var(--border)}
+
+/* PROBLEM */
+.problem{padding:100px 2rem}
+.problem-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.section-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:1.5rem}
+.section-title{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;line-height:1.25;margin-bottom:1.5rem}
+.section-title em{font-style:italic;color:var(--gold);font-family:'IBM Plex Serif',serif}
+.section-body{color:var(--text-secondary);font-size:0.95rem;line-height:1.8;font-weight:300}
+.problem-stats{display:flex;flex-direction:column;gap:1.5rem}
+.stat-card{padding:1.5rem;border:1px solid var(--border);border-left:3px solid var(--gold-dim);background:var(--obsidian-3)}
+.stat-num{font-family:'IBM Plex Mono',monospace;font-size:2rem;color:var(--gold);font-weight:400;line-height:1}
+.stat-label{font-size:12px;color:var(--text-secondary);margin-top:0.4rem;letter-spacing:0.04em}
+@media(max-width:768px){.problem-inner{grid-template-columns:1fr;gap:3rem}}
+
+/* WHAT IS QAP */
+.what{padding:100px 2rem;background:var(--obsidian-2)}
+.what-inner{max-width:1000px;margin:0 auto}
+.what-header{text-align:center;margin-bottom:4rem}
+.what-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--border)}
+.what-card{background:var(--obsidian-3);padding:2rem 1.75rem}
+.what-card-icon{width:36px;height:36px;border:1px solid var(--border-gold);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem}
+.what-card-icon svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:1.5}
+.what-card h3{font-size:14px;font-weight:500;color:var(--text-primary);margin-bottom:0.6rem;letter-spacing:0.02em}
+.what-card p{font-size:13px;color:var(--text-secondary);line-height:1.7;font-weight:300}
+@media(max-width:768px){.what-grid{grid-template-columns:1fr}}
+
+/* PROCESS */
+.process{padding:100px 2rem}
+.process-inner{max-width:1000px;margin:0 auto}
+.process-header{text-align:center;margin-bottom:5rem}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.process-steps::before{content:'';position:absolute;top:28px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(to right,transparent,var(--gold-dim),var(--gold-dim),transparent)}
+.step{padding:0 1.25rem;text-align:center;position:relative}
+.step-num{width:56px;height:56px;border:1px solid var(--border-gold);background:var(--obsidian);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-family:'IBM Plex Mono',monospace;font-size:18px;color:var(--gold);position:relative;z-index:1}
+.step-title{font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:0.6rem;letter-spacing:0.03em}
+.step-body{font-size:12px;color:var(--text-secondary);line-height:1.7;font-weight:300}
+@media(max-width:768px){.process-steps{grid-template-columns:1fr 1fr;gap:2rem}.process-steps::before{display:none}}
+@media(max-width:480px){.process-steps{grid-template-columns:1fr}}
+
+/* FRAMEWORKS */
+.frameworks{padding:100px 2rem;background:var(--obsidian-2)}
+.frameworks-inner{max-width:1000px;margin:0 auto}
+.frameworks-header{text-align:center;margin-bottom:4rem}
+.fw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--border)}
+.fw-card{background:var(--obsidian-3);padding:2.5rem 2rem;position:relative;overflow:hidden;transition:background 0.3s}
+.fw-card:hover{background:var(--obsidian-4)}
+.fw-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--gold-dim),transparent)}
+.fw-card-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.18em;color:var(--gold);margin-bottom:1rem}
+.fw-card h3{font-size:1.4rem;font-weight:300;color:var(--text-primary);margin-bottom:0.5rem}
+.fw-card-sub{font-size:12px;color:var(--text-muted);margin-bottom:1.25rem;letter-spacing:0.03em}
+.fw-card p{font-size:13px;color:var(--text-secondary);line-height:1.75;font-weight:300}
+.fw-link{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--gold-dim);text-decoration:none;margin-top:1.5rem;letter-spacing:0.06em;transition:color 0.2s}
+.fw-link:hover{color:var(--gold)}
+.fw-link::after{content:'→';transition:transform 0.2s}
+.fw-link:hover::after{transform:translateX(3px)}
+@media(max-width:768px){.fw-grid{grid-template-columns:1fr}}
+
+/* USE CASES */
+.usecases{padding:100px 2rem}
+.usecases-inner{max-width:1000px;margin:0 auto}
+.usecases-header{text-align:center;margin-bottom:4rem}
+.uc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border)}
+.uc-card{background:var(--obsidian);padding:2rem 2.25rem;display:flex;gap:1.5rem;align-items:flex-start;transition:background 0.2s}
+.uc-card:hover{background:var(--obsidian-3)}
+.uc-icon{width:40px;height:40px;flex-shrink:0;border:1px solid var(--border);display:flex;align-items:center;justify-content:center}
+.uc-icon svg{width:16px;height:16px;stroke:var(--gold-dim);fill:none;stroke-width:1.5}
+.uc-card h3{font-size:14px;font-weight:500;color:var(--text-primary);margin-bottom:0.5rem}
+.uc-card p{font-size:13px;color:var(--text-secondary);line-height:1.7;font-weight:300}
+@media(max-width:768px){.uc-grid{grid-template-columns:1fr}}
+
+/* REPORTS */
+.reports{padding:100px 2rem;background:var(--obsidian-2)}
+.reports-inner{max-width:1000px;margin:0 auto}
+.reports-header{text-align:center;margin-bottom:4rem}
+.report-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--border)}
+.report-card{background:var(--obsidian-3);padding:2rem;display:flex;flex-direction:column;transition:background 0.2s}
+.report-card:hover{background:var(--obsidian-4)}
+.report-region{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.18em;color:var(--gold);margin-bottom:0.75rem}
+.report-title{font-size:15px;font-weight:400;color:var(--text-primary);line-height:1.4;margin-bottom:0.6rem}
+.report-meta{font-size:12px;color:var(--text-muted);margin-bottom:1rem;font-family:'IBM Plex Mono',monospace}
+.report-excerpt{font-size:13px;color:var(--text-secondary);line-height:1.7;font-weight:300;flex:1}
+.report-tag{display:inline-block;margin-top:1.25rem;font-size:11px;padding:4px 10px;border:1px solid var(--border-gold);color:var(--gold-dim);letter-spacing:0.06em}
+@media(max-width:768px){.report-grid{grid-template-columns:1fr}}
+
+/* CTA */
+.cta-section{padding:120px 2rem}
+.cta-inner{max-width:700px;margin:0 auto;text-align:center}
+.cta-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:1.5rem}
+.cta-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;line-height:1.2;margin-bottom:1.25rem}
+.cta-title em{font-style:italic;color:var(--gold);font-family:'IBM Plex Serif',serif}
+.cta-body{color:var(--text-secondary);font-size:0.95rem;line-height:1.8;margin-bottom:2.5rem;font-weight:300}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.cta-divider{width:60px;height:1px;background:var(--gold-dim);margin:3rem auto}
+.cta-contact{font-size:13px;color:var(--text-muted)}
+.cta-contact a{color:var(--gold-dim);text-decoration:none;transition:color 0.2s}
+.cta-contact a:hover{color:var(--gold)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2.5rem 2rem}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-brand{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold-dim)}
+.footer-copy{font-size:12px;color:var(--text-muted)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:12px;color:var(--text-muted);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--gold)}
+</style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+
+<nav>
+  <div class="nav-inner">
+    <a href="https://quanta-analytica.com/" class="nav-brand" title="Go to the QA™ Home">
+  <span class="brand-text">QA Home</span>
+  <img src="https://quanta-analytica.com/qa-mns-logo.PNG" alt="QA™ Logo">
+</a>
+    <ul class="nav-links">
+      <li><a href="#process">Process</a></li>
+      <li><a href="#frameworks">Frameworks</a></li>
+      <li><a href="#reports">Intelligence</a></li>
+      <li><a href="https://quanta-analytica.com/about.html">About</a></li>
+    </ul>
+    <div class="nav-cta-wrap">
+      <a href="#engage" class="nav-cta">Engage</a>
+    </div>
+    <div class="hamburger" onclick="this.classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Proprietary Framework · MNS Consulting</div>
+    <h1 class="hero-title">The Quanta Analytica<br>Process<em>™</em></h1>
+    <p class="hero-sub">A structured, reproducible workflow that transforms complex, ambiguous data into Decision-Grade Intelligence — validated by human experts at every stage.</p>
+    <div class="hero-actions">
+      <a href="#engage" class="btn-primary">ENGAGE A CONSULTANT</a>
+      <a href="https://quanta-analytica.com/reports/" class="btn-ghost">VIEW INTELLIGENCE</a>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      SCROLL
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem" id="about">
+  <div class="problem-inner">
+    <div>
+      <div class="section-label">The Intelligence Gap</div>
+      <h2 class="section-title">Why Conventional Analysis <em>Fails</em></h2>
+      <p class="section-body" style="margin-bottom:1.25rem">Most analytical products are fast, cheap, and fragile. They rely on unstructured LLM outputs, unverified sources, or analyst intuition without auditable methodology — producing assessments that can't be reproduced, stress-tested, or trusted in high-stakes environments.</p>
+      <p class="section-body">QAP™ was built to close that gap. Every output is structured, sourced, confidence-banded, and human-validated — engineered to meet decision-maker standards, not publishing deadlines.</p>
+    </div>
+    <div class="problem-stats">
+      <div class="stat-card">
+        <div class="stat-num">4-Layer</div>
+        <div class="stat-label">Human-in-the-loop validation architecture</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">WSI™</div>
+        <div class="stat-label">Weighted Source Independence auditing on every assessment</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Reproducible — every output traceable to its analytic lineage</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- WHAT IS QAP -->
+<section class="what" id="what">
+  <div class="what-inner">
+    <div class="what-header">
+      <div class="section-label">Core Differentiators</div>
+      <h2 class="section-title">What Makes QAP™ <em>Different</em></h2>
+    </div>
+    <div class="what-grid">
+      <div class="what-card">
+        <div class="what-card-icon">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Structured Analytic Tradecraft</h3>
+        <p>QAP™ applies intelligence community-grade analytic standards — structured arguments, explicit assumptions, confidence banding — to every output regardless of domain.</p>
+      </div>
+      <div class="what-card">
+        <div class="what-card-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3>Governed LLM Integration</h3>
+        <p>Large language models are embedded within the workflow — not running it. Strict governance protocols ensure every AI-assisted step is auditable and bounded.</p>
+      </div>
+      <div class="what-card">
+        <div class="what-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Expert Validation Gate</h3>
+        <p>No product exits the pipeline without human analyst review. The expert validation gate is non-negotiable — it is the QAP™ guarantee of decision-grade quality.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="process-inner">
+    <div class="process-header">
+      <div class="section-label">Methodology</div>
+      <h2 class="section-title">The Four-Stage <em>Process</em></h2>
+      <p style="color:var(--text-secondary);font-size:0.9rem;max-width:560px;margin:1rem auto 0;font-weight:300">Every QAP™ deliverable moves through the same rigorous pipeline — no shortcuts, no exceptions.</p>
+    </div>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Data Ingestion & Framing</div>
+        <p class="step-body">Raw information is structured through empirical analytic frameworks, eliminating noise and establishing a clear problem frame before any modeling begins.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">LLM-Augmented Analysis</div>
+        <p class="step-body">Large language models apply structured reasoning under strict governance protocols, generating candidate assessments and scenario branches across the framed problem set.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">Expert Validation</div>
+        <p class="step-body">Human analysts review, stress-test, and refine every output. WSI™ source auditing and confidence banding are applied. No product advances without sign-off.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-title">Decision-Grade Deliverable</div>
+        <p class="step-body">A final, stakeholder-ready product: clear, reproducible, and precisely calibrated for the specific decision environment it serves.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- FRAMEWORKS -->
+<section class="frameworks" id="frameworks">
+  <div class="frameworks-inner">
+    <div class="frameworks-header">
+      <div class="section-label">Proprietary Framework Stack</div>
+      <h2 class="section-title">Three Frameworks. <em>One Standard.</em></h2>
+      <p style="color:var(--text-secondary);font-size:0.9rem;max-width:560px;margin:1rem auto 0;font-weight:300">QAP™ sits atop a purpose-built framework stack — each layer engineered for a specific dimension of complex analytic environments.</p>
+    </div>
+    <div class="fw-grid">
+      <div class="fw-card">
+        <div class="fw-card-tag">OVERARCHING PROCESS</div>
+        <h3>QAP™</h3>
+        <div class="fw-card-sub">Quanta Analytica Process</div>
+        <p>The governing methodology — a four-stage pipeline that moves raw intelligence from ingestion to decision-grade deliverable with full human-in-the-loop validation.</p>
+        <a href="https://quanta-analytica.com/qa-process.html" class="fw-link">Explore QAP™</a>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-tag">CONFLICT ANALYSIS</div>
+        <h3>QA-CSRF™</h3>
+        <div class="fw-card-sub">Conflict Systems Research Framework</div>
+        <p>A structured methodology for analyzing conflict systems — mapping actor networks, grievance structures, and escalation pathways in complex security environments.</p>
+        <a href="https://quanta-analytica.com/qa-csrf.html" class="fw-link">Explore QA-CSRF™</a>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-tag">GEO-RISK INTELLIGENCE</div>
+        <h3>IGRIS™</h3>
+        <div class="fw-card-sub">Integrated Geo-Risk Intelligence System</div>
+        <p>A geopolitical risk intelligence system that integrates multi-source data streams into structured scenario assessments for complex regional and global environments.</p>
+        <a href="https://quanta-analytica.com/igris.html" class="fw-link">Explore IGRIS™</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- USE CASES -->
+<section class="usecases" id="usecases">
+  <div class="usecases-inner">
+    <div class="usecases-header">
+      <div class="section-label">Who It's For</div>
+      <h2 class="section-title">Built for <em>Complexity</em></h2>
+    </div>
+    <div class="uc-grid">
+      <div class="uc-card">
+        <div class="uc-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div>
+          <h3>NGOs & Humanitarian Orgs</h3>
+          <p>Security risk assessments, conflict environment analysis, and stakeholder-ready SitReps for field operations and program planning in fragile contexts.</p>
+        </div>
+      </div>
+      <div class="uc-card">
+        <div class="uc-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div>
+          <h3>Government & Policy</h3>
+          <p>Structured geopolitical risk assessments, scenario development, and decision-grade briefs for policy analysts, advisors, and government stakeholders.</p>
+        </div>
+      </div>
+      <div class="uc-card">
+        <div class="uc-icon">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <div>
+          <h3>Private Sector & Investment</h3>
+          <p>Operational risk intelligence, market entry assessments, and geopolitical exposure analysis for firms operating or investing in complex environments.</p>
+        </div>
+      </div>
+      <div class="uc-card">
+        <div class="uc-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <div>
+          <h3>Media & Editorial</h3>
+          <p>Verified geopolitical commentary, sourced analytical context, and conflict background reporting for editorial teams covering complex global environments.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- REPORTS -->
+<section class="reports" id="reports">
+  <div class="reports-inner">
+    <div class="reports-header">
+      <div class="section-label">QAP™ Intelligence in Action</div>
+      <h2 class="section-title">Featured <em>Assessments</em></h2>
+    </div>
+    <div class="report-grid">
+      <div class="report-card">
+        <div class="report-region">WEST AFRICA · SECURITY</div>
+        <div class="report-title">Nigeria Middle Belt: Palm Sunday Attack & Escalation Indicators</div>
+        <div class="report-meta">QAP™ SitRep · April 2026</div>
+        <p class="report-excerpt">A QAP™ rapid situational assessment of the Palm Sunday 2026 attack in Nigeria's Middle Belt — mapping actor networks, confidence-banded escalation scenarios, and decision-relevant implications.</p>
+        <span class="report-tag">DECISION-GRADE</span>
+      </div>
+      <div class="report-card">
+        <div class="report-region">SAHEL · GEOPOLITICS</div>
+        <div class="report-title">AES–ECOWAS Dynamics: Central Sahel Realignment & Regional Risk</div>
+        <div class="report-meta">QAP™ Analysis · 2026</div>
+        <p class="report-excerpt">Structured assessment of the Alliance of Sahel States' divergence from ECOWAS architecture — scenario modeling for regional stability, external actor influence, and humanitarian risk vectors.</p>
+        <span class="report-tag">DECISION-GRADE</span>
+      </div>
+      <div class="report-card">
+        <div class="report-region">GLOBAL · INFORMATION ENV.</div>
+        <div class="report-title">Global Information Environment: AI, Disinformation & Analytic Integrity</div>
+        <div class="report-meta">QAP™ Analysis · 2026</div>
+        <p class="report-excerpt">An examination of LLM-enabled disinformation vectors, AI governance gaps, and implications for structured analytic tradecraft in a degraded information environment.</p>
+        <span class="report-tag">DECISION-GRADE</span>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="https://quanta-analytica.com/reports/" class="btn-ghost">VIEW ALL INTELLIGENCE →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="engage">
+  <div class="cta-inner">
+    <div class="cta-label">Ready to Engage</div>
+    <h2 class="cta-title">Decision-Grade Intelligence<br>Starts <em>Here</em></h2>
+    <p class="cta-body">Whether you need a rapid situational assessment, ongoing risk monitoring, or a custom analytic engagement — QAP™ delivers reproducible, stakeholder-ready intelligence built for your environment.</p>
+    <div class="cta-actions">
+      <a href="https://quanta-analytica.com/contact-form.html" class="btn-primary">REQUEST A CONSULTATION</a>
+      <a href="https://quanta-analytica.com/reports/" class="btn-ghost">EXPLORE REPORTS</a>
+    </div>
+    <div class="cta-divider"></div>
+    <div class="cta-contact">
+      Questions? Reach us at <a href="mailto:info@quanta-analytica.com">info@quanta-analytica.com</a>
+      &nbsp;·&nbsp;
+      <a href="https://insights.quanta-analytica.com">insights.quanta-analytica.com</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Quanta Analytica™ · An MNS Consulting Initiative</div>
+    <div class="footer-links">
+      <a href="https://quanta-analytica.com/about.html">About</a>
+      <a href="https://quanta-analytica.com/services.html">Services</a>
+      <a href="https://quanta-analytica.com/reports/">Reports</a>
+      <a href="https://quanta-analytica.com/sitemap.html">Sitemap</a>
+    </div>
+    <div class="footer-copy">© 2026 MNS Consulting. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+const canvas = document.getElementById('bg');
+const ctx = canvas.getContext('2d');
+let W, H, pts = [];
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
+function init(){
+  pts=[];
+  const n=Math.floor((W*H)/18000);
+  for(let i=0;i<n;i++) pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-0.5)*0.18,vy:(Math.random()-0.5)*0.18,r:Math.random()*1.2+0.3})
+}
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  for(let p of pts){
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.x<0||p.x>W)p.vx*=-1;
+    if(p.y<0||p.y>H)p.vy*=-1;
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle='rgba(201,168,76,0.5)';ctx.fill();
+  }
+  for(let i=0;i<pts.length;i++){
+    for(let j=i+1;j<pts.length;j++){
+      const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<120){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.strokeStyle=`rgba(201,168,76,${0.06*(1-d/120)})`;ctx.lineWidth=0.5;ctx.stroke()}
+    }
+  }
+  requestAnimationFrame(draw);
+}
+window.addEventListener('resize',()=>{resize();init()});
+resize();init();draw();
+</script>
+</body>
+</html>
