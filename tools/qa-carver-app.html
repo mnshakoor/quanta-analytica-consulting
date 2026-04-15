@@ -158,7 +158,7 @@ textarea{resize:vertical;min-height:60px}
     <div class="hex">QA<br>CVR</div>
     <div class="brand-text">
       <h1>Quanta Analytica™ CARVER Assessment</h1>
-      <p>CARVER Framework · DBT Integration · Pa Calculation · Critical Infrastructure Protection</p>
+      <p>SMI/QAP™ Framework · DBT Integration · Pa Calculation · Critical Infrastructure Protection</p>
     </div>
   </div>
   <div class="header-right">
@@ -435,7 +435,7 @@ textarea{resize:vertical;min-height:60px}
 </div>
 
 <div class="footer">
-  <span>QUANTA ANALYTICA™</span> · QAP™ CARVER Assessment · Structured Framework · Classification: <span id="footer-class">Unclassified</span>
+  <span>QUANTA ANALYTICA™</span> · QAP™ CARVER Assessment · SMI/Bencie Framework · Classification: <span id="footer-class">Unclassified</span>
 </div>
 
 <script>
@@ -491,7 +491,7 @@ function setScale(n){
   MAX_SCORE = n;
   document.getElementById('scale-1-5').classList.toggle('active', n===5);
   document.getElementById('scale-1-10').classList.toggle('active', n===10);
-  document.getElementById('active-scale-label').textContent = n===5 ? '1–5 (Standard for Tactical Assessments)' : '1–10 (Extended Nuanced Strategic Analysis)';
+  document.getElementById('active-scale-label').textContent = n===5 ? '1–5 (SMI/Bencie Standard)' : '1–10 (Extended Nuanced Analysis)';
   buildScaleOpts();
   buildScaleRef();
   buildLegend();
@@ -800,7 +800,29 @@ function exportCSV(){
   const csv=rows.map(r=>r.map(c=>`"${(c+'').replace(/"/g,'""')}"`).join(',')).join('\n');
   dl('qa-carver-assessment.csv','text/csv',csv);
 }
-function exportJSON(){ dl('qa-carver-assessment.json','application/json',JSON.stringify(assets,null,2)); }
+function exportJSON(){
+  // Build unified assessment object including metadata, dbts, assets and analysis notes
+  const metadata = {
+    assessment_title: document.getElementById('meta-title')?.value || '',
+    facility_type: document.getElementById('meta-fac')?.value || '',
+    lead_assessor: document.getElementById('meta-assessor')?.value || '',
+    organization: document.getElementById('meta-org')?.value || '',
+    assessment_date: document.getElementById('meta-date')?.value || '',
+    classification: document.getElementById('meta-class')?.value || '',
+    version: document.getElementById('meta-ver')?.value || '',
+    regulatory_framework: document.getElementById('meta-reg')?.value || '',
+    scoring_scale: MAX_SCORE === 5 ? '1–5' : '1–10'
+  };
+  const analysis = {
+    situational_summary: '',
+    threat_environment: document.getElementById('n-insights')?.value || '',
+    key_findings: document.getElementById('n-findings')?.value || '',
+    countermeasure_priorities: document.getElementById('n-countermeasures')?.value || '',
+    sse_assessment: document.getElementById('n-sse')?.value || ''
+  };
+  const obj = { metadata, dbts, assets, analysis };
+  dl('qa-carver-assessment.json','application/json',JSON.stringify(obj,null,2));
+}
 function exportExcel(){
   if(!window.XLSX){alert('XLSX not loaded.');return;}
   const ws=XLSX.utils.aoa_to_sheet([HDR,...assets.map(toRow)]);
@@ -845,16 +867,145 @@ function handleFile(file){
   reader.readAsText(file);
 }
 function ingestJSON(text){
-  const arr=JSON.parse(text);
-  if(!Array.isArray(arr))throw new Error('Must be array.');
-  let n=0;
-  arr.forEach(r=>{
-    const scores={C:parseInt(r.C)||1,A:parseInt(r.A)||1,R:parseInt(r.R)||1,V:parseInt(r.V)||1,E:parseInt(r.E)||1,Rec:parseInt(r.Rec)||1};
-    const total=Object.values(scores).reduce((s,v)=>s+v,0);
-    const pa=calcPa(total);
-    assets.push({id:idCtr++,asset:r.asset||'Untitled',dbt:r.dbt||'',location:r.location||'',description:r.description||'',...scores,total,pa,rating:getRating(pa),status:r.status||'Open',review:r.review||'',notes:r.notes||'',scale:MAX_SCORE});n++;
-  });
-  logImport('success',`Imported ${n} assets from JSON.`);
+  const parsed = JSON.parse(text);
+  // Legacy array format: plain list of assets
+  if (Array.isArray(parsed)) {
+    // Reset current assessment
+    assets = [];
+    dbts = [];
+    idCtr = 1;
+    dbtIdCtr = 1;
+    let n = 0;
+    parsed.forEach(r=>{
+      const scores = {
+        C: parseInt(r.C) || 1,
+        A: parseInt(r.A) || 1,
+        R: parseInt(r.R) || 1,
+        V: parseInt(r.V) || 1,
+        E: parseInt(r.E) || 1,
+        Rec: parseInt(r.Rec) || 1
+      };
+      const total = Object.values(scores).reduce((s,v)=>s+v,0);
+      const pa = calcPa(total);
+      assets.push({
+        id: idCtr++,
+        asset: r.asset || 'Untitled',
+        dbt: r.dbt || '',
+        location: r.location || '',
+        description: r.description || '',
+        ...scores,
+        total,
+        pa,
+        rating: getRating(pa),
+        status: r.status || 'Open',
+        review: r.review || '',
+        notes: r.notes || '',
+        scale: MAX_SCORE
+      });
+      n++;
+    });
+    // Synthesize stub DBTs from unique asset.dbt values
+    const uniqueDBTs = [...new Set(parsed.map(r=>r.dbt).filter(Boolean))];
+    uniqueDBTs.forEach(name=>{
+      if (!dbts.some(d=>d.name===name)) {
+        dbts.push({
+          id: dbtIdCtr++,
+          name,
+          type: '',
+          num: '',
+          goal: '',
+          capability: '',
+          tactics: '',
+          knowledge: '',
+          attacktype: '',
+          level: 'Medium',
+          narrative: 'Imported from legacy asset-only register. Full DBT details not provided.'
+        });
+      }
+    });
+    logImport('success',`Imported ${n} assets from JSON (legacy format).`);
+    refresh();
+    return;
+  }
+  // Unified assessment format: object with metadata, dbts, assets, analysis
+  if (parsed && typeof parsed === 'object') {
+    // Reset current assessment
+    assets = [];
+    dbts = [];
+    idCtr = 1;
+    dbtIdCtr = 1;
+    let imported = 0;
+    if (Array.isArray(parsed.dbts)) {
+      parsed.dbts.forEach(d=>{
+        dbts.push({
+          id: dbtIdCtr++,
+          name: d.name || '',
+          type: d.type || '',
+          num: d.num || '',
+          goal: d.goal || '',
+          capability: d.capability || '',
+          tactics: d.tactics || '',
+          knowledge: d.knowledge || '',
+          attacktype: d.attacktype || '',
+          level: d.level || 'Medium',
+          narrative: d.narrative || ''
+        });
+      });
+    }
+    if (Array.isArray(parsed.assets)) {
+      parsed.assets.forEach(r=>{
+        const scores = {
+          C: parseInt(r.C) || 1,
+          A: parseInt(r.A) || 1,
+          R: parseInt(r.R) || 1,
+          V: parseInt(r.V) || 1,
+          E: parseInt(r.E) || 1,
+          Rec: parseInt(r.Rec) || 1
+        };
+        const total = Object.values(scores).reduce((s,v)=>s+v,0);
+        const pa = calcPa(total);
+        assets.push({
+          id: idCtr++,
+          asset: r.asset || 'Untitled',
+          dbt: r.dbt || '',
+          location: r.location || '',
+          description: r.description || '',
+          ...scores,
+          total,
+          pa,
+          rating: getRating(pa),
+          status: r.status || 'Open',
+          review: r.review || '',
+          notes: r.notes || '',
+          scale: MAX_SCORE
+        });
+        imported++;
+      });
+    }
+    // Apply analysis fields if provided
+    if (parsed.analysis) {
+      document.getElementById('n-findings').value = parsed.analysis.key_findings || '';
+      document.getElementById('n-insights').value = parsed.analysis.threat_environment || '';
+      document.getElementById('n-countermeasures').value = parsed.analysis.countermeasure_priorities || '';
+      document.getElementById('n-sse').value = parsed.analysis.sse_assessment || '';
+    }
+    // Apply metadata fields if provided
+    if (parsed.metadata) {
+      document.getElementById('meta-title').value = parsed.metadata.assessment_title || '';
+      document.getElementById('meta-fac').value = parsed.metadata.facility_type || '';
+      document.getElementById('meta-assessor').value = parsed.metadata.lead_assessor || '';
+      document.getElementById('meta-org').value = parsed.metadata.organization || '';
+      document.getElementById('meta-date').value = parsed.metadata.assessment_date || '';
+      document.getElementById('meta-class').value = parsed.metadata.classification || 'Unclassified';
+      document.getElementById('meta-ver').value = parsed.metadata.version || '';
+      const reg = document.getElementById('meta-reg');
+      if (reg) reg.value = parsed.metadata.regulatory_framework || '';
+    }
+    logImport('success',`Imported ${imported} assets and ${Array.isArray(parsed.dbts)?parsed.dbts.length:0} DBTs from JSON.`);
+    refresh();
+    return;
+  }
+  throw new Error('Unsupported JSON format.');
 }
 function ingestCSV(text){
   const lines=text.trim().split('\n');
@@ -874,7 +1025,13 @@ function logImport(type,msg){
   document.getElementById('import-log').innerHTML=`<div style="padding:12px 16px;border-radius:6px;font-size:13px;border:1px solid ${type==='success'?'var(--low)':'var(--crit)'};background:${type==='success'?'var(--low-bg)':'var(--crit-bg)'};color:${type==='success'?'var(--low-t)':'var(--crit-t)'}">${msg}</div>`;
 }
 
-function refresh(){renderSummary();populateFilters();renderTable();populateDBTSelect();}
+function refresh(){
+  renderSummary();
+  populateFilters();
+  renderTable();
+  populateDBTSelect();
+  renderDBTCards();
+}
 
 // Seed
 function seedData(){
