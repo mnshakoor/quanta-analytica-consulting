@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Systemic Intelligence | Quanta Analytica</title>
+  <meta name="description" content="Integrating Positive Peace and HALO Systems Thinking into Structured Analytic Tradecraft through the Quanta Analytica Process." />
+  <meta name="author" content="Quanta Analytica | MNS Consulting" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://quanta-analytica.com/systemic-intelligence.html" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow+Condensed:wght@300;400;500;600&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --obsidian: #0a0c10;
+      --deep-navy: #0d1220;
+      --panel: rgba(255,255,255,0.04);
+      --gold: #c8a96e;
+      --gold-light: #e2c98a;
+      --gold-dim: rgba(200,169,110,0.12);
+      --gold-line: rgba(200,169,110,0.28);
+      --text: rgba(245,242,236,0.95);
+      --muted: rgba(245,242,236,0.72);
+      --muted2: rgba(245,242,236,0.42);
+      --border: rgba(200,169,110,0.14);
+      --border-soft: rgba(255,255,255,0.07);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-ui: 'Barlow Condensed', sans-serif;
+      --font-body: 'Barlow', sans-serif;
+      --max: 1240px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--obsidian);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.5;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 100; backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(10,12,16,.95), rgba(10,12,16,.72));
+      border-bottom: 1px solid var(--border);
+    }
+    .nav { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:14px 0; }
+    .brand { display:flex; align-items:center; gap:12px; flex-shrink:0; }
+    .brand:hover { text-decoration:none; }
+    .brand-name { display:flex; flex-direction:column; line-height:1.15; }
+    .brand-name strong {
+      font-family:var(--font-ui); font-size:.92rem; font-weight:600; letter-spacing:.15em;
+      text-transform:uppercase; color:var(--text);
+    }
+    .brand-name span {
+      font-family:var(--font-ui); font-size:.68rem; letter-spacing:.18em;
+      text-transform:uppercase; color:var(--gold);
+    }
+    .nav-links { display:flex; align-items:center; gap:4px; flex-wrap:wrap; }
+    .nav-links a {
+      padding:7px 11px; font-family:var(--font-ui); font-size:.70rem; letter-spacing:.18em;
+      text-transform:uppercase; color:var(--muted); border:1px solid transparent;
+      transition:color .25s,border-color .25s,background .25s;
+    }
+    .nav-links a:hover { color:var(--gold); border-color:var(--gold-line); background:var(--gold-dim); text-decoration:none; }
+    .nav-right { display:flex; align-items:center; gap:10px; }
+    .btn {
+      display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:9px 16px;
+      border:1px solid var(--gold-line); background:var(--gold-dim); color:var(--gold);
+      cursor:pointer; font-family:var(--font-ui); font-weight:500; font-size:.7rem;
+      letter-spacing:.2em; text-transform:uppercase; transition:background .2s,border-color .2s;
+      text-decoration:none;
+    }
+    .btn:hover { background:rgba(200,169,110,.22); border-color:var(--gold); text-decoration:none; }
+    .btn.primary { background:var(--gold); color:var(--obsidian); border-color:var(--gold); }
+    .btn.primary:hover { background:var(--gold-light); border-color:var(--gold-light); }
+    .btn.ghost { background:transparent; color:var(--muted); border-color:var(--border-soft); }
+    .btn.ghost:hover { background:var(--panel); color:var(--text); border-color:var(--border); }
+    .btn.small { padding:6px 12px; font-size:.66rem; }
+    main { padding:28px 0 70px; }
+    #hero {
+      position:relative; min-height:78vh; display:flex; flex-direction:column; justify-content:center;
+      padding:5rem 0 3rem; overflow:hidden;
+    }
+    .hero-geo { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+    .bg-hex {
+      position:absolute; right:-5vw; top:50%; transform:translateY(-50%);
+      width:48vw; max-width:740px; opacity:.06; animation:spin 92s linear infinite;
+      filter:drop-shadow(0 0 12px rgba(200,169,110,.08));
+    }
+    @keyframes spin { from { transform:translateY(-50%) rotate(0deg); } to { transform:translateY(-50%) rotate(360deg); } }
+    .scan { position:absolute; left:0; right:0; height:1px; background:linear-gradient(to right, transparent, var(--gold-line), transparent); }
+    .scan.t { top:16%; }
+    .scan.b { top:84%; }
+    .hero-wrap { position:relative; z-index:2; }
+    .hero-eyebrow {
+      font-family:var(--font-ui); font-size:.72rem; font-weight:500; letter-spacing:.34em;
+      text-transform:uppercase; color:var(--gold); margin-bottom:1.4rem;
+    }
+    .hero-headline { display:flex; align-items:center; gap:22px; margin-bottom:1.2rem; }
+    .hero-logo { width:132px; height:auto; flex:0 0 auto; filter:drop-shadow(0 0 14px rgba(200,169,110,.10)); }
+    h1 {
+      font-family:var(--font-display); font-size:clamp(3rem, 6vw, 6.5rem);
+      font-weight:300; line-height:.95; letter-spacing:-.01em; margin:0;
+    }
+    h1 em { display:block; font-style:italic; color:var(--gold-light); font-weight:300; }
+    .hero-sub {
+      max-width:780px; font-size:1.04rem; line-height:1.9; color:var(--muted); margin-bottom:1.8rem;
+    }
+    .hero-pills { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:1.8rem; }
+    .pill {
+      display:inline-flex; align-items:center; gap:7px; padding:5px 11px; border:1px solid var(--gold-line);
+      background:var(--gold-dim); color:var(--muted); font-family:var(--font-ui); font-size:.66rem;
+      letter-spacing:.15em; text-transform:uppercase;
+    }
+    .dot { width:6px; height:6px; background:var(--gold); border-radius:50%; box-shadow:0 0 0 4px rgba(200,169,110,.14); }
+    .hero-ctas { display:flex; gap:12px; flex-wrap:wrap; }
+    .intro-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:16px; margin-top:22px; }
+    .panel, .quote-panel, .table-wrap, .summary-card { background:var(--panel); border:1px solid var(--border); }
+    .panel { padding:18px; }
+    .quote-panel { padding:20px; }
+    .summary-card { padding:20px; }
+    .quote-panel blockquote { font-family:var(--font-display); font-size:1.24rem; line-height:1.55; color:var(--text); font-style:italic; }
+    .quote-source { margin-top:12px; color:var(--muted2); font-family:var(--font-ui); letter-spacing:.12em; text-transform:uppercase; font-size:.62rem; }
+    section.content-section { padding:54px 0 10px; }
+    .section-head { display:flex; align-items:center; gap:1.2rem; margin-bottom:1.4rem; }
+    .section-num { font-family:var(--font-ui); font-size:.63rem; letter-spacing:.28em; color:var(--gold); opacity:.55; }
+    .section-rule { width:48px; height:1px; background:var(--gold-line); flex-shrink:0; }
+    .section-label { font-family:var(--font-ui); font-size:.68rem; font-weight:600; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); }
+    h2 { font-family:var(--font-display); font-size:clamp(1.8rem,2.7vw,2.85rem); font-weight:300; line-height:1.05; margin-bottom:.85rem; }
+    h2 em { font-style:italic; color:var(--gold-light); font-weight:300; }
+    .section-copy { max-width:840px; color:var(--muted); line-height:1.88; margin-bottom:1.4rem; font-size:.98rem; }
+    .section-grid { display:grid; grid-template-columns:1.15fr .85fr; gap:16px; }
+    .section-grid .panel p:first-child { margin-top:0; }
+    .bullet-list { margin-top:10px; padding-left:18px; color:var(--muted); }
+    .bullet-list li { margin:7px 0; }
+    .bullet-list strong { color:var(--text); font-weight:500; }
+    .table-wrap { overflow:hidden; margin-top:18px; }
+    table { width:100%; border-collapse:collapse; }
+    th {
+      background:rgba(255,255,255,.03); color:var(--gold); font-family:var(--font-ui);
+      font-size:.62rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
+      text-align:left; padding:12px 14px; border-bottom:1px solid var(--border); vertical-align:top;
+    }
+    td {
+      padding:13px 14px; border-bottom:1px solid rgba(200,169,110,.08); color:var(--muted);
+      vertical-align:top; line-height:1.72;
+    }
+    tr:last-child td { border-bottom:none; }
+    .highlight-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:18px; }
+    .summary-card h3 {
+      font-family:var(--font-ui); font-size:.72rem; font-weight:600; letter-spacing:.2em;
+      text-transform:uppercase; color:var(--gold); margin-bottom:8px;
+    }
+    .summary-card p { margin:0; color:var(--muted); line-height:1.75; font-size:.95rem; }
+    .framework-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:18px; }
+    .framework-card { background:var(--panel); border:1px solid var(--border); padding:18px; }
+    .framework-card h3 { font-family:var(--font-display); font-size:1.3rem; font-weight:400; color:var(--text); margin-bottom:8px; }
+    .framework-card p { margin:0; }
+    .footer { padding:32px 0 36px; border-top:1px solid var(--border); margin-top:52px; }
+    .footer .row { display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; }
+    .footer-brand { font-family:var(--font-ui); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); }
+    .footer-brand .gold { color:var(--gold); }
+    .footer-links { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+    .footer-links a {
+      display:inline-flex; align-items:center; gap:7px; padding:5px 11px; border:1px solid var(--gold-line);
+      background:var(--gold-dim); color:var(--gold); font-family:var(--font-ui); font-size:.64rem;
+      letter-spacing:.15em; text-transform:uppercase;
+    }
+    .footer-links a:hover { background:rgba(200,169,110,.22); text-decoration:none; }
+    @media (max-width:980px) {
+      .intro-grid, .section-grid, .highlight-grid, .framework-grid { grid-template-columns:1fr; }
+    }
+    @media (max-width:760px) {
+      .nav-links { display:none; }
+      .hero-headline { flex-direction:column; align-items:flex-start; gap:14px; }
+      .hero-logo { width:112px; }
+    }
+    @media (max-width:560px) {
+      .container { width:min(var(--max), calc(100% - 20px)); }
+      h1 { font-size:clamp(2.8rem, 14vw, 4.4rem); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="nav" role="navigation" aria-label="Primary">
+        <a class="brand" href="#hero" aria-label="Quanta Analytica systemic intelligence page">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+            <polygon points="18,2 32,10 32,26 18,34 4,26 4,10" fill="none" stroke="#c8a96e" stroke-width="1.2"/>
+            <circle cx="18" cy="18" r="4" fill="#c8a96e" opacity="0.75"/>
+          </svg>
+          <div class="brand-name">
+            <strong>Quanta Analytica</strong>
+            <span>Framework Page</span>
+          </div>
+        </a>
+        <nav class="nav-links" aria-label="Page sections">
+          <a href="#overview">Overview</a>
+          <a href="#positive-peace">Positive Peace</a>
+          <a href="#halo">HALO</a>
+          <a href="#integration">Integration</a>
+          <a href="#tradecraft">Tradecraft</a>
+          <a href="#advantage">Decision Advantage</a>
+        </nav>
+        <div class="nav-right">
+          <a class="btn ghost small" href="https://quanta-analytica.com" target="_blank" rel="noopener">Main Site</a>
+          <a class="btn primary small" href="https://insights.quanta-analytica.com" target="_blank" rel="noopener">Insights</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="content">
+    <div class="container">
+      <section id="hero" aria-label="Systemic Intelligence hero">
+        <div class="hero-geo" aria-hidden="true">
+          <svg class="bg-hex" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="250,20 460,140 460,360 250,480 40,360 40,140" fill="none" stroke="#c8a96e" stroke-width="1"/>
+            <polygon points="250,60 430,158 430,342 250,440 70,342 70,158" fill="none" stroke="#c8a96e" stroke-width="0.5"/>
+            <polygon points="250,95 400,176 400,324 250,405 100,324 100,176" fill="none" stroke="#c8a96e" stroke-width="0.3"/>
+            <circle cx="250" cy="250" r="3" fill="#c8a96e" opacity="0.9"/>
+          </svg>
+          <div class="scan t"></div>
+          <div class="scan b"></div>
+        </div>
+
+        <div class="hero-wrap">
+          <p class="hero-eyebrow">Quanta Analytica Process · Systems Thinking · Structured Tradecraft</p>
+          <div class="hero-headline">
+            <img class="hero-logo" src="https://quanta-analytica.com/logo.PNG" alt="Quanta Analytica logo" />
+            <div>
+              <h1>Systemic Intelligence<br /><em>Decision Advantage</em></h1>
+            </div>
+          </div>
+          <p class="hero-sub">
+            Integrating Positive Peace and HALO systems thinking into structured analytic tradecraft requires more than theory. It requires a governed analytic environment that transforms systemic complexity into auditable, decision-grade intelligence.
+          </p>
+          <div class="hero-pills">
+            <span class="pill"><span class="dot"></span> First Principles</span>
+            <span class="pill">Positive Peace</span>
+            <span class="pill">HALO Systems Thinking</span>
+            <span class="pill">QAP™ Integration</span>
+          </div>
+          <div class="hero-ctas">
+            <a class="btn primary" href="#overview">Explore the Framework</a>
+            <a class="btn" href="https://quanta-analytica.com/about.html" target="_blank" rel="noopener">About Quanta Analytica</a>
+          </div>
+          <div class="intro-grid">
+            <div class="quote-panel">
+              <blockquote>“The product is not the report: the product is decision advantage.”<br>~Nuri Shakoor, Strategic Framework Architect,<br> Quanta Analytica founder, &<br> IEP Positive Peace Ambassador</blockquote>
+              <div class="quote-source">Core analytic premise</div>
+            </div>
+            <div class="panel">
+              <h3 style="margin-bottom:8px;">Why this matters</h3>
+              <p>QAP frames systemic intelligence analysis <i>(QA-SIA: a Quanta Analytica conceptual model)</i> as a synthesis of first-principles reasoning, structural resilience diagnostics<i>(using IEP's Positive Peace framework)</i>, system-dynamics modeling, and disciplined analytic tradecraft. The result is a practical operating logic for navigating high-uncertainty environments.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="overview" class="content-section">
+        <div class="section-head"><span class="section-num">01</span><div class="section-rule"></div><span class="section-label">First Principles</span></div>
+        <h2>Returning to <em>bedrock reasoning</em></h2>
+        <p class="section-copy">Strategic intelligence in high-uncertainty environments demands a return to first principles thinking. Rather than relying on inherited analogies and historical pattern-matching, the analyst decomposes the problem into irreducible truths grounded in incentives, psychology, systems, and structural constraints.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Traditional Analysis</th><th>First Principles Analysis</th><th>Impact on Decision Quality</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Relies on best practices, industry standards, and historical precedents.</td><td>Breaks problems into fundamental axioms: physics, incentives, and psychology.</td><td>Opens the solution space by removing false floors and historical baggage.</td></tr>
+              <tr><td>Operates within accepted solution spaces inherited from domain convention.</td><td>Separates the ultimate goal from the methods previously used to achieve it.</td><td>Enables discontinuous change and innovation rather than incremental optimization.</td></tr>
+              <tr><td>Inherits the limitations and biases of previous analytical models.</td><td>Reconstructs strategy from scratch using verified components.</td><td>Reduces the risk of mistaking confident reasoning for correct reasoning.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="highlight-grid">
+          <div class="summary-card"><h3>Core shift</h3><p>The analyst is not merely a chronicler of events. The analyst is an architect of clarity who structures ambiguity into executable judgment.</p></div>
+          <div class="summary-card"><h3>Failure mode</h3><p>Most analytic failures emerge when inherited assumptions and analogical shortcuts are mistaken for bedrock truth.</p></div>
+          <div class="summary-card"><h3>QAP role</h3><p>QAP™ governs this reasoning chain so the integration of frameworks remains reproducible, auditable, and decision-useful.</p></div>
+        </div>
+      </section>
+
+      <section id="positive-peace" class="content-section">
+        <div class="section-head"><span class="section-num">02</span><div class="section-rule"></div><span class="section-label">Positive Peace</span></div>
+        <h2>The structural lens for <em>systemic resilience</em></h2>
+        <div class="section-grid">
+          <div class="panel">
+  <p>Positive Peace reframes stability as more than the absence of violence. Within the QAP™ framework, it operates as a diagnostic tool for systemic resilience: the ability of a society or operating environment to prevent, absorb, and recover from shocks without structural breakdown.</p>
+  <p>The core analytic question becomes: why was this system unable to absorb this shock? The answer depends on the condition and interdependence of the underlying pillars that support resilience.<br>&rarr; &rarr; &rarr; &rarr; </p>
+  
+  <img src="https://quanta-analytica.com/logos/iep-positive-peace.png" 
+       alt="IEP Positive Peace Framework" 
+       style="max-width: 80%; height: auto; border-radius: 4px; margin-top: 15px; border: 1px solid var(--obsidian-border);">
+</div>          
+
+<div class="panel">
+            <h3 style="margin-bottom:8px;">The 8 pillars of Positive Peace as systems diagnostic steps under the QA-SIA conceptual model</h3>
+            <ul class="bullet-list">
+              <li><strong>Well-Functioning Government:</strong> institutional legitimacy and crisis coordination capacity.</li>
+              <li><strong>Sound Business Environment:</strong> economic resilience and adaptive private-sector capacity.</li>
+              <li><strong>Equitable Distribution of Resources:</strong> buffer against grievance accumulation.</li>
+              <li><strong>Acceptance of the Rights of Others:</strong> social cohesion during stress.</li>
+              <li><strong>Good Relations with Neighbors:</strong> protection against spillover dynamics.</li>
+              <li><strong>Free Flow of Information:</strong> transparency and early-warning viability.</li>
+              <li><strong>High Levels of Human Capital:</strong> recovery speed and adaptive capacity.</li>
+              <li><strong>Low Levels of Corruption:</strong> institutional integrity under pressure.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="summary-card" style="margin-top:16px;"><h3>Pillar interdependency</h3><p>Weakness in one pillar can cascade through the system. Corruption undermines legitimacy. Reduced legitimacy degrades collective action. Weakened collective action constrains information flow and crisis response. This is where structural fragility becomes a predictor rather than a retrospective description.</p></div>
+      </section>
+
+      <section id="halo" class="content-section">
+        <div class="section-head"><span class="section-num">03</span><div class="section-rule"></div><span class="section-label">HALO Systems Thinking</span></div>
+        <h2>The engine of <em>dynamics and flow</em></h2>
+        <div class="framework-grid">
+          <div class="framework-card"><h3>Hard Infrastructure</h3><p>Tangible structures, infrastructure, and resource flows. Maps to QAP™ Layer 01: Foundations.</p></div>
+          <div class="framework-card"><h3>Attitudes</h3><p>Cultural norms, social trust, and value systems. Maps to QAP™ Layer 05: Paradigms.</p></div>
+          <div class="framework-card"><h3>Laws &amp; Institutions</h3><p>Formal rules, governance architecture, and institutional constraints. Maps to QAP™ Layer 02: Mechanisms.</p></div>
+          <div class="framework-card"><h3>Operating Environment</h3><p>Geography, external context, regional dynamics, and environmental pressure. Maps to QAP™ Layer 03: Dynamics.</p></div>
+        </div>
+        <div class="section-grid" style="margin-top:16px;">
+          <div class="panel"><h3 style="margin-bottom:8px;">Three-phase methodology</h3><ul class="bullet-list"><li><strong>Pre-Modelling:</strong> define system boundaries, stocks, and encoded norms.</li><li><strong>Modelling:</strong> test feedback loops, non-linearity, and scenario propagation.</li><li><strong>Post-Modelling:</strong> identify leverage points where focused intervention creates disproportionate benefit.</li></ul></div>
+          <div class="panel"><h3 style="margin-bottom:8px;">Homeostasis and attractor planes</h3><p>Systems seek steady states through encoded norms and tolerance thresholds. When those thresholds are breached, systems begin to drift toward attractor planes: either a sustainable peace trajectory or a conflict trap in which violence erodes the very structures needed for recovery.</p></div>
+        </div>
+      </section>
+
+      <section id="integration" class="content-section">
+        <div class="section-head"><span class="section-num">04</span><div class="section-rule"></div><span class="section-label">QAP™ Integration</span></div>
+        <h2>Operationalizing the frameworks within <em>a governed workflow</em></h2>
+        <p class="section-copy">The Quanta Analytica Process™ acts as the cognitive operating system that orchestrates Positive Peace and HALO into a reproducible intelligence pipeline. This prevents the frameworks from being reduced to conceptual overlays and instead makes them part of an auditable reasoning chain.</p>
+        <div class="highlight-grid">
+          <div class="summary-card"><h3>01 · Ingestion &amp; Framing</h3><p>Define the systemic baseline and the operating environment through structural diagnostics and pillar-level conditions.</p></div>
+          <div class="summary-card"><h3>02 · Analysis</h3><p>Model feedback loops, path dependency, and attractor planes to identify non-linear outcomes and leverage points.</p></div>
+          <div class="summary-card"><h3>03 · Validation</h3><p>Stress-test the reasoning chain using Know, Assess, and Unknown discipline to reduce drift and harden judgment.</p></div>
+        </div>
+        <div class="summary-card" style="margin-top:16px;"><h3>04 · Deliverable</h3><p>Translate complex system dynamics into decision-grade implications, threshold-aware judgments, and time-banded recommendations that support prioritization, mitigation, and anticipation.</p></div>
+      </section>
+
+      <section id="tradecraft" class="content-section">
+        <div class="section-head"><span class="section-num">05</span><div class="section-rule"></div><span class="section-label">Structured Analytic Tradecraft</span></div>
+        <h2>Turning frameworks into <em>disciplined judgment</em></h2>
+        <div class="section-grid">
+          <div class="panel"><h3 style="margin-bottom:8px;">Tradecraft application</h3><ul class="bullet-list"><li><strong>ACH:</strong> identify which evidence truly discriminates between competing trajectories such as sustainable peace versus conflict trap.</li><li><strong>Key Assumptions Check:</strong> surface hidden assumptions embedded in encoded norms and homeostasis expectations.</li><li><strong>Indicators &amp; Warnings:</strong> derive binary triggers from structural weakness and emerging pillar breakdowns.</li></ul></div>
+          <div class="panel"><h3 style="margin-bottom:8px;">WSI evidence discipline</h3><p>All web-sourced material must be evaluated under RAPITIS: reliability, accuracy, primary versus secondary sourcing, independence, timeliness, intent, and specificity. Independence testing is essential to prevent circular sourcing from being mistaken for corroboration.</p></div>
+        </div>
+      </section>
+
+      <section id="advantage" class="content-section">
+        <div class="section-head"><span class="section-num">06</span><div class="section-rule"></div><span class="section-label">Decision Advantage</span></div>
+        <h2>The “so what” layer of <em>systemic intelligence</em></h2>
+        <div class="highlight-grid">
+          <div class="summary-card"><h3>Causal pathway identification</h3><p>Map how deficits in one structural pillar cascade through the wider system to generate concrete operational risk.</p></div>
+          <div class="summary-card"><h3>Leverage point identification</h3><p>Determine which institutional or behavioral nodes can absorb pressure and where focused intervention will matter most.</p></div>
+          <div class="summary-card"><h3>Shock propagation modeling</h3><p>Simulate how disruption moves across interdependent variables rather than assuming linear, isolated effects.</p></div>
+        </div>
+        <div class="section-grid" style="margin-top:16px;">
+          <div class="panel"><h3 style="margin-bottom:8px;">Executive checklist</h3><ul class="bullet-list"><li>What specific decision does the analysis support?</li><li>What system is being analyzed, and what are its boundaries?</li><li>Which structural variables are driving the outcome?</li><li>What is the confidence band for each key judgment?</li><li>What does the product enable the stakeholder to do: prioritize, mitigate, or anticipate?</li></ul></div>
+          <div class="panel"><h3 style="margin-bottom:8px;">Bottom line</h3><p>Structured systemic intelligence is the most reliable path through complex adaptive environments. It moves analysis beyond reactive reporting and into strategic foresight, where uncertainty is structured, challenged, and converted into decision advantage.</p></div>
+        </div>
+      </section>
+
+      <div class="footer" role="contentinfo">
+        <div class="row">
+          <div class="footer-brand"><span class="gold">Quanta Analytica</span> · Systemic Intelligence · MNS Consulting</div>
+          <div class="footer-links">
+            <a href="#hero">Top</a>
+            <a href="#overview">Overview</a>
+            <a href="#integration">Integration</a>
+            <a href="https://quanta-analytica.com" target="_blank" rel="noopener">Main Site</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
