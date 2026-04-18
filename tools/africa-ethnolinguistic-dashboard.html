@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Africa Ethnolinguistic Reference | Quanta Analytica Tools</title>
+<meta name="title" content="Africa Ethnolinguistic Reference | Quanta Analytica Tools">
+<meta name="description" content="A Quanta Analytica Process™ (QAP™) dashboard for mapping 3,000+ ethnolinguistic groups across Africa. Analyze trans-border groups, colonial rail legacies, and systemic conflict risk.">
+<meta name="keywords" content="Africa ethnolinguistic groups, trans-border populations, colonial rail impacts, conflict risk dashboard, QAP tools, M. Nuri Shakoor, African linguistics data">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://quanta-analytica.com/tools/africa-ethnolinguistic-dashboard.html">
+<meta property="og:title" content="Interactive Reference: Africa Ethnolinguistic & Conflict Risk Dashboard">
+<meta property="og:description" content="Harnessing Systemic Intelligence to visualize the complex interplay between ethnic identity, colonial infrastructure, and regional stability.">
+<meta property="og:image" content="https://quanta-analytica.com/qa-mns-logo.PNG">
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://quanta-analytica.com/tools/africa-ethnolinguistic-dashboard.html">
+<meta property="twitter:title" content="Africa Ethnolinguistic Reference Tool">
+<meta property="twitter:description" content="Visualizing 3,000+ ethnic groups and their impact on modern African geopolitical risk.">
+<meta property="twitter:image" content="https://quanta-analytica.com/qa-mns-logo.PNG">
+
+<meta property="article:author" content="M. Nuri Shakoor">
+<meta property="article:section" content="Analytic Tools & Dashboards">
+
+<link rel="canonical" href="https://quanta-analytica.com/tools/africa-ethnolinguistic-dashboard.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+/* ============================================================
+   QAP DESIGN SYSTEM — Africa Ethnolinguistic Dashboard
+   Quanta Analytica Process™ | MNS Consulting
+   ============================================================ */
+:root {
+  --obsidian:         #0a0c10;
+  --obsidian-mid:     #10131a;
+  --obsidian-card:    #13161f;
+  --obsidian-border:  #1c2030;
+  --obsidian-surface: #181b26;
+  --obsidian-lift:    #1e2235;
+  --gold:             #c8a96e;
+  --gold-light:       #dfc28e;
+  --gold-pale:        #e8d5aa;
+  --gold-dim:         #9a7f52;
+  --gold-muted:       #6b5838;
+  --gold-glow:        rgba(200,169,110,0.12);
+  --gold-glow-strong: rgba(200,169,110,0.22);
+  --red:              #c0392b;
+  --red-light:        #e74c3c;
+  --red-bg:           rgba(192,57,43,0.12);
+  --amber:            #d4820a;
+  --amber-light:      #f39c12;
+  --amber-bg:         rgba(212,130,10,0.12);
+  --green:            #27ae60;
+  --green-light:      #2ecc71;
+  --green-bg:         rgba(39,174,96,0.12);
+  --blue:             #2980b9;
+  --blue-light:       #3498db;
+  --blue-bg:          rgba(41,128,185,0.12);
+  --slate:            #5d7a9a;
+  --slate-light:      #7f9ab8;
+  --text-primary:     #e8e4dc;
+  --text-secondary:   #b8b0a0;
+  --text-muted:       #7a7264;
+  --text-faint:       #4a4640;
+  --font-display:     'Libre Baskerville', Georgia, serif;
+  --font-body:        'IBM Plex Sans', Arial, sans-serif;
+  --font-mono:        'IBM Plex Mono', monospace;
+  --radius-sm:        3px;
+  --radius-md:        6px;
+  --radius-lg:        10px;
+  --shadow-card:      0 2px 16px rgba(0,0,0,0.4);
+  --shadow-lift:      0 4px 24px rgba(0,0,0,0.5);
+  --transition-fast:  0.15s ease;
+  --transition-base:  0.25s ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--obsidian);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.93rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, rgba(0,0,0,0.1) 0px, transparent 1px, transparent 3px);
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.22;
+}
+
+a { color: var(--gold); text-decoration: none; transition: color var(--transition-fast); }
+a:hover { color: var(--gold-light); }
+
+/* ── PROGRESS ── */
+#progress {
+  position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-light));
+  z-index: 9999; transition: width 0.1s linear;
+  box-shadow: 0 0 8px var(--gold-glow-strong);
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 2px; left: 0; right: 0; z-index: 1000;
+  background: rgba(10,12,16,0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--obsidian-border);
+  padding: 0 2rem; height: 54px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand {
+  font-family: var(--font-mono); font-size: 0.76rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold);
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.nav-brand img { height: 26px; }
+.nav-brand span { color: var(--text-muted); font-weight: 400; }
+.nav-links { display: flex; align-items: center; gap: 1.5rem; }
+.nav-links a {
+  font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-download {
+  font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 6px 14px;
+  background: var(--gold-glow); border: 1px solid var(--gold-dim);
+  border-radius: var(--radius-sm); color: var(--gold);
+  transition: all var(--transition-fast); display: flex; align-items: center; gap: 6px;
+}
+.nav-download:hover { background: var(--gold-glow-strong); color: var(--gold-light); }
+
+/* ── HERO ── */
+.hero {
+  padding: 120px 2rem 3.5rem;
+  background: var(--obsidian-mid);
+  border-bottom: 1px solid var(--obsidian-border);
+  position: relative; overflow: hidden;
+}
+.hero-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(200,169,110,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,169,110,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridDrift 25s linear infinite;
+}
+@keyframes gridDrift {
+  from { background-position: 0 0; }
+  to   { background-position: 60px 60px; }
+}
+.hero-running {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 1.4rem;
+}
+.hero-running-left {
+  font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold-dim);
+}
+.hero-running-right {
+  font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--text-faint);
+}
+.hero-container { display: flex; align-items: flex-start; gap: 2rem; }
+.hero-logo { height: 52px; flex-shrink: 0; }
+.hero-text { flex: 1; }
+.hero h1 {
+  font-family: var(--font-display); font-size: 2.4rem; font-weight: 700;
+  color: var(--text-primary); line-height: 1.18; letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+.hero h1 .title-gold { color: var(--gold); display: block; }
+.hero-sub {
+  font-family: var(--font-body); color: var(--text-secondary); font-size: 0.96rem;
+  max-width: 680px; line-height: 1.6; margin-bottom: 1.4rem;
+}
+.hero-meta {
+  display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;
+  margin-bottom: 1.6rem;
+}
+.meta-cell {
+  font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--text-muted);
+}
+.meta-divider { color: var(--text-faint); font-size: 0.6rem; }
+.metrics-strip {
+  display: flex; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 1.4rem;
+}
+.metric-block {
+  background: var(--obsidian-card); border: 1px solid var(--obsidian-border);
+  border-top: 2px solid var(--gold-dim); border-radius: var(--radius-md);
+  padding: 1rem 1.3rem; min-width: 130px;
+  box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-family: var(--font-mono); font-size: 1.8rem; font-weight: 700;
+  color: var(--gold); line-height: 1; margin-bottom: 0.35rem;
+}
+.metric-label {
+  font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--text-muted);
+}
+.scope-note {
+  font-family: var(--font-body); font-size: 0.8rem; color: var(--text-muted);
+  font-style: italic; border-left: 2px solid var(--gold-muted);
+  padding-left: 0.8rem; max-width: 700px;
+}
+
+/* ── TABS ── */
+.tab-bar {
+  position: sticky; top: 54px; z-index: 900;
+  background: rgba(10,12,16,0.97);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--obsidian-border);
+  padding: 0 2rem;
+  display: flex; gap: 0; overflow-x: auto;
+}
+.tab-btn {
+  font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--text-muted);
+  background: none; border: none; cursor: pointer;
+  padding: 0.9rem 1.4rem; border-bottom: 2px solid transparent;
+  transition: all var(--transition-fast); white-space: nowrap;
+}
+.tab-btn:hover { color: var(--gold); }
+.tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+/* ── MAIN LAYOUT ── */
+main { max-width: 1400px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ── SECTION HEADERS ── */
+.panel-header {
+  display: flex; align-items: baseline; gap: 1rem;
+  margin-bottom: 2rem; padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--obsidian-border);
+}
+.panel-num {
+  font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold-dim);
+}
+.panel-title {
+  font-family: var(--font-display); font-size: 1.3rem; font-weight: 700;
+  color: var(--text-primary);
+}
+.panel-desc { color: var(--text-muted); font-size: 0.86rem; margin-left: auto; font-style: italic; }
+
+/* ── CARDS GRID ── */
+.cards-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.2rem; margin-bottom: 2rem;
+}
+.card {
+  background: var(--obsidian-card); border: 1px solid var(--obsidian-border);
+  border-radius: var(--radius-lg); padding: 1.4rem 1.5rem;
+  box-shadow: var(--shadow-card); transition: border-color var(--transition-base);
+}
+.card:hover { border-color: var(--gold-muted); }
+.card-header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 0.8rem;
+}
+.card-title {
+  font-family: var(--font-display); font-size: 1rem; font-weight: 700;
+  color: var(--text-primary);
+}
+.card-id {
+  font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gold-dim); padding: 2px 8px;
+  background: var(--gold-glow); border: 1px solid var(--gold-muted);
+  border-radius: var(--radius-sm); flex-shrink: 0;
+}
+.card-family {
+  font-family: var(--font-mono); font-size: 0.66rem; color: var(--slate-light);
+  letter-spacing: 0.08em; margin-bottom: 0.6rem;
+}
+.card-body { font-size: 0.86rem; color: var(--text-secondary); line-height: 1.55; }
+.card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.9rem; }
+.tag {
+  font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 2px 7px; border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+.tag-green { color: var(--green-light); border-color: var(--green); background: var(--green-bg); }
+.tag-amber { color: var(--amber-light); border-color: var(--amber); background: var(--amber-bg); }
+.tag-red   { color: var(--red-light);   border-color: var(--red);   background: var(--red-bg); }
+.tag-blue  { color: var(--blue-light);  border-color: var(--blue);  background: var(--blue-bg); }
+.tag-gold  { color: var(--gold);        border-color: var(--gold-dim); background: var(--gold-glow); }
+.tag-slate { color: var(--slate-light); border-color: var(--slate);    background: rgba(93,122,154,0.12); }
+
+/* ── CHARTS SECTION ── */
+.charts-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem; margin-bottom: 2rem;
+}
+.charts-grid.thirds { grid-template-columns: repeat(3, 1fr); }
+.chart-card {
+  background: var(--obsidian-card); border: 1px solid var(--obsidian-border);
+  border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-card);
+}
+.chart-card.wide { grid-column: span 2; }
+.chart-label {
+  font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem;
+}
+.chart-subtitle {
+  font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1.2rem;
+}
+.chart-canvas-wrap { position: relative; height: 280px; }
+.chart-canvas-wrap.tall { height: 360px; }
+.chart-canvas-wrap.short { height: 200px; }
+
+/* ── MAP SECTION ── */
+.map-wrap {
+  position: relative; background: var(--obsidian-card);
+  border: 1px solid var(--obsidian-border); border-radius: var(--radius-lg);
+  overflow: hidden; margin-bottom: 2rem;
+}
+.map-wrap img {
+  width: 100%; display: block; opacity: 0.88;
+  filter: saturate(0.9) contrast(1.05);
+}
+.map-overlay {
+  position: absolute; top: 1rem; right: 1rem;
+  background: rgba(10,12,16,0.9);
+  border: 1px solid var(--obsidian-border); border-radius: var(--radius-md);
+  padding: 1rem 1.2rem; max-width: 280px;
+  backdrop-filter: blur(8px);
+}
+.map-overlay-title {
+  font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem;
+}
+.legend-item {
+  display: flex; align-items: center; gap: 0.6rem;
+  margin-bottom: 0.5rem; font-size: 0.76rem; color: var(--text-secondary);
+}
+.legend-dot {
+  width: 12px; height: 12px; border-radius: 2px; flex-shrink: 0;
+}
+
+/* ── TABLE ── */
+.table-wrap {
+  background: var(--obsidian-card); border: 1px solid var(--obsidian-border);
+  border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 2rem;
+  box-shadow: var(--shadow-card);
+}
+.table-toolbar {
+  display: flex; align-items: center; gap: 1rem; padding: 1rem 1.4rem;
+  background: var(--obsidian-surface); border-bottom: 1px solid var(--obsidian-border);
+  flex-wrap: wrap;
+}
+.table-search {
+  flex: 1; min-width: 200px;
+  background: var(--obsidian-card); border: 1px solid var(--obsidian-border);
+  border-radius: var(--radius-sm); padding: 0.5rem 0.8rem;
+  font-family: var(--font-mono); font-size: 0.74rem; color: var(--text-primary);
+  outline: none; transition: border-color var(--transition-fast);
+}
+.table-search:focus { border-color: var(--gold-dim); }
+.table-search::placeholder { color: var(--text-faint); }
+.filter-select {
+  background: var(--obsidian-card); border: 1px solid var(--obsidian-border);
+  border-radius: var(--radius-sm); padding: 0.5rem 0.8rem;
+  font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary);
+  outline: none; cursor: pointer; transition: border-color var(--transition-fast);
+}
+.filter-select:focus { border-color: var(--gold-dim); }
+.table-count {
+  font-family: var(--font-mono); font-size: 0.64rem; color: var(--text-muted);
+  letter-spacing: 0.1em; margin-left: auto; white-space: nowrap;
+}
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th {
+  background: var(--obsidian-surface); color: var(--gold);
+  font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 0.75rem 1rem;
+  border: 1px solid var(--obsidian-border); text-align: left;
+  cursor: pointer; white-space: nowrap; user-select: none;
+  transition: background var(--transition-fast);
+}
+.data-table th:hover { background: var(--obsidian-lift); }
+.data-table th .sort-icon { margin-left: 4px; opacity: 0.4; font-size: 0.6rem; }
+.data-table th.sorted .sort-icon { opacity: 1; color: var(--gold); }
+.data-table td {
+  background: var(--obsidian-card); color: var(--text-secondary);
+  font-size: 0.84rem; padding: 0.75rem 1rem;
+  border: 1px solid var(--obsidian-border); vertical-align: top;
+}
+.data-table tbody tr:nth-child(even) td { background: #0f121b; }
+.data-table tbody tr:hover td { background: var(--obsidian-lift); }
+.td-mono { font-family: var(--font-mono); color: var(--gold-light); font-size: 0.72rem; }
+.td-strong { font-weight: 600; color: var(--text-primary); }
+.table-overflow { overflow-x: auto; }
+.no-results {
+  padding: 3rem; text-align: center;
+  font-family: var(--font-mono); font-size: 0.78rem;
+  color: var(--text-faint); letter-spacing: 0.1em;
+}
+
+/* ── CONFLICT CARDS ── */
+.conflict-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 1.2rem; margin-bottom: 2rem;
+}
+.conflict-card {
+  background: var(--obsidian-card); border: 1px solid var(--obsidian-border);
+  border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-card);
+  transition: border-color var(--transition-base);
+}
+.conflict-card:hover { border-color: var(--gold-muted); }
+.conflict-card-head {
+  padding: 0.85rem 1.2rem;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.conflict-card-head.risk-critical { background: var(--red-bg); border-bottom: 1px solid rgba(192,57,43,0.25); }
+.conflict-card-head.risk-high     { background: var(--amber-bg); border-bottom: 1px solid rgba(212,130,10,0.25); }
+.conflict-card-head.risk-elevated { background: rgba(41,128,185,0.1); border-bottom: 1px solid rgba(41,128,185,0.2); }
+.conflict-group-name {
+  font-family: var(--font-display); font-size: 0.96rem; font-weight: 700;
+  color: var(--text-primary);
+}
+.risk-badge {
+  font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 3px 9px; border-radius: var(--radius-sm); border: 1px solid;
+}
+.risk-badge.critical { color: var(--red-light); border-color: var(--red); background: var(--red-bg); }
+.risk-badge.high     { color: var(--amber-light); border-color: var(--amber); background: var(--amber-bg); }
+.risk-badge.elevated { color: var(--blue-light); border-color: var(--blue); background: var(--blue-bg); }
+.conflict-body { padding: 1rem 1.2rem; }
+.conflict-row {
+  display: grid; grid-template-columns: 100px 1fr; gap: 0.5rem;
+  margin-bottom: 0.55rem; font-size: 0.83rem;
+}
+.conflict-label {
+  font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.09em;
+  text-transform: uppercase; color: var(--gold-dim); padding-top: 1px;
+}
+.conflict-value { color: var(--text-secondary); }
+.iw-note {
+  margin-top: 0.8rem; padding: 0.7rem 0.9rem;
+  background: var(--obsidian-surface); border-left: 3px solid var(--amber);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.8rem; color: var(--text-secondary); font-style: italic;
+}
+
+/* ── COUNTRY INDEX ── */
+.country-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 1.2rem; margin-bottom: 2rem;
+}
+.country-card {
+  background: var(--obsidian-card); border: 1px solid var(--obsidian-border);
+  border-radius: var(--radius-lg); padding: 1.3rem 1.4rem;
+  box-shadow: var(--shadow-card); transition: border-color var(--transition-base);
+}
+.country-card:hover { border-color: var(--gold-muted); }
+.country-name {
+  font-family: var(--font-display); font-size: 1.05rem; font-weight: 700;
+  color: var(--text-primary); margin-bottom: 0.5rem;
+}
+.country-groups-list {
+  font-size: 0.84rem; color: var(--text-secondary); margin-bottom: 0.6rem;
+}
+.country-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+.country-note { font-size: 0.8rem; color: var(--text-muted); font-style: italic; line-height: 1.5; }
+
+/* ── DOWNLOAD BANNER ── */
+.download-banner {
+  background: var(--obsidian-card); border: 1px solid var(--gold-muted);
+  border-radius: var(--radius-lg); padding: 1.5rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap;
+}
+.download-info h3 {
+  font-family: var(--font-display); font-size: 1.05rem; font-weight: 700;
+  color: var(--text-primary); margin-bottom: 0.35rem;
+}
+.download-info p { font-size: 0.84rem; color: var(--text-muted); margin: 0; }
+.download-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-download {
+  font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 0.65rem 1.4rem;
+  border: 1px solid var(--gold-dim); border-radius: var(--radius-sm);
+  background: var(--gold-glow); color: var(--gold);
+  transition: all var(--transition-fast); cursor: pointer; display: flex; align-items: center; gap: 0.5rem;
+  text-decoration: none;
+}
+.btn-download:hover { background: var(--gold-glow-strong); color: var(--gold-light); border-color: var(--gold); }
+.btn-secondary {
+  background: transparent; border-color: var(--obsidian-border); color: var(--text-muted);
+}
+.btn-secondary:hover { background: var(--obsidian-lift); color: var(--text-primary); border-color: var(--slate); }
+
+/* ── STAT BAR ── */
+.stat-bars { display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.5rem; }
+.stat-bar-row { display: grid; grid-template-columns: 180px 1fr 60px; gap: 0.8rem; align-items: center; }
+.stat-bar-label { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary); text-align: right; }
+.stat-bar-track { background: var(--obsidian-border); border-radius: 2px; height: 6px; overflow: hidden; }
+.stat-bar-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--gold-dim), var(--gold)); transition: width 1s ease; }
+.stat-bar-val { font-family: var(--font-mono); font-size: 0.68rem; color: var(--gold); text-align: left; }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--obsidian-border);
+  background: var(--obsidian-mid);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+.footer-brand {
+  font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-dim);
+  margin-bottom: 0.4rem;
+}
+.footer-doc-id {
+  font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em;
+  color: var(--text-faint); margin-bottom: 0.4rem;
+}
+.footer-legal { font-size: 0.74rem; color: var(--text-faint); max-width: 640px; margin: 0 auto; line-height: 1.5; }
+
+/* ── FADE IN ── */
+.fade-in { opacity: 0; transform: translateY(14px); transition: opacity 0.45s ease, transform 0.45s ease; }
+.fade-in.visible { opacity: 1; transform: none; }
+
+@media (max-width: 900px) {
+  .charts-grid, .charts-grid.thirds { grid-template-columns: 1fr; }
+  .chart-card.wide { grid-column: span 1; }
+  .hero h1 { font-size: 1.75rem; }
+  .nav-links { display: none; }
+  .hero-container { flex-direction: column; }
+  .stat-bar-row { grid-template-columns: 120px 1fr 50px; }
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<nav>
+  <div class="nav-brand">
+    <img src="https://quanta-analytica.com/logo.PNG" alt="QA Logo" onerror="this.style.display='none'" />
+    QUANTA ANALYTICA <span>// TOOLS</span>
+  </div>
+  <div class="nav-links">
+    <a href="https://quanta-analytica.com">Home</a>
+    <a href="https://quanta-analytica.com/reports">Reports</a>
+    <a href="https://quanta-analytica.com/tools">Tools</a>
+    <a href="https://quanta-analytica.com/tools/qa_africa_ethnolinguistic_reference.xlsx" class="nav-download">
+      &#8595; XLSX
+    </a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-running">
+    <div class="hero-running-left">QUANTA ANALYTICA | MNS CONSULTING</div>
+    <div class="hero-running-right">REFERENCE TOOL // AFRICA ETHNOLINGUISTIC ATLAS</div>
+  </div>
+  <div class="hero-container">
+    <img src="https://quanta-analytica.com/logo.PNG" class="hero-logo" alt="QA" onerror="this.style.display='none'" />
+    <div class="hero-text">
+      <h1>
+        Africa Ethnolinguistic
+        <span class="title-gold">Reference Dashboard</span>
+      </h1>
+      <p class="hero-sub">
+        A structured, searchable reference database extracted from the U.S. Department of State / National Geographic Society
+        Africa Ethnolinguistic Groups cartographic series (1996). Cross-referenced with QAP Conflict Systems Research Framework
+        (QA-CSRF&#8482;) indicators for operational intelligence use.
+      </p>
+      <div class="hero-meta">
+        <span class="meta-cell">Source: DOS/NGS 1996</span>
+        <span class="meta-divider">&#183;</span>
+        <span class="meta-cell">Scale 1:15,600,000</span>
+        <span class="meta-divider">&#183;</span>
+        <span class="meta-cell">QAP Reference Series</span>
+        <span class="meta-divider">&#183;</span>
+        <span class="meta-cell">MNS Consulting / ARAC International</span>
+      </div>
+      <div class="metrics-strip">
+        <div class="metric-block"><div class="metric-value">85+</div><div class="metric-label">Ethnic Groups</div></div>
+        <div class="metric-block"><div class="metric-value">13</div><div class="metric-label">Language Families</div></div>
+        <div class="metric-block"><div class="metric-value">25</div><div class="metric-label">Countries Indexed</div></div>
+        <div class="metric-block"><div class="metric-value">13</div><div class="metric-label">Conflict Zones</div></div>
+        <div class="metric-block"><div class="metric-value">~1B+</div><div class="metric-label">Speakers Covered</div></div>
+      </div>
+      <p class="scope-note">
+        Population figures are indicative estimates drawn from map legend data, Ethnologue (26th ed.), and UN DESA projections.
+        Post-1996 state formation (South Sudan 2011, Eritrea 1993) and displacement patterns are annotated where analytically relevant.
+        This tool does not substitute for current-cycle intelligence products.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TABS ════════════════════════════════════════════════════════════ -->
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('overview', this)">01 // Overview &amp; Visualizations</button>
+  <button class="tab-btn" onclick="switchTab('reference', this)">02 // Group Reference</button>
+  <button class="tab-btn" onclick="switchTab('map', this)">03 // Cartographic Base</button>
+  <button class="tab-btn" onclick="switchTab('country', this)">04 // Country Index</button>
+  <button class="tab-btn" onclick="switchTab('conflict', this)">05 // Conflict Relevance Index</button>
+  <button class="tab-btn" onclick="switchTab('download', this)">06 // Data &amp; Downloads</button>
+</div>
+
+<main>
+
+<!-- ══════════════════════════════════════════════
+     TAB 1: OVERVIEW + VISUALIZATIONS
+════════════════════════════════════════════════ -->
+<div id="tab-overview" class="tab-panel active">
+  <div class="panel-header fade-in">
+    <span class="panel-num">01 //</span>
+    <span class="panel-title">Overview &amp; Visualizations</span>
+    <span class="panel-desc">Data distribution across language families, regions, and risk dimensions</span>
+  </div>
+
+  <!-- Speaker distribution bar -->
+  <div class="chart-card fade-in" style="margin-bottom:1.5rem;">
+    <div class="chart-label">Language Family — Estimated Speaker Population (Indicative)</div>
+    <div class="chart-subtitle">Millions of speakers; includes L1 and major L2 populations where noted</div>
+    <div class="stat-bars" id="speakerBars"></div>
+  </div>
+
+  <div class="charts-grid fade-in">
+    <div class="chart-card">
+      <div class="chart-label">Group Distribution by Language Family</div>
+      <div class="chart-subtitle">Count of distinct ethnic/linguistic groups per family on source map</div>
+      <div class="chart-canvas-wrap"><canvas id="familyDonut"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-label">Geographic Zone Distribution</div>
+      <div class="chart-subtitle">Proportion of groups by broad African region</div>
+      <div class="chart-canvas-wrap"><canvas id="regionBar"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-label">Colonial Language Overlay</div>
+      <div class="chart-subtitle">Primary colonial administrative language by country count (25-country index)</div>
+      <div class="chart-canvas-wrap short"><canvas id="colonialPie"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-label">Conflict Risk Distribution</div>
+      <div class="chart-subtitle">13 indexed conflict-relevant ethnolinguistic zones by risk classification</div>
+      <div class="chart-canvas-wrap short"><canvas id="conflictRisk"></canvas></div>
+    </div>
+  </div>
+
+  <div class="chart-card wide fade-in" style="margin-bottom:1.5rem;">
+    <div class="chart-label">Cross-Border Ethnolinguistic Groups — Country Span</div>
+    <div class="chart-subtitle">Selected groups with significant transnational presence (# of states with notable population)</div>
+    <div class="chart-canvas-wrap tall"><canvas id="transBorderBar"></canvas></div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════
+     TAB 2: GROUP REFERENCE
+════════════════════════════════════════════════ -->
+<div id="tab-reference" class="tab-panel">
+  <div class="panel-header fade-in">
+    <span class="panel-num">02 //</span>
+    <span class="panel-title">Group Reference Database</span>
+    <span class="panel-desc">Searchable and filterable — all 85+ groups from the source map</span>
+  </div>
+
+  <div class="table-wrap fade-in">
+    <div class="table-toolbar">
+      <input class="table-search" id="groupSearch" type="text" placeholder="Search group, region, variant name..." oninput="filterTable()" />
+      <select class="filter-select" id="familyFilter" onchange="filterTable()">
+        <option value="">All Families</option>
+        <option>Semitic-Hamitic</option>
+        <option>Bantu</option>
+        <option>Guinean</option>
+        <option>Hausa-Chadic</option>
+        <option>Mande</option>
+        <option>Nilotic</option>
+        <option>Central/E Sudanese</option>
+        <option>Western Bantoid</option>
+        <option>Central Bantoid</option>
+        <option>Khoisan</option>
+        <option>Malay-Polynesian</option>
+        <option>Indo-European</option>
+        <option>Songhai</option>
+      </select>
+      <span class="table-count" id="tableCount"></span>
+    </div>
+    <div class="table-overflow">
+      <table class="data-table" id="groupTable">
+        <thead>
+          <tr>
+            <th onclick="sortTable(0)">ID <span class="sort-icon">&#9650;</span></th>
+            <th onclick="sortTable(1)">Family <span class="sort-icon">&#9650;</span></th>
+            <th onclick="sortTable(2)">Sub-Family <span class="sort-icon">&#9650;</span></th>
+            <th onclick="sortTable(3)">Group <span class="sort-icon">&#9650;</span></th>
+            <th onclick="sortTable(4)">Variant Names <span class="sort-icon">&#9650;</span></th>
+            <th onclick="sortTable(5)">Primary Region <span class="sort-icon">&#9650;</span></th>
+            <th onclick="sortTable(6)">Est. Population <span class="sort-icon">&#9650;</span></th>
+            <th>Analytic Notes</th>
+          </tr>
+        </thead>
+        <tbody id="groupTableBody"></tbody>
+      </table>
+      <div id="noResults" class="no-results" style="display:none">NO MATCHING RECORDS // ADJUST FILTERS</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     TAB 3: MAP
+════════════════════════════════════════════════ -->
+<div id="tab-map" class="tab-panel">
+  <div class="panel-header fade-in">
+    <span class="panel-num">03 //</span>
+    <span class="panel-title">Cartographic Base</span>
+    <span class="panel-desc">Source map — U.S. Department of State / National Geographic Society, 1996<br> <a href="https://commons.wikimedia.org/wiki/File:Africa_ethnic_groups_1996.png">United States. Central Intelligence Agency.</a>, Public domain, via Wikimedia Commons</span>
+  </div>
+
+  <div class="map-wrap fade-in">
+    <img src="https://quanta-analytica.com/tools/africa-ethnic-groups-1996.png"
+         alt="Africa Ethnolinguistic Groups Map 1996"
+         onerror="this.src=''; this.parentElement.innerHTML += '<div style=\'padding:4rem;text-align:center;color:var(--text-muted);font-family:var(--font-mono);font-size:0.78rem;letter-spacing:0.1em\'>MAP ASSET LOADING FROM quanta-analytica.com/tools/africa-ethnic-groups-1996.png</div>'" />
+    <div class="map-overlay">
+      <div class="map-overlay-title">Legend — Language Families</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#d4b483"></div>Semitic-Hamitic (Afro-Asiatic)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#5a8a50"></div>Bantu</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#c87050"></div>Guinean / Kwa</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#7b5ea0"></div>Fulani / Mande</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#e08030"></div>Nilotic</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#8a6040"></div>Central/E Sudanese</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#c4a0b8"></div>Malay-Polynesian</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#d0d0c0"></div>Khoisan / Indo-European</div>
+      <div style="margin-top:0.75rem;font-size:0.72rem;color:var(--text-faint);font-style:italic">
+        Source: DOS/NGS GB201.E3 1996<br>Scale 1:15,600,000
+      </div>
+    </div>
+  </div>
+
+  <div class="card fade-in">
+    <div class="card-header">
+      <div class="card-title">Cartographic Source Note</div>
+    </div>
+    <div class="card-body">
+      <p style="color:var(--text-secondary);margin-bottom:0.6rem">
+        This map was produced by the United States Department of State and the National Geographic Society under catalog reference <strong>GB201.E3 1996</strong> at a scale of 1:15,600,000. It represents the most comprehensive publicly available single-page cartographic representation of African ethnolinguistic distributions as of its publication date.
+      </p>
+      <p style="color:var(--text-secondary);margin-bottom:0">
+        <strong>Limitations:</strong> The map reflects ethnolinguistic distributions as understood in 1996. It does not reflect post-1996 state formation (South Sudan 2011, Eritrea's consolidation), internal displacement events (Darfur 2003&#8211;present, DRC Kivu crises, Sahelian displacement), or demographic shifts resulting from urbanization, diaspora formation, or conflict-driven migration. Users should treat this as a baseline cartographic reference, not a current-state assessment.<i> Map Source:
+<a href="https://commons.wikimedia.org/wiki/File:Africa_ethnic_groups_1996.png">United States. Central Intelligence Agency.</a>, Public domain, via Wikimedia Commons.</i>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     TAB 4: COUNTRY INDEX
+════════════════════════════════════════════════ -->
+<div id="tab-country" class="tab-panel">
+  <div class="panel-header fade-in">
+    <span class="panel-num">04 //</span>
+    <span class="panel-title">Country&#8211;Group Index</span>
+    <span class="panel-desc">25-country reference linking states to primary ethnolinguistic groups</span>
+  </div>
+
+  <div class="table-toolbar fade-in" style="background:var(--obsidian-surface);border:1px solid var(--obsidian-border);border-radius:var(--radius-md);margin-bottom:1.5rem;">
+    <input class="table-search" id="countrySearch" type="text" placeholder="Search country or group..." oninput="filterCountries()" />
+    <span class="table-count" id="countryCount"></span>
+  </div>
+
+  <div class="country-grid" id="countryGrid"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     TAB 5: CONFLICT RELEVANCE INDEX
+════════════════════════════════════════════════ -->
+<div id="tab-conflict" class="tab-panel">
+  <div class="panel-header fade-in">
+    <span class="panel-num">05 //</span>
+    <span class="panel-title">Conflict Relevance Index</span>
+    <span class="panel-desc">QAP I&amp;W integration — 13 active ethnolinguistic fault lines</span>
+  </div>
+
+  <div class="card fade-in" style="margin-bottom:1.5rem;border-left:3px solid var(--amber)">
+    <div class="card-body">
+      This index identifies ethnolinguistic groups and zones where identity, marginalization, or cross-border distribution constitutes a material conflict driver or amplifier. Entries are drawn from the QAP-CSRF&#8482; fault line taxonomy and cross-referenced against ACLED, UNOCHA, and open-source threat actor databases. Entries are not exhaustive; they represent the highest-priority analytical reference points derived from the 1996 cartographic dataset.
+    </div>
+  </div>
+
+  <div class="conflict-grid" id="conflictGrid"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     TAB 6: DOWNLOADS
+════════════════════════════════════════════════ -->
+<div id="tab-download" class="tab-panel">
+  <div class="panel-header fade-in">
+    <span class="panel-num">06 //</span>
+    <span class="panel-title">Data &amp; Downloads</span>
+    <span class="panel-desc">Reference files, data exports, and licensing</span>
+  </div>
+
+  <div class="download-banner fade-in">
+    <div class="download-info">
+      <h3>Africa Ethnolinguistic Reference — XLSX Workbook</h3>
+      <p>5-sheet workbook: Master Reference (85+ groups), Language Families Summary, Country&#8211;Group Index, Conflict Relevance Index (QAP I&amp;W), Source &amp; Metadata. Formatted for direct analytic use.</p>
+    </div>
+    <div class="download-actions">
+      <a href="https://quanta-analytica.com/tools/qa_africa_ethnolinguistic_reference.xlsx" class="btn-download">
+        &#8595; Download XLSX
+      </a>
+    </div>
+  </div>
+
+  <div class="download-banner fade-in">
+    <div class="download-info">
+      <h3>Cartographic Base Image</h3>
+      <p>Africa Ethnolinguistic Groups — 1996 (DOS/NGS). Scaled PNG suitable for report embedding and briefing decks.</p>
+    </div>
+    <div class="download-actions">
+      <a href="https://quanta-analytica.com/tools/africa-ethnic-groups-1996.png" class="btn-download">
+        &#8595; Download PNG
+      </a>
+    </div>
+  </div>
+
+  <div class="card fade-in">
+    <div class="card-header"><div class="card-title">Data Structure Reference</div></div>
+    <div class="card-body">
+      <div class="table-overflow">
+        <table class="data-table" style="margin-top:0.5rem">
+          <thead>
+            <tr>
+              <th>Sheet</th><th>Columns</th><th>Row Count</th><th>Primary Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="td-mono">1. Master Reference</td><td>Group ID, Family, Sub-Family, Group, Variants, Primary Region, Secondary Countries, Est. Population, Pop Notes, Map Color, Analytic Notes</td><td>~85</td><td>Primary group-level lookup; filterable by family and region</td></tr>
+            <tr><td class="td-mono">2. Language Families</td><td>Family ID, Family, # Groups, Est. Speakers, Geographic Zone, Colonial Language, Analytic Significance</td><td>13</td><td>Family-tier summary; briefing background</td></tr>
+            <tr><td class="td-mono">3. Country&#8211;Group Index</td><td>Country, Primary Groups, Families, Colonial Language, Analytic Notes</td><td>25</td><td>Country-level lookup; conflict framing</td></tr>
+            <tr><td class="td-mono">4. Conflict Relevance Index</td><td>Group/Zone, Countries, Conflict Type, Ethnolinguistic Factor, Threat Actors, QAP I&amp;W Notes</td><td>13</td><td>QAP-CSRF&#8482; fault line integration; I&amp;W indicator sourcing</td></tr>
+            <tr><td class="td-mono">5. Source &amp; Metadata</td><td>Key, Value</td><td>12</td><td>Provenance, methodology, limitations</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="card fade-in" style="margin-top:1.2rem">
+    <div class="card-header"><div class="card-title">Usage &amp; Attribution</div></div>
+    <div class="card-body">
+      <p>Cartographic source: U.S. Department of State / National Geographic Society, <em>Africa: Ethnolinguistic Groups</em>, GB201.E3 (1996). Data extraction, cross-referencing, and QAP-CSRF&#8482; integration by Quanta Analytica / MNS Consulting.</p>
+      <p>Reference datasets are produced for analytic, educational, and intelligence research purposes. Population figures are indicative. No claim of completeness or current accuracy is made for post-1996 conditions. Users should supplement with current-cycle sources for operational intelligence products.</p>
+      <p style="margin:0">For licensing inquiries: <a href="https://quanta-analytica.com">quanta-analytica.com</a> | <a href="https://mnshakoor.com">mnshakoor.com</a></p>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <div class="footer-brand">Quanta Analytica Process&#8482; | MNS Consulting | ARAC International Inc.</div>
+  <div class="footer-doc-id">QAP-REF-AFRICA-ETH-2026 // TOOL v1.0</div>
+  <div class="footer-legal">Reference data extracted from open cartographic sources. All QAP-CSRF&#8482; analytic annotations are analyst inference labelled as such. No fabricated sources, population figures, or claims.</div>
+</footer>
+
+<script>
+/* ══════════════════════════════════════════════════
+   DATA STORES
+══════════════════════════════════════════════════ */
+const GROUPS = [
+  ["SH-01","Semitic-Hamitic","Arabic","Arab (General)","Arabized populations","North Africa / Sahara","~100M+","Trans-Saharan linguistic dominant; overlaps Berber zones"],
+  ["SH-02","Semitic-Hamitic","Berber","Berber / Amazigh","Amazigh; Imazighen","Morocco, Algeria","~25–30M","Pre-Arab substrate; politically salient in Morocco/Algeria"],
+  ["SH-03","Semitic-Hamitic","Berber","Shluh","Tachelhit","Southern Morocco","~8M","Atlas/Sous region; distinct from northern Berber"],
+  ["SH-04","Semitic-Hamitic","Berber","Rif (Rifian)","Tarifit","Northern Morocco","~1.5M","Rif Mountains corridor"],
+  ["SH-05","Semitic-Hamitic","Berber","Shawia","Chaoui","NE Algeria","~2M","Aurès Mountains enclave"],
+  ["SH-06","Semitic-Hamitic","Berber","Kabyle","Taqbaylit","N Algeria","~5M","Kabylie highland; strong cultural identity movement"],
+  ["SH-07","Semitic-Hamitic","Berber","Chaamba","Shamba","Central Algeria / Sahara","~200K","Saharan pastoralist; overlaps Tuareg range"],
+  ["SH-08","Semitic-Hamitic","Berber","Tuareg","Kel Tamashek; Touareg","Niger, Mali, Algeria","~2–3M","Fragmented across 5 states; recurring insurgency vector (Mali, Niger)"],
+  ["SH-09","Semitic-Hamitic","Cushitic","Somali","Soomaali","Somalia, Ethiopia, Djibouti","~20–25M","Clan-based social structure; major diaspora"],
+  ["SH-10","Semitic-Hamitic","Cushitic","Afar","Danakil","Djibouti, Ethiopia, Eritrea","~2M","Danakil corridor; strategic Horn of Africa territory"],
+  ["SH-11","Semitic-Hamitic","Cushitic","Oromo","Galla","Ethiopia, Kenya","~40M","Largest Ethiopian group; OLF/OLA conflict dimension"],
+  ["SH-12","Semitic-Hamitic","Semitic (Ethiopic)","Amhara","Amharic speakers","Ethiopia (central/north)","~22M","Former political dominant; Tigray conflict dimension"],
+  ["SH-13","Semitic-Hamitic","Semitic (Ethiopic)","Tigre / Tigrinya","Tigre","Eritrea, N Ethiopia","~7–9M","Eritrea-Ethiopia ethno-political fault line"],
+  ["SH-14","Semitic-Hamitic","Cushitic","Nubian","Nuba","Sudan (north), Egypt (south)","~2–3M","Nile corridor; dam displacement history"],
+  ["SH-15","Semitic-Hamitic","Cushitic","Sidamo","Sidama","S Ethiopia","~4M","Recent regional statehood (2020) in Ethiopia"],
+  ["SH-16","Semitic-Hamitic","Arabic","Egyptian Arab","Fellaheen","Egypt","~85M+","Fellahin agricultural base; distinct from Bedouin Arab"],
+  ["SH-17","Semitic-Hamitic","Berber/Arabic","Regibat","Reguibat","Western Sahara, S Morocco","~500K","Key actor in Western Sahara conflict; Polisario affiliation"],
+  ["SH-18","Semitic-Hamitic","Nilotic","Beja","Bishari; Hadendoa","NE Sudan, Eritrea","~2M","Red Sea hills corridor; historically independent"],
+  ["BA-01","Bantu","Central Bantu","Kongo","Bakongo","DRC, Congo-B, Angola","~10M","Former Kongo Kingdom; cross-border political identity"],
+  ["BA-02","Bantu","Central Bantu","Luba","Baluba","DRC (Kasai, Katanga)","~7M","Historically prominent in Katangan politics"],
+  ["BA-03","Bantu","Central Bantu","Mongo","Nkundo","DRC (Equateur)","~6M","Largest single DRC group by some estimates"],
+  ["BA-04","Bantu","Central Bantu","Kuba","Bakuba","DRC (Kasai)","~250K","Renowned artistic/political kingdom heritage"],
+  ["BA-05","Bantu","East Bantu","Swahili","Kiswahili speakers","Tanzania, Kenya coast, DRC","~200M (L2)","Lingua franca of East/Central Africa; strategic language"],
+  ["BA-06","Bantu","East Bantu","Sukuma","Wasukuma","N Tanzania","~8M","Largest Tanzanian group; Lake Victoria basin"],
+  ["BA-07","Bantu","East Bantu","Ganda","Baganda","Uganda (central)","~6M","Buganda Kingdom; politically influential"],
+  ["BA-08","Bantu","East Bantu","Kikuyu","Gikuyu","Kenya (central highlands)","~8M","Politically dominant in Kenya; commercial elite"],
+  ["BA-09","Bantu","East Bantu","Luo","Joluo","Kenya (W), Tanzania","~5M","Second major Kenyan group; Nilotic-adjacent"],
+  ["BA-10","Bantu","Southeast Bantu","Zulu","AmaZulu","South Africa (KZN)","~12M","Largest SA group; Zulu Kingdom heritage"],
+  ["BA-11","Bantu","Southeast Bantu","Xhosa","AmaXhosa","South Africa (E Cape)","~8M","Nelson Mandela ethnicity; Cape political base"],
+  ["BA-12","Bantu","Southeast Bantu","Sotho","Basotho","Lesotho, S Africa","~7M","Spans Lesotho state and South Africa"],
+  ["BA-13","Bantu","Southeast Bantu","Tswana","Batswana","Botswana, S Africa","~5M","Dominant Botswana group; Kalahari zone"],
+  ["BA-14","Bantu","Southeast Bantu","Shona","Karanga; Zezuru","Zimbabwe, Mozambique","~10M","Dominant Zimbabwe group"],
+  ["BA-15","Bantu","Southeast Bantu","Ndebele","Matabele","Zimbabwe (S/W)","~2M","Zulu offshoot; Matabeleland tension with Shona"],
+  ["BA-16","Bantu","Central Bantu","Chokwe","Tchokwe","Angola, DRC, Zambia","~2M","Extensive migration history; artistic heritage"],
+  ["BA-17","Bantu","Central Bantu","Lunda","Balunda","Zambia, DRC, Angola","~1.5M","Historical Lunda Empire; copper belt adjacent"],
+  ["BA-18","Bantu","Central Bantu","Bemba","Wemba","Zambia (N), DRC","~4M","Copperbelt lingua franca; Zambia political base"],
+  ["BA-19","Bantu","Central Bantu","Nyanja","Chewa","Malawi, Zambia, Mozambique","~10M","Malawi national language base"],
+  ["BA-20","Bantu","Southeast Bantu","Makua","Macua","Mozambique (N), Tanzania","~6M","Largest Mozambican group; Islamic influence coastal"],
+  ["BA-21","Bantu","West Bantu","Ovambo","Ambo","Namibia, Angola","~2M","Largest Namibian group; SWAPO political base"],
+  ["BA-22","Bantu","West Bantu","Herero","Ovaherero","Namibia, Botswana","~250K","Genocide 1904–08 survivors; reparations dispute"],
+  ["BA-23","Bantu","Central Bantu","Kimbundu","Mbundu","Angola (central/coast)","~3M","MPLA political base; Luanda hinterland"],
+  ["BA-24","Bantu","Central Bantu","Umbundu","Ovimbundu","Angola (central highlands)","~6M","Largest Angolan group; UNITA historical base"],
+  ["BA-25","Bantu","East Bantu","Makonde","Wakonde","Tanzania (SE), Mozambique","~2M","FRELIMO guerrilla origin zone"],
+  ["BA-26","Bantu","Central Bantu","Beti / Fang","Fang; Bulu; Ewondo","Cameroon, Gabon, Eq Guinea","~5M","Equatorial forest zone; Biya regime ethnic base"],
+  ["BA-27","Bantu","Central Bantu","Teke","Bateke","Congo-B, DRC, Gabon","~1M","Congo River basin; Brazzaville region"],
+  ["BA-28","Bantu","East Bantu","Rwanda","Banyarwanda","Rwanda, DRC (Kivu), Uganda","~12M","Hutu/Tutsi distinction within; 1994 genocide context"],
+  ["BA-29","Bantu","East Bantu","Rundi","Barundi","Burundi, Tanzania, DRC","~10M","Linked to Rwanda ethnolinguistic complex"],
+  ["GU-01","Guinean","Niger-Congo (Atlantic)","Fulani","Fula; Peul; Fulbe","Guinea, Senegal, Mali, Nigeria, Cameroon","~40M","Most geographically dispersed African group; jihadist recruitment vector in Sahel"],
+  ["GU-02","Guinean","Niger-Congo (Atlantic)","Wolof","Jolof","Senegal, Gambia, Mauritania","~5M","Dakar-centered; urban commercial elite"],
+  ["GU-03","Guinean","Niger-Congo (Atlantic)","Serer","Seerer","Senegal, Gambia","~2M","Significant in Senegalese cultural identity"],
+  ["GU-04","Guinean","Niger-Congo (Atlantic)","Diola","Jola","Casamance (Senegal), Gambia","~700K","Casamance separatism; MFDC armed group zone"],
+  ["GU-05","Guinean","Niger-Congo (Mande)","Mandinka","Mandingo; Malinke","Gambia, Senegal, Guinea","~1.5M","Former Mali Empire connection; Islamic heritage"],
+  ["GU-06","Guinean","Niger-Congo (Atlantic)","Temne","Timne","Sierra Leone","~2.5M","Largest Sierra Leonean group; APC political base"],
+  ["GU-07","Guinean","Niger-Congo (Kwa)","Akan","Twi; Fante; Asante; Baule","Ghana, Côte d'Ivoire","~20M","Asante Kingdom heritage; gold economy"],
+  ["GU-08","Guinean","Niger-Congo (Kwa)","Ashanti","Asante","Ghana (Ashanti region)","~9M","NPP political base; cocoa belt"],
+  ["GU-09","Guinean","Niger-Congo (Kwa)","Fanti","Fante","Ghana (coast)","~2M","Coastal trading elite; distinct from inland Asante"],
+  ["GU-10","Guinean","Niger-Congo (Kwa)","Baule","Baoule","Côte d'Ivoire (centre)","~3M","Former Houphouët-Boigny ethnic base"],
+  ["GU-11","Guinean","Niger-Congo (Kwa)","Ewe","Evegbe","Ghana (SE), Togo, Benin","~4M","Togo-Ghana cross-border identity tension"],
+  ["GU-12","Guinean","Niger-Congo (Kwa)","Yoruba","Ede; Oyo; Ijebu; Egba","Nigeria (SW), Benin, Togo","~45M","Lagos commercial dominant; geopolitical weight in Nigeria"],
+  ["GU-13","Guinean","Niger-Congo (Kwa)","Igbo","Ibo","Nigeria (SE)","~35M","Biafra memory; entrepreneurial diaspora; oil delta politics"],
+  ["GU-14","Guinean","Niger-Congo (Kwa)","Ga-Adangme","Ga; Adangme","Ghana (Greater Accra)","~1.5M","Accra-origin group; urban political relevance"],
+  ["GU-15","Guinean","Niger-Congo (Kwa)","Fon","Dahomean","Benin, Togo, Nigeria","~2M","Dahomey Kingdom heritage; voodoo religious center"],
+  ["GU-16","Guinean","Niger-Congo (Kwa)","Bini","Edo; Bini","Nigeria (Edo State)","~3M","Benin Kingdom; bronze art heritage"],
+  ["HA-01","Hausa-Chadic","Chadic (Afro-Asiatic)","Hausa","Hausawa","Nigeria (N), Niger, Ghana, Sudan","~80M","Largest in W Africa; Sahel trade language; Islamic governance structures"],
+  ["WB-01","Western Bantoid","Niger-Congo (Benue-Congo)","Tiv","Tiv","Nigeria (Benue State)","~4M","Middle Belt; agrarian conflict with Fulani herders"],
+  ["WB-02","Western Bantoid","Niger-Congo (Benue-Congo)","Ibibio","Efik; Ibibio","Nigeria (Akwa Ibom, CRS)","~5M","Oil delta coastal; Ekpo secret society traditions"],
+  ["WB-03","Western Bantoid","Niger-Congo","Bamileke","Bamileke","Cameroon (W)","~3M","Commercial elite; UPC historical insurgency"],
+  ["WB-04","Western Bantoid","Niger-Congo","Tikar","Tikari","Cameroon","~300K","Cameroon Grassfields; cultural bridge group"],
+  ["NI-01","Nilotic","Eastern Nilotic","Maasai","Maa","Kenya, Tanzania","~1.5M","Pastoralist; cultural identity preservation"],
+  ["NI-02","Nilotic","Western Nilotic","Nuer","Naath","South Sudan, Ethiopia","~2M","SPLA/M factionalism; South Sudan civil war actor"],
+  ["NI-03","Nilotic","Western Nilotic","Dinka","Jieng","South Sudan","~4M","Largest S Sudan group; SPLM dominant"],
+  ["NI-04","Nilotic","Western Nilotic","Acholi","Acoli","N Uganda, S Sudan","~1M","LRA war zone; post-conflict reconstruction region"],
+  ["NI-05","Nilotic","Western Nilotic","Lango","Langi","N Uganda","~2M","Adjacent to Acholi; Obote political base"],
+  ["NI-06","Nilotic","Eastern Nilotic","Turkana","Ng'iturkana","NW Kenya, Uganda, Ethiopia","~1M","Tri-border fragility zone; pastoralist conflict"],
+  ["NI-07","Nilotic","Eastern Nilotic","Karamojong","Karimojong","NE Uganda, Kenya","~500K","Cattle raiding zone; disarmament history"],
+  ["CB-01","Central Bantoid","Niger-Congo","Gbaya","Baya","CAR, Cameroon, Congo-B","~1M","CAR conflict zone; anti-Balaka militia region"],
+  ["CB-02","Central Bantoid","Niger-Congo","Banda","Gbanda","CAR, DRC, Sudan","~1M","CAR interior; displaced by armed group violence"],
+  ["CB-03","Central Bantoid","Niger-Congo","Zande","Azande","CAR, DRC, S Sudan","~1.5M","Cross-border; Azande Kingdom heritage"],
+  ["MA-01","Mande","Niger-Congo (Mande)","Soninke","Sarakole; Marka","Mali (W), Senegal, Mauritania","~2M","Ancient Ghana Empire origin; historic trade network"],
+  ["MA-02","Mande","Niger-Congo (Mande)","Bambara","Bamana","Mali","~5M","Mali lingua franca; Bamako political base"],
+  ["MA-03","Mande","Niger-Congo (Mande)","Dyula","Jula; Dioula","Côte d'Ivoire, Burkina Faso, Mali","~1M","Commercial Muslim network; Sahel-forest transition"],
+  ["MA-04","Mande","Niger-Congo (Mande)","Mandinka","Mandingo","Gambia, Senegal, Guinea-Bissau","~1.5M","Gambian majority; Islamic Mande tradition"],
+  ["MA-05","Mande","Niger-Congo (Mande)","Mende","Mende","Sierra Leone","~1.5M","SLPP political base; Southern SL"],
+  ["MA-06","Mande","Niger-Congo (Mande)","Kpelle","Guerze","Liberia, Guinea","~500K","Liberia's largest group; Nimba County zone"],
+  ["CS-01","Central/E Sudanese","Nilo-Saharan","Kanuri","Bornu; Beriberi","Nigeria (NE), Niger, Chad, Cameroon","~5M","Borno Empire heritage; Boko Haram epicenter overlap"],
+  ["CS-02","Central/E Sudanese","Nilo-Saharan","Teda","Toubou; Tibbu","Chad (N), Libya, Niger","~350K","Tibesti; tri-state mobile population; arms corridor"],
+  ["CS-03","Central/E Sudanese","Nilo-Saharan","Daza","Goran","Chad (central-N), Niger","~300K","Sahel-Sahara transition; conflict-affected"],
+  ["CS-04","Central/E Sudanese","Nilo-Saharan","Fur","For","Darfur (Sudan), Chad","~1.5M","Darfur genocide epicenter; IDP mass displacement"],
+  ["CS-05","Central/E Sudanese","Nilo-Saharan","Zaghawa","Beri","Sudan/Chad border, Libya","~350K","Key anti-Khartoum rebel force; RSF ethnolinguistic link"],
+  ["CS-06","Central/E Sudanese","Nilo-Saharan","Bagirmi","Barma","Chad (S), CAR","~500K","Historical Bagirmi Sultanate"],
+  ["CS-07","Central/E Sudanese","Nilo-Saharan","Sara","Ngambay","S Chad, CAR","~3M","S Chad dominant; Chadian army recruitment base"],
+  ["SO-01","Songhai","Nilo-Saharan","Songhai","Songhay; Sonrai","Mali (E), Niger, Benin, Burkina Faso","~3M","Songhai Empire heritage; Niger River bend; Timbuktu region"],
+  ["KH-01","Khoisan","Khoisan (isolate)","San","Bushmen; Basarwa","Botswana, Namibia, S Africa, Zimbabwe","~100K","Oldest human genetic lineage; land rights vulnerability"],
+  ["KH-02","Khoisan","Khoisan (isolate)","Khoikhoi","Khoi; Nama","South Africa, Namibia","~300K","Colonial genocide history (Herero-Nama war)"],
+  ["MP-01","Malay-Polynesian","Austronesian","Malagasy","Merina; Betsileo; Sakalava","Madagascar","~26M","Non-African origin; SE Asian and Bantu hybrid; strategic Indian Ocean position"],
+  ["IE-01","Indo-European","Germanic","Afrikaner","Boer","South Africa, Namibia","~3M","Apartheid-era political dominant; land reform politics"],
+  ["IE-02","Indo-European","Germanic","Afrikaans (Coloured)","Cape Coloured","South Africa (W Cape)","~4M","Post-apartheid political alignment; W Cape DA base"],
+];
+
+const COUNTRIES = [
+  {name:"Nigeria", groups:"Hausa-Fulani, Yoruba, Igbo, Tiv, Kanuri, Ijaw, Ibibio, Nupe", families:"Chadic, Kwa, Niger-Congo, Nilo-Saharan", lang:"English", risk:"critical", note:"Most ethnolinguistically complex state in Africa; 250+ groups; Middle Belt fault line; Boko Haram (NE); Niger Delta (SE)"},
+  {name:"DRC", groups:"Kongo, Luba, Mongo, Lunda, Chokwe, Rwanda, Swahili speakers", families:"Bantu (dominant)", lang:"French", risk:"critical", note:"~450–600 groups estimated; Kivu cross-border identity crisis; Katanga secessionism history; M23 dimensions"},
+  {name:"Ethiopia", groups:"Oromo, Amhara, Tigrinya, Somali, Sidamo, Afar, Gurage", families:"Cushitic, Semitic", lang:"Amharic", risk:"high", note:"Federal ethnic state structure; Tigray war; Oromo Liberation Army; contested multinational federalism"},
+  {name:"Sudan", groups:"Arab (N), Fur, Zaghawa, Nuba, Beja, Dinka, Nuer", families:"Semitic-Hamitic, Nilo-Saharan, Nilotic", lang:"Arabic", risk:"critical", note:"North-South divide (2011 partition); Darfur genocide; ongoing RSF-SAF conflict; Arab-African ethnic framing weaponized"},
+  {name:"South Sudan", groups:"Dinka, Nuer, Acholi, Zande, Bari", families:"Nilotic, Central Bantoid", lang:"English", risk:"critical", note:"Youngest state; Dinka-Nuer civil war (2013–2018); persistent fragility; humanitarian catastrophe zone"},
+  {name:"Mali", groups:"Bambara, Fulani, Tuareg, Soninke, Songhai, Dogon", families:"Mande, Nilo-Saharan, Berber", lang:"French", risk:"critical", note:"Tuareg insurgency (MNLA); jihadist network overlay (JNIM, GSIM); Wagner/AES governance transition"},
+  {name:"Niger", groups:"Hausa, Tuareg, Fulani, Kanuri, Toubou, Zarma-Songhai", families:"Chadic, Berber, Nilo-Saharan", lang:"French", risk:"critical", note:"2023 coup; Agadez-Diffa conflict corridor; uranium zone; AES membership"},
+  {name:"Chad", groups:"Sara, Kanuri, Arab, Zaghawa, Teda, Bagirmi", families:"Nilo-Saharan, Semitic-Hamitic", lang:"French", risk:"high", note:"North-South divide; Déby dynasty ethnic base (Zaghawa); Darfur spillover; Lake Chad Boko Haram basin"},
+  {name:"CAR", groups:"Banda, Gbaya, Zande, Ngala, Sara", families:"Central Bantoid, Bantu", lang:"French", risk:"critical", note:"Séléka-Muslim north / anti-Balaka south overlay; Wagner presence; chronic fragility; MINUSCA zone"},
+  {name:"Somalia", groups:"Somali (Hawiye, Darod, Isaaq, Dir)", families:"Cushitic", lang:"Somali/Arabic", risk:"high", note:"Clan as primary political unit; al-Shabaab insurgency; Puntland/Somaliland sub-state systems"},
+  {name:"Kenya", groups:"Kikuyu, Luo, Luhya, Kamba, Kalenjin, Maasai, Turkana", families:"Bantu, Nilotic", lang:"English", risk:"elevated", note:"Ethnically competitive electoral politics; 2007-08 post-election violence; pastoralist-conflict north"},
+  {name:"Tanzania", groups:"Sukuma, Swahili, Makonde, Chaga, Nyamwezi", families:"Bantu", lang:"Swahili/English", risk:"low", note:"Deliberate Swahili-based national identity policy; lowest ethnic conflict in EA; Zanzibar autonomy tension"},
+  {name:"South Africa", groups:"Zulu, Xhosa, Sotho, Tswana, Venda, Ndebele, Afrikaner, Coloured", families:"Bantu, Indo-European", lang:"English/Afrikaans", risk:"elevated", note:"Post-apartheid nation-building; land reform politics; service delivery protests along ethnolinguistic lines"},
+  {name:"Angola", groups:"Umbundu (Ovimbundu), Kimbundu, Kikongo, Chokwe", families:"Bantu", lang:"Portuguese", risk:"moderate", note:"Post-UNITA/MPLA ethnic geography; MPLA-Kimbundu elite; Ovimbundu Planalto; oil-dependent state"},
+  {name:"Mozambique", groups:"Makua, Tsonga, Shona, Chopi, Makonde", families:"Bantu", lang:"Portuguese", risk:"elevated", note:"RENAMO insurgency (Ndau-Shona base); Cabo Delgado Islamist insurgency (Mwani coast)"},
+  {name:"Ghana", groups:"Akan (Ashanti, Fanti), Ewe, Ga-Adangme, Dagomba", families:"Kwa, Niger-Congo", lang:"English", risk:"low", note:"Most stable electoral democracy in W Africa; Ashanti-NPP / Volta-NDC cleavage"},
+  {name:"Côte d'Ivoire", groups:"Baule, Akan, Bete, Dioula, Senufo, Dan", families:"Kwa, Mande", lang:"French", risk:"moderate", note:"Ivoirité identity politics; Gbagbo-Ouattara north-south divide; post-2011 reconciliation fragility"},
+  {name:"Cameroon", groups:"Bamileke, Fang/Beti, Fulani, Tikar, Kanuri (N)", families:"W Bantoid, Bantu, Chadic", lang:"French/English", risk:"high", note:"Anglophone crisis (NW/SW regions); Ambazonia secessionist movement; Wagner-adjacent Sahel border"},
+  {name:"Rwanda", groups:"Hutu, Tutsi, Twa (within Banyarwanda)", families:"Bantu", lang:"Kinyarwanda/French/English", risk:"moderate", note:"1994 genocide; post-genocide RPF reconstruction; DRC Kivu destabilization dynamics"},
+  {name:"Uganda", groups:"Baganda, Acholi, Lango, Teso, Banyankole, Bunyoro", families:"Bantu, Nilotic", lang:"English", risk:"moderate", note:"Buganda Kingdom political weight; LRA legacy (N Uganda); Museveni Banyankole base"},
+  {name:"Zimbabwe", groups:"Shona, Ndebele, Afrikaner (residual)", families:"Bantu, Indo-European", lang:"English", risk:"moderate", note:"Shona-Ndebele Gukurahundi legacy; ZANU-PF Shona dominance; land reform dimension"},
+  {name:"Madagascar", groups:"Malagasy (Merina, Betsileo, Sakalava, Antandroy)", families:"Malay-Polynesian", lang:"French/Malagasy", risk:"moderate", note:"Austronesian majority; Merina highland / Cotier coastal cleavage; recurring political instability"},
+  {name:"Morocco", groups:"Arab, Berber (Shluh, Rif, Tamazight)", families:"Semitic-Hamitic", lang:"Arabic/French", risk:"low", note:"Amazigh constitutional recognition (2011); Western Sahara annexation; Polisario-Sahrawi conflict"},
+  {name:"Libya", groups:"Arab, Berber, Tuareg, Teda", families:"Semitic-Hamitic", lang:"Arabic", risk:"critical", note:"Post-2011 armed fragmentation along tribal/sub-regional lines; Tuareg/Teda south border corridor"},
+  {name:"Burkina Faso", groups:"Mossi, Fulani, Bobo, Lobi, Gourounsi", families:"Niger-Congo", lang:"French", risk:"critical", note:"Mossi majority; jihadist penetration (JNIM/GSIM); 2 coups (2022); AES alliance"},
+];
+
+const CONFLICTS = [
+  {group:"Tuareg (Tamashek)", countries:"Mali, Niger, Algeria, Libya, Burkina Faso", type:"Ethnonationalist insurgency; jihadist co-option", factor:"Marginalized trans-Saharan minority; post-Gaddafi arms proliferation", actors:"MNLA, CMA, JNIM (co-option)", iw:"Tuareg-jihadist boundary erosion is a critical stability indicator for the AES zone. Track CMA-JNIM negotiation status.", risk:"critical"},
+  {group:"Fur / Zaghawa (Darfur)", countries:"Sudan, Chad", type:"Ethnic cleansing; state-sponsored violence; displacement", factor:"Arab-African framing by Khartoum; RSF ethnic recruitment base", actors:"RSF (Janjaweed successor), SAF, SLM/A", iw:"RSF expansion correlates with Zaghawa kin-network mobilization across Sudan-Chad border. Monitor Zaghawa cross-border arms flows.", risk:"critical"},
+  {group:"Dinka / Nuer (South Sudan)", countries:"South Sudan", type:"Intrastate ethnic civil war; recurring ceasefire failures", factor:"Central state capture contest; cattle-community conflict dimension", actors:"SPLM-IO, SSPDF, various sub-national militia", iw:"Nuer-Dinka arms buildup in Unity/Jonglei is a primary early warning metric for fragility relapse. Track UNMISS protection site population levels.", risk:"critical"},
+  {group:"Fulani (Sahel-wide)", countries:"Nigeria, Mali, Burkina Faso, Niger, Cameroon, Chad", type:"Pastoralist-farmer conflict; jihadist recruitment vector", factor:"Marginalization narrative leveraged by VEO recruiters across 6 states", actors:"JNIM, GSIM, Ansarul Islam, Boko Haram splinters", iw:"Fulani integration failure in state security structures functions as a VEO vulnerability amplifier. Monitor cross-border Fulani militia formation.", risk:"critical"},
+  {group:"Kanuri / Borno (NE Nigeria-Chad Basin)", countries:"Nigeria, Niger, Cameroon, Chad", type:"Salafi-jihadist insurgency; mass displacement", factor:"Borno as historical Islamic polity; Kanuri identity mobilized by Boko Haram", actors:"Boko Haram (JAS), ISWAP", iw:"Lake Chad basin ethnolinguistic fragmentation enables multi-state VEO maneuver space. Track MNJTF operational coordination gaps.", risk:"critical"},
+  {group:"Tubu / Teda (Libya-Niger-Chad)", countries:"Libya, Niger, Chad", type:"Arms trafficking; smuggling corridor; proxy conflict", factor:"Mobile Saharan minority; stateless corridor actors with cross-border kin networks", actors:"Various Libya-based armed factions; smuggling networks", iw:"Teda control of Tibesti passes is a strategic smuggling chokepoint indicator. Monitor Chadian-Libyan border force deployment.", risk:"high"},
+  {group:"Anglophone Cameroon (NW/SW)", countries:"Cameroon", type:"Secessionist insurgency; humanitarian crisis", factor:"Anglophone-francophone colonial legacy; linguistic discrimination grievance", actors:"Ambazonia Defence Forces (ADF); multiple competing factions", iw:"NOSO displacement metrics and faction fragmentation rates indicate negotiation feasibility thresholds. Track INGO access to NW/SW regions.", risk:"high"},
+  {group:"Oromo (Ethiopia)", countries:"Ethiopia", type:"Ethnic autonomy conflict; federalism tension", factor:"Largest Ethiopian group; historical marginalization under pre-1991 Derg/imperial systems", actors:"OLF, OLA (Oromo Liberation Army)", iw:"Oromia-Addis Ababa boundary dispute is a recurring ethnic mobilization trigger. Monitor OLA expansion into Amhara Region.", risk:"high"},
+  {group:"Tigrinya / TPLF (Tigray)", countries:"Ethiopia, Eritrea", type:"Intrastate ethnic war; cross-border dimension", factor:"Tigray regional identity vs. federal center; Amhara border claims", actors:"TPLF, Amhara Fano, ENDF", iw:"Amhara-Tigray boundary demarcation and Eritrean posture are key stability monitors. Track humanitarian access restrictions.", risk:"elevated"},
+  {group:"Somali Clan Structure", countries:"Somalia, Kenya, Ethiopia, Djibouti", type:"Persistent insurgency; clan factionalism", factor:"Clan supersedes state as primary political unit; al-Shabaab recruits across clan lines", actors:"Al-Shabaab (HSM), clan militias, rival security forces", iw:"Hawiye internal splits and Darod-Marehan dynamics are HSM resilience indicators. Monitor FGS clan inclusion in government formation.", risk:"high"},
+  {group:"Sahrawi (Western Sahara)", countries:"Morocco, Mauritania, Algeria", type:"Frozen territorial conflict; low-intensity guerrilla posture", factor:"Sahrawi (Regibat Arab-Berber) identity vs. Moroccan annexation narrative", actors:"Polisario Front (SADR)", iw:"Moroccan normalization deals (Abraham Accords) correlate with Polisario re-mobilization pressure. Monitor MINURSO access constraints.", risk:"elevated"},
+  {group:"Kikuyu / Luo (Kenya)", countries:"Kenya", type:"Electoral ethno-political competition; cyclical violence", factor:"Kikuyu commercial-political elite vs. Luo-Raila opposition bloc", actors:"Affiliated political youth militia (cyclical formation)", iw:"Electoral cycle ethnolinguistic mobilization peaks at 6–9 months pre-election. Monitor politicized hate speech metrics and security force posture.", risk:"elevated"},
+  {group:"Afrikaner / Land Reform (SA)", countries:"South Africa", type:"Social conflict; economic grievance; low-level political tension", factor:"White-minority land ownership vs. post-apartheid redistribution demands", actors:"EFF, AWB remnants, farm security formations", iw:"Farm attack frequency and EFF land seizure rhetoric are political temperature gauges. Monitor ANC-EFF coalition dynamics.", risk:"elevated"},
+];
+
+/* ══════════════════════════════════════════════════
+   SPEAKER BAR CHART (custom)
+══════════════════════════════════════════════════ */
+const SPEAKER_DATA = [
+  {fam:"Bantu", val:350, max:400},
+  {fam:"Semitic-Hamitic", val:300, max:400},
+  {fam:"Guinean / Kwa", val:200, max:400},
+  {fam:"Hausa-Chadic", val:100, max:400},
+  {fam:"Malay-Polynesian", val:26, max:400},
+  {fam:"Mande", val:30, max:400},
+  {fam:"Nilotic", val:20, max:400},
+  {fam:"Central/E Sudanese", val:15, max:400},
+  {fam:"Songhai", val:3, max:400},
+  {fam:"Western Bantoid", val:12, max:400},
+  {fam:"Khoisan", val:0.4, max:400},
+  {fam:"Indo-European", val:7, max:400},
+  {fam:"Central Bantoid", val:3.5, max:400},
+].sort((a,b) => b.val-a.val);
+
+function buildSpeakerBars() {
+  const container = document.getElementById('speakerBars');
+  SPEAKER_DATA.forEach(d => {
+    const pct = (d.val / SPEAKER_DATA[0].val * 100).toFixed(1);
+    container.innerHTML += `
+      <div class="stat-bar-row">
+        <div class="stat-bar-label">${d.fam}</div>
+        <div class="stat-bar-track"><div class="stat-bar-fill" style="width:${pct}%"></div></div>
+        <div class="stat-bar-val">~${d.val >= 1 ? d.val+'M' : (d.val*1000)+'K'}</div>
+      </div>`;
+  });
+}
+
+/* ══════════════════════════════════════════════════
+   CHART.JS CHARTS
+══════════════════════════════════════════════════ */
+const QA_COLORS = [
+  'rgba(200,169,110,0.85)','rgba(41,128,185,0.8)','rgba(39,174,96,0.8)',
+  'rgba(231,76,60,0.8)','rgba(243,156,18,0.8)','rgba(127,154,184,0.8)',
+  'rgba(155,89,182,0.8)','rgba(26,188,156,0.8)','rgba(230,126,34,0.8)',
+  'rgba(149,165,166,0.8)','rgba(241,196,15,0.8)','rgba(192,57,43,0.8)',
+  'rgba(52,152,219,0.8)',
+];
+
+function chartDefaults() {
+  Chart.defaults.color = '#7a7264';
+  Chart.defaults.font.family = "'IBM Plex Mono', monospace";
+  Chart.defaults.font.size = 10;
+}
+
+function buildDonut() {
+  const ctx = document.getElementById('familyDonut').getContext('2d');
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Bantu','Semitic-Hamitic','Guinean','Mande','Nilotic','Hausa-Chadic','C/E Sudanese','W Bantoid','C Bantoid','Khoisan','Songhai','Malay-Poly','Indo-Eur'],
+      datasets:[{data:[29,18,16,6,7,1,7,4,3,2,1,1,2], backgroundColor: QA_COLORS, borderColor:'#0a0c10', borderWidth:2}]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{position:'right', labels:{color:'#b8b0a0',font:{size:9},padding:8,boxWidth:12}}}
+    }
+  });
+}
+
+function buildRegionBar() {
+  const ctx = document.getElementById('regionBar').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels:['West Africa','East Africa','Central Africa','North Africa','Southern Africa','Horn of Africa','Sahel / Sahara','Indian Ocean'],
+      datasets:[{
+        label:'Groups',
+        data:[22,18,14,10,12,8,9,1],
+        backgroundColor:'rgba(200,169,110,0.75)',
+        borderColor:'rgba(200,169,110,1)',
+        borderWidth:1,
+        borderRadius:3,
+      }]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false, indexAxis:'y',
+      plugins:{legend:{display:false}},
+      scales:{
+        x:{grid:{color:'rgba(28,32,48,0.8)'}, ticks:{color:'#7a7264'}},
+        y:{grid:{display:false}, ticks:{color:'#b8b0a0', font:{size:9}}}
+      }
+    }
+  });
+}
+
+function buildColonialPie() {
+  const ctx = document.getElementById('colonialPie').getContext('2d');
+  new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels:['French','English','Portuguese','Arabic/Amharic','Mixed','Afrikaans/English'],
+      datasets:[{data:[12,8,2,2,5,1], backgroundColor:QA_COLORS, borderColor:'#0a0c10', borderWidth:2}]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{position:'right', labels:{color:'#b8b0a0',font:{size:9},padding:7,boxWidth:11}}}
+    }
+  });
+}
+
+function buildConflictRisk() {
+  const ctx = document.getElementById('conflictRisk').getContext('2d');
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels:['Critical','High','Elevated'],
+      datasets:[{
+        data:[5,4,4],
+        backgroundColor:['rgba(192,57,43,0.8)','rgba(243,156,18,0.8)','rgba(41,128,185,0.75)'],
+        borderColor:'#0a0c10', borderWidth:2
+      }]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{position:'right', labels:{color:'#b8b0a0',font:{size:9},padding:8,boxWidth:12}}}
+    }
+  });
+}
+
+function buildTransBorderBar() {
+  const ctx = document.getElementById('transBorderBar').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels:['Swahili (L2)','Arab (N Africa)','Fulani','Hausa','Oromo','Yoruba','Igbo','Malagasy','Somali','Tuareg','Kikuyu','Kanuri','Berber (Amazigh)','Dinka','Zulu'],
+      datasets:[{
+        label:'Countries with notable presence',
+        data:[8,7,6,5,3,3,2,1,4,5,2,4,5,2,2],
+        backgroundColor: 'rgba(200,169,110,0.7)',
+        borderColor:'rgba(200,169,110,1)',
+        borderWidth:1, borderRadius:3,
+      }]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{
+        x:{grid:{color:'rgba(28,32,48,0.8)'}, ticks:{color:'#b8b0a0',maxRotation:30}},
+        y:{grid:{color:'rgba(28,32,48,0.8)'}, ticks:{color:'#7a7264',stepSize:1}}
+      }
+    }
+  });
+}
+
+/* ══════════════════════════════════════════════════
+   TABLE RENDERING
+══════════════════════════════════════════════════ */
+let sortCol = 0, sortAsc = true;
+
+function renderTable(rows) {
+  const tbody = document.getElementById('groupTableBody');
+  const noRes = document.getElementById('noResults');
+  const count = document.getElementById('tableCount');
+  tbody.innerHTML = '';
+  count.textContent = `${rows.length} OF ${GROUPS.length} RECORDS`;
+  if (rows.length === 0) { noRes.style.display='block'; return; }
+  noRes.style.display='none';
+  rows.forEach(r => {
+    tbody.innerHTML += `<tr>
+      <td class="td-mono">${r[0]}</td>
+      <td>${r[1]}</td>
+      <td class="td-mono" style="font-size:0.68rem;color:var(--slate-light)">${r[2]}</td>
+      <td class="td-strong">${r[3]}</td>
+      <td style="color:var(--text-muted);font-size:0.8rem">${r[4]}</td>
+      <td>${r[5]}</td>
+      <td class="td-mono" style="color:var(--green-light)">${r[6]}</td>
+      <td style="font-size:0.82rem">${r[7]}</td>
+    </tr>`;
+  });
+}
+
+function filterTable() {
+  const q = document.getElementById('groupSearch').value.toLowerCase();
+  const fam = document.getElementById('familyFilter').value.toLowerCase();
+  const filtered = GROUPS.filter(r => {
+    const matchQ = q === '' || r.join(' ').toLowerCase().includes(q);
+    const matchF = fam === '' || r[1].toLowerCase().includes(fam);
+    return matchQ && matchF;
+  });
+  renderTable(filtered);
+}
+
+function sortTable(col) {
+  if (sortCol === col) sortAsc = !sortAsc;
+  else { sortCol = col; sortAsc = true; }
+  document.querySelectorAll('.data-table th').forEach((th,i) => {
+    th.classList.toggle('sorted', i === col);
+    th.querySelector('.sort-icon').textContent = i === col ? (sortAsc ? '▲' : '▼') : '▲';
+  });
+  GROUPS.sort((a,b) => {
+    const av = a[col]||'', bv = b[col]||'';
+    return sortAsc ? av.localeCompare(bv) : bv.localeCompare(av);
+  });
+  filterTable();
+}
+
+/* ══════════════════════════════════════════════════
+   COUNTRY GRID
+══════════════════════════════════════════════════ */
+const RISK_TAG = {
+  critical: '<span class="tag tag-red">Critical</span>',
+  high:     '<span class="tag tag-amber">High</span>',
+  elevated: '<span class="tag tag-blue">Elevated</span>',
+  moderate: '<span class="tag tag-slate">Moderate</span>',
+  low:      '<span class="tag tag-green">Low</span>',
+};
+
+function renderCountries(list) {
+  const grid = document.getElementById('countryGrid');
+  const count = document.getElementById('countryCount');
+  count.textContent = `${list.length} OF ${COUNTRIES.length} COUNTRIES`;
+  grid.innerHTML = '';
+  list.forEach(c => {
+    grid.innerHTML += `
+      <div class="country-card">
+        <div class="country-name">${c.name}</div>
+        <div class="country-groups-list">${c.groups}</div>
+        <div class="country-tags">
+          ${RISK_TAG[c.risk]}
+          <span class="tag tag-gold">${c.lang}</span>
+          <span class="tag tag-slate">${c.families.split(',')[0].trim()}</span>
+        </div>
+        <div class="country-note">${c.note}</div>
+      </div>`;
+  });
+}
+
+function filterCountries() {
+  const q = document.getElementById('countrySearch').value.toLowerCase();
+  const filtered = q ? COUNTRIES.filter(c => (c.name+c.groups+c.note).toLowerCase().includes(q)) : COUNTRIES;
+  renderCountries(filtered);
+}
+
+/* ══════════════════════════════════════════════════
+   CONFLICT GRID
+══════════════════════════════════════════════════ */
+function renderConflicts() {
+  const grid = document.getElementById('conflictGrid');
+  CONFLICTS.forEach(c => {
+    const riskClass = c.risk === 'critical' ? 'risk-critical' : c.risk === 'high' ? 'risk-high' : 'risk-elevated';
+    const badge = c.risk === 'critical' ? 'critical' : c.risk === 'high' ? 'high' : 'elevated';
+    grid.innerHTML += `
+      <div class="conflict-card">
+        <div class="conflict-card-head ${riskClass}">
+          <span class="conflict-group-name">${c.group}</span>
+          <span class="risk-badge ${badge}">${c.risk.toUpperCase()}</span>
+        </div>
+        <div class="conflict-body">
+          <div class="conflict-row">
+            <div class="conflict-label">Countries</div>
+            <div class="conflict-value">${c.countries}</div>
+          </div>
+          <div class="conflict-row">
+            <div class="conflict-label">Conflict Type</div>
+            <div class="conflict-value">${c.type}</div>
+          </div>
+          <div class="conflict-row">
+            <div class="conflict-label">Ethno. Factor</div>
+            <div class="conflict-value">${c.factor}</div>
+          </div>
+          <div class="conflict-row">
+            <div class="conflict-label">Threat Actors</div>
+            <div class="conflict-value">${c.actors}</div>
+          </div>
+          <div class="iw-note"><strong>I&amp;W:</strong> ${c.iw}</div>
+        </div>
+      </div>`;
+  });
+}
+
+/* ══════════════════════════════════════════════════
+   TABS
+══════════════════════════════════════════════════ */
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+  // trigger fade-ins for newly visible panel
+  setTimeout(() => {
+    document.querySelectorAll(`#tab-${id} .fade-in`).forEach(el => el.classList.add('visible'));
+  }, 50);
+}
+
+/* ══════════════════════════════════════════════════
+   PROGRESS BAR
+══════════════════════════════════════════════════ */
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  const p = h > 0 ? (window.scrollY / h) * 100 : 0;
+  document.getElementById('progress').style.width = p + '%';
+});
+
+/* ══════════════════════════════════════════════════
+   SCROLL REVEAL
+══════════════════════════════════════════════════ */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+
+/* ══════════════════════════════════════════════════
+   INIT
+══════════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+  chartDefaults();
+  buildSpeakerBars();
+  buildDonut();
+  buildRegionBar();
+  buildColonialPie();
+  buildConflictRisk();
+  buildTransBorderBar();
+  renderTable(GROUPS);
+  renderCountries(COUNTRIES);
+  renderConflicts();
+
+  // Observe all fade-in elements in active tab
+  document.querySelectorAll('.tab-panel.active .fade-in').forEach(el => obs.observe(el));
+  // Trigger visible for already-visible elements
+  setTimeout(() => {
+    document.querySelectorAll('.tab-panel.active .fade-in').forEach(el => el.classList.add('visible'));
+  }, 100);
+});
+</script>
+</body>
+</html>
