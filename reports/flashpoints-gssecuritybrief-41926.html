@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -8,526 +7,523 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
 
-:root {
-–navy: #0F1C35;
-–navy-h: #1B2A4A;
-–gold: #C8972A;
-–gold-m: #9B6A14;
-–slate: #4A5568;
-–slate-m: #718096;
-–body: #1A1A2E;
-–sand: #F0EBE1;
-–cream: #FAF7F2;
-–pale-gold: #F5E6C3;
-–soft-blue: #EBF0F8;
-–red: #D94040;
-–red-t: #FFF5F5;
-–green: #2EA86A;
-–green-t: #F0FBF5;
-–border: #D0C8BC;
-}
+  :root {
+    --navy: #0F1C35;
+    --navy-h: #1B2A4A;
+    --gold: #C8972A;
+    --gold-m: #9B6A14;
+    --slate: #4A5568;
+    --slate-m: #718096;
+    --body: #1A1A2E;
+    --sand: #F0EBE1;
+    --cream: #FAF7F2;
+    --pale-gold: #F5E6C3;
+    --soft-blue: #EBF0F8;
+    --red: #D94040;
+    --red-t: #FFF5F5;
+    --green: #2EA86A;
+    --green-t: #F0FBF5;
+    --border: #D0C8BC;
+  }
 
-- { box-sizing: border-box; margin: 0; padding: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-body {
-font-family: ‘IBM Plex Sans’, Arial, sans-serif;
-background: #e8e4de;
-color: var(–body);
-font-size: 14px;
-line-height: 1.5;
-}
+  body {
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
+    background: #e8e4de;
+    color: var(--body);
+    font-size: 14px;
+    line-height: 1.5;
+  }
 
-.page {
-max-width: 940px;
-margin: 32px auto;
-background: #fff;
-box-shadow: 0 4px 32px rgba(0,0,0,0.18);
-}
+  .page {
+    max-width: 940px;
+    margin: 32px auto;
+    background: #fff;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+  }
 
-/* ── HEADER ── */
-.doc-header {
-background: var(–navy);
-padding: 14px 28px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-border-bottom: 3px solid var(–gold);
-}
-.doc-header .brand {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 11px;
-font-weight: 600;
-color: var(–gold);
-letter-spacing: 1.5px;
-}
-.doc-header .domain {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 10px;
-color: var(–slate);
-letter-spacing: 1px;
-}
+  /* ── HEADER ── */
+  .doc-header {
+    background: var(--navy);
+    padding: 14px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid var(--gold);
+  }
+  .doc-header .brand {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 1.5px;
+  }
+  .doc-header .domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--slate);
+    letter-spacing: 1px;
+  }
 
-/* ── TITLE PANEL ── */
-.title-panel {
-background: var(–navy);
-text-align: center;
-padding: 28px 40px 20px;
-border-bottom: 2px solid var(–gold);
-}
-.title-panel .kicker {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 10px;
-color: var(–gold);
-letter-spacing: 2px;
-margin-bottom: 10px;
-}
-.title-panel h1 {
-font-family: ‘Libre Baskerville’, Georgia, serif;
-font-size: 22px;
-font-weight: 700;
-color: #fff;
-text-transform: uppercase;
-letter-spacing: 1px;
-line-height: 1.3;
-margin-bottom: 6px;
-}
-.title-panel h1 span {
-color: var(–gold);
-}
-.title-panel .subtitle {
-font-family: ‘Libre Baskerville’, Georgia, serif;
-font-style: italic;
-font-size: 12px;
-color: var(–slate);
-margin-top: 8px;
-}
+  /* ── TITLE PANEL ── */
+  .title-panel {
+    background: var(--navy);
+    text-align: center;
+    padding: 28px 40px 20px;
+    border-bottom: 2px solid var(--gold);
+  }
+  .title-panel .kicker {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+  .title-panel h1 {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .title-panel h1 span {
+    color: var(--gold);
+  }
+  .title-panel .subtitle {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--slate);
+    margin-top: 8px;
+  }
 
-/* ── META MATRIX ── */
-.meta-matrix {
-width: 100%;
-border-collapse: collapse;
-border-bottom: 2px solid var(–border);
-}
-.meta-matrix td {
-padding: 7px 14px;
-border: 1px solid var(–border);
-font-size: 11px;
-}
-.meta-matrix .ml {
-font-family: ‘IBM Plex Mono’, monospace;
-font-weight: 600;
-color: var(–gold-m);
-background: var(–sand);
-letter-spacing: 1px;
-font-size: 10px;
-}
-.meta-matrix .mv {
-font-family: ‘IBM Plex Sans’, Arial, sans-serif;
-color: var(–body);
-background: var(–cream);
-}
-.meta-matrix .mv.alert { color: var(–red); font-weight: 600; }
-.meta-matrix .mv.mod { color: #7A5A00; font-weight: 600; }
+  /* ── META MATRIX ── */
+  .meta-matrix {
+    width: 100%;
+    border-collapse: collapse;
+    border-bottom: 2px solid var(--border);
+  }
+  .meta-matrix td {
+    padding: 7px 14px;
+    border: 1px solid var(--border);
+    font-size: 11px;
+  }
+  .meta-matrix .ml {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    color: var(--gold-m);
+    background: var(--sand);
+    letter-spacing: 1px;
+    font-size: 10px;
+  }
+  .meta-matrix .mv {
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
+    color: var(--body);
+    background: var(--cream);
+  }
+  .meta-matrix .mv.alert { color: var(--red); font-weight: 600; }
+  .meta-matrix .mv.mod { color: #7A5A00; font-weight: 600; }
 
-/* ── SCOPE BLOCK ── */
-.scope-block {
-background: var(–cream);
-border-left: 4px solid var(–gold);
-padding: 12px 24px;
-font-size: 11.5px;
-font-style: italic;
-color: var(–slate);
-border-bottom: 1px solid var(–border);
-}
-.scope-block strong { font-style: normal; color: var(–navy-h); }
+  /* ── SCOPE BLOCK ── */
+  .scope-block {
+    background: var(--cream);
+    border-left: 4px solid var(--gold);
+    padding: 12px 24px;
+    font-size: 11.5px;
+    font-style: italic;
+    color: var(--slate);
+    border-bottom: 1px solid var(--border);
+  }
+  .scope-block strong { font-style: normal; color: var(--navy-h); }
 
-/* ── METRICS STRIP ── */
-.metrics-strip {
-display: flex;
-background: var(–navy);
-border-bottom: 2px solid var(–gold);
-}
-.metric-cell {
-flex: 1;
-text-align: center;
-padding: 12px 8px;
-border-right: 1px solid rgba(200,151,42,0.3);
-}
-.metric-cell:last-child { border-right: none; }
-.metric-cell .m-val {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 18px;
-font-weight: 700;
-color: var(–gold);
-display: block;
-}
-.metric-cell .m-lbl {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 9px;
-color: var(–slate);
-text-transform: uppercase;
-letter-spacing: 1px;
-margin-top: 3px;
-display: block;
-}
+  /* ── METRICS STRIP ── */
+  .metrics-strip {
+    display: flex;
+    background: var(--navy);
+    border-bottom: 2px solid var(--gold);
+  }
+  .metric-cell {
+    flex: 1;
+    text-align: center;
+    padding: 12px 8px;
+    border-right: 1px solid rgba(200,151,42,0.3);
+  }
+  .metric-cell:last-child { border-right: none; }
+  .metric-cell .m-val {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+  }
+  .metric-cell .m-lbl {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--slate);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 3px;
+    display: block;
+  }
 
-/* ── BLUF BANNER ── */
-.bluf-banner {
-background: var(–gold);
-padding: 13px 28px;
-font-family: ‘Libre Baskerville’, Georgia, serif;
-font-size: 13px;
-font-weight: 700;
-color: var(–navy);
-line-height: 1.45;
-border-bottom: 2px solid var(–gold-m);
-}
-.bluf-banner .bluf-label {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 9px;
-color: var(–navy);
-letter-spacing: 2px;
-display: block;
-margin-bottom: 5px;
-opacity: 0.7;
-}
+  /* ── BLUF BANNER ── */
+  .bluf-banner {
+    background: var(--gold);
+    padding: 13px 28px;
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.45;
+    border-bottom: 2px solid var(--gold-m);
+  }
+  .bluf-banner .bluf-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--navy);
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 5px;
+    opacity: 0.7;
+  }
 
-/* ── SECTION WRAPPER ── */
-.section {
-border-bottom: 2px solid var(–border);
-}
-.section-header {
-background: var(–navy-h);
-padding: 10px 28px;
-display: flex;
-align-items: center;
-gap: 12px;
-}
-.section-header .sec-num {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 10px;
-color: var(–gold);
-letter-spacing: 1px;
-white-space: nowrap;
-}
-.section-header h2 {
-font-family: ‘Libre Baskerville’, Georgia, serif;
-font-size: 14px;
-font-weight: 700;
-color: #fff;
-text-transform: uppercase;
-letter-spacing: 0.5px;
-}
-.section-header .region-tag {
-margin-left: auto;
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 9px;
-color: var(–gold);
-background: rgba(200,151,42,0.15);
-padding: 3px 10px;
-border-radius: 2px;
-letter-spacing: 1px;
-}
+  /* ── SECTION WRAPPER ── */
+  .section {
+    border-bottom: 2px solid var(--border);
+  }
+  .section-header {
+    background: var(--navy-h);
+    padding: 10px 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-header .sec-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  .section-header h2 {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .section-header .region-tag {
+    margin-left: auto;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--gold);
+    background: rgba(200,151,42,0.15);
+    padding: 3px 10px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+  }
 
-/* ── TWO-COLUMN BODY ── */
-.two-col {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 0;
-}
-.col-left {
-padding: 18px 24px;
-border-right: 1px solid var(–border);
-}
-.col-right {
-padding: 18px 24px;
-}
+  /* ── TWO-COLUMN BODY ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .col-left {
+    padding: 18px 24px;
+    border-right: 1px solid var(--border);
+  }
+  .col-right {
+    padding: 18px 24px;
+  }
 
-/* ── MODULE BLOCKS ── */
-.mod-block {
-margin-bottom: 16px;
-}
-.mod-block:last-child { margin-bottom: 0; }
+  /* ── MODULE BLOCKS ── */
+  .mod-block {
+    margin-bottom: 16px;
+  }
+  .mod-block:last-child { margin-bottom: 0; }
 
-.mod-label {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 9.5px;
-font-weight: 600;
-color: var(–gold-m);
-text-transform: uppercase;
-letter-spacing: 1.5px;
-border-bottom: 1px solid var(–border);
-padding-bottom: 4px;
-margin-bottom: 7px;
-}
+  .mod-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 600;
+    color: var(--gold-m);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 4px;
+    margin-bottom: 7px;
+  }
 
-.mod-block p {
-font-family: ‘Libre Baskerville’, Georgia, serif;
-font-size: 12px;
-line-height: 1.6;
-color: var(–body);
-margin-bottom: 5px;
-}
-.mod-block p:last-child { margin-bottom: 0; }
-.mod-block p strong { color: var(–navy-h); }
+  .mod-block p {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--body);
+    margin-bottom: 5px;
+  }
+  .mod-block p:last-child { margin-bottom: 0; }
+  .mod-block p strong { color: var(--navy-h); }
 
-/* ── SIGNAL BARS ── */
-.signal-bars {
-display: flex;
-flex-direction: column;
-gap: 7px;
-margin-bottom: 16px;
-}
-.sig-bar {
-display: flex;
-align-items: center;
-gap: 10px;
-background: var(–pale-gold);
-border-left: 4px solid var(–gold);
-padding: 7px 12px;
-border-radius: 2px;
-}
-.sig-bar .sig-val {
-font-family: ‘IBM Plex Mono’, monospace;
-font-weight: 700;
-font-size: 14px;
-color: var(–navy);
-min-width: 80px;
-}
-.sig-bar .sig-lbl {
-font-family: ‘IBM Plex Sans’, Arial, sans-serif;
-font-size: 11px;
-color: var(–slate);
-}
-.sig-bar.red { background: var(–red-t); border-left-color: var(–red); }
-.sig-bar.red .sig-val { color: var(–red); }
-.sig-bar.green { background: var(–green-t); border-left-color: var(–green); }
-.sig-bar.green .sig-val { color: var(–green); }
+  /* ── SIGNAL BARS ── */
+  .signal-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 16px;
+  }
+  .sig-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--pale-gold);
+    border-left: 4px solid var(--gold);
+    padding: 7px 12px;
+    border-radius: 2px;
+  }
+  .sig-bar .sig-val {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--navy);
+    min-width: 80px;
+  }
+  .sig-bar .sig-lbl {
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
+    font-size: 11px;
+    color: var(--slate);
+  }
+  .sig-bar.red { background: var(--red-t); border-left-color: var(--red); }
+  .sig-bar.red .sig-val { color: var(--red); }
+  .sig-bar.green { background: var(--green-t); border-left-color: var(--green); }
+  .sig-bar.green .sig-val { color: var(--green); }
 
-/* ── BULLET LIST ── */
-.mod-block ul {
-padding-left: 16px;
-margin-top: 4px;
-}
-.mod-block ul li {
-font-family: ‘Libre Baskerville’, Georgia, serif;
-font-size: 12px;
-line-height: 1.6;
-color: var(–body);
-margin-bottom: 4px;
-}
-.mod-block ul li strong { color: var(–navy-h); }
+  /* ── BULLET LIST ── */
+  .mod-block ul {
+    padding-left: 16px;
+    margin-top: 4px;
+  }
+  .mod-block ul li {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--body);
+    margin-bottom: 4px;
+  }
+  .mod-block ul li strong { color: var(--navy-h); }
 
-/* ── RISK TABLE ── */
-.risk-table {
-width: 100%;
-border-collapse: collapse;
-margin-top: 8px;
-font-size: 11.5px;
-}
-.risk-table th {
-background: var(–navy);
-color: var(–gold);
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 9.5px;
-letter-spacing: 1px;
-padding: 7px 10px;
-text-align: left;
-border: 1px solid var(–border);
-}
-.risk-table td {
-padding: 7px 10px;
-border: 1px solid var(–border);
-font-family: ‘Libre Baskerville’, Georgia, serif;
-font-size: 11.5px;
-vertical-align: top;
-}
-.risk-table tr:nth-child(even) td { background: var(–cream); }
-.risk-table tr:nth-child(odd) td { background: #fff; }
-.risk-table td.score-hi { background: var(–red-t); color: var(–red); font-weight: 700; }
-.risk-table td.score-mid { background: var(–pale-gold); color: #7A5A00; font-weight: 700; }
-.risk-table td.score-lo { background: var(–green-t); color: var(–green); font-weight: 700; }
+  /* ── RISK TABLE ── */
+  .risk-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    font-size: 11.5px;
+  }
+  .risk-table th {
+    background: var(--navy);
+    color: var(--gold);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 1px;
+    padding: 7px 10px;
+    text-align: left;
+    border: 1px solid var(--border);
+  }
+  .risk-table td {
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 11.5px;
+    vertical-align: top;
+  }
+  .risk-table tr:nth-child(even) td { background: var(--cream); }
+  .risk-table tr:nth-child(odd) td { background: #fff; }
+  .risk-table td.score-hi { background: var(--red-t); color: var(--red); font-weight: 700; }
+  .risk-table td.score-mid { background: var(--pale-gold); color: #7A5A00; font-weight: 700; }
+  .risk-table td.score-lo { background: var(--green-t); color: var(--green); font-weight: 700; }
 
-/* ── CONFIDENCE SECTION ── */
-.conf-header {
-background: var(–navy);
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 10px 24px;
-margin-bottom: 12px;
-}
-.conf-header span {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 10px;
-color: var(–gold);
-letter-spacing: 1.5px;
-}
-.conf-body {
-padding: 0 24px 18px;
-}
-.conf-body ul {
-padding-left: 18px;
-}
-.conf-body ul li {
-font-family: ‘Libre Baskerville’, Georgia, serif;
-font-size: 12px;
-line-height: 1.65;
-margin-bottom: 5px;
-color: var(–body);
-}
+  /* ── CONFIDENCE SECTION ── */
+  .conf-header {
+    background: var(--navy);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 24px;
+    margin-bottom: 12px;
+  }
+  .conf-header span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 1.5px;
+  }
+  .conf-body {
+    padding: 0 24px 18px;
+  }
+  .conf-body ul {
+    padding-left: 18px;
+  }
+  .conf-body ul li {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 12px;
+    line-height: 1.65;
+    margin-bottom: 5px;
+    color: var(--body);
+  }
 
-/* ── FLIP RISK BOXES ── */
-.flip-boxes {
-display: grid;
-grid-template-columns: 1fr 1fr 1fr;
-gap: 10px;
-padding: 0 24px 18px;
-}
-.flip-box {
-background: var(–red-t);
-border: 1px solid #FFCCCC;
-border-left: 4px solid var(–red);
-padding: 10px 12px;
-border-radius: 2px;
-}
-.flip-box .fb-label {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 9.5px;
-color: var(–red);
-font-weight: 700;
-letter-spacing: 1px;
-margin-bottom: 5px;
-}
-.flip-box p {
-font-family: ‘Libre Baskerville’, Georgia, serif;
-font-size: 11.5px;
-line-height: 1.55;
-color: var(–body);
-}
+  /* ── FLIP RISK BOXES ── */
+  .flip-boxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    padding: 0 24px 18px;
+  }
+  .flip-box {
+    background: var(--red-t);
+    border: 1px solid #FFCCCC;
+    border-left: 4px solid var(--red);
+    padding: 10px 12px;
+    border-radius: 2px;
+  }
+  .flip-box .fb-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9.5px;
+    color: var(--red);
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+  }
+  .flip-box p {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 11.5px;
+    line-height: 1.55;
+    color: var(--body);
+  }
 
-/* ── REFERENCES ── */
-.ref-table {
-width: 100%;
-border-collapse: collapse;
-font-size: 11px;
-}
-.ref-table th {
-background: var(–navy);
-color: var(–gold);
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 9px;
-letter-spacing: 1px;
-padding: 7px 8px;
-text-align: left;
-border: 1px solid var(–border);
-}
-.ref-table td {
-padding: 6px 8px;
-border: 1px solid var(–border);
-font-family: ‘IBM Plex Sans’, Arial, sans-serif;
-font-size: 11px;
-vertical-align: top;
-}
-.ref-table tr:nth-child(even) td { background: var(–cream); }
-.ref-table td.band-g { color: var(–green); font-weight: 600; font-family: ‘IBM Plex Mono’, monospace; font-size: 10px; }
-.ref-table td.band-a { color: #B88A00; font-weight: 600; font-family: ‘IBM Plex Mono’, monospace; font-size: 10px; }
-.ref-table td.band-r { color: var(–red); font-weight: 600; font-family: ‘IBM Plex Mono’, monospace; font-size: 10px; }
+  /* ── REFERENCES ── */
+  .ref-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+  }
+  .ref-table th {
+    background: var(--navy);
+    color: var(--gold);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding: 7px 8px;
+    text-align: left;
+    border: 1px solid var(--border);
+  }
+  .ref-table td {
+    padding: 6px 8px;
+    border: 1px solid var(--border);
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
+    font-size: 11px;
+    vertical-align: top;
+  }
+  .ref-table tr:nth-child(even) td { background: var(--cream); }
+  .ref-table td.band-g { color: var(--green); font-weight: 600; font-family: 'IBM Plex Mono', monospace; font-size: 10px; }
+  .ref-table td.band-a { color: #B88A00; font-weight: 600; font-family: 'IBM Plex Mono', monospace; font-size: 10px; }
+  .ref-table td.band-r { color: var(--red); font-weight: 600; font-family: 'IBM Plex Mono', monospace; font-size: 10px; }
 
-/* ── RECOMMENDATIONS ── */
-.reco-bands {
-padding: 0 24px 18px;
-display: flex;
-flex-direction: column;
-gap: 10px;
-}
-.reco-band {
-display: grid;
-grid-template-columns: 160px 1fr;
-border-radius: 2px;
-overflow: hidden;
-}
-.reco-band .band-label {
-padding: 14px 12px;
-display: flex;
-align-items: center;
-justify-content: center;
-text-align: center;
-}
-.reco-band .band-label span {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 10px;
-font-weight: 700;
-color: #fff;
-letter-spacing: 1px;
-line-height: 1.5;
-}
-.reco-band .band-content {
-padding: 12px 16px;
-font-family: ‘Libre Baskerville’, Georgia, serif;
-font-size: 12px;
-line-height: 1.6;
-}
-.reco-band.imm .band-label { background: var(–red); }
-.reco-band.imm .band-content { background: var(–red-t); }
-.reco-band.nt .band-label { background: var(–gold-m); }
-.reco-band.nt .band-content { background: var(–pale-gold); }
-.reco-band.mt .band-label { background: var(–green); }
-.reco-band.mt .band-content { background: var(–green-t); }
+  /* ── RECOMMENDATIONS ── */
+  .reco-bands {
+    padding: 0 24px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .reco-band {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .reco-band .band-label {
+    padding: 14px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .reco-band .band-label span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+    line-height: 1.5;
+  }
+  .reco-band .band-content {
+    padding: 12px 16px;
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .reco-band.imm .band-label { background: var(--red); }
+  .reco-band.imm .band-content { background: var(--red-t); }
+  .reco-band.nt .band-label { background: var(--gold-m); }
+  .reco-band.nt .band-content { background: var(--pale-gold); }
+  .reco-band.mt .band-label { background: var(--green); }
+  .reco-band.mt .band-content { background: var(--green-t); }
 
-/* ── FOOTER ── */
-.doc-footer {
-background: var(–navy);
-border-top: 2px solid var(–gold);
-padding: 12px 28px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-}
-.doc-footer span {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 9.5px;
-color: var(–slate-m);
-letter-spacing: 0.5px;
-}
+  /* ── FOOTER ── */
+  .doc-footer {
+    background: var(--navy);
+    border-top: 2px solid var(--gold);
+    padding: 12px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .doc-footer span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9.5px;
+    color: var(--slate-m);
+    letter-spacing: 0.5px;
+  }
 
-/* ── PROVENANCE NOTE ── */
-.provenance {
-padding: 10px 28px;
-font-family: ‘IBM Plex Sans’, Arial, sans-serif;
-font-style: italic;
-font-size: 10.5px;
-color: var(–slate-m);
-background: var(–sand);
-border-top: 1px solid var(–border);
-text-align: center;
-}
+  /* ── PROVENANCE NOTE ── */
+  .provenance {
+    padding: 10px 28px;
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
+    font-style: italic;
+    font-size: 10.5px;
+    color: var(--slate-m);
+    background: var(--sand);
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
 
-/* ── DIVIDER GOLD RULE ── */
-hr.gold { border: none; border-top: 2px solid var(–gold); margin: 0; }
-hr.light { border: none; border-top: 1px solid var(–border); margin: 0; }
+  /* ── DIVIDER GOLD RULE ── */
+  hr.gold { border: none; border-top: 2px solid var(--gold); margin: 0; }
+  hr.light { border: none; border-top: 1px solid var(--border); margin: 0; }
 
-/* ── SECTION INNER TITLE ── */
-.inner-rule {
-height: 2px;
-background: var(–gold);
-margin: 0 0 10px 0;
-}
+  /* ── SECTION INNER TITLE ── */
+  .inner-rule {
+    height: 2px;
+    background: var(--gold);
+    margin: 0 0 10px 0;
+  }
 </style>
-
 </head>
 <body>
 <div class="page">
 
   <!-- HEADER -->
-
   <div class="doc-header">
     <div class="brand">QUANTA ANALYTICA &nbsp;|&nbsp; MNS CONSULTING</div>
     <div class="domain">MULTI-DOMAIN RISK &nbsp;//&nbsp; AFRICA / MIDDLE EAST / SOUTHERN AFRICA</div>
   </div>
 
   <!-- TITLE PANEL -->
-
   <div class="title-panel">
     <div class="kicker">QAP™ SECURITY EXECUTIVE BRIEF &nbsp;//&nbsp; 19 APRIL 2026</div>
     <h1>MULTI-THEATER THREAT DIGEST:<br><span>CIVIL SPACE COLLAPSE, EXPLOSIVE TRANSIT, SYRIA FRACTURE, AND DRC HOSTAGE RECOVERY</span></h1>
@@ -535,7 +531,6 @@ margin: 0 0 10px 0;
   </div>
 
   <!-- META MATRIX -->
-
   <table class="meta-matrix">
     <tr>
       <td class="ml">DOMAIN</td>
@@ -560,13 +555,11 @@ margin: 0 0 10px 0;
   </table>
 
   <!-- SCOPE BOUNDARY -->
-
   <div class="scope-block">
     <strong>Analytic Scope Boundary:</strong> This brief covers events between 14–19 April 2026. Forward-looking horizon is 30–60 days. All sources are open-source; no classified streams accessed. Excluded: signals intelligence, diplomatic cable traffic, human intelligence reporting. Confidence is constrained by reliance on single-origin reporting for the Zimbabwe casualty figure and partial confirmation of the DRC hostage count. Confidence is higher for the Burkina Faso civil society action, which is corroborated by multiple independent outlets and primary governmental statements.
   </div>
 
   <!-- METRICS STRIP -->
-
   <div class="metrics-strip">
     <div class="metric-cell">
       <span class="m-val">118</span>
@@ -595,18 +588,14 @@ margin: 0 0 10px 0;
   </div>
 
   <!-- BLUF BANNER -->
-
   <div class="bluf-banner">
     <span class="bluf-label">01 // BLUF</span>
     Four geographically dispersed but structurally converging threats are active simultaneously: a Burkinabe junta has eliminated organized civil monitoring capacity through mass NGO dissolution; an illicit explosives transit network in southern Zimbabwe produced a mass-casualty event; Syria's post-Assad transition faces compounding destabilization across four distinct vectors; and a joint FARDC-UPDF operation in Ituri recovered an estimated 190-plus ADF-held hostages — the largest such operation in recent months, pointing to tactical progress but persistent structural insecurity.
   </div>
 
   <!-- ══════════════════════════════════════════════════════ -->
-
   <!-- TOPIC 1: BURKINA FASO -->
-
   <!-- ══════════════════════════════════════════════════════ -->
-
   <div class="section">
     <div class="section-header">
       <div class="sec-num">01 //</div>
@@ -616,103 +605,97 @@ margin: 0 0 10px 0;
     <div class="two-col">
       <div class="col-left">
 
-```
-    <div class="signal-bars">
-      <div class="sig-bar red">
-        <span class="sig-val">CRITICAL</span>
-        <span class="sig-lbl">Civic Space Closure Rating</span>
+        <div class="signal-bars">
+          <div class="sig-bar red">
+            <span class="sig-val">CRITICAL</span>
+            <span class="sig-lbl">Civic Space Closure Rating</span>
+          </div>
+          <div class="sig-bar red">
+            <span class="sig-val">118</span>
+            <span class="sig-lbl">NGOs and Associations Dissolved</span>
+          </div>
+          <div class="sig-bar">
+            <span class="sig-val">JAN 2026</span>
+            <span class="sig-lbl">All Political Parties Dissolved (prior action)</span>
+          </div>
+          <div class="sig-bar">
+            <span class="sig-val">NOV 2025</span>
+            <span class="sig-lbl">State Bank Compulsory Fund Transfer Ordered</span>
+          </div>
+        </div>
+
+        <div class="mod-block">
+          <div class="mod-label">Situation Overview</div>
+          <p>On 15 April 2026, Burkina Faso's Ministry of Territorial Administration and Mobility announced the dissolution of 118 NGOs and civil society associations, citing non-compliance with a July 2025 law regulating civil society operations. [1][2] The dissolution bans all listed organizations from operating and warns of legal penalties for non-compliance. Many of the dissolved entities were involved in human rights monitoring.</p>
+        </div>
+
+        <div class="mod-block">
+          <div class="mod-label">Key Developments</div>
+          <p>This action follows a cascading sequence of civic suppression measures under Captain Ibrahim Traore's government: all political parties were dissolved in January 2026 following a three-year suspension; NGOs were ordered in November 2025 to transfer commercial bank accounts to a new state-controlled banking entity within the National Treasury; and a prior wave of 21 organizations had licenses revoked, with 10 others suspended. [1][3] Territorial Administration Minister Emile Zerbo framed the dissolution as enforcement of the July 2025 law, providing a twelve-month compliance window that most human rights groups did not satisfy. [3]</p>
+        </div>
+
+        <div class="mod-block">
+          <div class="mod-label">Assessment</div>
+          <p>Analyst assessment: the dissolution represents a near-complete closure of independently organized civil monitoring infrastructure in Burkina Faso. The sequencing — bank account centralization, party dissolution, then NGO dissolution — is consistent with a deliberate consolidation strategy rather than ad hoc enforcement. The July 2025 law provided legal cover; the state bank directive provided financial surveillance architecture. These moves collectively remove the organized structures capable of documenting human rights abuses, monitoring counterinsurgency operations, or reporting on military conduct. [1][4]</p>
+          <p>Traore's framing of internationally funded NGOs as "tools of Western hegemony" and foreign espionage assets provides narrative justification that resonates within Alliance of Sahel States information environments, particularly given the Russia-Africa diplomatic alignment signaled by a forthcoming October 2026 Moscow summit invitation extended to Traore. [5]</p>
+        </div>
+
+        <div class="mod-block">
+          <div class="mod-label">Strategic Implications</div>
+          <p>For international NGOs and humanitarian operators: operational legal basis in-country is now effectively eliminated for groups unwilling to operate under state financial oversight. For partner governments and donors: accountability reporting streams for counterinsurgency operations and civilian harm are now largely extinguished. For ADF/JNIM-linked actors: reduced monitoring infrastructure removes early warning on displacement and civilian targeting patterns in contested zones.</p>
+        </div>
+
       </div>
-      <div class="sig-bar red">
-        <span class="sig-val">118</span>
-        <span class="sig-lbl">NGOs and Associations Dissolved</span>
+      <div class="col-right">
+
+        <div class="mod-block">
+          <div class="mod-label">Priority Intel Points</div>
+          <ul>
+            <li><strong>Compliance architecture:</strong> The state bank directive creates a financial surveillance layer; it is unclear which organizations complied with the transfer requirement prior to dissolution and what data state authorities now hold.</li>
+            <li><strong>Legal instrument:</strong> The July 2025 law is the legal chassis for this action; analyst assessment is that it was designed for mass application rather than targeted compliance enforcement.</li>
+            <li><strong>Russian alignment signal:</strong> Putin's October 2026 Russia-Africa summit invitation to Traore, noted in open sources, contextualizes the anti-Western sovereignty framing as geopolitically functional, not merely domestic. [5]</li>
+          </ul>
+        </div>
+
+        <div class="mod-block">
+          <div class="mod-label">Actor Dynamics</div>
+          <ul>
+            <li><strong>Traore government:</strong> Consolidating control ahead of an extended transition period (military rule extended five years in May 2024 from a July 2024 deadline). The dissolution is consistent with eliminating organized opposition infrastructure before any future political process. [1]</li>
+            <li><strong>Amnesty International:</strong> Characterized the dissolution as a "flagrant attack on the right to freedom of association" violating the Burkina Faso constitution and ICCPR obligations. Calling for immediate reversal. [1][2]</li>
+            <li><strong>International community:</strong> Monitoring closely; no evidence yet of formal sanctions or binding diplomatic pressure.</li>
+          </ul>
+        </div>
+
+        <div class="mod-block">
+          <div class="mod-label">Risks</div>
+          <ul>
+            <li><strong>Accountability vacuum:</strong> With monitoring infrastructure removed, documentation of civilian casualties in counterinsurgency operations becomes structurally impossible for non-state actors.</li>
+            <li><strong>Humanitarian access degradation:</strong> International organizations operating in Burkina Faso face an increasingly hostile operational environment. Service delivery gaps in conflict-affected areas are likely to widen.</li>
+            <li><strong>Conflict amplification:</strong> Reduced early warning capacity creates systemic blind spots for civilian protection, insurgent movements, and displacement tracking.</li>
+          </ul>
+        </div>
+
+        <div class="mod-block">
+          <div class="mod-label">Collection Gaps</div>
+          <ul>
+            <li>Full list of 118 dissolved organizations not publicly confirmed at the reporting date.</li>
+            <li>Extent of compliance with November 2025 banking directive among affected NGOs is unknown.</li>
+            <li>Russian technical advisory footprint in-country remains unverified in open sources.</li>
+          </ul>
+        </div>
+
+        <div class="mod-block">
+          <div class="mod-label">Near-Term Outlook (30 Days)</div>
+          <p>Further civil society restrictions are probable. Any humanitarian organization retaining in-country operations should review its legal exposure under the July 2025 law and the state banking regime. Indicators of escalation: dissolution of international media bureaus or expulsion of foreign press. Monitoring threshold: any state action against international humanitarian organizations (ICRC, MSF, UN agencies).</p>
+        </div>
+
       </div>
-      <div class="sig-bar">
-        <span class="sig-val">JAN 2026</span>
-        <span class="sig-lbl">All Political Parties Dissolved (prior action)</span>
-      </div>
-      <div class="sig-bar">
-        <span class="sig-val">NOV 2025</span>
-        <span class="sig-lbl">State Bank Compulsory Fund Transfer Ordered</span>
-      </div>
     </div>
-
-    <div class="mod-block">
-      <div class="mod-label">Situation Overview</div>
-      <p>On 15 April 2026, Burkina Faso's Ministry of Territorial Administration and Mobility announced the dissolution of 118 NGOs and civil society associations, citing non-compliance with a July 2025 law regulating civil society operations. [1][2] The dissolution bans all listed organizations from operating and warns of legal penalties for non-compliance. Many of the dissolved entities were involved in human rights monitoring.</p>
-    </div>
-
-    <div class="mod-block">
-      <div class="mod-label">Key Developments</div>
-      <p>This action follows a cascading sequence of civic suppression measures under Captain Ibrahim Traore's government: all political parties were dissolved in January 2026 following a three-year suspension; NGOs were ordered in November 2025 to transfer commercial bank accounts to a new state-controlled banking entity within the National Treasury; and a prior wave of 21 organizations had licenses revoked, with 10 others suspended. [1][3] Territorial Administration Minister Emile Zerbo framed the dissolution as enforcement of the July 2025 law, providing a twelve-month compliance window that most human rights groups did not satisfy. [3]</p>
-    </div>
-
-    <div class="mod-block">
-      <div class="mod-label">Assessment</div>
-      <p>Analyst assessment: the dissolution represents a near-complete closure of independently organized civil monitoring infrastructure in Burkina Faso. The sequencing — bank account centralization, party dissolution, then NGO dissolution — is consistent with a deliberate consolidation strategy rather than ad hoc enforcement. The July 2025 law provided legal cover; the state bank directive provided financial surveillance architecture. These moves collectively remove the organized structures capable of documenting human rights abuses, monitoring counterinsurgency operations, or reporting on military conduct. [1][4]</p>
-      <p>Traore's framing of internationally funded NGOs as "tools of Western hegemony" and foreign espionage assets provides narrative justification that resonates within Alliance of Sahel States information environments, particularly given the Russia-Africa diplomatic alignment signaled by a forthcoming October 2026 Moscow summit invitation extended to Traore. [5]</p>
-    </div>
-
-    <div class="mod-block">
-      <div class="mod-label">Strategic Implications</div>
-      <p>For international NGOs and humanitarian operators: operational legal basis in-country is now effectively eliminated for groups unwilling to operate under state financial oversight. For partner governments and donors: accountability reporting streams for counterinsurgency operations and civilian harm are now largely extinguished. For ADF/JNIM-linked actors: reduced monitoring infrastructure removes early warning on displacement and civilian targeting patterns in contested zones.</p>
-    </div>
-
-  </div>
-  <div class="col-right">
-
-    <div class="mod-block">
-      <div class="mod-label">Priority Intel Points</div>
-      <ul>
-        <li><strong>Compliance architecture:</strong> The state bank directive creates a financial surveillance layer; it is unclear which organizations complied with the transfer requirement prior to dissolution and what data state authorities now hold.</li>
-        <li><strong>Legal instrument:</strong> The July 2025 law is the legal chassis for this action; analyst assessment is that it was designed for mass application rather than targeted compliance enforcement.</li>
-        <li><strong>Russian alignment signal:</strong> Putin's October 2026 Russia-Africa summit invitation to Traore, noted in open sources, contextualizes the anti-Western sovereignty framing as geopolitically functional, not merely domestic. [5]</li>
-      </ul>
-    </div>
-
-    <div class="mod-block">
-      <div class="mod-label">Actor Dynamics</div>
-      <ul>
-        <li><strong>Traore government:</strong> Consolidating control ahead of an extended transition period (military rule extended five years in May 2024 from a July 2024 deadline). The dissolution is consistent with eliminating organized opposition infrastructure before any future political process. [1]</li>
-        <li><strong>Amnesty International:</strong> Characterized the dissolution as a "flagrant attack on the right to freedom of association" violating the Burkina Faso constitution and ICCPR obligations. Calling for immediate reversal. [1][2]</li>
-        <li><strong>International community:</strong> Monitoring closely; no evidence yet of formal sanctions or binding diplomatic pressure.</li>
-      </ul>
-    </div>
-
-    <div class="mod-block">
-      <div class="mod-label">Risks</div>
-      <ul>
-        <li><strong>Accountability vacuum:</strong> With monitoring infrastructure removed, documentation of civilian casualties in counterinsurgency operations becomes structurally impossible for non-state actors.</li>
-        <li><strong>Humanitarian access degradation:</strong> International organizations operating in Burkina Faso face an increasingly hostile operational environment. Service delivery gaps in conflict-affected areas are likely to widen.</li>
-        <li><strong>Conflict amplification:</strong> Reduced early warning capacity creates systemic blind spots for civilian protection, insurgent movements, and displacement tracking.</li>
-      </ul>
-    </div>
-
-    <div class="mod-block">
-      <div class="mod-label">Collection Gaps</div>
-      <ul>
-        <li>Full list of 118 dissolved organizations not publicly confirmed at the reporting date.</li>
-        <li>Extent of compliance with November 2025 banking directive among affected NGOs is unknown.</li>
-        <li>Russian technical advisory footprint in-country remains unverified in open sources.</li>
-      </ul>
-    </div>
-
-    <div class="mod-block">
-      <div class="mod-label">Near-Term Outlook (30 Days)</div>
-      <p>Further civil society restrictions are probable. Any humanitarian organization retaining in-country operations should review its legal exposure under the July 2025 law and the state banking regime. Indicators of escalation: dissolution of international media bureaus or expulsion of foreign press. Monitoring threshold: any state action against international humanitarian organizations (ICRC, MSF, UN agencies).</p>
-    </div>
-
-  </div>
-</div>
-```
-
   </div>
 
   <!-- ══════════════════════════════════════════════════════ -->
-
   <!-- TOPIC 2: ZIMBABWE -->
-
   <!-- ══════════════════════════════════════════════════════ -->
-
   <div class="section">
     <div class="section-header">
       <div class="sec-num">02 //</div>
@@ -722,99 +705,93 @@ margin: 0 0 10px 0;
     <div class="two-col">
       <div class="col-left">
 
-```
-    <div class="signal-bars">
-      <div class="sig-bar red">
-        <span class="sig-val">~18</span>
-        <span class="sig-lbl">Fatalities (figures range 12–18 across ZRP statements)</span>
+        <div class="signal-bars">
+          <div class="sig-bar red">
+            <span class="sig-val">~18</span>
+            <span class="sig-lbl">Fatalities (figures range 12–18 across ZRP statements)</span>
+          </div>
+          <div class="sig-bar red">
+            <span class="sig-val">DISASTER</span>
+            <span class="sig-lbl">State of Disaster Declared (President Mnangagwa)</span>
+          </div>
+          <div class="sig-bar">
+            <span class="sig-val">16 APR</span>
+            <span class="sig-lbl">Incident Date, 13:00–14:00 Local</span>
+          </div>
+          <div class="sig-bar">
+            <span class="sig-val">UNKNOWN</span>
+            <span class="sig-lbl">Official Confirmed Cause (investigation ongoing)</span>
+          </div>
+        </div>
+
+        <div class="mod-block">
+          <div class="mod-label">Situation Overview</div>
+          <p>On 16 April 2026, a Toyota Quantum commuter omnibus (kombi) exploded along the Bulawayo-Beitbridge Road between the Chipangali Wildlife Orphanage and the Gwanda tollgate, killing approximately 12 to 18 persons. [11][12][16] The vehicle, reportedly belonging to a South African funeral services company (Best Care Funeral Services), was traveling toward Johannesburg. [12][14] President Emmerson Mnangagwa declared a State of Disaster. [12] The official cause remains undetermined pending forensic investigation.</p>
+        </div>
+
+        <div class="mod-block">
+          <div class="mod-label">Key Developments</div>
+          <p>Preliminary reporting noted the presence of explosive fuselage fragments near a blast crater at the scene, prompting deployment of a Bomb Squad alongside ZRP, military, and Bulawayo Fire Brigade personnel. [16][20] Mnangagwa's government stated initial preliminary findings suggested the vehicle may have been transporting illicit explosive materials, likely destined for South Africa. [14] Some victims were burned beyond recognition; DNA identification procedures were initiated. [12]</p>
+          <p>The explosion occurs within a documented criminal trade pattern: on 11 April 2026, Zimbabwean truck driver Edgar Maroto was arrested by South African authorities attempting to smuggle explosives valued at approximately R770,000 into South Africa via a concealed vehicle compartment; on 14 April, a truck was intercepted at Beitbridge carrying Zimbabwean explosives; on 13 April, a suspect in South Africa was critically injured when explosives intended for a cash-in-transit heist detonated prematurely. [14][15]</p>
+        </div>
+
+        <div class="mod-block">
+          <div class="mod-label">Assessment</div>
+          <p>Analyst assessment: the weight of contextual evidence — proximity to a documented explosives smuggling corridor, the presence of blast crater and fuselage fragments, the vehicle's South African destination, and the cluster of intercept events in the days preceding — is consistent with an accidental detonation of illicitly transported explosives rather than a deliberate attack or mechanical failure. However, no single confirmed finding from ZRP or forensic teams has yet publicly established this as the official cause. Confidence in this assessment is moderate, contingent on forensic results. [14][15][16]</p>
+          <p>The kombi was described as carrying mourners returning from a funeral in Nkayi. [12] If explosive cargo was present, it was analyst assessment that at least some passengers were unaware, or that the cargo was placed without their knowledge — a common operational pattern in informal explosive transit using shared vehicles.</p>
+        </div>
+
       </div>
-      <div class="sig-bar red">
-        <span class="sig-val">DISASTER</span>
-        <span class="sig-lbl">State of Disaster Declared (President Mnangagwa)</span>
+      <div class="col-right">
+
+        <div class="mod-block">
+          <div class="mod-label">Priority Intel Points</div>
+          <ul>
+            <li><strong>Explosives supply chain:</strong> The Bulawayo-Beitbridge corridor functions as a primary transit route for illicit explosives from Zimbabwe's artisanal mining sector to organized criminal networks in South Africa conducting ATM bombings and cash-in-transit heists. The economic incentive is documented: single shipments valued at R770,000 to R1,000,000. [14][15]</li>
+            <li><strong>Casualty figure discrepancy:</strong> ZRP initially reported approximately 18 deaths; later official confirmation placed the confirmed identification count at 12. The gap reflects identification challenges from severe burn conditions and dismemberment, not a revision of the event. [11][12]</li>
+            <li><strong>State of Disaster declaration:</strong> Mnangagwa's declaration signals political recognition of the systemic dimension of this incident beyond a single accident.</li>
+          </ul>
+        </div>
+
+        <div class="mod-block">
+          <div class="mod-label">Actor Dynamics</div>
+          <ul>
+            <li><strong>Zimbabwean artisanal mining networks:</strong> Primary source of diverted industrial and artisanal explosives entering the illicit trade. Proliferation of unregulated mining operations creates a persistent supply-side vulnerability. [14]</li>
+            <li><strong>South African organized crime:</strong> Demand driver; explosives support ATM bombing and cash-in-transit heist operations at scale. South African law enforcement has documented the import stream but has not disrupted the supply side. [15]</li>
+            <li><strong>ZRP / Zimbabwe Army:</strong> Deployed to scene; forensic investigation ongoing. State of Disaster declaration creates legal space for expanded enforcement response.</li>
+          </ul>
+        </div>
+
+        <div class="mod-block">
+          <div class="mod-label">Risks</div>
+          <ul>
+            <li><strong>Recurring mass-casualty potential:</strong> If confirmed as explosive cargo detonation, the incident reveals a systemic public safety threat along the Bulawayo-Beitbridge corridor affecting civilian transportation on a high-volume route.</li>
+            <li><strong>Supply chain continuation:</strong> The economic incentive for smuggling is not disrupted by this event. Without supply-side enforcement in artisanal mining zones, recurrence is probable.</li>
+            <li><strong>Cross-border criminal escalation:</strong> South African demand for explosives to conduct CIT heists and ATM bombings reflects an organized criminal capacity that benefits from the uninterrupted Zimbabwean supply. [15]</li>
+          </ul>
+        </div>
+
+        <div class="mod-block">
+          <div class="mod-label">Collection Gaps</div>
+          <ul>
+            <li>Official forensic confirmation of explosive cargo presence has not been published as of the reporting date.</li>
+            <li>Identity and criminal network affiliation of any explosive cargo owner(s) is unknown.</li>
+            <li>Full passenger manifest of the kombi at time of departure is not confirmed in open sources.</li>
+          </ul>
+        </div>
+
+        <div class="mod-block">
+          <div class="mod-label">Near-Term Outlook (30 Days)</div>
+          <p>Forensic results will determine whether the incident is reclassified as a criminal transport event with direct accountability implications. Expect heightened ZRP and SAPS coordination along the Beitbridge crossing in the near term. The structural risk of explosive transit on civilian vehicles along this corridor remains unless supply-side enforcement addresses the artisanal mining source. Monitoring trigger: additional explosion or intercept events along the same corridor within 30 days.</p>
+        </div>
+
       </div>
-      <div class="sig-bar">
-        <span class="sig-val">16 APR</span>
-        <span class="sig-lbl">Incident Date, 13:00–14:00 Local</span>
-      </div>
-      <div class="sig-bar">
-        <span class="sig-val">UNKNOWN</span>
-        <span class="sig-lbl">Official Confirmed Cause (investigation ongoing)</span>
-      </div>
     </div>
-
-    <div class="mod-block">
-      <div class="mod-label">Situation Overview</div>
-      <p>On 16 April 2026, a Toyota Quantum commuter omnibus (kombi) exploded along the Bulawayo-Beitbridge Road between the Chipangali Wildlife Orphanage and the Gwanda tollgate, killing approximately 12 to 18 persons. [11][12][16] The vehicle, reportedly belonging to a South African funeral services company (Best Care Funeral Services), was traveling toward Johannesburg. [12][14] President Emmerson Mnangagwa declared a State of Disaster. [12] The official cause remains undetermined pending forensic investigation.</p>
-    </div>
-
-    <div class="mod-block">
-      <div class="mod-label">Key Developments</div>
-      <p>Preliminary reporting noted the presence of explosive fuselage fragments near a blast crater at the scene, prompting deployment of a Bomb Squad alongside ZRP, military, and Bulawayo Fire Brigade personnel. [16][20] Mnangagwa's government stated initial preliminary findings suggested the vehicle may have been transporting illicit explosive materials, likely destined for South Africa. [14] Some victims were burned beyond recognition; DNA identification procedures were initiated. [12]</p>
-      <p>The explosion occurs within a documented criminal trade pattern: on 11 April 2026, Zimbabwean truck driver Edgar Maroto was arrested by South African authorities attempting to smuggle explosives valued at approximately R770,000 into South Africa via a concealed vehicle compartment; on 14 April, a truck was intercepted at Beitbridge carrying Zimbabwean explosives; on 13 April, a suspect in South Africa was critically injured when explosives intended for a cash-in-transit heist detonated prematurely. [14][15]</p>
-    </div>
-
-    <div class="mod-block">
-      <div class="mod-label">Assessment</div>
-      <p>Analyst assessment: the weight of contextual evidence — proximity to a documented explosives smuggling corridor, the presence of blast crater and fuselage fragments, the vehicle's South African destination, and the cluster of intercept events in the days preceding — is consistent with an accidental detonation of illicitly transported explosives rather than a deliberate attack or mechanical failure. However, no single confirmed finding from ZRP or forensic teams has yet publicly established this as the official cause. Confidence in this assessment is moderate, contingent on forensic results. [14][15][16]</p>
-      <p>The kombi was described as carrying mourners returning from a funeral in Nkayi. [12] If explosive cargo was present, it was analyst assessment that at least some passengers were unaware, or that the cargo was placed without their knowledge — a common operational pattern in informal explosive transit using shared vehicles.</p>
-    </div>
-
-  </div>
-  <div class="col-right">
-
-    <div class="mod-block">
-      <div class="mod-label">Priority Intel Points</div>
-      <ul>
-        <li><strong>Explosives supply chain:</strong> The Bulawayo-Beitbridge corridor functions as a primary transit route for illicit explosives from Zimbabwe's artisanal mining sector to organized criminal networks in South Africa conducting ATM bombings and cash-in-transit heists. The economic incentive is documented: single shipments valued at R770,000 to R1,000,000. [14][15]</li>
-        <li><strong>Casualty figure discrepancy:</strong> ZRP initially reported approximately 18 deaths; later official confirmation placed the confirmed identification count at 12. The gap reflects identification challenges from severe burn conditions and dismemberment, not a revision of the event. [11][12]</li>
-        <li><strong>State of Disaster declaration:</strong> Mnangagwa's declaration signals political recognition of the systemic dimension of this incident beyond a single accident.</li>
-      </ul>
-    </div>
-
-    <div class="mod-block">
-      <div class="mod-label">Actor Dynamics</div>
-      <ul>
-        <li><strong>Zimbabwean artisanal mining networks:</strong> Primary source of diverted industrial and artisanal explosives entering the illicit trade. Proliferation of unregulated mining operations creates a persistent supply-side vulnerability. [14]</li>
-        <li><strong>South African organized crime:</strong> Demand driver; explosives support ATM bombing and cash-in-transit heist operations at scale. South African law enforcement has documented the import stream but has not disrupted the supply side. [15]</li>
-        <li><strong>ZRP / Zimbabwe Army:</strong> Deployed to scene; forensic investigation ongoing. State of Disaster declaration creates legal space for expanded enforcement response.</li>
-      </ul>
-    </div>
-
-    <div class="mod-block">
-      <div class="mod-label">Risks</div>
-      <ul>
-        <li><strong>Recurring mass-casualty potential:</strong> If confirmed as explosive cargo detonation, the incident reveals a systemic public safety threat along the Bulawayo-Beitbridge corridor affecting civilian transportation on a high-volume route.</li>
-        <li><strong>Supply chain continuation:</strong> The economic incentive for smuggling is not disrupted by this event. Without supply-side enforcement in artisanal mining zones, recurrence is probable.</li>
-        <li><strong>Cross-border criminal escalation:</strong> South African demand for explosives to conduct CIT heists and ATM bombings reflects an organized criminal capacity that benefits from the uninterrupted Zimbabwean supply. [15]</li>
-      </ul>
-    </div>
-
-    <div class="mod-block">
-      <div class="mod-label">Collection Gaps</div>
-      <ul>
-        <li>Official forensic confirmation of explosive cargo presence has not been published as of the reporting date.</li>
-        <li>Identity and criminal network affiliation of any explosive cargo owner(s) is unknown.</li>
-        <li>Full passenger manifest of the kombi at time of departure is not confirmed in open sources.</li>
-      </ul>
-    </div>
-
-    <div class="mod-block">
-      <div class="mod-label">Near-Term Outlook (30 Days)</div>
-      <p>Forensic results will determine whether the incident is reclassified as a criminal transport event with direct accountability implications. Expect heightened ZRP and SAPS coordination along the Beitbridge crossing in the near term. The structural risk of explosive transit on civilian vehicles along this corridor remains unless supply-side enforcement addresses the artisanal mining source. Monitoring trigger: additional explosion or intercept events along the same corridor within 30 days.</p>
-    </div>
-
-  </div>
-</div>
-```
-
   </div>
 
   <!-- ══════════════════════════════════════════════════════ -->
-
   <!-- TOPIC 3: SYRIA -->
-
   <!-- ══════════════════════════════════════════════════════ -->
-
   <div class="section">
     <div class="section-header">
       <div class="sec-num">03 //</div>
@@ -824,86 +801,80 @@ margin: 0 0 10px 0;
     <div class="two-col">
       <div class="col-left">
 
-```
-    <div class="signal-bars">
-      <div class="sig-bar red">
-        <span class="sig-val">VERY TENSE</span>
-        <span class="sig-lbl">UN Security Council Characterization</span>
+        <div class="signal-bars">
+          <div class="sig-bar red">
+            <span class="sig-val">VERY TENSE</span>
+            <span class="sig-lbl">UN Security Council Characterization</span>
+          </div>
+          <div class="sig-bar red">
+            <span class="sig-val">4 VECTORS</span>
+            <span class="sig-lbl">Concurrent Threat Streams Active</span>
+          </div>
+          <div class="sig-bar">
+            <span class="sig-val">PERSISTENT</span>
+            <span class="sig-lbl">ISIS/ISIL Threat Assessment (UN, CENTCOM)</span>
+          </div>
+          <div class="sig-bar">
+            <span class="sig-val">FRAGILE</span>
+            <span class="sig-lbl">Transition Stability Rating (Analyst Assessment)</span>
+          </div>
+        </div>
+
+        <div class="mod-block">
+          <div class="mod-label">Situation Overview</div>
+          <p>Syria's post-Assad transition under interim President Ahmed al-Sharaa (HTS-origin) faces four concurrent destabilization pressures as of April 2026: persistent ISIS/ISIL reactivation in eastern and northern provinces; Israeli military strikes and incursions in southern Syria, particularly targeting Druze-adjacent zones; spillover from the February-March 2026 US-Israeli strikes on Iran, with missile debris falling inside Syrian territory; and unresolved SDF-government integration tensions in the northeast. [21][30][31]</p>
+        </div>
+
+        <div class="mod-block">
+          <div class="mod-label">Key Developments</div>
+          <p><strong>ISIS/ISIL:</strong> The UN Secretary-General's February 2026 report confirmed ISIS maintains thousands of fighters in Syria and continues to pursue destabilization through attacks and sectarian incitement, including five foiled assassination attempts against Sharaa and senior ministers in 2025. [28] The al-Hol camp reportedly was evacuated and shut down by February 2026, though this has generated security and human rights concerns given the camp's history. [28]</p>
+          <p><strong>Israeli incursions:</strong> Israeli forces struck Syrian military sites in southern Syria on 20 March 2026 following clashes between government forces and Druze factions in Suweida, framing the strikes as civilian protection measures. [30] The UN characterized ongoing Israeli military positioning as threatening to Syria's fragile political transition. [32] Hundreds of Israeli airstrikes have occurred across Syria since December 2024. [32]</p>
+          <p><strong>Iran conflict spillover:</strong> Since the US-Israeli strikes on Iran beginning 28 February 2026, both Israeli and Iranian missiles and debris have entered Syrian airspace, causing civilian deaths and injuries inside Syrian territory. [30] Iranian threats in late March 2026 also named sites inside Syria. [37]</p>
+          <p><strong>SDF integration:</strong> The 30 January 2026 US-brokered agreement between the SDF and Syrian government remains incompletely implemented. Incidents in Qamishli involving SDF-linked groups storming security headquarters and the removal of the Syrian flag at the city airport have complicated the integration timeline. [21]</p>
+        </div>
+
       </div>
-      <div class="sig-bar red">
-        <span class="sig-val">4 VECTORS</span>
-        <span class="sig-lbl">Concurrent Threat Streams Active</span>
+      <div class="col-right">
+
+        <div class="mod-block">
+          <div class="mod-label">Assessment</div>
+          <p>Analyst assessment: Syria is not in a stabilization phase. It is in a contested fragmentation management phase in which the Sharaa government must simultaneously negotiate SDF integration, contain ISIS activity, manage Israeli incursions it cannot militarily counter, and absorb collateral effects from the broader Iran conflict — all while lacking consolidated security structures and operating within a deeply distorted economy. The UN characterization of the situation as "very tense" understates the structural convergence of these pressures. [22][31]</p>
+          <p>The risk of any single vector triggering broader fragmentation is elevated. ISIS exploitation of the governance vacuum, in particular, represents the most structurally durable threat: the group has demonstrated willingness and capability to conduct complex operations (including prison breaks and assassination attempts) against the transitional government.</p>
+        </div>
+
+        <div class="mod-block">
+          <div class="mod-label">Actor Dynamics</div>
+          <ul>
+            <li><strong>Sharaa / Syrian interim government:</strong> Navigating external military pressure (Israel, Iran spillover) while attempting internal consolidation. Described SDF integration and Hezbollah disarmament as strategic goals. [29]</li>
+            <li><strong>Israel:</strong> Conducting strikes framed as counterterrorism and civilian protection; maintaining military positions in southern Syria in violation of the 1974 Disengagement Agreement. Characterizes actions as response to threats near its border. [32]</li>
+            <li><strong>ISIS/ISIL:</strong> Exploiting transition instability; conducting attacks in eastern and northern provinces; the US transferred 5,700 ISIL prisoners from SDF custody to Iraq in a 23-day operation. [28]</li>
+            <li><strong>SDF / DAANES:</strong> Committed to the 10 March Agreement in principle; implementation stalled on governance model disputes (federal vs. centralized state). [21]</li>
+            <li><strong>Iran / Iranian-backed militias:</strong> Accused by Damascus and international actors of backing violence in Latakia and supporting proxy forces in southern Syria. [34][37]</li>
+          </ul>
+        </div>
+
+        <div class="mod-block">
+          <div class="mod-label">Priority Risks</div>
+          <ul>
+            <li><strong>ISIS reconstitution:</strong> The structural conditions — governance gaps, security force fragmentation, remaining detention camp populations — are conducive to ISIS expansion. Reduced US counter-ISIS aid ($117M cut) adds pressure. [34]</li>
+            <li><strong>Israeli incursion escalation:</strong> Each Israeli strike erodes the interim government's authority claim and provokes domestic pressure it cannot respond to militarily. A miscalculation could trigger wider confrontation. [30][32]</li>
+            <li><strong>Iran conflict spillover:</strong> Debris and strikes from the broader US-Israeli-Iran conflict are entering Syrian territory without Syrian government consent, creating civilian harm and a sovereignty violation that Damascus cannot prevent. [30][37]</li>
+            <li><strong>SDF integration failure:</strong> A collapse of the integration agreement would re-fragment security control in resource-rich northeastern provinces and create new operational space for ISIS. [21]</li>
+          </ul>
+        </div>
+
+        <div class="mod-block">
+          <div class="mod-label">Near-Term Outlook (30–60 Days)</div>
+          <p>The April 2026 UN Security Council meeting on Syria will assess political and humanitarian developments. Expect continued Israeli strikes absent a negotiated security arrangement in the south. ISIS will continue opportunistic attacks in eastern provinces; the degree of reconstitution risk depends on whether the SDF's counter-ISIS mandate degrades further during the integration transition. The Iran conflict's trajectory is the primary external variable: a de-escalation would reduce spillover pressure; continued escalation would likely intensify indirect harm inside Syria.</p>
+        </div>
+
       </div>
-      <div class="sig-bar">
-        <span class="sig-val">PERSISTENT</span>
-        <span class="sig-lbl">ISIS/ISIL Threat Assessment (UN, CENTCOM)</span>
-      </div>
-      <div class="sig-bar">
-        <span class="sig-val">FRAGILE</span>
-        <span class="sig-lbl">Transition Stability Rating (Analyst Assessment)</span>
-      </div>
     </div>
-
-    <div class="mod-block">
-      <div class="mod-label">Situation Overview</div>
-      <p>Syria's post-Assad transition under interim President Ahmed al-Sharaa (HTS-origin) faces four concurrent destabilization pressures as of April 2026: persistent ISIS/ISIL reactivation in eastern and northern provinces; Israeli military strikes and incursions in southern Syria, particularly targeting Druze-adjacent zones; spillover from the February-March 2026 US-Israeli strikes on Iran, with missile debris falling inside Syrian territory; and unresolved SDF-government integration tensions in the northeast. [21][30][31]</p>
-    </div>
-
-    <div class="mod-block">
-      <div class="mod-label">Key Developments</div>
-      <p><strong>ISIS/ISIL:</strong> The UN Secretary-General's February 2026 report confirmed ISIS maintains thousands of fighters in Syria and continues to pursue destabilization through attacks and sectarian incitement, including five foiled assassination attempts against Sharaa and senior ministers in 2025. [28] The al-Hol camp reportedly was evacuated and shut down by February 2026, though this has generated security and human rights concerns given the camp's history. [28]</p>
-      <p><strong>Israeli incursions:</strong> Israeli forces struck Syrian military sites in southern Syria on 20 March 2026 following clashes between government forces and Druze factions in Suweida, framing the strikes as civilian protection measures. [30] The UN characterized ongoing Israeli military positioning as threatening to Syria's fragile political transition. [32] Hundreds of Israeli airstrikes have occurred across Syria since December 2024. [32]</p>
-      <p><strong>Iran conflict spillover:</strong> Since the US-Israeli strikes on Iran beginning 28 February 2026, both Israeli and Iranian missiles and debris have entered Syrian airspace, causing civilian deaths and injuries inside Syrian territory. [30] Iranian threats in late March 2026 also named sites inside Syria. [37]</p>
-      <p><strong>SDF integration:</strong> The 30 January 2026 US-brokered agreement between the SDF and Syrian government remains incompletely implemented. Incidents in Qamishli involving SDF-linked groups storming security headquarters and the removal of the Syrian flag at the city airport have complicated the integration timeline. [21]</p>
-    </div>
-
-  </div>
-  <div class="col-right">
-
-    <div class="mod-block">
-      <div class="mod-label">Assessment</div>
-      <p>Analyst assessment: Syria is not in a stabilization phase. It is in a contested fragmentation management phase in which the Sharaa government must simultaneously negotiate SDF integration, contain ISIS activity, manage Israeli incursions it cannot militarily counter, and absorb collateral effects from the broader Iran conflict — all while lacking consolidated security structures and operating within a deeply distorted economy. The UN characterization of the situation as "very tense" understates the structural convergence of these pressures. [22][31]</p>
-      <p>The risk of any single vector triggering broader fragmentation is elevated. ISIS exploitation of the governance vacuum, in particular, represents the most structurally durable threat: the group has demonstrated willingness and capability to conduct complex operations (including prison breaks and assassination attempts) against the transitional government.</p>
-    </div>
-
-    <div class="mod-block">
-      <div class="mod-label">Actor Dynamics</div>
-      <ul>
-        <li><strong>Sharaa / Syrian interim government:</strong> Navigating external military pressure (Israel, Iran spillover) while attempting internal consolidation. Described SDF integration and Hezbollah disarmament as strategic goals. [29]</li>
-        <li><strong>Israel:</strong> Conducting strikes framed as counterterrorism and civilian protection; maintaining military positions in southern Syria in violation of the 1974 Disengagement Agreement. Characterizes actions as response to threats near its border. [32]</li>
-        <li><strong>ISIS/ISIL:</strong> Exploiting transition instability; conducting attacks in eastern and northern provinces; the US transferred 5,700 ISIL prisoners from SDF custody to Iraq in a 23-day operation. [28]</li>
-        <li><strong>SDF / DAANES:</strong> Committed to the 10 March Agreement in principle; implementation stalled on governance model disputes (federal vs. centralized state). [21]</li>
-        <li><strong>Iran / Iranian-backed militias:</strong> Accused by Damascus and international actors of backing violence in Latakia and supporting proxy forces in southern Syria. [34][37]</li>
-      </ul>
-    </div>
-
-    <div class="mod-block">
-      <div class="mod-label">Priority Risks</div>
-      <ul>
-        <li><strong>ISIS reconstitution:</strong> The structural conditions — governance gaps, security force fragmentation, remaining detention camp populations — are conducive to ISIS expansion. Reduced US counter-ISIS aid ($117M cut) adds pressure. [34]</li>
-        <li><strong>Israeli incursion escalation:</strong> Each Israeli strike erodes the interim government's authority claim and provokes domestic pressure it cannot respond to militarily. A miscalculation could trigger wider confrontation. [30][32]</li>
-        <li><strong>Iran conflict spillover:</strong> Debris and strikes from the broader US-Israeli-Iran conflict are entering Syrian territory without Syrian government consent, creating civilian harm and a sovereignty violation that Damascus cannot prevent. [30][37]</li>
-        <li><strong>SDF integration failure:</strong> A collapse of the integration agreement would re-fragment security control in resource-rich northeastern provinces and create new operational space for ISIS. [21]</li>
-      </ul>
-    </div>
-
-    <div class="mod-block">
-      <div class="mod-label">Near-Term Outlook (30–60 Days)</div>
-      <p>The April 2026 UN Security Council meeting on Syria will assess political and humanitarian developments. Expect continued Israeli strikes absent a negotiated security arrangement in the south. ISIS will continue opportunistic attacks in eastern provinces; the degree of reconstitution risk depends on whether the SDF's counter-ISIS mandate degrades further during the integration transition. The Iran conflict's trajectory is the primary external variable: a de-escalation would reduce spillover pressure; continued escalation would likely intensify indirect harm inside Syria.</p>
-    </div>
-
-  </div>
-</div>
-```
-
   </div>
 
   <!-- ══════════════════════════════════════════════════════ -->
-
   <!-- TOPIC 4: DRC -->
-
   <!-- ══════════════════════════════════════════════════════ -->
-
   <div class="section">
     <div class="section-header">
       <div class="sec-num">04 //</div>
@@ -913,90 +884,84 @@ margin: 0 0 10px 0;
     <div class="two-col">
       <div class="col-left">
 
-```
-    <div class="signal-bars">
-      <div class="sig-bar green">
-        <span class="sig-val">190+</span>
-        <span class="sig-lbl">Hostages Reportedly Freed (140+ Mambasa + 50+ Ituri River axis)</span>
+        <div class="signal-bars">
+          <div class="sig-bar green">
+            <span class="sig-val">190+</span>
+            <span class="sig-lbl">Hostages Reportedly Freed (140+ Mambasa + 50+ Ituri River axis)</span>
+          </div>
+          <div class="sig-bar">
+            <span class="sig-val">FARDC-UPDF</span>
+            <span class="sig-lbl">Joint Force Executing Operation (Operation Shujaa framework)</span>
+          </div>
+          <div class="sig-bar red">
+            <span class="sig-val">250+</span>
+            <span class="sig-lbl">Civilians Abducted in Mambasa, Late March – Early April (est.)</span>
+          </div>
+          <div class="sig-bar">
+            <span class="sig-val">ITURI</span>
+            <span class="sig-lbl">Primary Theater: Mambasa-Lolwa Axis and Babila-Bakwanza Chiefdom</span>
+          </div>
+        </div>
+
+        <div class="mod-block">
+          <div class="mod-label">Situation Overview</div>
+          <p>Joint Congolese (FARDC) and Ugandan (UPDF) military operations in Mambasa Territory, Ituri Province, have reportedly freed an estimated 140-plus ADF-held hostages in operations along the Mambasa-Lolwa axis, with a further 50-plus recovered in the Babila-Bakwanza chiefdom along the Ituri River. [49][40] Local officials confirmed the operations are producing results, with hostages to be returned to families. Aggregate reporting suggests the total figure approaches or exceeds 190 persons — potentially the largest single recovery operation in the current campaign phase.</p>
+        </div>
+
+        <div class="mod-block">
+          <div class="mod-label">Key Developments</div>
+          <p>The rescue comes after a pattern of intense ADF abduction activity in Mambasa in late March and early April 2026. Local citizen monitoring groups estimated over 250 civilians were abducted during this period. [40] On 11 April 2026, Radio Okapi reported approximately 30 civilians kidnapped in a separate Mambasa attack. An ADF assault on the Mambasa-Kisangani axis reportedly killed 70 persons and destroyed dozens of homes, underscoring the scale of active insecurity in which these operations are operating. [40]</p>
+          <p>The rescue was achieved through operations on the Mambasa-Lolwa axis under Deputy Military Administrator Colonel Maxime Tshishimbi's reported command. [49] Civil society organizations have called on Kinshasa to expand the FARDC-UPDF operational convention beyond National Road 4 to pursue ADF elements into areas currently outside the coalition's geographic mandate. [49]</p>
+        </div>
+
+        <div class="mod-block">
+          <div class="mod-label">Assessment</div>
+          <p>Analyst assessment: the hostage recovery represents a meaningful tactical success for the FARDC-UPDF coalition. However, the structural dynamics of the ADF insurgency are not disrupted by this event. The group's Mambasa-Ituri operational zone has been expanding, and the ADF has historically responded to pressure on one axis by dispersing into areas outside coalition coverage. [49][57] The call by civil society to extend the geographic mandate reflects recognition that the current operational boundaries are creating sanctuary space.</p>
+          <p>The ADF, now operating as the Islamic State Central Africa Province (ISCAP) affiliate, continues to demonstrate kidnapping as a core operational tactic, both for forced labor and to sustain its internal population of fighters, wives, and dependents. The scale of recent abductions (250-plus in a single territory over weeks) indicates the group retains significant operational reach despite ongoing pressure.</p>
+        </div>
+
       </div>
-      <div class="sig-bar">
-        <span class="sig-val">FARDC-UPDF</span>
-        <span class="sig-lbl">Joint Force Executing Operation (Operation Shujaa framework)</span>
+      <div class="col-right">
+
+        <div class="mod-block">
+          <div class="mod-label">Priority Intel Points</div>
+          <ul>
+            <li><strong>Total figure caveat:</strong> The 190-plus estimate is derived from two separately reported operations (140+ and 50+) by local officials and provincial deputies. No single consolidated FARDC statement confirming the aggregate total had been published as of the reporting date. The figure should be treated as the best open-source estimate subject to revision. [40][49]</li>
+            <li><strong>ADF abduction volume:</strong> The preceding abduction wave (250+ over late March and early April) indicates the recovery, while significant, does not represent full resolution of the abduction cohort. Dozens to potentially scores of civilians remain unaccounted for. [40]</li>
+            <li><strong>ISCAP designation context:</strong> Islamic State's affiliation claim for ADF (ISCAP designation) means these operations carry counter-terrorism relevance beyond the DRC bilateral framework. US has previously sanctioned ADF as a terrorist organization. [57]</li>
+          </ul>
+        </div>
+
+        <div class="mod-block">
+          <div class="mod-label">Actor Dynamics</div>
+          <ul>
+            <li><strong>FARDC-UPDF coalition:</strong> Joint operations have produced measurable rescue outcomes in 2022, 2023, 2024, and now 2026. Structural constraint: geographic mandate limits prevent pursuit into ADF dispersal zones.</li>
+            <li><strong>ADF/ISCAP:</strong> Ugandan-origin group with 30-year presence in eastern DRC. ISIS-affiliated since 2019. Demonstrates adaptive response to military pressure — dispersal, not defeat. Commander Seka Musa Baluku's headquarters was reportedly forced to relocate deeper into Mambasa Territory under earlier Operation Shujaa pressure. [50]</li>
+            <li><strong>DRC civil society:</strong> Actively documenting abductions and calling for operational mandate expansion. Provides the primary ground-truth verification layer for hostage counts and ADF movements in areas outside military reporting. [40]</li>
+          </ul>
+        </div>
+
+        <div class="mod-block">
+          <div class="mod-label">Risks</div>
+          <ul>
+            <li><strong>ADF regroup in unmonitored zones:</strong> Dispersal of ADF elements beyond National Road 4 and outside the FARDC-UPDF mandate creates a structural recovery space. Without mandate expansion, tactical pressure produces displacement rather than defeat.</li>
+            <li><strong>Remaining hostage population:</strong> Based on known abduction figures versus confirmed rescues, a meaningful number of civilians likely remain in ADF custody. Continued pressure is needed to prevent normalization of this holding pattern.</li>
+            <li><strong>M23 context:</strong> The broader DRC theater remains complicated by the M23 situation in eastern DRC; any diversion of FARDC resources toward the M23 front reduces operational pressure on ADF. The July 2025 DRC-Rwanda peace agreement's durability is a key variable. [45]</li>
+          </ul>
+        </div>
+
+        <div class="mod-block">
+          <div class="mod-label">Near-Term Outlook (30 Days)</div>
+          <p>The FARDC-UPDF coalition is likely to continue pressure along the Mambasa-Lolwa axis given operational momentum. Expect additional hostage recovery operations as forces consolidate gains. Civil society pressure to expand the operational mandate to areas beyond National Road 4 represents an important policy decision point for Kinshasa and Kampala. ADF will likely adapt: deepening into Mambasa Territory, potentially establishing new bases in less-pressured zones — a pattern consistent with prior Operation Shujaa cycles. [49][50]</p>
+        </div>
+
       </div>
-      <div class="sig-bar red">
-        <span class="sig-val">250+</span>
-        <span class="sig-lbl">Civilians Abducted in Mambasa, Late March – Early April (est.)</span>
-      </div>
-      <div class="sig-bar">
-        <span class="sig-val">ITURI</span>
-        <span class="sig-lbl">Primary Theater: Mambasa-Lolwa Axis and Babila-Bakwanza Chiefdom</span>
-      </div>
     </div>
-
-    <div class="mod-block">
-      <div class="mod-label">Situation Overview</div>
-      <p>Joint Congolese (FARDC) and Ugandan (UPDF) military operations in Mambasa Territory, Ituri Province, have reportedly freed an estimated 140-plus ADF-held hostages in operations along the Mambasa-Lolwa axis, with a further 50-plus recovered in the Babila-Bakwanza chiefdom along the Ituri River. [49][40] Local officials confirmed the operations are producing results, with hostages to be returned to families. Aggregate reporting suggests the total figure approaches or exceeds 190 persons — potentially the largest single recovery operation in the current campaign phase.</p>
-    </div>
-
-    <div class="mod-block">
-      <div class="mod-label">Key Developments</div>
-      <p>The rescue comes after a pattern of intense ADF abduction activity in Mambasa in late March and early April 2026. Local citizen monitoring groups estimated over 250 civilians were abducted during this period. [40] On 11 April 2026, Radio Okapi reported approximately 30 civilians kidnapped in a separate Mambasa attack. An ADF assault on the Mambasa-Kisangani axis reportedly killed 70 persons and destroyed dozens of homes, underscoring the scale of active insecurity in which these operations are operating. [40]</p>
-      <p>The rescue was achieved through operations on the Mambasa-Lolwa axis under Deputy Military Administrator Colonel Maxime Tshishimbi's reported command. [49] Civil society organizations have called on Kinshasa to expand the FARDC-UPDF operational convention beyond National Road 4 to pursue ADF elements into areas currently outside the coalition's geographic mandate. [49]</p>
-    </div>
-
-    <div class="mod-block">
-      <div class="mod-label">Assessment</div>
-      <p>Analyst assessment: the hostage recovery represents a meaningful tactical success for the FARDC-UPDF coalition. However, the structural dynamics of the ADF insurgency are not disrupted by this event. The group's Mambasa-Ituri operational zone has been expanding, and the ADF has historically responded to pressure on one axis by dispersing into areas outside coalition coverage. [49][57] The call by civil society to extend the geographic mandate reflects recognition that the current operational boundaries are creating sanctuary space.</p>
-      <p>The ADF, now operating as the Islamic State Central Africa Province (ISCAP) affiliate, continues to demonstrate kidnapping as a core operational tactic, both for forced labor and to sustain its internal population of fighters, wives, and dependents. The scale of recent abductions (250-plus in a single territory over weeks) indicates the group retains significant operational reach despite ongoing pressure.</p>
-    </div>
-
-  </div>
-  <div class="col-right">
-
-    <div class="mod-block">
-      <div class="mod-label">Priority Intel Points</div>
-      <ul>
-        <li><strong>Total figure caveat:</strong> The 190-plus estimate is derived from two separately reported operations (140+ and 50+) by local officials and provincial deputies. No single consolidated FARDC statement confirming the aggregate total had been published as of the reporting date. The figure should be treated as the best open-source estimate subject to revision. [40][49]</li>
-        <li><strong>ADF abduction volume:</strong> The preceding abduction wave (250+ over late March and early April) indicates the recovery, while significant, does not represent full resolution of the abduction cohort. Dozens to potentially scores of civilians remain unaccounted for. [40]</li>
-        <li><strong>ISCAP designation context:</strong> Islamic State's affiliation claim for ADF (ISCAP designation) means these operations carry counter-terrorism relevance beyond the DRC bilateral framework. US has previously sanctioned ADF as a terrorist organization. [57]</li>
-      </ul>
-    </div>
-
-    <div class="mod-block">
-      <div class="mod-label">Actor Dynamics</div>
-      <ul>
-        <li><strong>FARDC-UPDF coalition:</strong> Joint operations have produced measurable rescue outcomes in 2022, 2023, 2024, and now 2026. Structural constraint: geographic mandate limits prevent pursuit into ADF dispersal zones.</li>
-        <li><strong>ADF/ISCAP:</strong> Ugandan-origin group with 30-year presence in eastern DRC. ISIS-affiliated since 2019. Demonstrates adaptive response to military pressure — dispersal, not defeat. Commander Seka Musa Baluku's headquarters was reportedly forced to relocate deeper into Mambasa Territory under earlier Operation Shujaa pressure. [50]</li>
-        <li><strong>DRC civil society:</strong> Actively documenting abductions and calling for operational mandate expansion. Provides the primary ground-truth verification layer for hostage counts and ADF movements in areas outside military reporting. [40]</li>
-      </ul>
-    </div>
-
-    <div class="mod-block">
-      <div class="mod-label">Risks</div>
-      <ul>
-        <li><strong>ADF regroup in unmonitored zones:</strong> Dispersal of ADF elements beyond National Road 4 and outside the FARDC-UPDF mandate creates a structural recovery space. Without mandate expansion, tactical pressure produces displacement rather than defeat.</li>
-        <li><strong>Remaining hostage population:</strong> Based on known abduction figures versus confirmed rescues, a meaningful number of civilians likely remain in ADF custody. Continued pressure is needed to prevent normalization of this holding pattern.</li>
-        <li><strong>M23 context:</strong> The broader DRC theater remains complicated by the M23 situation in eastern DRC; any diversion of FARDC resources toward the M23 front reduces operational pressure on ADF. The July 2025 DRC-Rwanda peace agreement's durability is a key variable. [45]</li>
-      </ul>
-    </div>
-
-    <div class="mod-block">
-      <div class="mod-label">Near-Term Outlook (30 Days)</div>
-      <p>The FARDC-UPDF coalition is likely to continue pressure along the Mambasa-Lolwa axis given operational momentum. Expect additional hostage recovery operations as forces consolidate gains. Civil society pressure to expand the operational mandate to areas beyond National Road 4 represents an important policy decision point for Kinshasa and Kampala. ADF will likely adapt: deepening into Mambasa Territory, potentially establishing new bases in less-pressured zones — a pattern consistent with prior Operation Shujaa cycles. [49][50]</p>
-    </div>
-
-  </div>
-</div>
-```
-
   </div>
 
   <!-- ══════════════════════════════════════════════════════ -->
-
   <!-- CROSS-CUTTING RISK MATRIX -->
-
   <!-- ══════════════════════════════════════════════════════ -->
-
   <div class="section">
     <div class="section-header">
       <div class="sec-num">05 //</div>
@@ -1070,11 +1035,8 @@ margin: 0 0 10px 0;
   </div>
 
   <!-- ══════════════════════════════════════════════════════ -->
-
   <!-- RECOMMENDATIONS -->
-
   <!-- ══════════════════════════════════════════════════════ -->
-
   <div class="section">
     <div class="section-header">
       <div class="sec-num">06 //</div>
@@ -1109,11 +1071,8 @@ margin: 0 0 10px 0;
   </div>
 
   <!-- ══════════════════════════════════════════════════════ -->
-
   <!-- CONFIDENCE -->
-
   <!-- ══════════════════════════════════════════════════════ -->
-
   <div class="section">
     <div class="section-header">
       <div class="sec-num">07 //</div>
@@ -1149,11 +1108,8 @@ margin: 0 0 10px 0;
   </div>
 
   <!-- ══════════════════════════════════════════════════════ -->
-
   <!-- REFERENCES -->
-
   <!-- ══════════════════════════════════════════════════════ -->
-
   <div class="section">
     <div class="section-header">
       <div class="sec-num">10 //</div>
@@ -1400,13 +1356,11 @@ margin: 0 0 10px 0;
   </div>
 
   <!-- PROVENANCE -->
-
   <div class="provenance">
     Produced under the Quanta Analytica Process™. All claims traced to open-source evidence or labelled as analyst inference. No fabricated sources, quotes, or data. Em dash character not used throughout this document.
   </div>
 
   <!-- FOOTER -->
-
   <div class="doc-footer">
     <span>PREPARED BY: QUANTA ANALYTICA / MNS CONSULTING</span>
     <span>19 APRIL 2026 &nbsp;|&nbsp; OPEN SOURCE</span>
