@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sudan Conflict Intelligence Dashboard | Quanta Analytica Process™ | 21 Apr 2026</title>
+
+  <title>Sudan Conflict Intelligence Dashboard | Quanta Analytica Process™</title>
+<meta name="title" content="Sudan Conflict Intelligence Dashboard | Quanta Analytica Process™">
+<meta name="description" content="A QAP™ dashboard for the Sudan conflict. Integrating ACLED fatality data, UNHCR displacement figures, and IPC food insecurity indicators for strategic foresight.">
+<link rel="canonical" href="https://quanta-analytica.com/reports/sudan-conflict-dashboard-v2.html">
+
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="MNS Consulting">
+<meta name="keywords" content="Sudan conflict dashboard, ACLED Sudan data, IPC food insecurity Sudan, UNHCR displacement, QAP analytic logic, M. Nuri Shakoor, Sudan War charts, humanitarian risk intelligence">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0c10">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://quanta-analytica.com/reports/sudan-conflict-dashboard-v2.html">
+<meta property="og:title" content="Intelligence Dashboard: The Sudan Conflict in 10 Charts">
+<meta property="og:description" content="Visualizing the systemic drivers of the Sudan crisis. Derived from CSIS, ACLED, and UN data under the Quanta Analytica Process™ framework.">
+<meta property="og:image" content="https://quanta-analytica.com/quanta-analytica-mns-consulting2.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="600">
+<meta property="og:image:alt" content="Quanta Analytica | Sudan Conflict Intelligence Overview">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://quanta-analytica.com/reports/sudan-conflict-dashboard-v2.html">
+<meta name="twitter:title" content="Sudan Conflict Intelligence | QAP™ Dashboard">
+<meta name="twitter:description" content="Visualizing conflict fatalities, displacement, and food security indicators in Sudan.">
+<meta name="twitter:image" content="https://quanta-analytica.com/quanta-analytica-mns-consulting2.png">
+
+<meta property="article:published_time" content="2026-04-21T15:00:00Z">
+<meta property="article:author" content="M. Nuri Shakoor">
+<meta property="article:section" content="Conflict Analysis & Humanitarian Risk">
+<meta property="article:tag" content="Sudan Crisis">
+<meta property="article:tag" content="Conflict Data Visualization">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       QAP WEB REPORT — CANONICAL STYLESHEET
+       Sudan Conflict Intelligence Dashboard
+       Quanta Analytica Process™ | MNS Consulting
+       ============================================================ */
+
+    :root {
+      --obsidian:         #0a0c10;
+      --obsidian-mid:     #10131a;
+      --obsidian-card:    #13161f;
+      --obsidian-border:  #1c2030;
+      --obsidian-surface: #181b26;
+      --obsidian-lift:    #1e2235;
+      --gold:             #c8a96e;
+      --gold-light:       #dfc28e;
+      --gold-pale:        #e8d5aa;
+      --gold-dim:         #9a7f52;
+      --gold-muted:       #6b5838;
+      --gold-glow:        rgba(200,169,110,0.12);
+      --gold-glow-strong: rgba(200,169,110,0.22);
+      --red:              #c0392b;
+      --red-light:        #e74c3c;
+      --red-bg:           rgba(192,57,43,0.12);
+      --amber:            #d4820a;
+      --amber-light:      #f39c12;
+      --amber-bg:         rgba(212,130,10,0.12);
+      --green:            #27ae60;
+      --green-light:      #2ecc71;
+      --green-bg:         rgba(39,174,96,0.12);
+      --blue:             #2980b9;
+      --blue-light:       #3498db;
+      --blue-bg:          rgba(41,128,185,0.12);
+      --slate:            #5d7a9a;
+      --slate-light:      #7f9ab8;
+      --text-primary:     #e8e4dc;
+      --text-secondary:   #b8b0a0;
+      --text-muted:       #7a7264;
+      --text-faint:       #4a4640;
+      --font-display:     'Libre Baskerville', Georgia, serif;
+      --font-body:        'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+      --font-mono:        'IBM Plex Mono', 'Courier New', monospace;
+      --radius-sm:        3px;
+      --radius-md:        6px;
+      --radius-lg:        10px;
+      --border-default:   1px solid var(--obsidian-border);
+      --border-gold:      1px solid var(--gold-dim);
+      --shadow-card:      0 2px 16px rgba(0,0,0,0.4);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--obsidian);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { color: var(--gold-light); }
+
+    /* ── PROGRESS BAR ── */
+    #progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-light));
+      z-index: 9999;
+      transition: width 0.1s linear;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 3px; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(10,12,16,0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--obsidian-border);
+      padding: 0 2rem;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .nav-brand span { color: var(--text-muted); font-weight: 400; }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-classify {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber-light);
+      border: 1px solid var(--amber);
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      background: var(--amber-bg);
+    }
+
+    .nav-date {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      padding: 120px 2rem 3rem;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 20% 60%, rgba(200,169,110,0.05) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 20%, rgba(192,57,43,0.04) 0%, transparent 50%),
+                  var(--obsidian);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(200,169,110,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,169,110,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero-running-head {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--obsidian-border);
+      padding-bottom: 0.5rem;
+    }
+
+    .hero-container {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-image {
+      max-width: 180px;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+    }
+
+    .hero h1 .title-gold {
+      color: var(--gold);
+      display: block;
+      margin-top: 0.4rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.25rem 0;
+      align-items: center;
+    }
+
+    .meta-cell { display: flex; flex-direction: column; gap: 2px; }
+
+    .meta-cell .label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .meta-cell .value {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .meta-divider {
+      width: 1px;
+      height: 36px;
+      background: var(--gold-dim);
+      align-self: center;
+    }
+
+    .threat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid;
+    }
+
+    .threat-badge.critical {
+      color: var(--red-light);
+      border-color: var(--red);
+      background: var(--red-bg);
+    }
+
+    .threat-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+      animation: blink 1.6s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.2; }
+    }
+
+    .scope-boundary {
+      border-left: 3px solid var(--slate);
+      padding: 0.5rem 1.25rem;
+      background: rgba(93,122,154,0.08);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin-top: 1.25rem;
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--slate-light);
+      line-height: 1.6;
+    }
+
+    /* ── KPI STRIP ── */
+    .kpi-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 0;
+    }
+
+    .kpi-section-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .kpi-section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold-muted), transparent);
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+      gap: 1rem;
+    }
+
+    .kpi-card {
+      background: var(--obsidian-card);
+      border: var(--border-default);
+      border-top: 3px solid var(--gold-dim);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.25rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .kpi-card:hover {
+      border-color: var(--gold);
+      box-shadow: var(--shadow-card);
+    }
+
+    .kpi-card.critical { border-top-color: var(--red); }
+    .kpi-card.warning  { border-top-color: var(--amber); }
+
+    .kpi-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .kpi-value {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .kpi-card.critical .kpi-value { color: var(--red-light); }
+    .kpi-card.warning  .kpi-value { color: var(--amber-light); }
+
+    .kpi-desc {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .kpi-trend {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .kpi-trend.up   { color: var(--red-light); }
+    .kpi-trend.down { color: var(--green-light); }
+
+    /* ── TABLEAU SECTION ── */
+    .tableau-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--obsidian-border);
+    }
+
+    .section-num {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      background: var(--gold-glow);
+      border: 1px solid var(--gold-muted);
+      padding: 3px 10px;
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .tableau-wrapper {
+      background: var(--obsidian-card);
+      border: var(--border-default);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      overflow: hidden;
+    }
+
+    .tableau-caption {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--obsidian-border);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* ── SOURCE NOTE ── */
+    .source-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem 2rem;
+    }
+
+    .source-note {
+      background: var(--obsidian-card);
+      border: var(--border-default);
+      border-left: 3px solid var(--gold-dim);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 1rem 1.25rem;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .source-note strong {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--obsidian-mid);
+      border-top: 1px solid var(--obsidian-border);
+      padding: 2rem;
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--gold-dim);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-doc-id {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-legal {
+      font-size: 0.75rem;
+      color: var(--text-faint);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero-running-head { flex-direction: column; gap: 0.25rem; }
+      .hero-container    { flex-direction: column; text-align: center; }
+      .hero-image        { max-width: 120px; }
+      .hero-meta         { justify-content: center; }
+      .meta-divider      { display: none; }
+      .kpi-grid          { grid-template-columns: 1fr 1fr; }
+      nav                { padding: 0 1rem; }
+      .nav-date          { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .kpi-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="progress"></div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-brand">Quanta Analytica<span> | MNS Consulting</span></div>
+    <div class="nav-right">
+      <span class="nav-date">21 APR 2026</span>
+      <span class="nav-classify">Open Source</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+
+      <div class="hero-running-head">
+        <span>Quanta Analytica Process™ | MNS Consulting | ARAC International Inc.</span>
+        <span>Conflict Systems Dashboard // Sudan</span>
+      </div>
+
+      <div class="hero-container">
+        <img src="https://quanta-analytica.com/logo.PNG" alt="Quanta Analytica" class="hero-image" />
+        <div class="hero-text">
+          <h1>
+            Sudan Conflict Intelligence Dashboard
+            <span class="title-gold">Year Four Situation Overview — April 2026</span>
+          </h1>
+        </div>
+      </div>
+
+      <div class="hero-meta">
+        <div class="meta-cell">
+          <span class="label">Conflict Onset</span>
+          <span class="value">15 April 2023</span>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell">
+          <span class="label">Duration</span>
+          <span class="value">36+ Months</span>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell">
+          <span class="label">Parties</span>
+          <span class="value">SAF vs RSF</span>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell">
+          <span class="label">External Actors</span>
+          <span class="value">10+ Countries</span>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-cell">
+          <span class="label">Threat Level</span>
+          <span class="value">
+            <span class="threat-badge critical">
+              <span class="threat-dot"></span>Critical
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="scope-boundary">
+        Analytic Scope: Open-source intelligence aggregation covering political violence, humanitarian indicators, conflict financing, and proxy engagement. Data drawn from ACLED, UNHCR, WHO, IPC, HeRAMS, and Central Bank of Sudan. Forward horizon: 90 days. Analysis produced under the Quanta Analytica Process™ (QAP) framework. Source document: CSIS "The Sudan War in 10 Charts," 17 April 2026.
+      </div>
+
+    </div>
+  </header>
+
+  <!-- KPI CARDS -->
+  <section class="kpi-section">
+    <div class="kpi-section-label">Key Performance Indicators</div>
+    <div class="kpi-grid">
+
+      <div class="kpi-card critical">
+        <div class="kpi-label">Reported Fatalities</div>
+        <div class="kpi-value">58,000+</div>
+        <div class="kpi-desc">ACLED tracked since Apr 2023. Estimated true toll: 150,000 to 400,000.</div>
+        <div class="kpi-trend up">&#x2191; 9,000+ from air/drone strikes alone</div>
+      </div>
+
+      <div class="kpi-card warning">
+        <div class="kpi-label">Internally Displaced</div>
+        <div class="kpi-value">11M</div>
+        <div class="kpi-desc">World's largest displacement crisis. Additional 4M refugees in neighboring states.</div>
+        <div class="kpi-trend up">&#x2191; From 3.8M pre-war (2022)</div>
+      </div>
+
+      <div class="kpi-card critical">
+        <div class="kpi-label">Acute Food Insecurity</div>
+        <div class="kpi-value">25.6M</div>
+        <div class="kpi-desc">Over 50% of Sudan's population facing severe hunger. Famine confirmed in multiple localities.</div>
+        <div class="kpi-trend up">&#x2191; From 12M in 2022</div>
+      </div>
+
+      <div class="kpi-card warning">
+        <div class="kpi-label">Healthcare Operational</div>
+        <div class="kpi-value">39%</div>
+        <div class="kpi-desc">Facilities at least partially functional. 721 documented attacks on health infrastructure.</div>
+        <div class="kpi-trend down">&#x2193; 61% non-functional or unreporting</div>
+      </div>
+
+      <div class="kpi-card critical">
+        <div class="kpi-label">DTP Vaccine Coverage</div>
+        <div class="kpi-value">39%</div>
+        <div class="kpi-desc">Third-dose coverage, down from 84% in 2022. Over half of children have received no doses.</div>
+        <div class="kpi-trend down">&#x2193; 45 percentage points since conflict onset</div>
+      </div>
+
+      <div class="kpi-card critical">
+        <div class="kpi-label">Funding Gap (2026)</div>
+        <div class="kpi-value">92%</div>
+        <div class="kpi-desc">Only 8% of estimated humanitarian needs met in 2026. Worst ratio since conflict began.</div>
+        <div class="kpi-trend up">&#x2191; From 62% gap in 2023</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TABLEAU DASHBOARD -->
+  <section class="tableau-section">
+    <div class="section-header">
+      <span class="section-num">Data // Visualization</span>
+      <span class="section-title">Multi-Indicator Conflict Dashboard</span>
+    </div>
+
+    <div class="tableau-wrapper">
+      <!-- TABLEAU EMBED -->
+      <div class='tableauPlaceholder' id='viz1776797123790' style='position:relative; width:100%;'>
+        <noscript>
+          <a href='#'>
+            <img alt='Sudan Conflict Dashboard' src='https://public.tableau.com/static/images/Su/SudanConflictDashboard/SudanConflictDashboard/1_rss.png' style='border:none' />
+          </a>
+        </noscript>
+        <object class='tableauViz' style='display:none;'>
+          <param name='host_url'           value='https%3A%2F%2Fpublic.tableau.com%2F' />
+          <param name='embed_code_version' value='3' />
+          <param name='site_root'          value='' />
+          <param name='name'               value='SudanConflictDashboard&#47;SudanConflictDashboard' />
+          <param name='tabs'               value='no' />
+          <param name='toolbar'            value='yes' />
+          <param name='static_image'       value='https://public.tableau.com/static/images/Su/SudanConflictDashboard/SudanConflictDashboard/1.png' />
+          <param name='animate_transition' value='yes' />
+          <param name='display_static_image' value='yes' />
+          <param name='display_spinner'    value='yes' />
+          <param name='display_overlay'    value='yes' />
+          <param name='display_count'      value='yes' />
+          <param name='language'           value='en-US' />
+        </object>
+      </div>
+      <script type='text/javascript'>
+        var divElement  = document.getElementById('viz1776797123790');
+        var vizElement  = divElement.getElementsByTagName('object')[0];
+        if (divElement.offsetWidth > 800) {
+          vizElement.style.width  = '100%';
+          vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
+        } else if (divElement.offsetWidth > 500) {
+          vizElement.style.width  = '100%';
+          vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
+        } else {
+          vizElement.style.width  = '100%';
+          vizElement.style.height = '1277px';
+        }
+        var scriptElement   = document.createElement('script');
+        scriptElement.src   = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+        vizElement.parentNode.insertBefore(scriptElement, vizElement);
+      </script>
+      <!-- END TABLEAU EMBED -->
+
+      <div class="tableau-caption">
+        <span>Sources: ACLED, UNHCR, WHO, IPC, Central Bank of Sudan, HeRAMS, Refugee Funding Tracker</span>
+        <span>Published via Tableau Public | Quanta Analytica Process™</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOURCE NOTE -->
+  <section class="source-section">
+    <div class="source-note">
+      <strong>Analytic Provenance</strong>
+      Dashboard data derived from CSIS "The Sudan War in 10 Charts" (17 April 2026), authored by Catherine Nzuki et al. Fatality figures sourced from ACLED and cross-referenced with UN/OHCHR reporting. Displacement figures from UNHCR. Food insecurity classifications from IPC. Vaccine coverage from WHO. Healthcare facility status from HeRAMS Sudan Baseline Report 2025. Gold production from Central Bank of Sudan and Sudan Tribune. Humanitarian funding figures from the Refugee Funding Tracker. All figures represent open-source estimates and carry inherent reporting lags in active conflict environments.
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">Quanta Analytica Process™ | MNS Consulting | ARAC International Inc.</div>
+    <div class="footer-doc-id">QAP-CDA-SDN-2026-0421 // Sudan Conflict Intelligence Dashboard</div>
+    <div class="footer-legal">All claims traced to open-source evidence or labelled as analyst inference. No fabricated sources, quotes, or data. This product is produced for informational and research purposes under the Quanta Analytica Process™ framework.</div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      const p = h > 0 ? (window.scrollY / h) * 100 : 0;
+      document.getElementById('progress').style.width = p + '%';
+    });
+  </script>
+
+</body>
+</html>
