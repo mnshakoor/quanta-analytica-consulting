@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Architecture of Collapse — Quanta Analytica | MNS Consulting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --obsidian: #0a0c10;
+    --obsidian-mid: #111318;
+    --obsidian-light: #1a1e26;
+    --obsidian-border: #1f2430;
+    --gold: #c8a96e;
+    --gold-light: #dfc28a;
+    --gold-dim: #8a6e42;
+    --gold-trace: rgba(200, 169, 110, 0.08);
+    --text-primary: #e8e2d6;
+    --text-secondary: #9a9080;
+    --text-muted: #5a5550;
+    --accent-red: #8c3a2e;
+    --page-width: 760px;
+    --page-height: 540px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--obsidian);
+    color: var(--text-primary);
+    font-family: 'Barlow', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Background texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200,169,110,0.04) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 20% 80%, rgba(200,169,110,0.03) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Grid lines */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(200,169,110,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,169,110,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ========== TOP BAR ========== */
+  .top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 44px;
+    background: rgba(10,12,16,0.95);
+    border-bottom: 1px solid var(--obsidian-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+  }
+
+  .top-bar-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .top-bar-center {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  .top-bar-meta {
+    font-family: 'Barlow', sans-serif;
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* ========== MAIN VIEWER ========== */
+  .viewer {
+    position: relative;
+    z-index: 10;
+    width: var(--page-width);
+    height: var(--page-height);
+    margin-top: 44px;
+  }
+
+  /* ========== PAGE CONTAINER ========== */
+  .pages-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    perspective: 2000px;
+  }
+
+  .page {
+    position: absolute;
+    inset: 0;
+    background: var(--obsidian-mid);
+    border: 1px solid var(--obsidian-border);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+  }
+
+  .page.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+
+  .page.exit-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    pointer-events: none;
+  }
+
+  /* ========== COVER PAGE ========== */
+  .cover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 100% 80% at 50% 50%, rgba(200,169,110,0.06) 0%, transparent 70%);
+  }
+
+  .cover-rule-top {
+    width: 280px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin-bottom: 32px;
+  }
+
+  .cover-series {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 46px;
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--text-primary);
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+
+  .cover-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .cover-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    max-width: 460px;
+    margin-bottom: 36px;
+  }
+
+  .cover-rule-mid {
+    width: 48px;
+    height: 1px;
+    background: var(--gold-dim);
+    margin-bottom: 28px;
+  }
+
+  .cover-author {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .cover-meta-row {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  .cover-meta-item {
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .cover-meta-sep {
+    width: 3px;
+    height: 3px;
+    background: var(--gold-dim);
+    border-radius: 50%;
+  }
+
+  .cover-rule-bottom {
+    width: 280px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .cover-classification {
+    position: absolute;
+    bottom: 18px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  /* ========== TOC PAGE ========== */
+  .toc-page {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 36px 48px;
+  }
+
+  .page-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--obsidian-border);
+  }
+
+  .page-header-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .page-header-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--obsidian-border);
+  }
+
+  .page-header-page {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+  }
+
+  .toc-title-block {
+    margin-bottom: 24px;
+  }
+
+  .toc-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+
+  .toc-heading em {
+    color: var(--gold-light);
+    font-style: italic;
+  }
+
+  .toc-subheading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-muted);
+  }
+
+  .toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 32px;
+  }
+
+  .toc-entry {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(31,36,48,0.6);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .toc-entry:hover .toc-ch-num {
+    color: var(--gold);
+  }
+
+  .toc-entry:hover .toc-ch-title {
+    color: var(--text-primary);
+  }
+
+  .toc-ch-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: color 0.2s;
+    min-width: 26px;
+  }
+
+  .toc-ch-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    line-height: 1.35;
+    transition: color 0.2s;
+    flex: 1;
+  }
+
+  .toc-dots {
+    flex: 1;
+    border-bottom: 1px dotted var(--obsidian-border);
+    margin: 0 6px;
+    margin-bottom: 3px;
+  }
+
+  /* ========== CHAPTER PAGES ========== */
+  .chapter-page {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 0;
+  }
+
+  .chapter-header {
+    padding: 22px 44px 18px;
+    border-bottom: 1px solid var(--obsidian-border);
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    background: rgba(0,0,0,0.2);
+  }
+
+  .chapter-num-block {
+    flex-shrink: 0;
+  }
+
+  .chapter-num-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .chapter-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--gold);
+    opacity: 0.4;
+  }
+
+  .chapter-title-block {
+    flex: 1;
+    padding-bottom: 4px;
+  }
+
+  .chapter-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+
+  .chapter-domain {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+  }
+
+  .chapter-body {
+    padding: 24px 44px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--obsidian-border) transparent;
+    flex: 1;
+  }
+
+  .chapter-body::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  .chapter-body::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .chapter-body::-webkit-scrollbar-thumb {
+    background: var(--obsidian-border);
+    border-radius: 2px;
+  }
+
+  .chapter-body p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14.5px;
+    font-weight: 400;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .chapter-body p:first-child {
+    color: var(--text-primary);
+    font-size: 15px;
+  }
+
+  .chapter-body p:first-child::first-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 600;
+    color: var(--gold);
+    float: left;
+    line-height: 0.8;
+    margin-right: 6px;
+    margin-top: 6px;
+  }
+
+  .bluf-block {
+    background: var(--gold-trace);
+    border-left: 2px solid var(--gold-dim);
+    padding: 12px 16px;
+    margin-bottom: 20px;
+  }
+
+  .bluf-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .bluf-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ========== PAGE FOOTER ========== */
+  .page-footer {
+    padding: 12px 44px;
+    border-top: 1px solid var(--obsidian-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(0,0,0,0.2);
+  }
+
+  .footer-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  .footer-brand span {
+    color: var(--gold-dim);
+  }
+
+  .footer-classification {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  /* ========== NOTES PAGE ========== */
+  .notes-body {
+    padding: 20px 44px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--obsidian-border) transparent;
+  }
+
+  .notes-body::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  .notes-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--obsidian-border);
+  }
+
+  .note-entry {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 8px;
+    margin-bottom: 10px;
+    align-items: start;
+  }
+
+  .note-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--gold-dim);
+    text-align: right;
+    padding-top: 1px;
+  }
+
+  .note-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    font-style: italic;
+  }
+
+  /* ========== CLOSING PAGE ========== */
+  .closing-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+    text-align: center;
+    position: relative;
+  }
+
+  .closing-page::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(200,169,110,0.05) 0%, transparent 70%);
+  }
+
+  .closing-seal {
+    width: 56px;
+    height: 56px;
+    border: 1px solid var(--gold-dim);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .closing-seal::before {
+    content: 'QA';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+  }
+
+  .closing-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-muted);
+    max-width: 400px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  .closing-rule {
+    width: 160px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+    margin-bottom: 20px;
+  }
+
+  .closing-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .closing-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  /* ========== NAVIGATION ========== */
+  .nav-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 52px;
+    background: rgba(10,12,16,0.97);
+    border-top: 1px solid var(--obsidian-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+  }
+
+  .nav-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 20px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    gap: 8px;
+  }
+
+  .nav-btn:hover:not(:disabled) {
+    color: var(--gold);
+  }
+
+  .nav-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+
+  .nav-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .nav-center {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 32px;
+    border-left: 1px solid var(--obsidian-border);
+    border-right: 1px solid var(--obsidian-border);
+    height: 100%;
+  }
+
+  .nav-page-indicator {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    min-width: 90px;
+    text-align: center;
+  }
+
+  .nav-dots {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .nav-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--obsidian-border);
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    padding: 0;
+  }
+
+  .nav-dot.active {
+    background: var(--gold);
+    transform: scale(1.3);
+  }
+
+  .nav-dot:hover {
+    background: var(--gold-dim);
+  }
+
+  /* ========== TOC SIDEBAR ========== */
+  .toc-sidebar {
+    position: fixed;
+    top: 44px;
+    left: -280px;
+    width: 280px;
+    bottom: 52px;
+    background: rgba(10,12,16,0.98);
+    border-right: 1px solid var(--obsidian-border);
+    z-index: 90;
+    transition: left 0.3s ease;
+    overflow-y: auto;
+    padding: 20px;
+    backdrop-filter: blur(20px);
+  }
+
+  .toc-sidebar.open {
+    left: 0;
+  }
+
+  .sidebar-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--obsidian-border);
+  }
+
+  .sidebar-entry {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(31,36,48,0.5);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .sidebar-entry:hover .sidebar-ch-num {
+    color: var(--gold);
+  }
+
+  .sidebar-entry:hover .sidebar-ch-title {
+    color: var(--text-primary);
+  }
+
+  .sidebar-entry.current .sidebar-ch-num {
+    color: var(--gold);
+  }
+
+  .sidebar-entry.current .sidebar-ch-title {
+    color: var(--text-primary);
+  }
+
+  .sidebar-ch-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    min-width: 28px;
+    padding-top: 2px;
+    transition: color 0.2s;
+  }
+
+  .sidebar-ch-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.4;
+    transition: color 0.2s;
+  }
+
+  /* ========== SIDEBAR TOGGLE ========== */
+  .sidebar-toggle {
+    position: fixed;
+    top: 52px;
+    left: 12px;
+    z-index: 95;
+    background: var(--obsidian-mid);
+    border: 1px solid var(--obsidian-border);
+    color: var(--text-muted);
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .sidebar-toggle:hover {
+    color: var(--gold);
+    border-color: var(--gold-dim);
+  }
+
+  /* ========== KEYBOARD HINT ========== */
+  .kbd-hint {
+    position: fixed;
+    top: 52px;
+    right: 12px;
+    z-index: 95;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .kbd {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    background: var(--obsidian-mid);
+    border: 1px solid var(--obsidian-border);
+    padding: 2px 6px;
+    text-transform: uppercase;
+  }
+
+  .kbd-label {
+    font-family: 'Barlow', sans-serif;
+    font-size: 9px;
+    color: var(--text-muted);
+    margin-right: 4px;
+  }
+
+  /* Mobile */
+  @media (max-width: 800px) {
+    :root {
+      --page-width: 100vw;
+      --page-height: calc(100vh - 96px);
+    }
+    .viewer { width: 100vw; }
+    .top-bar-center { display: none; }
+    .kbd-hint { display: none; }
+    .chapter-header { padding: 14px 20px 12px; }
+    .chapter-body { padding: 16px 20px; }
+    .page-footer { padding: 10px 20px; }
+    .chapter-body p { font-size: 13.5px; }
+    .chapter-title { font-size: 18px; }
+    .chapter-body p:first-child::first-letter { font-size: 42px; }
+    .notes-body { padding: 14px 20px; }
+    .toc-page { padding: 20px; }
+    .cover { padding: 28px 20px; }
+    .cover-title { font-size: 32px; }
+    .pdf-download-btn { display: none; }
+  }
+
+  /* ========== PDF DOWNLOAD BUTTON ========== */
+  .pdf-download-btn {
+    position: fixed;
+    top: 52px;
+    right: 54px;
+    z-index: 95;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--obsidian-mid);
+    border: 1px solid var(--gold-dim);
+    color: var(--gold);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 5px 12px;
+    transition: all 0.2s;
+  }
+
+  .pdf-download-btn:hover {
+    background: var(--gold-trace);
+    border-color: var(--gold);
+    color: var(--gold-light);
+  }
+
+  /* ========== CLOSING PAGE LINKS ========== */
+  .closing-logo {
+    width: 180px;
+    height: auto;
+    opacity: 0.85;
+    margin-bottom: 22px;
+    display: block;
+  }
+
+  .closing-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .closing-link-btn {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-muted);
+    border: 1px solid var(--obsidian-border);
+    padding: 4px 10px;
+    transition: all 0.2s;
+    background: transparent;
+  }
+
+  .closing-link-btn:hover {
+    color: var(--gold);
+    border-color: var(--gold-dim);
+    background: var(--gold-trace);
+  }
+</style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="top-bar">
+  <div class="top-bar-brand">Quanta Analytica &nbsp;|&nbsp; MNS Consulting</div>
+  <div class="top-bar-center">Conflict Systems // Positive Peace</div>
+  <div class="top-bar-meta">QAP™ / OSPREY &nbsp;·&nbsp; April 2026 &nbsp;·&nbsp; UNCLASSIFIED</div>
+</div>
+
+<!-- Sidebar Toggle -->
+<button class="sidebar-toggle" id="sidebarToggle" title="Table of Contents" aria-label="Toggle Table of Contents">
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <line x1="2" y1="3.5" x2="12" y2="3.5" stroke="currentColor" stroke-width="1"/>
+    <line x1="2" y1="7" x2="12" y2="7" stroke="currentColor" stroke-width="1"/>
+    <line x1="2" y1="10.5" x2="9" y2="10.5" stroke="currentColor" stroke-width="1"/>
+  </svg>
+</button>
+
+<!-- Keyboard hint -->
+<div class="kbd-hint">
+  <span class="kbd-label">Navigate:</span>
+  <span class="kbd">← →</span>
+</div>
+
+<!-- TOC Sidebar -->
+<div class="toc-sidebar" id="tocSidebar">
+  <div class="sidebar-title">Contents</div>
+  <!-- filled by JS -->
+</div>
+
+<!-- Main Viewer -->
+<div class="viewer">
+  <div class="pages-container" id="pagesContainer">
+    <!-- PAGES INJECTED BY JS -->
+  </div>
+</div>
+
+<!-- Navigation -->
+<div class="nav-bar">
+  <button class="nav-btn" id="btnFirst" title="First page">
+    <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="2" y1="2" x2="2" y2="12" stroke="currentColor" stroke-width="1.2"/>
+      <polyline points="12,2 4,7 12,12" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  <button class="nav-btn" id="btnPrev">
+    <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polyline points="10,2 4,7 10,12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+    </svg>
+    Prev
+  </button>
+  <div class="nav-center">
+    <div class="nav-dots" id="navDots"></div>
+    <div class="nav-page-indicator" id="pageIndicator">1 / 1</div>
+  </div>
+  <button class="nav-btn" id="btnNext">
+    Next
+    <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polyline points="4,2 10,7 4,12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  <button class="nav-btn" id="btnLast" title="Last page">
+    <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="12" y1="2" x2="12" y2="12" stroke="currentColor" stroke-width="1.2"/>
+      <polyline points="2,2 10,7 2,12" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+    </svg>
+  </button>
+</div>
+
+<script>
+// ============================================================
+//  CONTENT DATA
+// ============================================================
+const chapters = [
+  {
+    num: 1,
+    title: "The Two Failures",
+    bluf: "State fragility and information warfare are not separate emergencies. They are two expressions of a single systemic failure — one manifesting in institutional degradation, the other in the degradation of shared informational reality. Each feeds, reveals, and reproduces the other.",
+    body: `State collapse and information warfare are often narrated as if they belong to different worlds. One is discussed in the language of institutions — sovereignty, administrative capacity, coercive order, fiscal reach, political legitimacy. The other is framed through media systems: disinformation, influence operations, narrative capture, cognitive pressure, and the strategic manipulation of attention. In conventional analysis, these appear as adjacent but separable crises. A state weakens, and hostile narratives move in. That distinction can be useful at the level of bureaucratic organization. It is less persuasive at the level of systems diagnosis.
+
+The difficulty begins when the two crises repeatedly appear together — not incidentally, but structurally. The OECD's multidimensional fragility framework is explicit: fragility is not exhausted by state weakness in the narrow administrative sense; it extends across political, security, economic, societal, environmental, and human dimensions. Once fragility is understood in that wider way, the information sphere can no longer be treated as external to the problem.
+
+This chapter advances a stricter claim. State fragility and information warfare are not best understood as two separate emergencies unfolding side by side. They are more accurately read as two expressions of a single systemic failure. One appears in the degradation of institutions. The other in the degradation of shared informational reality. Neither is wholly reducible to the other. Yet each feeds, reveals, and reproduces the other. When this occurs, the distinction between institutional breakdown and informational disorder remains descriptively possible, but analytically insufficient.
+
+The argument begins with a refusal of false sequencing. It is too simple to say that institutions fail first and narratives follow. The first public fracture may only be the first moment when a much older weakness becomes legible. By the time the crisis becomes visible, the two failures are already inside one another.`,
+    notes: [
+      "OECD, States of Fragility 2025 (Paris: OECD Publishing, 2025).",
+      "OECD, Survey on Drivers of Trust in Public Institutions: 2024 Results, chapter 'Trust and Information Integrity.'",
+      "World Bank, World Development Report 2017: Governance and the Law (Washington, DC: World Bank, 2017).",
+      "U.S. Government Accountability Office, Information Environment: Opportunities and Threats, GAO-22-104714 (2022).",
+      "OECD, Governance Responses to Disinformation (Paris: OECD Publishing, 2020).",
+      "Institute for Economics and Peace, Positive Peace Report 2024."
+    ]
+  },
+  {
+    num: 2,
+    title: "What We Mean by Fragile",
+    bluf: "Fragility must be distinguished from weakness and failure. It is not institutional absence but structural thinning — the condition that makes collapse thinkable. Where load-bearing capacity has eroded, even formally intact systems cannot absorb further strain.",
+    body: `Policy discourse often treats fragility as if it were self-evident. A state is called fragile when violence rises, elections fail, ministries stall, or authority looks thin. That usage is convenient. It is also analytically weak. The result is predictable: interventions are designed against the most visible symptom rather than the structural condition producing it.
+
+The first distinction is between weakness and fragility. State weakness is partial erosion of capacity — reduced performance in one or more domains without assuming systemic destabilization. Fragility is narrower and more consequential. It refers to deterioration in the system's ability to manage, absorb, and redistribute stress across institutions, communities, and time. Weakness concerns impaired performance. Fragility concerns impaired endurance.
+
+Failure is different again. A failed state has lost core governance functions to a degree that central authority no longer reliably provides security, enforces rules, or sustains minimal political legitimacy. Collapse goes further still — systemic dissolution in which central institutions no longer operate as an organizing authority.
+
+Fragility should be treated as a gradient, not an event. It develops through the progressive erosion of load-bearing capacity — the ability of a system to continue producing functional output under increasing strain. A ministry may still exist, courts may still sit, and currency may still circulate, while the system's capacity to absorb another shock has already narrowed sharply. Formal architecture survives. Structural tolerance does not.
+
+The Positive Peace framework helps map that condition with unusual clarity. Its eight pillars identify structural variables that shape whether a society can absorb shocks without political and institutional unraveling. The pillars are not isolated traits. The degradation of one rarely remains confined. Corruption weakens government performance and public trust. Distorted information degrades cooperation. Unequal distribution sharpens political exclusion. Fragility is the cumulative reduction of structural support across multiple load-bearing variables.`,
+    notes: [
+      "OECD, States of Fragility 2025.",
+      "Cebotari et al., State Fragility: Towards a Conceptual Framework. IMF Working Paper WP/25/205 (2025).",
+      "Rotberg, Robert I. 'Failed States, Collapsed States, Weak States.' Brookings Institution Press. 2003.",
+      "Di John, Jonathan. Conceptualising the Causes and Consequences of Failed States. LSE Crisis States Working Paper No. 25 (2008).",
+      "Institute for Economics and Peace, Positive Peace Report 2024.",
+      "Institute for Economics and Peace, 'Positive Peace' (2026)."
+    ]
+  },
+  {
+    num: 3,
+    title: "The Information Environment as Infrastructure",
+    bluf: "The information environment is not adjacent to governance — it is one of the conditions through which governance becomes intelligible, credible, and socially operational. Its degradation travels outward into administration, legitimacy, compliance, and security.",
+    body: `Infrastructure is easiest to notice when it breaks. Roads announce themselves in closure. Currency announces itself in panic. Courts announce themselves when judgment no longer settles dispute but extends it. In ordinary time, infrastructure recedes from attention because its real function is not spectacle but possibility.
+
+The information environment belongs in that category. It is often discussed as though adjacent to governance: a domain of media, platforms, messaging, and public opinion that sits near the state without being constitutive of it. That framing is too weak. Information is not simply what circulates around institutions. It is one of the conditions through which institutions become intelligible to the people expected to obey, contest, trust, or repair them.
+
+This is a structural claim, not a metaphorical one. A court depends on more than judges and statutes; it depends on a public information environment in which rulings can be known, interpreted, and distinguished from fabrication. Governance is no different. The state can only act coherently when decisions, intentions, and limits are communicated through channels that retain enough credibility to organize public response.
+
+Digitization has made degradation structurally easier in at least three ways. The first is speed asymmetry between truth and rumor. The second is the platform incentive structure that rewards conflict-amplifying content. The third is the erosion of epistemic common ground. These are not separate pathologies. They are mutually reinforcing fragility vectors within one information architecture.
+
+An information environment with high epistemic load-bearing capacity does not eliminate falsehood or manipulation. It does preserve enough credibility, plurality, verifiability, and corrective function for public institutions to remain governable under strain. The injury of its degradation is therefore not confined to discourse. It travels outward into administration, legitimacy, compliance, and security.`,
+    notes: [
+      "Institute for Economics and Peace, Positive Peace Report 2024.",
+      "OECD, Survey on Drivers of Trust: 2024 Results, chapter 5, 'Trust and Information Integrity.'",
+      "U.S. Government Accountability Office, GAO-22-104714 (2022).",
+      "United Nations, Information Integrity on Digital Platforms, Policy Brief No. 8 (New York, 2023).",
+      "OECD, Facts not Fakes: Tackling Disinformation (Paris: OECD Publishing, 2024).",
+      "Vosoughi, Roy, and Aral, 'The Spread of True and False News Online,' Science 359 (2018).",
+      "Milli et al., 'Engagement, User Satisfaction, and the Amplification of Divisive Content,' PNAS Nexus 4 (2025).",
+      "Kavanagh and Rich, Truth Decay (RAND Corporation, 2018)."
+    ]
+  },
+  {
+    num: 4,
+    title: "The Feedback Architecture of Collapse",
+    bluf: "Institutional weakness and informational disorder reinforce one another through three interlocking feedback loops — delegitimization, capability erosion, and grievance amplification — that together make deterioration cumulative rather than episodic.",
+    body: `The preceding chapters established the terms of diagnosis. Fragility was defined not as visible disorder alone, but as declining systemic resilience. The information environment was defined as one of the conditions through which governance becomes intelligible and socially operational. This chapter shows how these conditions interact. The point is not simply that institutional weakness and informational disorder coexist. It is that they reinforce one another through recurrent feedback structures that make deterioration cumulative.
+
+The first mechanism is delegitimization. Institutions do not lose legitimacy only when they cease to exist. They lose it when they cease to persuade the population that authority remains capable, fair enough to obey, and coherent enough to trust under strain. In fragile settings, that erosion often begins with performance failure in ordinary governance functions. The gap between official claim and lived experience becomes visible — and that gap is politically consequential because it creates demand for alternative explanations.
+
+The second mechanism is capability erosion. Fragility weakens the state's ability to maintain the informational functions through which modern governance monitors, interprets, and answers narrative threats. When oversight, response, and verification functions deteriorate, the public arena becomes easier to dominate, distort, and saturate. The state loses not only authority over events, but authority over interpretation.
+
+The third mechanism is grievance amplification. Fragile states rarely begin as blank surfaces. They contain older fracture lines — ethnic exclusion, regional neglect, uneven development, predatory policing. Information operations do not create these fractures; they identify, target, and transform them from background resentment into active political cleavage.
+
+These loops do not operate in sequence. Delegitimization, capability erosion, and grievance amplification move simultaneously and feed one another. Once multiple loops begin operating at once, deterioration stops being linear. It becomes cascading. Collapse is not best understood as a single terminal event — it is better understood as the point at which these mutually reinforcing loops have reduced the system's capacity to arrest its own decline.`,
+    notes: [
+      "OECD, States of Fragility 2025.",
+      "Institute for Economics and Peace, Positive Peace Report 2024.",
+      "World Bank, World Development Report 2017.",
+      "OECD, Facts not Fakes (2024).",
+      "U.S. Government Accountability Office, GAO-22-104714.",
+      "United Nations, Information Integrity Policy Brief No. 8.",
+      "Cederman, Gleditsch, and Buhaug, Inequality, Grievances, and Civil War (Cambridge, 2013).",
+      "Stewart, Horizontal Inequalities as a Cause of Conflict (World Bank, 2010)."
+    ]
+  },
+  {
+    num: 5,
+    title: "Violence That Predates the Bullet",
+    bluf: "By the time a body falls, the argument has usually been underway for years. Structural violence — embedded in the ordinary arrangement of institutions — teaches populations where care is absent and which lives the system has already priced below repair. Fragility is often its operational expression.",
+    body: `By the time a body falls, the argument has usually been underway for years. The school that never opened on time, the clinic that ran out of medicine before the month did, the salary delayed long enough to become humiliation — these are not yet the scenes most people mean when they say violence. They leave no crater. They do something quieter and often more durable. They teach a population, slowly and repeatedly, where care is absent.
+
+Johan Galtung's distinction between direct and structural violence remains analytically necessary. Violence is present when human beings are influenced in ways that keep their actual realizations below their potential. Direct violence is visible: an assault, an execution, a bombardment. Structural violence is different. It is embedded in the ordinary arrangement of institutions and opportunities. Its force lies precisely in the fact that it often lacks a single obvious perpetrator.
+
+Fragility is not simply the weakening of a state in the abstract. It is, more often, the cumulative operational expression of structural violence. A system becomes fragile when risk rises faster than resilience, when institutions lose the capacity to absorb strain without transmitting damage downward, and when ordinary governance ceases to function as protection and begins functioning as exposure.
+
+This sharpens the link between structural violence and information warfare. Information operations are rarely most powerful where they must invent injury from nothing. They are strongest where the wound already exists and public language for it has become unstable or strategically available. The narrative does not create the underlying grievance. It names it, selects it, frames it, and redirects it toward a target. Here information warfare feeds on the moral residue of structural violence.
+
+The central question emerges with uncomfortable force: who is named as the enemy when the actual adversary is a system? Systems are notoriously difficult to hate with precision. They are diffuse, procedural, layered. When structural violence becomes politically legible without becoming structurally intelligible, it tends to produce named enemies in place of diagnosed systems.`,
+    notes: [
+      "Galtung, Johan. 'Violence, Peace, and Peace Research.' Journal of Peace Research 6.3 (1969).",
+      "Institute for Economics & Peace, Positive Peace Report 2024.",
+      "OECD, States of Fragility 2025.",
+      "World Bank, World Development Report 2017."
+    ]
+  },
+  {
+    num: 6,
+    title: "Information Warfare as a Fragility Accelerant",
+    bluf: "Information warfare is most consequential not in total collapse, but in the declining state — where institutions still matter enough to be attacked and public belief still matters enough to be manipulated. Three mechanisms accelerate this: influence operations, information flooding, and identity-based mobilization.",
+    body: `Information warfare is often described as most dangerous where the state is weakest. That formulation is directionally correct and structurally incomplete. The most permissive environment for information warfare is rarely total collapse. A fully collapsed order offers little institutional credibility left to corrode. The more useful operating environment is the declining state — one in which institutions still function unevenly, legitimacy is contested rather than extinguished, and the social contract is fraying without having fully dissolved. That is where information operations can do their most consequential work.
+
+Influence operations are best understood as targeted interventions into contested belief environments. Their function is precision interference — aimed at widening pre-existing fractures around specific institutions, leaders, or civic arrangements. In declining systems, they gain traction because the cost of plausibility is lower. A claim about electoral manipulation, bureaucratic corruption, or elite betrayal need not be fully true to be socially believable.
+
+A second mechanism is information flooding. Here persuasion is no longer the primary objective. Exhaustion is. RAND's "firehose of falsehood" analysis identifies the strategic value of volume, repetition, multichannel delivery, and rapid circulation. High-volume campaigns are difficult to counter not because they spread falsehood, but because they compress the time available for verification and overload the audience's capacity to discriminate. The more important effect is often judgment collapse rather than belief change.
+
+The third mechanism is identity-based mobilization. This is not the manufacture of grievance from nothing. It is the reframing of structural grievance through exclusive communal narratives. What the operation changes is the interpretive grammar — recoding injury in ways that substitute group identity for civic identity and make political resolution appear either impossible or illegitimate.
+
+These mechanisms are not sequential stages. They run simultaneously and interact. Influence operations weaken institutional credibility. Flooding makes corrective authority harder to establish. Identity mobilization offers emotionally coherent alternatives to a public exhausted by ambiguity.`,
+    notes: [
+      "OECD, Facts not Fakes (2024).",
+      "Institute for Economics & Peace, Positive Peace Report 2024.",
+      "U.S. Government Accountability Office, GAO-22-104714.",
+      "Institute for Economics & Peace, Positive Peace materials (2024).",
+      "Paul and Matthews, The Russian 'Firehose of Falsehood' Propaganda Model (RAND, 2016).",
+      "United Nations, Information Integrity Policy Brief No. 8."
+    ]
+  },
+  {
+    num: 7,
+    title: "Positive Peace as a Systems Response",
+    bluf: "Positive Peace is best understood not as post-conflict repair but as a counter-architecture to fragility. Its eight pillars are mutually reinforcing structural conditions that determine whether a political order can absorb shocks without converting them into self-reinforcing decline.",
+    body: `Positive Peace is best understood here not as an aspirational vocabulary for post-conflict repair, but as a systems architecture for resilience under stress. Its analytical value lies in shifting attention away from visible crisis and toward the underlying conditions that determine whether a political order can absorb shocks without converting them into self-reinforcing decline.
+
+A well-functioning government matters not because of administrative elegance, but because it determines whether institutions can convert authority into predictable, credible, and adaptive action under stress. A sound business environment matters because economically, this pillar concerns the degree to which a society permits productive coordination through predictable rules rather than arbitrary extraction. Equitable distribution of resources is directly tied to grievance amplification — where resources are distributed with sufficient fairness, grievance still exists, but it is less easily framed as evidence that the system itself is organized around selective abandonment.
+
+Acceptance of the rights of others addresses a different part of the feedback architecture — it interrupts grievance amplification at the level of civic interpretation. Free flow of information is perhaps the most obvious bridge between Positive Peace and the essay's earlier argument: this pillar concerns whether information can move through society in ways that preserve accountability, expose abuse, and maintain a minimally shared factual environment.
+
+Low levels of corruption complete the architecture because corruption is not merely a moral defect or administrative inefficiency. It is a cross-system solvent. In feedback terms, corruption energizes all three collapse loops at once. It deepens delegitimization, accelerates capability erosion, and intensifies grievance amplification.
+
+The core claim of this chapter: Positive Peace is not an inventory of good outcomes. It is the structural architecture through which a political order generates resilience as a self-reinforcing property. Where the architecture is sufficiently intact, shocks remain shocks. They do not automatically become collapse pathways.`,
+    notes: [
+      "Institute for Economics & Peace, Positive Peace Report 2024.",
+      "Institute for Economics & Peace, 'Positive Peace Report.'",
+      "Institute for Economics & Peace, Positive Peace and Systems Thinking (2024).",
+      "World Bank, World Development Report 2017.",
+      "OECD, States of Fragility 2025.",
+      "OECD, Survey on Drivers of Trust: 2024 Results."
+    ]
+  },
+  {
+    num: 8,
+    title: "Structured Analysis as Epistemological Resistance",
+    bluf: "Information warfare becomes strategically potent when the standards by which claims are weighed begin to fail. Structured Analytic Techniques represent more than professional tradecraft — they are formalized procedures for maintaining proportional judgment under adversarial conditions. They are epistemological resistance.",
+    body: `The crisis at the center of this essay is not only a crisis of security. It is a crisis of judgment. Information warfare becomes strategically potent not simply when falsehood circulates, but when the standards by which claims are weighed begin to fail. The contest is therefore epistemological before it is operational. Who controls the guns matters. Who controls the credibility of claims matters earlier.
+
+Structured Analytic Techniques are formalized cognitive procedures developed to reduce analytic error, discipline inference, and preserve proportionality between evidence and conclusion under conditions of uncertainty. Analysis of Competing Hypotheses, Key Assumptions Checks, Red Team Analysis, and Indicators and Warnings all share the same underlying commitment: judgment should be auditable, assumptions should be exposed, and inference should be made visible enough to challenge.
+
+Their significance extends beyond the intelligence community. SATs are also a model for civic epistemology — the shared standards through which a political community evaluates claims, assigns credibility, and makes collective judgments. Democratic systems cannot function on sincerity alone. When those procedures thin, claims no longer compete mainly on evidentiary strength. They compete on volume, emotional resonance, tribal fit, and narrative speed.
+
+SATs can interrupt delegitimization cycles — not by manufacturing trust, but by making the evidentiary basis of institutional claims more explicit and therefore more challengeable in disciplined form. They can slow capability-erosion loops by providing a disciplined alternative to reactive cognition. They can reduce grievance-amplification dynamics by forcing a more disciplined separation between causal explanation and mobilizing story.
+
+The warning follows directly: epistemic capacity must be built before the conditions for building it are gone. A society that cannot sustain such procedures is already losing more than informational order. It is losing one of the preconditions for self-government.`,
+    notes: [
+      "OECD, Facts not Fakes (2024).",
+      "OECD, Survey on Drivers of Trust: 2024 Results.",
+      "Institute for Economics & Peace, Positive Peace Report 2024.",
+      "Pherson and Heuer, Structured Analytic Techniques for Intelligence Analysis, 3rd ed. (CQ Press, 2019).",
+      "Heuer, Psychology of Intelligence Analysis (CIA Center for the Study of Intelligence, 1999)."
+    ]
+  },
+  {
+    num: 9,
+    title: "Toward Resilient Systems",
+    bluf: "Convergent crises require convergent repair across three connected layers: structural repair of governance conditions, information ecosystem strengthening, and investment in analytic capacity. Each layer supports the others; isolated improvements will be consumed by unresolved weaknesses elsewhere.",
+    body: `The preceding chapters argued that fragility and information warfare are not separate problems converging by accident. They are reciprocal degradations within the same system. A constructive response must begin with a refusal of simplification. It is not enough to defend institutions while ignoring the information environment through which institutions are interpreted. Convergent crises require convergent repair.
+
+The first requirement is structural. Fragility is not repaired at the level of messaging. A well-functioning government, equitable distribution of resources, free flow of information, acceptance of the rights of others, low levels of corruption, human capital, a sound business environment, and good relations with neighbors are not parallel aspirations. They are interdependent supports.
+
+Where structural deficits remain severe, each tactical improvement is likely to underperform. Information disorder becomes most politically dangerous when public institutions have already lost enough credibility that corrective signals arrive weakened. The deepest layer of intervention concerns the restoration of load-bearing legitimacy. Systems can survive imperfection. They struggle to survive patterned inequity, extractive corruption, selective protection, and chronic administrative unreliability once those conditions become socially legible.
+
+A serious resilience framework must also include a second layer directed specifically at the conditions under which claims circulate, gain credibility, and shape collective judgment. The purpose is not to restore a fictive information purity. It is to increase the epistemic carrying capacity of the public environment — preserving enough verifiability, plurality, accountability, and corrective function that manipulation cannot easily become the dominant logic of public interpretation.
+
+The framework can now be named: resilience against convergent crises requires work across three connected layers — structural repair, information ecosystem strengthening, and analytic capacity investment. Their interdependence is the most important point. Partial gains matter. But a framework for convergent crises must acknowledge that isolated improvements can be consumed by unresolved weaknesses elsewhere in the system.`,
+    notes: [
+      "OECD, Facts not Fakes (2024).",
+      "OECD, Survey on Drivers of Trust: 2024 Results.",
+      "Institute for Economics & Peace, Positive Peace Report 2024.",
+      "World Bank, World Development Report 2017.",
+      "OECD, States of Fragility 2025."
+    ]
+  },
+  {
+    num: 10,
+    title: "What Clarity Costs",
+    bluf: "Clarity is not comfort — it is infrastructure. To see a system clearly is to lose the mercy of simplification. The slow work of structural repair, informational integrity, and disciplined analysis will often feel insufficient while being made, because collapse is noisy and construction is usually quiet.",
+    body: `The first loss in a collapsing system is not always territory, nor law, nor even trust in its most visible form. Often it is proportion. Things stop appearing at their true scale. A rumor arrives dressed as revelation. A bureaucratic failure is dismissed as temporary when it is structural. Institutions continue in outline after much of their load-bearing capacity has thinned. The system remains legible enough to reassure and illegible enough to mislead.
+
+To see that clearly is not comforting. Clarity is often spoken of as though it were relief — as though naming the structure of a problem somehow reduces its weight. More often, in systems like these, it does the opposite. It removes the small mercies of simplification. The analyst loses the luxury of pretending that propaganda alone produced the fracture, or that governance alone can repair it. The institution loses the luxury of treating information disorder as external noise.
+
+Systems designed around selective advantage do not welcome disciplined seeing. They absorb ambiguity when ambiguity protects power. They reward speed when speed outruns verification. They prefer named enemies to diagnosed structures because structures require longer repair and more honest accounting. Under such conditions, clear analysis is opposed not only by falsehood but by incentive.
+
+Clarity, here, is not comfort. It is infrastructure. It sits beneath decision, beneath public reasoning, beneath the ability of an institution to know what kind of crisis it is actually in. When that infrastructure is weak, every disturbance becomes harder to interpret, every corrective act more vulnerable to distortion. A system may still speak, but it no longer knows how to hear itself accurately.
+
+The closing question is not whether collapse will occur somewhere, or whether information environments will continue to be weaponized. Both are already part of the world we inhabit. The harder question is whether the tools for understanding these processes can be built faster than the processes themselves are deepening — whether institutions can learn transparency before opacity becomes instinct, whether analysis can remain proportionate under pressure, and whether the slow work of structural repair can begin before narrative exploitation makes every grievance available for capture.`,
+    notes: []
+  }
+];
+
+// ============================================================
+//  BUILD PAGES
+// ============================================================
+const container = document.getElementById('pagesContainer');
+const pages = [];
+
+function addPage(el) {
+  pages.push(el);
+  container.appendChild(el);
+}
+
+// --- COVER ---
+const coverEl = document.createElement('div');
+coverEl.className = 'page';
+coverEl.innerHTML = `
+  <div class="cover">
+    <div class="cover-rule-top"></div>
+    <div class="cover-series">Quanta Analytica &nbsp;//&nbsp; MNS Consulting &nbsp;//&nbsp; GSC StratCom</div>
+    <div class="cover-title">The Architecture<br>of <em>Collapse</em></div>
+    <div class="cover-subtitle">Structural Drivers of Systemic Fragility<br>in High-Complexity Environments</div>
+    <div class="cover-rule-mid"></div>
+    <div class="cover-author">M. Nuri Shakoor</div>
+    <div class="cover-meta-row">
+      <span class="cover-meta-item">QAP™ / OSPREY</span>
+      <span class="cover-meta-sep"></span>
+      <span class="cover-meta-item">April 2026</span>
+      <span class="cover-meta-sep"></span>
+      <span class="cover-meta-item">Conflict Systems // Positive Peace</span>
+    </div>
+    <div class="cover-rule-bottom"></div>
+    <div class="cover-classification">UNCLASSIFIED &nbsp;//&nbsp; Working Draft &nbsp;//&nbsp; Not for External Distribution Without Authorization</div>
+  </div>
+`;
+addPage(coverEl);
+
+// --- TOC ---
+const tocEl = document.createElement('div');
+tocEl.className = 'page toc-page';
+const tocEntries = chapters.map(ch => `
+  <div class="toc-entry" data-chapter="${ch.num}" onclick="goToChapter(${ch.num})">
+    <span class="toc-ch-num">Ch. ${ch.num}</span>
+    <span class="toc-ch-title">${ch.title}</span>
+  </div>
+`).join('');
+
+tocEl.innerHTML = `
+  <div class="page-header">
+    <span class="page-header-label">Contents</span>
+    <div class="page-header-rule"></div>
+    <span class="page-header-page">Page 2</span>
+  </div>
+  <div>
+    <div class="toc-title-block">
+      <div class="toc-heading">The Architecture of <em>Collapse</em></div>
+      <div class="toc-subheading">A Systems-Analytic Essay on the Convergence of State Fragility and Digital Conflict</div>
+    </div>
+    <div class="toc-grid">${tocEntries}</div>
+  </div>
+  <div class="page-footer">
+    <span class="footer-brand"><span>Quanta Analytica</span> &nbsp;//&nbsp; MNS Consulting</span>
+    <span class="footer-classification">UNCLASSIFIED // QAP™</span>
+  </div>
+`;
+addPage(tocEl);
+
+// --- CHAPTER PAGES + NOTES ---
+chapters.forEach((ch, idx) => {
+  // Chapter page
+  const chEl = document.createElement('div');
+  chEl.className = 'page chapter-page';
+  chEl.dataset.chapter = ch.num;
+
+  const paragraphs = ch.body.trim().split(/\n\n+/).map(p => `<p>${p.trim()}</p>`).join('');
+
+  chEl.innerHTML = `
+    <div class="chapter-header">
+      <div class="chapter-num-block">
+        <div class="chapter-num-label">Chapter</div>
+        <div class="chapter-num">${String(ch.num).padStart(2,'0')}</div>
+      </div>
+      <div class="chapter-title-block">
+        <div class="chapter-title">${ch.title}</div>
+        <div class="chapter-domain">Conflict Systems // Positive Peace &nbsp;·&nbsp; QAP™ / OSPREY</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="bluf-block">
+        <div class="bluf-label">Assessment Summary</div>
+        <div class="bluf-text">${ch.bluf}</div>
+      </div>
+      ${paragraphs}
+    </div>
+    <div class="page-footer">
+      <span class="footer-brand"><span>Quanta Analytica</span> &nbsp;//&nbsp; MNS Consulting</span>
+      <span class="footer-classification">UNCLASSIFIED // QAP™</span>
+    </div>
+  `;
+  addPage(chEl);
+
+  // Notes page (only if notes exist)
+  if (ch.notes && ch.notes.length > 0) {
+    const notesEl = document.createElement('div');
+    notesEl.className = 'page chapter-page';
+
+    const notesList = ch.notes.map((n, i) => `
+      <div class="note-entry">
+        <div class="note-num">${i + 1}.</div>
+        <div class="note-text">${n}</div>
+      </div>
+    `).join('');
+
+    notesEl.innerHTML = `
+      <div class="chapter-header">
+        <div class="chapter-num-block">
+          <div class="chapter-num-label">Notes</div>
+          <div class="chapter-num">${String(ch.num).padStart(2,'0')}</div>
+        </div>
+        <div class="chapter-title-block">
+          <div class="chapter-title">${ch.title} — References</div>
+          <div class="chapter-domain">Sourced Citations // Analytic Tradecraft</div>
+        </div>
+      </div>
+      <div class="notes-body">
+        <div class="notes-title">Chapter ${ch.num} References</div>
+        ${notesList}
+      </div>
+      <div class="page-footer">
+        <span class="footer-brand"><span>Quanta Analytica</span> &nbsp;//&nbsp; MNS Consulting</span>
+        <span class="footer-classification">UNCLASSIFIED // QAP™</span>
+      </div>
+    `;
+    addPage(notesEl);
+  }
+});
+
+// --- CLOSING PAGE ---
+const closingEl = document.createElement('div');
+closingEl.className = 'page';
+closingEl.innerHTML = `
+  <div class="closing-page">
+    <img class="closing-logo" src="https://quanta-analytica.com/quanta-analytica-mns-consulting.png" alt="Quanta Analytica | MNS Consulting" onerror="this.style.display='none'">
+    <div class="closing-text">
+      "The system does not become less dangerous because we have learned to describe it. But description, if honest enough and disciplined enough, is one of the few ways a society refuses to disappear into the stories told about it before it can still tell the truth about itself."
+      <br><br>— M. Nuri Shakoor, <em>The Architecture of Collapse</em>
+    </div>
+    <div class="closing-rule"></div>
+    <div class="closing-brand">Quanta Analytica Process™ &nbsp;//&nbsp; MNS Consulting</div>
+    <div class="closing-sub">ARAC International Inc. &nbsp;·&nbsp; Working Draft &nbsp;·&nbsp; April 2026</div>
+    <div class="closing-links">
+      <a class="closing-link-btn" href="https://quanta-analytica.com" target="_blank" rel="noopener">Quanta Analytica</a>
+      <a class="closing-link-btn" href="https://quanta-analytica.com/reports/" target="_blank" rel="noopener">Reports</a>
+      <a class="closing-link-btn" href="https://global.arac-international.org" target="_blank" rel="noopener">ARAC International</a>
+      <a class="closing-link-btn" href="https://iosi.global" target="_blank" rel="noopener">IOSI Global</a>
+      <a class="closing-link-btn" href="https://mnshakoor.com" target="_blank" rel="noopener">MNS Consulting</a>
+    </div>
+  </div>
+`;
+addPage(closingEl);
+
+// ============================================================
+//  BUILD SIDEBAR
+// ============================================================
+const sidebar = document.getElementById('tocSidebar');
+const sidebarContent = [
+  `<div class="sidebar-entry" onclick="goToPage(0)"><span class="sidebar-ch-num">Cover</span><span class="sidebar-ch-title">Title Page</span></div>`,
+  `<div class="sidebar-entry" onclick="goToPage(1)"><span class="sidebar-ch-num">TOC</span><span class="sidebar-ch-title">Table of Contents</span></div>`,
+  ...chapters.map((ch, idx) => {
+    // Find the page index for this chapter
+    return `<div class="sidebar-entry" data-chapter="${ch.num}" onclick="goToChapter(${ch.num})"><span class="sidebar-ch-num">Ch. ${ch.num}</span><span class="sidebar-ch-title">${ch.title}</span></div>`;
+  }),
+  `<div class="sidebar-entry" onclick="goToPage(pages.length - 1)"><span class="sidebar-ch-num">Close</span><span class="sidebar-ch-title">Closing</span></div>`
+].join('');
+sidebar.innerHTML = `<div class="sidebar-title">The Architecture of Collapse</div>` + sidebarContent;
+
+// ============================================================
+//  BUILD DOTS
+// ============================================================
+const dotsContainer = document.getElementById('navDots');
+// One dot per section: cover, toc, 10 chapters (+notes), closing
+// Simplify to group dots: cover, toc, chapters 1-10, closing
+const dotGroups = ['Cover', 'TOC', ...chapters.map(c => `Ch.${c.num}`), 'End'];
+dotGroups.forEach((label, i) => {
+  const dot = document.createElement('button');
+  dot.className = 'nav-dot';
+  dot.title = label;
+  dot.addEventListener('click', () => {
+    // Map group index to page index
+    if (i === 0) goToPage(0);
+    else if (i === 1) goToPage(1);
+    else if (i >= 2 && i <= 11) goToChapter(i - 1);
+    else goToPage(pages.length - 1);
+  });
+  dotsContainer.appendChild(dot);
+});
+
+// ============================================================
+//  NAVIGATION
+// ============================================================
+let currentPage = 0;
+let prevPage = -1;
+
+function updateDots() {
+  // Map current page to group
+  let groupIdx = 0;
+  if (currentPage === 0) groupIdx = 0;
+  else if (currentPage === 1) groupIdx = 1;
+  else if (currentPage === pages.length - 1) groupIdx = dotGroups.length - 1;
+  else {
+    // Find chapter
+    const chapterEl = pages[currentPage];
+    const chNum = chapterEl.dataset.chapter;
+    if (chNum) groupIdx = parseInt(chNum) + 1;
+    else groupIdx = 2; // default to first chapter group
+  }
+
+  document.querySelectorAll('.nav-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === groupIdx);
+  });
+}
+
+function updateSidebarHighlight() {
+  const chapterEl = pages[currentPage];
+  const chNum = chapterEl ? chapterEl.dataset.chapter : null;
+  document.querySelectorAll('.sidebar-entry').forEach(e => {
+    e.classList.remove('current');
+    if (chNum && e.dataset.chapter === chNum) e.classList.add('current');
+  });
+}
+
+function showPage(idx) {
+  if (idx < 0 || idx >= pages.length) return;
+
+  const direction = idx > currentPage ? 1 : -1;
+
+  if (prevPage >= 0 && prevPage !== idx) {
+    const prev = pages[prevPage];
+    prev.classList.remove('active');
+    if (direction > 0) {
+      prev.classList.add('exit-left');
+      setTimeout(() => prev.classList.remove('exit-left'), 420);
+    }
+  }
+
+  prevPage = currentPage;
+  currentPage = idx;
+
+  const curr = pages[currentPage];
+  curr.classList.remove('exit-left');
+  curr.classList.add('active');
+
+  // Update indicator
+  document.getElementById('pageIndicator').textContent = `${currentPage + 1} / ${pages.length}`;
+  document.getElementById('btnPrev').disabled = currentPage === 0;
+  document.getElementById('btnNext').disabled = currentPage === pages.length - 1;
+  document.getElementById('btnFirst').disabled = currentPage === 0;
+  document.getElementById('btnLast').disabled = currentPage === pages.length - 1;
+
+  updateDots();
+  updateSidebarHighlight();
+}
+
+function goToPage(idx) {
+  showPage(idx);
+}
+
+function goToChapter(chNum) {
+  // Find chapter page index
+  for (let i = 0; i < pages.length; i++) {
+    if (pages[i].dataset.chapter === String(chNum)) {
+      showPage(i);
+      // Close sidebar on mobile
+      document.getElementById('tocSidebar').classList.remove('open');
+      return;
+    }
+  }
+}
+
+// Initial render
+showPage(0);
+
+// Buttons
+document.getElementById('btnPrev').addEventListener('click', () => showPage(currentPage - 1));
+document.getElementById('btnNext').addEventListener('click', () => showPage(currentPage + 1));
+document.getElementById('btnFirst').addEventListener('click', () => showPage(0));
+document.getElementById('btnLast').addEventListener('click', () => showPage(pages.length - 1));
+
+// Keyboard
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') showPage(currentPage + 1);
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') showPage(currentPage - 1);
+  if (e.key === 'Home') showPage(0);
+  if (e.key === 'End') showPage(pages.length - 1);
+  if (e.key === 'Escape') document.getElementById('tocSidebar').classList.remove('open');
+});
+
+// Sidebar toggle
+document.getElementById('sidebarToggle').addEventListener('click', () => {
+  document.getElementById('tocSidebar').classList.toggle('open');
+});
+
+// Close sidebar on outside click
+document.getElementById('pagesContainer').addEventListener('click', () => {
+  document.getElementById('tocSidebar').classList.remove('open');
+});
+
+// Touch swipe
+let touchStartX = 0;
+container.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, {passive: true});
+container.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].screenX - touchStartX;
+  if (Math.abs(dx) > 50) {
+    if (dx < 0) showPage(currentPage + 1);
+    else showPage(currentPage - 1);
+  }
+}, {passive: true});
+</script>
+
+<!-- PDF Download Button -->
+<a class="pdf-download-btn" href="https://quanta-analytica.com/reports/pdf/architecture_of_collapse_v3" target="_blank" rel="noopener" title="Download Full PDF">
+  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M6.5 1v7M4 6l2.5 2.5L9 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2 10h9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+  </svg>
+  Download Full PDF
+</a>
+
+</body>
+</html>
