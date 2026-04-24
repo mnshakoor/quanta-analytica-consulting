@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Collect, Validate, and Organize Intelligence Evidence | Quanta Analytica</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --obsidian: #0a0c10;
+  --obsidian-mid: #10131a;
+  --obsidian-card: #13161f;
+  --obsidian-border: #1c2030;
+  --gold: #c8a96e;
+  --gold-light: #dfc28e;
+  --gold-dim: #9a7f52;
+  --gold-glow: rgba(200,169,110,0.12);
+  --amber: #d4820a;
+  --amber-bg: rgba(212,130,10,0.12);
+  --blue: #2980b9;
+  --blue-bg: rgba(41,128,185,0.12);
+  --green: #27ae60;
+  --green-bg: rgba(39,174,96,0.12);
+  --text-primary: #e8e4dc;
+  --text-secondary: #b8b0a0;
+  --text-muted: #7a7264;
+  --font-display: 'Libre Baskerville', Georgia, serif;
+  --font-body: 'IBM Plex Sans', Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --shadow: 0 8px 30px rgba(0,0,0,0.38);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--obsidian);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.7;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, rgba(0,0,0,0.12) 0px, transparent 1px, transparent 3px);
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.28;
+}
+#progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-light));
+  z-index: 9999;
+  box-shadow: 0 0 8px rgba(200,169,110,0.25);
+}
+nav {
+  position: fixed;
+  top: 3px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(10,12,16,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--obsidian-border);
+  padding: 0 2rem;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-brand {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.nav-right {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.nav-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  border: 1px solid var(--amber);
+  padding: 3px 8px;
+  border-radius: 3px;
+  background: var(--amber-bg);
+}
+.hero {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 140px 2rem 4rem;
+  background:
+    radial-gradient(ellipse at 20% 60%, rgba(200,169,110,0.05) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(41,128,185,0.04) 0%, transparent 50%),
+    var(--obsidian);
+}
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(200,169,110,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,169,110,0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridDrift 20s linear infinite;
+  pointer-events: none;
+}
+@keyframes gridDrift {
+  0% { transform: translate(0,0); }
+  100% { transform: translate(40px,40px); }
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+}
+.hero-running-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--obsidian-border);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.hero-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin: 20px 0;
+}
+.hero-image {
+  width: 180px;
+  max-width: 32vw;
+  height: auto;
+  border-radius: 8px;
+}
+.hero-text {
+  flex: 1;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  line-height: 1.15;
+  margin: 0 0 1rem;
+  letter-spacing: -0.01em;
+}
+.hero h1 .title-gold {
+  display: block;
+  color: var(--gold);
+  margin-top: 0.35rem;
+}
+.hero-subtitle {
+  font-size: 1.08rem;
+  color: var(--text-secondary);
+  max-width: 760px;
+  margin-bottom: 1.5rem;
+}
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.meta-cell {
+  background: rgba(19,22,31,0.86);
+  border: 1px solid var(--obsidian-border);
+  border-top: 2px solid var(--gold-dim);
+  padding: 0.9rem 1rem;
+  border-radius: 6px;
+  min-width: 150px;
+  box-shadow: var(--shadow);
+}
+.meta-cell .label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+.meta-cell .value {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gold);
+}
+.scope-boundary {
+  border-left: 3px solid var(--blue);
+  background: var(--blue-bg);
+  padding: 0.9rem 1.1rem;
+  border-radius: 0 6px 6px 0;
+  color: #93b5d4;
+  font-style: italic;
+  font-size: 0.9rem;
+  max-width: 940px;
+}
+.metrics-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 1rem;
+  margin-top: 1.6rem;
+}
+.metric-block {
+  background: rgba(19,22,31,0.9);
+  border: 1px solid var(--obsidian-border);
+  border-top: 2px solid var(--gold-dim);
+  padding: 1rem;
+  border-radius: 6px;
+}
+.metric-value {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 0.2rem;
+}
+.metric-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 2rem 5rem;
+}
+.section {
+  margin-bottom: 3rem;
+}
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--obsidian-border);
+}
+.section-num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  background: var(--gold-glow);
+  border: 1px solid rgba(200,169,110,0.24);
+  padding: 4px 10px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1.25rem;
+}
+.card {
+  background: var(--obsidian-card);
+  border: 1px solid var(--obsidian-border);
+  border-radius: 8px;
+  padding: 1.2rem;
+  box-shadow: var(--shadow);
+}
+.card h3 {
+  margin-top: 0;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+.card p, .card li {
+  color: var(--text-secondary);
+}
+.objective-list, .module-list, .deliverable-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.objective-list li, .module-list li, .deliverable-list li {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--obsidian-border);
+  border-left: 3px solid var(--gold-dim);
+  border-radius: 6px;
+  padding: 0.9rem 1rem;
+  margin-bottom: 0.8rem;
+}
+.module-list li strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.callout {
+  border-left: 3px solid var(--green);
+  background: var(--green-bg);
+  color: #9fd3b2;
+  padding: 1rem 1.15rem;
+  border-radius: 0 6px 6px 0;
+}
+.footer {
+  margin-top: 4rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--obsidian-border);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+@media (max-width: 900px) {
+  .grid-2 { grid-template-columns: 1fr; }
+  .metrics-strip { grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 640px) {
+  nav { padding: 0 1rem; }
+  .hero { padding: 120px 1rem 3rem; }
+  main { padding: 2rem 1rem 4rem; }
+  .hero-container { flex-direction: column; text-align: center; }
+  .hero-running-head { flex-direction: column; }
+  .metrics-strip { grid-template-columns: 1fr; }
+}
+  </style>
+</head>
+<body>
+  <div id="progress"></div>
+  <nav>
+    <div class="nav-brand">QUANTA ANALYTICA <span>| MNS CONSULTING</span></div>
+    <div class="nav-right">
+      <div class="nav-tag">Course Blueprint</div>
+      <div class="nav-tag">Open Source</div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-running-head">
+        <span>QUANTA ANALYTICA | MNS CONSULTING</span>
+        <span>TRAINING // EVIDENCE WORKFLOW</span>
+      </div>
+      <div class="hero-container">
+        <img class="hero-image" src="https://quanta-analytica.com/logo.PNG" alt="Quanta Analytica logo">
+        <div class="hero-text">
+          <h1>How to Collect, Validate, and Organize Intelligence Evidence<span class="title-gold">Written Course and Build Architecture</span></h1>
+          <div class="hero-subtitle">A Practical Analyst Workflow for Source Collection, Validation, Triangulation, and Evidence Management</div>
+        </div>
+      </div>
+      <div class="hero-meta">
+        <div class="meta-cell"><span class="label">Domain</span><span class="value">Cross-Sector Analyst Training</span></div>
+        <div class="meta-cell"><span class="label">Course Type</span><span class="value">Written Instructional Manual</span></div>
+        <div class="meta-cell"><span class="label">Sequence</span><span class="value">Course 02 in Analyst Pathway</span></div>
+        <div class="meta-cell"><span class="label">Methodology</span><span class="value">QAP-Aligned</span></div>
+      </div>
+      <div class="scope-boundary">
+        This course follows the first training on problem framing and KIQ development. Its scope is the disciplined evidence phase: collection, validation, triangulation, atomic claim extraction, workflow design, and LLM-assisted evidence handling under human-led control.
+      </div>
+      <div class="metrics-strip">
+        <div class="metric-block"><div class="metric-value">10</div><div class="metric-label">Modules</div></div>
+        <div class="metric-block"><div class="metric-value">15</div><div class="metric-label">Core Lessons</div></div>
+        <div class="metric-block"><div class="metric-value">6</div><div class="metric-label">Practical Exercises</div></div>
+        <div class="metric-block"><div class="metric-value">1</div><div class="metric-label">Capstone Workflow</div></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="section-header">
+        <div class="section-num">01 // Purpose</div>
+        <div class="section-title">Why this course comes next</div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Course Positioning</h3>
+          <p>This course teaches the analyst what to do after Key Intelligence Questions are established. It turns framed uncertainty into a disciplined evidence workflow that can support analytic judgment, structured tradecraft, and final deliverables.</p>
+          <p>The training is designed for junior analysts, research assistants, OSINT beginners, NGO risk analysts, corporate intelligence teams, and cross-sector learners who need a repeatable method for building a defensible evidence base.</p>
+        </div>
+        <div class="card">
+          <h3>Primary Promise</h3>
+          <p>By the end of the course, the student can move from KIQs to collection requirements, validate source credibility, extract atomic claims, organize evidence, and prepare the material for ACH, indicators and warnings, scenarios, and written intelligence products.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="section-num">02 // Learning Objectives</div>
+        <div class="section-title">What the learner should be able to do</div>
+      </div>
+      <ul class="objective-list">
+        <li>Translate Key Intelligence Questions into collection requirements and information needs.</li><li>Distinguish primary, secondary, and tertiary sources and assign them appropriate evidentiary weight.</li><li>Validate sources using access, reliability, provenance, manipulation risk, timeliness, independence, and specificity.</li><li>Test whether multiple reports represent genuinely independent corroboration or only one upstream stream.</li><li>Extract atomic claims from long-form articles, official releases, datasets, and technical reporting.</li><li>Separate fact, inference, assumption, and unknowns in a disciplined evidence log.</li><li>Build a source register, claim log, assumptions register, and indicators tracker.</li><li>Use LLM platforms to support extraction, contradiction spotting, and organization without outsourcing judgment.</li><li>Identify common sourcing failures such as echo chambers, aggregation loops, partisan distortion, and synthetic confidence.</li><li>Prepare an evidence base that can support ACH, indicators and warnings, scenario work, and final product drafting.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="section-num">03 // Module Architecture</div>
+        <div class="section-title">Training sequence</div>
+      </div>
+      <ul class="module-list">
+        <li><strong>Module 1: Why Evidence Discipline Matters</strong> Introduces why source quality matters more than volume and how weak evidence produces narrative drift.</li>
+        <li><strong>Module 2: From KIQs to Collection Requirements</strong> Shows how to convert framed questions into concrete information needs and prioritized collection tasks.</li>
+        <li><strong>Module 3: Understanding Source Types</strong> Explains primary, secondary, and tertiary sources and how evidentiary weight should change by source type.</li>
+        <li><strong>Module 4: Source Validation and Credibility Testing</strong> Teaches structured source evaluation, downgrade triggers, and deception-aware screening.</li>
+        <li><strong>Module 5: Triangulation and Independence Testing</strong> Prevents false corroboration by teaching independence checks, shared upstream detection, and stream counting.</li>
+        <li><strong>Module 6: Extracting Atomic Claims</strong> Trains the analyst to turn long-form material into checkable claims for comparison and verification.</li>
+        <li><strong>Module 7: Building the Analyst Workflow</strong> Provides the source register, claim log, assumptions register, and indicators tracker architecture.</li>
+        <li><strong>Module 8: Using LLMs to Assist the Evidence Workflow</strong> Shows how to use LLMs as constrained assistants for extraction, comparison, and organization.</li>
+        <li><strong>Module 9: Preparing Evidence for Analysis</strong> Bridges evidence handling into ACH, indicators and warnings, scenario work, and final writing.</li>
+        <li><strong>Module 10: Capstone Workflow</strong> Integrates the entire method into a start-to-finish exercise that simulates real analyst production.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="section-num">04 // Deliverables</div>
+        <div class="section-title">What gets built from this package</div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Immediate Outputs</h3>
+          <ul class="deliverable-list">
+            <li>Branded HTML overview page</li>
+            <li>Full written course manual in DOCX</li>
+            <li>Claude build prompt for full HTML course production</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Expansion Path</h3>
+          <ul class="deliverable-list">
+            <li>Udemy or LMS conversion</li>
+            <li>Instructor slides and worksheets</li>
+            <li>Interactive source scoring templates</li>
+            <li>Capstone assessment packs</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="section-num">05 // Recommended Follow-On</div>
+        <div class="section-title">Where the learner goes next</div>
+      </div>
+      <div class="callout">
+        After this course, the strongest next training is <strong>How to Use Structured Analytic Techniques: ACH, Assumptions Checks, Indicators and Warnings</strong>. That progression keeps the pathway clean: problem framing first, evidence discipline second, structured tradecraft third, and scenario plus decision support after that.
+      </div>
+    </section>
+
+    <div class="footer">
+      Produced under the Quanta Analytica Process™ for structured analyst development. This page serves as the architecture shell for the written course package and future HTML training build.
+    </div>
+  </main>
+
+  <script>
+    const progress = document.getElementById('progress');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const scrolled = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+      progress.style.width = scrolled + '%';
+    });
+  </script>
+</body>
+</html>
