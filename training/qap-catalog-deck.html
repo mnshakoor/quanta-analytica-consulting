@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QAP™ Training Catalog | Quanta Analytica</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --obsidian:#0a0c10;
+  --obsidian-mid:#10131a;
+  --obsidian-card:#13161f;
+  --obsidian-card2:#0f1219;
+  --obsidian-border:#1c2030;
+  --obsidian-border2:#242840;
+  --gold:#c8a96e;
+  --gold-light:#dfc28e;
+  --gold-dim:#9a7f52;
+  --gold-glow:rgba(200,169,110,0.10);
+  --gold-glow2:rgba(200,169,110,0.18);
+  --amber:#d4820a;
+  --amber-bg:rgba(212,130,10,0.13);
+  --blue:#2980b9;
+  --blue-bg:rgba(41,128,185,0.12);
+  --green:#27ae60;
+  --green-bg:rgba(39,174,96,0.12);
+  --red:#c0392b;
+  --red-bg:rgba(192,57,43,0.12);
+  --purple:#8e44ad;
+  --purple-bg:rgba(142,68,173,0.13);
+  --cyan:#16a085;
+  --cyan-bg:rgba(22,160,133,0.13);
+  --txt:#e8e4dc;
+  --txt2:#b8b0a0;
+  --txt3:#7a7264;
+  --ff-display:'Libre Baskerville', Georgia, serif;
+  --ff-body:'IBM Plex Sans', Arial, sans-serif;
+  --ff-mono:'IBM Plex Mono', monospace;
+  --qa-control-rail:86px;
+}
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+html, body { background:#000; width:100%; height:100%; overflow:hidden; }
+body { font-family:var(--ff-body); }
+section {
+  width:1920px;
+  height:1080px;
+  background:var(--obsidian);
+  color:var(--txt);
+  font-family:var(--ff-body);
+  position:relative;
+  overflow:hidden;
+}
+section::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:linear-gradient(rgba(200,169,110,0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(200,169,110,0.055) 1px, transparent 1px);
+  background-size:48px 48px;
+  pointer-events:none;
+  z-index:0;
+}
+section::after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:repeating-linear-gradient(0deg, rgba(0,0,0,0.10) 0px, transparent 1px, transparent 3px);
+  pointer-events:none;
+  z-index:0;
+  opacity:0.28;
+}
+.slide-inner { position:relative; z-index:1; width:100%; height:100%; display:flex; flex-direction:column; }
+.rh { display:flex; justify-content:space-between; align-items:center; padding:20px 64px 14px; font-family:var(--ff-mono); font-size:24px; letter-spacing:0.13em; text-transform:uppercase; color:var(--txt3); border-bottom:1px solid var(--obsidian-border); flex-shrink:0; }
+.rh-left { color:var(--gold-dim); }
+.slide-body { flex:1; padding:40px 64px 28px; display:flex; flex-direction:column; gap:20px; overflow:hidden; min-height:0; }
+.slide-body.two-col { flex-direction:row; align-items:flex-start; gap:48px; }
+.col { flex:1; display:flex; flex-direction:column; gap:20px; overflow:hidden; min-height:0; }
+.col-wide { flex:1.28; }
+.col-narrow { flex:0.72; }
+.pill { display:inline-block; width:max-content; font-family:var(--ff-mono); font-size:22px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold-dim); background:var(--gold-glow); border:1px solid rgba(200,169,110,0.22); padding:6px 16px; border-radius:4px; }
+h1 { font-family:var(--ff-display); font-size:82px; line-height:1.10; letter-spacing:-0.01em; }
+h1 .gold { color:var(--gold); display:block; margin-top:12px; }
+h2 { font-family:var(--ff-display); font-size:52px; line-height:1.15; letter-spacing:-0.01em; }
+h3 { font-family:var(--ff-mono); font-size:22px; letter-spacing:0.11em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+p { font-size:27px; line-height:1.55; color:var(--txt2); }
+.lead { font-size:32px; line-height:1.55; color:var(--txt2); max-width:1180px; }
+.gold-text { color:var(--gold); }
+strong { color:var(--txt); font-weight:700; }
+.slide-foot { display:flex; justify-content:space-between; align-items:center; padding:14px 64px 20px; border-top:1px solid var(--obsidian-border); font-family:var(--ff-mono); font-size:20px; letter-spacing:0.10em; text-transform:uppercase; color:var(--txt3); flex-shrink:0; }
+
+/* Title slide */
+.qa-standard-title-slide { display:flex; align-items:center; justify-content:center; background:#0a0c10; }
+.qa-standard-title-slide::before, .qa-standard-title-slide::after { display:none; }
+.qa-title-svg { position:absolute; inset:0; width:100%; height:100%; z-index:0; }
+.qa-start-button { position:absolute; left:50%; bottom:110px; transform:translateX(-50%); z-index:2; appearance:none; border:1px solid rgba(200,169,110,0.58); border-top:2px solid var(--gold); background:rgba(19,22,31,0.94); color:var(--gold-light); font-family:var(--ff-mono); font-size:22px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; padding:16px 34px; border-radius:7px; cursor:pointer; box-shadow:0 0 28px rgba(200,169,110,0.16); transition:all 160ms ease; }
+.qa-start-button:hover { background:rgba(200,169,110,0.15); color:#fff4d5; transform:translateX(-50%) translateY(-2px); }
+
+/* Grids */
+.grid-2 { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+.grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+.grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+.grid-5 { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; }
+.grid-asym { display:grid; grid-template-columns:1.25fr 0.75fr; gap:28px; align-items:stretch; }
+.grid-stack { display:grid; grid-template-columns:0.75fr 1.25fr; gap:28px; align-items:stretch; }
+
+/* Cards */
+.qa-card { background:var(--obsidian-card); border:1px solid var(--obsidian-border); border-radius:7px; padding:26px 28px; min-height:160px; box-shadow:0 6px 20px rgba(0,0,0,0.25); }
+.qa-card p, .qa-card li { font-size:24px; line-height:1.48; color:var(--txt2); }
+.qa-card ul, .qa-card ol { margin-left:26px; }
+.qa-card li { margin-bottom:8px; }
+.card-gold { border-top:4px solid var(--gold); background:linear-gradient(180deg, rgba(200,169,110,0.09), rgba(19,22,31,0.96)); }
+.card-blue { border-top:4px solid var(--blue); background:linear-gradient(180deg, rgba(41,128,185,0.12), rgba(19,22,31,0.96)); }
+.card-green { border-top:4px solid var(--green); background:linear-gradient(180deg, rgba(39,174,96,0.12), rgba(19,22,31,0.96)); }
+.card-amber { border-top:4px solid var(--amber); background:linear-gradient(180deg, rgba(212,130,10,0.13), rgba(19,22,31,0.96)); }
+.card-red { border-top:4px solid var(--red); background:linear-gradient(180deg, rgba(192,57,43,0.12), rgba(19,22,31,0.96)); }
+.card-purple { border-top:4px solid var(--purple); background:linear-gradient(180deg, rgba(142,68,173,0.13), rgba(19,22,31,0.96)); }
+.card-cyan { border-top:4px solid var(--cyan); background:linear-gradient(180deg, rgba(22,160,133,0.13), rgba(19,22,31,0.96)); }
+.mini-label { display:inline-block; font-family:var(--ff-mono); font-size:18px; letter-spacing:0.10em; text-transform:uppercase; color:var(--txt3); margin-bottom:12px; }
+.big-stat { display:block; font-family:var(--ff-mono); font-size:52px; font-weight:700; color:var(--gold); line-height:1; margin-bottom:8px; }
+
+/* Callouts */
+.callout { padding:22px 26px; border-radius:0 7px 7px 0; font-size:26px; line-height:1.55; color:var(--txt2); }
+.callout-label { display:block; font-family:var(--ff-mono); font-size:18px; letter-spacing:0.13em; text-transform:uppercase; opacity:0.78; margin-bottom:8px; }
+.c-gold { border-left:4px solid var(--gold); background:var(--gold-glow); color:#d4c4a0; }
+.c-amber { border-left:4px solid var(--amber); background:var(--amber-bg); color:#d4b070; }
+.c-blue { border-left:4px solid var(--blue); background:var(--blue-bg); color:#93b5d4; }
+.c-green { border-left:4px solid var(--green); background:var(--green-bg); color:#9fd3b2; }
+.c-red { border-left:4px solid var(--red); background:var(--red-bg); color:#d99a92; }
+.c-purple { border-left:4px solid var(--purple); background:var(--purple-bg); color:#c6a1d5; }
+.c-cyan { border-left:4px solid var(--cyan); background:var(--cyan-bg); color:#8ecdc2; }
+
+/* Lists */
+.qa-list { list-style:none; margin:0; padding:0; }
+.qa-list li { position:relative; padding:10px 0 10px 30px; border-bottom:1px solid var(--obsidian-border); font-size:25px; color:var(--txt2); line-height:1.45; }
+.qa-list li::before { content:'//'; position:absolute; left:0; top:10px; font-family:var(--ff-mono); font-size:19px; color:var(--gold-dim); }
+
+/* Course table */
+.qa-table { width:100%; border-collapse:collapse; border:1px solid var(--obsidian-border); border-radius:7px; overflow:hidden; font-size:22px; background:var(--obsidian-card); }
+.qa-table thead th { background:var(--obsidian-card2); color:var(--gold-dim); font-family:var(--ff-mono); font-size:19px; letter-spacing:0.11em; text-transform:uppercase; padding:14px 18px; text-align:left; border-bottom:1px solid var(--obsidian-border2); }
+.qa-table tbody td { padding:14px 18px; color:var(--txt2); line-height:1.38; border-bottom:1px solid var(--obsidian-border); vertical-align:top; }
+.qa-table tbody tr:last-child td { border-bottom:none; }
+.qa-table tbody td:first-child { color:var(--gold); font-family:var(--ff-mono); font-size:20px; font-weight:700; }
+
+/* Method ribbon */
+.method-ribbon { display:grid; grid-template-columns:repeat(6,1fr); gap:14px; }
+.ribbon-step { background:var(--obsidian-card); border:1px solid var(--obsidian-border); border-radius:7px; padding:20px 14px; min-height:200px; position:relative; }
+.ribbon-step::after { content:'>'; position:absolute; right:-11px; top:50%; transform:translateY(-50%); color:var(--gold-dim); font-family:var(--ff-mono); font-size:24px; z-index:2; }
+.ribbon-step:last-child::after { display:none; }
+.ribbon-step strong { display:block; font-family:var(--ff-mono); font-size:17px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+.ribbon-step span { display:block; color:var(--txt2); font-size:20px; line-height:1.35; }
+
+/* Flow nodes */
+.flow-strip { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; align-items:stretch; }
+.flow-node { background:var(--obsidian-card); border:1px solid var(--obsidian-border); border-top:4px solid var(--gold-dim); border-radius:7px; padding:26px 28px; min-height:200px; }
+.flow-node.active { border-top-color:var(--gold); box-shadow:0 0 28px rgba(200,169,110,0.12); }
+.flow-node .node-num { font-family:var(--ff-mono); font-size:20px; color:var(--gold-dim); letter-spacing:0.10em; text-transform:uppercase; margin-bottom:10px; }
+.flow-node .node-title { font-family:var(--ff-display); font-size:34px; color:var(--txt); line-height:1.18; margin-bottom:12px; }
+.flow-node p { font-size:23px; line-height:1.45; }
+
+/* Deck shell */
+deck-stage { display:block; width:100vw; height:calc(100vh - var(--qa-control-rail)); background:#000; position:relative; overflow:hidden; }
+deck-stage > section { display:none; transform-origin:top left; position:absolute; top:0; left:0; }
+deck-stage > section.active { display:block; }
+.deck-controls { position:fixed; right:20px; bottom:16px; z-index:9999; display:flex; align-items:center; gap:8px; font-family:var(--ff-mono); }
+.deck-controls button { border:1px solid rgba(200,169,110,0.40); background:rgba(19,22,31,0.90); color:var(--gold-light); font-family:var(--ff-mono); font-size:13px; letter-spacing:0.08em; text-transform:uppercase; padding:7px 11px; border-radius:5px; cursor:pointer; }
+.deck-controls button:hover { background:rgba(200,169,110,0.14); }
+.deck-controls [data-title] { color:#fff4d5; border-color:rgba(200,169,110,0.60); background:rgba(200,169,110,0.12); }
+.deck-progress { color:var(--txt3); background:rgba(10,12,16,0.84); border:1px solid var(--obsidian-border); border-radius:5px; padding:7px 9px; min-width:64px; text-align:center; font-size:13px; }
+.deck-hint { position:fixed; left:20px; bottom:16px; z-index:9999; color:var(--txt3); background:rgba(10,12,16,0.72); border:1px solid var(--obsidian-border); border-radius:5px; padding:7px 11px; font-family:var(--ff-mono); font-size:12px; letter-spacing:0.08em; text-transform:uppercase; }
+
+/* Phase badge */
+.phase-badge { display:inline-flex; align-items:center; gap:10px; background:rgba(200,169,110,0.07); border:1px solid rgba(200,169,110,0.22); border-radius:4px; padding:8px 18px; font-family:var(--ff-mono); font-size:20px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold-dim); margin-bottom:6px; }
+.phase-num { font-size:28px; font-weight:700; color:var(--gold); }
+
+/* Track row for phase 5 */
+.track-row { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.track-card { background:var(--obsidian-card); border:1px solid var(--obsidian-border); border-radius:7px; padding:20px 22px; }
+.track-card .tc-label { font-family:var(--ff-mono); font-size:17px; letter-spacing:0.10em; text-transform:uppercase; color:var(--gold-dim); margin-bottom:8px; }
+.track-card .tc-title { font-family:var(--ff-display); font-size:26px; color:var(--txt); line-height:1.2; margin-bottom:10px; }
+.track-card p { font-size:21px; line-height:1.42; color:var(--txt2); }
+  </style>
+</head>
+<body>
+<deck-stage>
+
+  <!-- TITLE SLIDE -->
+  <section class="qa-standard-title-slide" data-screen-label="Title">
+    <svg class="qa-title-svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <rect width="1200" height="800" fill="#0a0c10"/>
+      <line x1="0" y1="0" x2="1200" y2="800" stroke="rgba(200,169,110,0.04)" stroke-width="1"/>
+      <line x1="1200" y1="0" x2="0" y2="800" stroke="rgba(200,169,110,0.04)" stroke-width="1"/>
+      <!-- hex -->
+      <polygon points="600,68 732,138 732,278 600,348 468,278 468,138" fill="none" stroke="#c8a96e" stroke-width="2.5"/>
+      <polygon points="600,110 690,162 690,266 600,318 510,266 510,162" fill="none" stroke="#9a7f52" stroke-width="1.2"/>
+      <circle cx="600" cy="208" r="20" fill="#c8a96e"/>
+      <!-- titles -->
+      <text x="600" y="390" font-family="serif" font-size="46" font-weight="700" fill="#e8e4dc" text-anchor="middle">Quanta Analytica Process™</text>
+      <text x="600" y="448" font-family="serif" font-size="34" fill="#c8a96e" text-anchor="middle">Training Catalog: Phases 1–5</text>
+      <text x="600" y="508" font-family="monospace" font-size="18" fill="#7a7264" text-anchor="middle" letter-spacing="4">12 COURSES · 8 DOMAIN TRACKS · 5 PACKAGES</text>
+      <text x="600" y="562" font-family="monospace" font-size="18" fill="#7a7264" text-anchor="middle" letter-spacing="4">QUANTA ANALYTICA · MNS CONSULTING</text>
+    </svg>
+    <button class="qa-start-button" type="button" onclick="document.querySelector('deck-stage').next()">Explore Catalog</button>
+  </section>
+
+  <!-- SLIDE 01 — WHAT IS QAP -->
+  <section data-screen-label="01 What is QAP">
+    <div class="slide-inner">
+      <div class="rh"><span class="rh-left">QUANTA ANALYTICA | MNS CONSULTING</span><span class="rh-right">CATALOG // WHAT IS QAP™</span></div>
+      <div class="slide-body">
+        <span class="pill">01 // Framework Overview</span>
+        <h2>The Quanta Analytica Process™</h2>
+        <div class="grid-asym">
+          <div class="qa-card card-gold">
+            <h3>Core Doctrine</h3>
+            <p><strong>Structured reasoning precedes generative output.</strong> The QAP doctrine requires analysts to frame the problem, validate evidence, structure reasoning, and assess risk before producing any analytic, operational, or AI-assisted output.</p>
+            <p>The result is decision-grade intelligence — not information, not opinion, but structured judgment proportionate to available evidence.</p>
+          </div>
+          <div class="qa-card card-blue">
+            <h3>What QAP Trains</h3>
+            <ul>
+              <li>Problem framing &amp; KIQ development</li>
+              <li>Evidence validation &amp; source discipline</li>
+              <li>Structured analytic techniques</li>
+              <li>Risk scoring &amp; scenario modeling</li>
+              <li>Systems thinking &amp; cognition</li>
+              <li>LLM-governed AI workflows</li>
+              <li>Intelligence writing &amp; briefing</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout c-gold"><span class="callout-label">Catalog Scope</span>12 core courses across 5 phases, 8 domain specialization tracks, and 5 certification packages — for individuals, teams, and organizations.</div>
+      </div>
+      <div class="slide-foot"><span>01 // Framework Overview</span><span>QAP™ Training Catalog</span></div>
+    </div>
+  </section>
+
+  <!-- SLIDE 02 — QAP 6-STEP WORKFLOW -->
+  <section data-screen-label="02 QAP Workflow">
+    <div class="slide-inner">
+      <div class="rh"><span class="rh-left">QUANTA ANALYTICA | MNS CONSULTING</span><span class="rh-right">CATALOG // ANALYTIC WORKFLOW</span></div>
+      <div class="slide-body">
+        <span class="pill">02 // The QAP Method</span>
+        <h2>Six stages from raw information to decision-ready output</h2>
+        <div class="method-ribbon">
+          <div class="ribbon-step"><strong>01 Frame</strong><span>Define the problem, decision context, and Key Intelligence Questions.</span></div>
+          <div class="ribbon-step"><strong>02 Collect</strong><span>Gather, validate, and triangulate evidence using WSI &amp; RAPITIS standards.</span></div>
+          <div class="ribbon-step"><strong>03 Structure</strong><span>Apply SATs: ACH, Key Assumptions Check, Indicators &amp; Warnings.</span></div>
+          <div class="ribbon-step"><strong>04 Assess</strong><span>Score risk, model scenarios, apply behavioral and systems analysis.</span></div>
+          <div class="ribbon-step"><strong>05 Validate</strong><span>Check assumptions, confidence gaps, source compliance, and red-team logic.</span></div>
+          <div class="ribbon-step"><strong>06 Output</strong><span>Produce a structured, defensible, decision-ready analytic product.</span></div>
+        </div>
+        <div class="callout c-gold"><span class="callout-label">Training principle</span>Each course phase maps to one or more stages of the QAP workflow. Learners build toward full-cycle analyst capability.</div>
+      </div>
+      <div class="slide-foot"><span>02 // The QAP Method</span><span>QAP™ Training Catalog</span></div>
+    </div>
+  </section>
+
+  <!-- SLIDE 03 — AUDIENCE SEGMENTATION -->
+  <section data-screen-label="03 Audience">
+    <div class="slide-inner">
+      <div class="rh"><span class="rh-left">QUANTA ANALYTICA | MNS CONSULTING</span><span class="rh-right">CATALOG // AUDIENCE</span></div>
+      <div class="slide-body">
+        <span class="pill">03 // Who This Is For</span>
+        <h2>Two audience tiers — one analytic method</h2>
+        <div class="grid-2">
+          <div class="qa-card card-blue">
+            <h3>Phases 1–3: Cross-Domain Analysts</h3>
+            <p><strong>Any analyst, researcher, consultant, strategist, investigator, risk professional, journalist, or knowledge worker</strong> who needs structured analytic workflow in their domain.</p>
+            <p style="margin-top:14px;">Security · Governance · Business · Research · Media · Policy · Humanitarian · Corporate Intelligence</p>
+          </div>
+          <div class="qa-card card-amber">
+            <h3>Phases 4–5: MNS Ecosystem and Domain Specialists</h3>
+            <p><strong>Practitioners, organizations, and clients</strong> operating in domains where MNS Consulting and Quanta Analytica have native workflow experience.</p>
+            <p style="margin-top:14px;">NGO Security · Conflict Systems · Fragility · Insider Threat · Behavioral Risk · Info Integrity · Strategic Comms</p>
+          </div>
+        </div>
+        <div class="callout c-gold"><span class="callout-label">Advisory note</span>MNS Consulting provides fee-based advisory support for organizations implementing QAP or customizing workflows for their sector.</div>
+      </div>
+      <div class="slide-foot"><span>03 // Audience</span><span>QAP™ Training Catalog</span></div>
+    </div>
+  </section>
+
+  <!-- SLIDE 04 — PHASE 1 -->
+  <section data-screen-label="04 Phase 1">
+    <div class="slide-inner">
+      <div class="rh"><span class="rh-left">QUANTA ANALYTICA | MNS CONSULTING</span><span class="rh-right">CATALOG // PHASE 1</span></div>
+      <div class="slide-body">
+        <div class="phase-badge"><span class="phase-num">1</span> Analyst Foundations</div>
+        <h2>Define the problem. Build the evidence base. Form structured judgment.</h2>
+        <table class="qa-table">
+          <thead><tr><th>#</th><th>Course Title</th><th>Level</th><th>Learner Deliverable</th></tr></thead>
+          <tbody>
+            <tr><td>01</td><td>Problem Framing and Key Intelligence Questions</td><td>Beginner–Intermediate</td><td>Problem Frame, KIQ Set, Collection Requirements</td></tr>
+            <tr><td>02</td><td>Evidence Collection, Validation, and Organization</td><td>Beginner–Intermediate</td><td>Source Register, Evidence Log, Atomic Claim Table</td></tr>
+            <tr><td>03</td><td>Structured Analytic Techniques for Intelligence Judgments</td><td>Intermediate</td><td>Structured Analytic Judgment Brief</td></tr>
+          </tbody>
+        </table>
+        <div class="callout c-gold"><span class="callout-label">Buyer Fit</span>Best for learners who need a disciplined analytic workflow before moving into risk, scenarios, AI workflows, or domain applications.</div>
+      </div>
+      <div class="slide-foot"><span>04 // Phase 1: Analyst Foundations</span><span>QAP™ Training Catalog</span></div>
+    </div>
+  </section>
+
+  <!-- SLIDE 05 — PHASE 2 -->
+  <section data-screen-label="05 Phase 2">
+    <div class="slide-inner">
+      <div class="rh"><span class="rh-left">QUANTA ANALYTICA | MNS CONSULTING</span><span class="rh-right">CATALOG // PHASE 2</span></div>
+      <div class="slide-body">
+        <div class="phase-badge"><span class="phase-num">2</span> Judgment Formation and Decision Support</div>
+        <h2>Risk logic. Scenarios. Early warning. Behavioral intelligence.</h2>
+        <table class="qa-table">
+          <thead><tr><th>#</th><th>Course Title</th><th>Level</th><th>Learner Deliverable</th></tr></thead>
+          <tbody>
+            <tr><td>04</td><td>Risk Scoring and Decision Thresholds</td><td>Intermediate</td><td>Decision-Ready Risk Assessment</td></tr>
+            <tr><td>05</td><td>Scenario Modeling and Early Warning Systems</td><td>Intermediate</td><td>Forward-Looking Analytic Product</td></tr>
+            <tr><td>06</td><td>Applied Behavioral Risk Intelligence</td><td>Intermediate–Advanced</td><td>Behavioral Risk Assessment Brief</td></tr>
+          </tbody>
+        </table>
+        <div class="callout c-amber"><span class="callout-label">Buyer Fit</span>Best for teams that collect and analyze information but need structured methods to prioritize risk, anticipate change, and support real decisions.</div>
+      </div>
+      <div class="slide-foot"><span>05 // Phase 2: Judgment Formation</span><span>QAP™ Training Catalog</span></div>
+    </div>
+  </section>
+
+  <!-- SLIDE 06 — PHASE 3 -->
+  <section data-screen-label="06 Phase 3">
+    <div class="slide-inner">
+      <div class="rh"><span class="rh-left">QUANTA ANALYTICA | MNS CONSULTING</span><span class="rh-right">CATALOG // PHASE 3</span></div>
+      <div class="slide-body">
+        <div class="phase-badge"><span class="phase-num">3</span> Strategic Integration</div>
+        <h2>Systems thinking. AI governance. Intelligence writing.</h2>
+        <table class="qa-table">
+          <thead><tr><th>#</th><th>Course Title</th><th>Level</th><th>Learner Deliverable</th></tr></thead>
+          <tbody>
+            <tr><td>07</td><td>Systems Thinking and Strategic Cognition</td><td>Intermediate–Advanced</td><td>Strategic Systems Diagnostic Brief</td></tr>
+            <tr><td>08</td><td>LLM-Governed Analytic Workflows</td><td>Intermediate</td><td>QAP-Governed AI Workflow Pack</td></tr>
+            <tr><td>09</td><td>Intelligence Writing and Narrative Synthesis</td><td>Intermediate</td><td>Structured Analytic Brief</td></tr>
+          </tbody>
+        </table>
+        <div class="callout c-blue"><span class="callout-label">Buyer Fit</span>Best for analysts who want to move beyond isolated methods and produce coherent, defensible, decision-ready analytic products.</div>
+      </div>
+      <div class="slide-foot"><span>06 // Phase 3: Strategic Integration</span><span>QAP™ Training Catalog</span></div>
+    </div>
+  </section>
+
+  <!-- SLIDE 07 — PHASE 4 -->
+  <section data-screen-label="07 Phase 4">
+    <div class="slide-inner">
+      <div class="rh"><span class="rh-left">QUANTA ANALYTICA | MNS CONSULTING</span><span class="rh-right">CATALOG // PHASE 4</span></div>
+      <div class="slide-body">
+        <div class="phase-badge"><span class="phase-num">4</span> Production and Certification</div>
+        <h2>Build, publish, and audit QAP-native reports and assessments.</h2>
+        <table class="qa-table">
+          <thead><tr><th>#</th><th>Course Title</th><th>Level</th><th>Learner Deliverable</th></tr></thead>
+          <tbody>
+            <tr><td>10</td><td>QAP Web Report Production</td><td>Advanced</td><td>QAP Web Report</td></tr>
+            <tr><td>11</td><td>Capstone I: Full QAP Assessment Build</td><td>Advanced</td><td>Full QAP Assessment</td></tr>
+            <tr><td>12</td><td>Capstone II: Audit, Compliance, and Red Team Review</td><td>Advanced</td><td>QAP Compliance &amp; Red Team Review Package</td></tr>
+          </tbody>
+        </table>
+        <div class="callout c-purple"><span class="callout-label">Buyer Fit</span>Best for Quanta Analytica practitioners, MNS Consulting partners, and teams producing QAP-native reports inside the ecosystem.</div>
+      </div>
+      <div class="slide-foot"><span>07 // Phase 4: Production &amp; Certification</span><span>QAP™ Training Catalog</span></div>
+    </div>
+  </section>
+
+  <!-- SLIDE 08 — PHASE 5 OVERVIEW -->
+  <section data-screen-label="08 Phase 5 Tracks">
+    <div class="slide-inner">
+      <div class="rh"><span class="rh-left">QUANTA ANALYTICA | MNS CONSULTING</span><span class="rh-right">CATALOG // PHASE 5</span></div>
+      <div class="slide-body">
+        <div class="phase-badge"><span class="phase-num">5</span> Domain Specialization Tracks</div>
+        <h2>Eight tracks. One method. Applied to your domain.</h2>
+        <div class="track-row">
+          <div class="track-card"><div class="tc-label">Track A</div><div class="tc-title">NGO Security Risk Management</div><p>Field risk, access, movement, program continuity, HOE.</p></div>
+          <div class="track-card"><div class="tc-label">Track B</div><div class="tc-title">Corporate Risk Intelligence</div><p>Enterprise exposure, regulatory risk, board briefing.</p></div>
+          <div class="track-card"><div class="tc-label">Track C</div><div class="tc-title">Conflict Systems Analysis</div><p>Actor mapping, escalation, early warning, scenarios.</p></div>
+          <div class="track-card"><div class="tc-label">Track D</div><div class="tc-title">Fragility &amp; Governance Modeling</div><p>Institutional weakness, elite capture, transition risk.</p></div>
+        </div>
+        <div class="track-row">
+          <div class="track-card"><div class="tc-label">Track E</div><div class="tc-title">Insider Threat Assessment</div><p>Behavioral precursors, access modeling, risk registers.</p></div>
+          <div class="track-card"><div class="tc-label">Track F</div><div class="tc-title">Behavioral Risk Diagnostics</div><p>Identity threat, miscalculation, escalation signals.</p></div>
+          <div class="track-card"><div class="tc-label">Track G</div><div class="tc-title">Information Integrity</div><p>Disinformation, OSINT deception, influence campaigns.</p></div>
+          <div class="track-card"><div class="tc-label">Track H</div><div class="tc-title">Strategic Communications Risk</div><p>Narrative stress, reputational risk, stakeholder mapping.</p></div>
+        </div>
+        <div class="callout c-cyan"><span class="callout-label">Each track</span>5 courses plus a capstone. Same QAP method — domain-configured evidence needs, indicators, outputs, and risk models.</div>
+      </div>
+      <div class="slide-foot"><span>08 // Phase 5: Domain Tracks</span><span>QAP™ Training Catalog</span></div>
+    </div>
+  </section>
+
+  <!-- SLIDE 09 — PACKAGES -->
+  <section data-screen-label="09 Packages">
+    <div class="slide-inner">
+      <div class="rh"><span class="rh-left">QUANTA ANALYTICA | MNS CONSULTING</span><span class="rh-right">CATALOG // PACKAGES</span></div>
+      <div class="slide-body">
+        <span class="pill">09 // Certification Packages</span>
+        <h2>Five packages — from foundations to full practitioner</h2>
+        <div class="grid-5">
+          <div class="qa-card card-gold" style="min-height:auto;">
+            <h3>Package 1</h3>
+            <p><strong>QAP Analyst Foundations</strong></p>
+            <p>Phase 1 · Courses 1–3</p>
+            <p style="margin-top:10px;font-size:21px;">Problem framing, evidence, structured judgments.</p>
+          </div>
+          <div class="qa-card card-blue" style="min-height:auto;">
+            <h3>Package 2</h3>
+            <p><strong>QAP Decision Intelligence</strong></p>
+            <p>Phases 1–2 · Courses 1–6</p>
+            <p style="margin-top:10px;font-size:21px;">Add risk scoring, scenarios, behavioral risk.</p>
+          </div>
+          <div class="qa-card card-green" style="min-height:auto;">
+            <h3>Package 3</h3>
+            <p><strong>QAP Strategic Analyst</strong></p>
+            <p>Phases 1–3 · Courses 1–9</p>
+            <p style="margin-top:10px;font-size:21px;">Complete cross-domain QAP method.</p>
+          </div>
+          <div class="qa-card card-purple" style="min-height:auto;">
+            <h3>Package 4</h3>
+            <p><strong>QAP Production Track</strong></p>
+            <p>Phase 4 · Courses 10–12</p>
+            <p style="margin-top:10px;font-size:21px;">Build and audit QAP-native reports.</p>
+          </div>
+          <div class="qa-card card-amber" style="min-height:auto;">
+            <h3>Package 5</h3>
+            <p><strong>Domain Specialization</strong></p>
+            <p>Phase 5 · Select Track</p>
+            <p style="margin-top:10px;font-size:21px;">QAP applied to your specific field.</p>
+          </div>
+        </div>
+        <div class="callout c-gold"><span class="callout-label">Advisory support</span>MNS Consulting provides implementation advisory, domain adaptation, and production support for organizations operationalizing QAP at scale.</div>
+      </div>
+      <div class="slide-foot"><span>09 // Certification Packages</span><span>QAP™ Training Catalog</span></div>
+    </div>
+  </section>
+
+  <!-- SLIDE 10 — NEXT STEPS -->
+  <section data-screen-label="10 Next Steps">
+    <div class="slide-inner">
+      <div class="rh"><span class="rh-left">QUANTA ANALYTICA | MNS CONSULTING</span><span class="rh-right">CATALOG // NEXT STEPS</span></div>
+      <div class="slide-body">
+        <span class="pill">10 // Enroll or Inquire</span>
+        <h2>Start your QAP training pathway today</h2>
+        <div class="flow-strip">
+          <div class="flow-node">
+            <div class="node-num">Option 01</div>
+            <div class="node-title">Self-Paced Enrollment</div>
+            <p>Enroll in individual courses or a certification package through the Quanta Analytica platform at your own pace.</p>
+          </div>
+          <div class="flow-node active">
+            <div class="node-num">Option 02</div>
+            <div class="node-title">Advisory Engagement</div>
+            <p>Contact MNS Consulting for fee-based advisory support — implementation, domain adaptation, or production support for your team.</p>
+          </div>
+          <div class="flow-node">
+            <div class="node-num">Option 03</div>
+            <div class="node-title">Organizational Licensing</div>
+            <p>Organizations can license QAP training for internal analyst teams, risk units, or security operations groups.</p>
+          </div>
+        </div>
+        <div class="callout c-gold"><span class="callout-label">Contact</span>Visit quanta-analytica.com or reach MNS Consulting directly to discuss the right package for your needs.</div>
+      </div>
+      <div class="slide-foot"><span>10 // Next Steps</span><span>QAP™ Training Catalog &nbsp;·&nbsp; quanta-analytica.com</span></div>
+    </div>
+  </section>
+
+</deck-stage>
+
+<script>
+class DeckStage extends HTMLElement {
+  connectedCallback() {
+    this.slides = Array.from(this.querySelectorAll(':scope > section'));
+    this.index = 0;
+    this.controls = document.createElement('div');
+    this.controls.className = 'deck-controls';
+    this.controls.innerHTML = '<button type="button" data-prev>Prev</button><button type="button" data-title>Title</button><span class="deck-progress"></span><button type="button" data-next>Next</button>';
+    document.body.appendChild(this.controls);
+    this.hint = document.createElement('div');
+    this.hint.className = 'deck-hint';
+    this.hint.textContent = 'Arrow keys or buttons to navigate';
+    document.body.appendChild(this.hint);
+    this.controls.querySelector('[data-prev]').addEventListener('click', () => this.prev());
+    this.controls.querySelector('[data-next]').addEventListener('click', () => this.next());
+    this.controls.querySelector('[data-title]').addEventListener('click', () => this.go(0));
+    window.addEventListener('resize', () => this.layout());
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') this.next();
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') this.prev();
+      if (e.key === 'Home') this.go(0);
+      if (e.key === 'End') this.go(this.slides.length - 1);
+    });
+    this.go(0);
+  }
+  layout() {
+    const vw = this.clientWidth || window.innerWidth;
+    const vh = this.clientHeight || window.innerHeight;
+    const scale = Math.min(vw / 1920, vh / 1080);
+    const left = (vw - 1920 * scale) / 2;
+    const top = (vh - 1080 * scale) / 2;
+    this.slides.forEach(slide => {
+      slide.style.transform = `translate(${left}px, ${top}px) scale(${scale})`;
+      slide.style.left = '0'; slide.style.top = '0';
+    });
+  }
+  go(n) {
+    this.index = Math.max(0, Math.min(n, this.slides.length - 1));
+    this.slides.forEach((s, i) => s.classList.toggle('active', i === this.index));
+    this.layout();
+    const p = this.controls?.querySelector('.deck-progress');
+    if (p) p.textContent = `${this.index + 1} / ${this.slides.length}`;
+  }
+  next() { this.go(this.index + 1); }
+  prev() { this.go(this.index - 1); }
+}
+customElements.define('deck-stage', DeckStage);
+</script>
+</body>
+</html>
