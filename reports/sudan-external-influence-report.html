@@ -1,0 +1,1942 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>African Institutional Silence and External Influence in Sudan's War | QAP v2 | 26 Apr 2026 | v5 Audit Fix</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Libre+Baskerville:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
+/* ============================================================
+   QAP WEB REPORT - CANONICAL STYLESHEET
+   Quanta Analytica Process™ | MNS Consulting
+   quanta-analytica.com/reports/
+   Version: 2.0 | Design System Reference
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. ROOT VARIABLES - Color, Typography, Spacing
+   ------------------------------------------------------------ */
+:root {
+  /* Core Palette */
+  --obsidian:         #0a0c10;
+  --obsidian-mid:     #10131a;
+  --obsidian-card:    #13161f;
+  --obsidian-border:  #1c2030;
+  --obsidian-surface: #181b26;
+  --obsidian-lift:    #1e2235;
+
+  /* Gold Scale */
+  --gold:             #c8a96e;
+  --gold-light:       #dfc28e;
+  --gold-pale:        #e8d5aa;
+  --gold-dim:         #9a7f52;
+  --gold-muted:       #6b5838;
+  --gold-glow:        rgba(200, 169, 110, 0.12);
+  --gold-glow-strong: rgba(200, 169, 110, 0.22);
+
+  /* Alert / Status Colors */
+  --red:              #c0392b;
+  --red-light:        #e74c3c;
+  --red-bg:           rgba(192, 57, 43, 0.12);
+  --amber:            #d4820a;
+  --amber-light:      #f39c12;
+  --amber-bg:         rgba(212, 130, 10, 0.12);
+  --green:            #27ae60;
+  --green-light:      #2ecc71;
+  --green-bg:         rgba(39, 174, 96, 0.12);
+  --blue:             #2980b9;
+  --blue-light:       #3498db;
+  --blue-bg:          rgba(41, 128, 185, 0.12);
+  --yellow:           #f1c40f;
+  --yellow-bg:        rgba(241, 196, 15, 0.12);
+  --slate:            #5d7a9a;
+  --slate-light:      #7f9ab8;
+
+  /* Text Scale */
+  --text-primary:     #e8e4dc;
+  --text-secondary:   #b8b0a0;
+  --text-muted:       #7a7264;
+  --text-faint:       #4a4640;
+
+  /* Typography */
+  --font-display:     'Libre Baskerville', Georgia, serif;
+  --font-body:        'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:        'IBM Plex Mono', 'Courier New', monospace;
+
+  /* Spacing */
+  --space-xs:         0.25rem;
+  --space-sm:         0.5rem;
+  --space-md:         1rem;
+  --space-lg:         1.5rem;
+  --space-xl:         2rem;
+  --space-2xl:        3rem;
+  --space-3xl:        4rem;
+
+  /* Borders & Radius */
+  --radius-sm:        3px;
+  --radius-md:        6px;
+  --radius-lg:        10px;
+  --border-default:   1px solid var(--obsidian-border);
+  --border-gold:      1px solid var(--gold-dim);
+
+  /* Transitions */
+  --transition-fast:  0.15s ease;
+  --transition-base:  0.25s ease;
+  --transition-slow:  0.4s ease;
+
+  /* Shadows */
+  --shadow-card:      0 2px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lift:      0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* ------------------------------------------------------------
+   2. RESET & BASE
+   ------------------------------------------------------------ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--obsidian);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--gold-light);
+}
+
+p {
+  margin-bottom: var(--space-md);
+  color: var(--text-secondary);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+strong, b {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+em, i {
+  color: var(--slate-light);
+  font-style: italic;
+}
+
+cite {
+  font-style: normal;
+  color: var(--gold-dim);
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  vertical-align: super;
+  line-height: 0;
+}
+
+/* ------------------------------------------------------------
+   3. SCROLL PROGRESS BAR
+   ------------------------------------------------------------ */
+#progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-light));
+  z-index: 9999;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 8px var(--gold-glow-strong);
+}
+
+/* ------------------------------------------------------------
+   4. NAVIGATION
+   ------------------------------------------------------------ */
+nav {
+  position: fixed;
+  top: 3px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(10, 12, 16, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--obsidian-border);
+  padding: 0 var(--space-xl);
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.nav-brand span {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+.nav-classify {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  border: 1px solid var(--amber);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--amber-bg);
+}
+
+/* ------------------------------------------------------------
+   5. HERO BLOCK
+   ------------------------------------------------------------ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 140px var(--space-xl) var(--space-3xl);
+  overflow: hidden;
+  background: radial-gradient(ellipse at 20% 60%, rgba(200, 169, 110, 0.05) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(41, 128, 185, 0.04) 0%, transparent 50%),
+              var(--obsidian);
+}
+
+/* Animated background grid */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(200, 169, 110, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 169, 110, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridDrift 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes gridDrift {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(40px, 40px); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-running-head {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--obsidian-border);
+  padding-bottom: var(--space-sm);
+}
+
+.hero-container {
+  display: flex;          /* Enables side-by-side layout */
+  align-items: center;    /* Vertically centers the image with the text */
+  gap: 30px;              /* Creates space between the image and the text */
+  margin: 20px 0;
+}
+/* ----------------------------------------------------------------------
+   DEFAULT HERO IMG URL TO BE USED 'https://quanta-analytica.com/logo.PNG
+   -------Place image to the left of h1 title in hero section--------- */
+
+.hero-image {
+  max-width: 200px;       /* Adjust this size to fit your design */
+  height: auto;           /* Maintains aspect ratio */
+  border-radius: 8px;     /* Optional: rounds the corners of your image */
+}
+
+.hero-text {
+  flex: 1;                /* Allows text to take up remaining space */
+}
+
+/* Optional: Mobile Responsiveness */
+@media (max-width: 600px) {
+  .hero-container {
+    flex-direction: column; /* Stacks image on top of text on small screens */
+    text-align: center;
+  }
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 .title-gold {
+  color: var(--gold); 
+  display: block;      /* Ensures it starts on a new line */
+  margin-top: 0.5rem;  /* Optional: adds a small gap between lines */
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+  max-width: 720px;
+  line-height: 1.6;
+}
+
+/* Hero Metadata Row */
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  align-items: center;
+}
+
+.meta-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.meta-cell .label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.meta-cell .value {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+}
+
+.meta-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--gold-dim);
+  align-self: center;
+}
+
+/* Threat Badge */
+.threat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.threat-badge.critical  { color: var(--red-light);   border-color: var(--red);   background: var(--red-bg);   }
+.threat-badge.high      { color: var(--amber-light);  border-color: var(--amber); background: var(--amber-bg); }
+.threat-badge.elevated  { color: var(--yellow);       border-color: var(--yellow);background: var(--yellow-bg);}
+.threat-badge.moderate  { color: var(--blue-light);   border-color: var(--blue);  background: var(--blue-bg);  }
+.threat-badge.low       { color: var(--green-light);  border-color: var(--green); background: var(--green-bg); }
+
+.threat-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+
+/* Analytic Scope Boundary */
+.scope-boundary {
+  border-left: 3px solid var(--slate);
+  padding: var(--space-sm) var(--space-lg);
+  background: rgba(93, 122, 154, 0.08);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin-top: var(--space-lg);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--slate-light);
+  line-height: 1.6;
+}
+
+/* Key Metrics Strip */
+.metrics-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--obsidian-border);
+}
+
+.metric-block {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-top: 2px solid var(--gold-dim);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  min-width: 140px;
+}
+
+.metric-block .metric-value {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.metric-block .metric-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ------------------------------------------------------------
+   6. MAIN CONTENT WRAPPER
+   ------------------------------------------------------------ */
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--space-3xl) var(--space-xl);
+}
+
+/* ------------------------------------------------------------
+   7. SECTION WRAPPER & SCROLL REVEAL
+   ------------------------------------------------------------ */
+.section {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  margin-bottom: var(--space-3xl);
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section Header */
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--obsidian-border);
+}
+
+.section-num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  background: var(--gold-glow);
+  border: 1px solid var(--gold-muted);
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+/* Sub-section divider */
+.sub-section {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+}
+
+.sub-section::before {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-muted), transparent);
+  margin-bottom: var(--space-lg);
+}
+
+.sub-section h3 {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-md);
+}
+
+/* ------------------------------------------------------------
+   8. BLUF - Bottom Line Up Front
+   ------------------------------------------------------------ */
+.bluf-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.bluf-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-left: 3px solid var(--gold-dim);
+  border-radius: var(--radius-md);
+}
+
+.bluf-index {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--gold-pale);
+  opacity: 0.4;
+  line-height: 1;
+  padding-top: 4px;
+}
+
+.bluf-text .bluf-claim {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 0.98rem;
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.bluf-text p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------
+   9. SNAPSHOT GRID - Who / What / Where / When / Why / How
+   ------------------------------------------------------------ */
+.snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.snapshot-cell {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.snapshot-cell .snap-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: var(--space-sm);
+  display: block;
+}
+
+.snapshot-cell .snap-content {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------------------
+   10. KEY JUDGMENTS
+   ------------------------------------------------------------ */
+.kj-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.kj-item {
+  padding: var(--space-lg);
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  border-left: 4px solid;
+  position: relative;
+}
+
+.kj-item.high     { border-left-color: var(--red);   }
+.kj-item.moderate { border-left-color: var(--amber);  }
+.kj-item.low      { border-left-color: var(--blue);   }
+.kj-item.watch    { border-left-color: var(--yellow);  }
+
+.kj-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.kj-id {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.kj-conf {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.kj-item.high     .kj-conf { color: var(--red-light);   border-color: var(--red);   background: var(--red-bg);   }
+.kj-item.moderate .kj-conf { color: var(--amber-light);  border-color: var(--amber); background: var(--amber-bg); }
+.kj-item.low      .kj-conf { color: var(--blue-light);   border-color: var(--blue);  background: var(--blue-bg);  }
+.kj-item.watch    .kj-conf { color: var(--yellow);        border-color: var(--yellow);background: var(--yellow-bg);}
+
+.kj-text {
+  font-size: 0.93rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: var(--space-sm);
+}
+
+.kj-mapping {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+/* ------------------------------------------------------------
+   11. EVIDENCE GRID - Know / Assess / Gap
+   ------------------------------------------------------------ */
+.evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.evidence-box {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.evidence-box-header {
+  padding: var(--space-sm) var(--space-lg);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.evidence-box-header.know   { background: var(--green-bg);  color: var(--green-light);  border-bottom: 1px solid var(--green);  }
+.evidence-box-header.assess { background: var(--amber-bg);  color: var(--amber-light);  border-bottom: 1px solid var(--amber);  }
+.evidence-box-header.gap    { background: var(--red-bg);    color: var(--red-light);    border-bottom: 1px solid var(--red);    }
+
+.evidence-box-body {
+  padding: var(--space-lg);
+}
+
+.evidence-box-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+.evidence-box-body li {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid var(--obsidian-border);
+  padding-left: var(--space-md);
+  position: relative;
+}
+
+.evidence-box-body li::before {
+  content: '//';
+  position: absolute;
+  left: 0;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+
+.evidence-box-body li:last-child {
+  border-bottom: none;
+}
+
+/* WSI Source Independence Note */
+.wsi-note {
+  background: rgba(93, 122, 154, 0.1);
+  border: 1px solid rgba(93, 122, 154, 0.3);
+  border-left: 3px solid var(--slate);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  font-size: 0.83rem;
+  color: var(--slate-light);
+  font-style: italic;
+  margin-top: var(--space-lg);
+}
+
+.wsi-note strong {
+  color: var(--slate-light);
+  font-style: normal;
+}
+
+/* ------------------------------------------------------------
+   12. TABLES - Assumption, ACH, IW, KIQ, Risk, PIGs
+   ------------------------------------------------------------ */
+.table-wrapper {
+  overflow-x: auto;
+  margin-bottom: var(--space-lg);
+  border-radius: var(--radius-md);
+  border: var(--border-default);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.87rem;
+}
+
+thead th {
+  background: var(--obsidian-surface);
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  border-bottom: 1px solid var(--obsidian-border);
+  white-space: nowrap;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--obsidian-border);
+  transition: background var(--transition-fast);
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: var(--obsidian-lift);
+}
+
+tbody td {
+  padding: var(--space-sm) var(--space-md);
+  color: var(--text-secondary);
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+tbody td:first-child {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Assumption Table */
+.assumption-table { }
+
+/* ACH Table */
+.ach-table thead th:nth-child(4) { text-align: center; }
+.ach-table tbody td:nth-child(4) { text-align: center; font-family: var(--font-mono); }
+
+/* IW Table - Indicators & Warnings */
+.iw-table { }
+
+/* Risk Matrix - high-score rows */
+.risk-matrix tbody tr.risk-high {
+  background: var(--red-bg);
+}
+
+.risk-matrix tbody tr.risk-high td {
+  color: var(--text-primary);
+}
+
+.risk-score {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.risk-score.score-high   { color: var(--red-light);   }
+.risk-score.score-medium { color: var(--amber-light);  }
+.risk-score.score-low    { color: var(--green-light);  }
+
+/* KIQ Table */
+.kiq-table { }
+
+/* Priority Intelligence Gaps Table */
+.pig-table { }
+
+/* KPI Table (optional - fragility reports) */
+.kpi-table { }
+
+.pillar-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--obsidian-border);
+  color: var(--text-muted);
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+
+/* ------------------------------------------------------------
+   13. SCENARIO CARDS
+   ------------------------------------------------------------ */
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.scenario-card {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-top: 3px solid;
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.scenario-card.best  { border-top-color: var(--green);  }
+.scenario-card.base  { border-top-color: var(--amber);  }
+.scenario-card.worst { border-top-color: var(--red);    }
+
+.scenario-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  display: block;
+}
+
+.scenario-card.best  .scenario-label { color: var(--green-light);  }
+.scenario-card.base  .scenario-label { color: var(--amber-light);  }
+.scenario-card.worst .scenario-label { color: var(--red-light);    }
+
+.scenario-card h4 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.scenario-card p {
+  font-size: 0.87rem;
+}
+
+.scenario-prob {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: var(--space-sm);
+  display: block;
+  letter-spacing: 0.06em;
+}
+
+/* ------------------------------------------------------------
+   14. BEHAVIORAL GRID
+   ------------------------------------------------------------ */
+.behavioral-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.behavioral-item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+}
+
+.behavioral-rank {
+  font-family: var(--font-mono);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--gold-pale);
+  opacity: 0.25;
+  line-height: 1;
+  text-align: center;
+  padding-top: 4px;
+}
+
+.behavioral-content h4 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.behavioral-content p {
+  font-size: 0.88rem;
+  margin-bottom: var(--space-xs);
+}
+
+.behavioral-inference {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--slate-light);
+  font-style: italic;
+  letter-spacing: 0.02em;
+  display: block;
+}
+
+/* ------------------------------------------------------------
+   15. RECOMMENDATION TIMELINE
+   ------------------------------------------------------------ */
+.rec-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-left: 2px solid var(--obsidian-border);
+  margin-left: var(--space-md);
+  padding-left: var(--space-xl);
+}
+
+.rec-block {
+  position: relative;
+  margin-bottom: var(--space-xl);
+}
+
+.rec-block::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * var(--space-xl) - 1px);
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--obsidian-border);
+  border: 2px solid;
+}
+
+.rec-block.immediate  ::before { border-color: var(--red);   background: var(--red-bg);   }
+.rec-block.near-term  ::before { border-color: var(--amber); background: var(--amber-bg); }
+.rec-block.medium-term::before { border-color: var(--green); background: var(--green-bg); }
+
+.rec-time {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+  margin-bottom: var(--space-md);
+}
+
+.rec-block.immediate   .rec-time { color: var(--red-light);  border: 1px solid var(--red);   background: var(--red-bg);   }
+.rec-block.near-term   .rec-time { color: var(--amber-light);border: 1px solid var(--amber); background: var(--amber-bg); }
+.rec-block.medium-term .rec-time { color: var(--green-light);border: 1px solid var(--green); background: var(--green-bg); }
+
+.rec-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.rec-content p {
+  font-size: 0.9rem;
+}
+
+/* ------------------------------------------------------------
+   16. CONFIDENCE PANEL
+   ------------------------------------------------------------ */
+.conf-panel {
+  background: var(--obsidian-card);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--space-lg);
+}
+
+.conf-header {
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  border-bottom: 1px solid var(--obsidian-border);
+}
+
+.conf-band {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.conf-band.high     { color: var(--green-light);  border-color: var(--green);  background: var(--green-bg);  }
+.conf-band.moderate { color: var(--amber-light);  border-color: var(--amber);  background: var(--amber-bg);  }
+.conf-band.low      { color: var(--red-light);    border-color: var(--red);    background: var(--red-bg);    }
+
+.conf-header-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+.conf-body {
+  padding: var(--space-lg);
+}
+
+.conf-body p {
+  font-size: 0.9rem;
+}
+
+/* Uncertainty / Flip Risk List */
+.uncertainty-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.uncertainty-item {
+  background: var(--red-bg);
+  border: 1px solid var(--red);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+}
+
+.uncertainty-item .u-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red-light);
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.uncertainty-item p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------
+   17. THRESHOLD GRID - Green / Amber / Red Zones
+   ------------------------------------------------------------ */
+.threshold-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.threshold-cell {
+  border-radius: var(--radius-md);
+  border: 1px solid;
+  overflow: hidden;
+}
+
+.threshold-cell.green-zone { border-color: var(--green);  background: var(--green-bg);  }
+.threshold-cell.amber-zone { border-color: var(--amber);  background: var(--amber-bg);  }
+.threshold-cell.red-zone   { border-color: var(--red);    background: var(--red-bg);    }
+
+.threshold-header {
+  padding: var(--space-sm) var(--space-md);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid;
+}
+
+.threshold-cell.green-zone .threshold-header { color: var(--green-light);  border-color: var(--green);  background: rgba(39, 174, 96, 0.18);  }
+.threshold-cell.amber-zone .threshold-header { color: var(--amber-light);  border-color: var(--amber);  background: rgba(212, 130, 10, 0.18);  }
+.threshold-cell.red-zone   .threshold-header { color: var(--red-light);    border-color: var(--red);    background: rgba(192, 57, 43, 0.18);    }
+
+.threshold-body {
+  padding: var(--space-md);
+}
+
+.threshold-body p {
+  font-size: 0.85rem;
+  margin-bottom: var(--space-sm);
+}
+
+.threshold-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+.threshold-body li {
+  font-size: 0.83rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding: 3px 0;
+  padding-left: var(--space-md);
+  position: relative;
+}
+
+.threshold-body li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--text-faint);
+}
+
+/* ------------------------------------------------------------
+   18. STATUS & BAND PILLS (inline)
+   ------------------------------------------------------------ */
+.status-pill {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+.status-pill.red    { color: var(--red-light);   border-color: var(--red);   background: var(--red-bg);    }
+.status-pill.amber  { color: var(--amber-light);  border-color: var(--amber); background: var(--amber-bg);  }
+.status-pill.green  { color: var(--green-light);  border-color: var(--green); background: var(--green-bg);  }
+.status-pill.blue   { color: var(--blue-light);   border-color: var(--blue);  background: var(--blue-bg);   }
+.status-pill.yellow { color: var(--yellow);        border-color: var(--yellow);background: var(--yellow-bg); }
+.status-pill.gold   { color: var(--gold);          border-color: var(--gold-dim); background: var(--gold-glow); }
+
+/* Band Pills (source register table) */
+.band-pill {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+}
+
+.band-pill.green { color: var(--green-light);  border-color: var(--green);  background: var(--green-bg);  }
+.band-pill.amber { color: var(--amber-light);  border-color: var(--amber);  background: var(--amber-bg);  }
+.band-pill.red   { color: var(--red-light);    border-color: var(--red);    background: var(--red-bg);    }
+
+/* Inline fact/inference labels */
+.label-fact {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--blue-light);
+  border: 1px solid var(--blue);
+  background: var(--blue-bg);
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  margin-right: 6px;
+}
+
+.label-inference {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  border: 1px solid var(--gold-dim);
+  background: var(--gold-glow);
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  margin-right: 6px;
+}
+
+/* Structural constraint labels */
+.label-structural { color: var(--red-light);    }
+.label-political  { color: var(--amber-light);  }
+.label-resource   { color: var(--blue-light);   }
+.label-temporal   { color: var(--green-light);  }
+
+/* Analytic technique declaration block */
+.technique-declaration {
+  background: var(--obsidian-surface);
+  border: var(--border-default);
+  border-left: 3px solid var(--gold-dim);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  margin-bottom: var(--space-xl);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.technique-declaration strong {
+  color: var(--gold-dim);
+  font-style: normal;
+}
+
+/* ------------------------------------------------------------
+   19. FOOTER
+   ------------------------------------------------------------ */
+footer {
+  border-top: 1px solid var(--obsidian-border);
+  padding: var(--space-xl);
+  text-align: center;
+}
+
+.footer-brand {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: var(--space-sm);
+}
+
+.footer-doc-id {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  margin-bottom: var(--space-sm);
+}
+
+.footer-legal {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* ------------------------------------------------------------
+   20. RESPONSIVE BREAKPOINTS
+   ------------------------------------------------------------ */
+@media (max-width: 768px) {
+  nav {
+    padding: 0 var(--space-md);
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    padding: 100px var(--space-md) var(--space-2xl);
+  }
+
+  main {
+    padding: var(--space-2xl) var(--space-md);
+  }
+
+  .snapshot-grid,
+  .evidence-grid,
+  .scenario-grid,
+  .threshold-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bluf-item {
+    grid-template-columns: 28px 1fr;
+    gap: var(--space-md);
+  }
+
+  .behavioral-item {
+    grid-template-columns: 1fr;
+  }
+
+  .behavioral-rank {
+    font-size: 1rem;
+    text-align: left;
+    padding-top: 0;
+    opacity: 0.35;
+  }
+
+  .hero-running-head {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .hero-meta {
+    gap: var(--space-sm);
+  }
+
+  .metrics-strip {
+    gap: var(--space-sm);
+  }
+
+  table {
+    font-size: 0.8rem;
+  }
+
+  thead th,
+  tbody td {
+    padding: var(--space-xs) var(--space-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .section-title {
+    font-size: 1.15rem;
+  }
+}
+
+
+/* Report-specific refinements */
+.logo-lockup { display:flex; align-items:center; gap: 1.5rem; margin: 1rem 0 1.25rem; }
+.logo-lockup img { width: 160px; max-width: 28vw; height:auto; border:1px solid var(--gold-dim); background:rgba(200,169,110,.04); border-radius:8px; padding:8px; }
+.logo-lockup .title-wrap { flex:1; }
+.kiq-table th, .kiq-table td, .matrix-table th, .matrix-table td { vertical-align: top; }
+.badge { display:inline-block; font-family:var(--font-mono); font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; border:1px solid var(--gold-dim); color:var(--gold-light); background:var(--gold-glow); border-radius:3px; padding:2px 7px; }
+.badge.red { color:var(--red-light); border-color:var(--red); background:var(--red-bg); }
+.badge.amber { color:var(--amber-light); border-color:var(--amber); background:var(--amber-bg); }
+.badge.green { color:var(--green-light); border-color:var(--green); background:var(--green-bg); }
+.badge.blue { color:var(--blue-light); border-color:var(--blue); background:var(--blue-bg); }
+.source-card-grid { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-md); }
+.source-card { background: var(--obsidian-card); border: var(--border-default); border-top: 2px solid var(--gold-dim); border-radius: var(--radius-md); padding: var(--space-lg); overflow-wrap:anywhere; }
+.source-card h4 { font-family:var(--font-display); font-size:.98rem; color:var(--text-primary); margin-bottom:.4rem; }
+.source-meta { font-family:var(--font-mono); font-size:.68rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.08em; margin-bottom:.5rem; }
+.source-card a { font-size:.82rem; }
+
+.source-scores {
+  margin-top: .65rem;
+  padding: .55rem .65rem;
+  border: 1px solid var(--obsidian-border);
+  border-left: 3px solid var(--gold-dim);
+  border-radius: var(--radius-sm);
+  background: rgba(200,169,110,0.05);
+  font-family: var(--font-mono);
+  font-size: .66rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  letter-spacing: .03em;
+}
+.source-detail {
+  margin-top: .55rem;
+  font-size: .82rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+.source-detail strong { color: var(--gold-light); }
+.audit-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-md); margin-top: var(--space-lg); }
+.audit-card { background: var(--obsidian-card); border: var(--border-default); border-left: 3px solid var(--slate); border-radius: var(--radius-md); padding: var(--space-lg); }
+.audit-card h4 { font-family: var(--font-mono); font-size: .78rem; color: var(--gold); letter-spacing: .12em; text-transform: uppercase; margin-bottom: .5rem; }
+.audit-card p { font-size: .86rem; }
+
+.pill-row { display:flex; flex-wrap:wrap; gap:.5rem; margin:.75rem 0 1rem; }
+.note-box { background: rgba(93,122,154,.08); border-left: 3px solid var(--slate); border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: var(--space-md) var(--space-lg); color: var(--text-secondary); margin: var(--space-md) 0; }
+.warning-box { background: var(--amber-bg); border-left: 3px solid var(--amber); border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: var(--space-md) var(--space-lg); }
+ul.clean { margin-left: 1.2rem; color: var(--text-secondary); }
+ul.clean li { margin-bottom: .4rem; }
+.ref-list li { margin-bottom: .85rem; color: var(--text-secondary); overflow-wrap:anywhere; }
+.ref-list a { overflow-wrap:anywhere; }
+@media (max-width: 760px) { .source-card-grid { grid-template-columns: 1fr; } .logo-lockup { flex-direction:column; align-items:flex-start; } }
+
+  </style>
+</head>
+<body>
+<div id="progress"></div>
+<nav>
+<div class="nav-brand">QUANTA ANALYTICA <span>| MNS CONSULTING</span></div>
+<ul class="nav-links">
+<li><a href="#bluf">BLUF</a></li>
+<li><a href="#analysis">Analysis</a></li>
+<li><a href="#references">Sources</a></li>
+</ul>
+<div class="nav-classify">Open Source</div>
+</nav>
+<header class="hero">
+<div class="hero-grid"></div>
+<div class="hero-content">
+<div class="hero-running-head"><span>QUANTA ANALYTICA | MNS CONSULTING</span><span>FRAGILITY &amp; GOVERNANCE MODELING // SUDAN</span></div>
+<div class="logo-lockup">
+<img alt="Quanta Analytica logo" src="https://quanta-analytica.com/logo.PNG"/>
+<div class="title-wrap">
+<h1>African Institutional Silence <span class="title-gold">and External Influence in Sudan's War</span></h1>
+<p class="hero-subtitle">UAE-RSF Allegations, AU Credibility, and the Limits of Continental Conflict Governance</p>
+</div>
+</div>
+<div class="hero-meta">
+<div class="meta-cell"><span class="label">Domain</span><span class="value">Fragility &amp; Governance Modeling</span></div><div class="meta-divider"></div>
+<div class="meta-cell"><span class="label">Date</span><span class="value">26 Apr 2026 | v5 Audit Fix</span></div><div class="meta-divider"></div>
+<div class="meta-cell"><span class="label">Confidence</span><span class="value">Moderate</span></div><div class="meta-divider"></div>
+<div class="threat-badge high"><span class="threat-dot"></span> Credibility Risk High</div>
+</div>
+<div class="scope-boundary"><strong>Analytic Scope Boundary:</strong> This open-source assessment covers AU and regional institutional behavior related to Sudan from April 2023 through April 2026, with a forward monitoring horizon through 31 August 2026. It excludes classified intelligence, non-public AU deliberation records, and private diplomatic cables. Primary audience: senior decision-makers, analysts, policy advisors, and institutional-risk reviewers. Confidence is limited by missing PSC draft language, member-state position data, and direct evidence of influence over communiqué drafting.</div>
+<div class="metrics-strip">
+<div class="metric-block"><div class="metric-value">MOD</div><div class="metric-label">Overall Confidence</div></div>
+<div class="metric-block"><div class="metric-value">20</div><div class="metric-label">Top Risk Score</div></div>
+<div class="metric-block"><div class="metric-value">4</div><div class="metric-label">Evidence Streams</div></div>
+<div class="metric-block"><div class="metric-value">MAY</div><div class="metric-label">AU Benchmark</div></div>
+</div>
+</div>
+</header>
+<main>
+<section class="section" id="bluf">
+<div class="section-header"><span class="section-num">01 // BLUF</span><h2 class="section-title">Bottom Line Up Front</h2></div>
+<div class="bluf-grid">
+<div class="bluf-item"><div class="bluf-index">1</div><div class="bluf-text"><span class="bluf-claim">AU non-attribution is observable, but motive is not yet proven.</span><p>The AU PSC has condemned external interference in Sudan and tasked AU mechanisms to identify external supporters, but the reviewed February 2026 communiqué does not name the UAE. This supports institutional non-attribution, not a definitive finding of UAE capture. <cite>[1]</cite></p></div></div>
+<div class="bluf-item"><div class="bluf-index">2</div><div class="bluf-text"><span class="bluf-claim">The strongest explanation is multi-causal.</span><p>The best-supported model is strategic ambiguity under institutional constraint, driven by PSC consensus politics, mediation-access incentives, legal and evidentiary caution, economic exposure, and procedural delay.</p></div></div>
+<div class="bluf-item"><div class="bluf-index">3</div><div class="bluf-text"><span class="bluf-claim">The May 2026 benchmark is the central test.</span><p>The February 2026 communiqué directed AU mechanisms to identify external supporters within three months. Failure to provide a public process update would increase credibility-risk. <cite>[1]</cite></p></div></div>
+<div class="bluf-item"><div class="bluf-index">4</div><div class="bluf-text"><span class="bluf-claim">UAE embedding is relevant, but not proof of coercion.</span><p>The UAE remains inside Sudan-related diplomacy and official UAE material reports more than USD 110 billion in African investments from 2019 to 2023. These facts support an exposure pathway, not a direct coercion finding. <cite>[2]</cite> <cite>[3]</cite></p></div></div>
+<div class="bluf-item"><div class="bluf-index">5</div><div class="bluf-text"><span class="bluf-claim">The highest risk is credibility erosion.</span><p>If the AU continues generalized language while external evidence streams intensify, silence may become behaviorally indistinguishable from selective restraint or shielding to key audiences.</p></div></div>
+</div>
+</section>
+<section class="section" id="kiqs">
+<div class="section-header"><span class="section-num">02 // KIQs</span><h2 class="section-title">Key Intelligence Questions</h2></div>
+<table class="assumption-table kiq-table"><thead><tr><th>ID</th><th>Question</th><th>Links To</th></tr></thead><tbody>
+<tr><td>KIQ-1</td><td>What mechanisms or incentives prevent the AU PSC from naming the UAE in Sudan-related communiqués despite documented allegations?</td><td>KJ-1, ACH, Assumptions</td></tr>
+<tr><td>KIQ-2</td><td>To what extent do UAE economic partnerships and investments constrain member-state willingness to support UAE attribution?</td><td>KJ-2, PIG-2</td></tr>
+<tr><td>KIQ-3</td><td>How do UAE-linked or UAE-adjacent logistics, finance, and diplomatic networks shape RSF sustainment and attribution pressure?</td><td>KJ-3, Evidence, I&amp;W</td></tr>
+<tr><td>KIQ-4</td><td>What does generalized “external interference” language reveal about AU institutional credibility and enforcement capacity?</td><td>KJ-4, Five-Layer Map</td></tr>
+<tr><td>KIQ-5</td><td>How does UAE participation in AU/IGAD diplomatic channels affect perceptions of mediation neutrality and accountability?</td><td>KJ-5, Behavioral Layer</td></tr>
+<tr><td>KIQ-6</td><td>What indicators would shift the assessment from strategic ambiguity under constraint toward strategic capture?</td><td>ACH, I&amp;W, Confidence</td></tr>
+</tbody></table>
+</section>
+<section class="section" id="snapshot">
+<div class="section-header"><span class="section-num">03 // SNAPSHOT</span><h2 class="section-title">Situation Snapshot</h2></div>
+<div class="snapshot-grid">
+<div class="snapshot-cell"><span class="snap-label">WHO</span><div class="snap-content">AU, AU PSC, IGAD, UAE, SAF, RSF, Sudanese government, UN mechanisms, rights groups, investigative journalists, and AU member states.</div></div>
+<div class="snapshot-cell"><span class="snap-label">WHAT</span><div class="snap-content">The AU condemns external interference in Sudan but does not name the UAE in reviewed communiqué language.</div></div>
+<div class="snapshot-cell"><span class="snap-label">WHERE</span><div class="snap-content">Sudan conflict governance ecosystem, AU/IGAD diplomacy, UAE-Africa networks, Libya/Chad/Horn logistics pathways, and UN sanctions streams.</div></div>
+<div class="snapshot-cell"><span class="snap-label">WHEN</span><div class="snap-content">April 2023 through April 2026, with monitoring through August 2026.</div></div>
+<div class="snapshot-cell"><span class="snap-label">WHY</span><div class="snap-content">The case tests whether African multilateral bodies can address external interference when alleged actors are also investors and conveners.</div></div>
+<div class="snapshot-cell"><span class="snap-label">HOW</span><div class="snap-content">Through generalized language, delayed attribution, mediation incentives, consensus politics, contested evidence, and strategic ambiguity.</div></div>
+</div>
+</section>
+<section class="section" id="judgments">
+<div class="section-header"><span class="section-num">04 // KEY JUDGMENTS</span><h2 class="section-title">Key Judgments</h2></div>
+<div class="note-box"><strong>KJ Priority Logic:</strong> Key judgments are priority-ranked by decision relevance, evidence strength, and impact on release-level conclusions. Priority 1 is the governing judgment; Priority 7 is a watch judgment requiring continued collection.</div>
+<div class="kj-list">
+<div class="kj-item high"><div class="kj-header"><span class="kj-conf">Priority 1 | High / Moderate</span><span class="kj-id">KJ-1</span></div><p class="kj-text">AU non-attribution is observable and procedurally testable. The February 2026 communiqué creates a central May 2026 monitoring point. <cite>[1]</cite></p><div class="kj-mapping">Maps to KIQ-1, KIQ-4, KIQ-6</div></div>
+<div class="kj-item moderate"><div class="kj-header"><span class="kj-conf">Priority 2 | Moderate</span><span class="kj-id">KJ-2</span></div><p class="kj-text">AU silence is best explained by a combined constraint model rather than a single causal factor.</p><div class="kj-mapping">Maps to KIQ-1, KIQ-2, KIQ-5</div></div>
+<div class="kj-item moderate"><div class="kj-header"><span class="kj-conf">Priority 3 | Moderate-High</span><span class="kj-id">KJ-3</span></div><p class="kj-text">Attribution pressure is stronger after the source expansion. Amnesty, the UN Panel, Yale HRL, OFAC, The Sentry, and OHCHR add independent technical, official, investigative, and accountability streams, while UAE denial and ICJ jurisdiction limits preserve evidentiary caution. <cite>[5]</cite> <cite>[6]</cite> <cite>[7]</cite> <cite>[10]</cite> <cite>[11]</cite> <cite>[12]</cite> <cite>[13]</cite> <cite>[14]</cite> <cite>[15]</cite> <cite>[16]</cite> <cite>[17]</cite></p><div class="kj-mapping">Maps to KIQ-3, KIQ-4</div></div>
+<div class="kj-item moderate"><div class="kj-header"><span class="kj-conf">Priority 4 | Moderate-High</span><span class="kj-id">KJ-4</span></div><p class="kj-text">UAE diplomatic embedding complicates AU attribution incentives because the UAE remains inside Sudan-related humanitarian and diplomatic architecture. <cite>[2]</cite> <cite>[4]</cite></p><div class="kj-mapping">Maps to KIQ-5</div></div>
+<div class="kj-item moderate"><div class="kj-header"><span class="kj-conf">Priority 5 | Moderate</span><span class="kj-id">KJ-5</span></div><p class="kj-text">UAE economic exposure is a plausible constraint pathway, but it does not prove coercion or direct communiqué-shaping. <cite>[3]</cite></p><div class="kj-mapping">Maps to KIQ-2</div></div>
+<div class="kj-item moderate"><div class="kj-header"><span class="kj-conf">Priority 6 | Moderate-High</span><span class="kj-id">KJ-6</span></div><p class="kj-text">The source expansion materially strengthens the attribution-pressure side of the assessment. Yale HRL, the UN Panel of Experts, OFAC, Amnesty, OHCHR, and The Sentry deepen evidence that RSF sustainment depends on external logistics, finance, and technical support networks. This does not prove UAE capture of AU decision-making, but it raises the reputational cost of AU non-attribution. <cite>[11]</cite> <cite>[12]</cite> <cite>[13]</cite> <cite>[14]</cite> <cite>[15]</cite> <cite>[16]</cite> <cite>[17]</cite></p><div class="kj-mapping">Maps to KIQ-3, KIQ-4, KIQ-6</div></div>
+<div class="kj-item watch"><div class="kj-header"><span class="kj-conf">Priority 7 | Watch</span><span class="kj-id">KJ-7</span></div><p class="kj-text">Strategic capture remains a watch hypothesis. Current open-source evidence does not prove UAE coercion, inducement, or direct influence over AU decision-making.</p><div class="kj-mapping">Maps to KIQ-6</div></div>
+</div>
+</section>
+<section class="section" id="evidence">
+<div class="section-header"><span class="section-num">05 // EVIDENCE</span><h2 class="section-title">Evidence Summary</h2></div>
+<div class="evidence-grid">
+<div class="evidence-box"><div class="evidence-box-header know">What We Know</div><ul class="clean"><li>AU PSC condemned external interference and created an identification mandate. <cite>[1]</cite></li><li>UAE-AU-IGAD humanitarian convening occurred in February 2025. <cite>[2]</cite></li><li>AU-UAE cooperation continued in January 2026. <cite>[4]</cite></li><li>Reuters reported the ICJ lacked jurisdiction and did not assess merits. <cite>[7]</cite></li><li>UN Panel of Experts reporting identified three RSF support lines and described the main route through eastern Chad, including Abu Dhabi to Am Djarass cargo rotations and credible allegations gathered from Chad and Darfur sources. <cite>[12]</cite></li><li>OFAC sanctioned Hemedti, Capital Tap Holding, and related entities, stating that UAE-based Capital Tap Holding provided money and weapons to the RSF. <cite>[13]</cite></li><li>Yale HRL reported high-confidence activity consistent with military assistance to RSF at an ENDF base in Asosa, Ethiopia, between late December 2025 and late March 2026. <cite>[11]</cite></li><li>OHCHR and the UN Fact-Finding Mission reported severe RSF atrocity patterns in El-Fasher and Zamzam, increasing accountability pressure on regional institutions. <cite>[15]</cite> <cite>[16]</cite></li></ul></div>
+<div class="evidence-box"><div class="evidence-box-header assess">What We Assess</div><ul class="clean"><li>Non-attribution likely reflects institutional constraint rather than simple oversight.</li><li>UAE economic and diplomatic embedding likely raises the cost of direct attribution for some actors.</li><li>Strategic capture is plausible enough to monitor but not sufficiently supported for a finding.</li><li>Attribution pressure is now stronger, but the report should still distinguish UAE-based entities, UAE-linked logistics, and UAE state direction as separate claim categories.</li><li>Asosa, eastern Chad, southern Libya, and potential Puntland/Bosaso channels should be treated as a multi-node logistics architecture requiring continued OSINT and UN corroboration.</li></ul></div>
+<div class="evidence-box"><div class="evidence-box-header gap">What We Do Not Know</div><ul class="clean"><li>Whether UAE-specific language was proposed and removed from AU drafts.</li><li>Which AU PSC member states privately resisted or supported UAE attribution.</li><li>Whether AU internal bodies produced findings after the February 2026 mandate.</li><li>Whether Asosa activity is state-directed, state-tolerated, or covertly enabled by networks operating through Ethiopian territory.</li><li>Whether UAE-based sanctioned companies were acting independently, with official tolerance, or under state direction.</li></ul></div>
+</div>
+<div class="wsi-note"><strong>WSI Source Independence Note:</strong> Evidence comes from institutional, UN/legal, technical/investigative, and wire-service streams. Load-bearing claims are caveated where corroboration is incomplete.<br/><strong>v2 Source Expansion:</strong> Yale HRL, UN Panel of Experts, OFAC, OHCHR, Amnesty, The Sentry, FairSquare, and Middle East Eye were screened. Yale HRL, UN Panel, OFAC, OHCHR, and The Sentry were integrated as substantive sources; FairSquare was integrated as advocacy and sanctions-pressure evidence; Middle East Eye remains lead-only for Puntland/Bosaso collection.</div>
+</section>
+<section class="section" id="analysis">
+<div class="section-header"><span class="section-num">06 // ANALYSIS</span><h2 class="section-title">Structured Analytic Tradecraft</h2></div>
+<div class="pill-row"><span class="badge">Five-Layer Map</span><span class="badge">ACH</span><span class="badge">KAC</span><span class="badge">I&amp;W</span><span class="badge">Scenario Matrix</span><span class="badge">RAPITIS / C-D-F</span></div>
+<div class="sub-section"><h3>Five-Layer Strategic Cognition Map</h3>
+<table class="matrix-table"><thead><tr><th>Layer</th><th>Core Question</th><th>Finding</th></tr></thead><tbody>
+<tr><td>L1 Foundations</td><td>What exists?</td><td>AU mandate, PSC structure, Sudan war, UAE footprint, diplomatic embedding, contested evidence, and multi-node RSF sustainment pathways through Chad, Libya, Ethiopia/Asosa, and UAE-based corporate networks.</td></tr>
+<tr><td>L2 Mechanisms</td><td>What causes behavior?</td><td>Consensus preservation, mediation access, legal caution, economic exposure, strategic ambiguity.</td></tr>
+<tr><td>L3 Dynamics</td><td>How does the system behave?</td><td>Repeated non-attribution risks normalization and credibility loss as technical, sanctions, UN, and investigative evidence streams accumulate.</td></tr>
+<tr><td>L4 Leverage</td><td>Where can intervention alter outcomes?</td><td>Attribution protocol, exposure register, mediator neutrality standard, sanctions pathway.</td></tr>
+<tr><td>L5 Paradigms</td><td>What worldview governs the system?</td><td>Pan-African sovereignty and rules-based order are in tension with transactional dependency.</td></tr>
+</tbody></table>
+</div>
+<div class="sub-section"><h3>Key Assumptions Check</h3>
+<table class="assumption-table"><thead><tr><th>ID</th><th>Assumption</th><th>Why It Matters</th><th>Evidence Basis</th><th>Failure Signal</th><th>Impact If Wrong</th></tr></thead><tbody>
+<tr><td>A-1</td><td>AU non-attribution is intentional or institutionally patterned, not accidental omission.</td><td>Supports the core strategic-ambiguity finding.</td><td>Repeated generalized language and the February 2026 identification mandate. <cite>[1]</cite></td><td>AU publishes a clear attribution process or names actors by the May benchmark.</td><td>Downgrade credibility-erosion finding and reframe silence as procedural sequencing.</td></tr>
+<tr><td>A-2</td><td>UAE diplomatic embedding creates mediation-access incentives for cautious AU language.</td><td>Explains why AU may preserve engagement space while avoiding named attribution.</td><td>UAE-AU-IGAD conference and AU-UAE joint statement. <cite>[2]</cite> <cite>[4]</cite></td><td>AU names external actors while maintaining UAE-facing humanitarian channels.</td><td>Reduce weight on mediation-access hypothesis.</td></tr>
+<tr><td>A-3</td><td>UAE economic exposure may affect member-state appetite for attribution.</td><td>Supports the economic-exposure hypothesis but does not prove coercion.</td><td>UAE official investment footprint claims. <cite>[3]</cite></td><td>PSC member-state mapping shows no relationship between UAE exposure and attribution behavior.</td><td>Downgrade H1 and elevate legal caution or consensus politics.</td></tr>
+<tr><td>A-4</td><td>Open-source evidence is strong enough to assess attribution pressure but not strong enough to prove AU capture.</td><td>Protects against overclaiming while allowing a stronger accountability-pressure finding.</td><td>UN Panel, OFAC, Yale HRL, Amnesty, OHCHR, Reuters, and The Sentry streams. <cite>[5]</cite> <cite>[7]</cite> <cite>[11]</cite> <cite>[12]</cite> <cite>[13]</cite> <cite>[14]</cite> <cite>[15]</cite> <cite>[16]</cite></td><td>Direct evidence emerges of UAE coercion, inducement, or communiqué manipulation.</td><td>Upgrade strategic capture from watch to plausible or core hypothesis.</td></tr>
+<tr><td>A-5</td><td>The May 2026 benchmark is analytically valid for testing AU procedural follow-through.</td><td>Gives the report a measurable decision threshold.</td><td>February 2026 PSC tasking to AU mechanisms. <cite>[1]</cite></td><td>AU clarifies that the process is confidential, extended, or not intended for public release.</td><td>Treat non-publication as less diagnostic and adjust confidence downward.</td></tr>
+<tr><td>A-6</td><td>Behavioral and narrative effects matter because audiences may interpret silence as selective restraint or shielding.</td><td>Supports the behavioral vulnerability and credibility-risk sections.</td><td>Atrocity reporting, accountability pressure, and continued non-attribution. <cite>[15]</cite> <cite>[16]</cite> <cite>[17]</cite></td><td>Sudanese, AU, civil society, or diplomatic discourse does not treat AU silence as legitimacy-relevant.</td><td>Reduce the behavioral-risk rating from high to moderate.</td></tr>
+</tbody></table>
+</div>
+<div class="sub-section"><h3>External Sustainment Node Map: v2 Update</h3>
+<table class="matrix-table"><thead><tr><th>Node</th><th>Evidence Added</th><th>Analytic Use</th></tr></thead><tbody>
+<tr><td>Eastern Chad / Am Djarass</td><td>UN Panel reporting identified the main RSF supply route through eastern Chad and cited credible allegations involving cargo rotations from Abu Dhabi to Am Djarass, while recording UAE denial. <cite>[12]</cite></td><td>Core logistics-support pathway and attribution-pressure evidence.</td></tr>
+<tr><td>Ethiopia / Asosa</td><td>Yale HRL reported activity consistent with RSF military assistance at an ENDF base in Asosa and described repeated commercial car-carrier activity, technical vehicles, and airport hardening. <cite>[11]</cite></td><td>New technical OSINT pathway requiring continuous imagery and flight-monitoring collection.</td></tr>
+<tr><td>Eastern Libya / Haftar Networks</td><td>The Sentry reported financial machinery tied to Ahmed Gadalla and Haftar-linked smuggling, including a July 2025 shipment of armored vehicles and ammunition from the UAE intended for RSF. <cite>[14]</cite></td><td>Strengthens Libya as a finance and logistics-enabler route.</td></tr>
+<tr><td>UAE-based Corporate Networks</td><td>OFAC stated UAE-based Capital Tap Holding provided money and weapons to the RSF and identified related UAE subsidiaries and gold/trading entities. <cite>[13]</cite></td><td>Upgrades UAE-based financial support from investigative lead to sanctioned-entity evidence.</td></tr>
+<tr><td>Puntland / Bosaso</td><td>Middle East Eye reporting on UAE-linked radar and security infrastructure in Puntland remains relevant but not yet load-bearing. <cite>[19]</cite></td><td>Collection lead only until corroborated by imagery, aviation, government, or UN reporting.</td></tr>
+</tbody></table>
+</div>
+
+<div class="sub-section"><h3>ACH Summary</h3>
+<table class="ach-table"><thead><tr><th>Hypothesis</th><th>Evidence For</th><th>Evidence Gap</th><th>Verdict</th></tr></thead><tbody>
+<tr><td>H1 Economic exposure</td><td>Large UAE investment footprint. <cite>[3]</cite></td><td>No direct country-position correlation.</td><td>Plausible, unproven.</td></tr>
+<tr><td>H2 Mediation access</td><td>UAE remains inside AU/IGAD Sudan diplomacy. <cite>[2]</cite> <cite>[4]</cite></td><td>Does not explain all non-mediator behavior.</td><td>Strongly plausible.</td></tr>
+<tr><td>H3 PSC consensus politics</td><td>Generalized language fits consensus-preserving practice. <cite>[1]</cite></td><td>Requires internal PSC evidence.</td><td>Strongly plausible.</td></tr>
+<tr><td>H4 Legal/evidentiary caution</td><td>UAE denial and ICJ limits support caution. <cite>[6]</cite> <cite>[7]</cite></td><td>UN Panel, OFAC, Yale HRL, Amnesty, OHCHR, and The Sentry increase attribution pressure. <cite>[11]</cite> <cite>[12]</cite> <cite>[13]</cite> <cite>[14]</cite> <cite>[15]</cite> <cite>[16]</cite> <cite>[17]</cite></td><td>Plausible to strong.</td></tr>
+<tr><td>H5 Strategic capture</td><td>Silence plus exposure creates risk signal.</td><td>No direct evidence of coercion or inducement.</td><td>Watch hypothesis.</td></tr>
+<tr><td>H6 Procedural delay</td><td>February 2026 communiqué created an identification mandate. <cite>[1]</cite></td><td>Does not explain earlier non-attribution.</td><td>Critical procedural hypothesis.</td></tr>
+</tbody></table>
+</div>
+<div class="sub-section"><h3>Scenario Matrix</h3>
+<div class="scenario-grid">
+<div class="scenario-card base"><h4>S1: Strategic Ambiguity Persists</h4><p><strong>Probability:</strong> 45%. AU continues condemning external interference without named attribution.</p></div>
+<div class="scenario-card worst"><h4>S2: Attribution Pressure Intensifies</h4><p><strong>Probability:</strong> 30%. UN, sanctions, NGO, or investigative evidence raises pressure.</p></div>
+<div class="scenario-card worst"><h4>S3: Institutional Fracture</h4><p><strong>Probability:</strong> 15%. AU/IGAD or member states split over UAE attribution or mediator neutrality.</p></div>
+<div class="scenario-card best"><h4>S4: Strategic Autonomy Recovery</h4><p><strong>Probability:</strong> 10%. AU names actors or creates a credible attribution protocol.</p></div>
+</div>
+</div>
+</section>
+<section class="section" id="behavioral">
+<div class="section-header"><span class="section-num">07 // BEHAVIORAL</span><h2 class="section-title">Behavioral &amp; Narrative Vulnerability</h2></div>
+<div class="note-box">This layer is relevant because AU silence is interpreted differently by Sudan, RSF, UAE, member states, civil society, and external powers. The behavioral risk is not only what the AU intends, but what audiences infer.</div>
+<table class="matrix-table"><thead><tr><th>Rank</th><th>Driver</th><th>Risk</th><th>Rationale</th></tr></thead><tbody>
+<tr><td>1</td><td>Ambiguous attribution language</td><td><span class="badge red">High</span></td><td>Allows multiple actors to weaponize the same phrase.</td></tr>
+<tr><td>2</td><td>Missed May 2026 benchmark</td><td><span class="badge red">High</span></td><td>Turns procedure into credibility risk.</td></tr>
+<tr><td>3</td><td>UAE diplomatic visibility</td><td><span class="badge amber">Moderate-High</span></td><td>Reinforces perception of constrained attribution.</td></tr>
+<tr><td>4</td><td>RSF status-conferral events</td><td><span class="badge amber">Moderate-High</span></td><td>May blur mediation and normalization.</td></tr>
+<tr><td>5</td><td>Contested evidence environment</td><td><span class="badge amber">Moderate</span></td><td>Enables accountability and denial narratives simultaneously.</td></tr>
+</tbody></table>
+<div class="sub-section"><h3>Narrative Vulnerability Assessment</h3>
+<table><thead><tr><th>Vulnerability</th><th>Exploitable By</th><th>Likely Narrative</th><th>Mitigation</th></tr></thead><tbody>
+<tr><td>Non-attribution after public evidence claims</td><td>Sudan, rights groups, critics</td><td>“The AU is avoiding accountability.”</td><td>Publish attribution criteria and timeline.</td></tr>
+<tr><td>UAE role in humanitarian diplomacy</td><td>Sudanese officials, UAE critics</td><td>“Accused actors remain inside mediation.”</td><td>Separate access channels from accountability process.</td></tr>
+<tr><td>RSF diplomatic receptions</td><td>Sudan government, anti-RSF actors</td><td>“The RSF is being normalized.”</td><td>Enforce non-recognition protocol.</td></tr>
+</tbody></table>
+</div>
+
+<div class="sub-section"><h3>v2 Narrative Shift</h3>
+<p>The added Yale HRL, UN Panel, OFAC, OHCHR, Amnesty, and The Sentry sources make the accountability-pressure environment sharper. The narrative risk is no longer only that the AU appears silent despite allegations. It is that AU non-attribution may appear increasingly disconnected from a growing technical, sanctions, UN, and investigative evidence base unless the AU publishes a credible attribution process.</p>
+</div>
+</section>
+<section class="section" id="implications">
+<div class="section-header"><span class="section-num">08 // IMPLICATIONS</span><h2 class="section-title">Strategic Implications, Risk &amp; Recommendations</h2></div>
+<div class="sub-section"><h3>Implications by Actor</h3>
+<table><thead><tr><th>Actor</th><th>Implication</th></tr></thead><tbody>
+<tr><td>AU</td><td>Continued ambiguity preserves flexibility but risks long-term credibility erosion.</td></tr>
+<tr><td>AU PSC</td><td>The February 2026 mandate makes follow-through essential to institutional credibility.</td></tr>
+<tr><td>IGAD</td><td>Continued UAE participation increases sensitivity around mediation neutrality.</td></tr>
+<tr><td>Sudanese government</td><td>Can use AU silence to pressure regional institutions and challenge mediation legitimacy.</td></tr>
+<tr><td>RSF</td><td>Benefits if ambiguity lowers reputational costs of alleged external support.</td></tr>
+<tr><td>UAE</td><td>Benefits from absence of formal AU attribution while maintaining diplomatic engagement.</td></tr>
+</tbody></table>
+</div>
+<div class="sub-section"><h3>Risk Scoring Matrix</h3>
+<table><thead><tr><th>Risk</th><th>Likelihood</th><th>Impact</th><th>Score</th><th>Mitigant</th></tr></thead><tbody>
+<tr><td>AU credibility erosion after missed May benchmark</td><td>4</td><td>5</td><td><span class="badge red">20 Critical</span></td><td>Publish attribution process and evidentiary standard.</td></tr>
+<tr><td>Strategic ambiguity becomes normalized</td><td>4</td><td>4</td><td><span class="badge red">16 High</span></td><td>Establish external-interference attribution protocol.</td></tr>
+<tr><td>Sudan rejects AU/IGAD mediation legitimacy</td><td>3</td><td>5</td><td><span class="badge amber">15 High</span></td><td>Clarify mediator neutrality rules.</td></tr>
+<tr><td>New UN, sanctions, or NGO evidence intensifies pressure</td><td>3</td><td>5</td><td><span class="badge amber">15 High</span></td><td>Prepare evidence review and communication plan.</td></tr>
+<tr><td>RSF gains symbolic legitimacy through diplomatic access</td><td>3</td><td>4</td><td><span class="badge amber">12 Moderate</span></td><td>Enforce non-recognition rules.</td></tr>
+<tr><td>Asosa or Ethiopia route becomes independently corroborated<br> as an active RSF sustainment node</td><td>3</td><td>5</td><td><span class="badge amber">15 High</span></td><td>Monitor Yale HRL, flight activity, satellite imagery, and official Ethiopian/AU responses.</td></tr>
+<tr><td>Sanctions evidence expands from UAE-based entities<br> to state-adjacent facilitation claims</td><td>3</td><td>5</td><td><span class="badge amber">15 High</span></td><td>Track OFAC, UK, EU, UN sanctions, corporate registry data, and banking exposure.</td></tr></tbody></table>
+</div>
+<div class="sub-section"><h3>Recommendations by Timeline</h3>
+<table class="matrix-table"><thead><tr><th>Timeline</th><th>Recommendation</th><th>Decision Owner</th><th>Purpose / Trigger</th></tr></thead><tbody>
+<tr><td>0-72H</td><td>Create a clean evidence register for UAE-RSF claims.</td><td>Analyst team / WSI audit lead</td><td>Separate facts, allegations, inferences, and gaps before external release.</td></tr>
+<tr><td>0-72H</td><td>Code all AU Sudan communiqués from 2023 to 2026 for external-interference language and state attribution.</td><td>Analyst team / AU-monitoring cell</td><td>Verify the non-attribution pattern and reduce narrative overreach.</td></tr>
+<tr><td>0-72H</td><td>Build initial PSC member-state exposure matrix.</td><td>Analyst team / economic exposure cell</td><td>Test the economic-exposure hypothesis against member-state positions.</td></tr>
+<tr><td>3-30 Days</td><td>Develop an AU external-interference attribution protocol model.</td><td>AU PSC / AU Commission policy cell</td><td>Create a constructive pathway for attribution without sacrificing due process.</td></tr>
+<tr><td>3-30 Days</td><td>Expand logistics-node map covering eastern Chad, Asosa, Libya, South Sudan, and Puntland/Bosaso leads.</td><td>OSINT cell / sanctions-monitoring team</td><td>Track whether supply-route evidence moves from lead to corroborated pathway.</td></tr>
+<tr><td>3-30 Days</td><td>Create a narrative-risk tracker for AU silence, UAE denial, Sudanese claims, and accountability messaging.</td><td>Information integrity team</td><td>Detect when ambiguity begins to degrade mediation legitimacy.</td></tr>
+<tr><td>30-180 Days</td><td>Build Gulf-Africa influence and conflict-governance dataset.</td><td>Research team / economic exposure cell</td><td>Determine whether economic exposure correlates with multilateral behavior.</td></tr>
+<tr><td>30-180 Days</td><td>Develop mediation neutrality standard for armed-actor engagement and RSF status-conferral risks.</td><td>AU Commission / IGAD mediation architecture</td><td>Protect mediation access while preserving non-recognition boundaries.</td></tr>
+<tr><td>30-180 Days</td><td>Create repeatable external-interference scoring model.</td><td>QAP methodology team / analyst team</td><td>Make future attribution cases auditable, comparable, and falsifiable.</td></tr>
+</tbody></table>
+</div>
+</section>
+<section class="section" id="confidence">
+<div class="section-header"><span class="section-num">09 // CONFIDENCE</span><h2 class="section-title">Confidence &amp; Uncertainties</h2></div>
+<div class="confidence-card"><h3>Overall Confidence: Moderate</h3><p>The assessment has high confidence in the observable non-attribution pattern and moderate confidence in the strategic-ambiguity explanation. It has low to moderate confidence in any stronger capture claim.</p></div>
+<div class="sub-section"><h3>Judgment-to-Evidence Matrix</h3>
+<table class="matrix-table"><thead><tr><th>Judgment</th><th>KIQ Link</th><th>Supporting Sources</th><th>Counter-Evidence / Caveat</th><th>Confidence</th><th>Falsifier</th></tr></thead><tbody>
+<tr><td>KJ-1: AU non-attribution is<br> observable and testable.</td><td>KIQ-1, KIQ-4, KIQ-6</td><td>AU PSC communiqué. <cite>[1]</cite></td><td>Public communiqué may not reflect confidential AU action.</td><td>High for observation, moderate for causal meaning.</td><td>AU releases annex, corrected text, or follow-up showing actors were identified.</td></tr>
+<tr><td>KJ-2: Combined constraint model<br> best explains silence.</td><td>KIQ-1, KIQ-2, KIQ-5</td><td>AU PSC language, AU-UAE engagement, UAE-Africa exposure. <cite>[1]</cite> <cite>[2]</cite> <cite>[3]</cite> <cite>[4]</cite></td><td>Internal PSC records are unavailable.</td><td>Moderate.</td><td>Draft records show no debate and a purely legal/evidentiary basis.</td></tr>
+<tr><td>KJ-3: Attribution pressure<br> is stronger<br> after source expansion.</td><td>KIQ-3, KIQ-4</td><td>UN Panel, Yale HRL, OFAC, Amnesty, OHCHR, The Sentry, Reuters. <cite>[5]</cite> <cite>[7]</cite> <cite>[11]</cite> <cite>[12]</cite> <cite>[13]</cite> <cite>[14]</cite> <cite>[15]</cite> <cite>[16]</cite> <cite>[17]</cite></td><td>UAE denial and ICJ jurisdiction limits keep state-direction claims contested. <cite>[6]</cite> <cite>[7]</cite></td><td>Moderate-High.</td><td>Credible technical, UN, or legal findings undercut the external-enabler claims.</td></tr>
+<tr><td>KJ-4: UAE diplomatic embedding<br> complicates attribution<br> incentives.</td><td>KIQ-5</td><td>UAE-AU-IGAD conference and AU-UAE joint statement. <cite>[2]</cite> <cite>[4]</cite></td><td>Diplomatic engagement does not prove influence.</td><td>Moderate-High.</td><td>Evidence shows engagement was unrelated to Sudan or did not affect AU access incentives.</td></tr>
+<tr><td>KJ-5: Economic exposure<br> is plausible<br> but unproven.</td><td>KIQ-2</td><td>UAE investment footprint claim. <cite>[3]</cite></td><td>No PSC member-state exposure correlation yet.</td><td>Moderate.</td><td>Exposure matrix shows no relationship between UAE ties and attribution behavior.</td></tr>
+<tr><td>KJ-6: External logistics and<br> finance networks raise<br> the cost of silence.</td><td>KIQ-3, KIQ-6</td><td>Yale HRL, UN Panel, OFAC, The Sentry, Amnesty, OHCHR. <cite>[11]</cite> <cite>[12]</cite> <cite>[13]</cite> <cite>[14]</cite> <cite>[15]</cite> <cite>[16]</cite> <cite>[17]</cite></td><td>Network evidence does not prove AU capture.</td><td>Moderate-High.</td><td>Independent review shows the cited logistics or finance pathways are not linked to RSF sustainment.</td></tr>
+<tr><td>KJ-7: Strategic capture<br> remains a watch<br> hypothesis.</td><td>KIQ-6</td><td>Pattern of silence, exposure, and attribution pressure.</td><td>No direct evidence of coercion, inducement, or communiqué manipulation.</td><td>Low to Moderate.</td><td>Direct evidence of UAE pressure or AU/member-state inducement emerges.</td></tr>
+</tbody></table>
+</div>
+<div class="sub-section"><h3>Counter-Evidence and Constraint Table</h3>
+<table class="matrix-table"><thead><tr><th>Counterpoint</th><th>Implication</th><th>Current Treatment</th></tr></thead><tbody>
+<tr><td>UAE denial of RSF support.</td><td>Prevents treating allegations as adjudicated fact.</td><td>Recorded as official state position, not dispositive evidence. <cite>[6]</cite></td></tr>
+<tr><td>ICJ dismissal was jurisdictional, not merits-based.</td><td>Does not validate or disprove Sudan allegations.</td><td>Used to preserve legal caution. <cite>[7]</cite></td></tr>
+<tr><td>AU internal deliberations are unavailable.</td><td>Prevents definitive finding of external capture or direct pressure.</td><td>Strategic capture remains watch hypothesis.</td></tr>
+<tr><td>Some sources are advocacy or investigative sources.</td><td>Increases need for independent corroboration.</td><td>FairSquare and MEE remain limited-use or lead-only unless corroborated. <cite>[18]</cite> <cite>[19]</cite></td></tr>
+</tbody></table>
+</div>
+<div class="sub-section"><h3>Priority Intelligence Gaps</h3>
+<table><thead><tr><th>ID</th><th>Gap</th><th>Why It Matters</th></tr></thead><tbody>
+<tr><td>PIG-1</td><td>Did AU PSC members debate naming the UAE?</td><td>Tests deliberate non-attribution.</td></tr>
+<tr><td>PIG-2</td><td>Which PSC states have highest UAE exposure?</td><td>Tests economic constraint.</td></tr>
+<tr><td>PIG-3</td><td>Did AU mechanisms produce findings after the February 2026 mandate?</td><td>Tests procedural delay.</td></tr>
+<tr><td>PIG-4</td><td>Are UAE-linked companies materially connected to RSF supply chains?</td><td>Tests finance pathway.</td></tr>
+<tr><td>PIG-5</td><td>Are logistics routes independently verifiable?</td><td>Tests operational continuity.</td></tr>
+</tbody></table>
+</div>
+<div class="warning-box"><strong>Final Caveat:</strong> This assessment does not conclude that the AU has been captured by the UAE. It concludes that AU non-attribution creates a capture-risk signal under conditions of UAE economic exposure, diplomatic embedding, and contested external-support allegations.</div>
+</section>
+<section class="section" id="references">
+<div class="section-header"><span class="section-num">10 // REFERENCES</span><h2 class="section-title">Source Register &amp; WSI Audit</h2></div>
+<div class="note-box"><strong>QAP Source Register Upgrade:</strong> Each source card now includes source type, retrieval date, RAPITIS scoring, C-D-F claim scoring, independence and falsifiability language, and a compressed MOM / POP / MOSES / EVE note. Retrieval date for all listed web sources is 24 April 2026. This supports release-grade QAP compliance while avoiding unsupported overclaiming. RAPITIS M is scored as manipulation-resistance, meaning higher M indicates lower assessed manipulation risk.</div>
+<div class="note-box"><strong>Band Key:</strong> <span class="badge green">Green</span> primary or high-quality source with strong provenance and low manipulation risk. <span class="badge amber">Green-Amber</span> useful source with caveats, usually due to advocacy posture, state framing, or method limits. <span class="badge amber">Amber / Lead-only</span> collection lead or advocacy signal that cannot carry a key judgment without independent corroboration.</div>
+<div class="source-card-grid">
+<article class="source-card" id="ref1">
+<h4>[1] Communiqué of the 1330th meeting of the PSC held at Ministerial level on the situation in Sudan</h4>
+<div class="source-meta">African Union Peace and Security Council | 2026, February 12 | Primary institutional | <span class="badge green">Green</span> | Retrieved 24 Apr 2026</div>
+<a href="https://www.peaceau.org/en/article/communique-of-the-1330th-meeting-of-the-psc-held-at-ministerial-level-on-12-february-2026-on-the-situation-in-sudan" rel="noopener" target="_blank">https://www.peaceau.org/en/article/communique-of-the-1330th-meeting-of-the-psc-held-at-ministerial-level-on-12-february-2026-on-the-situation-in-sudan</a>
+<div class="source-scores"><strong>RAPITIS:</strong> R5 A5 P5 M4 T5 I5 S5<br/><strong>C-D-F:</strong> C5 D4 F5 | Tier A</div>
+<div class="source-detail"><strong>Atomic claim / use:</strong> The AU PSC condemned external interference, created a three-month identification mandate, and did not name the UAE in the reviewed communiqué.</div>
+<div class="source-detail"><strong>Independence and falsifiability:</strong> Primary institutional stream. Tests KJ-1, KJ-2, and the May 2026 procedural benchmark. Falsified if a corrected communiqué or annex names external state actors or shows a confidential attribution process already existed.</div>
+<div class="source-detail"><strong>MOM / POP / MOSES / EVE:</strong> MOM low to moderate institutional incentive to preserve consensus. POP formal AU record. MOSES low for official page. EVE corroborated by AU institutional record, but motive remains inferential.</div>
+</article>
+<article class="source-card" id="ref2">
+<h4>[2] UAE, Ethiopia, AU and IGAD hold High-Level Humanitarian Conference for the People of Sudan in Addis Ababa</h4>
+<div class="source-meta">UAE Ministry of Foreign Affairs | 2025, February 14 | Primary diplomatic | <span class="badge amber">Green-Amber</span> | Retrieved 24 Apr 2026</div>
+<a href="https://www.mofa.gov.ae/en/mediahub/news/2025/2/14/14-2-2025-uae-sudan" rel="noopener" target="_blank">https://www.mofa.gov.ae/en/mediahub/news/2025/2/14/14-2-2025-uae-sudan</a>
+<div class="source-scores"><strong>RAPITIS:</strong> R4 A5 P5 M3 T4 I4 S4<br/><strong>C-D-F:</strong> C4 D3 F4 | Tier B</div>
+<div class="source-detail"><strong>Atomic claim / use:</strong> The UAE remained visibly embedded in Sudan-related humanitarian diplomacy alongside AU and IGAD architecture.</div>
+<div class="source-detail"><strong>Independence and falsifiability:</strong> Primary state record useful for exposure and diplomatic-access claims, not for proving benign intent. Falsified if AU or IGAD records show UAE participation was ceremonial with no material convening role.</div>
+<div class="source-detail"><strong>MOM / POP / MOSES / EVE:</strong> MOM moderate reputational incentive. POP official state communications. MOSES low for authenticity, medium for framing. EVE supported by institutional event context, but interpreted narrowly.</div>
+</article>
+<article class="source-card" id="ref3">
+<h4>[3] UAE hosts UAE-Africa Tourism Investment Summit to forge a shared vision for sustainable tourism ventures across Africa</h4>
+<div class="source-meta">UAE Ministry of Economy and Tourism | 2025, October 27 | Primary state economic claim | <span class="badge amber">Green-Amber</span> | Retrieved 24 Apr 2026</div>
+<a href="https://www.moet.gov.ae/en/-/uae-hosts-uae-africa-tourism-investment-summit-to-forge-a-shared-vision-for-sustainable-tourism-ventures-across-africa" rel="noopener" target="_blank">https://www.moet.gov.ae/en/-/uae-hosts-uae-africa-tourism-investment-summit-to-forge-a-shared-vision-for-sustainable-tourism-ventures-across-africa</a>
+<div class="source-scores"><strong>RAPITIS:</strong> R4 A5 P4 M3 T4 I4 S4<br/><strong>C-D-F:</strong> C3 D3 F4 | Tier B context</div>
+<div class="source-detail"><strong>Atomic claim / use:</strong> UAE official material claims a large Africa investment footprint relevant to institutional exposure analysis.</div>
+<div class="source-detail"><strong>Independence and falsifiability:</strong> Contextual economic exposure source. It supports a plausible leverage pathway, not coercion. Falsified if official investment totals are withdrawn, corrected, or shown to be materially inflated.</div>
+<div class="source-detail"><strong>MOM / POP / MOSES / EVE:</strong> MOM moderate positive-state-branding incentive. POP official state source. MOSES low authenticity risk. EVE should be cross-checked against independent financial and investment datasets before load-bearing use.</div>
+</article>
+<article class="source-card" id="ref4">
+<h4>[4] Joint Statement between the African Union Commission and the United Arab Emirates</h4>
+<div class="source-meta">African Union | 2026, January 6 | Primary diplomatic | <span class="badge green">Green</span> | Retrieved 24 Apr 2026</div>
+<a href="https://au.int/en/pressreleases/20260106/joint-statement-between-african-union-commission-and-united-arab-emirates" rel="noopener" target="_blank">https://au.int/en/pressreleases/20260106/joint-statement-between-african-union-commission-and-united-arab-emirates</a>
+<div class="source-scores"><strong>RAPITIS:</strong> R5 A5 P5 M4 T5 I5 S4<br/><strong>C-D-F:</strong> C4 D4 F5 | Tier A</div>
+<div class="source-detail"><strong>Atomic claim / use:</strong> AU-UAE cooperation continued in January 2026, demonstrating ongoing diplomatic proximity during the Sudan attribution period.</div>
+<div class="source-detail"><strong>Independence and falsifiability:</strong> Primary institutional stream. Supports diplomatic embedding, not capture. Falsified if statement is rescinded or limited to non-Sudan issues with no relevance to broader AU-UAE diplomatic access.</div>
+<div class="source-detail"><strong>MOM / POP / MOSES / EVE:</strong> MOM low to moderate institutional-image incentive. POP official AU source. MOSES low. EVE independently contextualized by UAE and AU public-facing diplomacy.</div>
+</article>
+<article class="source-card" id="ref5">
+<h4>[5] Sudan: Advanced Chinese weaponry provided by UAE identified in breach of arms embargo</h4>
+<div class="source-meta">Amnesty International | 2025, May 8 | Technical NGO investigation | <span class="badge amber">Green-Amber</span> | Retrieved 24 Apr 2026</div>
+<a href="https://www.amnesty.org/en/latest/news/2025/05/sudan-advanced-chinese-weaponry-provided-by-uae-identified-in-breach-of-arms-embargo-new-investigation/" rel="noopener" target="_blank">https://www.amnesty.org/en/latest/news/2025/05/sudan-advanced-chinese-weaponry-provided-by-uae-identified-in-breach-of-arms-embargo-new-investigation/</a>
+<div class="source-scores"><strong>RAPITIS:</strong> R4 A4 P4 M3 T4 I4 S5<br/><strong>C-D-F:</strong> C4 D4 F4 | Tier B</div>
+<div class="source-detail"><strong>Atomic claim / use:</strong> Amnesty reported technical evidence alleging UAE-provided weaponry reached Sudan in violation of the arms embargo.</div>
+<div class="source-detail"><strong>Independence and falsifiability:</strong> Technical NGO stream. Supports attribution pressure, not AU capture. Falsified if weapon identification, transfer pathway, or chain-of-custody claims are rebutted by stronger technical evidence.</div>
+<div class="source-detail"><strong>MOM / POP / MOSES / EVE:</strong> MOM advocacy incentive present. POP established human-rights documentation record. MOSES medium due to evidence-chain complexity. EVE corroborates pressure stream alongside UN, OFAC, Reuters, and Yale HRL reporting.</div>
+</article>
+<article class="source-card" id="ref6">
+<h4>[6] Statement by the Embassy of the United Arab Emirates Regarding Sudan</h4>
+<div class="source-meta">Embassy of the United Arab Emirates in Washington, DC | 2025, December 11 | Primary state position | <span class="badge amber">Amber-Green</span> | Retrieved 24 Apr 2026</div>
+<a href="https://www.uae-embassy.org/news/statement-embassy-united-arab-emirates-regarding-sudan" rel="noopener" target="_blank">https://www.uae-embassy.org/news/statement-embassy-united-arab-emirates-regarding-sudan</a>
+<div class="source-scores"><strong>RAPITIS:</strong> R4 A5 P4 M4 T4 I4 S4<br/><strong>C-D-F:</strong> C3 D4 F4 | Tier C for denial, Tier B for state position</div>
+<div class="source-detail"><strong>Atomic claim / use:</strong> The UAE publicly denied allegations related to Sudan, preserving evidentiary caution and legal contestation.</div>
+<div class="source-detail"><strong>Independence and falsifiability:</strong> Primary state-position source. Useful for recording denial and contested attribution, not for validating the denial as true. Falsified if UAE-linked admissions, sanctions findings, or official investigations establish contradictory facts.</div>
+<div class="source-detail"><strong>MOM / POP / MOSES / EVE:</strong> MOM high incentive to deny damaging claims. POP official state channel. MOSES low authenticity risk, high framing risk. EVE conflicts with several investigative and accountability streams, so it is used as counterevidence only.</div>
+</article>
+<article class="source-card" id="ref7">
+<h4>[7] World court says lacks jurisdiction to rule on Sudan's genocide case against UAE</h4>
+<div class="source-meta">Reuters | 2025, May 5 | High-quality secondary | <span class="badge green">Green</span> | Retrieved 24 Apr 2026</div>
+<a href="https://www.reuters.com/world/africa/world-court-dismisses-sudans-genocide-case-against-uae-over-alleged-darfur-2025-05-05/" rel="noopener" target="_blank">https://www.reuters.com/world/africa/world-court-dismisses-sudans-genocide-case-against-uae-over-alleged-darfur-2025-05-05/</a>
+<div class="source-scores"><strong>RAPITIS:</strong> R5 A4 P5 M5 T4 I5 S5<br/><strong>C-D-F:</strong> C4 D4 F5 | Tier B</div>
+<div class="source-detail"><strong>Atomic claim / use:</strong> Reuters reported the ICJ lacked jurisdiction and did not reach the merits of Sudan's genocide case against the UAE.</div>
+<div class="source-detail"><strong>Independence and falsifiability:</strong> Wire-service legal/timeline source. Supports caution that ICJ dismissal does not adjudicate factual merits. Falsified if the court later issues a merits finding or a separate competent tribunal rules substantively.</div>
+<div class="source-detail"><strong>MOM / POP / MOSES / EVE:</strong> MOM low. POP strong corrections culture. MOSES low. EVE corroborates legal-status interpretation and helps prevent overclaiming.</div>
+</article>
+<article class="source-card" id="ref8">
+<h4>[8] Libya fueled war in Sudan with Colombian mercenaries and equipment, UN report finds</h4>
+<div class="source-meta">Associated Press / Samy Magdy | 2026, April 21 | High-quality secondary / UN-linked | <span class="badge green">Green</span> | Retrieved 24 Apr 2026</div>
+<a href="https://apnews.com/article/d6dea5d3d58c99bdf9c30d4554e24508" rel="noopener" target="_blank">https://apnews.com/article/d6dea5d3d58c99bdf9c30d4554e24508</a>
+<div class="source-scores"><strong>RAPITIS:</strong> R5 A4 P5 M5 T5 I5 S5<br/><strong>C-D-F:</strong> C4 D4 F4 | Tier B</div>
+<div class="source-detail"><strong>Atomic claim / use:</strong> AP reported UN-linked findings on Libya-linked support to Sudan's war, strengthening the external-support ecosystem model.</div>
+<div class="source-detail"><strong>Independence and falsifiability:</strong> Wire-service stream tied to UN reporting. Supports external logistics and foreign support context. Falsified if the underlying UN reporting is corrected or AP materially revises the account.</div>
+<div class="source-detail"><strong>MOM / POP / MOSES / EVE:</strong> MOM low. POP strong corrections culture. MOSES low. EVE independent of UAE and AU institutional streams.</div>
+</article>
+<article class="source-card" id="ref9">
+<h4>[9] The RSF's business network in the UAE</h4>
+<div class="source-meta">The Sentry | 2025, October | Investigative NGO | <span class="badge amber">Green-Amber</span> | Retrieved 24 Apr 2026</div>
+<a href="https://thesentry.org/reports/sudan-rsf-business-network-in-the-uae/" rel="noopener" target="_blank">https://thesentry.org/reports/sudan-rsf-business-network-in-the-uae/</a>
+<div class="source-scores"><strong>RAPITIS:</strong> R4 A4 P4 M3 T4 I4 S5<br/><strong>C-D-F:</strong> C4 D4 F4 | Tier B</div>
+<div class="source-detail"><strong>Atomic claim / use:</strong> The Sentry reported UAE-linked RSF business-network structures relevant to finance and procurement pathways.</div>
+<div class="source-detail"><strong>Independence and falsifiability:</strong> Investigative financial network stream. Supports UAE-based network risk, not state direction by itself. Falsified if registries, sanctions records, or corporate documents disprove claimed network relationships.</div>
+<div class="source-detail"><strong>MOM / POP / MOSES / EVE:</strong> MOM advocacy and accountability incentive. POP established illicit-finance investigation profile. MOSES medium due to opaque corporate networks. EVE strengthened by OFAC and Reuters reporting where pathways overlap.</div>
+</article>
+<article class="source-card" id="ref10">
+<h4>[10] UN panel investigates Emirati links to seized weapons in Darfur</h4>
+<div class="source-meta">Reuters | 2025, April 29 | High-quality secondary | <span class="badge green">Green</span> | Retrieved 24 Apr 2026</div>
+<a href="https://www.reuters.com/world/un-panel-investigates-emirati-links-seized-weapons-darfur-2025-04-29/" rel="noopener" target="_blank">https://www.reuters.com/world/un-panel-investigates-emirati-links-seized-weapons-darfur-2025-04-29/</a>
+<div class="source-scores"><strong>RAPITIS:</strong> R5 A4 P5 M5 T4 I5 S5<br/><strong>C-D-F:</strong> C4 D4 F4 | Tier B</div>
+<div class="source-detail"><strong>Atomic claim / use:</strong> Reuters reported UN Panel investigation into possible Emirati links to seized weapons in Darfur.</div>
+<div class="source-detail"><strong>Independence and falsifiability:</strong> Wire-service stream. Supports attribution pressure and UN investigative activity. Falsified if the UN Panel closes the line of inquiry or attributes the weapons to unrelated pathways.</div>
+<div class="source-detail"><strong>MOM / POP / MOSES / EVE:</strong> MOM low. POP strong corrections culture. MOSES low. EVE independent reporting pathway that supports the technical attribution-pressure stream.</div>
+</article>
+<article class="source-card" id="ref11">
+<h4>[11] Evidence of Military Assistance to RSF at ENDF Base in Asosa, Ethiopia</h4>
+<div class="source-meta">Humanitarian Research Lab at Yale School of Public Health | 2026, April 8 | Technical OSINT / remote sensing | <span class="badge amber">Green-Amber</span> | Retrieved 24 Apr 2026</div>
+<a href="https://files-profile.medicine.yale.edu/documents/6fd54e48-167c-4af0-995b-942bee4727f9" rel="noopener" target="_blank">https://files-profile.medicine.yale.edu/documents/6fd54e48-167c-4af0-995b-942bee4727f9</a>
+<div class="source-scores"><strong>RAPITIS:</strong> R4 A4 P5 M3 T5 I4 S5<br/><strong>C-D-F:</strong> C4 D5 F5 | Tier B technical</div>
+<div class="source-detail"><strong>Atomic claim / use:</strong> Yale HRL reported high-confidence activity consistent with military assistance to RSF at an ENDF base in Asosa.</div>
+<div class="source-detail"><strong>Independence and falsifiability:</strong> Technical remote-sensing stream. Strongly diagnostic for support-node activity, but still requires state-direction caution. Falsified if imagery chronology, object identification, or facility interpretation is contradicted by stronger imagery or official inspection.</div>
+<div class="source-detail"><strong>MOM / POP / MOSES / EVE:</strong> MOM low to moderate advocacy/human-rights incentive. POP method-forward OSINT profile. MOSES medium due to imagery interpretation risk. EVE corroborates the external logistics model while requiring follow-on imagery and official confirmation.</div>
+</article>
+<article class="source-card" id="ref12">
+<h4>[12] Final report of the Panel of Experts on the Sudan, S/2024/65</h4>
+<div class="source-meta">United Nations Security Council | 2024, January 15 | Primary UN Panel of Experts report | <span class="badge green">Green</span> | Retrieved 24 Apr 2026</div>
+<a href="https://documents.un.org/doc/undoc/gen/n24/005/64/pdf/n2400564.pdf" rel="noopener" target="_blank">https://documents.un.org/doc/undoc/gen/n24/005/64/pdf/n2400564.pdf</a>
+<div class="source-scores"><strong>RAPITIS:</strong> R5 A5 P5 M5 T4 I5 S5<br/><strong>C-D-F:</strong> C5 D5 F5 | Tier A</div>
+<div class="source-detail"><strong>Atomic claim / use:</strong> UN Panel reporting identified RSF support lines and credible allegations concerning the eastern Chad / Am Djarass route.</div>
+<div class="source-detail"><strong>Independence and falsifiability:</strong> Primary UN investigative stream. Supports external support pathways and evidentiary pressure on AU non-attribution. Falsified or modified by subsequent UN Panel findings that withdraw, narrow, or redirect the reported pathways.</div>
+<div class="source-detail"><strong>MOM / POP / MOSES / EVE:</strong> MOM low institutional incentive with political sensitivity. POP formal UN reporting. MOSES low authenticity risk. EVE central corroboration source for logistics-route claims.</div>
+</article>
+<article class="source-card" id="ref13">
+<h4>[13] Treasury Sanctions Sudanese Paramilitary Leader, Weapons Supplier, and Related Companies</h4>
+<div class="source-meta">U.S. Department of the Treasury, OFAC | 2025, January 7 | Primary sanctions authority | <span class="badge green">Green</span> | Retrieved 24 Apr 2026</div>
+<a href="https://home.treasury.gov/news/press-releases/jy2772" rel="noopener" target="_blank">https://home.treasury.gov/news/press-releases/jy2772</a>
+<div class="source-scores"><strong>RAPITIS:</strong> R5 A5 P5 M5 T4 I5 S5<br/><strong>C-D-F:</strong> C5 D5 F5 | Tier A</div>
+<div class="source-detail"><strong>Atomic claim / use:</strong> OFAC stated that UAE-based Capital Tap Holding provided money and weapons to the RSF and sanctioned related entities.</div>
+<div class="source-detail"><strong>Independence and falsifiability:</strong> Primary sanctions authority. Strong support for UAE-based financial/procurement network claims, not proof of UAE state direction. Falsified if designations are revoked for evidentiary reasons or contradicted by court-tested records.</div>
+<div class="source-detail"><strong>MOM / POP / MOSES / EVE:</strong> MOM low to moderate policy incentive. POP formal sanctions authority. MOSES low. EVE high diagnostic value because it independently supports finance and weapons-support pathways.</div>
+</article>
+<article class="source-card" id="ref14">
+<h4>[14] Eastern Libya's Top Money Man: Spotlight on Ahmed Gadalla</h4>
+<div class="source-meta">The Sentry | 2026, April | Investigative NGO | <span class="badge amber">Green-Amber</span> | Retrieved 24 Apr 2026</div>
+<a href="https://thesentry.org/reports/eastern-libyas-top-money-man/" rel="noopener" target="_blank">https://thesentry.org/reports/eastern-libyas-top-money-man/</a>
+<div class="source-scores"><strong>RAPITIS:</strong> R4 A4 P4 M3 T5 I4 S5<br/><strong>C-D-F:</strong> C4 D4 F4 | Tier B</div>
+<div class="source-detail"><strong>Atomic claim / use:</strong> The Sentry reported Haftar-linked financial machinery and alleged UAE-origin shipment links relevant to RSF support through Libya.</div>
+<div class="source-detail"><strong>Independence and falsifiability:</strong> Investigative financial and logistics stream. Supports Libya-route hypothesis, but needs official or technical corroboration for state-direction claims. Falsified if shipping, registry, sanctions, or UN records disprove the alleged network links.</div>
+<div class="source-detail"><strong>MOM / POP / MOSES / EVE:</strong> MOM advocacy/accountability incentive. POP established illicit-finance investigative work. MOSES medium due to opaque networks. EVE useful when paired with AP and UN-linked reporting.</div>
+</article>
+<article class="source-card" id="ref15">
+<h4>[15] Sudan: Evidence in El-Fasher reveals genocidal campaign, targeting non-Arab communities</h4>
+<div class="source-meta">OHCHR / UN Fact-Finding Mission | 2026, February 19 | Primary UN human rights mechanism | <span class="badge green">Green</span> | Retrieved 24 Apr 2026</div>
+<a href="https://www.ohchr.org/en/press-releases/2026/02/sudan-evidence-el-fasher-reveals-genocidal-campaign-targeting-non-arab" rel="noopener" target="_blank">https://www.ohchr.org/en/press-releases/2026/02/sudan-evidence-el-fasher-reveals-genocidal-campaign-targeting-non-arab</a>
+<div class="source-scores"><strong>RAPITIS:</strong> R5 A5 P5 M5 T5 I5 S5<br/><strong>C-D-F:</strong> C5 D4 F5 | Tier A</div>
+<div class="source-detail"><strong>Atomic claim / use:</strong> OHCHR and the UN Fact-Finding Mission reported severe RSF atrocity patterns in El-Fasher.</div>
+<div class="source-detail"><strong>Independence and falsifiability:</strong> Primary UN human-rights stream. Supports accountability pressure and institutional credibility-risk context, not UAE attribution by itself. Falsified if UN mechanism corrects or withdraws core findings.</div>
+<div class="source-detail"><strong>MOM / POP / MOSES / EVE:</strong> MOM low institutional incentive, high political sensitivity. POP formal UN mechanism. MOSES low. EVE strengthens accountability-pressure environment.</div>
+</article>
+<article class="source-card" id="ref16">
+<h4>[16] Sudan: UN report details horrific patterns of violations committed during RSF takeover of Zamzam IDP camp</h4>
+<div class="source-meta">OHCHR | 2025, December 18 | Primary UN human rights reporting | <span class="badge green">Green</span> | Retrieved 24 Apr 2026</div>
+<a href="https://www.ohchr.org/en/press-releases/2025/12/sudan-un-report-details-horrific-patterns-violations-committed-during-rsf" rel="noopener" target="_blank">https://www.ohchr.org/en/press-releases/2025/12/sudan-un-report-details-horrific-patterns-violations-committed-during-rsf</a>
+<div class="source-scores"><strong>RAPITIS:</strong> R5 A5 P5 M5 T5 I5 S5<br/><strong>C-D-F:</strong> C5 D4 F5 | Tier A</div>
+<div class="source-detail"><strong>Atomic claim / use:</strong> OHCHR reported severe violation patterns during the RSF takeover of Zamzam IDP camp.</div>
+<div class="source-detail"><strong>Independence and falsifiability:</strong> Primary UN human-rights source. Supports severity and accountability pressure around RSF conduct. Falsified if OHCHR issues a correction materially changing perpetrator, location, or pattern findings.</div>
+<div class="source-detail"><strong>MOM / POP / MOSES / EVE:</strong> MOM low institutional incentive, high sensitivity. POP formal UN reporting. MOSES low. EVE independently supports the humanitarian and accountability-pressure context.</div>
+</article>
+<article class="source-card" id="ref17">
+<h4>[17] Sudan: Three years on, warring parties intensify brutal war on civilians</h4>
+<div class="source-meta">Amnesty International | 2026, April 14 | Human rights NGO | <span class="badge amber">Green-Amber</span> | Retrieved 24 Apr 2026</div>
+<a href="https://www.amnesty.org/en/latest/news/2026/04/three-years-on-sudans-warring-parties-intensify-war-against-civilians/" rel="noopener" target="_blank">https://www.amnesty.org/en/latest/news/2026/04/three-years-on-sudans-warring-parties-intensify-war-against-civilians/</a>
+<div class="source-scores"><strong>RAPITIS:</strong> R4 A4 P4 M3 T5 I4 S4<br/><strong>C-D-F:</strong> C4 D3 F4 | Tier B context</div>
+<div class="source-detail"><strong>Atomic claim / use:</strong> Amnesty reported continuing civilian-harm patterns and intensification of abuses by warring parties.</div>
+<div class="source-detail"><strong>Independence and falsifiability:</strong> Human-rights NGO context source. Supports severity and urgency, not source-attribution alone. Falsified if subsequent UN or court-tested findings materially contradict the reported patterns.</div>
+<div class="source-detail"><strong>MOM / POP / MOSES / EVE:</strong> MOM advocacy incentive. POP established documentation record. MOSES medium. EVE useful as context alongside UN human-rights sources.</div>
+</article>
+<article class="source-card" id="ref18">
+<h4>[18] FairSquare submission calls on UK government to investigate UAE Sheikh Mansour's links to the RSF</h4>
+<div class="source-meta">FairSquare | 2026, April 17 | Advocacy / sanctions submission | <span class="badge amber">Amber</span> | Retrieved 24 Apr 2026</div>
+<a href="https://fairsq.org/fairsquare-sanctions-submission-uae-sudan/" rel="noopener" target="_blank">https://fairsq.org/fairsquare-sanctions-submission-uae-sudan/</a>
+<div class="source-scores"><strong>RAPITIS:</strong> R3 A3 P4 M2 T5 I3 S4<br/><strong>C-D-F:</strong> C2 D3 F4 | Tier C / Lead</div>
+<div class="source-detail"><strong>Atomic claim / use:</strong> FairSquare submitted an advocacy and sanctions-pressure claim concerning alleged UAE-linked RSF relationships.</div>
+<div class="source-detail"><strong>Independence and falsifiability:</strong> Advocacy source. Lead-only for factual attribution unless independently corroborated by official, technical, court, or sanctions records. Falsified if UK authorities reject the factual basis or stronger records disprove the alleged links.</div>
+<div class="source-detail"><strong>MOM / POP / MOSES / EVE:</strong> MOM high advocacy incentive. POP civil-society accountability profile. MOSES medium. EVE used only as pressure signal and collection lead, not as load-bearing proof.</div>
+</article>
+<article class="source-card" id="ref19">
+<h4>[19] Revealed: UAE deploys Israeli radar in Somalia under secret deal</h4>
+<div class="source-meta">Middle East Eye | 2026 | Media reporting / collection lead | <span class="badge amber">Amber / Lead-only</span> | Retrieved 24 Apr 2026</div>
+<a href="https://www.middleeasteye.net/news/revealed-uae-deploys-israeli-radar-somalia-under-secret-deal" rel="noopener" target="_blank">https://www.middleeasteye.net/news/revealed-uae-deploys-israeli-radar-somalia-under-secret-deal</a>
+<div class="source-scores"><strong>RAPITIS:</strong> R3 A3 P3 M2 T4 I3 S4<br/><strong>C-D-F:</strong> C2 D3 F4 | Tier C / Lead</div>
+<div class="source-detail"><strong>Atomic claim / use:</strong> MEE reporting on UAE-linked radar and security infrastructure in Puntland is relevant as a collection lead for Horn logistics exposure.</div>
+<div class="source-detail"><strong>Independence and falsifiability:</strong> Lead-only source. Not used as factual proof of a Sudan support route. Falsified if imagery, official Puntland/Somalia statements, or credible technical reporting contradict the infrastructure claim.</div>
+<div class="source-detail"><strong>MOM / POP / MOSES / EVE:</strong> MOM editorial and access incentives unknown. POP mixed but sometimes useful regional reporting. MOSES medium to high due to opaque security claims. EVE requires imagery, aviation, official, or UN corroboration before elevation.</div>
+</article>
+<article class="source-card" id="ref20">
+<h4>[20] Communiqué of the 1261st Meeting of the Peace and Security Council held on 14 February 2025 on Sudan</h4>
+<div class="source-meta">African Union Peace and Security Council | 2025, February 19 | Primary institutional | <span class="badge green">Green</span> | Retrieved 24 Apr 2026</div>
+<a href="https://www.peaceau.org/en/article/communique-of-the-1261st-meeting-of-the-peace-and-security-council-held-on-14-february-2025-on-the-consideration-of-the-situation-in-sudan" rel="noopener" target="_blank">https://www.peaceau.org/en/article/communique-of-the-1261st-meeting-of-the-peace-and-security-council-held-on-14-february-2025-on-the-consideration-of-the-situation-in-sudan</a>
+<div class="source-scores"><strong>RAPITIS:</strong> R5 A5 P5 M4 T4 I5 S5<br/><strong>C-D-F:</strong> C4 D3 F5 | Tier A context</div>
+<div class="source-detail"><strong>Atomic claim / use:</strong> The AU PSC's 2025 Sudan communiqué provides institutional baseline language and continuity for AU Sudan handling.</div>
+<div class="source-detail"><strong>Independence and falsifiability:</strong> Primary institutional context source. Supports institutional-language baseline, not the February 2026 benchmark. Falsified if superseded text changes the relevant Sudan handling language.</div>
+<div class="source-detail"><strong>MOM / POP / MOSES / EVE:</strong> MOM low to moderate consensus-preservation incentive. POP official AU source. MOSES low. EVE provides institutional continuity context.</div>
+</article>
+</div>
+
+<div class="sub-section"><h3>Load-Bearing Claim C-D-F Audit</h3>
+<div class="audit-grid">
+<div class="audit-card"><h4>KJ-1 / AU non-attribution is observable and procedurally testable</h4><p><strong>Evidence chain:</strong> [1] with context from [20]. <strong>C-D-F:</strong> C5 D4 F5. <strong>Confidence impact:</strong> High confidence for the observable non-attribution and benchmark; no finding on motive.</p></div>
+<div class="audit-card"><h4>KJ-2 / May 2026 is the decisive credibility benchmark</h4><p><strong>Evidence chain:</strong> [1]. <strong>C-D-F:</strong> C5 D4 F5. <strong>Confidence impact:</strong> High confidence that the benchmark exists; moderate confidence on how failure would be interpreted without internal AU process data.</p></div>
+<div class="audit-card"><h4>KJ-3 / UAE economic exposure is a plausible constraint pathway</h4><p><strong>Evidence chain:</strong> [3], supported only as contextual exposure. <strong>C-D-F:</strong> C3 D3 F4. <strong>Confidence impact:</strong> Moderate-low as a coercion mechanism; retained as plausible pathway, not proof.</p></div>
+<div class="audit-card"><h4>KJ-4 / UAE diplomatic embedding complicates attribution incentives</h4><p><strong>Evidence chain:</strong> [2], [4], [1]. <strong>C-D-F:</strong> C4 D4 F5. <strong>Confidence impact:</strong> Moderate-high for diplomatic embedding; moderate for incentive interpretation.</p></div>
+<div class="audit-card"><h4>KJ-5 / Attribution pressure is stronger after source expansion</h4><p><strong>Evidence chain:</strong> [5], [7], [8], [9], [10], [11], [12], [13], [14], [15], [16], [17]. <strong>C-D-F:</strong> C5 D5 F5. <strong>Confidence impact:</strong> Moderate-high that attribution pressure increased; still insufficient to prove AU capture.</p></div>
+<div class="audit-card"><h4>KJ-6 / Strategic capture remains a watch hypothesis</h4><p><strong>Evidence chain:</strong> Absence of direct evidence of UAE coercion, inducement, or communiqué manipulation, combined with competing explanations in ACH. <strong>C-D-F:</strong> C4 D5 F5. <strong>Confidence impact:</strong> High confidence that capture is not proven; moderate confidence that watch status is warranted.</p></div>
+<div class="audit-card"><h4>KJ-7 / External logistics and finance networks raise reputational cost of AU non-attribution</h4><p><strong>Evidence chain:</strong> [11], [12], [13], [14], [15], [16], [17], with [18] and [19] treated only as pressure or collection leads. <strong>C-D-F:</strong> C5 D4 F5. <strong>Confidence impact:</strong> Moderate-high for pressure and reputational risk; not a direct-causation claim.</p></div>
+</div></div>
+
+<div class="sub-section"><h3>WSI Independence Statement</h3><p>The revised evidence base separates five independent streams: AU institutional records [1], [4], [20]; UAE state-position and economic-exposure records [2], [3], [6]; UN and legal accountability streams [7], [12], [15], [16]; technical, sanctions, and investigative streams [5], [9], [10], [11], [13], [14], [17]; and lead-only or advocacy pressure streams [18], [19]. Load-bearing claims are supported by Tier A or Tier B evidence where they drive a key judgment. Tier C material is explicitly restricted to pressure, context, or collection-lead use.</p></div>
+<div class="sub-section"><h3>APA Reference List</h3><ol class="ref-list"><li>[1] African Union Peace and Security Council. (2026, February 12). <em>Communiqué of the 1330th meeting of the PSC held at Ministerial level on the situation in Sudan</em>. <a href="https://www.peaceau.org/en/article/communique-of-the-1330th-meeting-of-the-psc-held-at-ministerial-level-on-12-february-2026-on-the-situation-in-sudan" rel="noopener" target="_blank">https://www.peaceau.org/en/article/communique-of-the-1330th-meeting-of-the-psc-held-at-ministerial-level-on-12-february-2026-on-the-situation-in-sudan</a></li>
+<li>[2] UAE Ministry of Foreign Affairs. (2025, February 14). <em>UAE, Ethiopia, AU and IGAD hold High-Level Humanitarian Conference for the People of Sudan in Addis Ababa</em>. <a href="https://www.mofa.gov.ae/en/mediahub/news/2025/2/14/14-2-2025-uae-sudan" rel="noopener" target="_blank">https://www.mofa.gov.ae/en/mediahub/news/2025/2/14/14-2-2025-uae-sudan</a></li>
+<li>[3] UAE Ministry of Economy and Tourism. (2025, October 27). <em>UAE hosts UAE-Africa Tourism Investment Summit to forge a shared vision for sustainable tourism ventures across Africa</em>. <a href="https://www.moet.gov.ae/en/-/uae-hosts-uae-africa-tourism-investment-summit-to-forge-a-shared-vision-for-sustainable-tourism-ventures-across-africa" rel="noopener" target="_blank">https://www.moet.gov.ae/en/-/uae-hosts-uae-africa-tourism-investment-summit-to-forge-a-shared-vision-for-sustainable-tourism-ventures-across-africa</a></li>
+<li>[4] African Union. (2026, January 6). <em>Joint Statement between the African Union Commission and the United Arab Emirates</em>. <a href="https://au.int/en/pressreleases/20260106/joint-statement-between-african-union-commission-and-united-arab-emirates" rel="noopener" target="_blank">https://au.int/en/pressreleases/20260106/joint-statement-between-african-union-commission-and-united-arab-emirates</a></li>
+<li>[5] Amnesty International. (2025, May 8). <em>Sudan: Advanced Chinese weaponry provided by UAE identified in breach of arms embargo</em>. <a href="https://www.amnesty.org/en/latest/news/2025/05/sudan-advanced-chinese-weaponry-provided-by-uae-identified-in-breach-of-arms-embargo-new-investigation/" rel="noopener" target="_blank">https://www.amnesty.org/en/latest/news/2025/05/sudan-advanced-chinese-weaponry-provided-by-uae-identified-in-breach-of-arms-embargo-new-investigation/</a></li>
+<li>[6] Embassy of the United Arab Emirates in Washington, DC. (2025, December 11). <em>Statement by the Embassy of the United Arab Emirates Regarding Sudan</em>. <a href="https://www.uae-embassy.org/news/statement-embassy-united-arab-emirates-regarding-sudan" rel="noopener" target="_blank">https://www.uae-embassy.org/news/statement-embassy-united-arab-emirates-regarding-sudan</a></li>
+<li>[7] Reuters. (2025, May 5). <em>World court says lacks jurisdiction to rule on Sudan's genocide case against UAE</em>. <a href="https://www.reuters.com/world/africa/world-court-dismisses-sudans-genocide-case-against-uae-over-alleged-darfur-2025-05-05/" rel="noopener" target="_blank">https://www.reuters.com/world/africa/world-court-dismisses-sudans-genocide-case-against-uae-over-alleged-darfur-2025-05-05/</a></li>
+<li>[8] Associated Press / Samy Magdy. (2026, April 21). <em>Libya fueled war in Sudan with Colombian mercenaries and equipment, UN report finds</em>. <a href="https://apnews.com/article/d6dea5d3d58c99bdf9c30d4554e24508" rel="noopener" target="_blank">https://apnews.com/article/d6dea5d3d58c99bdf9c30d4554e24508</a></li>
+<li>[9] The Sentry. (2025, October). <em>The RSF's business network in the UAE</em>. <a href="https://thesentry.org/reports/sudan-rsf-business-network-in-the-uae/" rel="noopener" target="_blank">https://thesentry.org/reports/sudan-rsf-business-network-in-the-uae/</a></li>
+<li>[10] Reuters. (2025, April 29). <em>UN panel investigates Emirati links to seized weapons in Darfur</em>. <a href="https://www.reuters.com/world/un-panel-investigates-emirati-links-seized-weapons-darfur-2025-04-29/" rel="noopener" target="_blank">https://www.reuters.com/world/un-panel-investigates-emirati-links-seized-weapons-darfur-2025-04-29/</a></li>
+<li>[11] Humanitarian Research Lab at Yale School of Public Health. (2026, April 8). <em>Evidence of Military Assistance to RSF at ENDF Base in Asosa, Ethiopia</em>. <a href="https://files-profile.medicine.yale.edu/documents/6fd54e48-167c-4af0-995b-942bee4727f9" rel="noopener" target="_blank">https://files-profile.medicine.yale.edu/documents/6fd54e48-167c-4af0-995b-942bee4727f9</a></li>
+<li>[12] United Nations Security Council. (2024, January 15). <em>Final report of the Panel of Experts on the Sudan, S/2024/65</em>. <a href="https://documents.un.org/doc/undoc/gen/n24/005/64/pdf/n2400564.pdf" rel="noopener" target="_blank">https://documents.un.org/doc/undoc/gen/n24/005/64/pdf/n2400564.pdf</a></li>
+<li>[13] U.S. Department of the Treasury, OFAC. (2025, January 7). <em>Treasury Sanctions Sudanese Paramilitary Leader, Weapons Supplier, and Related Companies</em>. <a href="https://home.treasury.gov/news/press-releases/jy2772" rel="noopener" target="_blank">https://home.treasury.gov/news/press-releases/jy2772</a></li>
+<li>[14] The Sentry. (2026, April). <em>Eastern Libya's Top Money Man: Spotlight on Ahmed Gadalla</em>. <a href="https://thesentry.org/reports/eastern-libyas-top-money-man/" rel="noopener" target="_blank">https://thesentry.org/reports/eastern-libyas-top-money-man/</a></li>
+<li>[15] OHCHR / UN Fact-Finding Mission. (2026, February 19). <em>Sudan: Evidence in El-Fasher reveals genocidal campaign, targeting non-Arab communities</em>. <a href="https://www.ohchr.org/en/press-releases/2026/02/sudan-evidence-el-fasher-reveals-genocidal-campaign-targeting-non-arab" rel="noopener" target="_blank">https://www.ohchr.org/en/press-releases/2026/02/sudan-evidence-el-fasher-reveals-genocidal-campaign-targeting-non-arab</a></li>
+<li>[16] OHCHR. (2025, December 18). <em>Sudan: UN report details horrific patterns of violations committed during RSF takeover of Zamzam IDP camp</em>. <a href="https://www.ohchr.org/en/press-releases/2025/12/sudan-un-report-details-horrific-patterns-violations-committed-during-rsf" rel="noopener" target="_blank">https://www.ohchr.org/en/press-releases/2025/12/sudan-un-report-details-horrific-patterns-violations-committed-during-rsf</a></li>
+<li>[17] Amnesty International. (2026, April 14). <em>Sudan: Three years on, warring parties intensify brutal war on civilians</em>. <a href="https://www.amnesty.org/en/latest/news/2026/04/three-years-on-sudans-warring-parties-intensify-war-against-civilians/" rel="noopener" target="_blank">https://www.amnesty.org/en/latest/news/2026/04/three-years-on-sudans-warring-parties-intensify-war-against-civilians/</a></li>
+<li>[18] FairSquare. (2026, April 17). <em>FairSquare submission calls on UK government to investigate UAE Sheikh Mansour's links to the RSF</em>. <a href="https://fairsq.org/fairsquare-sanctions-submission-uae-sudan/" rel="noopener" target="_blank">https://fairsq.org/fairsquare-sanctions-submission-uae-sudan/</a></li>
+<li>[19] Middle East Eye. (2026). <em>Revealed: UAE deploys Israeli radar in Somalia under secret deal</em>. <a href="https://www.middleeasteye.net/news/revealed-uae-deploys-israeli-radar-somalia-under-secret-deal" rel="noopener" target="_blank">https://www.middleeasteye.net/news/revealed-uae-deploys-israeli-radar-somalia-under-secret-deal</a></li>
+<li>[20] African Union Peace and Security Council. (2025, February 19). <em>Communiqué of the 1261st Meeting of the Peace and Security Council held on 14 February 2025 on Sudan</em>. <a href="https://www.peaceau.org/en/article/communique-of-the-1261st-meeting-of-the-peace-and-security-council-held-on-14-february-2025-on-the-consideration-of-the-situation-in-sudan" rel="noopener" target="_blank">https://www.peaceau.org/en/article/communique-of-the-1261st-meeting-of-the-peace-and-security-council-held-on-14-february-2025-on-the-consideration-of-the-situation-in-sudan</a></li></ol></div>
+</section>
+<section class="section" id="annex-a">
+<div class="section-header"><span class="section-num">A // EARLY WARNING</span><h2 class="section-title">Early Warning Indicators</h2></div>
+<table><thead><tr><th>Indicator</th><th>Direction</th><th>Threshold</th><th>Cadence</th></tr></thead><tbody>
+<tr><td>AU identifies external actors by May 2026</td><td>Credibility recovery</td><td>Green if actors named or process published. Red if no naming or process.</td><td>Weekly through May</td></tr>
+<tr><td>AU repeats “external interference” without naming states</td><td>Silence hardening</td><td>Red if repeated in two or more post-May outputs.</td><td>Every PSC Sudan output</td></tr>
+<tr><td>UAE remains visible in Sudan convenings</td><td>Mediation-access constraint persists</td><td>Red if visible after missed benchmark without explanation.</td><td>Monthly</td></tr>
+<tr><td>New UN Panel evidence strengthens attribution</td><td>Evidence threshold shift</td><td>Red if state-linked support is substantiated.</td><td>At release</td></tr>
+<tr><td>Sudan challenges AU/IGAD neutrality</td><td>Institutional pressure rising</td><td>Red if Sudan suspends cooperation.</td><td>Weekly</td></tr>
+<tr><td>Asosa/Blue Nile support-node activity persists</td><td>Attribution pressure rising</td><td>Red if new satellite or UN reporting corroborates sustained RSF support activity from Ethiopian territory.</td><td>Biweekly imagery and media scan</td></tr><tr><td>OFAC or allied sanctions expand against UAE-based RSF-linked companies</td><td>Financial pathway hardening</td><td>Red if sanctions identify new UAE-based entities, banks, gold dealers, logistics firms, or procurement cut-outs.</td><td>Weekly sanctions scan</td></tr><tr><td>Am Djarass or eastern Chad cargo pattern reappears</td><td>Chad route reactivation</td><td>Red if flight tracking, UN reporting, or imagery confirms renewed cargo rotations linked to RSF supply.</td><td>Weekly</td></tr><tr><td>Puntland/Bosaso logistics architecture receives corroboration</td><td>Horn logistics expansion</td><td>Amber if credible reporting repeats; Red only with imagery, flight data, official or UN corroboration.</td><td>Monthly</td></tr></tbody></table>
+</section>
+<section class="section" id="annex-b">
+<div class="section-header"><span class="section-num">B // INTEL GAPS</span><h2 class="section-title">Priority Intelligence Gaps &amp; Action Thresholds</h2></div>
+<table><thead><tr><th>Threshold</th><th>Trigger</th><th>Required Action</th></tr></thead><tbody>
+<tr><td><span class="badge green">Green</span></td><td>AU names external actors, publishes attribution criteria, or explains evidence process.</td><td>Downgrade capture-risk hypothesis. Reframe silence as procedural delay.</td></tr>
+<tr><td><span class="badge amber">Amber</span></td><td>AU misses May benchmark but provides credible process update.</td><td>Maintain strategic ambiguity model. Continue weekly monitoring.</td></tr>
+<tr><td><span class="badge red">Red</span></td><td>AU misses benchmark, repeats generalized language, expands AU-UAE engagement, and provides no explanation.</td><td>Upgrade credibility erosion and reassess strategic capture as plausible.</td></tr>
+<tr><td><span class="badge red">Critical</span></td><td>Evidence emerges of UAE pressure, inducement, communiqué manipulation, or member-state coercion.</td><td>Reopen ACH and revise core judgment.</td></tr>
+</tbody></table>
+
+<div class="sub-section"><h3>v2 Priority Intelligence Gaps</h3>
+<table><thead><tr><th>Gap</th><th>Why It Matters</th><th>Collection Pathway</th></tr></thead><tbody>
+<tr><td>Asosa chain of command</td><td>Determines whether observed support activity is state-directed, state-tolerated, or conducted by deniable networks.</td><td>Imagery, Ethiopian official statements, defectors, UN inquiry, flight and vehicle movement analysis.</td></tr>
+<tr><td>UAE-based entity relationship to UAE state organs</td><td>Separates UAE-based commercial support from UAE state direction.</td><td>OFAC annexes, corporate registries, banking records, procurement trails, sanctions designations.</td></tr>
+<tr><td>Am Djarass cargo continuity after UN reporting</td><td>Tests whether the Chad route persisted after exposure and denial.</td><td>Flight tracking, satellite imagery, UN Panel updates, Chadian local-source reporting.</td></tr>
+<tr><td>Libya-Haftar payment and shipment links to RSF</td><td>Tests the Libya logistics pathway and possible UAE-origin shipment claims.</td><td>Shipping records, port data, sanctions filings, UN Libya Panel reporting, imagery.</td></tr>
+<tr><td>Puntland/Bosaso corroboration</td><td>Determines whether Puntland is a meaningful node or only a speculative collection lead.</td><td>Satellite imagery, aviation data, local government statements, UN Somalia or Sudan reporting.</td></tr>
+</tbody></table></div>
+</section>
+
+</main>
+<footer><p>Produced under the Quanta Analytica Process™. All claims are traced to open-source evidence or labeled as analyst inference. No fabricated sources, quotes, or data.</p></footer>
+<script>
+    const progress = document.getElementById('progress');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      progress.style.width = scrolled + '%';
+    });
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
