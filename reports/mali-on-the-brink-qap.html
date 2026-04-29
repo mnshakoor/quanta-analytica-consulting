@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mali on the Brink: The 2026 Coordinated Offensive | Quanta Analytica Process™</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   QAP INFOGRAPHIC — MALI ON THE BRINK
+   Quanta Analytica Process™ | MNS Consulting
+   QAP-SAHEL-MLI-2026-0429
+   ============================================================ */
+
+:root {
+  --obsidian:         #0a0c10;
+  --obsidian-mid:     #10131a;
+  --obsidian-card:    #13161f;
+  --obsidian-border:  #1c2030;
+  --obsidian-surface: #181b26;
+  --obsidian-lift:    #1e2235;
+  --gold:             #c8a96e;
+  --gold-light:       #dfc28e;
+  --gold-pale:        #e8d5aa;
+  --gold-dim:         #9a7f52;
+  --gold-muted:       #6b5838;
+  --gold-glow:        rgba(200,169,110,0.12);
+  --gold-glow-strong: rgba(200,169,110,0.22);
+  --red:              #c0392b;
+  --red-light:        #e74c3c;
+  --red-bg:           rgba(192,57,43,0.14);
+  --amber:            #d4820a;
+  --amber-light:      #f39c12;
+  --amber-bg:         rgba(212,130,10,0.13);
+  --green:            #27ae60;
+  --green-light:      #2ecc71;
+  --green-bg:         rgba(39,174,96,0.12);
+  --blue:             #2980b9;
+  --blue-light:       #3498db;
+  --blue-bg:          rgba(41,128,185,0.12);
+  --slate:            #5d7a9a;
+  --slate-light:      #7f9ab8;
+  --text-primary:     #e8e4dc;
+  --text-secondary:   #b8b0a0;
+  --text-muted:       #7a7264;
+  --text-faint:       #4a4640;
+  --font-display:     'Libre Baskerville', Georgia, serif;
+  --font-body:        'IBM Plex Sans', Arial, sans-serif;
+  --font-mono:        'IBM Plex Mono', monospace;
+  --radius-sm:        3px;
+  --radius-md:        6px;
+  --radius-lg:        10px;
+  --shadow-card:      0 2px 16px rgba(0,0,0,0.4);
+  --shadow-lift:      0 4px 24px rgba(0,0,0,0.5);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background-color: var(--obsidian);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* scanline texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, rgba(0,0,0,0.1) 0px, transparent 1px, transparent 3px);
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.22;
+}
+
+/* ---- PROGRESS BAR ---- */
+#progress {
+  position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-light));
+  z-index: 9999; transition: width 0.1s linear;
+  box-shadow: 0 0 8px var(--gold-glow-strong);
+}
+
+/* ---- NAV ---- */
+nav {
+  position: fixed; top: 3px; left: 0; right: 0; z-index: 1000;
+  background: rgba(10,12,16,0.94); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--obsidian-border);
+  padding: 0 2rem; height: 54px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand {
+  font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold);
+}
+.nav-brand span { color: var(--text-muted); font-weight: 400; }
+.nav-doc-id {
+  font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-faint);
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+
+/* ---- HERO ---- */
+.hero {
+  position: relative; overflow: hidden;
+  padding: 110px 2rem 3rem; min-height: 420px;
+  background: linear-gradient(160deg, #0d1020 0%, #0a0c10 50%, #0e0c08 100%);
+  border-bottom: 1px solid var(--obsidian-border);
+}
+
+/* animated hex grid */
+.hero-grid {
+  position: absolute; inset: 0; z-index: 0; opacity: 0.07;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(200,169,110,0.3) 30px, rgba(200,169,110,0.3) 31px),
+    repeating-linear-gradient(60deg, transparent, transparent 30px, rgba(200,169,110,0.15) 30px, rgba(200,169,110,0.15) 31px),
+    repeating-linear-gradient(120deg, transparent, transparent 30px, rgba(200,169,110,0.15) 30px, rgba(200,169,110,0.15) 31px);
+}
+
+.hero-content { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; }
+
+.hero-running-head {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--text-muted);
+  margin-bottom: 1.5rem; padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--obsidian-border);
+}
+.hero-running-head .rh-domain { color: var(--gold-dim); }
+
+.hero-container { display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 1.5rem; }
+.hero-logo { width: 64px; height: 64px; object-fit: contain; flex-shrink: 0; margin-top: 4px; }
+
+.hero h1 {
+  font-family: var(--font-display); font-size: 2.2rem; font-weight: 700;
+  color: var(--text-primary); line-height: 1.2; letter-spacing: -0.01em;
+}
+.hero h1 .title-gold { display: block; color: var(--gold); font-size: 1.05rem; font-weight: 400; margin-top: 0.4rem; letter-spacing: 0.01em; }
+
+.hero-meta {
+  display: flex; align-items: center; flex-wrap: wrap;
+  gap: 0.5rem 1.2rem; margin-bottom: 1.5rem;
+  font-family: var(--font-mono); font-size: 0.72rem;
+  letter-spacing: 0.09em; color: var(--text-muted);
+}
+.meta-divider { color: var(--obsidian-border); }
+.meta-cell strong { color: var(--text-secondary); }
+
+.threat-badge {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 4px 10px; border-radius: var(--radius-sm);
+  border: 1px solid; font-weight: 700;
+}
+.threat-badge.critical { color: var(--red-light); border-color: var(--red); background: var(--red-bg); }
+.threat-dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; animation: pulse 1.8s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.35)} }
+
+.scope-boundary {
+  background: var(--obsidian-card); border: 1px solid var(--obsidian-border);
+  border-left: 3px solid var(--gold-dim);
+  border-radius: var(--radius-md); padding: 0.8rem 1rem;
+  font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.09em;
+  color: var(--text-muted); margin-bottom: 1.5rem;
+}
+.scope-boundary strong { color: var(--gold-dim); text-transform: uppercase; }
+
+/* metrics strip */
+.metrics-strip {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 0.75rem; margin-bottom: 1.5rem;
+}
+.metric-block {
+  background: var(--obsidian-card); border: 1px solid var(--obsidian-border);
+  border-radius: var(--radius-md); padding: 1rem;
+  text-align: center; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700;
+  color: var(--gold); line-height: 1; margin-bottom: 0.3rem;
+}
+.metric-value.red-val { color: var(--red-light); }
+.metric-value.amber-val { color: var(--amber-light); }
+.metric-label {
+  font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--text-muted);
+}
+.provenance { font-style: italic; font-size: 0.78rem; color: var(--text-faint); }
+
+/* ---- MAIN ---- */
+main { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; }
+
+/* ---- INFOGRAPHIC PANELS ---- */
+.infographic-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1.5rem; margin-bottom: 2rem;
+}
+
+.panel {
+  background: var(--obsidian-card); border: 1px solid var(--obsidian-border);
+  border-radius: var(--radius-lg); overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.25s ease;
+}
+.panel:hover { box-shadow: var(--shadow-lift); }
+
+.panel-header {
+  font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 0.85rem 1.2rem;
+  border-bottom: 1px solid var(--obsidian-border);
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.panel-header.gold-head { background: linear-gradient(90deg, rgba(200,169,110,0.1), transparent); color: var(--gold); }
+.panel-header.red-head { background: linear-gradient(90deg, rgba(192,57,43,0.12), transparent); color: var(--red-light); }
+.panel-header.amber-head { background: linear-gradient(90deg, rgba(212,130,10,0.12), transparent); color: var(--amber-light); }
+.panel-header.blue-head { background: linear-gradient(90deg, rgba(41,128,185,0.12), transparent); color: var(--blue-light); }
+.panel-header-icon { font-size: 0.9rem; opacity: 0.85; }
+
+.panel-body { padding: 1.2rem; }
+
+/* ---- MALI MAP SVG ---- */
+.map-container {
+  position: relative; background: var(--obsidian-surface);
+  border-radius: var(--radius-md); overflow: hidden;
+  border: 1px solid var(--obsidian-border); margin-bottom: 1rem;
+}
+
+/* ---- STRIKE ITEMS ---- */
+.strike-list { display: flex; flex-direction: column; gap: 0.6rem; }
+.strike-item {
+  display: grid; grid-template-columns: 28px 1fr auto;
+  gap: 0.75rem; align-items: center;
+  background: var(--obsidian-surface); border: 1px solid var(--obsidian-border);
+  border-left: 3px solid var(--red); border-radius: var(--radius-sm);
+  padding: 0.65rem 0.8rem;
+}
+.strike-num {
+  font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700;
+  color: var(--red-light); text-align: center;
+}
+.strike-name {
+  font-family: var(--font-body); font-size: 0.82rem; color: var(--text-primary); font-weight: 600;
+}
+.strike-desc { font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono); }
+.status-tag {
+  font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 2px 7px; border-radius: var(--radius-sm); border: 1px solid;
+  white-space: nowrap;
+}
+.status-tag.shelled { color: var(--red-light); border-color: var(--red); background: var(--red-bg); }
+.status-tag.siege { color: var(--amber-light); border-color: var(--amber); background: var(--amber-bg); }
+.status-tag.entered { color: var(--red-light); border-color: var(--red); background: var(--red-bg); }
+.status-tag.blockade { color: var(--amber-light); border-color: var(--amber); background: var(--amber-bg); }
+
+/* ---- CALLOUT BOXES ---- */
+.callout-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem; }
+.callout-box {
+  background: var(--obsidian-surface); border: 1px solid var(--obsidian-border);
+  border-radius: var(--radius-md); padding: 1rem;
+}
+.callout-icon { font-size: 1.6rem; margin-bottom: 0.5rem; }
+.callout-label {
+  font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 0.35rem; font-weight: 700;
+}
+.callout-value {
+  font-family: var(--font-display); font-size: 0.9rem; color: var(--text-primary); line-height: 1.4;
+}
+.callout-sub { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.25rem; font-family: var(--font-mono); }
+
+/* ---- DRIVER CARDS ---- */
+.driver-list { display: flex; flex-direction: column; gap: 0.85rem; }
+.driver-card {
+  background: var(--obsidian-surface); border: 1px solid var(--obsidian-border);
+  border-radius: var(--radius-md); padding: 1rem 1.1rem;
+  border-top: 2px solid var(--gold-muted);
+}
+.driver-card.red-top { border-top-color: var(--red); }
+.driver-card.amber-top { border-top-color: var(--amber); }
+.driver-card.blue-top { border-top-color: var(--blue); }
+.driver-title {
+  font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em;
+  text-transform: uppercase; font-weight: 700; margin-bottom: 0.4rem;
+}
+.driver-card.red-top .driver-title { color: var(--red-light); }
+.driver-card.amber-top .driver-title { color: var(--amber-light); }
+.driver-card.blue-top .driver-title { color: var(--blue-light); }
+.driver-card .driver-title { color: var(--gold); }
+.driver-body { font-size: 0.83rem; color: var(--text-secondary); line-height: 1.55; }
+
+/* ---- STAT BAR ---- */
+.stat-bar-wrap { margin: 1rem 0; }
+.stat-bar-label {
+  font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.3rem;
+  display: flex; justify-content: space-between;
+}
+.stat-bar-label span { color: var(--red-light); font-weight: 700; }
+.stat-bar-track {
+  height: 8px; background: var(--obsidian-border); border-radius: 4px; overflow: hidden;
+}
+.stat-bar-fill {
+  height: 100%; border-radius: 4px;
+  background: linear-gradient(90deg, var(--red), var(--red-light));
+  transition: width 1.2s ease;
+}
+
+/* ---- ALLIANCE BADGE ---- */
+.alliance-badge {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--obsidian-surface); border: 1px solid var(--obsidian-border);
+  border-radius: var(--radius-md); padding: 1rem 1.2rem; margin-bottom: 1rem;
+  gap: 0.75rem;
+}
+.alliance-actor {
+  text-align: center; flex: 1;
+}
+.alliance-actor .a-label {
+  font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.3rem;
+}
+.alliance-actor .a-name {
+  font-family: var(--font-display); font-size: 0.9rem; font-weight: 700;
+  color: var(--text-primary);
+}
+.alliance-actor .a-sub { font-size: 0.68rem; color: var(--text-muted); font-family: var(--font-mono); }
+.alliance-connector {
+  flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 0.2rem;
+}
+.alliance-connector .ac-line { width: 1px; height: 20px; background: var(--gold-muted); }
+.alliance-connector .ac-label {
+  font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gold-dim);
+  background: var(--obsidian-card); border: 1px solid var(--gold-muted);
+  border-radius: var(--radius-sm); padding: 2px 6px;
+}
+
+/* ---- FULL-WIDTH PANEL ---- */
+.full-panel {
+  background: var(--obsidian-card); border: 1px solid var(--obsidian-border);
+  border-radius: var(--radius-lg); overflow: hidden;
+  box-shadow: var(--shadow-card); margin-bottom: 1.5rem;
+}
+
+/* ---- KEY FINDING BOX ---- */
+.key-finding {
+  background: linear-gradient(135deg, rgba(192,57,43,0.08), rgba(200,169,110,0.06));
+  border: 1px solid var(--obsidian-border); border-left: 4px solid var(--red);
+  border-radius: var(--radius-md); padding: 1.1rem 1.3rem; margin-bottom: 1.5rem;
+}
+.key-finding-label {
+  font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--red-light); margin-bottom: 0.4rem; font-weight: 700;
+}
+.key-finding-text {
+  font-family: var(--font-display); font-size: 1.05rem; color: var(--text-primary); line-height: 1.5;
+}
+.key-finding-sub { font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem; }
+
+/* ---- SECTION DIVIDER ---- */
+.section-divider {
+  display: flex; align-items: center; gap: 1rem; margin: 2rem 0 1.5rem;
+}
+.section-divider::before, .section-divider::after {
+  content: ''; flex: 1; height: 1px; background: var(--obsidian-border);
+}
+.section-divider-label {
+  font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gold-dim); white-space: nowrap;
+  padding: 3px 10px; border: 1px solid var(--gold-muted); border-radius: var(--radius-sm);
+}
+
+/* ---- MALI MAP SVG ---- */
+.mali-map-svg {
+  width: 100%; height: 220px;
+}
+
+/* ---- FOOTER ---- */
+footer {
+  max-width: 1100px; margin: 0 auto;
+  padding: 2rem 2rem 3rem;
+  border-top: 1px solid var(--obsidian-border);
+  text-align: center;
+}
+.footer-brand {
+  font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold-dim); margin-bottom: 0.4rem;
+}
+.footer-doc-id {
+  font-family: var(--font-mono); font-size: 0.62rem;
+  letter-spacing: 0.1em; color: var(--text-faint); margin-bottom: 0.4rem;
+}
+.footer-legal { font-size: 0.72rem; color: var(--text-faint); max-width: 620px; margin: 0 auto; line-height: 1.5; }
+
+/* ---- SECTION REVEAL ---- */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 860px) {
+  .infographic-grid { grid-template-columns: 1fr; }
+  .metrics-strip { grid-template-columns: repeat(3, 1fr); }
+  .callout-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .hero h1 { font-size: 1.6rem; }
+  .metrics-strip { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<nav>
+  <div class="nav-brand">Quanta Analytica <span>Process™</span></div>
+  <div class="nav-doc-id">QAP-SAHEL-MLI-2026-0429 // SITUATIONAL INTELLIGENCE</div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+
+    <div class="hero-running-head">
+      <span class="rh-domain">QUANTA ANALYTICA | MNS CONSULTING | ARAC INTERNATIONAL</span>
+      <span>SAHEL // MALI STATE FRAGILITY</span>
+    </div>
+
+    <div class="hero-container">
+      <img src="https://quanta-analytica.com/logo.PNG" class="hero-logo" alt="Quanta Analytica Logo" />
+      <div class="hero-text">
+        <h1>
+          Mali on the Brink
+          <span class="title-gold">The 2026 Coordinated Offensive — Situational Intelligence Brief</span>
+        </h1>
+      </div>
+    </div>
+
+    <div class="hero-meta">
+      <div class="meta-cell"><strong>DATE</strong> April 2026</div>
+      <span class="meta-divider">|</span>
+      <div class="meta-cell"><strong>DOMAIN</strong> Conflict / State Fragility</div>
+      <span class="meta-divider">|</span>
+      <div class="meta-cell"><strong>THEATER</strong> Republic of Mali (MLI)</div>
+      <span class="meta-divider">|</span>
+      <div class="meta-cell"><strong>FORMAT</strong> Situational Infographic</div>
+      <span class="meta-divider">|</span>
+      <span class="threat-badge critical"><span class="threat-dot"></span>CRITICAL THREAT</span>
+    </div>
+
+    <div class="scope-boundary">
+      <strong>Scope:</strong> Multi-front terrorist offensive, April 2026 &nbsp;|&nbsp;
+      <strong>Actors:</strong> JNIM (Al-Qaeda affiliate), FLA (Tuareg nationalists), Africa Corps (ex-Wagner) &nbsp;|&nbsp;
+      <strong>Source Basis:</strong> Open-source reporting, OSINT, conflict monitoring datasets &nbsp;|&nbsp;
+      <strong>Confidence:</strong> Moderate-High on structural assessments; event-level detail subject to fog-of-conflict degradation
+    </div>
+
+    <div class="metrics-strip">
+      <div class="metric-block">
+        <div class="metric-value red-val">5+</div>
+        <div class="metric-label">Simultaneous Strike Fronts</div>
+      </div>
+      <div class="metric-block">
+        <div class="metric-value red-val">1</div>
+        <div class="metric-label">Defense Minister Killed</div>
+      </div>
+      <div class="metric-block">
+        <div class="metric-value amber-val">3</div>
+        <div class="metric-label">Cities Under Siege or Shelled</div>
+      </div>
+      <div class="metric-block">
+        <div class="metric-value red-val">77%</div>
+        <div class="metric-label">Civilian Deaths Linked to State/Russian Forces</div>
+      </div>
+      <div class="metric-block">
+        <div class="metric-value">2×</div>
+        <div class="metric-label">Mali Larger than France by Area</div>
+      </div>
+    </div>
+
+    <div class="provenance">Source basis: Open-source conflict monitoring, ACLED event data, OSINT aggregation. All claims labelled by epistemic status. No fabricated data.</div>
+  </div>
+</header>
+
+<main>
+
+  <!-- KEY FINDING -->
+  <div class="key-finding reveal">
+    <div class="key-finding-label">&#9654; PRIMARY FINDING</div>
+    <div class="key-finding-text">
+      An unprecedented, coordinated multi-front offensive by an unlikely operational alliance of Al-Qaeda affiliate JNIM and Tuareg nationalist FLA forces decapitated Mali's military leadership in April 2026, pushing the Russian-backed junta toward structural collapse.
+    </div>
+    <div class="key-finding-sub">
+      The offensive exposed three compounding failure modes simultaneously: command decapitation, geographic overextension, and the failure of the "Russian security guarantee" supplied by Africa Corps (formerly Wagner Group).
+    </div>
+  </div>
+
+  <div class="section-divider reveal">
+    <span class="section-divider-label">I. ANATOMY OF THE OFFENSIVE</span>
+  </div>
+
+  <div class="infographic-grid">
+
+    <!-- LEFT: MAP + STRIKES -->
+    <div class="panel reveal">
+      <div class="panel-header red-head">
+        <span class="panel-header-icon">&#9876;</span>
+        Multi-Front Strike Architecture
+      </div>
+      <div class="panel-body">
+
+        <!-- SVG schematic map of Mali -->
+        <div class="map-container">
+          <svg class="mali-map-svg" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="strikeGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#e74c3c" stop-opacity="0.6"/>
+                <stop offset="100%" stop-color="#e74c3c" stop-opacity="0"/>
+              </radialGradient>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="2" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+
+            <!-- Background -->
+            <rect width="400" height="220" fill="#181b26"/>
+
+            <!-- Mali silhouette (simplified schematic) -->
+            <polygon
+              points="60,30 200,20 280,25 320,60 340,100 310,140 290,180 220,195 160,200 100,195 60,180 30,140 25,90 40,50"
+              fill="#1c2030" stroke="#2a3050" stroke-width="1.5"/>
+
+            <!-- Internal region borders (schematic) -->
+            <line x1="60" y1="30" x2="200" y2="105" stroke="#1e2235" stroke-width="0.8" stroke-dasharray="4,3"/>
+            <line x1="200" y1="20" x2="200" y2="200" stroke="#1e2235" stroke-width="0.8" stroke-dasharray="4,3"/>
+            <line x1="25" y1="110" x2="340" y2="100" stroke="#1e2235" stroke-width="0.8" stroke-dasharray="4,3"/>
+
+            <!-- Niger River schematic -->
+            <path d="M 60,120 Q 100,105 140,130 Q 175,155 210,160 Q 240,165 265,155" fill="none" stroke="#2980b9" stroke-width="1.5" opacity="0.5"/>
+            <text x="155" y="173" font-family="IBM Plex Mono, monospace" font-size="6" fill="#3498db" opacity="0.6">Niger R.</text>
+
+            <!-- BAMAKO (capital) -->
+            <circle cx="105" cy="155" r="10" fill="rgba(200,169,110,0.15)" stroke="#c8a96e" stroke-width="1.5"/>
+            <circle cx="105" cy="155" r="5" fill="#c8a96e"/>
+            <text x="88" y="175" font-family="IBM Plex Mono, monospace" font-size="7.5" fill="#c8a96e" font-weight="700">BAMAKO ★</text>
+
+            <!-- KATI -->
+            <circle cx="115" cy="145" r="3.5" fill="#e74c3c" filter="url(#glow)"/>
+            <text x="120" y="143" font-family="IBM Plex Mono, monospace" font-size="6.5" fill="#e8e4dc">KATI</text>
+
+            <!-- GAO -->
+            <circle cx="275" cy="105" r="3.5" fill="#f39c12" filter="url(#glow)"/>
+            <text x="281" y="103" font-family="IBM Plex Mono, monospace" font-size="6.5" fill="#e8e4dc">GAO</text>
+
+            <!-- KIDAL -->
+            <circle cx="295" cy="65" r="3.5" fill="#e74c3c" filter="url(#glow)"/>
+            <text x="301" y="63" font-family="IBM Plex Mono, monospace" font-size="6.5" fill="#e8e4dc">KIDAL</text>
+
+            <!-- Strike icons (lightning bolt simplified as asterisk) across regions -->
+            <!-- North -->
+            <text x="195" y="45" font-family="Arial" font-size="14" fill="#e74c3c" opacity="0.9" filter="url(#glow)">✕</text>
+            <!-- NE -->
+            <text x="250" y="75" font-family="Arial" font-size="14" fill="#e74c3c" opacity="0.85" filter="url(#glow)">✕</text>
+            <!-- West -->
+            <text x="55" y="100" font-family="Arial" font-size="12" fill="#e74c3c" opacity="0.8" filter="url(#glow)">✕</text>
+            <!-- Center -->
+            <text x="175" y="118" font-family="Arial" font-size="12" fill="#e74c3c" opacity="0.85" filter="url(#glow)">✕</text>
+            <!-- SW -->
+            <text x="80" y="190" font-family="Arial" font-size="12" fill="#e74c3c" opacity="0.8" filter="url(#glow)">✕</text>
+
+            <!-- Convergence lines to Bamako -->
+            <line x1="200" y1="50" x2="108" y2="152" stroke="#e74c3c" stroke-width="0.8" stroke-dasharray="5,3" opacity="0.45"/>
+            <line x1="258" y1="82" x2="112" y2="152" stroke="#e74c3c" stroke-width="0.8" stroke-dasharray="5,3" opacity="0.45"/>
+            <line x1="62" y1="105" x2="100" y2="150" stroke="#e74c3c" stroke-width="0.8" stroke-dasharray="5,3" opacity="0.45"/>
+            <line x1="180" y1="123" x2="108" y2="152" stroke="#e74c3c" stroke-width="0.8" stroke-dasharray="5,3" opacity="0.45"/>
+
+            <!-- Blockade ring around Bamako -->
+            <circle cx="105" cy="155" r="22" fill="none" stroke="#f39c12" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6"/>
+            <text x="48" y="192" font-family="IBM Plex Mono, monospace" font-size="6" fill="#f39c12" opacity="0.8">BLOCKADE RING</text>
+
+            <!-- Labels -->
+            <text x="8" y="215" font-family="IBM Plex Mono, monospace" font-size="6" fill="#4a4640">✕ Strike zone   ★ Capital   ● City under pressure</text>
+          </svg>
+        </div>
+
+        <div class="strike-list">
+          <div class="strike-item">
+            <div class="strike-num">01</div>
+            <div>
+              <div class="strike-name">Total Blockade of Bamako</div>
+              <div class="strike-desc">Fuel blockade transitioned to full capital siege</div>
+            </div>
+            <span class="status-tag blockade">SIEGE</span>
+          </div>
+          <div class="strike-item">
+            <div class="strike-num">02</div>
+            <div>
+              <div class="strike-name">Kati Military Base</div>
+              <div class="strike-desc">Garrison town; primary command infrastructure</div>
+            </div>
+            <span class="status-tag shelled">SHELLED</span>
+          </div>
+          <div class="strike-item">
+            <div class="strike-num">03</div>
+            <div>
+              <div class="strike-name">Gao (Northeast)</div>
+              <div class="strike-desc">Strategic northeast corridor; airstrikes reported</div>
+            </div>
+            <span class="status-tag siege">UNDER SIEGE</span>
+          </div>
+          <div class="strike-item">
+            <div class="strike-num">04</div>
+            <div>
+              <div class="strike-name">Kidal (North)</div>
+              <div class="strike-desc">Historic rebel stronghold; insurgent entry confirmed</div>
+            </div>
+            <span class="status-tag entered">ENTERED</span>
+          </div>
+          <div class="strike-item" style="border-left-color: var(--gold-dim);">
+            <div class="strike-num" style="color:var(--gold);">+</div>
+            <div>
+              <div class="strike-name">All Regions Simultaneously Targeted</div>
+              <div class="strike-desc">Stretched forces across a country twice the size of France</div>
+            </div>
+            <span class="status-tag" style="color:var(--gold-dim);border-color:var(--gold-muted);background:var(--gold-glow);">OVEREXTENSION</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RIGHT: DECAPITATION + COMMAND -->
+    <div class="panel reveal">
+      <div class="panel-header amber-head">
+        <span class="panel-header-icon">&#9888;</span>
+        Command Decapitation Event
+      </div>
+      <div class="panel-body">
+
+        <div class="callout-grid">
+          <div class="callout-box" style="border-top: 2px solid var(--red); grid-column: 1 / -1;">
+            <div class="callout-label">&#9679; Primary Strike</div>
+            <div class="callout-value">Malian Defense Minister Killed</div>
+            <div class="callout-sub">Suicide strike on private residence. Command structure decapitated at the apex of crisis.</div>
+          </div>
+          <div class="callout-box">
+            <div class="callout-icon">&#127988;</div>
+            <div class="callout-label">Junta Status</div>
+            <div class="callout-value">On Edge of Collapse</div>
+            <div class="callout-sub">Russian-backed military government destabilized</div>
+          </div>
+          <div class="callout-box">
+            <div class="callout-icon">&#127981;</div>
+            <div class="callout-label">Coordination Level</div>
+            <div class="callout-value">Unprecedented</div>
+            <div class="callout-sub">Simultaneous regional + capital strikes</div>
+          </div>
+        </div>
+
+        <div class="section-divider" style="margin: 1rem 0;">
+          <span class="section-divider-label">STRATEGIC SIGNIFICANCE</span>
+        </div>
+
+        <div class="driver-list">
+          <div class="driver-card red-top">
+            <div class="driver-title">&#9656; Operational Coordination</div>
+            <div class="driver-body">Multi-front synchronization across a 1.24M km² theater indicates sophisticated inter-group command and control, representing a step-change in insurgent operational capacity.</div>
+          </div>
+          <div class="driver-card amber-top">
+            <div class="driver-title">&#9656; Intelligence Penetration</div>
+            <div class="driver-body">A strike on the Defense Minister's private residence implies significant intelligence penetration of state security protocols, compromising force protection at the highest level.</div>
+          </div>
+          <div class="driver-card blue-top">
+            <div class="driver-title">&#9656; Legitimacy Vacuum</div>
+            <div class="driver-body">Command decapitation concurrent with territorial siege operations maximizes the probability of governance collapse by removing both leadership capacity and territorial control simultaneously.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SECTION DIVIDER -->
+  <div class="section-divider reveal">
+    <span class="section-divider-label">II. DRIVERS OF STATE COLLAPSE</span>
+  </div>
+
+  <div class="infographic-grid">
+
+    <!-- JNIM-FLA ALLIANCE -->
+    <div class="panel reveal">
+      <div class="panel-header gold-head">
+        <span class="panel-header-icon">&#9651;</span>
+        The JNIM-FLA "Pragmatic Alliance"
+      </div>
+      <div class="panel-body">
+
+        <div class="alliance-badge">
+          <div class="alliance-actor">
+            <div class="a-label">Jihadist Affiliate</div>
+            <div class="a-name">JNIM</div>
+            <div class="a-sub">Al-Qaeda in the Islamic Maghreb (AQIM) franchise. Sahelian operational reach.</div>
+          </div>
+          <div class="alliance-connector">
+            <div class="ac-line"></div>
+            <div class="ac-label">Operational Alliance</div>
+            <div class="ac-line"></div>
+          </div>
+          <div class="alliance-actor">
+            <div class="a-label">Separatist Nationalists</div>
+            <div class="a-name">FLA</div>
+            <div class="a-sub">Tuareg nationalist forces. Longstanding territorial grievance actors.</div>
+          </div>
+        </div>
+
+        <div class="driver-list">
+          <div class="driver-card">
+            <div class="driver-title">&#9632; Structural Logic</div>
+            <div class="driver-body">Ideologically opposed groups suspended internecine competition to concentrate pressure on the Bamako central government. This type of convergent opportunism is a recognized pre-collapse accelerant in fragile state environments.</div>
+          </div>
+          <div class="driver-card red-top">
+            <div class="driver-title">&#9632; Intelligence Implication</div>
+            <div class="driver-body">The alliance likely represents a time-bounded operational arrangement rather than ideological convergence. Fracture risk increases as government pressure weakens, but short-term coordination capacity remains high.</div>
+          </div>
+          <div class="driver-card amber-top">
+            <div class="driver-title">&#9632; Historical Parallel</div>
+            <div class="driver-body">The 2012 Tuareg-AQIM coordination that captured Kidal and Gao followed a comparable tactical logic. The 2026 iteration is broader in geographic scope and higher in command targeting ambition.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RUSSIAN FAILURE + HUMAN COST -->
+    <div class="panel reveal">
+      <div class="panel-header red-head">
+        <span class="panel-header-icon">&#9660;</span>
+        The Russian Security Guarantee: Failure Analysis
+      </div>
+      <div class="panel-body">
+
+        <div class="driver-list">
+          <div class="driver-card red-top">
+            <div class="driver-title">&#9632; Africa Corps Performance</div>
+            <div class="driver-body">Africa Corps (formerly Wagner Group) forces were numerically overmatched by simultaneous multi-front pressure. Rather than holding assigned positions, units negotiated tactical withdrawals. The force's stated deterrence function failed at scale.</div>
+          </div>
+          <div class="driver-card amber-top">
+            <div class="driver-title">&#9632; Strategic Miscalculation</div>
+            <div class="driver-body">Russian security doctrine in the Sahel relied on visible force presence as deterrence. The offensive demonstrated that insurgent operational planners had correctly assessed this doctrine's limitations against a coordinated, geographically distributed attack architecture.</div>
+          </div>
+          <div class="driver-card blue-top">
+            <div class="driver-title">&#9632; Reputational Consequences</div>
+            <div class="driver-body">Negotiated withdrawals, rather than combat defense, degrade Africa Corps' commercial security narrative across the Sahel client network. Mali's collapse would constitute the most significant failure of the Russian military-commercial security model in Africa.</div>
+          </div>
+        </div>
+
+        <div class="section-divider" style="margin: 1rem 0;">
+          <span class="section-divider-label">HUMAN COST INDICATOR</span>
+        </div>
+
+        <div class="stat-bar-wrap">
+          <div class="stat-bar-label">
+            Civilian fatalities linked to Russian/State forces (pre-crisis period)
+            <span>77%</span>
+          </div>
+          <div class="stat-bar-track">
+            <div class="stat-bar-fill" style="width: 77%;"></div>
+          </div>
+        </div>
+        <div class="driver-card red-top" style="margin-top: 0.75rem;">
+          <div class="driver-title">&#9632; Population Alienation Driver</div>
+          <div class="driver-body">State and Russian forces being linked to 77% of civilian fatalities prior to the offensive constitutes a compounding legitimacy crisis. It provides JNIM and FLA with a narrative of protection and grievance redress that directly undermines junta support mobilization capacity.</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SECTION DIVIDER -->
+  <div class="section-divider reveal">
+    <span class="section-divider-label">III. SYSTEMIC ASSESSMENT</span>
+  </div>
+
+  <!-- FULL WIDTH SYSTEM FAILURE -->
+  <div class="full-panel reveal">
+    <div class="panel-header gold-head" style="font-size: 0.75rem; padding: 1rem 1.4rem;">
+      <span class="panel-header-icon">&#9670;</span>
+      Collapse Cascade: Three Simultaneous System Failures
+    </div>
+    <div class="panel-body" style="padding: 1.4rem;">
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;">
+
+        <div style="background: var(--obsidian-surface); border: 1px solid var(--obsidian-border); border-top: 3px solid var(--red); border-radius: var(--radius-md); padding: 1.1rem;">
+          <div style="font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red-light); margin-bottom: 0.6rem; font-weight: 700;">&#9632; SYSTEM FAILURE 01</div>
+          <div style="font-family: var(--font-display); font-size: 0.95rem; color: var(--text-primary); margin-bottom: 0.5rem; font-weight: 700;">Command Decapitation</div>
+          <div style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5;">The assassination of the Defense Minister removed the apex of strategic decision-making at the moment of peak operational pressure. Reconstitution under combat conditions is operationally improbable in the short term.</div>
+        </div>
+
+        <div style="background: var(--obsidian-surface); border: 1px solid var(--obsidian-border); border-top: 3px solid var(--amber); border-radius: var(--radius-md); padding: 1.1rem;">
+          <div style="font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-light); margin-bottom: 0.6rem; font-weight: 700;">&#9632; SYSTEM FAILURE 02</div>
+          <div style="font-family: var(--font-display); font-size: 0.95rem; color: var(--text-primary); margin-bottom: 0.5rem; font-weight: 700;">Territorial Overextension</div>
+          <div style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5;">Simultaneous strikes across all national regions exhausted force reserves. A military sized for sequential threat response cannot absorb synchronous multi-front pressure without catastrophic force dilution. The geographic scale — a country twice the size of France — amplifies this constraint.</div>
+        </div>
+
+        <div style="background: var(--obsidian-surface); border: 1px solid var(--obsidian-border); border-top: 3px solid var(--blue); border-radius: var(--radius-md); padding: 1.1rem;">
+          <div style="font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue-light); margin-bottom: 0.6rem; font-weight: 700;">&#9632; SYSTEM FAILURE 03</div>
+          <div style="font-family: var(--font-display); font-size: 0.95rem; color: var(--text-primary); margin-bottom: 0.5rem; font-weight: 700;">Security Guarantee Collapse</div>
+          <div style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5;">Africa Corps' negotiated withdrawals rather than position defense removed the external deterrence mechanism the junta had substituted for indigenous military capacity. The Russian model's failure leaves the junta without a viable military backstop at its most critical hour.</div>
+        </div>
+
+      </div>
+      <div style="margin-top: 1.2rem; padding: 0.9rem 1rem; background: var(--obsidian-card); border: 1px solid var(--obsidian-border); border-left: 3px solid var(--gold-dim); border-radius: var(--radius-md); font-size: 0.82rem; color: var(--text-secondary);">
+        <strong style="color: var(--gold); font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;">Analytic Assessment:</strong> The concurrent activation of all three failure modes constitutes a structural convergence that no single policy or security intervention can rapidly reverse. Junta survival in the near term depends on whether any one failure mode can be arrested before cascade effects become self-reinforcing.
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-brand">Quanta Analytica Process™ | MNS Consulting | ARAC International Inc.</div>
+  <div class="footer-doc-id">QAP-SAHEL-MLI-2026-0429 | Situational Intelligence Brief | April 2026</div>
+  <div class="footer-legal">All analytic claims traced to open-source evidence or labelled as structured analyst inference. No fabricated sources, quotes, or data. Produced under the Quanta Analytica Process™ tradecraft framework. For intelligence sharing, contact IOSI Global network.</div>
+</footer>
+
+<script>
+  // Scroll progress bar
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    const p = h > 0 ? (window.scrollY / h) * 100 : 0;
+    document.getElementById('progress').style.width = p + '%';
+  });
+
+  // Section reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal').forEach(s => obs.observe(s));
+</script>
+
+</body>
+</html>
