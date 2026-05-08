@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QAP™ Framework | Quanta Analytica</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#07080b;
+  --bg2:#0d0f13;
+  --bg3:#12141a;
+  --bg4:#181b22;
+  --gold:#c9a84c;
+  --gold-l:#e2c47a;
+  --gold-d:#8a6e2f;
+  --gold-m:rgba(201,168,76,0.1);
+  --text:#eae7e0;
+  --text2:#9a9690;
+  --text3:#5a5750;
+  --border:#1a1d24;
+  --border-g:rgba(201,168,76,0.2);
+  --line:#1e222b;
+
+  /* node palette */
+  --c0:#c9a84c;   /* root */
+  --c1:#7a9fcf;   /* layer 1 */
+  --c2:#6fbf8a;   /* layer 2 */
+  --c3:#bf8a6f;   /* layer 3 */
+  --c4:#a06fbf;   /* layer 4 */
+  --c5:#bf6f7a;   /* layer 5 */
+  --c6:#6fb8bf;   /* layer 6 */
+  --cL:#c9a84c;   /* leaf */
+}
+
+html,body{height:100%;overflow:hidden;background:var(--bg);font-family:'IBM Plex Sans',sans-serif;color:var(--text)}
+
+/* HEADER */
+header{position:fixed;top:0;left:0;right:0;z-index:200;height:52px;background:rgba(7,8,11,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem}
+.h-brand{display:flex;align-items:center;gap:.75rem}
+.h-logo{height:50px}
+.h-title{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:.1em}
+.h-sep{width:1px;height:14px;background:var(--border-g)}
+.h-sub{font-size:11px;color:var(--text3);letter-spacing:.06em}
+.h-right{display:flex;align-items:center;gap:1rem}
+.h-btn{font-family:'IBM Plex Mono',monospace;font-size:10px;padding:5px 14px;border:1px solid var(--gold-d);color:var(--gold);background:transparent;cursor:pointer;letter-spacing:.08em;text-decoration:none;transition:all .2s}
+.h-btn:hover{background:var(--gold-m)}
+.h-hint{font-size:11px;color:var(--text3)}
+
+/* TOOLBAR */
+.toolbar{position:fixed;top:52px;left:0;right:0;z-index:190;height:38px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.5rem;padding:0 1rem}
+.tb-btn{font-size:11px;padding:4px 12px;border:1px solid var(--border);color:var(--text2);background:transparent;cursor:pointer;font-family:'IBM Plex Mono',monospace;letter-spacing:.06em;transition:all .2s}
+.tb-btn:hover{border-color:var(--gold-d);color:var(--gold)}
+.tb-sep{width:1px;height:18px;background:var(--border)}
+.tb-label{font-size:10px;color:var(--text3);letter-spacing:.1em;font-family:'IBM Plex Mono',monospace}
+.legend{display:flex;gap:1rem;margin-left:auto;align-items:center}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--text3);font-family:'IBM Plex Mono',monospace}
+.leg-dot{width:8px;height:8px;border-radius:50%}
+
+/* CANVAS */
+#canvas-wrap{position:fixed;top:90px;left:0;right:0;bottom:0;overflow:hidden;cursor:grab}
+#canvas-wrap.dragging{cursor:grabbing}
+#canvas-wrap.panning{cursor:move}
+svg#tree{position:absolute;top:0;left:0;width:100%;height:100%;overflow:visible}
+
+/* DETAIL PANEL */
+#panel{position:fixed;right:0;top:90px;bottom:0;width:320px;background:var(--bg3);border-left:1px solid var(--border);transform:translateX(320px);transition:transform .35s cubic-bezier(.4,0,.2,1);z-index:150;display:flex;flex-direction:column;overflow:hidden}
+#panel.open{transform:translateX(0)}
+.panel-head{padding:1.25rem 1.25rem .75rem;border-bottom:1px solid var(--border);flex-shrink:0}
+.panel-close{position:absolute;right:1rem;top:1rem;background:none;border:none;color:var(--text3);cursor:pointer;font-size:18px;line-height:1;padding:2px 6px;transition:color .2s}
+.panel-close:hover{color:var(--gold)}
+.panel-tag{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.18em;margin-bottom:.5rem}
+.panel-title{font-family:'Libre Baskerville',serif;font-size:1.1rem;line-height:1.3;margin-bottom:.25rem}
+.panel-layer{font-size:11px;color:var(--text3);font-family:'IBM Plex Mono',monospace}
+.panel-body{padding:1.25rem;overflow-y:auto;flex:1}
+.panel-desc{font-size:13px;color:var(--text2);line-height:1.8;font-weight:300;margin-bottom:1.25rem}
+.panel-section{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.18em;color:var(--gold-d);margin-bottom:.5rem;text-transform:uppercase}
+.panel-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.25rem}
+.panel-tag-chip{font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid var(--border-g);color:var(--text3);letter-spacing:.06em}
+.panel-children{display:flex;flex-direction:column;gap:.4rem}
+.panel-child{font-size:12px;color:var(--text2);padding:.5rem .75rem;border:1px solid var(--border);background:var(--bg4);cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:all .2s}
+.panel-child:hover{border-color:var(--gold-d);color:var(--gold)}
+.panel-child-arrow{font-size:10px;color:var(--gold-d);margin-left:auto}
+.panel-link{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--gold-d);text-decoration:none;border:1px solid var(--border-g);padding:6px 14px;font-family:'IBM Plex Mono',monospace;letter-spacing:.07em;margin-top:.25rem;transition:all .2s}
+.panel-link:hover{color:var(--gold);border-color:var(--gold)}
+
+/* SVG NODES */
+.node-group{cursor:pointer}
+.node-group .ring{fill:none;stroke-width:1.5;opacity:0;transition:opacity .2s}
+.node-group:hover .ring{opacity:.6}
+.node-group.selected .ring{opacity:1}
+.node-label{font-family:'IBM Plex Mono',monospace;pointer-events:none;dominant-baseline:middle;letter-spacing:.03em}
+
+/* ZOOM indicator */
+#zoom-indicator{position:fixed;bottom:1rem;left:1rem;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);letter-spacing:.1em;z-index:300}
+
+/* SEARCH */
+#search-box{background:var(--bg4);border:1px solid var(--border);color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:11px;padding:4px 10px;width:200px;outline:none;letter-spacing:.04em}
+#search-box::placeholder{color:var(--text3)}
+#search-box:focus{border-color:var(--gold-d)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="h-brand">
+    <img src="https://quanta-analytica.com/logo.PNG" alt="QA" class="h-logo">
+    <div class="h-sep"></div>
+    <span class="h-title">QAP™ FRAMEWORK</span>
+    <div class="h-sep"></div>
+    <span class="h-sub">Interactive Process Map · v2.0</span>
+  </div>
+  <div class="h-right">
+    <span class="h-hint">Click nodes to explore · Drag to pan · Scroll to zoom</span>
+    <a href="https://quanta-analytica.com/qa-process.html" class="h-btn" target="_blank">QA-PROCESS →</a>
+    <a href="https://quanta-analytica.com" class="h-btn" target="_blank">QA HOME →</a>
+  </div>
+</header>
+
+<div class="toolbar">
+  <button class="tb-btn" onclick="expandAll()">EXPAND ALL</button>
+  <button class="tb-btn" onclick="collapseAll()">COLLAPSE ALL</button>
+  <div class="tb-sep"></div>
+  <button class="tb-btn" onclick="resetView()">RESET VIEW</button>
+  <div class="tb-sep"></div>
+  <input id="search-box" placeholder="SEARCH FRAMEWORK..." oninput="searchNodes(this.value)">
+  <div class="legend">
+    <span class="tb-label">LAYERS:</span>
+    <span class="leg-item"><span class="leg-dot" style="background:var(--c0)"></span>ROOT</span>
+    <span class="leg-item"><span class="leg-dot" style="background:var(--c1)"></span>L1</span>
+    <span class="leg-item"><span class="leg-dot" style="background:var(--c2)"></span>L2</span>
+    <span class="leg-item"><span class="leg-dot" style="background:var(--c3)"></span>L3</span>
+    <span class="leg-item"><span class="leg-dot" style="background:var(--cL)"></span>RESOURCE</span>
+  </div>
+</div>
+
+<div id="canvas-wrap">
+  <svg id="tree"></svg>
+</div>
+
+<div id="panel">
+  <button class="panel-close" onclick="closePanel()">✕</button>
+  <div class="panel-head">
+    <div class="panel-tag" id="p-tag"></div>
+    <div class="panel-title" id="p-title"></div>
+    <div class="panel-layer" id="p-layer"></div>
+  </div>
+  <div class="panel-body">
+    <div class="panel-desc" id="p-desc"></div>
+    <div id="p-tags-wrap" style="display:none">
+      <div class="panel-section">TRADECRAFT TAGS</div>
+      <div class="panel-tags" id="p-tags"></div>
+    </div>
+    <div id="p-children-wrap" style="display:none">
+      <div class="panel-section">COMPONENTS</div>
+      <div class="panel-children" id="p-children"></div>
+    </div>
+    <div id="p-link-wrap" style="display:none;margin-top:.5rem">
+      <a class="panel-link" id="p-link" target="_blank">VIEW RESOURCE →</a>
+    </div>
+  </div>
+</div>
+
+<div id="zoom-indicator">ZOOM: 100%</div>
+
+<script>
+// ── DATA ─────────────────────────────────────────────────────────────────────
+const DATA = {
+  id:'root', label:'QAP™', layer:0,
+  desc:'The Quanta Analytica Process™ is a layered intelligence architecture that fuses large language models with structured analytic techniques and rigorous AI governance — producing reproducible, decision-grade outputs across high-complexity operational environments. Built under MNS Consulting.',
+  tags:['QAP v2.0','Decision-Grade Intelligence','LLM-Governed','Human-in-the-Loop','RAPITIS','WSI'],
+  children:[
+    {
+      id:'L1-PF', label:'Problem Framing', layer:1,
+      desc:'Every QAP process begins with rigorous problem definition — not the stated problem, but the restated, structured, actionable problem. Decision constraints, stakeholder landscape, and success criteria are mapped before any data is touched. Prevents scope drift and analytic noise.',
+      tags:['SAT','Problem Restatement','KIQ Design','Decision Architecture'],
+      children:[
+        {id:'L2-PF1', label:'Problem Statement', layer:2, desc:'Convert a broad topic into a bounded, decision-relevant analytic problem. Names the decision-maker, audience, time horizon, scope boundary, and core uncertainty. Must be completed before any collection begins.', tags:['QAP Doctrine','Scope Boundary','Decision Need']},
+        {id:'L2-PF2', label:'KIQ Development', layer:2, desc:'Key Intelligence Questions translate the problem frame into answerable, evidence-driven questions. Each KIQ must be bounded, non-leading, and linked to an analytic output. QAP uses five KIQ types: Descriptive, Diagnostic, Estimative, Warning, Decision.', tags:['KIQ','Descriptive','Estimative','Warning','Decision'],
+          children:[
+            {id:'L3-KIQ1', label:'Descriptive KIQ', layer:3, desc:'Establishes what is happening. Anchors the factual baseline. Example: What verified events have occurred near the port in the past 14 days?', tags:['Factual Baseline']},
+            {id:'L3-KIQ2', label:'Diagnostic KIQ', layer:3, desc:'Explains why it is happening. Drives causal analysis. Example: What factors are contributing to the disruption?', tags:['Causal Analysis']},
+            {id:'L3-KIQ3', label:'Estimative KIQ', layer:3, desc:'Assesses what may happen next. Supports probabilistic judgment. Example: How likely is disruption to increase over the next 7 days?', tags:['Probability','Forecast']},
+            {id:'L3-KIQ4', label:'Warning KIQ', layer:3, desc:'Identifies observable indicators of change. Feeds the I&W table. Example: What indicators would show a shift from protest disruption to security threat?', tags:['Early Warning','I&W']},
+            {id:'L3-KIQ5', label:'Decision KIQ', layer:3, desc:'Directly supports operational or strategic action. Example: What routing thresholds should trigger operational changes?', tags:['Decision Thresholds','Action']}
+          ]
+        },
+        {id:'L2-PF3', label:'Collection Requirements', layer:2, desc:'Each KIQ generates specific information needs and source-type assignments. Collection requirements prevent search drift and ensure only evidence relevant to the decision problem enters the analytic pipeline.', tags:['Evidence Needs','Source Planning','Priority']},
+        {id:'L2-PF4', label:'Scope & Assumptions Register', layer:2, desc:'The initial assumptions register is built before collection begins. Every assumption — including assumptions about what is known — is documented, stated, and subject to later testing. Hidden assumptions are the primary vector for analytic failure.', tags:['Assumptions','Scope Boundary','Key Assumptions Check']}
+      ]
+    },
+    {
+      id:'L1-DI', label:'Data Ingestion', layer:1,
+      desc:'Raw information is curated, tagged by reliability tier, and assessed for provenance bias before entering the analytic pipeline. Source triangulation protocols reduce the risk of narrative capture. Quality gates apply — more data does not equal better analysis.',
+      tags:['Source Tiering','Triangulation','Provenance','RAPITIS','WSI'],
+      children:[
+        {id:'L2-DI1', label:'Source Intake & Triage', layer:2, desc:'The first evidence gate. Every source must be assessed for relevance, type, provenance, and admissibility before entering the workflow. Sources are admitted, caveated, treated as lead-only, or excluded. Intake answers: Should this source enter the workflow?', tags:['Intake Decision','Lead-Only','Exclude','Admit'],
+          children:[
+            {id:'L3-SI1', label:'Seven Intake Questions', layer:3, desc:'Reliability · Access · Provenance · Timeliness · Independence · Specificity · Manipulation Risk. Each question must be addressed before a source receives intake status.', tags:['RAPITIS-aligned','Source Triage']},
+            {id:'L3-SI2', label:'Source Type Classification', layer:3, desc:'Primary · Secondary · Tertiary · Dataset · Expert Analysis · Social Media/OSINT Stream · Technical. Each type carries distinct strengths and manipulation risks that govern its admissibility and weight.', tags:['Source Types','Evidence Weight']},
+            {id:'L3-SI3', label:'Intake Decision Bands', layer:3, desc:'Admit — Admit with Caveat — Lead-Only — Exclude. The intake decision determines the source\'s role in the evidence pipeline. A source may be relevant but still inadmissible as evidence without corroboration.', tags:['Admit','Caveat','Lead-Only','Exclude']}
+          ]
+        },
+        {id:'L2-DI2', label:'WSI Governance', layer:2, desc:'The QAP Web-Sourced Information Policy governs all internet-derived sources. WSI prevents five critical failures: single-source reliance, echo-chamber confirmation, artifact authenticity confusion, source volume overconfidence, and narrative drift.', tags:['WSI Policy','Source Independence','Non-Negotiable'],
+          children:[
+            {id:'L3-WSI1', label:'Five WSI Failures', layer:3, desc:'Single-source reliance · Echo-chamber confirmation · Artifact authenticity confusion · Source volume overconfidence · Narrative drift. Each failure mode has a defined QAP correction protocol.', tags:['Failure Modes','WSI']},
+            {id:'L3-WSI2', label:'Artifact vs Claim', layer:3, desc:'Artifact authenticity and claim accuracy are evaluated separately. A real video with a false caption is authentic but inaccurate. The analyst must verify both the artifact and the claim it is used to support.', tags:['Verification','Authenticity','Accuracy']},
+            {id:'L3-WSI3', label:'Social Media Protocol', layer:3, desc:'Social media is lead-only unless independently verified. A claim must have original post identified, account assessed, date confirmed, location verified (where relevant), and independent corroboration before it can support a judgment.', tags:['OSINT','Social Media','Lead-Only']},
+            {id:'L3-WSI4', label:'AI-Generated Material', layer:3, desc:'AI-generated summaries and unattributed synthetic text are non-evidentiary by default. They may support organizational tasks but cannot serve as evidence unless traceable to validated primary sources.', tags:['LLM Governance','Non-Evidentiary','Source Trail']}
+          ]
+        },
+        {id:'L2-DI3', label:'RAPITIS Source Scoring', layer:2, desc:'RAPITIS is the QAP source evaluation rubric: Reliability · Access · Provenance · Independence · Timeliness · Specificity. Each dimension is scored to produce a source reliability band that governs the weight assigned to claims derived from that source.', tags:['RAPITIS','Source Scoring','Reliability Band'],
+          children:[
+            {id:'L3-RAP1', label:'Reliability', layer:3, desc:'Has the source shown accuracy, correction discipline, and professional standards? Known outlets with editorial controls score higher than anonymous or unverified publishers.', tags:['Source Quality']},
+            {id:'L3-RAP2', label:'Access', layer:3, desc:'How could the source know what it claims? Direct access (official documents, eyewitness) scores highest. Indirect and unknown access require corroboration before load-bearing use.', tags:['Proximity','Direct Access']},
+            {id:'L3-RAP3', label:'Provenance', layer:3, desc:'Is the origin, authorship, method, and source trail clear? Provenance answers: Who created it, when, where, has it been altered, and is the original available?', tags:['Origin','Authorship','Traceability']},
+            {id:'L3-RAP4', label:'Independence', layer:3, desc:'Is this source independent from others? Multiple sources reporting the same upstream claim count as one evidence stream. Independence requires separate access, method, or data — not just different platforms.', tags:['Independence Testing','Evidence Streams']},
+            {id:'L3-RAP5', label:'Timeliness', layer:3, desc:'Is the source current enough for the claim being made? Timeliness requirements vary by KIQ type: operational claims need hours-to-days currency; structural risk assessments may tolerate older sources.', tags:['Currency','Time-Sensitivity']},
+            {id:'L3-RAP6', label:'Specificity', layer:3, desc:'Does the source provide concrete, checkable details? Specific claims (named actors, dates, locations, quantities) are more testable than vague characterizations and carry higher evidential weight.', tags:['Granularity','Testability']}
+          ]
+        }
+      ]
+    },
+    {
+      id:'L1-SA', label:'Structured Analysis', layer:1,
+      desc:'LLMs are applied within strict governance parameters to accelerate hypothesis generation, competing explanation testing, and pattern synthesis across curated datasets. LLMs augment — not arbitrate. All model outputs are candidate assessments subject to human review.',
+      tags:['ACH','Hypotheses','Atomic Claims','Evidence Classification','LLM-Governed'],
+      children:[
+        {id:'L2-SA1', label:'Atomic Claim Extraction', layer:2, desc:'A source is not evidence as a whole. QAP requires analysts to extract the smallest meaningful claim that can be tested against evidence. Compound claims are split into atomic units. Each claim is logged with source ID, KIQ link, role category, and verification status.', tags:['Atomic Claims','Claim Log','Evidence Units'],
+          children:[
+            {id:'L3-ACE1', label:'Claim Role Categories', layer:3, desc:'Load-Bearing · Supporting · Contextual · Lead-Only · Excluded. Load-bearing claims carry key judgments and require the most rigorous validation. Each role category determines how the claim may be used in the analytic product.', tags:['Load-Bearing','Supporting','Contextual']},
+            {id:'L3-ACE2', label:'Atomic Claim Log', layer:3, desc:'The structured log of all extracted claims: Claim ID · Source No. · Claim · KIQ Link · Claim Role · Source Type · Date · Initial Status · Notes. The backbone of traceability between evidence and final judgment.', tags:['Traceability','Claim Log','Audit Trail']}
+          ]
+        },
+        {id:'L2-SA2', label:'FIAU Classification', layer:2, desc:'Every atomic claim is classified as Fact, Inference, Assumption, or Unknown before synthesis begins. This separation prevents overstatement, protects confidence calibration, and preserves decision utility. Unknowns become collection requirements.', tags:['FIAU','Evidence Discipline','Classification'],
+          children:[
+            {id:'L3-FIAU1', label:'Fact', layer:3, desc:'A claim directly supported by reliable evidence. Facts answer: What happened? Who said it? What was recorded? The fact discipline rule: do not use a fact to prove more than it proves.', tags:['Verified','Evidence-Bound']},
+            {id:'L3-FIAU2', label:'Inference', layer:3, desc:'A reasoned conclusion drawn from evidence. Must be labeled with confidence and caveats. Inferences answer: What does the evidence suggest? What pattern may be emerging? Inferences can be wrong — they must be testable.', tags:['Caveated','Reasoned Conclusion']},
+            {id:'L3-FIAU3', label:'Assumption', layer:3, desc:'A necessary but unproven condition that supports the analysis. Hidden assumptions are the primary vector for analytic failure. QAP mandates that every assumption be documented, stated, and challenged before any output is certified.', tags:['Key Assumptions Check','Hidden Risks']},
+            {id:'L3-FIAU4', label:'Unknown', layer:3, desc:'An evidence gap that cannot yet be resolved. Unknowns are not failures — they are honest analysis. Every important unknown becomes a collection requirement, a caveat, a confidence constraint, or an indicator for reassessment.', tags:['Intelligence Gaps','Collection Requirements']}
+          ]
+        },
+        {id:'L2-SA3', label:'Source Independence Testing', layer:2, desc:'Repetition is not corroboration. Multiple sources confirming the same claim may all be downstream from a single upstream report, post, or statement. QAP counts independent evidence streams — not source volume. Triangulation tiers govern how claims are weighted.', tags:['Independence','False Corroboration','Triangulation Tiers'],
+          children:[
+            {id:'L3-SIT1', label:'False Corroboration', layer:3, desc:'Occurs when multiple sources appear to confirm a claim but are actually repeating the same original evidence stream. Forms: wire repetition · official statement cascade · viral post amplification · circular citation · aggregator laundering · AI laundering.', tags:['False Corroboration','Wire Repetition','Cascade']},
+            {id:'L3-SIT2', label:'Triangulation Tiers', layer:3, desc:'Tier A: Verified primary source plus independent confirmation. Tier B: Two or more independent credible sources with different collection pathways. Tier C: Single credible source only — requires caveat. Lead-Only: Unverified. Excluded: False or misleading.', tags:['Tier A','Tier B','Tier C','Lead-Only']},
+            {id:'L3-SIT3', label:'Evidence Stream Mapping', layer:3, desc:'Map sources to their upstream origin to count independent evidence streams. Five outlets repeating one wire report equal one stream, not five. Confidence must reflect stream count — not source volume.', tags:['Evidence Streams','Upstream Tracing']}
+          ]
+        },
+        {id:'L2-SA4', label:'Mini-ACH', layer:2, desc:'Analysis of Competing Hypotheses (simplified). Forces the analyst to generate multiple plausible explanations and test each against evidence before writing any judgment. Prevents confirmation bias and premature narrative lock-in. Identifies the best-surviving hypothesis through evidence testing.', tags:['ACH','Competing Hypotheses','Diagnosticity','Confirmation Bias'],
+          children:[
+            {id:'L3-ACH1', label:'Hypothesis Generation', layer:3, desc:'At least 3–4 distinct, plausible, testable hypotheses are required. Hypotheses must be clear, bounded, mutually distinct, evidence-testable, and free of assumed conclusions. Include hypotheses the analyst does not prefer.', tags:['Hypothesis Design','Bias Control']},
+            {id:'L3-ACH2', label:'Evidence Testing Matrix', layer:3, desc:'Each evidence item is tested against each hypothesis: Supports · Weakens · Neutral · Mixed · Unknown. The matrix makes reasoning visible and prevents the analyst from choosing the most comfortable explanation.', tags:['Matrix','Evidence Testing','Structured Reasoning']},
+            {id:'L3-ACH3', label:'Diagnosticity Rating', layer:3, desc:'Diagnostic evidence distinguishes between competing hypotheses. High diagnosticity = strongly favors one explanation over others. Low diagnosticity = fits multiple hypotheses equally. Evidence that is true but not diagnostic does not settle the hypothesis.', tags:['Diagnosticity','Evidence Weight']},
+            {id:'L3-ACH4', label:'Hypothesis Outcome', layer:3, desc:'The best-surviving hypothesis is selected through evidence testing — not analyst preference. Rejected hypotheses are documented. Weakened but plausible hypotheses become watch judgments. The outcome feeds directly into Key Judgment writing.', tags:['Best-Surviving','Watch Judgment']}
+          ]
+        }
+      ]
+    },
+    {
+      id:'L1-CC', label:'Confidence Calibration', layer:1,
+      desc:'Every QAP product carries an explicit assumptions register and confidence calibration — a documented record of what is known, what is inferred, what is assumed, and what is unknown. Confidence is calibrated against source triangulation quality, hypothesis test robustness, and independence of evidence streams.',
+      tags:['Confidence Levels','Evidence Limits','Likelihood vs Confidence','Synthetic Confidence'],
+      children:[
+        {id:'L2-CC1', label:'Key Judgment Writing', layer:2, desc:'Key Judgments are the analyst\'s assessed answers to KIQs. They are not summaries, observations, or descriptions of findings. Required elements: Judgment · Confidence · Time Horizon · Evidence Basis · Caveat · Decision Relevance · KIQ Link.', tags:['Key Judgment Formula','BLUF','Decision-Grade'],
+          children:[
+            {id:'L3-KJ1', label:'Judgment Formula', layer:3, desc:'"We assess with [confidence level] that [judgment] over [time horizon] because [evidence basis]. However, [caveat]. This matters because [decision relevance]." The formula ensures every judgment is evidence-bound, time-aware, caveated, and decision-useful.', tags:['Assessment Language','Formula']},
+            {id:'L3-KJ2', label:'Watch Judgments', layer:3, desc:'A plausible hypothesis not yet supported strongly enough to become a Key Judgment. Includes upgrade criteria (what evidence promotes it) and retirement criteria (what evidence removes it). Separated from assessed judgments in all QAP products.', tags:['Watch Judgment','Upgrade Criteria','Retirement']},
+            {id:'L3-KJ3', label:'Confidence Levels', layer:3, desc:'High: Multiple independent high-quality sources converge, gaps do not materially affect judgment. Moderate: Evidence is credible and relevant but gaps remain. Low: Thin, single-source, derivative, or ambiguous evidence. Each level requires documented justification.', tags:['High','Moderate','Low','Justification']}
+          ]
+        },
+        {id:'L2-CC2', label:'Confidence Language', layer:2, desc:'Confidence answers: How strong is the analytic basis? It reflects source reliability, corroboration, independence, diagnosticity, specificity, timeliness, falsifiability, and remaining gaps. QAP requires confidence to track evidence quality — not source count or writing polish.', tags:['Language Discipline','Synthetic Confidence','Evidence Quality'],
+          children:[
+            {id:'L3-CL1', label:'Likelihood vs Confidence', layer:3, desc:'Likelihood = How probable is the event? Confidence = How strong is the evidence? These are distinct. A judgment can be likely with low confidence (thin evidence) or possible with high confidence (strong evidence base). Both dimensions must be stated.', tags:['Probability','Evidence Quality','Calibration']},
+            {id:'L3-CL2', label:'Synthetic Confidence', layer:3, desc:'Occurs when a product sounds certain because it is polished — not because evidence is strong. Warning signs: strong verbs with weak evidence · no caveats · source volume language · dramatic framing · AI-polished prose hiding weak sourcing. QAP explicitly prevents this failure.', tags:['Synthetic Confidence','Overstatement','Audit']},
+            {id:'L3-CL3', label:'Evidence Limits', layer:3, desc:'Conditions that prevent a stronger judgment: single-source reliance · weak independence · unclear provenance · timeliness gap · contradictory reporting · missing intent evidence · data lag · lack of diagnostic evidence. Every major judgment must document its evidence limits.', tags:['Caveats','Evidence Limits','Constraints']}
+          ]
+        },
+        {id:'L2-CC3', label:'Falsification Conditions', layer:2, desc:'Every important QAP judgment includes conditions that would upgrade, downgrade, or falsify it. Closed judgments that cannot be tested or revised are not decision-grade. Falsification conditions preserve analytic integrity across a changing evidence environment.', tags:['Upgrade Conditions','Downgrade Conditions','Falsifiability'],
+          children:[
+            {id:'L3-FC1', label:'Upgrade Conditions', layer:3, desc:'What evidence, if observed, would strengthen the judgment to higher confidence or revise the probability upward? Upgrade conditions are monitoring targets that define what analysts need to look for after the product is delivered.', tags:['Monitoring','Upgrade Logic']},
+            {id:'L3-FC2', label:'Downgrade Conditions', layer:3, desc:'What evidence, if observed, would weaken or falsify the judgment? Defines the boundary conditions of the assessment. Required for all Key Judgments and watch judgments to preserve analytic honesty.', tags:['Falsification','Revision','Integrity']}
+          ]
+        }
+      ]
+    },
+    {
+      id:'L1-HV', label:'Human Validation', layer:1,
+      desc:'No product exits the QAP™ pipeline without expert human review. This layer is non-negotiable and structurally enforced — not a final check but a continuous control point. Analysts stress-test LLM-generated candidates, challenge assumptions, and exercise domain judgment before any output is certified as decision-grade.',
+      tags:['HITL','Expert Sign-Off','LLM Governance','Human Authority'],
+      children:[
+        {id:'L2-HV1', label:'LLM-Governed Workflow', layer:2, desc:'LLMs are analytic assistants — not analysts. The QAP LLM workflow defines what models can safely help with (claim extraction, table formatting, draft language review) and what they must not do (assign final confidence, infer intent from thin evidence, fill intelligence gaps).', tags:['LLM Governance','Source-Bounded','Audit'],
+          children:[
+            {id:'L3-LLM1', label:'Source-Bounded Prompting', layer:3, desc:'Every QAP-compliant LLM prompt defines: task · evidence boundary · source IDs · prohibited actions · output format · audit instruction. The model is instructed to use only provided source extracts and to flag claims that cannot be supported from the provided material.', tags:['Prompt Design','Evidence Boundary','Constraints']},
+            {id:'L3-LLM2', label:'LLM Risk Modes', layer:3, desc:'Hallucination · Narrative drift · Synthetic confidence · Citation laundering · Source blending · Assumption hiding · Overgeneralization · False equivalence · Unsupported inference · Output bias. Each risk mode has a defined QAP control protocol.', tags:['Hallucination','Narrative Drift','Risk Modes']},
+            {id:'L3-LLM3', label:'Human Validation Checklist', layer:3, desc:'After every LLM-assisted step: Did the model stay within evidence? Did it invent facts? Did it preserve source IDs? Did it separate facts from inferences? Did it overstate confidence? Did it infer intent without evidence? Was the final judgment made by the human analyst?', tags:['Validation','Checklist','Human Authority']},
+            {id:'L3-LLM4', label:'LLM-Use Audit Note', layer:3, desc:'Every QAP product that used LLM assistance must include an audit note: what the model was used for · evidence boundary provided · what the analyst validated · what unsupported output was removed · confirmation that final judgment was human-led.', tags:['Audit Note','Transparency','Documentation']}
+          ]
+        },
+        {id:'L2-HV2', label:'Expert Review Gate', layer:2, desc:'The expert review gate is structurally enforced — it cannot be bypassed. Human analysts stress-test LLM-generated candidates, challenge assumptions, verify source trails, exercise domain judgment, and sign off on all final products. Authority over analytic judgments remains with credentialed human analysts at all times.', tags:['Expert Sign-Off','Non-Negotiable','Authority']},
+        {id:'L2-HV3', label:'Quality-Control Checklist', layer:2, desc:'The final QAP QC checklist verifies: problem was framed before collection · KIQs were written before judgments · sources were triaged · WSI risks documented · claims extracted atomically · facts separated from inferences · independence tested · hypotheses considered · judgments evidence-bound · confidence justified · indicators observable · LLM outputs audited.', tags:['QC Checklist','Production Standards','Final Audit']}
+      ]
+    },
+    {
+      id:'L1-DO', label:'Decision-Grade Output', layer:1,
+      desc:'The final layer delivers stakeholder-calibrated intelligence products: decision briefs, SitReps, risk registers, scenario sets, and indicator-threshold monitoring plans. Each product is traceable back through the analytic chain. Monitoring logic is embedded so outputs remain live instruments — not static documents.',
+      tags:['BLUF','I&W','Risk Register','SitRep','Decision Thresholds'],
+      children:[
+        {id:'L2-DO1', label:'Indicators & Warnings', layer:2, desc:'Judgments generate observable indicators with Green/Amber/Red thresholds, monitoring cadence, source types, and decision implications. I&W converts analysis into a live monitoring instrument. Vague indicators ("signs of instability") do not qualify — every indicator must be observable, specific, and threshold-based.', tags:['I&W','Thresholds','Monitoring','Cadence'],
+          children:[
+            {id:'L3-IW1', label:'Indicator Design Rules', layer:3, desc:'Observable · Specific · Linked to a judgment · Trackable through available sources · Time-aware · Threshold-based · Decision-relevant · Clear enough for another analyst to monitor. All eight criteria must be met for an indicator to qualify.', tags:['Design Rules','Observable','Specificity']},
+            {id:'L3-IW2', label:'Green/Amber/Red Thresholds', layer:3, desc:'Green = Normal, baseline, no meaningful change. Amber = Warning condition, elevated concern, increased monitoring required. Red = Critical condition, action threshold, reassessment or mitigation required. Each threshold is defined by a specific, observable condition.', tags:['Green','Amber','Red','Status Bands']},
+            {id:'L3-IW3', label:'Monitoring Cadence', layer:3, desc:'Active crisis: hourly or twice daily. Escalating protest or access risk: daily. Early warning monitoring: 2–3 times per week. Structural risk: weekly or monthly. Strategic forecast: monthly or quarterly. Cadence must match decision urgency — not default to daily.', tags:['Cadence','Decision Urgency','Frequency']}
+          ]
+        },
+        {id:'L2-DO2', label:'Risk Register', layer:2, desc:'Risk entries are derived from Key Judgments and I&W indicators. Each entry requires: Risk · Linked Judgment · Likelihood (1–5) · Impact (1–5) · Confidence · Trigger · Owner · Mitigation. Scores must be tied to evidence — not instinct or convention.', tags:['ISO 31000','Risk Scoring','Likelihood','Impact'],
+          children:[
+            {id:'L3-RR1', label:'Risk Scoring', layer:3, desc:'Likelihood and Impact scored 1–5. Confidence assigned per judgment. Risk score = Likelihood × Impact as a reference heuristic, but qualitative context governs final risk designation. All scores must be traceable to Key Judgments and indicators.', tags:['Likelihood × Impact','Risk Score','Evidence-Tied']},
+            {id:'L3-RR2', label:'Risk Triggers', layer:3, desc:'Each risk has a specific trigger condition — the observable threshold at which the risk status changes and action is required. Triggers are drawn directly from Amber and Red thresholds in the I&W table. No vague triggers permitted.', tags:['Triggers','Action Thresholds','Decision Points']}
+          ]
+        },
+        {id:'L2-DO3', label:'BLUF Brief', layer:2, desc:'The QAP final brief structure: Title · Scope Note · BLUF · Situation Snapshot · KIQs · Key Judgments · Evidence Summary (Know / Assess / Do Not Know) · Confidence & Caveats · I&W · Risk Implications · Decision Thresholds · Intelligence Gaps · LLM-Use Note · Source Register.', tags:['BLUF','Brief Structure','Stakeholder-Ready'],
+          children:[
+            {id:'L3-BLUF1', label:'BLUF Block', layer:3, desc:'The BLUF is the decision interface — not an introduction or summary. Every item must be an analytic finding a decision-maker can act on, plan against, or use to calibrate resources. 3–5 items maximum. Written after all analytic work is complete.', tags:['Decision Interface','Analytic Findings','Action-Ready']},
+            {id:'L3-BLUF2', label:'Evidence Summary', layer:3, desc:'Three-part structure: [FACT] What we know · [ASSESS] What we assess · [UNKNOWN] What we do not know. Separation of these three categories is mandatory. The reader must always be able to distinguish confirmed evidence from analytic inference from intelligence gaps.', tags:['Facts','Assessments','Gaps','Three-Part']},
+            {id:'L3-BLUF3', label:'Decision Thresholds', layer:3, desc:'Specific observable conditions that trigger recommended decisions. Drawn from Red thresholds in the I&W table. Example: "Delays exceed 6 hours for two consecutive days → Activate alternate routing." Decision thresholds give the brief operational utility beyond the delivery date.', tags:['Action Triggers','Operational Utility','Thresholds']}
+          ]
+        },
+        {id:'L2-DO4', label:'SitRep Products', layer:2, desc:'QAP SitReps are structured situational intelligence briefs: hero section · threat badge · scope boundary · metrics strip · key finding · panel cards · SVG situation map · status grid · alliance connector · cascade summary · analytic assessment card. Produced under QAP v2.0 standards.', tags:['SitRep','Situational Brief','QAP v2.0'],
+          link:{text:'View Reports Archive', url:'https://quanta-analytica.com/reports/'}
+        }
+      ]
+    },
+    {
+      id:'L1-FW', label:'Framework Stack', layer:1,
+      desc:'QAP™ is the governing process methodology. It operates alongside two proprietary analytical frameworks — QA-CSRF™ and IGRIS™ — and integrates with the Five-Layer Strategic Cognition Model. Together they form the complete Quanta Analytica intelligence architecture.',
+      tags:['Proprietary Frameworks','IP','MNS Consulting'],
+      children:[
+        {id:'L2-FW1', label:'QA-CSRF™', layer:2, desc:'Quanta Analytica Conflict & Security Risk Framework. A structured methodology for analyzing conflict systems — mapping actor networks, grievance structures, and escalation pathways in complex security environments. Applied in conjunction with QAP analytic pipeline.', tags:['Conflict Analysis','Actor Networks','Escalation','Grievance Mapping'],
+          link:{text:'Explore QA-CSRF™', url:'https://quanta-analytica.com/qa-csrf.html'}
+        },
+        {id:'L2-FW2', label:'IGRIS™', layer:2, desc:'Integrated Geopolitical Risk Intelligence System. Integrates multi-source data streams into structured scenario assessments for complex regional and global environments. Includes a Monte Carlo engine for probabilistic scenario modeling. Applied to country risk, governance fragility, and geopolitical exposure analysis.', tags:['Geopolitical Risk','Country Risk','Monte Carlo','Scenario Modeling'],
+          link:{text:'Explore IGRIS™', url:'https://quanta-analytica.com/igris.html'}
+        },
+        {id:'L2-FW3', label:'Cognition Model', layer:2, desc:'The Five-Layer Strategic Cognition Model: Foundations · Mechanisms · Dynamics · Leverage · Paradigms. Maps the relationship between analytic depth and decision impact. Underpins how QAP structures problem framing and intelligence product design across complexity levels.', tags:['Strategic Cognition','Five Layers','Complexity Mapping'],
+          link:{text:'Explore Cognition Model', url:'https://quanta-analytica.com/cognition-model.html'}
+        },
+        {id:'L2-FW4', label:'RAPITIS Rubric', layer:2, desc:'Reliability · Access · Provenance · Independence · Timeliness · Specificity. The QAP source evaluation rubric applied to all sources across all QAP products. RAPITIS scores determine source tier (A/B/C) and govern confidence contribution of each evidence stream.', tags:['RAPITIS','Source Evaluation','Reliability Bands']},
+        {id:'L2-FW5', label:'WSI Policy', layer:2, desc:'The Web-Sourced Information Policy governing all internet-derived sources in QAP products. Defines non-negotiable principles for source governance, independence testing, social media handling, AI-generated material, and confidence discipline across all web-sourced intelligence.', tags:['WSI','Policy','Governance','Non-Negotiable']}
+      ]
+    }
+  ]
+};
+
+// ── LAYOUT CONSTANTS ──────────────────────────────────────────────────────────
+const ROOT_X = 180, ROOT_Y = 0;
+const H_GAP = 300, V_GAP = 54;
+const NODE_R = { 0:22, 1:16, 2:12, 3:9 };
+const FONT_SIZE = { 0:13, 1:12, 2:11, 3:10 };
+const COLORS = ['var(--c0)','var(--c1)','var(--c2)','var(--c3)','var(--cL)'];
+const COL_MAP = {
+  'L1-PF':'var(--c1)','L1-DI':'var(--c2)','L1-SA':'var(--c3)',
+  'L1-CC':'var(--c4)','L1-HV':'var(--c5)','L1-DO':'var(--c6)','L1-FW':'var(--c0)'
+};
+
+// ── STATE ─────────────────────────────────────────────────────────────────────
+let collapsed = new Set();
+let positions = {};
+let selectedId = null;
+let allNodes = {};
+
+// pan/zoom
+let vx=0, vy=0, vz=1;
+let dragging=false, lastX=0, lastY=0;
+
+// ── BUILD NODE MAP ────────────────────────────────────────────────────────────
+function buildMap(n, parent=null){
+  n.parent = parent;
+  allNodes[n.id] = n;
+  if(n.children) n.children.forEach(c=>buildMap(c,n));
+}
+buildMap(DATA);
+
+// ── LAYOUT ───────────────────────────────────────────────────────────────────
+function getColor(node){
+  if(node.layer===0) return 'var(--c0)';
+  let p = node;
+  while(p.parent) p = p.parent;
+  if(p===node) return 'var(--c0)';
+  let l1 = node;
+  while(l1.parent && l1.parent.layer!==0) l1=l1.parent;
+  return COL_MAP[l1.id] || 'var(--c1)';
+}
+
+function visibleChildren(node){
+  if(!node.children) return [];
+  if(collapsed.has(node.id)) return [];
+  return node.children;
+}
+
+function countLeaves(node){
+  const ch = visibleChildren(node);
+  if(ch.length===0) return 1;
+  return ch.reduce((s,c)=>s+countLeaves(c),0);
+}
+
+function layout(node, x, y){
+  positions[node.id] = {x, y};
+  const ch = visibleChildren(node);
+  if(ch.length===0) return;
+  const leaves = ch.map(c=>countLeaves(c));
+  const total = leaves.reduce((a,b)=>a+b,0);
+  const totalH = (total-1)*V_GAP;
+  let cy = y - totalH/2;
+  ch.forEach((c,i)=>{
+    const h = (leaves[i]-1)*V_GAP;
+    layout(c, x+H_GAP, cy+h/2);
+    cy += h + V_GAP;
+  });
+}
+
+// ── RENDER ────────────────────────────────────────────────────────────────────
+const svg = document.getElementById('tree');
+
+function render(){
+  layout(DATA, ROOT_X, 0);
+  svg.innerHTML='';
+
+  // defs
+  const defs = el('defs');
+  const marker = el('marker',{id:'arr',markerWidth:6,markerHeight:6,refX:5,refY:3,orient:'auto'});
+  const path = el('path',{d:'M0,0 L6,3 L0,6 Z','stroke-width':0});
+  path.style.fill='rgba(201,168,76,0.25)';
+  marker.appendChild(path);
+  defs.appendChild(marker);
+  svg.appendChild(defs);
+
+  const g = el('g',{id:'main-g'});
+  applyTransform(g);
+  svg.appendChild(g);
+
+  // draw edges then nodes
+  drawEdges(DATA, g);
+  drawNodes(DATA, g);
+}
+
+function applyTransform(g){
+  const wrap = document.getElementById('canvas-wrap');
+  const W = wrap.clientWidth, H = wrap.clientHeight;
+  g.setAttribute('transform',`translate(${W/2+vx},${H/2+vy}) scale(${vz})`);
+}
+
+function el(tag, attrs={}){
+  const e = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));
+  return e;
+}
+
+function drawEdges(node, g){
+  const ch = visibleChildren(node);
+  const p = positions[node.id];
+  ch.forEach(c=>{
+    const cp = positions[c.id];
+    const midX = (p.x+cp.x)/2;
+    const col = getColor(c);
+    const path = el('path',{
+      d:`M${p.x},${p.y} C${midX},${p.y} ${midX},${cp.y} ${cp.x},${cp.y}`,
+      fill:'none', stroke:col, 'stroke-width':'1',
+      'stroke-opacity':'0.3','marker-end':'url(#arr)'
+    });
+    g.appendChild(path);
+    drawEdges(c, g);
+  });
+}
+
+function drawNodes(node, g){
+  const p = positions[node.id];
+  const r = NODE_R[Math.min(node.layer,3)] || 8;
+  const col = getColor(node);
+  const fs = FONT_SIZE[Math.min(node.layer,3)] || 10;
+  const hasChildren = node.children && node.children.length>0;
+  const isCollapsed = collapsed.has(node.id);
+
+  const grp = el('g',{class:'node-group' + (selectedId===node.id?' selected':'')});
+  grp.dataset.id = node.id;
+
+  // glow ring
+  const ring = el('circle',{cx:p.x,cy:p.y,r:r+5,class:'ring',stroke:col});
+  grp.appendChild(ring);
+
+  // main circle
+  const circ = el('circle',{cx:p.x,cy:p.y,r:r,
+    fill:node.layer===0?col:'var(--bg)',
+    stroke:col,'stroke-width':node.layer===0?'0':'1.5','stroke-opacity':'0.8'});
+  grp.appendChild(circ);
+
+  // center dot for non-root
+  if(node.layer>0){
+    const dot = el('circle',{cx:p.x,cy:p.y,r:r*0.35,fill:col,'fill-opacity':'0.7'});
+    grp.appendChild(dot);
+  }
+
+  // collapse indicator
+  if(hasChildren){
+    const indX = p.x + r + 2;
+    const txt = el('text',{x:indX,y:p.y,class:'node-label',
+      fill:col,'font-size':'8','font-family':'IBM Plex Mono,monospace',
+      'fill-opacity':'0.6','dominant-baseline':'middle'});
+    txt.textContent = isCollapsed ? '+' : '−';
+    grp.appendChild(txt);
+  }
+
+  // label
+  const labelX = p.x + r + 14;
+  const words = node.label.split(' ');
+  if(words.length>2 && node.layer>0){
+    const line1 = words.slice(0,Math.ceil(words.length/2)).join(' ');
+    const line2 = words.slice(Math.ceil(words.length/2)).join(' ');
+    const t1 = el('text',{x:labelX,y:p.y-6,class:'node-label',
+      fill:node.layer===0?'var(--bg)':col,'font-size':fs,
+      'font-family':'IBM Plex Mono,monospace','dominant-baseline':'middle'});
+    t1.textContent=line1;
+    const t2 = el('text',{x:labelX,y:p.y+7,class:'node-label',
+      fill:node.layer===0?'var(--bg)':col,'font-size':fs,
+      'font-family':'IBM Plex Mono,monospace','dominant-baseline':'middle'});
+    t2.textContent=line2;
+    grp.appendChild(t1);
+    grp.appendChild(t2);
+  } else {
+    const txt = el('text',{x:node.layer===0?p.x:labelX,y:p.y,class:'node-label',
+      fill:node.layer===0?'var(--bg)':col,'font-size':node.layer===0?13:fs,
+      'font-family':node.layer===0?'IBM Plex Mono,monospace':'IBM Plex Mono,monospace',
+      'font-weight':node.layer===0?'500':'400',
+      'text-anchor':node.layer===0?'middle':'start',
+      'dominant-baseline':'middle'});
+    txt.textContent=node.label;
+    grp.appendChild(txt);
+  }
+
+  grp.addEventListener('click', e=>{e.stopPropagation(); handleClick(node);});
+  grp.addEventListener('mouseenter',()=>{ grp.querySelector('circle').style.filter='brightness(1.3)'; });
+  grp.addEventListener('mouseleave',()=>{ grp.querySelector('circle').style.filter=''; });
+  g.appendChild(grp);
+
+  visibleChildren(node).forEach(c=>drawNodes(c,g));
+}
+
+function handleClick(node){
+  if(node.children && node.children.length>0){
+    if(collapsed.has(node.id)) collapsed.delete(node.id);
+    else collapsed.add(node.id);
+  }
+  selectedId = node.id;
+  showPanel(node);
+  render();
+}
+
+// ── PANEL ─────────────────────────────────────────────────────────────────────
+function showPanel(node){
+  const col = getColor(node);
+  document.getElementById('p-tag').textContent = node.id;
+  document.getElementById('p-tag').style.color = col;
+  document.getElementById('p-title').textContent = node.label;
+  document.getElementById('p-layer').textContent = ['ROOT · Process Architecture','LAYER 1 · Process Stage','LAYER 2 · Method Group','LAYER 3 · Tradecraft Element','LAYER 4 · Component'][Math.min(node.layer,4)];
+  document.getElementById('p-desc').textContent = node.desc || '';
+
+  const tagsWrap = document.getElementById('p-tags-wrap');
+  const tagsEl = document.getElementById('p-tags');
+  if(node.tags && node.tags.length){
+    tagsWrap.style.display='block';
+    tagsEl.innerHTML = node.tags.map(t=>`<span class="panel-tag-chip">${t}</span>`).join('');
+  } else { tagsWrap.style.display='none'; }
+
+  const childWrap = document.getElementById('p-children-wrap');
+  const childEl = document.getElementById('p-children');
+  const ch = node.children || [];
+  if(ch.length){
+    childWrap.style.display='block';
+    childEl.innerHTML = ch.map(c=>`<div class="panel-child" onclick="jumpTo('${c.id}')"><span style="color:${getColor(c)};font-family:IBM Plex Mono,monospace;font-size:10px">${c.id}</span> ${c.label}<span class="panel-child-arrow">→</span></div>`).join('');
+  } else { childWrap.style.display='none'; }
+
+  const linkWrap = document.getElementById('p-link-wrap');
+  if(node.link){
+    linkWrap.style.display='block';
+    const a = document.getElementById('p-link');
+    a.textContent = node.link.text + ' →';
+    a.href = node.link.url;
+  } else { linkWrap.style.display='none'; }
+
+  document.getElementById('panel').classList.add('open');
+}
+
+function closePanel(){
+  document.getElementById('panel').classList.remove('open');
+  selectedId = null;
+  render();
+}
+
+function jumpTo(id){
+  const node = allNodes[id];
+  if(!node) return;
+  // expand all parents
+  let p = node.parent;
+  while(p){ collapsed.delete(p.id); p=p.parent; }
+  selectedId=id;
+  showPanel(node);
+  render();
+  // center on node
+  const pos = positions[id];
+  if(pos){
+    const wrap = document.getElementById('canvas-wrap');
+    vx = -pos.x * vz;
+    vy = -pos.y * vz;
+    applyTransform(document.getElementById('main-g'));
+  }
+}
+
+// ── PAN / ZOOM ────────────────────────────────────────────────────────────────
+const wrap = document.getElementById('canvas-wrap');
+wrap.addEventListener('mousedown', e=>{
+  if(e.target.closest('.node-group')) return;
+  dragging=true; lastX=e.clientX; lastY=e.clientY;
+  wrap.classList.add('dragging');
+});
+window.addEventListener('mousemove', e=>{
+  if(!dragging) return;
+  vx += e.clientX-lastX; vy += e.clientY-lastY;
+  lastX=e.clientX; lastY=e.clientY;
+  const g=document.getElementById('main-g');
+  if(g) applyTransform(g);
+});
+window.addEventListener('mouseup', ()=>{ dragging=false; wrap.classList.remove('dragging'); });
+
+wrap.addEventListener('wheel', e=>{
+  e.preventDefault();
+  const factor = e.deltaY<0?1.1:0.9;
+  vz = Math.min(Math.max(vz*factor, 0.15), 3);
+  const g=document.getElementById('main-g');
+  if(g){ applyTransform(g); }
+  document.getElementById('zoom-indicator').textContent = `ZOOM: ${Math.round(vz*100)}%`;
+},{passive:false});
+
+// touch
+let lastPinchDist=null;
+wrap.addEventListener('touchstart', e=>{
+  if(e.touches.length===1){ dragging=true; lastX=e.touches[0].clientX; lastY=e.touches[0].clientY; }
+  if(e.touches.length===2){ lastPinchDist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY); }
+},{passive:true});
+wrap.addEventListener('touchmove', e=>{
+  if(e.touches.length===1 && dragging){
+    vx+=e.touches[0].clientX-lastX; vy+=e.touches[0].clientY-lastY;
+    lastX=e.touches[0].clientX; lastY=e.touches[0].clientY;
+    const g=document.getElementById('main-g'); if(g) applyTransform(g);
+  }
+  if(e.touches.length===2 && lastPinchDist){
+    const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+    vz=Math.min(Math.max(vz*(d/lastPinchDist),0.15),3); lastPinchDist=d;
+    const g=document.getElementById('main-g'); if(g) applyTransform(g);
+  }
+},{passive:true});
+wrap.addEventListener('touchend', ()=>{ dragging=false; lastPinchDist=null; },{passive:true});
+
+// ── CONTROLS ──────────────────────────────────────────────────────────────────
+function expandAll(){
+  collapsed.clear();
+  render();
+}
+function collapseAll(){
+  Object.values(allNodes).forEach(n=>{ if(n.layer<3 && n.children && n.children.length) collapsed.add(n.id); });
+  render();
+}
+function resetView(){
+  vx=0; vy=0; vz=0.75;
+  const g=document.getElementById('main-g'); if(g) applyTransform(g);
+  document.getElementById('zoom-indicator').textContent='ZOOM: 75%';
+}
+
+function searchNodes(q){
+  if(!q){ render(); return; }
+  q=q.toUpperCase();
+  // highlight matching nodes
+  render();
+  document.querySelectorAll('.node-group').forEach(grp=>{
+    const id=grp.dataset.id;
+    const n=allNodes[id];
+    if(!n) return;
+    const match=n.label.toUpperCase().includes(q) || (n.tags && n.tags.some(t=>t.toUpperCase().includes(q)));
+    if(!match) grp.style.opacity='0.2';
+  });
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+// collapse layer 2+ by default for clean start
+Object.values(allNodes).forEach(n=>{
+  if(n.layer>=2 && n.children && n.children.length) collapsed.add(n.id);
+});
+vz=0.75;
+document.getElementById('zoom-indicator').textContent='ZOOM: 75%';
+
+window.addEventListener('resize', render);
+render();
+// center root
+setTimeout(()=>{
+  const wrap=document.getElementById('canvas-wrap');
+  vx = -ROOT_X * vz + 80;
+  vy = 0;
+  const g=document.getElementById('main-g');
+  if(g) applyTransform(g);
+}, 50);
+</script>
+</body>
+</html>
