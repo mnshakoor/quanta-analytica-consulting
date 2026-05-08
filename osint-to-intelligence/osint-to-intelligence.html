@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OSINT to Intelligence Manual | Structured Analytic Tradecraft for Analysts</title>
+<meta name="description" content="OSINT to Intelligence is a professional analyst tradecraft manual that teaches how to turn open-source evidence into structured, defensible intelligence judgments using QAP, source validation, ACH, confidence calibration, and decision-ready briefing workflows.">
+<link rel="canonical" href="https://quanta-analytica.com/osint-to-intelligence/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Quanta Analytica | MNS Consulting">
+<meta name="theme-color" content="#0a0c10">
+<meta property="og:type" content="product">
+<meta property="og:title" content="OSINT to Intelligence: A Professional Analyst Tradecraft Manual">
+<meta property="og:description" content="Learn how to turn open-source evidence into structured, defensible intelligence judgments using QAP, source validation, ACH, confidence calibration, and decision-ready briefing workflows.">
+<meta property="og:url" content="https://quanta-analytica.com/osint-to-intelligence/">
+<meta property="og:site_name" content="Quanta Analytica">
+<meta property="og:image" content="https://quanta-analytica.com/images/osint-to-intelligence-cover.png">
+<meta property="og:image:alt" content="OSINT to Intelligence professional analyst tradecraft manual cover">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OSINT to Intelligence: A Professional Analyst Tradecraft Manual">
+<meta name="twitter:description" content="A professional tradecraft manual for converting open-source evidence into structured analytic judgments.">
+<meta name="twitter:image" content="https://quanta-analytica.com/images/osint-to-intelligence-cover.png">
+<meta name="twitter:image:alt" content="OSINT to Intelligence professional analyst tradecraft manual cover">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"OSINT to Intelligence: Turning Open-Source Evidence into Structured Analytic Judgments","description":"A professional analyst tradecraft manual that teaches how to convert open-source information into structured, defensible intelligence judgments using source validation, evidence governance, atomic claim extraction, ACH, confidence calibration, indicators and warnings, risk scoring, and final brief production.","brand":{"@type":"Brand","name":"Quanta Analytica"},"publisher":{"@type":"Organization","name":"MNS Consulting","url":"https://quanta-analytica.com"},"image":"https://quanta-analytica.com/images/osint-to-intelligence-cover.png","url":"https://quanta-analytica.com/osint-to-intelligence/","sku":"QA-OSINT-INTEL-2026","productID":"QA-OSINT-INTEL-2026","category":"Professional Training Manual","offers":{"@type":"Offer","url":"https://quanta-analytica.com/osint-to-intelligence/","priceCurrency":"USD","price":"67.00","availability":"https://schema.org/InStock","itemCondition":"https://schema.org/NewCondition"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Who is this manual for?","acceptedAnswer":{"@type":"Answer","text":"This manual is designed for OSINT practitioners, NGO security analysts, corporate risk professionals, researchers, conflict analysts, and intelligence-adjacent teams that need to convert open-source evidence into structured analytic judgments."}},{"@type":"Question","name":"What formats are included?","acceptedAnswer":{"@type":"Answer","text":"Purchase includes PDF, HTML, and ePub editions of the manual."}},{"@type":"Question","name":"Is this a beginner or advanced product?","acceptedAnswer":{"@type":"Answer","text":"The manual is designed for beginner to intermediate analysts, but it is structured as a professional tradecraft manual rather than a general-interest OSINT book."}},{"@type":"Question","name":"Does this teach OSINT tools?","acceptedAnswer":{"@type":"Answer","text":"The manual focuses on analytic tradecraft, source validation, evidence governance, hypothesis testing, confidence calibration, and intelligence writing. It is not primarily a tool directory."}}]}</script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --obsidian:#0a0b0e;
+  --obsidian-2:#0f1014;
+  --obsidian-3:#14161b;
+  --obsidian-4:#1c1f26;
+  --obsidian-5:#252930;
+  --gold:#c9a84c;
+  --gold-light:#e2c47a;
+  --gold-dim:#8a6e2f;
+  --gold-muted:rgba(201,168,76,0.10);
+  --text-primary:#f0ede6;
+  --text-secondary:#9a9690;
+  --text-muted:#5a5750;
+  --border:#1e2128;
+  --border-gold:rgba(201,168,76,0.22);
+}
+html{scroll-behavior:smooth}
+body{background:var(--obsidian);color:var(--text-primary);font-family:'IBM Plex Sans',sans-serif;line-height:1.65;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,11,14,0.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 2rem;height:58px;display:flex;align-items:center;justify-content:space-between}
+.nav-brand img{height:28px;display:block}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:13px;color:var(--text-secondary);text-decoration:none;letter-spacing:0.04em;transition:color 0.2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{font-size:12px;padding:7px 20px;border:1px solid var(--gold-dim);color:var(--gold);background:transparent;cursor:pointer;font-family:'IBM Plex Sans',sans-serif;letter-spacing:0.07em;text-decoration:none;transition:all 0.2s}
+.nav-cta:hover{background:var(--gold-muted);border-color:var(--gold)}
+@media(max-width:700px){.nav-links{display:none}}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 2rem 80px;border-bottom:1px solid var(--border)}
+.hero-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:5rem;align-items:center}
+.hero-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:1.5rem}
+h1{font-family:'Libre Baskerville',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.15;color:var(--text-primary);margin-bottom:0.75rem}
+h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:1.1rem;font-family:'Libre Baskerville',serif;font-style:italic;color:var(--text-secondary);font-weight:400;margin-bottom:1.5rem;line-height:1.6}
+.hero-pitch{font-size:0.92rem;color:var(--text-secondary);line-height:1.8;font-weight:300;margin-bottom:2rem;border-left:2px solid var(--gold-dim);padding-left:1.25rem}
+.hero-price-block{display:flex;align-items:baseline;gap:1rem;margin-bottom:0.6rem}
+.price-launch{font-family:'IBM Plex Mono',monospace;font-size:2rem;color:var(--gold);font-weight:500}
+.price-reg{font-size:14px;color:var(--text-muted);text-decoration:line-through;font-family:'IBM Plex Mono',monospace}
+.price-label{font-size:11px;color:var(--text-muted);letter-spacing:0.1em;margin-bottom:1.5rem}
+.btn-buy{display:inline-block;padding:15px 40px;background:var(--gold);color:var(--obsidian);font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.1em;border:none;cursor:pointer;text-decoration:none;transition:all 0.2s;text-align:center}
+.btn-buy:hover{background:var(--gold-light)}
+.trust-strip{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1.25rem}
+.trust-badge{font-family:'IBM Plex Mono',monospace;font-size:10px;padding:4px 10px;border:1px solid var(--border-gold);color:var(--text-muted);letter-spacing:0.08em}
+.hero-micro{font-size:12px;color:var(--text-muted);margin-top:1rem;line-height:1.6}
+
+/* COVER SIDE */
+.cover-wrap{position:relative}
+.cover-img{width:100%;max-width:340px;display:block;border:1px solid var(--border-gold);box-shadow:0 0 60px rgba(201,168,76,0.08)}
+.format-badges{display:flex;gap:8px;margin-top:1.25rem;justify-content:center}
+.fmt-badge{font-family:'IBM Plex Mono',monospace;font-size:11px;padding:6px 16px;border:1px solid var(--border-gold);color:var(--gold);letter-spacing:0.1em}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr;gap:3rem}.cover-wrap{order:-1;text-align:center}.cover-img{max-width:260px;margin:0 auto}}
+
+/* SECTION COMMONS */
+.section-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:1.25rem}
+h2{font-family:'Libre Baskerville',serif;font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:400;line-height:1.25;margin-bottom:1.25rem}
+h2 em{font-style:italic;color:var(--gold)}
+.body-text{font-size:0.92rem;color:var(--text-secondary);line-height:1.85;font-weight:300}
+.section-pad{padding:90px 2rem}
+.section-pad-alt{padding:90px 2rem;background:var(--obsidian-2)}
+.inner{max-width:1020px;margin:0 auto}
+.inner-narrow{max-width:720px;margin:0 auto}
+.divider{max-width:1020px;margin:0 auto;height:1px;background:var(--border)}
+
+/* PROBLEM */
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:3rem}
+.problem-quote{font-family:'Libre Baskerville',serif;font-size:1.3rem;font-style:italic;color:var(--gold-light);line-height:1.5;margin-bottom:1.5rem;padding-left:1.5rem;border-left:2px solid var(--gold-dim)}
+@media(max-width:768px){.problem-grid{grid-template-columns:1fr;gap:2.5rem}}
+
+/* OUTCOME LIST */
+.outcome-list{list-style:none;margin-top:2rem;display:flex;flex-direction:column;gap:0.75rem}
+.outcome-list li{display:flex;gap:1rem;align-items:flex-start;font-size:13px;color:var(--text-secondary);line-height:1.7;font-weight:300}
+.outcome-list li::before{content:'→';color:var(--gold-dim);font-family:'IBM Plex Mono',monospace;font-size:12px;flex-shrink:0;margin-top:2px}
+
+/* AUDIENCE */
+.audience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:3rem}
+.aud-card{background:var(--obsidian-3);padding:1.5rem 1.75rem}
+.aud-title{font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:0.3rem}
+.aud-body{font-size:12px;color:var(--text-muted);line-height:1.6}
+@media(max-width:768px){.audience-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.audience-grid{grid-template-columns:1fr}}
+
+/* MODULES */
+.module-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);margin-top:3rem}
+.module-card{background:var(--obsidian-3);padding:1.4rem 1.75rem;display:flex;gap:1.25rem;align-items:flex-start}
+.module-num{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--gold-dim);flex-shrink:0;padding-top:2px;letter-spacing:0.06em;min-width:36px}
+.module-title{font-size:13px;color:var(--text-secondary);line-height:1.55;font-weight:300}
+@media(max-width:600px){.module-grid{grid-template-columns:1fr}}
+
+/* STATS BAR */
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin-top:2.5rem}
+.stat-item{background:var(--obsidian-4);padding:1.75rem 1.5rem;text-align:center}
+.stat-n{font-family:'IBM Plex Mono',monospace;font-size:1.8rem;color:var(--gold);font-weight:500;line-height:1}
+.stat-l{font-size:11px;color:var(--text-muted);margin-top:0.5rem;letter-spacing:0.04em;line-height:1.4}
+@media(max-width:600px){.stats-bar{grid-template-columns:repeat(2,1fr)}}
+
+/* WHY DIFFERENT */
+.diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;margin-top:3rem}
+.diff-col h3{font-size:14px;font-weight:500;color:var(--text-primary);margin-bottom:0.75rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border)}
+.diff-list{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+.diff-list li{font-size:13px;color:var(--text-secondary);line-height:1.6;font-weight:300;display:flex;gap:0.75rem}
+.diff-list.bad li::before{content:'✕';color:var(--text-muted);font-size:11px;flex-shrink:0;margin-top:3px}
+.diff-list.good li::before{content:'✓';color:var(--gold-dim);font-size:11px;flex-shrink:0;margin-top:3px}
+@media(max-width:600px){.diff-grid{grid-template-columns:1fr}}
+
+/* DELIVERABLES */
+.deliver-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--border);margin-top:3rem}
+.deliver-card{background:var(--obsidian-3);padding:2rem 1.75rem}
+.deliver-icon{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);margin-bottom:0.75rem}
+.deliver-title{font-size:14px;font-weight:500;color:var(--text-primary);margin-bottom:0.5rem}
+.deliver-body{font-size:12px;color:var(--text-secondary);line-height:1.7;font-weight:300}
+@media(max-width:600px){.deliver-grid{grid-template-columns:1fr}}
+
+/* PRICING */
+.pricing-wrap{max-width:560px;margin:3rem auto 0}
+.pricing-card{background:var(--obsidian-3);border:1px solid var(--border-gold);padding:3rem;position:relative;overflow:hidden}
+.pricing-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--gold),transparent)}
+.pricing-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.2em;color:var(--gold);margin-bottom:1rem}
+.pricing-title{font-family:'Libre Baskerville',serif;font-size:1.2rem;color:var(--text-primary);margin-bottom:0.4rem}
+.pricing-sub{font-size:13px;color:var(--text-secondary);margin-bottom:1.75rem;font-weight:300}
+.pricing-includes{display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:2rem}
+.pricing-includes span{font-family:'IBM Plex Mono',monospace;font-size:11px;padding:5px 12px;border:1px solid var(--border-gold);color:var(--gold-dim);letter-spacing:0.08em}
+.pricing-price-row{display:flex;align-items:baseline;gap:1rem;margin-bottom:0.4rem}
+.pp-launch{font-family:'IBM Plex Mono',monospace;font-size:2.4rem;color:var(--gold);font-weight:500}
+.pp-reg{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--text-muted);text-decoration:line-through}
+.pp-label{font-size:11px;color:var(--text-muted);letter-spacing:0.08em;margin-bottom:1.75rem}
+.btn-buy-lg{display:block;width:100%;padding:16px;background:var(--gold);color:var(--obsidian);font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.12em;border:none;cursor:pointer;text-decoration:none;text-align:center;transition:all 0.2s}
+.btn-buy-lg:hover{background:var(--gold-light)}
+.pricing-note{font-size:11px;color:var(--text-muted);margin-top:1rem;text-align:center;line-height:1.6}
+
+/* LICENSE */
+.license-card{background:var(--obsidian-4);border:1px solid var(--border);padding:2rem 2.5rem;margin-top:3rem;max-width:700px;margin-left:auto;margin-right:auto}
+.license-card h3{font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:0.75rem;letter-spacing:0.04em}
+.license-card p{font-size:13px;color:var(--text-secondary);line-height:1.8;font-weight:300}
+
+/* FAQ */
+.faq-list{margin-top:3rem;display:flex;flex-direction:column;gap:0}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{width:100%;background:none;border:none;text-align:left;padding:1.25rem 0;font-family:'IBM Plex Sans',sans-serif;font-size:14px;color:var(--text-primary);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-q .arrow{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--gold-dim);transition:transform 0.25s;flex-shrink:0}
+.faq-a{font-size:13px;color:var(--text-secondary);line-height:1.8;font-weight:300;max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s ease}
+.faq-item.open .faq-a{max-height:200px;padding-bottom:1.25rem}
+.faq-item.open .arrow{transform:rotate(45deg)}
+
+/* FINAL CTA */
+.final-cta{padding:120px 2rem;text-align:center;background:var(--obsidian-2);border-top:1px solid var(--border)}
+.final-cta h2{font-family:'Libre Baskerville',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:400;margin-bottom:1rem}
+.final-cta p{font-size:0.92rem;color:var(--text-secondary);max-width:560px;margin:0 auto 2.5rem;font-weight:300;line-height:1.8}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2.25rem 2rem}
+.footer-inner{max-width:1060px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-brand{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold-dim)}
+.footer-copy{font-size:12px;color:var(--text-muted)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:12px;color:var(--text-muted);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--gold)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="https://quanta-analytica.com"><img src="https://quanta-analytica.com/logo.PNG" alt="Quanta Analytica" style="height:60px"></a>
+    <ul class="nav-links">
+      <li><a href="#inside">Inside</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="https://quanta-analytica.com">Quanta Analytica</a></li>
+    </ul>
+    <a href="#pricing" class="nav-cta">BUY THE MANUAL</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Quanta Analytica · MNS Consulting · 2026 Edition</div>
+      <h1>OSINT to <em>Intelligence</em></h1>
+      <p class="hero-sub">Turning Open-Source Evidence into Structured Analytic Judgments</p>
+      <p class="hero-pitch">Most OSINT training teaches collection. This manual teaches the analytic workflow that turns evidence into decision-ready intelligence.</p>
+      <div class="hero-price-block">
+        <span class="price-launch">$67</span>
+        <span class="price-reg">$97</span>
+      </div>
+      <div class="price-label">LAUNCH PRICE · PDF + HTML + ePub included</div>
+      <a href="#pricing" class="btn-buy">BUY THE MANUAL</a>
+      <div class="trust-strip">
+        <span class="trust-badge">PDF EDITION</span>
+        <span class="trust-badge">HTML EDITION</span>
+        <span class="trust-badge">ePub EDITION</span>
+        <span class="trust-badge">QAP v2.0</span>
+        <span class="trust-badge">DIGITAL DELIVERY</span>
+      </div>
+      <p class="hero-micro">For OSINT practitioners, NGO security analysts, corporate risk teams, conflict analysts, researchers, and intelligence-adjacent professionals.</p>
+    </div>
+    <div class="cover-wrap">
+      <img src="https://quanta-analytica.com/images/osint-to-intel-promo.png" alt="OSINT to Intelligence professional analyst tradecraft manual cover" class="cover-img" loading="eager">
+      <div class="format-badges">
+        <span class="fmt-badge">PDF</span>
+        <span class="fmt-badge">HTML</span>
+        <span class="fmt-badge">ePub</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section-pad">
+  <div class="inner">
+    <div class="section-label">The Intelligence Gap</div>
+    <h2>Collection Is Not <em>Analysis</em></h2>
+    <div class="problem-grid">
+      <div>
+        <p class="problem-quote">"Many analysts can find information. Fewer can explain why a source should be trusted, whether a claim is independently corroborated, or what decision should follow."</p>
+        <p class="body-text">The gap between OSINT collection and intelligence judgment is where most analysts stall. Without a structured tradecraft layer, open-source research stays raw — findings that look like intelligence but cannot survive source audit, stress-testing, or senior review.</p>
+      </div>
+      <div>
+        <p class="body-text" style="margin-bottom:1.25rem">This manual closes that gap.</p>
+        <p class="body-text">It teaches analysts how to move from open-source material to structured judgment through disciplined problem framing, source validation, evidence governance, hypothesis testing, confidence calibration, indicators and warnings, and final brief production — the full analytic workflow that turns collection into decision-grade intelligence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- OUTCOMES -->
+<section class="section-pad-alt" id="outcomes">
+  <div class="inner">
+    <div class="section-label">What This Manual Helps Analysts Do</div>
+    <h2>What This Manual Helps <em>Analysts Do</em></h2>
+    <p class="body-text" style="max-width:620px">By working through the manual, you will learn how to:</p>
+    <ul class="outcome-list">
+      <li>Distinguish raw information, OSINT findings, evaluated evidence, and intelligence judgments</li>
+      <li>Build a problem frame before collecting sources</li>
+      <li>Convert Key Intelligence Questions into collection requirements</li>
+      <li>Evaluate source reliability, access, provenance, independence, timeliness, specificity, and manipulation risk</li>
+      <li>Extract atomic claims from reporting and separate facts, inferences, assumptions, and unknowns</li>
+      <li>Detect false corroboration and derivative reporting across multiple sources</li>
+      <li>Apply mini-ACH to competing explanations and hypotheses</li>
+      <li>Write key judgments with calibrated confidence language</li>
+      <li>Convert judgments into indicators, warnings, risk implications, and decision thresholds</li>
+      <li>Use LLMs as analytic assistants without transferring judgment to the model</li>
+      <li>Produce a short intelligence brief that can survive source and reasoning audit</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- AUDIENCE -->
+<section class="section-pad">
+  <div class="inner">
+    <div class="section-label">Who This Manual Is For</div>
+    <h2>Built for Analysts Who Need <em>Defensible Judgments</em></h2>
+    <p class="body-text">Not just more sources.</p>
+    <div class="audience-grid">
+      <div class="aud-card"><div class="aud-title">OSINT Practitioners</div><div class="aud-body">Moving from collection workflows to structured analytic output</div></div>
+      <div class="aud-card"><div class="aud-title">NGO Security Analysts</div><div class="aud-body">Field-facing analysts who need defensible threat assessments</div></div>
+      <div class="aud-card"><div class="aud-title">Corporate Risk Professionals</div><div class="aud-body">Operational risk and due diligence teams in complex environments</div></div>
+      <div class="aud-card"><div class="aud-title">Conflict & Geopolitical Analysts</div><div class="aud-body">Regional specialists building structured scenario assessments</div></div>
+      <div class="aud-card"><div class="aud-title">Investigative Researchers</div><div class="aud-body">Researchers who need audit-ready sourcing and evidence chains</div></div>
+      <div class="aud-card"><div class="aud-title">AI-Assisted Intel Workflows</div><div class="aud-body">Small teams integrating LLMs into structured analytic pipelines</div></div>
+      <div class="aud-card"><div class="aud-title">Intelligence Studies Students</div><div class="aud-body">Beginner to intermediate analysts building professional tradecraft</div></div>
+      <div class="aud-card"><div class="aud-title">Humanitarian Access Teams</div><div class="aud-body">Security and access planning teams in fragile contexts</div></div>
+      <div class="aud-card"><div class="aud-title">Internal Analytic Standards Teams</div><div class="aud-body">Small organizations building repeatable analytic frameworks</div></div>
+    </div>
+    <p class="body-text" style="margin-top:2rem;font-style:italic;color:var(--text-muted)">This is not a directory of OSINT tools. It is a tradecraft manual for converting open-source evidence into structured analytic output.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- INSIDE -->
+<section class="section-pad-alt" id="inside">
+  <div class="inner">
+    <div class="section-label">Inside the Manual</div>
+    <h2>14-Module <em>Curriculum</em></h2>
+    <p class="body-text" style="max-width:580px;margin-bottom:0">A structured learning path from first principles to capstone brief production.</p>
+    <div class="stats-bar">
+      <div class="stat-item"><div class="stat-n">153</div><div class="stat-l">Pages</div></div>
+      <div class="stat-item"><div class="stat-n">14</div><div class="stat-l">Modules</div></div>
+      <div class="stat-item"><div class="stat-n">3</div><div class="stat-l">Formats included</div></div>
+      <div class="stat-item"><div class="stat-n">QAP™</div><div class="stat-l">Framework-native</div></div>
+    </div>
+    <div class="module-grid">
+      <div class="module-card"><div class="module-num">MOD 01</div><div class="module-title">Where OSINT Ends and Intelligence Begins</div></div>
+      <div class="module-card"><div class="module-num">MOD 02</div><div class="module-title">Problem Framing Before Collection</div></div>
+      <div class="module-card"><div class="module-num">MOD 03</div><div class="module-title">Key Intelligence Questions and Collection Requirements</div></div>
+      <div class="module-card"><div class="module-num">MOD 04</div><div class="module-title">Source Intake and Triage</div></div>
+      <div class="module-card"><div class="module-num">MOD 05</div><div class="module-title">Web-Sourced Information Governance</div></div>
+      <div class="module-card"><div class="module-num">MOD 06</div><div class="module-title">Atomic Claim Extraction</div></div>
+      <div class="module-card"><div class="module-num">MOD 07</div><div class="module-title">Fact, Inference, Assumption, and Unknown</div></div>
+      <div class="module-card"><div class="module-num">MOD 08</div><div class="module-title">Source Independence and False Corroboration</div></div>
+      <div class="module-card"><div class="module-num">MOD 09</div><div class="module-title">From Evidence to Hypotheses</div></div>
+      <div class="module-card"><div class="module-num">MOD 10</div><div class="module-title">Writing Key Judgments</div></div>
+      <div class="module-card"><div class="module-num">MOD 11</div><div class="module-title">Confidence Language and Evidence Limits</div></div>
+      <div class="module-card"><div class="module-num">MOD 12</div><div class="module-title">Indicators, Warnings, and Risk Thresholds</div></div>
+      <div class="module-card"><div class="module-num">MOD 13</div><div class="module-title">LLM-Governed OSINT Analysis</div></div>
+      <div class="module-card"><div class="module-num">MOD 14</div><div class="module-title">Capstone Brief: The OSINT-to-Intelligence Product</div></div>
+    </div>
+    <p class="body-text" style="margin-top:1.5rem;font-size:12px;color:var(--text-muted)">Each module includes applied examples, learner exercises, instructor notes, and quality-control checklists.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHY DIFFERENT -->
+<section class="section-pad">
+  <div class="inner">
+    <div class="section-label">Why This Is Different From a Standard OSINT Book</div>
+    <h2>Collection vs. <em>Judgment</em></h2>
+    <p class="body-text" style="max-width:620px">Most OSINT products focus on discovery. This manual focuses on the structured reasoning layer between collection and decision support.</p>
+    <div class="diff-grid">
+      <div class="diff-col">
+        <h3>Standard OSINT Training</h3>
+        <ul class="diff-list bad">
+          <li>Teaches platforms, tools, and discovery techniques</li>
+          <li>Stops at the point of finding information</li>
+          <li>Does not address source reliability or independence</li>
+          <li>No structured hypothesis testing workflow</li>
+          <li>No confidence calibration or evidence limits</li>
+          <li>Output is a summary, not an intelligence judgment</li>
+        </ul>
+      </div>
+      <div class="diff-col">
+        <h3>OSINT to Intelligence</h3>
+        <ul class="diff-list good">
+          <li>Teaches the analytic tradecraft layer after collection</li>
+          <li>Converts raw evidence into structured judgments</li>
+          <li>WSI™-aligned source validation and independence auditing</li>
+          <li>Mini-ACH hypothesis testing built into the workflow</li>
+          <li>Explicit confidence language and evidence limit notation</li>
+          <li>Output is a decision-grade brief that survives audit</li>
+        </ul>
+      </div>
+    </div>
+    <div class="license-card" style="margin-top:3rem;background:var(--obsidian-3);border-color:var(--border-gold)">
+      <p class="body-text">Built around the <strong style="color:var(--text-primary);font-weight:500">Quanta Analytica Process™</strong> — including evidence governance, source validation, structured analytic techniques, confidence calibration, and AI-governed analytic workflows.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- DELIVERABLES -->
+<section class="section-pad-alt">
+  <div class="inner">
+    <div class="section-label">What You Get</div>
+    <h2>Your Purchase <em>Includes</em></h2>
+    <div class="deliver-grid">
+      <div class="deliver-card">
+        <div class="deliver-icon">PDF EDITION</div>
+        <div class="deliver-title">Desktop & Print</div>
+        <p class="deliver-body">Full 153-page manual in PDF format. Personal license allows printing one copy for individual use.</p>
+      </div>
+      <div class="deliver-card">
+        <div class="deliver-icon">HTML EDITION</div>
+        <div class="deliver-title">Browser-Based</div>
+        <p class="deliver-body">Fully formatted HTML edition for browser-based reading — no app required, readable on any device.</p>
+      </div>
+      <div class="deliver-card">
+        <div class="deliver-icon">ePub EDITION</div>
+        <div class="deliver-title">eReader Compatible</div>
+        <p class="deliver-body">ePub edition for Kindle, Apple Books, and all compatible eReader applications.</p>
+      </div>
+      <div class="deliver-card">
+        <div class="deliver-icon">14-MODULE PATH</div>
+        <div class="deliver-title">Structured Learning</div>
+        <p class="deliver-body">Progressive module structure from first principles through capstone brief production.</p>
+      </div>
+      <div class="deliver-card">
+        <div class="deliver-icon">EXERCISES & CHECKLISTS</div>
+        <div class="deliver-title">Applied Tradecraft</div>
+        <p class="deliver-body">Learner exercises, applied examples, instructor notes, and quality-control checklists throughout.</p>
+      </div>
+      <div class="deliver-card">
+        <div class="deliver-icon">CAPSTONE WORKFLOW</div>
+        <div class="deliver-title">Capstone Brief</div>
+        <p class="deliver-body">Module 14 guides production of a complete OSINT-to-Intelligence brief using the full QAP™ pipeline.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRICING -->
+<section class="section-pad" id="pricing">
+  <div class="inner-narrow" style="text-align:center">
+    <div class="section-label">Launch Edition Pricing</div>
+    <h2>Get the <em>Manual</em></h2>
+  </div>
+  <div class="pricing-wrap">
+    <div class="pricing-card">
+      <div class="pricing-tag">LAUNCH EDITION · 2026</div>
+      <div class="pricing-title">OSINT to Intelligence</div>
+      <div class="pricing-sub">Turning Open-Source Evidence into Structured Analytic Judgments</div>
+      <div class="pricing-includes">
+        <span>PDF</span><span>HTML</span><span>ePub</span>
+      </div>
+      <div class="pricing-price-row">
+        <span class="pp-launch">$67</span>
+        <span class="pp-reg">$97</span>
+      </div>
+      <div class="pp-label">LAUNCH PRICE · Limited period</div>
+      <a href="CHECKOUT_URL_HERE" class="btn-buy-lg">BUY THE MANUAL</a>
+      <p class="pricing-note">Secure checkout · Digital delivery · Personal professional development license included</p>
+    </div>
+    <div class="license-card" style="margin-top:1.5rem">
+      <h3>Personal Use License</h3>
+      <p>Purchase includes a personal, non-transferable license for individual professional development and reference use. Organizations, teams, training programs, academic departments, and agencies requiring group use should <a href="https://quanta-analytica.com/contact-form.html" style="color:var(--gold-dim);text-decoration:none">contact MNS Consulting</a> for organizational licensing.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<section class="section-pad-alt" id="faq">
+  <div class="inner-narrow">
+    <div class="section-label">Frequently Asked Questions</div>
+    <h2>Buyer <em>Questions</em></h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">Who is this manual for?<span class="arrow">+</span></button>
+        <div class="faq-a">Designed for OSINT practitioners, NGO security analysts, corporate risk professionals, researchers, conflict analysts, and intelligence-adjacent teams that need to convert open-source evidence into structured analytic judgments.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">What formats are included?<span class="arrow">+</span></button>
+        <div class="faq-a">Purchase includes PDF, HTML, and ePub editions of the full 153-page manual.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">Is this a beginner or advanced product?<span class="arrow">+</span></button>
+        <div class="faq-a">Designed for beginner to intermediate analysts, but structured as a professional tradecraft manual rather than a general-interest OSINT book. Advanced analysts will find the QAP™-native framework and evidence governance modules directly applicable to live workflows.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">Does this teach OSINT tools?<span class="arrow">+</span></button>
+        <div class="faq-a">The manual focuses on analytic tradecraft, source validation, evidence governance, hypothesis testing, confidence calibration, and intelligence writing. It is not primarily a tool directory.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">Does this include video training?<span class="arrow">+</span></button>
+        <div class="faq-a">No. This launch edition includes the manual in PDF, HTML, and ePub formats.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">Can teams use this for training?<span class="arrow">+</span></button>
+        <div class="faq-a">Team, classroom, and organizational use require a separate organizational license. Contact MNS Consulting to discuss group licensing options.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">Is this based on classified methods or materials?<span class="arrow">+</span></button>
+        <div class="faq-a">No. The manual uses open-source analytic methods only and contains no classified material.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">Can I print the PDF?<span class="arrow">+</span></button>
+        <div class="faq-a">Yes. The personal license allows the purchaser to print one copy for individual use.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="section-label" style="margin-bottom:1.5rem">Ready to Build the Tradecraft Layer</div>
+  <h2>Start Turning OSINT into <em>Structured Intelligence</em></h2>
+  <p>Build the tradecraft layer between open-source evidence and defensible analytic judgment.</p>
+  <a href="CHECKOUT_URL_HERE" class="btn-buy">BUY THE MANUAL</a>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Quanta Analytica™ · An MNS Consulting Initiative</div>
+    <div class="footer-links">
+      <a href="https://quanta-analytica.com">Home</a>
+      <a href="https://quanta-analytica.com/about.html">About</a>
+      <a href="https://quanta-analytica.com/reports/">Reports</a>
+      <a href="https://quanta-analytica.com/contact-form.html">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 MNS Consulting. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+function toggle(btn){
+  const item=btn.parentElement;
+  const wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen)item.classList.add('open');
+}
+</script>
+</body>
+</html>
