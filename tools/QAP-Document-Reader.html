@@ -1,0 +1,3388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QAP Document Reader | Quanta Analytica Process™ | MNS Consulting</title>
+  <meta name="description" content="Quanta Analytica Process™ in-browser EPUB reader. Load and navigate documents locally — no server, no upload, no account required." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --obsidian:        #0a0c10;
+      --obsidian-mid:    #0f1117;
+      --obsidian-panel:  #13161e;
+      --obsidian-card:   #181c26;
+      --obsidian-border: #1e2330;
+      --obsidian-line:   #252b3b;
+      --gold:            #c8a96e;
+      --gold-bright:     #d4b97e;
+      --gold-dim:        #8a7048;
+      --gold-faint:      rgba(200,169,110,0.07);
+      --slate:           #8892a4;
+      --slate-light:     #a8b4c8;
+      --slate-muted:     #5a6478;
+      --white:           #f0f2f6;
+      --white-dim:       #c8cdd8;
+      --font-mono:       "IBM Plex Mono", monospace;
+      --font-sans:       "IBM Plex Sans", sans-serif;
+      --font-serif:      "Libre Baskerville", serif;
+      --toc-width:       290px;
+      --header-h:        54px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%;
+      background: var(--obsidian);
+      color: var(--white);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+    [hidden] { display: none !important; }
+    a { color: inherit; text-decoration: none; }
+
+    #progress {
+      position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+      background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-bright));
+      z-index: 999; transition: width 0.1s linear;
+    }
+
+    /* ── START SCREEN ── */
+    .start-screen { min-height: 100vh; display: flex; flex-direction: column; }
+
+    .site-header {
+      position: sticky; top: 2px; z-index: 90;
+      background: rgba(10,12,16,0.97); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--obsidian-border);
+      height: var(--header-h); display: flex; align-items: center;
+      justify-content: space-between; padding: 0 40px;
+    }
+    .site-brand { display: flex; align-items: center; gap: 12px; }
+    .brand-logo { height: 28px; width: auto; }
+    .brand-text { display: flex; flex-direction: column; line-height: 1; }
+    .brand-name {
+      font-family: var(--font-mono); font-size: 12px; font-weight: 600;
+      color: var(--gold); letter-spacing: 0.07em; text-transform: uppercase;
+    }
+    .brand-sub {
+      font-family: var(--font-mono); font-size: 10px; color: var(--slate-muted);
+      letter-spacing: 0.07em; text-transform: uppercase; margin-top: 3px;
+    }
+    .site-nav { display: flex; align-items: center; gap: 24px; }
+    .site-nav a {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+      color: var(--slate); letter-spacing: 0.08em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .site-nav a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero-section {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      padding: 80px 24px; position: relative; overflow: hidden;
+    }
+    .hero-section::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(200,169,110,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,169,110,0.035) 1px, transparent 1px);
+      background-size: 44px 44px; pointer-events: none;
+    }
+    .hero-section::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, transparent 30%, var(--obsidian) 100%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative; z-index: 2; text-align: center;
+      max-width: 700px; width: 100%;
+      animation: fadeUp 0.7s ease both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-eyebrow {
+      font-family: var(--font-mono); font-size: 10px; color: var(--gold-dim);
+      letter-spacing: 0.16em; text-transform: uppercase;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      margin-bottom: 22px;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ''; flex: 1; max-width: 56px; height: 1px;
+    }
+    .hero-eyebrow::before { background: linear-gradient(90deg, transparent, var(--gold-dim)); }
+    .hero-eyebrow::after  { background: linear-gradient(90deg, var(--gold-dim), transparent); }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(34px, 6vw, 58px); font-weight: 700;
+      line-height: 1.1; color: var(--white); letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .hero-title .gold { color: var(--gold); }
+    .hero-mono {
+      font-family: var(--font-mono); font-size: 11px; color: var(--slate-muted);
+      letter-spacing: 0.08em; margin-bottom: 28px;
+    }
+    .hero-desc {
+      font-size: 15px; line-height: 1.75; color: var(--slate-light);
+      max-width: 520px; margin: 0 auto 44px;
+    }
+
+    /* ── UPLOAD CARD ── */
+    .upload-card {
+      background: var(--obsidian-card); border: 1px solid var(--obsidian-border);
+      border-radius: 3px; padding: 36px 32px; max-width: 500px; margin: 0 auto;
+      position: relative; overflow: hidden;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+    .upload-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .drop-zone {
+      border: 1.5px dashed var(--obsidian-line); border-radius: 3px;
+      padding: 40px 24px; text-align: center; cursor: pointer;
+      transition: border-color 0.2s, background 0.2s; position: relative;
+    }
+    .drop-zone:hover, .drop-zone.dragover {
+      border-color: var(--gold-dim); background: var(--gold-faint);
+    }
+    .drop-zone input[type="file"] {
+      position: absolute; inset: 0; opacity: 0;
+      cursor: pointer; width: 100%; height: 100%;
+    }
+    .drop-icon { width: 36px; height: 36px; color: var(--gold-dim); margin-bottom: 14px; }
+    .drop-label {
+      font-family: var(--font-mono); font-size: 11px; color: var(--slate);
+      letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-bottom: 6px;
+    }
+    .drop-hint { font-size: 13px; color: var(--slate-muted); }
+    .drop-hint strong { color: var(--gold); font-weight: 500; }
+    .status-bar {
+      margin-top: 16px; padding: 9px 14px; background: var(--obsidian-panel);
+      border-left: 3px solid var(--gold-dim); font-family: var(--font-mono);
+      font-size: 11px; color: var(--slate); letter-spacing: 0.04em;
+      display: flex; align-items: center; gap: 8px; min-height: 36px;
+    }
+    .status-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--gold-dim);
+      flex-shrink: 0; animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    /* ── INFO SECTIONS ── */
+    .info-section { padding: 72px 24px; border-top: 1px solid var(--obsidian-border); }
+    .info-section:nth-child(odd) { background: var(--obsidian-mid); }
+    .section-container { max-width: 880px; margin: 0 auto; }
+    .section-eyebrow {
+      font-family: var(--font-mono); font-size: 10px; color: var(--gold-dim);
+      letter-spacing: 0.16em; text-transform: uppercase; text-align: center; margin-bottom: 10px;
+    }
+    .section-heading {
+      font-family: var(--font-serif); font-size: 26px;
+      color: var(--white); text-align: center; margin-bottom: 44px;
+    }
+
+    /* Feature grid */
+    .feature-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1px; background: var(--obsidian-border); border: 1px solid var(--obsidian-border);
+    }
+    .feature-cell {
+      background: var(--obsidian-card); padding: 26px 22px;
+      position: relative; transition: background 0.2s;
+    }
+    .feature-cell:hover { background: var(--obsidian-panel); }
+    .feature-cell::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: var(--gold); transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .feature-cell:hover::before { transform: scaleX(1); }
+    .feature-index {
+      font-family: var(--font-mono); font-size: 9px; color: var(--gold-dim);
+      letter-spacing: 0.1em; margin-bottom: 10px;
+    }
+    .feature-icon { width: 22px; height: 22px; color: var(--gold); margin-bottom: 12px; }
+    .feature-name { font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 7px; }
+    .feature-desc { font-size: 12px; line-height: 1.6; color: var(--slate); }
+
+    /* Steps */
+    .steps-track { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; }
+    .step-item { display: grid; grid-template-columns: 46px 1fr; gap: 18px; position: relative; }
+    .step-item + .step-item::before {
+      content: ''; position: absolute; left: 22px; top: 0; bottom: 0;
+      width: 1px; background: var(--obsidian-line);
+    }
+    .step-num {
+      width: 46px; height: 46px; background: var(--obsidian-card);
+      border: 1px solid var(--obsidian-border);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono); font-size: 12px; font-weight: 600;
+      color: var(--gold); flex-shrink: 0; position: relative; z-index: 1;
+    }
+    .step-body { padding: 10px 0 30px; }
+    .step-label {
+      font-family: var(--font-mono); font-size: 9px; color: var(--gold-dim);
+      letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 5px;
+    }
+    .step-text { font-size: 13px; line-height: 1.65; color: var(--slate-light); }
+    .step-text code {
+      font-family: var(--font-mono); font-size: 11px; background: var(--obsidian-card);
+      border: 1px solid var(--obsidian-border); padding: 1px 5px; color: var(--gold);
+    }
+
+    /* FAQ */
+    .faq-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1px; background: var(--obsidian-border); border: 1px solid var(--obsidian-border);
+    }
+    .faq-item { background: var(--obsidian-card); padding: 22px; }
+    .faq-q { font-size: 13px; font-weight: 600; color: var(--gold); margin-bottom: 7px; }
+    .faq-a { font-size: 12px; line-height: 1.65; color: var(--slate); }
+
+    /* Footer */
+    .site-footer {
+      background: var(--obsidian); border-top: 1px solid var(--obsidian-border);
+      padding: 36px 40px 28px;
+    }
+    .footer-inner {
+      max-width: 880px; margin: 0 auto; display: flex;
+      align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+    }
+    .footer-brand { font-family: var(--font-mono); font-size: 11px; color: var(--slate-muted); }
+    .footer-brand strong { color: var(--gold-dim); }
+    .footer-legal {
+      font-size: 11px; color: var(--slate-muted); line-height: 1.6;
+      max-width: 880px; margin: 14px auto 0;
+      padding-top: 14px; border-top: 1px solid var(--obsidian-border);
+    }
+
+    /* ── VIEWER ── */
+    .layout {
+      display: flex; height: 100vh;
+      background: var(--obsidian); overflow: hidden;
+    }
+    .viewer-header {
+      position: fixed; top: 2px; left: 0; right: 0; height: var(--header-h); z-index: 80;
+      background: rgba(10,12,16,0.97); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--obsidian-border);
+      display: flex; align-items: center;
+    }
+    .viewer-brand-panel {
+      width: var(--toc-width); flex-shrink: 0; height: 100%; padding: 0 14px;
+      border-right: 1px solid var(--obsidian-border);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .viewer-logo { height: 22px; width: auto; }
+    .viewer-brand-label {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+      color: var(--gold); letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .viewer-title-area {
+      flex: 1; padding: 0 18px; display: flex; align-items: center;
+      gap: 14px; overflow: hidden;
+    }
+    #viewerBookTitle {
+      font-family: var(--font-sans); font-size: 13px; font-weight: 500;
+      color: var(--white-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .viewer-sep { font-family: var(--font-mono); font-size: 11px; color: var(--obsidian-line); }
+    #viewerStatus {
+      font-family: var(--font-mono); font-size: 10px; color: var(--slate-muted);
+      letter-spacing: 0.04em; white-space: nowrap;
+      overflow: hidden; text-overflow: ellipsis; max-width: 300px;
+    }
+    .viewer-close-btn {
+      flex-shrink: 0; margin-right: 14px; padding: 7px 14px;
+      background: transparent; border: 1px solid var(--obsidian-line);
+      color: var(--slate); font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      cursor: pointer; transition: border-color 0.2s, color 0.2s;
+    }
+    .viewer-close-btn:hover { border-color: var(--gold-dim); color: var(--gold); }
+
+    .side {
+      width: var(--toc-width); flex-shrink: 0;
+      border-right: 1px solid var(--obsidian-border);
+      background: var(--obsidian-panel); display: flex; flex-direction: column;
+      overflow: hidden;
+      margin-top: calc(var(--header-h) + 2px);
+      height: calc(100vh - var(--header-h) - 2px);
+    }
+    .toc-header { padding: 12px 14px; border-bottom: 1px solid var(--obsidian-border); flex-shrink: 0; }
+    .toc-label {
+      font-family: var(--font-mono); font-size: 9px; color: var(--gold-dim);
+      letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .toc-wrap {
+      flex: 1; overflow-y: auto; overflow-x: hidden; padding: 6px 0;
+      scrollbar-width: thin; scrollbar-color: var(--obsidian-line) transparent;
+    }
+    .toc-wrap::-webkit-scrollbar { width: 3px; }
+    .toc-wrap::-webkit-scrollbar-thumb { background: var(--obsidian-line); }
+
+    .toc-tree { list-style: none; padding: 0; margin: 0; }
+    .toc-tree .toc-tree {
+      padding-left: 14px; margin-left: 16px;
+      border-left: 1px solid var(--obsidian-border);
+    }
+    .toc-row { display: flex; }
+    .toc-row a {
+      flex: 1; padding: 6px 14px; font-family: var(--font-sans); font-size: 12px;
+      line-height: 1.4; color: var(--slate); cursor: pointer; display: block;
+      border-left: 2px solid transparent;
+      transition: color 0.15s, background 0.15s, border-color 0.15s;
+    }
+    .toc-row a:hover { color: var(--white); background: var(--gold-faint); border-left-color: var(--gold-dim); }
+    .toc-row a.active { color: var(--gold); background: var(--gold-faint); border-left-color: var(--gold); font-weight: 500; }
+    .toc-row a.disabled { color: var(--slate-muted); cursor: default; pointer-events: none; }
+
+    .main {
+      flex: 1; overflow-y: auto; overflow-x: hidden;
+      margin-top: calc(var(--header-h) + 2px);
+      height: calc(100vh - var(--header-h) - 2px);
+      background: var(--obsidian); outline: none;
+      scrollbar-width: thin; scrollbar-color: var(--obsidian-line) transparent;
+    }
+    .main::-webkit-scrollbar { width: 5px; }
+    .main::-webkit-scrollbar-thumb { background: var(--obsidian-line); }
+    .main::-webkit-scrollbar-thumb:hover { background: var(--slate-muted); }
+
+    .content-body { max-width: 700px; margin: 0 auto; padding: 48px 36px 96px; }
+
+    /* Chapter typography */
+    .chapter + .chapter {
+      border-top: 1px solid var(--obsidian-border); padding-top: 40px; margin-top: 40px;
+    }
+    .chapter-content {
+      font-family: var(--font-serif); font-size: 16px; line-height: 1.8; color: var(--white-dim);
+    }
+    .chapter-content h1,.chapter-content h2,.chapter-content h3,
+    .chapter-content h4,.chapter-content h5,.chapter-content h6 {
+      font-family: var(--font-sans); font-weight: 600;
+      color: var(--white); line-height: 1.3; margin: 2em 0 0.75em;
+    }
+    .chapter-content h1 {
+      font-size: 24px; color: var(--gold);
+      border-bottom: 1px solid var(--obsidian-border); padding-bottom: 10px;
+    }
+    .chapter-content h2 { font-size: 19px; }
+    .chapter-content h3 { font-size: 15px; color: var(--slate-light); }
+    .chapter-content h4 { font-size: 13px; color: var(--slate); font-weight: 500; }
+    .chapter-content p { margin: 0 0 1.2em; }
+    .chapter-content a { color: var(--gold); text-decoration: underline; text-decoration-color: var(--gold-dim); text-underline-offset: 2px; }
+    .chapter-content a:hover { color: var(--gold-bright); }
+    .chapter-content strong,.chapter-content b { color: var(--white); font-weight: 600; }
+    .chapter-content em,.chapter-content i { color: var(--slate-light); }
+    .chapter-content ul,.chapter-content ol { padding-left: 22px; margin: 0 0 1.2em; }
+    .chapter-content li { margin-bottom: 0.4em; }
+    .chapter-content blockquote {
+      border-left: 3px solid var(--gold-dim); margin: 1.5em 0;
+      padding: 12px 20px; background: var(--gold-faint); color: var(--slate-light); font-style: italic;
+    }
+    .chapter-content pre {
+      background: var(--obsidian-card); border: 1px solid var(--obsidian-border);
+      border-left: 3px solid var(--gold-dim); padding: 14px 18px;
+      overflow-x: auto; margin: 1.5em 0;
+    }
+    .chapter-content code {
+      font-family: var(--font-mono); font-size: 13px; color: var(--gold);
+      background: var(--obsidian-card); border: 1px solid var(--obsidian-border); padding: 1px 5px;
+    }
+    .chapter-content pre code { background: transparent; border: none; padding: 0; color: var(--slate-light); }
+    .chapter-content table { width: 100%; border-collapse: collapse; margin: 1.5em 0; font-size: 14px; }
+    .chapter-content th {
+      background: var(--obsidian-card); border: 1px solid var(--obsidian-border);
+      padding: 8px 12px; text-align: left; font-family: var(--font-mono); font-size: 10px;
+      font-weight: 600; color: var(--gold); letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .chapter-content td { border: 1px solid var(--obsidian-border); padding: 8px 12px; color: var(--slate-light); vertical-align: top; }
+    .chapter-content tr:nth-child(even) td { background: var(--obsidian-mid); }
+    .chapter-content img { max-width: 100%; height: auto; border: 1px solid var(--obsidian-border); margin: 1em 0; }
+    .chapter-content hr { border: none; border-top: 1px solid var(--obsidian-border); margin: 2em 0; }
+    .placeholder {
+      font-family: var(--font-mono); font-size: 11px; color: var(--slate-muted);
+      letter-spacing: 0.04em; padding: 40px 20px; text-align: center;
+    }
+
+    @media (max-width: 700px) {
+      .site-header { padding: 0 16px; }
+      .site-nav { display: none; }
+      .hero-section { padding: 56px 16px; }
+      .upload-card { padding: 24px 16px; }
+      :root { --toc-width: 220px; }
+      .content-body { padding: 28px 16px 64px; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- ================================================================
+     START SCREEN
+     ================================================================ -->
+<section id="startScreen" class="start-screen">
+
+  <header class="site-header">
+    <div class="site-brand">
+      <img src="https://quanta-analytica.com/logo.PNG" alt="Quanta Analytica"
+           class="brand-logo" onerror="this.style.display='none'" />
+      <div class="brand-text">
+        <span class="brand-name">QAP Document Reader</span>
+        <span class="brand-sub">Quanta Analytica Process™ &nbsp;|&nbsp; MNS Consulting</span>
+      </div>
+    </div>
+    <nav class="site-nav">
+      <a href="#features">Capabilities</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </header>
+
+  <div class="hero-section">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">LOCAL-FIRST &nbsp;//&nbsp; BROWSER-NATIVE &nbsp;//&nbsp; ZERO UPLOAD</div>
+      <h1 class="hero-title">Structured Document<br><span class="gold">Intelligence Reader</span></h1>
+      <div class="hero-mono">QAP-EPUB-READER &nbsp;//&nbsp; v1.0 &nbsp;//&nbsp; BROWSER RUNTIME</div>
+      <p class="hero-desc">
+        Load any EPUB file and navigate its full structure instantly. Parses OPF manifests, TOC hierarchies, and spine data entirely in local memory. No server, no account, no upload required.
+      </p>
+      <div class="upload-card">
+        <div id="dropZone" class="drop-zone">
+          <svg class="drop-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+          </svg>
+          <span class="drop-label">Drop EPUB File</span>
+          <p class="drop-hint">Drag and drop, or <strong>click to select</strong> an .epub file</p>
+          <input id="fileInput" type="file" accept=".epub,application/epub+zip" title="Select EPUB file" />
+        </div>
+        <div id="statusInline" class="status-bar">
+          <div class="status-dot"></div>
+          <span>Ready. No data is transmitted to external servers.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="features" class="info-section">
+    <div class="section-container">
+      <div class="section-eyebrow">System Capabilities</div>
+      <h2 class="section-heading">What the Reader Does</h2>
+      <div class="feature-grid">
+        <div class="feature-cell">
+          <div class="feature-index">01 // PARSING</div>
+          <svg class="feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+          </svg>
+          <div class="feature-name">In-Browser OPF Parsing</div>
+          <p class="feature-desc">Resolves container.xml, locates OPF manifests, and constructs the full reading spine entirely in local memory. No server pipeline required.</p>
+        </div>
+        <div class="feature-cell">
+          <div class="feature-index">02 // NAVIGATION</div>
+          <svg class="feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z" />
+          </svg>
+          <div class="feature-name">Hierarchical TOC</div>
+          <p class="feature-desc">Reads NCX or EPUB3 nav documents and renders the full nested table of contents in the left panel, preserving full depth.</p>
+        </div>
+        <div class="feature-cell">
+          <div class="feature-index">03 // RENDERING</div>
+          <svg class="feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
+          </svg>
+          <div class="feature-name">Node + Descendant View</div>
+          <p class="feature-desc">Selecting a TOC node renders that section and all child sections as one continuous reading stream, suited to structured research workflows.</p>
+        </div>
+        <div class="feature-cell">
+          <div class="feature-index">04 // SELECTION</div>
+          <svg class="feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25" />
+          </svg>
+          <div class="feature-name">Content-Pane Select All</div>
+          <p class="feature-desc">Cmd/Ctrl + A inside the reading panel selects only the chapter content for clean extraction and note-taking workflows.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="workflow" class="info-section">
+    <div class="section-container">
+      <div class="section-eyebrow">Operational Sequence</div>
+      <h2 class="section-heading">How the Reader Works</h2>
+      <div class="steps-track">
+        <div class="step-item"><div class="step-num">01</div><div class="step-body"><div class="step-label">Input</div><p class="step-text">Upload an EPUB via drag-and-drop or file selector. The file is read into browser memory as an ArrayBuffer. Nothing leaves your device.</p></div></div>
+        <div class="step-item"><div class="step-num">02</div><div class="step-body"><div class="step-label">Extraction</div><p class="step-text">JSZip opens the archive in memory. The parser resolves <code>container.xml</code>, finds the OPF package document, and reads the manifest and spine entries.</p></div></div>
+        <div class="step-item"><div class="step-num">03</div><div class="step-body"><div class="step-label">TOC Construction</div><p class="step-text">Builds the table of contents from NCX (EPUB 2) or nav documents (EPUB 3), with spine-order fallback when no structured TOC is present.</p></div></div>
+        <div class="step-item"><div class="step-num">04</div><div class="step-body"><div class="step-label">Rendering</div><p class="step-text">Chapter bodies are normalized, images resolved to local object URLs from the archive, and the full spine rendered into a scrollable reading surface.</p></div></div>
+        <div class="step-item"><div class="step-num">05</div><div class="step-body"><div class="step-label">Navigation</div><p class="step-text">Click any TOC item to view that section and all child sections. All link resolution and navigation operate entirely client-side.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="info-section">
+    <div class="section-container">
+      <div class="section-eyebrow">Frequently Asked</div>
+      <h2 class="section-heading">Technical Questions</h2>
+      <div class="faq-grid">
+        <div class="faq-item"><div class="faq-q">Does this reader upload my files anywhere?</div><p class="faq-a">No. All processing occurs within your browser session. File data is held in local memory only and cleared when you close the tab.</p></div>
+        <div class="faq-item"><div class="faq-q">Which EPUB versions are supported?</div><p class="faq-a">Both EPUB 2 (NCX-based TOC) and EPUB 3 (nav document TOC) are supported, with spine-order fallback when no structured TOC exists.</p></div>
+        <div class="faq-item"><div class="faq-q">Does it work offline or on a local PC?</div><p class="faq-a">Yes. Double-click the HTML file to open it in any modern browser. Fonts load from Google on first use but EPUB processing works fully offline.</p></div>
+        <div class="faq-item"><div class="faq-q">Can I host this on GitHub Pages?</div><p class="faq-a">Yes. Upload this single HTML file to your GitHub repository and enable GitHub Pages. No build steps or configuration required.</p></div>
+        <div class="faq-item"><div class="faq-q">Are images inside the EPUB rendered?</div><p class="faq-a">Yes. Embedded images are resolved to temporary local object URLs from the archive. Remote resources are blocked for security.</p></div>
+        <div class="faq-item"><div class="faq-q">Can I copy text from a chapter?</div><p class="faq-a">Yes. Click inside the reading panel and press Cmd/Ctrl + A to select only that chapter's content, then copy as normal.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-brand"><strong>QAP Document Reader</strong> &nbsp;|&nbsp; Quanta Analytica Process™ &nbsp;|&nbsp; MNS Consulting &nbsp;|&nbsp; ARAC International Inc.</span>
+      <span class="footer-brand" style="color:var(--obsidian-line)">QAP-TOOL-EPUB-READER-2026</span>
+    </div>
+    <p class="footer-legal">Local-first browser runtime. No file data is transmitted to external servers. All EPUB parsing, TOC construction, and content rendering occurs within the active browser session. Temporary object URLs are revoked on session reset.</p>
+  </footer>
+
+</section>
+
+<!-- ================================================================
+     VIEWER LAYOUT
+     ================================================================ -->
+<div id="viewerLayout" class="layout" hidden>
+  <div class="viewer-header">
+    <div class="viewer-brand-panel">
+      <img src="https://quanta-analytica.com/logo.PNG" alt="QAP"
+           class="viewer-logo" onerror="this.style.display='none'" />
+      <span class="viewer-brand-label">QAP Reader</span>
+    </div>
+    <div class="viewer-title-area">
+      <span id="viewerBookTitle">Loading...</span>
+      <span class="viewer-sep">//</span>
+      <span id="viewerStatus">Initializing</span>
+    </div>
+    <button class="viewer-close-btn" id="closeReaderBtn">Close Reader</button>
+  </div>
+  <aside class="side">
+    <div class="toc-header"><div class="toc-label">Table of Contents</div></div>
+    <div id="tocWrap" class="toc-wrap"><div class="placeholder">Loading...</div></div>
+  </aside>
+  <section id="mainPanel" class="main" tabindex="0" aria-label="Reader content panel">
+    <div id="contentBody" class="content-body">
+      <div class="placeholder">Select a chapter from the table of contents to begin reading.</div>
+    </div>
+  </section>
+</div>
+
+<!-- JSZip — the only external dependency (loaded from CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+
+<script>
+/* ── Progress bar ── */
+(function () {
+  var mainPanel = null;
+  function updateProgress() {
+    var el = mainPanel;
+    if (el && !document.getElementById("viewerLayout").hidden) {
+      var h = el.scrollHeight - el.clientHeight;
+      document.getElementById("progress").style.width = (h > 0 ? (el.scrollTop / h) * 100 : 0) + "%";
+    } else {
+      var h2 = document.documentElement.scrollHeight - window.innerHeight;
+      document.getElementById("progress").style.width = (h2 > 0 ? (window.scrollY / h2) * 100 : 0) + "%";
+    }
+  }
+  window.addEventListener("scroll", updateProgress, { passive: true });
+  document.addEventListener("DOMContentLoaded", function () {
+    mainPanel = document.getElementById("mainPanel");
+    if (mainPanel) mainPanel.addEventListener("scroll", updateProgress, { passive: true });
+    document.getElementById("closeReaderBtn").addEventListener("click", function () {
+      document.getElementById("viewerLayout").hidden = true;
+      document.getElementById("startScreen").hidden = false;
+      document.getElementById("progress").style.width = "0%";
+      document.title = "QAP Document Reader | Quanta Analytica Process\u2122 | MNS Consulting";
+    });
+  });
+})();
+</script>
+
+<script>
+/* ================================================================
+   EPUB PARSER
+   Source: parser.js (epub-reader.org)
+   Adapted: ES module exports removed for single-file browser use
+   ================================================================ */
+function createMediaAssetRegistry() {
+  var mediaAssetUrlCache = new Map();
+  var mediaAssetObjectUrls = [];
+
+  return {
+    get size() {
+      return mediaAssetUrlCache.size;
+    },
+
+    async getOrCreate(resolver, path, mediaTypeByPath) {
+      var normPath = normalizePath(path);
+      if (mediaAssetUrlCache.has(normPath)) {
+        return mediaAssetUrlCache.get(normPath);
+      }
+
+      try {
+        var bytes = await resolver.readBinary(normPath);
+        var mediaType = (mediaTypeByPath && mediaTypeByPath.get(normPath)) || guessMediaType(normPath);
+        var blob = new Blob([bytes], { type: mediaType || "application/octet-stream" });
+        var objectUrl = URL.createObjectURL(blob);
+        mediaAssetUrlCache.set(normPath, objectUrl);
+        mediaAssetObjectUrls.push(objectUrl);
+        return objectUrl;
+      } catch (_error) {
+        return "";
+      }
+    },
+
+    revokeAll() {
+      for (var i = 0; i < mediaAssetObjectUrls.length; i += 1) {
+        try {
+          URL.revokeObjectURL(mediaAssetObjectUrls[i]);
+        } catch (_error) {
+          // Ignore revoke failures for stale object URLs.
+        }
+      }
+      mediaAssetObjectUrls = [];
+      mediaAssetUrlCache.clear();
+    }
+  };
+}
+
+function createAuditCollector() {
+  return {
+    spineItems: [],
+    tocTargets: [],
+    referencedResources: [],
+    orphanManifestResources: [],
+    encryptedResources: [],
+    policyBlocks: {
+      remoteResources: 0,
+      fileScheme: 0,
+      outOfContainer: 0,
+      missingResources: 0,
+      unsupportedScheme: 0
+    },
+    warnings: [],
+    summary: {
+      totalSpineItems: 0,
+      renderedSpineItems: 0,
+      missingSpineItems: 0,
+      missingTocTargets: 0,
+      totalReferencedResources: 0,
+      missingReferencedResources: 0,
+      blockedByPolicy: 0,
+      encryptedManifestResources: 0
+    }
+  };
+}
+
+async function parseEpubFromArrayBuffer(arrayBuffer, options) {
+  var opts = options || {};
+  var jszip = opts.jszip;
+  var onStatus = typeof opts.onStatus === "function" ? opts.onStatus : function () {};
+  var mediaAssetRegistry = opts.mediaAssetRegistry || createMediaAssetRegistry();
+  var audit = createAuditCollector();
+
+  if (!jszip || typeof jszip.loadAsync !== "function") {
+    throw new Error("JSZip is required to parse EPUB archives.");
+  }
+
+  onStatus("Unzipping EPUB...");
+  var zip = await jszip.loadAsync(arrayBuffer);
+  var resolver = createResolver(zip);
+
+  onStatus("Parsing container.xml...");
+  var containerInfo = await parseContainerInfo(resolver);
+  var opfPath = await locateOpfPath(resolver, { containerInfo: containerInfo });
+  if (!opfPath) {
+    throw new Error("Could not locate the OPF file (missing container.xml or .opf).");
+  }
+
+  var opfText = await resolver.readText(opfPath);
+  var opfDoc = parseXml(opfText);
+  var opfDir = dirname(opfPath);
+  var opfInfo = parseOpf(opfDoc, { opfDir: opfDir, resolver: resolver });
+
+  onStatus("Parsing encryption.xml...");
+  var encryptionInfo = await parseEncryptionInfo(resolver);
+  attachEncryptionInfoToManifest(opfInfo, encryptionInfo);
+  for (var encIndex = 0; encIndex < encryptionInfo.resources.length; encIndex += 1) {
+    if (encryptionInfo.resources[encIndex].supported) {
+      continue;
+    }
+    audit.warnings.push(
+      "Encrypted resource may not be renderable: " +
+      encryptionInfo.resources[encIndex].path +
+      " (" + (encryptionInfo.resources[encIndex].algorithm || "unknown algorithm") + ")"
+    );
+  }
+
+  onStatus("Parsing table of contents (TOC)...");
+  var tocData = await parseToc(resolver, opfInfo, opfDir);
+
+  onStatus("Loading chapters...");
+  var chapters = await loadSpineChapters(resolver, opfInfo, opfDir, tocData, {
+    onChapterStatus: onStatus,
+    mediaAssetRegistry: mediaAssetRegistry,
+    auditCollector: audit
+  });
+
+  finalizeAuditReport(audit, chapters, tocData, opfInfo, resolver, encryptionInfo);
+
+  return {
+    title: opfInfo.title || "",
+    containerInfo: containerInfo,
+    encryptionInfo: encryptionInfo,
+    opfPath: opfPath,
+    opfInfo: opfInfo,
+    tocData: tocData,
+    chapters: chapters,
+    mediaAssetRegistry: mediaAssetRegistry,
+    audit: audit
+  };
+}
+
+function finalizeAuditReport(audit, chapters, tocData, opfInfo, resolver, encryptionInfo) {
+  if (!audit) {
+    return;
+  }
+
+  var manifest = opfInfo && opfInfo.manifest ? opfInfo.manifest : new Map();
+  var manifestByPath = opfInfo && opfInfo.manifestByPath ? opfInfo.manifestByPath : new Map();
+  var chapterPathSet = new Set();
+  for (var i = 0; i < chapters.length; i += 1) {
+    chapterPathSet.add(chapters[i].path);
+  }
+
+  var missingTocTargets = [];
+  var tocNodes = [];
+  flattenTocItems(tocData && tocData.items ? tocData.items : [], tocNodes);
+  for (var j = 0; j < tocNodes.length; j += 1) {
+    var href = String(tocNodes[j].href || "").trim();
+    if (!href) {
+      continue;
+    }
+    var ref = resolveTargetRef(tocData && tocData.baseDir ? tocData.baseDir : "", href);
+    if (ref.external || !ref.path) {
+      continue;
+    }
+    var existsInChapters = chapterPathSet.has(ref.path);
+    var existsInManifest = manifestByPath.has(ref.path);
+    var existsInContainer = !!(resolver && resolver.has(ref.path));
+    var exists = existsInChapters || existsInManifest || existsInContainer;
+    audit.tocTargets.push({
+      href: href,
+      path: ref.path,
+      exists: exists,
+      existsInChapters: existsInChapters,
+      existsInManifest: existsInManifest
+    });
+    if (!exists) {
+      missingTocTargets.push(ref.path);
+    }
+  }
+
+  var referencedPathSet = new Set();
+  var missingReferencedResources = 0;
+  var blockedByPolicy = 0;
+
+  for (var refIndex = 0; refIndex < audit.referencedResources.length; refIndex += 1) {
+    var refItem = audit.referencedResources[refIndex];
+    if (refItem.path) {
+      referencedPathSet.add(refItem.path);
+    }
+    if (refItem.status === "missing-resource") {
+      missingReferencedResources += 1;
+      audit.policyBlocks.missingResources += 1;
+      continue;
+    }
+    if (refItem.status === "remote-resource" || refItem.status === "protocol-relative") {
+      blockedByPolicy += 1;
+      audit.policyBlocks.remoteResources += 1;
+      continue;
+    }
+    if (refItem.status === "blocked-file-scheme") {
+      blockedByPolicy += 1;
+      audit.policyBlocks.fileScheme += 1;
+      continue;
+    }
+    if (refItem.status === "out-of-container") {
+      blockedByPolicy += 1;
+      audit.policyBlocks.outOfContainer += 1;
+      continue;
+    }
+    if (refItem.status === "unsupported-scheme") {
+      blockedByPolicy += 1;
+      audit.policyBlocks.unsupportedScheme += 1;
+    }
+  }
+
+  for (var spineAuditIndex = 0; spineAuditIndex < audit.spineItems.length; spineAuditIndex += 1) {
+    var spineAuditItem = audit.spineItems[spineAuditIndex];
+    if (spineAuditItem.status === "remote-resource") {
+      blockedByPolicy += 1;
+      audit.policyBlocks.remoteResources += 1;
+      continue;
+    }
+    if (spineAuditItem.status === "out-of-container") {
+      blockedByPolicy += 1;
+      audit.policyBlocks.outOfContainer += 1;
+      continue;
+    }
+    if (spineAuditItem.status === "missing-resource") {
+      missingReferencedResources += 1;
+      audit.policyBlocks.missingResources += 1;
+    }
+  }
+
+  manifest.forEach(function (manifestItem) {
+    if (!manifestItem || manifestItem.isRemote || !manifestItem.resolvedPath) {
+      return;
+    }
+    if (chapterPathSet.has(manifestItem.resolvedPath)) {
+      return;
+    }
+    if (referencedPathSet.has(manifestItem.resolvedPath)) {
+      return;
+    }
+    audit.orphanManifestResources.push({
+      id: manifestItem.id,
+      path: manifestItem.resolvedPath,
+      mediaType: manifestItem.mediaType || ""
+    });
+  });
+
+  if (encryptionInfo && encryptionInfo.resources) {
+    audit.encryptedResources = encryptionInfo.resources.slice();
+  }
+
+  audit.summary.totalSpineItems = audit.spineItems.length;
+  audit.summary.renderedSpineItems = chapters.length;
+  audit.summary.missingSpineItems = Math.max(0, audit.spineItems.length - chapters.length);
+  audit.summary.missingTocTargets = missingTocTargets.length;
+  audit.summary.totalReferencedResources = audit.referencedResources.length;
+  audit.summary.missingReferencedResources = missingReferencedResources;
+  audit.summary.blockedByPolicy = blockedByPolicy;
+  audit.summary.encryptedManifestResources = encryptionInfo && encryptionInfo.resources ? encryptionInfo.resources.length : 0;
+}
+
+function flattenTocItems(items, out) {
+  for (var i = 0; i < items.length; i += 1) {
+    out.push(items[i]);
+    if (items[i].children && items[i].children.length) {
+      flattenTocItems(items[i].children, out);
+    }
+  }
+}
+
+function humanizeTocSource(source) {
+  if (source === "ncx") {
+    return "toc.ncx";
+  }
+  if (source === "nav") {
+    return "EPUB3 nav";
+  }
+  return "spine fallback";
+}
+
+function createResolver(zip) {
+  var exact = new Map();
+  var lower = new Map();
+
+  Object.keys(zip.files).forEach(function (name) {
+    var entry = zip.files[name];
+    if (entry.dir) {
+      return;
+    }
+    var norm = normalizePath(name);
+    exact.set(norm, name);
+    lower.set(norm.toLowerCase(), name);
+  });
+
+  return {
+    listPaths: function () {
+      return Array.from(exact.keys());
+    },
+    findFirst: function (regex) {
+      var found = "";
+      exact.forEach(function (_real, path) {
+        if (!found && regex.test(path)) {
+          found = path;
+        }
+      });
+      return found;
+    },
+    resolve: function (path) {
+      var normalized = normalizePathDetails(path);
+      if (normalized.outOfContainer) {
+        return "";
+      }
+      var norm = normalized.path;
+      var matched = exact.get(norm) || lower.get(norm.toLowerCase()) || "";
+      if (matched) {
+        return matched;
+      }
+      var decoded = safeDecode(norm);
+      if (decoded !== norm) {
+        return exact.get(decoded) || lower.get(decoded.toLowerCase()) || "";
+      }
+      return "";
+    },
+    has: function (path) {
+      return !!this.resolve(path);
+    },
+    readText: async function (path) {
+      var real = this.resolve(path);
+      if (!real) {
+        throw new Error("File not found: " + path);
+      }
+      return zip.file(real).async("string");
+    },
+    readBinary: async function (path) {
+      var real = this.resolve(path);
+      if (!real) {
+        throw new Error("File not found: " + path);
+      }
+      return zip.file(real).async("uint8array");
+    }
+  };
+}
+
+function safeDecode(text) {
+  try {
+    return decodeURIComponent(text);
+  } catch (_error) {
+    return text;
+  }
+}
+
+async function parseContainerInfo(resolver) {
+  var info = {
+    containerPath: "",
+    rootfiles: [],
+    links: [],
+    metaInf: {
+      encryptionXmlPath: "",
+      signaturesXmlPath: "",
+      rightsXmlPath: "",
+      metadataXmlPath: "",
+      manifestXmlPath: ""
+    },
+    warnings: []
+  };
+
+  var containerPath = resolver.resolve("META-INF/container.xml");
+  if (!containerPath) {
+    info.warnings.push("Missing META-INF/container.xml");
+    return info;
+  }
+
+  info.containerPath = normalizePath(containerPath);
+  var containerText = await resolver.readText(containerPath);
+  var containerDoc = parseXml(containerText);
+  var rootfileNodes = byLocalName(containerDoc, "rootfile");
+  for (var i = 0; i < rootfileNodes.length; i += 1) {
+    var pathDetails = normalizePathDetails(rootfileNodes[i].getAttribute("full-path") || "");
+    var fullPath = pathDetails.path;
+    if (!fullPath) {
+      continue;
+    }
+    if (pathDetails.outOfContainer) {
+      info.warnings.push("Ignoring out-of-container rootfile path: " + fullPath);
+      continue;
+    }
+    info.rootfiles.push({
+      fullPath: fullPath,
+      mediaType: rootfileNodes[i].getAttribute("media-type") || "",
+      rendition: {
+        media: rootfileNodes[i].getAttribute("rendition:media") || "",
+        layout: rootfileNodes[i].getAttribute("rendition:layout") || "",
+        language: rootfileNodes[i].getAttribute("rendition:language") || "",
+        accessMode: rootfileNodes[i].getAttribute("rendition:accessMode") || ""
+      }
+    });
+  }
+
+  if (!info.rootfiles.length) {
+    info.warnings.push("No rootfile entries found in container.xml");
+  }
+
+  var linkNodes = byLocalName(containerDoc, "link");
+  for (var j = 0; j < linkNodes.length; j += 1) {
+    var href = (linkNodes[j].getAttribute("href") || "").trim();
+    if (!href) {
+      continue;
+    }
+    info.links.push({
+      href: href,
+      rel: (linkNodes[j].getAttribute("rel") || "").trim(),
+      mediaType: (linkNodes[j].getAttribute("media-type") || "").trim()
+    });
+  }
+
+  info.metaInf.encryptionXmlPath = resolveMetaInfPathIfExists(resolver, "META-INF/encryption.xml");
+  info.metaInf.signaturesXmlPath = resolveMetaInfPathIfExists(resolver, "META-INF/signatures.xml");
+  info.metaInf.rightsXmlPath = resolveMetaInfPathIfExists(resolver, "META-INF/rights.xml");
+  info.metaInf.metadataXmlPath = resolveMetaInfPathIfExists(resolver, "META-INF/metadata.xml");
+  info.metaInf.manifestXmlPath = resolveMetaInfPathIfExists(resolver, "META-INF/manifest.xml");
+
+  return info;
+}
+
+function resolveMetaInfPathIfExists(resolver, path) {
+  if (!resolver || typeof resolver.resolve !== "function") {
+    return "";
+  }
+  var resolved = resolver.resolve(path);
+  return resolved ? normalizePath(resolved) : "";
+}
+
+async function locateOpfPath(resolver, options) {
+  var opts = options || {};
+  var containerInfo = opts.containerInfo || await parseContainerInfo(resolver);
+
+  for (var i = 0; i < containerInfo.rootfiles.length; i += 1) {
+    var rootfile = containerInfo.rootfiles[i];
+    var mediaType = (rootfile.mediaType || "").toLowerCase();
+    if (mediaType && mediaType !== "application/oebps-package+xml") {
+      continue;
+    }
+    if (rootfile.fullPath && resolver.has(rootfile.fullPath)) {
+      return normalizePath(rootfile.fullPath);
+    }
+  }
+
+  for (var j = 0; j < containerInfo.rootfiles.length; j += 1) {
+    if (containerInfo.rootfiles[j].fullPath && resolver.has(containerInfo.rootfiles[j].fullPath)) {
+      return normalizePath(containerInfo.rootfiles[j].fullPath);
+    }
+  }
+
+  return resolver.findFirst(/\.opf$/i) || "";
+}
+
+var SUPPORTED_FONT_OBFUSCATION_ALGORITHMS = new Set([
+  "http://www.idpf.org/2008/embedding",
+  "http://ns.adobe.com/pdf/enc#rc"
+]);
+
+function isSupportedFontObfuscationAlgorithm(algorithm) {
+  return SUPPORTED_FONT_OBFUSCATION_ALGORITHMS.has(String(algorithm || "").toLowerCase());
+}
+
+async function parseEncryptionInfo(resolver) {
+  var result = {
+    path: "",
+    resources: [],
+    byPath: new Map(),
+    warnings: []
+  };
+
+  var encryptionPath = resolver && typeof resolver.resolve === "function" ? resolver.resolve("META-INF/encryption.xml") : "";
+  if (!encryptionPath) {
+    return result;
+  }
+
+  result.path = normalizePath(encryptionPath);
+  var raw = await resolver.readText(encryptionPath);
+  var doc = parseXml(raw);
+  var encryptedDataNodes = byLocalName(doc, "EncryptedData");
+
+  for (var i = 0; i < encryptedDataNodes.length; i += 1) {
+    var encryptedDataNode = encryptedDataNodes[i];
+    var encryptionMethod = firstChildByLocal(encryptedDataNode, ["EncryptionMethod"]);
+    var cipherData = firstChildByLocal(encryptedDataNode, ["CipherData"]);
+    var cipherReference = cipherData ? firstChildByLocal(cipherData, ["CipherReference"]) : null;
+    var uri = cipherReference ? (cipherReference.getAttribute("URI") || "").trim() : "";
+    if (!uri) {
+      continue;
+    }
+    var algorithm = encryptionMethod ? (encryptionMethod.getAttribute("Algorithm") || "") : "";
+    var resolvedPath = normalizePath(uri.replace(/^\//, ""));
+    var encryptionItem = {
+      path: resolvedPath,
+      algorithm: algorithm,
+      supported: isSupportedFontObfuscationAlgorithm(algorithm)
+    };
+    result.resources.push(encryptionItem);
+    if (!result.byPath.has(resolvedPath)) {
+      result.byPath.set(resolvedPath, encryptionItem);
+    }
+  }
+
+  return result;
+}
+
+function attachEncryptionInfoToManifest(opfInfo, encryptionInfo) {
+  if (!opfInfo || !opfInfo.manifest || !encryptionInfo || !encryptionInfo.byPath) {
+    return;
+  }
+
+  opfInfo.manifest.forEach(function (item) {
+    if (!item || !item.resolvedPath) {
+      return;
+    }
+    if (!encryptionInfo.byPath.has(item.resolvedPath)) {
+      return;
+    }
+    var encryptionData = encryptionInfo.byPath.get(item.resolvedPath);
+    item.encryption = {
+      algorithm: encryptionData.algorithm,
+      supported: !!encryptionData.supported
+    };
+  });
+}
+
+function parseOpf(opfDoc, options) {
+  var opts = options || {};
+  var opfDir = opts.opfDir || "";
+  var resolver = opts.resolver || null;
+  var title = "";
+  var manifest = new Map();
+  var manifestByPath = new Map();
+  var spine = [];
+  var spineItems = [];
+  var linearReadingOrder = [];
+  var nonLinearItems = [];
+  var resolvedReadingOrder = [];
+  var spineTocId = "";
+  var pageProgressionDirection = "default";
+  var identifiers = [];
+  var uniqueIdentifierId = "";
+  var primaryIdentifier = "";
+  var navItemId = "";
+  var packageNode = byLocalName(opfDoc, "package")[0];
+  var version = packageNode ? (packageNode.getAttribute("version") || "") : "";
+  var metadataNode = byLocalName(opfDoc, "metadata")[0] || null;
+  var metadata = parsePackageMetadata(metadataNode);
+
+  if (packageNode) {
+    uniqueIdentifierId = packageNode.getAttribute("unique-identifier") || "";
+  }
+
+  var titleNode = firstByTag(opfDoc, ["dc:title", "title"]);
+  if (titleNode) {
+    title = cleanText(titleNode.textContent);
+  }
+  if (!title && metadata.dc.title.length) {
+    title = metadata.dc.title[0];
+  }
+
+  identifiers = metadata.identifiers.slice();
+
+  if (uniqueIdentifierId) {
+    for (var idIndex = 0; idIndex < identifiers.length; idIndex += 1) {
+      if (identifiers[idIndex].id === uniqueIdentifierId) {
+        primaryIdentifier = identifiers[idIndex].value;
+        break;
+      }
+    }
+  }
+  if (!primaryIdentifier && identifiers.length) {
+    primaryIdentifier = identifiers[0].value;
+  }
+
+  var spineNode = byLocalName(opfDoc, "spine")[0];
+  if (spineNode) {
+    spineTocId = spineNode.getAttribute("toc") || "";
+    pageProgressionDirection = spineNode.getAttribute("page-progression-direction") || "default";
+  }
+
+  var items = byLocalName(opfDoc, "item");
+  for (var itemIndex = 0; itemIndex < items.length; itemIndex += 1) {
+    var item = items[itemIndex];
+    if (!item.parentNode || localName(item.parentNode) !== "manifest") {
+      continue;
+    }
+    var id = item.getAttribute("id") || "";
+    var href = item.getAttribute("href") || "";
+    if (!id || !href) {
+      continue;
+    }
+    var properties = item.getAttribute("properties") || "";
+    var propertiesList = tokenizeProperties(properties);
+    var resolved = resolveManifestHref(opfDir, href, resolver);
+    var manifestItem = {
+      id: id,
+      href: href,
+      mediaType: item.getAttribute("media-type") || "",
+      properties: properties,
+      propertiesList: propertiesList,
+      propertiesSet: new Set(propertiesList),
+      fallback: item.getAttribute("fallback") || "",
+      mediaOverlay: item.getAttribute("media-overlay") || "",
+      resolvedPath: resolved.path,
+      isRemote: resolved.isRemote,
+      outOfContainer: resolved.outOfContainer
+    };
+    manifest.set(id, manifestItem);
+    if (manifestItem.resolvedPath && !manifestByPath.has(manifestItem.resolvedPath)) {
+      manifestByPath.set(manifestItem.resolvedPath, manifestItem);
+    }
+    if (!navItemId && manifestItem.propertiesSet.has("nav")) {
+      navItemId = manifestItem.id;
+    }
+  }
+
+  var itemRefs = byLocalName(opfDoc, "itemref");
+  for (var refIndex = 0; refIndex < itemRefs.length; refIndex += 1) {
+    var itemref = itemRefs[refIndex];
+    if (!itemref.parentNode || localName(itemref.parentNode) !== "spine") {
+      continue;
+    }
+    var idref = itemref.getAttribute("idref") || "";
+    if (idref) {
+      spine.push(idref);
+      var linearRaw = (itemref.getAttribute("linear") || "").toLowerCase();
+      var spineProperties = tokenizeProperties(itemref.getAttribute("properties") || "");
+      spineItems.push({
+        idref: idref,
+        linear: linearRaw !== "no",
+        properties: spineProperties,
+        propertiesSet: new Set(spineProperties)
+      });
+    }
+  }
+
+  for (var spineIndex = 0; spineIndex < spineItems.length; spineIndex += 1) {
+    if (spineItems[spineIndex].linear) {
+      linearReadingOrder.push(spineItems[spineIndex]);
+    } else {
+      nonLinearItems.push(spineItems[spineIndex]);
+    }
+  }
+
+  for (var orderIndex = 0; orderIndex < spineItems.length; orderIndex += 1) {
+    var spineItemRef = spineItems[orderIndex];
+    var resolved = resolveSpineItemToRenderable(manifest, spineItemRef.idref, opfDir, resolver);
+    resolvedReadingOrder.push({
+      index: orderIndex,
+      idref: spineItemRef.idref,
+      linear: spineItemRef.linear,
+      status: resolved.status,
+      path: resolved.path || "",
+      resolvedManifestId: resolved.item ? resolved.item.id : "",
+      fallbackChain: resolved.chain || []
+    });
+  }
+
+  var guideReferences = parseGuideReferences(opfDoc, opfDir);
+  var cover = detectCover(manifest, metadata.metaNames, guideReferences, opfDir, resolver);
+  var bindings = parseBindings(opfDoc);
+  var collections = parseCollections(opfDoc);
+
+  var nav = null;
+  if (navItemId && manifest.has(navItemId)) {
+    var navItem = manifest.get(navItemId);
+    nav = {
+      id: navItemId,
+      href: navItem.href,
+      path: resolveManifestItemPath(navItem, opfDir, resolver)
+    };
+  }
+
+  var ncx = null;
+  if (spineTocId && manifest.has(spineTocId)) {
+    var ncxItem = manifest.get(spineTocId);
+    ncx = {
+      id: spineTocId,
+      href: ncxItem.href,
+      path: resolveManifestItemPath(ncxItem, opfDir, resolver)
+    };
+  } else {
+    manifest.forEach(function (item) {
+      if (ncx) {
+        return;
+      }
+      if ((item.mediaType || "").toLowerCase() === "application/x-dtbncx+xml") {
+        ncx = {
+          id: item.id,
+          href: item.href,
+          path: resolveManifestItemPath(item, opfDir, resolver)
+        };
+      }
+    });
+  }
+
+  return {
+    version: version,
+    uniqueIdentifierId: uniqueIdentifierId,
+    identifiers: identifiers,
+    primaryIdentifier: primaryIdentifier,
+    opfDir: opfDir,
+    title: title,
+    metadata: metadata,
+    manifest: manifest,
+    manifestByPath: manifestByPath,
+    cover: cover,
+    spine: spine,
+    spineItems: spineItems,
+    linearReadingOrder: linearReadingOrder,
+    nonLinearItems: nonLinearItems,
+    resolvedReadingOrder: resolvedReadingOrder,
+    spineTocId: spineTocId,
+    pageProgressionDirection: pageProgressionDirection,
+    guide: guideReferences.length ? { references: guideReferences } : null,
+    nav: nav,
+    ncx: ncx,
+    bindings: bindings,
+    collections: collections
+  };
+}
+
+function parsePackageMetadata(metadataNode) {
+  var result = {
+    identifiers: [],
+    dc: {
+      title: [],
+      language: [],
+      creator: [],
+      contributor: [],
+      publisher: [],
+      subject: [],
+      description: [],
+      date: []
+    },
+    metaProperties: [],
+    metaNames: [],
+    links: []
+  };
+
+  if (!metadataNode) {
+    return result;
+  }
+
+  var elementNodes = metadataNode.childNodes || [];
+  for (var i = 0; i < elementNodes.length; i += 1) {
+    var node = elementNodes[i];
+    if (!node || node.nodeType !== 1) {
+      continue;
+    }
+    var nodeLocalName = localName(node);
+    var textValue = cleanText(node.textContent || "");
+
+    if (nodeLocalName === "identifier") {
+      if (!textValue) {
+        continue;
+      }
+      result.identifiers.push({
+        id: node.getAttribute("id") || "",
+        value: textValue
+      });
+      continue;
+    }
+
+    if (nodeLocalName === "title" && textValue) {
+      result.dc.title.push(textValue);
+      continue;
+    }
+    if (nodeLocalName === "language" && textValue) {
+      result.dc.language.push(textValue);
+      continue;
+    }
+    if (nodeLocalName === "creator" && textValue) {
+      result.dc.creator.push(textValue);
+      continue;
+    }
+    if (nodeLocalName === "contributor" && textValue) {
+      result.dc.contributor.push(textValue);
+      continue;
+    }
+    if (nodeLocalName === "publisher" && textValue) {
+      result.dc.publisher.push(textValue);
+      continue;
+    }
+    if (nodeLocalName === "subject" && textValue) {
+      result.dc.subject.push(textValue);
+      continue;
+    }
+    if (nodeLocalName === "description" && textValue) {
+      result.dc.description.push(textValue);
+      continue;
+    }
+    if (nodeLocalName === "date" && textValue) {
+      result.dc.date.push(textValue);
+      continue;
+    }
+
+    if (nodeLocalName === "meta") {
+      var property = (node.getAttribute("property") || "").trim();
+      var metaName = (node.getAttribute("name") || "").trim();
+      var content = (node.getAttribute("content") || "").trim();
+      if (property) {
+        result.metaProperties.push({
+          property: property,
+          value: content || textValue,
+          refines: (node.getAttribute("refines") || "").trim(),
+          scheme: (node.getAttribute("scheme") || "").trim(),
+          id: (node.getAttribute("id") || "").trim()
+        });
+      } else if (metaName) {
+        result.metaNames.push({
+          name: metaName,
+          content: content || textValue,
+          id: (node.getAttribute("id") || "").trim()
+        });
+      }
+      continue;
+    }
+
+    if (nodeLocalName === "link") {
+      var href = (node.getAttribute("href") || "").trim();
+      if (!href) {
+        continue;
+      }
+      result.links.push({
+        href: href,
+        rel: (node.getAttribute("rel") || "").trim(),
+        mediaType: (node.getAttribute("media-type") || "").trim(),
+        refines: (node.getAttribute("refines") || "").trim(),
+        properties: tokenizeProperties(node.getAttribute("properties") || "")
+      });
+    }
+  }
+
+  return result;
+}
+
+function parseGuideReferences(opfDoc, opfDir) {
+  var guideNodes = byLocalName(opfDoc, "guide");
+  if (!guideNodes.length) {
+    return [];
+  }
+
+  var out = [];
+  var referenceNodes = childrenByLocal(guideNodes[0], "reference");
+  for (var i = 0; i < referenceNodes.length; i += 1) {
+    var href = (referenceNodes[i].getAttribute("href") || "").trim();
+    if (!href) {
+      continue;
+    }
+    var ref = resolveTargetRef(opfDir, href);
+    out.push({
+      type: (referenceNodes[i].getAttribute("type") || "").trim(),
+      title: (referenceNodes[i].getAttribute("title") || "").trim(),
+      href: href,
+      path: ref.path || "",
+      fragment: ref.fragment || ""
+    });
+  }
+  return out;
+}
+
+function parseBindings(opfDoc) {
+  var bindingsNodes = byLocalName(opfDoc, "bindings");
+  if (!bindingsNodes.length) {
+    return [];
+  }
+
+  var out = [];
+  var mediaTypeNodes = childrenByLocal(bindingsNodes[0], "mediaType");
+  for (var i = 0; i < mediaTypeNodes.length; i += 1) {
+    out.push({
+      mediaType: (mediaTypeNodes[i].getAttribute("media-type") || "").trim(),
+      handler: (mediaTypeNodes[i].getAttribute("handler") || "").trim()
+    });
+  }
+  return out;
+}
+
+function parseCollections(opfDoc) {
+  var collectionNodes = byLocalName(opfDoc, "collection");
+  var out = [];
+  for (var i = 0; i < collectionNodes.length; i += 1) {
+    out.push({
+      role: (collectionNodes[i].getAttribute("role") || "").trim(),
+      id: (collectionNodes[i].getAttribute("id") || "").trim()
+    });
+  }
+  return out;
+}
+
+function detectCover(manifest, metaNames, guideReferences, opfDir, resolver) {
+  var foundByProperty = null;
+  manifest.forEach(function (item) {
+    if (foundByProperty) {
+      return;
+    }
+    if (hasManifestProperty(item, "cover-image")) {
+      foundByProperty = {
+        type: "image",
+        id: item.id,
+        href: item.href,
+        path: resolveManifestItemPath(item, opfDir, resolver),
+        source: "manifest-properties-cover-image"
+      };
+    }
+  });
+  if (foundByProperty) {
+    return foundByProperty;
+  }
+
+  for (var i = 0; i < metaNames.length; i += 1) {
+    if (String(metaNames[i].name || "").toLowerCase() !== "cover") {
+      continue;
+    }
+    var coverId = metaNames[i].content || "";
+    if (!coverId || !manifest.has(coverId)) {
+      continue;
+    }
+    var coverItem = manifest.get(coverId);
+    return {
+      type: "image",
+      id: coverId,
+      href: coverItem.href,
+      path: resolveManifestItemPath(coverItem, opfDir, resolver),
+      source: "meta-name-cover"
+    };
+  }
+
+  for (var refIndex = 0; refIndex < guideReferences.length; refIndex += 1) {
+    if (String(guideReferences[refIndex].type || "").toLowerCase() !== "cover") {
+      continue;
+    }
+    return {
+      type: "page",
+      id: "",
+      href: guideReferences[refIndex].href,
+      path: guideReferences[refIndex].path,
+      source: "guide-reference-cover"
+    };
+  }
+
+  return null;
+}
+
+function tokenizeProperties(value) {
+  var input = String(value || "").trim();
+  if (!input) {
+    return [];
+  }
+  return input.split(/\s+/).filter(Boolean);
+}
+
+function resolveManifestHref(opfDir, href, resolver) {
+  var rawHref = String(href || "").trim();
+  if (!rawHref) {
+    return { path: "", isRemote: false, outOfContainer: false };
+  }
+
+  if (/^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(rawHref) || rawHref.indexOf("//") === 0) {
+    return { path: "", isRemote: true, outOfContainer: false };
+  }
+
+  var candidates = [];
+  var escaped = false;
+  if (rawHref.indexOf("/") === 0) {
+    var rootDetails = normalizePathDetails(rawHref.slice(1));
+    if (rootDetails.outOfContainer) {
+      escaped = true;
+    }
+    if (rootDetails.path) {
+      candidates.push(rootDetails.path);
+    }
+    var compatRelative = resolveRelative(opfDir || "", rawHref.slice(1));
+    if (compatRelative && candidates.indexOf(compatRelative) < 0) {
+      candidates.push(compatRelative);
+    }
+  } else {
+    var directRelative = resolveRelative(opfDir || "", rawHref);
+    if (directRelative) {
+      candidates.push(directRelative);
+    } else {
+      escaped = true;
+    }
+  }
+
+  if (!candidates.length) {
+    return { path: "", isRemote: false, outOfContainer: escaped };
+  }
+
+  if (resolver) {
+    for (var i = 0; i < candidates.length; i += 1) {
+      if (resolver.has(candidates[i])) {
+        return { path: candidates[i], isRemote: false, outOfContainer: false };
+      }
+    }
+  }
+
+  return { path: candidates[0], isRemote: false, outOfContainer: escaped };
+}
+
+async function parseToc(resolver, opfInfo, opfDir) {
+  var manifest = opfInfo.manifest;
+  var spineTocId = opfInfo.spineTocId;
+
+  if (spineTocId && manifest.has(spineTocId)) {
+    var tocItem = manifest.get(spineTocId);
+    var ncxPath = resolveManifestItemPath(tocItem, opfDir, resolver);
+    if (resolver.has(ncxPath)) {
+      var ncxText = await resolver.readText(ncxPath);
+      var ncxDoc = parseXml(ncxText);
+      var navMap = byLocalName(ncxDoc, "navMap")[0];
+      if (navMap) {
+        return {
+          source: "ncx",
+          baseDir: dirname(ncxPath),
+          items: parseNcxPoints(childrenByLocal(navMap, "navPoint"))
+        };
+      }
+    }
+  }
+
+  var ncxManifestItem = null;
+  manifest.forEach(function (item) {
+    if (ncxManifestItem) {
+      return;
+    }
+    if ((item.mediaType || "").toLowerCase() === "application/x-dtbncx+xml") {
+      ncxManifestItem = item;
+    }
+  });
+  if (ncxManifestItem) {
+    var fallbackNcxPath = resolveManifestItemPath(ncxManifestItem, opfDir, resolver);
+    if (fallbackNcxPath && resolver.has(fallbackNcxPath)) {
+      var fallbackNcxText = await resolver.readText(fallbackNcxPath);
+      var fallbackNcxDoc = parseXml(fallbackNcxText);
+      var fallbackNavMap = byLocalName(fallbackNcxDoc, "navMap")[0];
+      if (fallbackNavMap) {
+        return {
+          source: "ncx",
+          baseDir: dirname(fallbackNcxPath),
+          items: parseNcxPoints(childrenByLocal(fallbackNavMap, "navPoint"))
+        };
+      }
+    }
+  }
+
+  var navItem = null;
+  manifest.forEach(function (item) {
+    if (navItem) {
+      return;
+    }
+    if (hasManifestProperty(item, "nav")) {
+      navItem = item;
+    }
+  });
+
+  if (navItem) {
+    var navPath = resolveManifestItemPath(navItem, opfDir, resolver);
+    if (resolver.has(navPath)) {
+      var navText = await resolver.readText(navPath);
+      var navDoc = parseXml(navText);
+      var navData = parseNavigationDocument(navDoc);
+      if (navData.toc.length) {
+        return {
+          source: "nav",
+          baseDir: dirname(navPath),
+          items: navData.toc,
+          landmarks: navData.landmarks,
+          pageList: navData.pageList,
+          others: navData.others
+        };
+      }
+    }
+  }
+
+  return {
+    source: "spine-fallback",
+    baseDir: opfDir,
+    items: []
+  };
+}
+
+function hasManifestProperty(item, token) {
+  if (!item || !token) {
+    return false;
+  }
+  if (item.propertiesSet && typeof item.propertiesSet.has === "function") {
+    return item.propertiesSet.has(token);
+  }
+  return tokenizeProperties(item.properties || "").indexOf(token) >= 0;
+}
+
+function resolveManifestItemPath(item, opfDir, resolver) {
+  if (!item) {
+    return "";
+  }
+  if (item.resolvedPath && (!resolver || resolver.has(item.resolvedPath))) {
+    return item.resolvedPath;
+  }
+  var resolved = resolveManifestHref(opfDir || "", item.href || "", resolver || null);
+  if (resolved.path) {
+    item.resolvedPath = resolved.path;
+    item.isRemote = resolved.isRemote;
+    item.outOfContainer = resolved.outOfContainer;
+  }
+  return resolved.path;
+}
+
+function parseNavigationDocument(doc) {
+  var result = {
+    toc: [],
+    landmarks: [],
+    pageList: [],
+    others: {}
+  };
+
+  var navNodes = byLocalName(doc, "nav");
+  for (var i = 0; i < navNodes.length; i += 1) {
+    var navNode = navNodes[i];
+    var navType = navTypeFromNode(navNode);
+    var rootList = firstChildByLocal(navNode, ["ol", "ul"]) || byLocalName(navNode, "ol")[0] || byLocalName(navNode, "ul")[0];
+    if (!rootList) {
+      continue;
+    }
+
+    var parsedItems = parseNavList(rootList);
+    if (navType === "toc") {
+      result.toc = parsedItems;
+      continue;
+    }
+    if (navType === "landmarks") {
+      result.landmarks = parsedItems;
+      continue;
+    }
+    if (navType === "page-list") {
+      result.pageList = parsedItems;
+      continue;
+    }
+    if (!result.others[navType]) {
+      result.others[navType] = [];
+    }
+    result.others[navType] = result.others[navType].concat(parsedItems);
+  }
+
+  if (!result.toc.length) {
+    var fallbackNav = pickTocNavNode(doc);
+    if (fallbackNav) {
+      var fallbackRootList = firstChildByLocal(fallbackNav, ["ol", "ul"]) || byLocalName(fallbackNav, "ol")[0] || byLocalName(fallbackNav, "ul")[0];
+      if (fallbackRootList) {
+        result.toc = parseNavList(fallbackRootList);
+      }
+    }
+  }
+
+  return result;
+}
+
+function navTypeFromNode(navNode) {
+  var rawTypes = [];
+  var epubType = navNode.getAttribute("epub:type") || "";
+  if (epubType) {
+    rawTypes = rawTypes.concat(epubType.split(/\s+/));
+  }
+
+  var role = navNode.getAttribute("role") || "";
+  if (role) {
+    rawTypes = rawTypes.concat(role.split(/\s+/));
+  }
+
+  var lowered = rawTypes
+    .map(function (token) { return String(token || "").toLowerCase(); })
+    .filter(Boolean);
+
+  for (var i = 0; i < lowered.length; i += 1) {
+    if (lowered[i] === "doc-toc" || lowered[i] === "toc") {
+      return "toc";
+    }
+    if (lowered[i] === "doc-landmarks" || lowered[i] === "landmarks") {
+      return "landmarks";
+    }
+    if (lowered[i] === "doc-pagelist" || lowered[i] === "page-list" || lowered[i] === "pagelist") {
+      return "page-list";
+    }
+  }
+
+  return lowered[0] || "other";
+}
+
+function parseNcxPoints(nodes) {
+  var out = [];
+  for (var i = 0; i < nodes.length; i += 1) {
+    var navPoint = nodes[i];
+    var navLabel = firstChildByLocal(navPoint, ["navLabel"]);
+    var textNode = navLabel ? firstChildByLocal(navLabel, ["text"]) : null;
+    var contentNode = firstChildByLocal(navPoint, ["content"]);
+    out.push({
+      title: cleanText(textNode ? textNode.textContent : navLabel ? navLabel.textContent : "Untitled"),
+      href: contentNode ? (contentNode.getAttribute("src") || "") : "",
+      children: parseNcxPoints(childrenByLocal(navPoint, "navPoint"))
+    });
+  }
+  return out;
+}
+
+function pickTocNavNode(doc) {
+  var navNodes = byLocalName(doc, "nav");
+  for (var i = 0; i < navNodes.length; i += 1) {
+    var nav = navNodes[i];
+    var role = (nav.getAttribute("role") || "").toLowerCase();
+    var epubType = (nav.getAttribute("epub:type") || nav.getAttribute("type") || "").toLowerCase();
+    if (role === "doc-toc" || epubType.indexOf("toc") >= 0) {
+      return nav;
+    }
+    var attrs = nav.attributes || [];
+    for (var k = 0; k < attrs.length; k += 1) {
+      if (attrs[k].name && attrs[k].name.toLowerCase().indexOf("type") >= 0 && (attrs[k].value || "").toLowerCase().indexOf("toc") >= 0) {
+        return nav;
+      }
+    }
+  }
+  return navNodes[0] || null;
+}
+
+function parseNavList(listNode) {
+  var out = [];
+  var liNodes = childrenByLocal(listNode, "li");
+  for (var i = 0; i < liNodes.length; i += 1) {
+    var li = liNodes[i];
+    var labelNode = firstChildByLocal(li, ["a", "span", "p", "div"]);
+    var listChild = firstChildByLocal(li, ["ol", "ul"]);
+    out.push({
+      title: cleanText(labelNode ? labelNode.textContent : li.textContent || "Untitled"),
+      href: labelNode && localName(labelNode) === "a" ? (labelNode.getAttribute("href") || "") : "",
+      children: listChild ? parseNavList(listChild) : []
+    });
+  }
+  return out;
+}
+
+async function loadSpineChapters(resolver, opfInfo, opfDir, tocData, options) {
+  var opts = options || {};
+  var onChapterStatus = typeof opts.onChapterStatus === "function" ? opts.onChapterStatus : function () {};
+  var mediaAssetRegistry = opts.mediaAssetRegistry || createMediaAssetRegistry();
+  var auditCollector = opts.auditCollector || null;
+
+  var manifest = opfInfo.manifest;
+  var spine = opfInfo.spineItems && opfInfo.spineItems.length ? opfInfo.spineItems : opfInfo.spine;
+  var titleByPath = buildTocTitleMap(tocData.items, tocData.baseDir);
+  var mediaTypeByPath = buildMediaTypeByPath(manifest, opfDir);
+  var chapters = [];
+
+  for (var i = 0; i < spine.length; i += 1) {
+    onChapterStatus("Loading chapter " + (i + 1) + " / " + spine.length + " ...");
+    var spineRef = spine[i];
+    var idref = typeof spineRef === "string" ? spineRef : spineRef.idref;
+    if (!idref || !manifest.has(idref)) {
+      pushSpineAudit(auditCollector, {
+        index: i,
+        idref: idref,
+        status: "missing-manifest-item"
+      });
+      continue;
+    }
+    var resolvedSpineItem = resolveSpineItemToRenderable(manifest, idref, opfDir, resolver);
+    if (resolvedSpineItem.status !== "ok") {
+      pushSpineAudit(auditCollector, {
+        index: i,
+        idref: idref,
+        status: resolvedSpineItem.status,
+        fallbackChain: resolvedSpineItem.chain
+      });
+      continue;
+    }
+
+    var item = resolvedSpineItem.item;
+    var path = resolvedSpineItem.path;
+    var chapterText = await resolver.readText(path);
+    var bodyHtml = extractBodyMarkup(chapterText);
+    if (!bodyHtml) {
+      pushSpineAudit(auditCollector, {
+        index: i,
+        idref: idref,
+        status: "empty-body",
+        path: path,
+        fallbackChain: resolvedSpineItem.chain
+      });
+      continue;
+    }
+
+    var heading = titleByPath.get(path) || extractFirstHeading(chapterText) || stripExt(path.split("/").pop() || ("chapter-" + (i + 1)));
+    var sectionPrefix = "ch" + (i + 1);
+    var prepared = await prepareChapterHtml(bodyHtml, sectionPrefix, resolver, dirname(path), mediaTypeByPath, mediaAssetRegistry, {
+      chapterPath: path
+    });
+
+    if (auditCollector && prepared.resourceAudit && prepared.resourceAudit.length) {
+      for (var resourceIndex = 0; resourceIndex < prepared.resourceAudit.length; resourceIndex += 1) {
+        auditCollector.referencedResources.push(prepared.resourceAudit[resourceIndex]);
+      }
+    }
+
+    chapters.push({
+      index: i + 1,
+      path: path,
+      title: heading,
+      html: prepared.html,
+      idMap: prepared.idMap,
+      sourceIdref: idref,
+      resolvedManifestId: item.id
+    });
+
+    pushSpineAudit(auditCollector, {
+      index: i,
+      idref: idref,
+      status: "rendered",
+      path: path,
+      resolvedManifestId: item.id,
+      fallbackChain: resolvedSpineItem.chain
+    });
+  }
+
+  return chapters;
+}
+
+function pushSpineAudit(auditCollector, entry) {
+  if (!auditCollector || !auditCollector.spineItems) {
+    return;
+  }
+  auditCollector.spineItems.push(entry);
+}
+
+function resolveSpineItemToRenderable(manifest, idref, opfDir, resolver) {
+  var visited = new Set();
+  var chain = [];
+  var currentId = idref;
+  var hasResolver = !!(resolver && typeof resolver.has === "function");
+
+  while (currentId) {
+    if (!manifest.has(currentId)) {
+      return {
+        status: "missing-manifest-item",
+        chain: chain
+      };
+    }
+    if (visited.has(currentId)) {
+      return {
+        status: "fallback-cycle",
+        chain: chain
+      };
+    }
+
+    visited.add(currentId);
+    var item = manifest.get(currentId);
+    var resolvedPath = resolveManifestItemPath(item, opfDir, resolver);
+    var mediaType = (item.mediaType || "").toLowerCase();
+    var exists = !!resolvedPath && (!hasResolver || resolver.has(resolvedPath));
+    var htmlRenderable = exists && isHtmlLikeMedia(mediaType, resolvedPath);
+    chain.push({
+      id: currentId,
+      path: resolvedPath,
+      mediaType: mediaType,
+      exists: exists,
+      fallback: item.fallback || "",
+      htmlRenderable: htmlRenderable,
+      encrypted: !!item.encryption
+    });
+
+    if (item.isRemote) {
+      return {
+        status: "remote-resource",
+        chain: chain
+      };
+    }
+
+    if (item.outOfContainer) {
+      return {
+        status: "out-of-container",
+        chain: chain
+      };
+    }
+
+    if (item.encryption && !item.encryption.supported) {
+      return {
+        status: "encrypted-resource",
+        chain: chain
+      };
+    }
+
+    if (htmlRenderable) {
+      return {
+        status: "ok",
+        item: item,
+        path: resolvedPath,
+        chain: chain
+      };
+    }
+
+    if (!exists) {
+      if (item.fallback) {
+        currentId = item.fallback;
+        continue;
+      }
+      return {
+        status: "missing-resource",
+        chain: chain
+      };
+    }
+
+    if (item.fallback) {
+      currentId = item.fallback;
+      continue;
+    }
+
+    return {
+      status: "unsupported-media-type",
+      chain: chain
+    };
+  }
+
+  return {
+    status: "unresolved-spine-item",
+    chain: chain
+  };
+}
+
+function isHtmlLikeMedia(mediaType, path) {
+  var lowerType = String(mediaType || "").toLowerCase();
+  return lowerType.indexOf("xhtml") >= 0 || lowerType.indexOf("html") >= 0 || /\.x?html?$/i.test(path || "");
+}
+
+function resolveTargetRef(baseDir, href) {
+  var raw = (href || "").trim();
+  var hashIdx = raw.indexOf("#");
+  var pathPart = hashIdx >= 0 ? raw.slice(0, hashIdx) : raw;
+  var frag = hashIdx >= 0 ? decodeURIComponent(raw.slice(hashIdx + 1)) : "";
+
+  if (/^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(pathPart)) {
+    return { external: true, path: pathPart, fragment: frag };
+  }
+
+  if (!pathPart) {
+    return { external: false, path: "", fragment: frag };
+  }
+
+  return {
+    external: false,
+    path: resolveRelative(baseDir, pathPart),
+    fragment: frag
+  };
+}
+
+function resolveRelative(baseDir, hrefPath) {
+  if (!hrefPath) {
+    return normalizePath(baseDir || "");
+  }
+  if (hrefPath.indexOf("/") === 0) {
+    var absoluteDetails = normalizePathDetails(hrefPath.slice(1));
+    return absoluteDetails.outOfContainer ? "" : absoluteDetails.path;
+  }
+  var base = baseDir ? baseDir + "/" : "";
+  var details = normalizePathDetails(base + hrefPath);
+  return details.outOfContainer ? "" : details.path;
+}
+
+function dirname(path) {
+  var norm = normalizePath(path);
+  var idx = norm.lastIndexOf("/");
+  return idx < 0 ? "" : norm.slice(0, idx);
+}
+
+function normalizePath(path) {
+  return normalizePathDetails(path).path;
+}
+
+function normalizePathDetails(path) {
+  var input = (path || "").replace(/\\/g, "/");
+  var parts = input.split("/");
+  var out = [];
+  var escaped = false;
+  for (var i = 0; i < parts.length; i += 1) {
+    var p = parts[i];
+    if (!p || p === ".") {
+      continue;
+    }
+    if (p === "..") {
+      if (!out.length) {
+        escaped = true;
+        continue;
+      }
+      out.pop();
+      continue;
+    }
+    out.push(p);
+  }
+  return {
+    path: out.join("/"),
+    outOfContainer: escaped
+  };
+}
+
+function parseXml(text) {
+  var parser = new DOMParser();
+  var xmlDoc = parser.parseFromString(text, "application/xml");
+  if (!hasParserError(xmlDoc)) {
+    return xmlDoc;
+  }
+  return parser.parseFromString(text, "text/html");
+}
+
+function hasParserError(doc) {
+  return byLocalName(doc, "parsererror").length > 0;
+}
+
+function getBodyFromDoc(doc) {
+  if (!doc) {
+    return null;
+  }
+  if (doc.body) {
+    return doc.body;
+  }
+  var bodyNodes = byLocalName(doc, "body");
+  return bodyNodes[0] || null;
+}
+
+function getInnerMarkup(node) {
+  if (!node) {
+    return "";
+  }
+  if (typeof node.innerHTML === "string") {
+    return node.innerHTML;
+  }
+  var serializer = new XMLSerializer();
+  var out = "";
+  for (var i = 0; i < node.childNodes.length; i += 1) {
+    out += serializer.serializeToString(node.childNodes[i]);
+  }
+  return out;
+}
+
+function byLocalName(root, name) {
+  if (!root || !name) {
+    return [];
+  }
+
+  var result = [];
+  var seen = new Set();
+
+  var list1 = root.getElementsByTagName ? root.getElementsByTagName(name) : [];
+  for (var i = 0; i < list1.length; i += 1) {
+    if (!seen.has(list1[i])) {
+      seen.add(list1[i]);
+      result.push(list1[i]);
+    }
+  }
+
+  if (root.getElementsByTagNameNS) {
+    var list2 = root.getElementsByTagNameNS("*", name);
+    for (var j = 0; j < list2.length; j += 1) {
+      if (!seen.has(list2[j])) {
+        seen.add(list2[j]);
+        result.push(list2[j]);
+      }
+    }
+  }
+
+  return result;
+}
+
+function childrenByLocal(node, name) {
+  if (!node || !node.childNodes) {
+    return [];
+  }
+  var target = String(name || "").toLowerCase();
+  var out = [];
+  for (var i = 0; i < node.childNodes.length; i += 1) {
+    var child = node.childNodes[i];
+    if (child.nodeType !== 1) {
+      continue;
+    }
+    if (localName(child) === target) {
+      out.push(child);
+    }
+  }
+  return out;
+}
+
+function firstChildByLocal(node, names) {
+  if (!node || !node.childNodes) {
+    return null;
+  }
+  var targets = (names || []).map(function (n) { return String(n).toLowerCase(); });
+  for (var i = 0; i < node.childNodes.length; i += 1) {
+    var child = node.childNodes[i];
+    if (child.nodeType !== 1) {
+      continue;
+    }
+    if (targets.indexOf(localName(child)) >= 0) {
+      return child;
+    }
+  }
+  return null;
+}
+
+function firstByTag(root, names) {
+  for (var i = 0; i < names.length; i += 1) {
+    var list = root.getElementsByTagName(names[i]);
+    if (list && list.length) {
+      return list[0];
+    }
+  }
+  for (var j = 0; j < names.length; j += 1) {
+    var local = names[j].indexOf(":") >= 0 ? names[j].split(":")[1] : names[j];
+    var listNs = byLocalName(root, local);
+    if (listNs.length) {
+      return listNs[0];
+    }
+  }
+  return null;
+}
+
+function localName(node) {
+  return (node.localName || node.nodeName || "").toLowerCase().replace(/^.*:/, "");
+}
+
+function cleanText(text) {
+  return (text || "").replace(/\s+/g, " ").trim();
+}
+
+function slugify(text) {
+  var s = (text || "").toLowerCase().replace(/[^a-z0-9_\-:.]+/g, "-").replace(/^-+|-+$/g, "");
+  return s || "id";
+}
+
+function stripExt(name) {
+  return name.replace(/\.[^.]+$/, "");
+}
+
+function buildSpineFallbackToc(chapters) {
+  return chapters.map(function (chapter) {
+    return {
+      title: chapter.title,
+      href: chapter.path,
+      children: []
+    };
+  });
+}
+
+function buildTocTitleMap(items, baseDir) {
+  var map = new Map();
+  walkToc(items, function (item) {
+    if (!item.href) {
+      return;
+    }
+    var ref = resolveTargetRef(baseDir, item.href);
+    if (ref.path && !map.has(ref.path)) {
+      map.set(ref.path, item.title || "");
+    }
+  });
+  return map;
+}
+
+function walkToc(items, visit) {
+  for (var i = 0; i < items.length; i += 1) {
+    visit(items[i]);
+    if (items[i].children && items[i].children.length) {
+      walkToc(items[i].children, visit);
+    }
+  }
+}
+
+function extractBodyMarkup(raw) {
+  var doc = parseXml(raw);
+  var body = getBodyFromDoc(doc);
+  if (body) {
+    return getInnerMarkup(body);
+  }
+  var fallback = raw.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+  return fallback ? fallback[1] : "";
+}
+
+function extractFirstHeading(raw) {
+  var doc = parseXml(raw);
+  var body = getBodyFromDoc(doc) || doc;
+  var tags = ["h1", "h2", "h3", "h4", "h5", "h6"];
+  for (var i = 0; i < tags.length; i += 1) {
+    var nodes = byLocalName(body, tags[i]);
+    if (nodes.length) {
+      var txt = cleanText(nodes[0].textContent);
+      if (txt) {
+        return txt;
+      }
+    }
+  }
+  return "";
+}
+
+async function prepareChapterHtml(rawHtml, prefix, resolver, chapterDir, mediaTypeByPath, mediaAssetRegistry, options) {
+  var opts = options || {};
+  var parser = new DOMParser();
+  var doc = parser.parseFromString("<!DOCTYPE html><html><body><div id=\"root\"></div></body></html>", "text/html");
+  var root = doc.getElementById("root");
+  root.innerHTML = rawHtml;
+  var resourceAudit = [];
+
+  var removeSelector = "script,style,meta,base,link[rel='stylesheet'],iframe,object,embed";
+  var removeNodes = root.querySelectorAll(removeSelector);
+  for (var i = 0; i < removeNodes.length; i += 1) {
+    removeNodes[i].remove();
+  }
+
+  var idMap = new Map();
+  var idNodes = root.querySelectorAll("[id]");
+  for (var j = 0; j < idNodes.length; j += 1) {
+    var oldId = idNodes[j].getAttribute("id") || "";
+    if (!oldId) {
+      continue;
+    }
+    var newId = prefix + "__" + slugify(oldId) + "__" + j;
+    idMap.set(oldId, newId);
+    idNodes[j].setAttribute("id", newId);
+  }
+
+  var hashLinks = root.querySelectorAll("a[href^='#']");
+  for (var k = 0; k < hashLinks.length; k += 1) {
+    var href = hashLinks[k].getAttribute("href") || "";
+    var key = href.replace(/^#/, "");
+    if (idMap.has(key)) {
+      hashLinks[k].setAttribute("href", "#" + idMap.get(key));
+    }
+  }
+
+  await rewriteEmbeddedMediaUrls(root, resolver, chapterDir, mediaTypeByPath, mediaAssetRegistry, {
+    chapterPath: opts.chapterPath || "",
+    resourceAudit: resourceAudit
+  });
+  trimEmptyEdges(root, 12);
+
+  return {
+    html: root.innerHTML,
+    idMap: idMap,
+    resourceAudit: resourceAudit
+  };
+}
+
+async function rewriteEmbeddedMediaUrls(root, resolver, chapterDir, mediaTypeByPath, mediaAssetRegistry, options) {
+  var opts = options || {};
+  if (!root || !resolver) {
+    return;
+  }
+
+  var attrTasks = [];
+  var srcNodes = root.querySelectorAll("img[src],source[src],video[src],audio[src]");
+  for (var i = 0; i < srcNodes.length; i += 1) {
+    attrTasks.push(rewriteMediaAttr(srcNodes[i], "src", resolver, chapterDir, mediaTypeByPath, mediaAssetRegistry, opts));
+  }
+
+  var posterNodes = root.querySelectorAll("video[poster]");
+  for (var j = 0; j < posterNodes.length; j += 1) {
+    attrTasks.push(rewriteMediaAttr(posterNodes[j], "poster", resolver, chapterDir, mediaTypeByPath, mediaAssetRegistry, opts));
+  }
+
+  var svgImageNodes = root.querySelectorAll("image");
+  for (var k = 0; k < svgImageNodes.length; k += 1) {
+    attrTasks.push(rewriteSvgImageHref(svgImageNodes[k], resolver, chapterDir, mediaTypeByPath, mediaAssetRegistry, opts));
+  }
+
+  await Promise.all(attrTasks);
+
+  var srcsetNodes = root.querySelectorAll("img[srcset],source[srcset]");
+  for (var n = 0; n < srcsetNodes.length; n += 1) {
+    var srcset = srcsetNodes[n].getAttribute("srcset") || "";
+    var rewrittenSrcset = await rewriteSrcsetValue(srcset, resolver, chapterDir, mediaTypeByPath, mediaAssetRegistry, opts);
+    if (rewrittenSrcset) {
+      srcsetNodes[n].setAttribute("srcset", rewrittenSrcset);
+    }
+  }
+}
+
+async function rewriteMediaAttr(node, attrName, resolver, chapterDir, mediaTypeByPath, mediaAssetRegistry, auditOptions) {
+  if (!node || !attrName) {
+    return;
+  }
+
+  var raw = (node.getAttribute(attrName) || "").trim();
+  if (!raw) {
+    return;
+  }
+
+  var result = await resolveEmbeddedMedia(raw, resolver, chapterDir, mediaTypeByPath, mediaAssetRegistry);
+  pushReferencedResourceAudit(auditOptions, {
+    chapterPath: auditOptions && auditOptions.chapterPath ? auditOptions.chapterPath : "",
+    element: localName(node),
+    attribute: attrName,
+    raw: raw,
+    path: result.path,
+    status: result.status
+  });
+  if (result.url) {
+    node.setAttribute(attrName, result.url);
+  }
+}
+
+async function rewriteSvgImageHref(node, resolver, chapterDir, mediaTypeByPath, mediaAssetRegistry, auditOptions) {
+  if (!node) {
+    return;
+  }
+
+  var rawHref = (node.getAttribute("href") || node.getAttribute("xlink:href") || "").trim();
+  if (!rawHref && typeof node.getAttributeNS === "function") {
+    rawHref = (node.getAttributeNS("http://www.w3.org/1999/xlink", "href") || "").trim();
+  }
+  if (!rawHref) {
+    return;
+  }
+
+  var result = await resolveEmbeddedMedia(rawHref, resolver, chapterDir, mediaTypeByPath, mediaAssetRegistry);
+  pushReferencedResourceAudit(auditOptions, {
+    chapterPath: auditOptions && auditOptions.chapterPath ? auditOptions.chapterPath : "",
+    element: "image",
+    attribute: "href",
+    raw: rawHref,
+    path: result.path,
+    status: result.status
+  });
+  if (!result.url) {
+    return;
+  }
+
+  node.setAttribute("href", result.url);
+  node.setAttribute("xlink:href", result.url);
+  if (typeof node.setAttributeNS === "function") {
+    try {
+      node.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", result.url);
+    } catch (_error) {
+      // Some runtimes may not support writing namespaced attrs for HTML-parsed SVG nodes.
+    }
+  }
+}
+
+async function rewriteSrcsetValue(value, resolver, chapterDir, mediaTypeByPath, mediaAssetRegistry, auditOptions) {
+  var input = (value || "").trim();
+  if (!input) {
+    return "";
+  }
+
+  var entries = input.split(",");
+  var out = [];
+  for (var i = 0; i < entries.length; i += 1) {
+    var token = entries[i].trim();
+    if (!token) {
+      continue;
+    }
+
+    var splitAt = token.search(/\s/);
+    var urlPart = splitAt < 0 ? token : token.slice(0, splitAt);
+    var descriptor = splitAt < 0 ? "" : token.slice(splitAt).trim();
+    var result = await resolveEmbeddedMedia(urlPart, resolver, chapterDir, mediaTypeByPath, mediaAssetRegistry);
+    pushReferencedResourceAudit(auditOptions, {
+      chapterPath: auditOptions && auditOptions.chapterPath ? auditOptions.chapterPath : "",
+      element: "source",
+      attribute: "srcset",
+      raw: urlPart,
+      path: result.path,
+      status: result.status
+    });
+
+    if (!result.url) {
+      out.push(token);
+      continue;
+    }
+    out.push(descriptor ? result.url + " " + descriptor : result.url);
+  }
+
+  return out.join(", ");
+}
+
+async function resolveEmbeddedMedia(rawUrl, resolver, chapterDir, mediaTypeByPath, mediaAssetRegistry) {
+  var parsed = splitResourceUrl(rawUrl || "");
+  if (!parsed.path) {
+    return {
+      url: "",
+      path: "",
+      status: "empty-path"
+    };
+  }
+
+  var classification = classifyResourcePath(parsed.path);
+  if (classification !== "local") {
+    return {
+      url: "",
+      path: "",
+      status: classification
+    };
+  }
+
+  var resolvedPath = resolveRelative(chapterDir || "", parsed.path);
+  if (!resolvedPath) {
+    return {
+      url: "",
+      path: "",
+      status: "out-of-container"
+    };
+  }
+  if (!resolver.has(resolvedPath)) {
+    return {
+      url: "",
+      path: resolvedPath,
+      status: "missing-resource"
+    };
+  }
+
+  var mediaUrl = await getOrCreateMediaAssetUrl(mediaAssetRegistry, resolver, resolvedPath, mediaTypeByPath);
+  if (!mediaUrl) {
+    return {
+      url: "",
+      path: resolvedPath,
+      status: "missing-resource"
+    };
+  }
+
+  return {
+    url: mediaUrl + parsed.suffix,
+    path: resolvedPath,
+    status: "resolved"
+  };
+}
+
+function splitResourceUrl(raw) {
+  var text = (raw || "").trim();
+  var hashIdx = text.indexOf("#");
+  var beforeHash = hashIdx >= 0 ? text.slice(0, hashIdx) : text;
+  var hashSuffix = hashIdx >= 0 ? text.slice(hashIdx) : "";
+
+  var queryIdx = beforeHash.indexOf("?");
+  var path = queryIdx >= 0 ? beforeHash.slice(0, queryIdx) : beforeHash;
+  var querySuffix = queryIdx >= 0 ? beforeHash.slice(queryIdx) : "";
+
+  return {
+    path: path,
+    suffix: querySuffix + hashSuffix
+  };
+}
+
+function classifyResourcePath(path) {
+  var value = (path || "").trim().toLowerCase();
+  if (!value) {
+    return "empty-path";
+  }
+  if (value.indexOf("//") === 0) {
+    return "protocol-relative";
+  }
+  if (value.indexOf("data:") === 0) {
+    return "data-uri";
+  }
+  if (value.indexOf("blob:") === 0) {
+    return "blob-uri";
+  }
+  if (value.indexOf("#") === 0) {
+    return "hash-only";
+  }
+  if (value.indexOf("file:") === 0) {
+    return "blocked-file-scheme";
+  }
+  if (value.indexOf("http:") === 0 || value.indexOf("https:") === 0) {
+    return "remote-resource";
+  }
+  if (/^[a-z][a-z0-9+.-]*:/.test(value)) {
+    return "unsupported-scheme";
+  }
+  return "local";
+}
+
+function pushReferencedResourceAudit(auditOptions, entry) {
+  if (!auditOptions || !auditOptions.resourceAudit) {
+    return;
+  }
+  auditOptions.resourceAudit.push(entry);
+}
+
+async function getOrCreateMediaAssetUrl(mediaAssetRegistry, resolver, path, mediaTypeByPath) {
+  if (!mediaAssetRegistry || typeof mediaAssetRegistry.getOrCreate !== "function") {
+    return "";
+  }
+  return mediaAssetRegistry.getOrCreate(resolver, path, mediaTypeByPath);
+}
+
+function buildMediaTypeByPath(manifest, opfDir) {
+  var map = new Map();
+  if (!manifest || !manifest.forEach) {
+    return map;
+  }
+
+  manifest.forEach(function (item) {
+    if (!item || !item.href) {
+      return;
+    }
+    var path = resolveManifestItemPath(item, opfDir || "", null);
+    if (!path) {
+      return;
+    }
+    map.set(path, item.mediaType || "");
+  });
+  return map;
+}
+
+function guessMediaType(path) {
+  var lower = (path || "").toLowerCase();
+  if (/\.avif$/.test(lower)) { return "image/avif"; }
+  if (/\.bmp$/.test(lower)) { return "image/bmp"; }
+  if (/\.gif$/.test(lower)) { return "image/gif"; }
+  if (/\.ico$/.test(lower)) { return "image/x-icon"; }
+  if (/\.jpe?g$/.test(lower)) { return "image/jpeg"; }
+  if (/\.png$/.test(lower)) { return "image/png"; }
+  if (/\.svg$/.test(lower)) { return "image/svg+xml"; }
+  if (/\.tiff?$/.test(lower)) { return "image/tiff"; }
+  if (/\.webp$/.test(lower)) { return "image/webp"; }
+  if (/\.mp3$/.test(lower)) { return "audio/mpeg"; }
+  if (/\.m4a$/.test(lower)) { return "audio/mp4"; }
+  if (/\.ogg$/.test(lower)) { return "audio/ogg"; }
+  if (/\.wav$/.test(lower)) { return "audio/wav"; }
+  if (/\.mp4$/.test(lower)) { return "video/mp4"; }
+  if (/\.webm$/.test(lower)) { return "video/webm"; }
+  return "application/octet-stream";
+}
+
+function trimEmptyEdges(root, maxCount) {
+  var count = 0;
+  while (root.firstElementChild && count < maxCount && isEmptyBlock(root.firstElementChild)) {
+    root.firstElementChild.remove();
+    count += 1;
+  }
+  count = 0;
+  while (root.lastElementChild && count < maxCount && isEmptyBlock(root.lastElementChild)) {
+    root.lastElementChild.remove();
+    count += 1;
+  }
+}
+
+function isEmptyBlock(node) {
+  if (!node || node.nodeType !== 1) {
+    return false;
+  }
+  var tag = localName(node);
+  var allowed = ["p", "div", "span"];
+  if (allowed.indexOf(tag) < 0) {
+    return false;
+  }
+  if (node.querySelector("img,svg,video,audio,table,ul,ol,blockquote,pre,code")) {
+    return false;
+  }
+  var txt = (node.textContent || "").replace(/\u00a0/g, "").trim();
+  return txt.length === 0;
+}
+
+function findChapterPathByFragment(fragment, idMapByPath) {
+  var matched = "";
+  if (!fragment) {
+    return matched;
+  }
+  idMapByPath.forEach(function (idMap, path) {
+    if (!matched && idMap && idMap.has(fragment)) {
+      matched = path;
+    }
+  });
+  return matched;
+}
+
+</script>
+
+<script>
+/* ================================================================
+   EPUB READER — APPLICATION LOGIC
+   Source: main.js (epub-reader.org)
+   Adapted: ES module imports removed; functions referenced globally
+   ================================================================ */
+(function () {
+  var fileInput = document.getElementById("fileInput");
+  var dropZone = document.getElementById("dropZone");
+  var startScreen = document.getElementById("startScreen");
+  var viewerLayout = document.getElementById("viewerLayout");
+  var tocWrap = document.getElementById("tocWrap");
+  var mainPanel = document.getElementById("mainPanel");
+  var statusEl = document.getElementById("statusInline");
+  var contentBody = document.getElementById("contentBody");
+
+  var viewerBookTitle = document.getElementById("viewerBookTitle");
+  var viewerStatus = document.getElementById("viewerStatus");
+  var isLoading = false;
+  var activeTocLink = null;
+  var contentSelectMode = false;
+  var allChaptersByPath = new Map();
+  var allIdMapByPath = new Map();
+  var renderedSectionByPath = new Map();
+  var mediaAssetRegistry = createMediaAssetRegistry();
+
+  fileInput.addEventListener("change", function (event) {
+    var file = event.target.files && event.target.files[0];
+    if (file) {
+      loadEpub(file);
+    }
+  });
+
+  dropZone.addEventListener("dragover", function (event) {
+    event.preventDefault();
+    dropZone.classList.add("dragover");
+  });
+
+  dropZone.addEventListener("dragleave", function () {
+    dropZone.classList.remove("dragover");
+  });
+
+  dropZone.addEventListener("drop", function (event) {
+    event.preventDefault();
+    dropZone.classList.remove("dragover");
+    var file = event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files[0];
+    if (file) {
+      loadEpub(file);
+    }
+  });
+
+  document.addEventListener("pointerdown", function (event) {
+    if (!viewerLayout || viewerLayout.hidden || !mainPanel) {
+      return;
+    }
+    if (mainPanel.contains(event.target)) {
+      contentSelectMode = true;
+      if (typeof mainPanel.focus === "function") {
+        mainPanel.focus({ preventScroll: true });
+      }
+    } else {
+      contentSelectMode = false;
+    }
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (!isSelectAllShortcut(event)) {
+      return;
+    }
+    if (!viewerLayout || viewerLayout.hidden || !contentSelectMode) {
+      return;
+    }
+    if (isEditableElement(event.target)) {
+      return;
+    }
+    event.preventDefault();
+    selectContentArea(contentBody);
+  });
+
+  contentBody.addEventListener("click", handleContentLinkClick);
+
+  async function loadEpub(file) {
+    if (isLoading) {
+      return;
+    }
+
+    isLoading = true;
+    setLoadingState(true);
+
+    try {
+      assertJsZipLoaded();
+      setStatus("Reading file...");
+      mediaAssetRegistry.revokeAll();
+      clearRender();
+
+      var buffer = await file.arrayBuffer();
+      var parsed = await parseEpubFromArrayBuffer(buffer, {
+        jszip: window.JSZip,
+        onStatus: setStatus,
+        mediaAssetRegistry: mediaAssetRegistry
+      });
+
+      var title = parsed.title || file.name.replace(/\.epub$/i, "");
+      document.title = title + " | QAP Document Reader";
+      if (viewerBookTitle) { viewerBookTitle.textContent = title; }
+
+      var tocData = parsed.tocData;
+      var chapters = parsed.chapters;
+      var audit = parsed.audit || null;
+      if (chapters.length === 0) {
+        throw new Error("No displayable chapters found (empty spine or missing chapter files).");
+      }
+
+      cacheChapterState(chapters);
+      setStatus("Rendering page...");
+      var sectionMaps = renderChapters(chapters);
+      renderToc(tocData, chapters, sectionMaps);
+
+      var doneMessage =
+        "Done: " +
+        chapters.length +
+        " chapters, TOC source: " +
+        humanizeTocSource(tocData.source) +
+        ". Click a TOC item to show that node and its children.";
+      if (audit && audit.summary && (
+        audit.summary.missingSpineItems > 0 ||
+        audit.summary.missingTocTargets > 0 ||
+        audit.summary.missingReferencedResources > 0 ||
+        audit.summary.blockedByPolicy > 0
+      )) {
+        doneMessage +=
+          " Warning: missing spine items=" +
+          audit.summary.missingSpineItems +
+          ", missing TOC targets=" +
+          audit.summary.missingTocTargets +
+          ", missing referenced resources=" +
+          audit.summary.missingReferencedResources +
+          ", blocked by policy=" +
+          audit.summary.blockedByPolicy +
+          ".";
+      }
+      setStatus(doneMessage);
+      enterViewerMode();
+    } catch (error) {
+      mediaAssetRegistry.revokeAll();
+      document.title = "QAP Document Reader | Quanta Analytica Process™";
+      setStatus(error && error.message ? error.message : String(error));
+      tocWrap.innerHTML = "<div class=\"placeholder\">TOC parsing failed.</div>";
+      contentBody.innerHTML = "<div class=\"placeholder\">Content parsing failed. Please check the EPUB structure.</div>";
+      if (window.console && window.console.error) {
+        window.console.error(error);
+      }
+      exitViewerMode();
+    } finally {
+      isLoading = false;
+      setLoadingState(false);
+    }
+  }
+
+  function setLoadingState(flag) {
+    fileInput.disabled = !!flag;
+    if (flag) {
+      dropZone.classList.add("dragover");
+    } else {
+      dropZone.classList.remove("dragover");
+    }
+  }
+
+  function enterViewerMode() {
+    if (startScreen) {
+      startScreen.hidden = true;
+    }
+    if (viewerLayout) {
+      viewerLayout.hidden = false;
+    }
+    contentSelectMode = true;
+  }
+
+  function exitViewerMode() {
+    if (viewerLayout) {
+      viewerLayout.hidden = true;
+    }
+    if (startScreen) {
+      startScreen.hidden = false;
+    }
+    contentSelectMode = false;
+  }
+
+  function isSelectAllShortcut(event) {
+    if (!event) {
+      return false;
+    }
+    var key = (event.key || "").toLowerCase();
+    return (event.metaKey || event.ctrlKey) && !event.altKey && key === "a";
+  }
+
+  function isEditableElement(target) {
+    if (!target || typeof target.closest !== "function") {
+      return false;
+    }
+    return !!target.closest("input, textarea, select, [contenteditable], [contenteditable='plaintext-only']");
+  }
+
+  function selectContentArea(container) {
+    if (!container || !window.getSelection || !document.createRange) {
+      return;
+    }
+    var selection = window.getSelection();
+    if (!selection) {
+      return;
+    }
+    var range = document.createRange();
+    range.selectNodeContents(container);
+    selection.removeAllRanges();
+    selection.addRange(range);
+  }
+
+  function assertJsZipLoaded() {
+    if (!window.JSZip) {
+      throw new Error("JSZip failed to load. Check your network and retry.");
+    }
+  }
+
+  function setStatus(message) {
+    if (statusEl) { statusEl.textContent = message; }
+    if (viewerStatus) { viewerStatus.textContent = message; }
+  }
+
+  function clearRender() {
+    activeTocLink = null;
+    renderedSectionByPath = new Map();
+    allChaptersByPath = new Map();
+    allIdMapByPath = new Map();
+    tocWrap.innerHTML = "<div class=\"placeholder\">Building table of contents...</div>";
+    contentBody.innerHTML = "<div class=\"placeholder\">Building full content...</div>";
+  }
+
+  function cacheChapterState(chapters) {
+    allChaptersByPath = new Map();
+    allIdMapByPath = new Map();
+    for (var i = 0; i < chapters.length; i += 1) {
+      var chapter = chapters[i];
+      allChaptersByPath.set(chapter.path, chapter);
+      allIdMapByPath.set(chapter.path, chapter.idMap || new Map());
+    }
+  }
+
+  function renderChapters(chapters) {
+    contentBody.innerHTML = "";
+    var sectionByPath = new Map();
+    var idMapByPath = new Map();
+
+    for (var i = 0; i < chapters.length; i += 1) {
+      var chapter = chapters[i];
+      var sectionId = "section-" + chapter.index;
+
+      var article = document.createElement("article");
+      article.className = "chapter";
+      article.id = sectionId;
+      article.setAttribute("data-chapter-path", chapter.path);
+
+      var content = document.createElement("div");
+      content.className = "chapter-content";
+      content.setAttribute("data-chapter-path", chapter.path);
+      content.innerHTML = chapter.html || "";
+      article.appendChild(content);
+
+      contentBody.appendChild(article);
+      sectionByPath.set(chapter.path, sectionId);
+      idMapByPath.set(chapter.path, chapter.idMap);
+    }
+
+    renderedSectionByPath = sectionByPath;
+
+    return {
+      sectionByPath: sectionByPath,
+      idMapByPath: idMapByPath
+    };
+  }
+
+  function renderToc(tocData, chapters, maps) {
+    var items = tocData.items && tocData.items.length ? tocData.items : buildSpineFallbackToc(chapters);
+    if (!items.length) {
+      tocWrap.innerHTML = "<div class=\"placeholder\">No table of contents generated.</div>";
+      return;
+    }
+
+    activeTocLink = null;
+    tocWrap.innerHTML = "";
+    var tree = document.createElement("ul");
+    tree.className = "toc-tree";
+    tocWrap.appendChild(tree);
+
+    var chapterByPath = new Map();
+    var spinePaths = [];
+    var spineIndexByPath = new Map();
+    for (var i = 0; i < chapters.length; i += 1) {
+      var chapterPath = chapters[i].path;
+      chapterByPath.set(chapterPath, chapters[i]);
+      spinePaths.push(chapterPath);
+      spineIndexByPath.set(chapterPath, i);
+    }
+
+    renderTocBranch(
+      items,
+      tree,
+      tocData.baseDir || "",
+      maps.sectionByPath,
+      maps.idMapByPath,
+      chapterByPath,
+      spinePaths,
+      spineIndexByPath,
+      ""
+    );
+  }
+
+  function renderTocBranch(items, parentEl, tocBaseDir, sectionByPath, idMapByPath, chapterByPath, spinePaths, spineIndexByPath, fallbackBoundaryPath) {
+    for (var i = 0; i < items.length; i += 1) {
+      var item = items[i];
+      var nextBoundaryPath = findNextBoundaryPath(items, i, tocBaseDir, sectionByPath, idMapByPath, fallbackBoundaryPath);
+      var li = document.createElement("li");
+      var row = document.createElement("div");
+      row.className = "toc-row";
+
+      var link = document.createElement("a");
+      link.textContent = item.title || "Untitled";
+      var refs = collectChapterRefsFromItem(
+        item,
+        tocBaseDir,
+        sectionByPath,
+        idMapByPath,
+        spinePaths,
+        spineIndexByPath,
+        nextBoundaryPath
+      );
+      if (refs.length > 0) {
+        link.href = "javascript:void(0)";
+        attachTocSelectHandler(link, item, refs, chapterByPath);
+      } else {
+        link.href = "javascript:void(0)";
+        link.classList.add("disabled");
+      }
+
+      row.appendChild(link);
+      li.appendChild(row);
+
+      if (item.children && item.children.length) {
+        var child = document.createElement("ul");
+        child.className = "toc-tree";
+        li.appendChild(child);
+        renderTocBranch(
+          item.children,
+          child,
+          tocBaseDir,
+          sectionByPath,
+          idMapByPath,
+          chapterByPath,
+          spinePaths,
+          spineIndexByPath,
+          nextBoundaryPath
+        );
+      }
+
+      parentEl.appendChild(li);
+    }
+  }
+
+  function attachTocSelectHandler(link, item, refs, chapterByPath) {
+    link.addEventListener("click", function (event) {
+      event.preventDefault();
+
+      if (activeTocLink && activeTocLink !== link) {
+        activeTocLink.classList.remove("active");
+      }
+      activeTocLink = link;
+      link.classList.add("active");
+
+      var firstRef = refs[0] || null;
+      var focusPath = firstRef ? firstRef.path : "";
+      var focusFragment = firstRef ? (firstRef.fragment || "") : "";
+      renderSelectedChapters(refs, chapterByPath, { skipTopScroll: !!focusFragment });
+      if (focusPath && focusFragment) {
+        scrollToContentTarget(focusPath, remapFragmentForPath(focusPath, focusFragment, allIdMapByPath));
+      }
+      var chapterCount = 0;
+      for (var i = 0; i < refs.length; i += 1) {
+        if (!refs[i].continuation) {
+          chapterCount += 1;
+        }
+      }
+      setStatus("Showing: " + (item.title || "Untitled") + " (" + chapterCount + " chapters)");
+    });
+  }
+
+  function renderSelectedChapters(refs, chapterByPath, options) {
+    contentBody.innerHTML = "";
+
+    var rendered = 0;
+    var sectionByPath = new Map();
+    for (var i = 0; i < refs.length; i += 1) {
+      var ref = refs[i];
+      var chapter = chapterByPath.get(ref.path);
+      if (!chapter) {
+        continue;
+      }
+
+      var article = document.createElement("article");
+      article.className = "chapter";
+      article.id = "selected-" + slugify(chapter.path) + "-" + i;
+      article.setAttribute("data-chapter-path", chapter.path);
+
+      var content = document.createElement("div");
+      content.className = "chapter-content";
+      content.setAttribute("data-chapter-path", chapter.path);
+      content.innerHTML = chapter.html || "";
+      article.appendChild(content);
+
+      contentBody.appendChild(article);
+      sectionByPath.set(chapter.path, article.id);
+      rendered += 1;
+    }
+
+    renderedSectionByPath = sectionByPath;
+
+    if (!rendered) {
+      contentBody.innerHTML = "<div class=\"placeholder\">No displayable chapter content under this node.</div>";
+    }
+
+    if (!options || !options.skipTopScroll) {
+      var panel = contentBody.parentElement;
+      if (panel && typeof panel.scrollTo === "function") {
+        panel.scrollTo({ top: 0, behavior: "smooth" });
+      } else if (panel) {
+        panel.scrollTop = 0;
+      }
+    }
+  }
+
+  function handleContentLinkClick(event) {
+    if (!event || event.defaultPrevented || event.button !== 0) {
+      return;
+    }
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+      return;
+    }
+    if (!event.target || typeof event.target.closest !== "function") {
+      return;
+    }
+
+    var link = event.target.closest("a[href]");
+    if (!link || !contentBody.contains(link)) {
+      return;
+    }
+
+    var href = (link.getAttribute("href") || "").trim();
+    if (!href) {
+      return;
+    }
+    if ((link.getAttribute("target") || "").toLowerCase() === "_blank") {
+      return;
+    }
+
+    var sourcePath = "";
+    var contentNode = link.closest(".chapter-content[data-chapter-path]");
+    if (contentNode) {
+      sourcePath = contentNode.getAttribute("data-chapter-path") || "";
+    }
+
+    var ref = resolveTargetRef(dirname(sourcePath), href);
+    if (ref.external) {
+      return;
+    }
+
+    event.preventDefault();
+
+    var targetPath = normalizePath(ref.path || sourcePath || "");
+    var targetFragment = remapFragmentForPath(targetPath, ref.fragment || "", allIdMapByPath);
+
+    if (!targetPath && targetFragment) {
+      targetPath = findChapterPathByFragment(targetFragment, allIdMapByPath);
+    }
+
+    if (!targetPath && !targetFragment) {
+      return;
+    }
+
+    if (targetPath && !renderedSectionByPath.has(targetPath) && allChaptersByPath.has(targetPath)) {
+      var chapter = allChaptersByPath.get(targetPath);
+      renderSelectedChapters(
+        [{ path: targetPath, title: chapter.title || "" }],
+        allChaptersByPath,
+        { skipTopScroll: true }
+      );
+      if (activeTocLink) {
+        activeTocLink.classList.remove("active");
+        activeTocLink = null;
+      }
+    }
+
+    if (!scrollToContentTarget(targetPath, targetFragment)) {
+      setStatus("Cannot locate link target: " + href);
+    }
+  }
+
+  function scrollToContentTarget(path, fragment) {
+    var targetSection = path ? renderedSectionByPath.get(path) : "";
+    var sectionEl = targetSection ? document.getElementById(targetSection) : null;
+    if (!sectionEl) {
+      return false;
+    }
+
+    var targetEl = sectionEl;
+    if (fragment) {
+      var fragmentEl = document.getElementById(fragment);
+      if (fragmentEl && sectionEl.contains(fragmentEl)) {
+        targetEl = fragmentEl;
+      }
+    }
+
+    if (typeof targetEl.scrollIntoView === "function") {
+      targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else if (mainPanel) {
+      mainPanel.scrollTop = targetEl.offsetTop || 0;
+    }
+    return true;
+  }
+
+  function remapFragmentForPath(path, fragment, idMapByPath) {
+    if (!path || !fragment || !idMapByPath) {
+      return fragment || "";
+    }
+    var idMap = idMapByPath.get(path);
+    if (!idMap || !idMap.has(fragment)) {
+      return fragment;
+    }
+    return idMap.get(fragment);
+  }
+
+  function findNextBoundaryPath(items, index, tocBaseDir, sectionByPath, idMapByPath, fallbackBoundaryPath) {
+    for (var i = index + 1; i < items.length; i += 1) {
+      var nextPath = findFirstChapterPathInItem(items[i], tocBaseDir, sectionByPath, idMapByPath);
+      if (nextPath) {
+        return nextPath;
+      }
+    }
+    return fallbackBoundaryPath || "";
+  }
+
+  function findFirstChapterPathInItem(item, tocBaseDir, sectionByPath, idMapByPath) {
+    var path = "";
+    walk(item);
+    return path;
+
+    function walk(node) {
+      if (!node || path) {
+        return;
+      }
+
+      var nodePath = resolveChapterPathFromTocNode(node, tocBaseDir, sectionByPath, idMapByPath);
+      if (nodePath) {
+        path = nodePath;
+        return;
+      }
+
+      var children = node.children || [];
+      for (var i = 0; i < children.length; i += 1) {
+        walk(children[i]);
+      }
+    }
+  }
+
+  function collectAnchorRefsFromItem(rootItem, tocBaseDir, sectionByPath, idMapByPath) {
+    var refs = [];
+    var seen = new Set();
+
+    walk(rootItem);
+    return refs;
+
+    function walk(node) {
+      if (!node) {
+        return;
+      }
+
+      var target = resolveChapterTargetFromTocNode(node, tocBaseDir, sectionByPath, idMapByPath);
+      if (target.path && !seen.has(target.path)) {
+        seen.add(target.path);
+        refs.push({
+          path: target.path,
+          fragment: target.fragment || "",
+          title: cleanText(node.title || ""),
+          continuation: false
+        });
+      }
+
+      var children = node.children || [];
+      for (var i = 0; i < children.length; i += 1) {
+        walk(children[i]);
+      }
+    }
+  }
+
+  function resolveChapterPathFromTocNode(node, tocBaseDir, sectionByPath, idMapByPath) {
+    var target = resolveChapterTargetFromTocNode(node, tocBaseDir, sectionByPath, idMapByPath);
+    return target.path;
+  }
+
+  function resolveChapterTargetFromTocNode(node, tocBaseDir, sectionByPath, idMapByPath) {
+    if (!node) {
+      return { path: "", fragment: "" };
+    }
+    var ref = resolveTargetRef(tocBaseDir, node.href || "");
+    if (ref.external) {
+      return { path: "", fragment: "" };
+    }
+    if (ref.path && sectionByPath.has(ref.path)) {
+      return {
+        path: ref.path,
+        fragment: ref.fragment || ""
+      };
+    }
+    if (!ref.path && ref.fragment) {
+      return {
+        path: findChapterPathByFragment(ref.fragment, idMapByPath),
+        fragment: ref.fragment || ""
+      };
+    }
+    return { path: "", fragment: "" };
+  }
+
+  function collectChapterRefsFromItem(rootItem, tocBaseDir, sectionByPath, idMapByPath, spinePaths, spineIndexByPath, boundaryPath) {
+    var anchorRefs = collectAnchorRefsFromItem(rootItem, tocBaseDir, sectionByPath, idMapByPath);
+    if (!anchorRefs.length) {
+      return [];
+    }
+    if (!spinePaths || !spinePaths.length || !spineIndexByPath) {
+      return anchorRefs;
+    }
+
+    var stopIdx = spinePaths.length;
+    if (boundaryPath && spineIndexByPath.has(boundaryPath)) {
+      stopIdx = spineIndexByPath.get(boundaryPath);
+    }
+
+    var refs = [];
+    var seen = new Set();
+
+    for (var i = 0; i < anchorRefs.length; i += 1) {
+      var anchor = anchorRefs[i];
+      if (!spineIndexByPath.has(anchor.path)) {
+        continue;
+      }
+
+      var startIdx = spineIndexByPath.get(anchor.path);
+      if (startIdx >= stopIdx) {
+        continue;
+      }
+
+      var endIdx = stopIdx;
+      for (var j = i + 1; j < anchorRefs.length; j += 1) {
+        var nextAnchorPath = anchorRefs[j].path;
+        if (spineIndexByPath.has(nextAnchorPath)) {
+          endIdx = Math.min(endIdx, spineIndexByPath.get(nextAnchorPath));
+          break;
+        }
+      }
+
+      if (endIdx <= startIdx) {
+        endIdx = Math.min(stopIdx, startIdx + 1);
+      }
+
+      for (var k = startIdx; k < endIdx && k < spinePaths.length; k += 1) {
+        var path = spinePaths[k];
+        if (seen.has(path)) {
+          continue;
+        }
+        seen.add(path);
+        refs.push({
+          path: path,
+          fragment: k === startIdx ? (anchor.fragment || "") : "",
+          title: k === startIdx ? anchor.title : "",
+          continuation: k !== startIdx
+        });
+      }
+    }
+
+    if (!refs.length) {
+      return anchorRefs;
+    }
+    return refs;
+  }
+
+})();
+
+</script>
+
+</body>
+</html>
