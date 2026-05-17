@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media Analysis Framework | Quanta Analytica</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#07080b;--bg2:#0d0f13;--bg3:#12141a;--bg4:#181b22;
+  --gold:#c9a84c;--gold-l:#e2c47a;--gold-d:#8a6e2f;--gold-m:rgba(201,168,76,0.1);
+  --text:#eae7e0;--text2:#9a9690;--text3:#5a5750;
+  --border:#1a1d24;--border-g:rgba(201,168,76,0.2);
+  /* branch colors */
+  --c0:#c9a84c;
+  --c1:#7a9fcf;--c2:#6fbf8a;--c3:#bf8a6f;--c4:#a06fbf;
+  --c5:#bf6f7a;--c6:#6fb8bf;--c7:#bfb46f;--c8:#7abf9f;--c9:#bf7aaa;--c10:#8a9fbf;--c11:#bf9a6f;--c12:#6f9abf;
+}
+html,body{height:100%;overflow:hidden;background:var(--bg);font-family:'IBM Plex Sans',sans-serif;color:var(--text)}
+
+header{position:fixed;top:0;left:0;right:0;z-index:200;height:52px;background:rgba(7,8,11,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem}
+.h-brand{display:flex;align-items:center;gap:.75rem}
+.h-logo{height:22px}
+.h-title{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:.1em}
+.h-sep{width:1px;height:14px;background:var(--border-g)}
+.h-sub{font-size:11px;color:var(--text3);letter-spacing:.06em}
+.h-right{display:flex;align-items:center;gap:1rem}
+.h-btn{font-family:'IBM Plex Mono',monospace;font-size:10px;padding:5px 14px;border:1px solid var(--gold-d);color:var(--gold);background:transparent;cursor:pointer;letter-spacing:.08em;text-decoration:none;transition:all .2s}
+.h-btn:hover{background:var(--gold-m)}
+.h-hint{font-size:11px;color:var(--text3)}
+
+.toolbar{position:fixed;top:52px;left:0;right:0;z-index:190;height:38px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.5rem;padding:0 1rem;overflow:hidden}
+.tb-btn{font-size:11px;padding:4px 12px;border:1px solid var(--border);color:var(--text2);background:transparent;cursor:pointer;font-family:'IBM Plex Mono',monospace;letter-spacing:.06em;transition:all .2s;white-space:nowrap}
+.tb-btn:hover{border-color:var(--gold-d);color:var(--gold)}
+.tb-sep{width:1px;height:18px;background:var(--border);flex-shrink:0}
+.legend{display:flex;gap:.75rem;margin-left:auto;align-items:center;flex-shrink:0}
+.leg-item{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--text3);font-family:'IBM Plex Mono',monospace;white-space:nowrap}
+.leg-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+#search-box{background:var(--bg4);border:1px solid var(--border);color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:11px;padding:4px 10px;width:180px;outline:none;letter-spacing:.04em;flex-shrink:0}
+#search-box::placeholder{color:var(--text3)}
+#search-box:focus{border-color:var(--gold-d)}
+
+#canvas-wrap{position:fixed;top:90px;left:0;right:0;bottom:0;overflow:hidden;cursor:grab}
+#canvas-wrap.dragging{cursor:grabbing}
+svg#tree{position:absolute;top:0;left:0;width:100%;height:100%;overflow:visible}
+
+#panel{position:fixed;right:0;top:90px;bottom:0;width:320px;background:var(--bg3);border-left:1px solid var(--border);transform:translateX(320px);transition:transform .35s cubic-bezier(.4,0,.2,1);z-index:150;display:flex;flex-direction:column;overflow:hidden}
+#panel.open{transform:translateX(0)}
+.panel-head{padding:1.25rem 1.25rem .75rem;border-bottom:1px solid var(--border);flex-shrink:0;padding-right:2.5rem}
+.panel-close{position:absolute;right:1rem;top:1rem;background:none;border:none;color:var(--text3);cursor:pointer;font-size:18px;line-height:1;padding:2px 6px;transition:color .2s;z-index:10}
+.panel-close:hover{color:var(--gold)}
+.panel-tag{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.18em;margin-bottom:.5rem}
+.panel-title{font-family:'Libre Baskerville',serif;font-size:1.05rem;line-height:1.3;margin-bottom:.25rem}
+.panel-layer{font-size:11px;color:var(--text3);font-family:'IBM Plex Mono',monospace}
+.panel-body{padding:1.25rem;overflow-y:auto;flex:1}
+.panel-desc{font-size:13px;color:var(--text2);line-height:1.8;font-weight:300;margin-bottom:1.25rem}
+.panel-section{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.18em;color:var(--gold-d);margin-bottom:.5rem;text-transform:uppercase}
+.panel-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.25rem}
+.panel-tag-chip{font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid var(--border-g);color:var(--text3);letter-spacing:.06em}
+.panel-children{display:flex;flex-direction:column;gap:.4rem}
+.panel-child{font-size:12px;color:var(--text2);padding:.5rem .75rem;border:1px solid var(--border);background:var(--bg4);cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:all .2s}
+.panel-child:hover{border-color:var(--gold-d);color:var(--gold)}
+.panel-child-arrow{font-size:10px;color:var(--gold-d);margin-left:auto;flex-shrink:0}
+.panel-link{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--gold-d);text-decoration:none;border:1px solid var(--border-g);padding:6px 14px;font-family:'IBM Plex Mono',monospace;letter-spacing:.07em;margin-top:.25rem;transition:all .2s}
+.panel-link:hover{color:var(--gold);border-color:var(--gold)}
+
+.node-group{cursor:pointer}
+.node-group .ring{fill:none;stroke-width:1.5;opacity:0;transition:opacity .2s}
+.node-group:hover .ring{opacity:.6}
+.node-group.selected .ring{opacity:1}
+.node-label{font-family:'IBM Plex Mono',monospace;pointer-events:none;dominant-baseline:middle;letter-spacing:.02em}
+
+#zoom-indicator{position:fixed;bottom:1rem;left:1rem;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);letter-spacing:.1em;z-index:300}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="h-brand">
+    <img src="https://quanta-analytica.com/logo.PNG" alt="QA" class="h-logo">
+    <div class="h-sep"></div>
+    <span class="h-title">MEDIA ANALYSIS FRAMEWORK</span>
+    <div class="h-sep"></div>
+    <span class="h-sub">Interactive Map · Analyzing Media Reliability, Bias & Language</span>
+  </div>
+  <div class="h-right">
+    <span class="h-hint">Click nodes · Drag to pan · Scroll to zoom</span>
+    <a href="https://quanta-analytica.com/training/Analyzing_Media_Reliability_Bias_and_Language_v3.pdf" class="h-btn" target="_blank">OPEN PDF →</a>
+    <a href="https://quanta-analytica.com" class="h-btn" target="_blank">QA HOME →</a>
+  </div>
+</header>
+
+<div class="toolbar">
+  <button class="tb-btn" onclick="expandAll()">EXPAND ALL</button>
+  <button class="tb-btn" onclick="collapseAll()">COLLAPSE ALL</button>
+  <div class="tb-sep"></div>
+  <button class="tb-btn" onclick="resetView()">RESET VIEW</button>
+  <div class="tb-sep"></div>
+  <input id="search-box" placeholder="SEARCH FRAMEWORK..." oninput="searchNodes(this.value)">
+  <div class="legend">
+    <span class="leg-item"><span class="leg-dot" style="background:var(--c0)"></span>ROOT</span>
+    <span class="leg-item"><span class="leg-dot" style="background:var(--c1)"></span>PART</span>
+    <span class="leg-item"><span class="leg-dot" style="background:var(--c2)"></span>CHAPTER</span>
+    <span class="leg-item"><span class="leg-dot" style="background:var(--c3)"></span>CONCEPT</span>
+    <span class="leg-item"><span class="leg-dot" style="background:var(--gold)"></span>ELEMENT</span>
+  </div>
+</div>
+
+<div id="canvas-wrap"><svg id="tree"></svg></div>
+
+<div id="panel">
+  <button class="panel-close" onclick="closePanel()">✕</button>
+  <div class="panel-head">
+    <div class="panel-tag" id="p-tag"></div>
+    <div class="panel-title" id="p-title"></div>
+    <div class="panel-layer" id="p-layer"></div>
+  </div>
+  <div class="panel-body">
+    <div class="panel-desc" id="p-desc"></div>
+    <div id="p-tags-wrap" style="display:none">
+      <div class="panel-section">KEY CONCEPTS</div>
+      <div class="panel-tags" id="p-tags"></div>
+    </div>
+    <div id="p-children-wrap" style="display:none">
+      <div class="panel-section">COMPONENTS</div>
+      <div class="panel-children" id="p-children"></div>
+    </div>
+    <div id="p-link-wrap" style="display:none;margin-top:.5rem">
+      <a class="panel-link" id="p-link" target="_blank">VIEW RESOURCE →</a>
+    </div>
+  </div>
+</div>
+
+<div id="zoom-indicator">ZOOM: 80%</div>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────────
+const DATA = {
+  id:'root', label:'Media Analysis', layer:0,
+  desc:'Analyzing Media Reliability, Bias, and Language: A Practical Guide for Media Analysts. A full-spectrum textbook for evaluating news, opinion, propaganda, and public communication using reliability, bias, and linguistic analysis frameworks. Published by Quanta Analytica | MNS Consulting | ARAC International. Author: M. Nuri Shakoor, SRMP-R.',
+  tags:['Media Reliability','Bias Analysis','Linguistic Analysis','Quanta Analytica','MNS Consulting','SRMP-R'],
+  children:[
+    {
+      id:'P1', label:'Part I: Foundations', layer:1,
+      desc:'Establishes the conceptual and professional foundations of media reliability analysis — why it matters, what analytical objectivity requires, and how the analyst\'s mindset must be cultivated to produce defensible, reproducible work.',
+      tags:['Foundations','Media Literacy','Analyst Mindset','Cognitive Risks'],
+      children:[
+        {id:'C1', label:'Ch 1: Why It Matters', layer:2,
+         desc:'Describes the structural conditions of the modern information environment — volume without gatekeeping, algorithmic amplification, compressed attribution chains, and platform-audience sorting — that make systematic media reliability analysis necessary.',
+         tags:['Information Environment','Analyst Role','Cognitive Risks','First-Contact Protocol'],
+         children:[
+           {id:'C1-1', label:'Information Environment', layer:3, desc:'Four structural conditions that create conditions for unreliable content: (1) Volume Without Gatekeeping — publication barriers dissolved; (2) Algorithmic Amplification — platforms optimized for engagement not accuracy; (3) Compressed Attribution Chains — sources stripped in republication; (4) Platform-Audience Sorting — reduced exposure to contradictory information.', tags:['Structural Conditions','Amplification','Attribution']},
+           {id:'C1-2', label:'Content Categories', layer:3, desc:'Six distinct categories requiring different analytical treatment: News · Analysis · Opinion · Propaganda · Misinformation · Disinformation. The key distinction between misinformation and disinformation turns on intent — which is rarely observable from content alone. Analysts should document features, not overclaim intent.', tags:['News','Opinion','Propaganda','Misinformation','Disinformation']},
+           {id:'C1-3', label:'Analyst Role', layer:3, desc:'Three core characteristics: (1) Objectivity as Method — consistent evidentiary standards regardless of alignment; (2) Evidence as the Basis — assessments traceable to specific textual features; (3) Transparency About Uncertainty — "uncertain" and "insufficient evidence to rate" are legitimate professional conclusions.', tags:['Objectivity','Evidence Discipline','Uncertainty']},
+           {id:'C1-4', label:'First-Contact Protocol', layer:3, desc:'Six-step orientation discipline applied before any reliability judgment: Step 1: Identify source. Step 2: Identify content type. Step 3: Identify central claim. Step 4: Note initial reaction. Step 5: Suspend agreement question. Step 6: Establish verification checklist. No reliability conclusion before systematic evaluation begins.', tags:['Protocol','Orientation','Verification Checklist']}
+         ]
+        },
+        {id:'C2', label:'Ch 2: Core Media Literacy', layer:2,
+         desc:'Builds the conceptual vocabulary that all analytical work depends on — claim types, framing, headline analysis, structural signals, and the foundational reliability and bias rating systems used throughout the textbook.',
+         tags:['Claim Types','Framing','Headlines','Reliability Rating','Bias Spectrum'],
+         children:[
+           {id:'C2-1', label:'Claim Typing', layer:3, desc:'Four categories: Factual (verifiable/falsifiable using evidence) · Interpretive (conclusion from evidence requiring inference) · Argumentative (structured persuasion with evidence and reasoning) · Opinion (personal judgment not directly provable). Claim-typing must precede accuracy assessment — treating an opinion as a factual claim is a foundational error.', tags:['Factual','Interpretive','Argumentative','Opinion']},
+           {id:'C2-2', label:'Framing Analysis', layer:3, desc:'Seven common narrative frames: Conflict · Crisis · Accountability · Progress · Victimhood · Corruption · Reform. Framing operates through selection and emphasis — not fabrication. Analytical concern arises when a frame excludes contradictory information or is applied selectively for political effect.', tags:['Conflict Frame','Crisis Frame','Accountability Frame','Narrative']},
+           {id:'C2-3', label:'Headlines & Structure', layer:3, desc:'Headlines prime interpretation before body text is read. Problematic signals: overstating certainty the article hedges · emotionally charged language not in body · missing context that would change meaning · creating more drama than evidence warrants. Structure shapes emphasis — material in first three paragraphs receives disproportionate cognitive weight.', tags:['Headlines','Structure','Images','Reader Impact']},
+           {id:'C2-4', label:'Reliability Rating System', layer:3, desc:'Three criteria each rated 1–5: Expression (how the article presents itself: fact reporting / analysis / opinion) · Veracity (are factual claims provable, uncertain, or false?) · Headline & Graphics (do headline and visuals fairly reflect the content?). No single criterion determines overall reliability — all three are assessed together.', tags:['Expression','Veracity','Headlines & Graphics','1–5 Scale']},
+           {id:'C2-5', label:'Political Bias Spectrum', layer:3, desc:'Seven-point spectrum: Most Extreme Left · Hyper-Partisan Left · Skews Left · Middle · Skews Right · Hyper-Partisan Right · Most Extreme Right. Ratings are calibrated against current political discourse norms — not fixed ideological assumptions. Middle = multiple perspectives with proportionate treatment and no consistent directional lean.', tags:['Bias Spectrum','Middle','Hyper-Partisan','Most Extreme']}
+         ]
+        },
+        {id:'C3', label:'Ch 3: Analyst Mindset', layer:2,
+         desc:'Examines the internal discipline required for rigorous media analysis — methodological neutrality vs false balance, separating personal views from textual evidence, three modes of reading, withholding judgment, documenting uncertainty, and managing cognitive bias.',
+         tags:['Methodological Neutrality','False Balance','Confirmation Bias','Three Modes','Calibrated Confidence'],
+         children:[
+           {id:'C3-1', label:'Methodological Neutrality', layer:3, desc:'Applies consistent standards to all content regardless of political direction. Distinct from false balance: methodological neutrality allows ratings to reflect actual evidence differences; false balance forces equivalence between sources of unequal reliability to manage appearances. The test: would the same language earn the same flag in content aligned with the analyst\'s views?', tags:['Neutrality','Consistency','Reversal Test']},
+           {id:'C3-2', label:'Three Reading Modes', layer:3, desc:'Generous Reading: give content benefit of the doubt — understand its strongest case before applying critical pressure. Critical Reading: examine every significant claim for type, evidence, sourcing, and framing. Comparative Reading: situate the article in context of other coverage — provides context for omission analysis and political position calibration. Applied in sequence.', tags:['Generous','Critical','Comparative']},
+           {id:'C3-3', label:'Confidence Language', layer:3, desc:'Three levels: High Confidence ("the evidence indicates...") — strongly supported by specific, verifiable textual evidence. Moderate Confidence ("the evidence suggests...") — supported but involves inferential steps. Low Confidence ("based on limited evidence...") — plausible but rests on limited or ambiguous evidence. These are not hedges — they are accurate representations of the analytical state of play.', tags:['High','Moderate','Low','Calibrated Confidence']},
+           {id:'C3-4', label:'Confirmation Bias Controls', layer:3, desc:'Five forms: Selective Scrutiny · Charitable Intent Attribution · Hostile Framing · Severity Asymmetry · Omission Blindness. Corrective practices: apply reversal test · complete claim extraction before forming judgment · use passive analytical voice · flag emotional responses without acting on them · seek disconfirming evidence before finalizing any rating.', tags:['Confirmation Bias','Cognitive Risks','Reversal Test','Corrective Practices']}
+         ]
+        }
+      ]
+    },
+    {
+      id:'P2', label:'Part II: Content Structure', layer:1,
+      desc:'Teaches analysts to read articles as organized systems of structural decisions — not merely as messages. Covers article anatomy, introduction and conclusion analysis, paragraph organization, claim hierarchies, and selective evidence detection.',
+      tags:['Article Structure','Anatomy','Claim Hierarchy','Structural Analysis'],
+      children:[
+        {id:'C4', label:'Ch 4: Article Anatomy', layer:2,
+         desc:'The structural components of a news article and their analytical implications. Analysts must read complete texts — headline and body frequently diverge, and that divergence is itself analytically significant.',
+         tags:['Structural Components','Article Types','Attribution Patterns'],
+         children:[
+           {id:'C4-1', label:'Structural Components', layer:3, desc:'Headline · Subheadline · Byline and Date · Lead Paragraph · Nut Graf · Body Paragraphs · Supporting Evidence · Counterarguments · Quotes and Attribution · Conclusion. Each component carries distinct analytical weight and must be evaluated for its contribution to reliability and potential for bias.', tags:['Headline','Lead Paragraph','Nut Graf','Attribution']},
+           {id:'C4-2', label:'Common Article Structures', layer:3, desc:'Inverted pyramid (most newsworthy first) · Narrative / feature (story structure) · Analysis (thesis-driven argument) · Opinion (position with supporting evidence) · Explainer (background and context). Structure determines where key claims appear and where contradictory evidence is likely to be buried or highlighted.', tags:['Inverted Pyramid','Narrative','Analysis','Opinion','Explainer']},
+           {id:'C4-3', label:'Attribution Analysis', layer:3, desc:'Four attribution types: Named source with direct access · Named source without direct access · Anonymous or unnamed source · No attribution. Attribution signals determine how much evidentiary weight a claim can carry. Anonymous attribution is not automatically low reliability — but it limits corroboration and requires explanation.', tags:['Named Sources','Anonymous','Attribution Types','Evidentiary Weight']}
+         ]
+        },
+        {id:'C5', label:'Ch 5: Introduction & Conclusion', layer:2,
+         desc:'Functions of article introductions and conclusions — and how the relationship between them reveals framing choices. Key analytical patterns: circular framing, introduction-conclusion gaps, and how structural choices signal reliability.',
+         tags:['Introductions','Conclusions','Circular Framing','Structure Gap'],
+         children:[
+           {id:'C5-1', label:'Circular Framing', layer:3, desc:'Occurs when the conclusion reinforces the introduction\'s framing without engaging the evidence in between. The article appears to prove its opening claim, but the body material was organized to support a predetermined conclusion rather than to test it. A reliability signal requiring further structural scrutiny.', tags:['Circular Framing','Predetermined Conclusion','Structural Bias']},
+           {id:'C5-2', label:'Introduction-Conclusion Gap', layer:3, desc:'When the conclusion makes a stronger claim than the evidence in the body supports. The introduction sets up a moderate claim; the conclusion states it as established fact. Alternatively, the introduction implies a strong claim that the body actually qualifies heavily — and the reader who skims introduction and conclusion misses the qualifications entirely.', tags:['Overclaiming','Evidence Gap','Structural Reliability']}
+         ]
+        },
+        {id:'C6', label:'Ch 6–7: Organization & Claims', layer:2,
+         desc:'Paragraph organization and flow, claim hierarchies, evidence types and evidentiary weight, and selective evidence detection. The claim hierarchy distinguishes the central claim from secondary claims from supporting details.',
+         tags:['Claim Hierarchy','Evidence Types','Selective Evidence','Main Ideas'],
+         children:[
+           {id:'C6-1', label:'Three-Level Claim Hierarchy', layer:3, desc:'Level One: Central Claim — the article\'s primary assertion, often in headline and lead. Level Two: Secondary Claims — major supporting propositions that develop the central argument. Level Three: Supporting Details — specific facts, quotes, and data that underpin secondary claims. Analysts track how each level relates to the others and whether the support structure holds.', tags:['Central Claim','Secondary Claims','Supporting Details']},
+           {id:'C6-2', label:'Evidence Types & Weight', layer:3, desc:'Ranked by evidentiary weight: Primary data / official records (highest) · Expert testimony with named credentials · Attributed reporting from field access · Anonymous source attribution · Aggregated reporting · Social media reference (lowest). Evidence weight governs how strongly a claim can be supported and what confidence language is appropriate in the analyst report.', tags:['Primary Data','Expert Testimony','Evidentiary Weight','Hierarchy']},
+           {id:'C6-3', label:'Selective Evidence Detection', layer:3, desc:'Forms of selective evidence: Cherry-picking statistics · Omitting contradictory studies · Using unrepresentative anecdotes as evidence · Quoting experts out of context · Reporting only one side of a documented debate. Detection method: What does the available literature on this topic contain that this article omits? Is the omission relevant to the central claim?', tags:['Cherry-Picking','Omission','Selective Evidence','Detection']}
+         ]
+        }
+      ]
+    },
+    {
+      id:'P3', label:'Part III: Thematic Analysis', layer:1,
+      desc:'Three-chapter sequence on identifying themes, assessing their depth and relevance, and conducting comparative theme analysis across multiple sources covering the same subject.',
+      tags:['Thematic Analysis','Theme Identification','Depth','Comparative Analysis'],
+      children:[
+        {id:'C8', label:'Ch 8: Identifying Themes', layer:2, desc:'Methods for identifying the dominant and secondary themes in media content. Themes are recurring patterns of emphasis that shape how a topic is understood across multiple articles or outlets. Theme identification requires distinguishing topical coverage from thematic framing.', tags:['Theme Identification','Dominant Themes','Patterns','Topical vs Thematic']},
+        {id:'C9', label:'Ch 9: Depth & Relevance', layer:2, desc:'Assessing whether themes are developed with sufficient depth and whether they are relevant to the article\'s stated subject. Shallow thematic treatment may signal opinion dressed as analysis. Irrelevant thematic emphasis may signal agenda-driven framing.', tags:['Depth Assessment','Relevance','Thematic Adequacy','Framing Signals']},
+        {id:'C10', label:'Ch 10: Comparative Themes', layer:2, desc:'Comparing thematic treatment across multiple sources covering the same event. Identifies: which themes are emphasized or suppressed · how different outlets frame identical facts · what thematic consensus or divergence reveals about editorial choices and potential bias patterns.', tags:['Comparative Analysis','Multi-Source','Theme Divergence','Editorial Patterns']}
+      ]
+    },
+    {
+      id:'P4', label:'Part IV: Reliability Rating', layer:1,
+      desc:'Full methodology for the three-criterion reliability rating system — Expression, Veracity, and Headlines & Graphics — with separate chapters for each criterion and a final chapter on computing overall reliability scores.',
+      tags:['Reliability Scoring','Expression','Veracity','Headlines','Overall Score'],
+      children:[
+        {id:'C11', label:'Ch 11: Rating Overview', layer:2, desc:'Overview of the reliability scoring methodology. Reliability is not a single judgment — it is a structured assessment across three distinct dimensions, each rated 1–5. The three ratings are combined into an overall score, but no single criterion determines the outcome. An article with strong expression can still have low veracity.', tags:['1–5 Scale','Three Criteria','Overall Score','Methodology']},
+        {id:'C12', label:'Ch 12: Rating Expression', layer:2,
+         desc:'Expression is assessed on a 1–5 scale: 1 = Fact reporting · 2 = News and analysis · 3 = Analysis · 4 = Opinion/analysis · 5 = Explicit opinion. Expression rating reflects form and register, not truth value. An article can score 5 on Expression (clearly labeled opinion) and still be overall reliable if its factual references are accurate.',
+         tags:['Expression Scale','Fact Reporting','Opinion','Form vs Content'],
+         children:[
+           {id:'C12-1', label:'Expression Scale', layer:3, desc:'1 — Fact Reporting: Straight news, event-based, attributed to identifiable sources, no reporter interpretation. 2 — News and Analysis: Factual reporting with interpretive context integrated. 3 — Analysis: Primarily interpretive, drawing conclusions from evidence. 4 — Opinion/Analysis: Argument mixed with factual references. 5 — Explicit Opinion: Clearly labeled opinion, editorial, or advocacy.', tags:['Scale 1-5','Fact','Analysis','Opinion']},
+           {id:'C12-2', label:'Expression Signals', layer:3, desc:'Signals of opinion/advocacy register: first-person voice · loaded adjectives · calls to action · attributing motives to named actors without evidence · framing the article around a moral position rather than an event. Signals of fact reporting: passive voice · attributed claims · event-based structure · no reporter conclusions.', tags:['Linguistic Signals','Register','Advocacy Markers']}
+         ]
+        },
+        {id:'C13', label:'Ch 13: Rating Veracity', layer:2,
+         desc:'Veracity is assessed on a 1–5 scale: 1 = Provably true · 2 = Mostly true · 3 = Uncertain/unverified · 4 = Mostly false · 5 = Demonstrably false. Veracity requires claim-by-claim verification — not overall impression. A single demonstrably false central claim can reduce overall veracity significantly.',
+         tags:['Veracity Scale','Verification','Claim-by-Claim','Truth Ratings'],
+         children:[
+           {id:'C13-1', label:'Veracity Scale', layer:3, desc:'1 — Provably True: Specific factual claims are independently verifiable and accurate. 2 — Mostly True: Primary claims accurate; minor errors or omissions present. 3 — Uncertain: Claims cannot be verified or refuted with available evidence. 4 — Mostly False: Primary claims are inaccurate or significantly misleading. 5 — Demonstrably False: Central claims contradict verified evidence.', tags:['Provably True','Uncertain','Demonstrably False']},
+           {id:'C13-2', label:'Verification Protocol', layer:3, desc:'Claim extraction first — identify the five to ten most significant claims. Classify each as factual, interpretive, or opinion. For factual claims: identify the source cited · locate the primary source · compare the article\'s claim to what the primary source actually says · note any distortion, omission, or overstating. Document verification trail for each claim.', tags:['Claim Extraction','Primary Sources','Verification Trail','Distortion Detection']}
+         ]
+        },
+        {id:'C14', label:'Ch 14: Headlines & Graphics', layer:2,
+         desc:'Headline and Graphics is rated 1–5: 1 = Accurate headline, relevant graphics · 3 = Headline somewhat overstates · 5 = Headline substantially misrepresents. A factually accurate article body can be downgraded by a headline that introduces dramatic language, overstates certainty, or creates an impression the evidence does not support.',
+         tags:['Headlines','Graphics','Visual Analysis','Misrepresentation'],
+         children:[
+           {id:'C14-1', label:'Headline Rating Criteria', layer:3, desc:'Accuracy: does the headline reflect what the article actually shows? Tone: does the headline introduce emotional language not present in the body? Implication: does the headline create an impression beyond what the evidence warrants? Attribution: does the headline attribute claims to the outlet rather than to named sources? Omission: does the headline leave out context that would change the meaning?', tags:['Accuracy','Tone','Implication','Omission']},
+           {id:'C14-2', label:'Graphics Assessment', layer:3, desc:'Images and graphics are assessed for: Relevance — does the visual relate to the article\'s subject? Accuracy — does the visual fairly represent the subject? Emotional function — does the image create negative or positive associations beyond what the evidence warrants? Scale manipulation — do charts or graphs use manipulated axes to create false impressions of magnitude?', tags:['Images','Charts','Emotional Function','Scale Manipulation']}
+         ]
+        },
+        {id:'C15', label:'Ch 15: Overall Reliability', layer:2, desc:'Methodology for combining Expression, Veracity, and Headline & Graphics scores into an overall reliability rating. The overall score is not a simple average — Expression type affects how Veracity and Headline scores are weighted. An article rated as explicit opinion (Expression 5) is assessed differently from one presenting itself as fact reporting (Expression 1) with the same Veracity score.', tags:['Overall Score','Weighting','Score Combination','Final Rating']}
+      ]
+    },
+    {
+      id:'P5', label:'Part V: Political Bias', layer:1,
+      desc:'Four-chapter sequence on identifying and rating political bias — understanding the political position spectrum, identifying bias signals, bias by language, and bias by omission and comparison.',
+      tags:['Political Bias','Bias Rating','Language Bias','Omission','Comparison'],
+      children:[
+        {id:'C16', label:'Ch 16: Political Position', layer:2, desc:'Political position ratings are calibrated against current political discourse norms — the positions of elected officials and the mainstream of political debate at a given time. The reference points shift across election cycles and policy contexts. Analysts must use current calibration points rather than fixed ideological anchors. The spectrum: Most Extreme Left through Most Extreme Right with Middle as the calibration reference.', tags:['Calibration','Spectrum','Current Discourse','Reference Points']},
+        {id:'C17', label:'Ch 17: Identifying Bias', layer:2,
+         desc:'Bias is identified through three evidence streams: (1) Language choices — loaded terms, asymmetric descriptors, framing verbs; (2) Topic selection and emphasis — which stories are covered and how prominently; (3) Source selection — whose voices are included, whose are excluded, and whether opposing views are represented fairly.',
+         tags:['Three Evidence Streams','Language','Topic Selection','Source Selection'],
+         children:[
+           {id:'C17-1', label:'Bias Evidence Streams', layer:3, desc:'Stream 1: Language — loaded adjectives applied asymmetrically · verbs that imply motive without evidence · characterizations of opponents not applied to allies. Stream 2: Topic/Emphasis — frequency and prominence of stories benefiting one political position. Stream 3: Sources — consistent preference for voices from one political orientation without fair representation of alternatives.', tags:['Language Stream','Topic Stream','Source Stream']},
+           {id:'C17-2', label:'Bias vs Opinion', layer:3, desc:'Political bias is not the same as opinion content. An explicitly labeled opinion piece that argues a political position is not automatically biased — it is doing what it is designed to do. Bias arises when content presents politically motivated framing as neutral reporting, uses language to advance a political position without disclosing advocacy intent, or applies analytical standards asymmetrically based on political alignment.', tags:['Bias vs Opinion','Disclosure','Asymmetric Standards']}
+         ]
+        },
+        {id:'C18', label:'Ch 18: Bias by Language', layer:2, desc:'Linguistic bias operates through: (1) Loaded vocabulary — words carrying strong evaluative connotations applied to one political side; (2) Asymmetric descriptors — applying unflattering characterizations to opponents and neutral or positive ones to allies; (3) Framing verbs — "claimed" vs "said" vs "revealed" vs "admitted"; (4) Agent-object construction — who acts and who is acted upon in passive constructions.', tags:['Loaded Vocabulary','Asymmetric Descriptors','Framing Verbs','Agent-Object']},
+        {id:'C19', label:'Ch 19: Bias by Omission', layer:2, desc:'Bias by omission occurs when an outlet systematically excludes information that would complicate or contradict its preferred framing. Detection requires comparative reading — knowing what other credible outlets reported on the same event. Three forms: Omitting contradictory evidence that was publicly available · Omitting the other side\'s perspective in a two-sided controversy · Omitting essential context that would change the story\'s meaning.', tags:['Omission','Comparative Reading','Missing Context','Two-Sided']}
+      ]
+    },
+    {
+      id:'P6', label:'Part VI: Linguistic Analysis', layer:1,
+      desc:'Five-chapter sequence covering vocabulary and diction, syntax and sentence structure, tone and style, sentiment analysis, and rhetorical and persuasive techniques — the foundational linguistic toolkit for media reliability analysis.',
+      tags:['Linguistic Analysis','Vocabulary','Syntax','Tone','Sentiment','Rhetoric'],
+      children:[
+        {id:'C20', label:'Ch 20: Vocabulary & Diction', layer:2, desc:'Vocabulary choices signal the article\'s register, intended audience, and potential bias. Analytical markers: connotation-laden nouns and adjectives · asymmetric word choices for equivalent subjects · use of jargon to appear authoritative · colloquial language to create intimacy or populist appeal · technical precision as a reliability signal · vagueness as a potential manipulation signal.', tags:['Connotation','Denotation','Register','Vocabulary Asymmetry']},
+        {id:'C21', label:'Ch 21: Syntax & Structure', layer:2, desc:'Sentence structure shapes emphasis and implication. Key analytical features: Active vs passive voice and what each obscures or reveals about agency · Sentence length as a signal of complexity or simplicity of argument · Subordinate clause placement and what qualifications get buried · Appositive construction and how characterizations are embedded.', tags:['Active/Passive Voice','Sentence Length','Agency','Subordinate Clauses']},
+        {id:'C22', label:'Ch 22: Tone & Style', layer:2, desc:'Tone is the affective register of the text — the emotional relationship between the writer and the subject. Analytical markers: Alarmist tone vs measured analysis · Dismissive framing of opposing views · Sarcasm and irony as evaluation signals · Authoritative vs tentative register · Whether tone is consistent with expression type (e.g. alarming tone in fact reporting).', tags:['Tone','Register','Alarmism','Affective Signals','Consistency']},
+        {id:'C23', label:'Ch 23: Sentiment Analysis', layer:2,
+         desc:'Sentiment analysis measures the positive, negative, or neutral emotional valence of text. Targeted sentiment examines sentiment directed at specific named entities — not the article overall. Biases in automated sentiment tools require human validation. Same sentiment score can mean different things depending on context.',
+         tags:['Sentiment Score','Targeted Sentiment','Emotion Lexicons','Automated Tools'],
+         children:[
+           {id:'C23-1', label:'Sentiment Scoring', layer:3, desc:'Positive/Negative/Neutral sentiment scored at article, paragraph, and entity levels. Targeted sentiment: what sentiment is directed at Group A vs Group B within the same article? Asymmetric targeted sentiment — positive framing for one political actor, negative for equivalent opposing actor — is a reliable bias signal. Human review required for context the automated tools miss.', tags:['Polarity','Targeted Sentiment','Asymmetry','Human Review']},
+           {id:'C23-2', label:'Emotion Categories', layer:3, desc:'Emotion lexicons identify categories beyond positive/negative: Fear · Anger · Trust · Surprise · Anticipation · Joy · Sadness · Disgust. High fear/anger content that is not proportionate to the facts described is an editorial signal. Trust-category language signals attempts to build credibility. Disgust language directed at a specific group is a bias signal.', tags:['Fear','Anger','Trust','Disgust','Emotion Lexicons']}
+         ]
+        },
+        {id:'C24', label:'Ch 24: Rhetoric & Persuasion', layer:2,
+         desc:'Rhetorical and persuasive techniques used in media content — some legitimate, some manipulative. Analysts identify the techniques present, assess whether they substitute for evidence rather than support it, and determine whether their use is consistent with the article\'s expressed content type.',
+         tags:['Rhetorical Techniques','Persuasion','Appeals','Fallacies'],
+         children:[
+           {id:'C24-1', label:'Classical Appeals', layer:3, desc:'Ethos (credibility appeal): invoking authority, credentials, or institutional standing. Pathos (emotional appeal): invoking emotion to move the audience — legitimate in moderation, manipulative when substituting for evidence. Logos (logical appeal): invoking evidence, data, and reasoning. Analysts assess whether appeals are proportionate and whether emotional appeals are supported by evidence.', tags:['Ethos','Pathos','Logos','Classical Rhetoric']},
+           {id:'C24-2', label:'Propaganda Signals', layer:3, desc:'Five high-risk signals: (1) Overconfident claims — certainty beyond what evidence supports. (2) Conspiracy markers — unsourced institutional accusations, secret coordination claims. (3) Us-versus-them language — dehumanizing or demonizing framing of outgroup. (4) Unsupported causal chains — A happened, B happened, therefore A caused B. (5) Speculative prediction chains — extrapolating from weak evidence to catastrophic outcome.', tags:['Overconfidence','Conspiracy','Us-vs-Them','Causal Chains','Speculation']},
+           {id:'C24-3', label:'Common Fallacies', layer:3, desc:'Ad hominem (attacking the person not the argument) · Strawman (misrepresenting the opposing position) · False dichotomy (presenting only two options) · Appeal to authority without credentials · Slippery slope (unsupported causal chain to extreme outcome) · Hasty generalization (drawing broad conclusions from limited cases). Each is a reliability concern when it substitutes for evidence.', tags:['Ad Hominem','Strawman','False Dichotomy','Slippery Slope']}
+         ]
+        }
+      ]
+    },
+    {
+      id:'P7', label:'Part VII: Source Credibility', layer:1,
+      desc:'Four-chapter sequence on evaluating source credibility, corroboration and lateral reading, detecting low-quality information, and handling uncertainty — the evidential foundations of reliable media analysis.',
+      tags:['Source Credibility','Corroboration','Lateral Reading','Low-Quality Content','Uncertainty'],
+      children:[
+        {id:'C25', label:'Ch 25: Evaluating Sources', layer:2,
+         desc:'Source credibility is assessed across five dimensions: Expertise · Access · Independence · Track Record · Transparency. A source may have high expertise but low independence (institutional conflict of interest). A source may have direct access but poor track record. Each dimension must be assessed separately.',
+         tags:['Expertise','Access','Independence','Track Record','Transparency'],
+         children:[
+           {id:'C25-1', label:'Five Credibility Dimensions', layer:3, desc:'Expertise: Does the source have the qualifications, training, or experience to know what they claim? Access: Does the source have proximity to the events or information claimed? Independence: Does the source have institutional, financial, or ideological conflicts of interest? Track Record: Has this source been accurate and reliable in the past? Transparency: Does the source disclose its methods, funding, and potential conflicts?', tags:['Expertise','Access','Independence','Track Record','Transparency']},
+           {id:'C25-2', label:'Source Classification', layer:3, desc:'Primary source: original documents, direct observations, official records, first-person accounts. Secondary source: reporting or analysis based on primary material. Tertiary source: summaries, aggregators, encyclopedic overviews. Expert source: specialist interpretation. Anonymous source: may have access but limits verifiability. Each type determines the weight of claims it can support.', tags:['Primary','Secondary','Tertiary','Expert','Anonymous']}
+         ]
+        },
+        {id:'C26', label:'Ch 26: Corroboration & Lateral Reading', layer:2, desc:'Lateral reading is the practice of opening multiple tabs to research a source\'s reputation before reading its content in depth. Corroboration requires independent source confirmation — not just repetition of the same upstream claim. Three-tier corroboration: Tier A (independently verified by multiple high-quality sources) · Tier B (confirmed by one additional credible source) · Tier C (single source, caveated). Derivative reporting does not constitute corroboration.', tags:['Lateral Reading','Corroboration','Tiers','Derivative Reporting','Independence']},
+        {id:'C27', label:'Ch 27: Low-Quality Detection', layer:2, desc:'Five categories of low-quality information requiring heightened scrutiny: Viral posts (high speed, low verification) · Misleading headlines (accurate body, distorting headline) · Unsupported claim chains (each claim premises the next without independent evidence) · Conspiracy-style content (unsourced institutional accusations, secret coordination) · Propaganda-style persuasion (systematic emotional manipulation, enemy framing, suppression of counterevidence).', tags:['Viral Content','Misleading Headlines','Claim Chains','Conspiracy Markers','Propaganda Signals']},
+        {id:'C28', label:'Ch 28: Handling Uncertainty', layer:2, desc:'Uncertainty is not a failure — it is an honest analytical conclusion. Types of uncertainty: Insufficient evidence to rate · Contested evidence between credible sources · Time-sensitive claims where verification is not yet possible · Ambiguous content type that resists clean categorization. Uncertainty must be documented with: the specific gap · what would resolve it · whether it affects the overall rating or a sub-component · whether it is resolvable or inherent to the available record.', tags:['Uncertainty Documentation','Insufficient Evidence','Contested Claims','Ambiguity','Documentation']}
+      ]
+    },
+    {
+      id:'P8', label:'Part VIII: Computational Linguistics', layer:1,
+      desc:'Applied computational text analysis for media analysts — what machines can and cannot detect, text preprocessing, quantitative language features, sentiment and emotion modeling, topic and frame modeling, and misinformation and propaganda signal detection.',
+      tags:['Computational Linguistics','NLP','Automated Tools','Quantitative Features','Human Judgment'],
+      children:[
+        {id:'C29', label:'Ch 29: Computational Text Analysis', layer:2,
+         desc:'Introduction to using automated text analysis tools in media reliability work. Key principle: automated tools detect linguistic patterns; human analysts interpret their meaning. Machines cannot determine intent, assess context, evaluate source credibility, or make reliability judgments without human oversight.',
+         tags:['NLP','Automated vs Human','Pattern Detection','Preprocessing'],
+         children:[
+           {id:'C29-1', label:'What Machines Detect', layer:3, desc:'Automated tools can detect: word frequency and keyword density · named entity presence · n-gram patterns and repetition · sentiment polarity scores · readability indices · pronoun use patterns · modality and certainty markers. What they cannot detect: authorial intent · contextual meaning · the significance of specific omissions · whether framing is appropriate to the facts.', tags:['Machine Detection','Word Frequency','Entities','NLP Limits']},
+           {id:'C29-2', label:'Text Preprocessing', layer:3, desc:'Core steps: Tokenization (splitting text into words/units) · Lemmatization (reducing words to base form) · Named Entity Recognition (identifying persons, organizations, locations) · N-gram extraction (identifying frequent word sequences) · Stopword removal. Output provides the structured input for quantitative language feature analysis.', tags:['Tokenization','Lemmatization','NER','N-grams','Preprocessing']}
+         ]
+        },
+        {id:'C30', label:'Quantitative Language Features', layer:2,
+         desc:'Eight quantitative features that can be systematically measured to build a language profile of any media content.',
+         tags:['Eight Features','Language Profile','Quantitative','Measurement'],
+         children:[
+           {id:'C30-1', label:'Eight Features', layer:3, desc:'1. Word Frequency — most common non-stopwords reveal thematic emphasis. 2. Keyword Density — proportion of key terms to total words. 3. Repetition — repeated phrases signal framing intent. 4. Lexical Diversity — ratio of unique words to total; low diversity may signal simplistic messaging. 5. Readability — Flesch-Kincaid and similar indices. 6. Named Entity Frequency — how often specific actors appear. 7. Pronoun Use — "we/they" patterns signal in-group/out-group construction. 8. Modality and Certainty Markers — "must/should/will" vs "may/might/could."', tags:['Word Frequency','Repetition','Lexical Diversity','Readability','Pronouns','Modality']}
+         ]
+        },
+        {id:'C31', label:'Misinformation & Propaganda Signals', layer:2, desc:'Automated detection of five high-risk content signals: Overconfident claims (certainty language without evidence hedging) · Conspiracy markers (systemic suppression claims, coordinated secret actor claims) · Us-versus-them language (enemy labels, dehumanizing characterizations) · Unsupported causal chains (correlation-as-causation constructions) · Speculative prediction chains (weak evidence to catastrophic outcome extrapolation). Automated flags require human verification before reliability conclusions are drawn.', tags:['Overconfidence','Conspiracy Markers','Enemy Labels','Causal Chains','Automated Flags']}
+      ]
+    },
+    {
+      id:'P9', label:'Part IX: Applied Workflows', layer:1,
+      desc:'Five applied analysis workflows: the full article analysis workflow · short-form and social media analysis · broadcast and transcript analysis · visual and multimodal analysis · comparative media analysis.',
+      tags:['Applied Workflows','Full Article','Social Media','Broadcast','Visual','Comparative'],
+      children:[
+        {id:'C32', label:'Full Article Workflow', layer:2, desc:'The complete sequential analysis workflow: (1) First-contact orientation protocol · (2) Full reading without judgment · (3) Content type classification · (4) Claim extraction and typing · (5) Structural analysis · (6) Framing identification · (7) Headline and graphics assessment · (8) Source identification and credibility evaluation · (9) Veracity verification · (10) Lateral reading and corroboration · (11) Linguistic and rhetorical analysis · (12) Bias assessment · (13) Overall reliability rating · (14) Uncertainty documentation · (15) Report writing.', tags:['Sequential Workflow','15 Steps','Systematic Analysis','Full Protocol']},
+        {id:'C33', label:'Short-Form & Social Media', layer:2, desc:'Social media analysis requires additional protocols: Platform context assessment (Twitter/X vs Facebook vs Telegram vs TikTok have different content norms) · Account credibility assessment · Virality vs accuracy distinction · Screenshot verification · Provenance establishment · Manipulation risk assessment (context collapse, miscaptioning, account spoofing). Social media is treated as lead-only unless independently verified.', tags:['Social Media','Platform Context','Virality','Provenance','Lead-Only']},
+        {id:'C34', label:'Broadcast & Transcript', layer:2, desc:'Broadcast analysis applies the same reliability criteria through transcript examination plus visual assessment. Additional considerations: edit decisions and what they omit · anchor and reporter tone separate from content · expert panel composition and balance · chyrons and lower-thirds as headline equivalents · time allocation as a structural bias signal.', tags:['Transcript Analysis','Broadcast','Chyrons','Panel Composition','Time Allocation']},
+        {id:'C35', label:'Visual & Multimodal', layer:2, desc:'Visual analysis framework: Image selection (what image is chosen and why) · Framing of subjects (angle, proximity, expression captured) · Caption accuracy (does the caption match what the image shows?) · Chart accuracy (axis manipulation, scale distortion, misleading aggregation) · Video editing decisions (what is cut and why). Visual elements assessed separately from text reliability.', tags:['Image Analysis','Video','Charts','Captions','Framing','Visual Bias']},
+        {id:'C36', label:'Comparative Media Analysis', layer:2, desc:'Systematic comparison of coverage across multiple outlets on the same event. Identifies: What every outlet covered and what each omitted · How framing choices vary and what they reveal · Whether there is consensus on facts but divergence on framing · Whether a single outlet\'s treatment is outlying relative to the full coverage landscape · Cross-outlet editorial pattern analysis for systematic bias detection.', tags:['Cross-Outlet','Comparative','Omission Mapping','Editorial Patterns','Consensus Analysis']}
+      ]
+    },
+    {
+      id:'P10', label:'Part X: Analyst Report', layer:1,
+      desc:'Report structure, evidence-based writing, rating justification, and communicating to different audiences — the professional output standards for media reliability analysis.',
+      tags:['Report Writing','Structure','Evidence-Based','Rating Justification','Audience Adaptation'],
+      children:[
+        {id:'C37', label:'Report Structure', layer:2,
+         desc:'Standard analyst report architecture: Executive Summary · Content Overview and Key Claims · Reliability Assessment (Expression, Veracity, Headline & Graphics) · Bias Assessment · Linguistic Findings · Source Evaluation · Final Rating and Confidence Level.',
+         tags:['Report Architecture','Executive Summary','Assessment Sections','Final Rating'],
+         children:[
+           {id:'C37-1', label:'Standard Architecture', layer:3, desc:'Section 1: Executive Summary — final ratings, confidence level, key findings in three to five sentences. Section 2: Content Overview — what the article claims, its central argument, its stated content type. Section 3: Reliability Assessment — three criteria with scores and justification. Section 4: Bias Assessment — political position rating with evidence. Section 5: Linguistic Findings — notable language features. Section 6: Source Evaluation — source credibility assessment. Section 7: Final Rating — combined score with confidence language.', tags:['Architecture','Sections','Rating Justification']}
+         ]
+        },
+        {id:'C38', label:'Evidence-Based Writing', layer:2, desc:'Every analytical claim must be traceable to a specific, observable textual feature. The evidence chain: Observation (what the text contains) → Interpretation (what the observation indicates) → Judgment (what it means for the reliability assessment). Analytical conclusions that rest on general impressions, inferences about intent, or assumptions about motives are not defensible professional outputs. Every rating must be justifiable by pointing to specific evidence.', tags:['Evidence Chain','Observation','Interpretation','Judgment','Traceable']},
+        {id:'C39', label:'Rating Justification', layer:2, desc:'A rating justification must contain: the specific score assigned · the evidence that supports the score · why alternative scores were not chosen · how uncertainty was handled. Defending Expression scores requires pointing to specific linguistic and structural features. Defending Veracity scores requires documenting the verification steps taken. Defending political position ratings requires citing specific language and comparison with current reference points.', tags:['Justification','Defensible Ratings','Score Defense','Verification Documentation']},
+        {id:'C40', label:'Audience Adaptation', layer:2, desc:'Six audience profiles requiring adapted communication: General Public (accessible language, no jargon, focus on practical implications) · Educators (pedagogical framing, methodological transparency) · Journalists (peer-register, focus on structural findings) · Corporate Clients (risk framing, decision relevance) · Government and Civic Organizations (policy implications, institutional impact) · Research Teams (full methodology, confidence levels, reproducibility). Core finding remains constant — presentation adapts.', tags:['Audience Profiles','General Public','Corporate','Government','Adaptation']}
+      ]
+    },
+    {
+      id:'P11', label:'Part XI: Ethics & Standards', layer:1,
+      desc:'Three-chapter sequence on analyst ethics, bias in the analyst, and responsible use of AI — the professional and ethical standards that govern media reliability analysis.',
+      tags:['Ethics','Professional Standards','Analyst Bias','AI Use','Accountability'],
+      children:[
+        {id:'C41', label:'Ch Analyst Ethics', layer:2,
+         desc:'Ethical duties: Nonpartisanship — consistent standards regardless of political alignment. Evidence integrity — ratings traceable to specific textual evidence. Avoiding defamation — documenting structural features, not asserting intent. Uncertainty disclosure — naming what cannot be determined. Conflict of interest disclosure — flagging personal or professional relationships with subjects under analysis.',
+         tags:['Nonpartisanship','Evidence Integrity','Defamation Avoidance','Conflict of Interest'],
+         children:[
+           {id:'C41-1', label:'Ethical Duties', layer:3, desc:'Five core ethical duties: (1) Nonpartisanship — apply same criteria to all content regardless of alignment. (2) Evidence integrity — every claim backed by specific observable textual feature. (3) Harm avoidance — document features, not assert malicious intent. (4) Uncertainty disclosure — document what cannot be determined. (5) Conflict disclosure — flag personal, financial, or professional relationships with subjects.', tags:['Five Duties','Nonpartisanship','Evidence Integrity','Harm','Disclosure']},
+           {id:'C41-2', label:'Defamation & Harm', layer:3, desc:'The defensible analytical move: document the features that reduce reliability — selective evidence, loaded language, unsupported causal claims — without asserting that the author deliberately intended to deceive. The features are observable. The intent is usually not. Claiming an outlet "deliberately manipulates" requires the same evidence standard as any other factual assertion.', tags:['Defamation','Intent Claims','Observable Features','Professional Standards']}
+         ]
+        },
+        {id:'C42', label:'Ch Bias in the Analyst', layer:2, desc:'Where analyst bias enters the workflow: (1) Source selection for verification — which sources chosen to check the claim. (2) Claim selection for analysis — which claims extracted for scrutiny. (3) Evidence weighting — which evidence treated as decisive. (4) Conclusion framing — how findings are described. Corrective practices: bias self-audit table · reversal test · third-party review for high-stakes assessments · disclosure of personal views where relevant.', tags:['Where Bias Enters','Corrective Practices','Self-Audit','Third-Party Review']},
+        {id:'C43', label:'Ch Responsible AI Use', layer:2, desc:'What AI can do in media analysis: preprocessing, pattern detection, sentiment scoring, n-gram extraction, entity recognition, draft organization. What AI cannot do: assess context, determine intent, evaluate source credibility, make reliability judgments. Hallucination and false confidence risks require human verification of all AI-generated claims. Disclosure required when AI tools are used in the analytical process. Human analyst retains full accountability for the final assessment.', tags:['AI Governance','Hallucination','Disclosure','Human Accountability','AI Limits']}
+      ]
+    },
+    {
+      id:'P12', label:'Part XII: Practice & Capstone', layer:1,
+      desc:'Four graded practice sets and a final capstone project — structured progression from fact reporting through opinion, low-reliability content, and political bias rating, culminating in a full analyst report.',
+      tags:['Practice Sets','Capstone','Graded Progression','Applied Practice'],
+      children:[
+        {id:'C44', label:'Practice Set I: Fact Reporting', layer:2, desc:'Foundation practice set. Focuses on straight news analysis — source identification, claim extraction, expression rating for fact reporting. Skill progression: read complete article → identify source structure → extract and classify claims → apply expression scale → document verification needs. Purpose: establish the baseline habits of structured reading before introducing complex content types.', tags:['Fact Reporting','Source Identification','Claim Extraction','Expression Rating']},
+        {id:'C45', label:'Practice Set II: Analysis & Opinion', layer:2, desc:'Second practice set. Four content types: editorial · column · think-tank commentary · advocacy blog post. Analytical challenges: separating expression from opinion in mixed-register content · structural analysis for persuasive content · applying expression scale to ambiguous content types · identifying where opinion and analysis blend without clear labeling.', tags:['Editorial','Opinion','Think-Tank','Advocacy','Mixed Register']},
+        {id:'C46', label:'Practice Set III: Low-Reliability', layer:2, desc:'Third practice set — highest analytical difficulty. Five content types: viral post · misleading headline · unsupported claim chain · conspiracy-style article · propaganda-style persuasion. Full reliability scoring in low-reliability contexts. Key challenge: distinguishing low reliability from deliberate falsehood without overclaiming intent. Linguistic and rhetorical signal identification under realistic conditions.', tags:['Viral Post','Misleading Headline','Conspiracy','Propaganda','Full Scoring']},
+        {id:'C47', label:'Practice Set IV: Political Bias', layer:2, desc:'Fourth practice set. Seven political bias positions: Most Extreme Left through Most Extreme Right. Practice texts constructed to represent each position distinctly. Three evidence streams for political bias rating: language choices · topic selection and emphasis · source selection. Challenge: calibrating ratings against current political discourse rather than fixed ideological reference points.', tags:['Seven Positions','Bias Rating','Calibration','Current Discourse','Evidence Streams']},
+        {id:'C48', label:'Final Capstone', layer:2, desc:'Full analyst report on a real current media item selected by the learner. Capstone deliverables: full article analysis following the Part IX workflow · complete reliability rating with justification for all three criteria · political position rating with evidence · linguistic findings · source evaluation · final rating and confidence level · structured report using the Appendix E template · portfolio reflection. Evaluated against the full capstone rubric.', tags:['Full Report','Real Media Item','All Criteria','Rubric','Portfolio'],
+          link:{text:'Download Textbook PDF', url:'https://quanta-analytica.com/training/Analyzing_Media_Reliability_Bias_and_Language_v3.pdf'}
+        }
+      ]
+    }
+  ]
+};
+
+// ── LAYOUT CONFIG ─────────────────────────────────────────────────────────────
+const ROOT_X = 120;  // pushed left
+const H_GAP = 280;
+const V_GAP = 48;
+const NODE_R = {0:22,1:15,2:11,3:8};
+const FONT_SIZE = {0:12,1:11,2:10,3:9};
+
+// branch color map
+const BRANCH_COLORS = {
+  'P1':'var(--c1)','P2':'var(--c2)','P3':'var(--c3)','P4':'var(--c4)',
+  'P5':'var(--c5)','P6':'var(--c6)','P7':'var(--c7)','P8':'var(--c8)',
+  'P9':'var(--c9)','P10':'var(--c10)','P11':'var(--c11)','P12':'var(--c12)'
+};
+
+// ── STATE ─────────────────────────────────────────────────────────────────────
+let collapsed = new Set();
+let positions = {};
+let selectedId = null;
+let allNodes = {};
+let vx=0, vy=0, vz=0.8;
+let dragging=false, lastX=0, lastY=0;
+
+function buildMap(n, parent=null){
+  n.parent=parent;
+  allNodes[n.id]=n;
+  if(n.children) n.children.forEach(c=>buildMap(c,n));
+}
+buildMap(DATA);
+
+function getColor(node){
+  if(node.layer===0) return 'var(--c0)';
+  let p=node;
+  while(p.parent && p.parent.layer!==0) p=p.parent;
+  return BRANCH_COLORS[p.id] || 'var(--c1)';
+}
+
+function visibleChildren(node){
+  if(!node.children) return [];
+  if(collapsed.has(node.id)) return [];
+  return node.children;
+}
+
+function countLeaves(node){
+  const ch=visibleChildren(node);
+  if(ch.length===0) return 1;
+  return ch.reduce((s,c)=>s+countLeaves(c),0);
+}
+
+function layout(node, x, y){
+  positions[node.id]={x,y};
+  const ch=visibleChildren(node);
+  if(!ch.length) return;
+  const leaves=ch.map(c=>countLeaves(c));
+  const total=leaves.reduce((a,b)=>a+b,0);
+  const totalH=(total-1)*V_GAP;
+  let cy=y-totalH/2;
+  ch.forEach((c,i)=>{
+    const h=(leaves[i]-1)*V_GAP;
+    layout(c, x+H_GAP, cy+h/2);
+    cy+=h+V_GAP;
+  });
+}
+
+const svg=document.getElementById('tree');
+function el(tag,attrs={}){
+  const e=document.createElementNS('http://www.w3.org/2000/svg',tag);
+  Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));
+  return e;
+}
+
+function applyTransform(g){
+  const wrap=document.getElementById('canvas-wrap');
+  const W=wrap.clientWidth, H=wrap.clientHeight;
+  g.setAttribute('transform',`translate(${W*0.12+vx},${H/2+vy}) scale(${vz})`);
+}
+
+function render(){
+  layout(DATA, ROOT_X, 0);
+  svg.innerHTML='';
+  const defs=el('defs');
+  const mk=el('marker',{id:'arr2',markerWidth:6,markerHeight:6,refX:5,refY:3,orient:'auto'});
+  const mp=el('path',{d:'M0,0 L6,3 L0,6 Z','stroke-width':0});
+  mp.style.fill='rgba(201,168,76,0.2)';
+  mk.appendChild(mp); defs.appendChild(mk); svg.appendChild(defs);
+  const g=el('g',{id:'main-g'});
+  applyTransform(g); svg.appendChild(g);
+  drawEdges(DATA,g); drawNodes(DATA,g);
+}
+
+function drawEdges(node,g){
+  const ch=visibleChildren(node);
+  const p=positions[node.id];
+  ch.forEach(c=>{
+    const cp=positions[c.id];
+    const midX=(p.x+cp.x)/2;
+    const col=getColor(c);
+    const path=el('path',{
+      d:`M${p.x},${p.y} C${midX},${p.y} ${midX},${cp.y} ${cp.x},${cp.y}`,
+      fill:'none',stroke:col,'stroke-width':'1','stroke-opacity':'0.28','marker-end':'url(#arr2)'
+    });
+    g.appendChild(path);
+    drawEdges(c,g);
+  });
+}
+
+function drawNodes(node,g){
+  const p=positions[node.id];
+  const r=NODE_R[Math.min(node.layer,3)]||7;
+  const col=getColor(node);
+  const fs=FONT_SIZE[Math.min(node.layer,3)]||9;
+  const hasChildren=node.children&&node.children.length>0;
+  const isCollapsed=collapsed.has(node.id);
+
+  const grp=el('g',{class:'node-group'+(selectedId===node.id?' selected':'')});
+  grp.dataset.id=node.id;
+
+  const ring=el('circle',{cx:p.x,cy:p.y,r:r+5,class:'ring',stroke:col});
+  grp.appendChild(ring);
+
+  const circ=el('circle',{cx:p.x,cy:p.y,r,
+    fill:node.layer===0?col:'var(--bg)',
+    stroke:col,'stroke-width':node.layer===0?'0':'1.5','stroke-opacity':'0.85'});
+  grp.appendChild(circ);
+
+  if(node.layer>0){
+    const dot=el('circle',{cx:p.x,cy:p.y,r:r*0.35,fill:col,'fill-opacity':'0.7'});
+    grp.appendChild(dot);
+  }
+
+  if(hasChildren){
+    const txt=el('text',{x:p.x+r+2,y:p.y,class:'node-label',
+      fill:col,'font-size':'7','font-family':'IBM Plex Mono,monospace',
+      'fill-opacity':'0.55','dominant-baseline':'middle'});
+    txt.textContent=isCollapsed?'+':'−';
+    grp.appendChild(txt);
+  }
+
+  // wrap label
+  const labelX=p.x+r+12;
+  const words=node.label.split(' ');
+  const maxW=node.layer===0?2:3;
+  if(words.length>maxW){
+    const half=Math.ceil(words.length/2);
+    const lines=[words.slice(0,half).join(' '), words.slice(half).join(' ')];
+    lines.forEach((line,i)=>{
+      const t=el('text',{x:labelX,y:p.y+(i===0?-5.5:5.5),class:'node-label',
+        fill:col,'font-size':fs,'font-family':'IBM Plex Mono,monospace','dominant-baseline':'middle'});
+      t.textContent=line; grp.appendChild(t);
+    });
+  } else {
+    const t=el('text',{
+      x:node.layer===0?p.x:labelX,
+      y:p.y,class:'node-label',
+      fill:node.layer===0?'var(--bg)':col,
+      'font-size':node.layer===0?12:fs,
+      'font-family':'IBM Plex Mono,monospace',
+      'font-weight':node.layer===0?'500':'400',
+      'text-anchor':node.layer===0?'middle':'start',
+      'dominant-baseline':'middle'
+    });
+    t.textContent=node.label; grp.appendChild(t);
+  }
+
+  grp.addEventListener('click',e=>{e.stopPropagation();handleClick(node);});
+  grp.addEventListener('mouseenter',()=>{grp.querySelector('circle').style.filter='brightness(1.3)';});
+  grp.addEventListener('mouseleave',()=>{grp.querySelector('circle').style.filter='';});
+  g.appendChild(grp);
+  visibleChildren(node).forEach(c=>drawNodes(c,g));
+}
+
+function handleClick(node){
+  if(node.children&&node.children.length){
+    if(collapsed.has(node.id)) collapsed.delete(node.id);
+    else collapsed.add(node.id);
+  }
+  selectedId=node.id;
+  showPanel(node);
+  render();
+}
+
+function showPanel(node){
+  const col=getColor(node);
+  document.getElementById('p-tag').textContent=node.id;
+  document.getElementById('p-tag').style.color=col;
+  document.getElementById('p-title').textContent=node.label;
+  document.getElementById('p-layer').textContent=['ROOT · Full Framework','LAYER 1 · Part','LAYER 2 · Chapter','LAYER 3 · Core Concept','LAYER 4 · Element'][Math.min(node.layer,4)];
+  document.getElementById('p-desc').textContent=node.desc||'';
+
+  const tw=document.getElementById('p-tags-wrap');
+  const te=document.getElementById('p-tags');
+  if(node.tags&&node.tags.length){
+    tw.style.display='block';
+    te.innerHTML=node.tags.map(t=>`<span class="panel-tag-chip">${t}</span>`).join('');
+  } else tw.style.display='none';
+
+  const cw=document.getElementById('p-children-wrap');
+  const ce=document.getElementById('p-children');
+  const ch=node.children||[];
+  if(ch.length){
+    cw.style.display='block';
+    ce.innerHTML=ch.map(c=>`<div class="panel-child" onclick="jumpTo('${c.id}')"><span style="color:${getColor(c)};font-family:IBM Plex Mono,monospace;font-size:10px">${c.id}</span> ${c.label}<span class="panel-child-arrow">→</span></div>`).join('');
+  } else cw.style.display='none';
+
+  const lw=document.getElementById('p-link-wrap');
+  if(node.link){
+    lw.style.display='block';
+    const a=document.getElementById('p-link');
+    a.textContent=node.link.text+' →'; a.href=node.link.url;
+  } else lw.style.display='none';
+
+  document.getElementById('panel').classList.add('open');
+}
+
+function closePanel(){
+  document.getElementById('panel').classList.remove('open');
+  selectedId=null; render();
+}
+
+function jumpTo(id){
+  const node=allNodes[id]; if(!node) return;
+  let p=node.parent;
+  while(p){collapsed.delete(p.id);p=p.parent;}
+  selectedId=id; showPanel(node); render();
+  const pos=positions[id];
+  if(pos){ vx=-pos.x*vz+100; vy=-pos.y*vz; applyTransform(document.getElementById('main-g')); }
+}
+
+// pan/zoom
+const wrap=document.getElementById('canvas-wrap');
+wrap.addEventListener('mousedown',e=>{
+  if(e.target.closest('.node-group')) return;
+  dragging=true; lastX=e.clientX; lastY=e.clientY; wrap.classList.add('dragging');
+});
+window.addEventListener('mousemove',e=>{
+  if(!dragging) return;
+  vx+=e.clientX-lastX; vy+=e.clientY-lastY; lastX=e.clientX; lastY=e.clientY;
+  const g=document.getElementById('main-g'); if(g) applyTransform(g);
+});
+window.addEventListener('mouseup',()=>{dragging=false;wrap.classList.remove('dragging');});
+wrap.addEventListener('wheel',e=>{
+  e.preventDefault();
+  const f=e.deltaY<0?1.1:0.9;
+  vz=Math.min(Math.max(vz*f,0.12),3);
+  const g=document.getElementById('main-g'); if(g) applyTransform(g);
+  document.getElementById('zoom-indicator').textContent=`ZOOM: ${Math.round(vz*100)}%`;
+},{passive:false});
+
+let lastPD=null;
+wrap.addEventListener('touchstart',e=>{
+  if(e.touches.length===1){dragging=true;lastX=e.touches[0].clientX;lastY=e.touches[0].clientY;}
+  if(e.touches.length===2) lastPD=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+},{passive:true});
+wrap.addEventListener('touchmove',e=>{
+  if(e.touches.length===1&&dragging){
+    vx+=e.touches[0].clientX-lastX;vy+=e.touches[0].clientY-lastY;
+    lastX=e.touches[0].clientX;lastY=e.touches[0].clientY;
+    const g=document.getElementById('main-g');if(g)applyTransform(g);
+  }
+  if(e.touches.length===2&&lastPD){
+    const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+    vz=Math.min(Math.max(vz*(d/lastPD),0.12),3);lastPD=d;
+    const g=document.getElementById('main-g');if(g)applyTransform(g);
+  }
+},{passive:true});
+wrap.addEventListener('touchend',()=>{dragging=false;lastPD=null;},{passive:true});
+
+function expandAll(){collapsed.clear();render();}
+function collapseAll(){
+  Object.values(allNodes).forEach(n=>{if(n.layer<3&&n.children&&n.children.length)collapsed.add(n.id);});
+  render();
+}
+function resetView(){
+  vx=0;vy=0;vz=0.8;
+  const g=document.getElementById('main-g');if(g)applyTransform(g);
+  document.getElementById('zoom-indicator').textContent='ZOOM: 80%';
+}
+function searchNodes(q){
+  if(!q){render();return;}
+  q=q.toUpperCase();
+  render();
+  document.querySelectorAll('.node-group').forEach(grp=>{
+    const id=grp.dataset.id; const n=allNodes[id]; if(!n) return;
+    const match=n.label.toUpperCase().includes(q)||(n.tags&&n.tags.some(t=>t.toUpperCase().includes(q)));
+    if(!match) grp.style.opacity='0.15';
+  });
+}
+
+// init — collapse layer 2+ by default
+Object.values(allNodes).forEach(n=>{
+  if(n.layer>=2&&n.children&&n.children.length) collapsed.add(n.id);
+});
+document.getElementById('zoom-indicator').textContent='ZOOM: 80%';
+window.addEventListener('resize',render);
+render();
+</script>
+</body>
+</html>
