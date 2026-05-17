@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Media Analysis Framework | Quanta Analytica</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0c10'/><polygon points='16,4 28,12 28,20 16,28 4,20 4,12' fill='none' stroke='%23c8a96e' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%23c8a96e'/></svg>" />
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -22,7 +22,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);font-family:'IBM Plex
 
 header{position:fixed;top:0;left:0;right:0;z-index:200;height:52px;background:rgba(7,8,11,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem}
 .h-brand{display:flex;align-items:center;gap:.75rem}
-.h-logo{height:22px}
+.h-logo{height:44px}
 .h-title{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:.1em}
 .h-sep{width:1px;height:14px;background:var(--border-g)}
 .h-sub{font-size:11px;color:var(--text3);letter-spacing:.06em}
@@ -409,7 +409,7 @@ const DATA = {
 const ROOT_X = 120;  // pushed left
 const H_GAP = 280;
 const V_GAP = 48;
-const NODE_R = {0:22,1:15,2:11,3:8};
+const NODE_R = {0:28,1:15,2:11,3:8};
 const FONT_SIZE = {0:12,1:11,2:10,3:9};
 
 // branch color map
@@ -546,7 +546,24 @@ function drawNodes(node,g){
   const labelX=p.x+r+12;
   const words=node.label.split(' ');
   const maxW=node.layer===0?2:3;
-  if(words.length>maxW){
+  if(node.layer===0){
+    // root: two lines centered below the circle
+    const line1='Media';
+    const line2='Analysis';
+    [line1,line2].forEach((line,i)=>{
+      const t=el('text',{
+        x:p.x, y:p.y+r+14+(i*15),
+        class:'node-label',
+        fill:'var(--c0)',
+        'font-size':'12',
+        'font-family':'IBM Plex Mono,monospace',
+        'font-weight':'500',
+        'text-anchor':'middle',
+        'dominant-baseline':'middle'
+      });
+      t.textContent=line; grp.appendChild(t);
+    });
+  } else if(words.length>maxW){
     const half=Math.ceil(words.length/2);
     const lines=[words.slice(0,half).join(' '), words.slice(half).join(' ')];
     lines.forEach((line,i)=>{
@@ -556,13 +573,12 @@ function drawNodes(node,g){
     });
   } else {
     const t=el('text',{
-      x:node.layer===0?p.x:labelX,
-      y:p.y,class:'node-label',
-      fill:node.layer===0?'var(--bg)':col,
-      'font-size':node.layer===0?12:fs,
+      x:labelX, y:p.y, class:'node-label',
+      fill:col,
+      'font-size':fs,
       'font-family':'IBM Plex Mono,monospace',
-      'font-weight':node.layer===0?'500':'400',
-      'text-anchor':node.layer===0?'middle':'start',
+      'font-weight':'400',
+      'text-anchor':'start',
       'dominant-baseline':'middle'
     });
     t.textContent=node.label; grp.appendChild(t);
