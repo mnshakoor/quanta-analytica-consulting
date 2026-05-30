@@ -227,11 +227,12 @@
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
-    transition: width 0.2s ease, opacity 0.2s ease;
+    transition: width 0.22s cubic-bezier(0.4,0,0.2,1), opacity 0.18s ease;
     overflow: hidden;
+    position: relative;
   }
 
-  .sidebar.collapsed { width: 0; opacity: 0; }
+  .sidebar.collapsed { width: 0; opacity: 0; pointer-events: none; }
 
   .sidebar-header {
     padding: 10px 14px 8px;
@@ -249,6 +250,12 @@
     color: var(--text-muted);
   }
 
+  .sidebar-header-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
   .file-count {
     font-family: var(--mono);
     font-size: 9px;
@@ -256,6 +263,71 @@
     padding: 2px 6px;
     border: 1px solid var(--border);
     border-radius: 2px;
+  }
+
+  /* Inline collapse button inside sidebar header */
+  .sidebar-collapse-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: all 0.12s;
+  }
+
+  .sidebar-collapse-btn:hover {
+    border-color: var(--border);
+    color: var(--gold);
+    background: rgba(200,169,110,0.06);
+  }
+
+  /* Collapsed sidebar — slim re-open strip */
+  .sidebar-expand-strip {
+    width: 0;
+    background: var(--obsidian-2);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 10px;
+    gap: 10px;
+    flex-shrink: 0;
+    overflow: hidden;
+    transition: width 0.22s cubic-bezier(0.4,0,0.2,1), opacity 0.18s ease;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .sidebar-expand-strip.visible {
+    width: 36px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .strip-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    color: var(--text-muted);
+    background: transparent;
+    transition: all 0.12s;
+  }
+
+  .strip-btn:hover {
+    border-color: var(--border-hover);
+    color: var(--gold);
+    background: rgba(200,169,110,0.06);
   }
 
   .file-list {
@@ -429,6 +501,24 @@
     text-align: center;
   }
 
+  /* Toolbar icon btn — smaller */
+  .toolbar-icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all 0.12s;
+  }
+
+  .toolbar-icon-btn:hover { border-color: var(--border); color: var(--gold); background: rgba(200,169,110,0.06); }
+  .toolbar-icon-btn.active { border-color: var(--border-hover); color: var(--gold); background: rgba(200,169,110,0.08); }
+
   .viewer-frame {
     flex: 1;
     position: relative;
@@ -497,6 +587,74 @@
     color: var(--gold);
   }
 
+  /* FULLSCREEN OVERLAY */
+  .fullscreen-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--obsidian);
+    flex-direction: column;
+  }
+
+  .fullscreen-overlay.active { display: flex; }
+
+  .fs-toolbar {
+    height: 40px;
+    background: var(--obsidian-2);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+
+  .fs-doc-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-secondary);
+    letter-spacing: 0.06em;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .fs-doc-title strong { color: var(--gold); font-weight: 500; }
+
+  .fs-frame { flex: 1; position: relative; overflow: hidden; }
+  .fs-frame iframe { width: 100%; height: 100%; border: none; display: block; transform-origin: top left; }
+
+  .fs-exit-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(200, 169, 110, 0.08);
+    border: 1px solid var(--border-hover);
+    color: var(--gold);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    padding: 5px 12px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+
+  .fs-exit-btn:hover { background: rgba(200,169,110,0.16); }
+
+  .fs-badge {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--gold-dim);
+    padding: 2px 7px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+  }
+
   /* STATUSBAR */
   .statusbar {
     height: 24px;
@@ -530,14 +688,9 @@
 
   .status-sep { color: var(--text-muted); opacity: 0.3; }
 
-  /* DRAG HIGHLIGHT */
-  body.drag-active .drop-overlay { display: flex; }
-
-  /* SCROLLBAR global */
   ::-webkit-scrollbar { width: 5px; height: 5px; }
   ::-webkit-scrollbar-track { background: var(--obsidian); }
   ::-webkit-scrollbar-thumb { background: var(--obsidian-4); border-radius: 2px; }
-
 </style>
 </head>
 <body>
@@ -570,13 +723,12 @@
 
   <div class="header-actions">
     <div class="status-pill" id="status-pill">READY</div>
-    <button class="icon-btn active" id="sidebar-toggle" title="Toggle sidebar" onclick="toggleSidebar()">
-      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
-        <rect x="1" y="2" width="6" height="12" rx="1" opacity="0.4"/>
-        <rect x="9" y="2" width="6" height="12" rx="1"/>
+    <button class="icon-btn" id="fullscreen-btn" title="Fullscreen (F)" onclick="enterFullscreen()">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+        <path d="M1 5V1h4M11 1h4v4M15 11v4h-4M5 15H1v-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </button>
-    <button class="icon-btn" title="Open in new window" onclick="openExternal()" id="ext-btn">
+    <button class="icon-btn" title="Open in new window" onclick="openExternal()">
       <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
         <path d="M7 3H3v10h10V9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M10 2h4v4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -587,10 +739,27 @@
 </header>
 
 <div class="main" id="main-area">
+
+  <!-- Slim expand strip shown when sidebar is collapsed -->
+  <div class="sidebar-expand-strip" id="expand-strip">
+    <button class="strip-btn" title="Expand panel" onclick="toggleSidebar()">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <path d="M4 2l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+
   <div class="sidebar" id="sidebar">
     <div class="sidebar-header">
       <span class="sidebar-label">DOCUMENTS</span>
-      <span class="file-count" id="file-count">0</span>
+      <div class="sidebar-header-right">
+        <span class="file-count" id="file-count">0</span>
+        <button class="sidebar-collapse-btn" title="Collapse panel" onclick="toggleSidebar()">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+            <path d="M6 1L2 5l4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
     </div>
     <div id="file-list-container">
       <div class="empty-state" id="sidebar-empty">
@@ -618,8 +787,15 @@
         <button class="zoom-btn" onclick="adjustZoom(-10)">-</button>
         <span class="zoom-val" id="zoom-val">100%</span>
         <button class="zoom-btn" onclick="adjustZoom(10)">+</button>
-        <button class="zoom-btn" onclick="resetZoom()" title="Reset zoom" style="font-size:9px;letter-spacing:0.05em;width:auto;padding:0 5px;font-family:var(--mono);">RST</button>
+        <button class="zoom-btn" onclick="resetZoom()" style="font-size:9px;letter-spacing:0.05em;width:auto;padding:0 5px;font-family:var(--mono);">RST</button>
       </div>
+      <div class="divider" style="height:18px;"></div>
+      <!-- Fullscreen button in toolbar -->
+      <button class="toolbar-icon-btn" title="Fullscreen (F)" onclick="enterFullscreen()">
+        <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+          <path d="M1 5V1h4M11 1h4v4M15 11v4h-4M5 15H1v-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
     </div>
 
     <div class="viewer-frame" id="viewer-frame">
@@ -655,7 +831,35 @@
   <div class="status-sep">|</div>
   <div class="status-item" id="status-zoom">ZOOM 100%</div>
   <div class="status-sep">|</div>
-  <div class="status-item">QA DOCUMENT VIEWER v1.0</div>
+  <div class="status-item" id="status-panel">PANEL OPEN</div>
+  <div class="status-sep">|</div>
+  <div class="status-item">QA DOCUMENT VIEWER v1.1</div>
+</div>
+
+<!-- FULLSCREEN OVERLAY -->
+<div class="fullscreen-overlay" id="fullscreen-overlay">
+  <div class="fs-toolbar">
+    <span class="fs-badge">FULLSCREEN</span>
+    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" style="margin:0 4px;">
+      <circle cx="5" cy="5" r="3" stroke="#c8a96e" stroke-width="1"/>
+    </svg>
+    <span class="fs-doc-title" id="fs-doc-title">No document</span>
+    <div class="zoom-controls" style="margin-right:8px;">
+      <button class="zoom-btn" onclick="adjustFsZoom(-10)">-</button>
+      <span class="zoom-val" id="fs-zoom-val">100%</span>
+      <button class="zoom-btn" onclick="adjustFsZoom(10)">+</button>
+      <button class="zoom-btn" onclick="resetFsZoom()" style="font-size:9px;letter-spacing:0.05em;width:auto;padding:0 5px;font-family:var(--mono);">RST</button>
+    </div>
+    <button class="fs-exit-btn" onclick="exitFullscreen()">
+      <svg width="11" height="11" viewBox="0 0 16 16" fill="none">
+        <path d="M5 1H1v4M1 11v4h4M11 15h4v-4M15 5V1h-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      EXIT FULLSCREEN
+    </button>
+  </div>
+  <div class="fs-frame" id="fs-frame">
+    <iframe id="fs-iframe" sandbox="allow-scripts allow-same-origin allow-popups allow-forms" title="Fullscreen document viewer"></iframe>
+  </div>
 </div>
 
 <script>
@@ -663,7 +867,9 @@
     files: [],
     activeIndex: -1,
     sidebarOpen: true,
-    zoom: 100
+    zoom: 100,
+    fsZoom: 100,
+    fullscreen: false
   };
 
   const $ = id => document.getElementById(id);
@@ -690,15 +896,17 @@
     $('status-count').textContent = count + (count === 1 ? ' FILE' : ' FILES');
     $('status-zoom').textContent = 'ZOOM ' + state.zoom + '%';
     $('zoom-val').textContent = state.zoom + '%';
+    $('status-panel').textContent = state.sidebarOpen ? 'PANEL OPEN' : 'PANEL CLOSED';
 
     const sidebar = $('sidebar');
-    const toggle = $('sidebar-toggle');
+    const strip = $('expand-strip');
+
     if (state.sidebarOpen) {
       sidebar.classList.remove('collapsed');
-      toggle.classList.add('active');
+      strip.classList.remove('visible');
     } else {
       sidebar.classList.add('collapsed');
-      toggle.classList.remove('active');
+      strip.classList.add('visible');
     }
 
     const fileList = $('file-list');
@@ -825,7 +1033,6 @@
 
   function applyZoom() {
     const iframe = $('viewer-iframe');
-    const frame = $('viewer-frame');
     const scale = state.zoom / 100;
     if (scale === 1) {
       iframe.style.transform = '';
@@ -839,12 +1046,62 @@
     }
   }
 
+  /* FULLSCREEN */
+  function enterFullscreen() {
+    if (state.activeIndex < 0 || !state.files[state.activeIndex]) return;
+    const f = state.files[state.activeIndex];
+    state.fullscreen = true;
+    state.fsZoom = 100;
+    $('fs-iframe').src = f.url;
+    $('fs-doc-title').innerHTML = `<strong>${f.name}</strong> &nbsp;·&nbsp; ${formatSize(f.size)}`;
+    $('fs-zoom-val').textContent = '100%';
+    $('fullscreen-overlay').classList.add('active');
+    document.documentElement.requestFullscreen && document.documentElement.requestFullscreen().catch(() => {});
+  }
+
+  function exitFullscreen() {
+    state.fullscreen = false;
+    $('fullscreen-overlay').classList.remove('active');
+    $('fs-iframe').src = '';
+    if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+  }
+
+  function adjustFsZoom(delta) {
+    state.fsZoom = Math.max(25, Math.min(200, state.fsZoom + delta));
+    applyFsZoom();
+  }
+
+  function resetFsZoom() {
+    state.fsZoom = 100;
+    applyFsZoom();
+  }
+
+  function applyFsZoom() {
+    const iframe = $('fs-iframe');
+    $('fs-zoom-val').textContent = state.fsZoom + '%';
+    const scale = state.fsZoom / 100;
+    if (scale === 1) {
+      iframe.style.transform = '';
+      iframe.style.width = '100%';
+      iframe.style.height = '100%';
+    } else {
+      iframe.style.transformOrigin = 'top left';
+      iframe.style.transform = `scale(${scale})`;
+      iframe.style.width = (100 / scale) + '%';
+      iframe.style.height = (100 / scale) + '%';
+    }
+  }
+
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement && state.fullscreen) exitFullscreen();
+  });
+
   function openExternal() {
     if (state.activeIndex < 0 || !state.files[state.activeIndex]) return;
     window.open(state.files[state.activeIndex].url, '_blank');
   }
 
-  // DRAG AND DROP
+  /* DRAG AND DROP */
   let dragCounter = 0;
 
   document.addEventListener('dragenter', e => {
@@ -853,7 +1110,7 @@
     if (dragCounter === 1) $('drop-overlay').classList.add('visible');
   });
 
-  document.addEventListener('dragleave', e => {
+  document.addEventListener('dragleave', () => {
     dragCounter--;
     if (dragCounter === 0) $('drop-overlay').classList.remove('visible');
   });
@@ -868,9 +1125,11 @@
     if (files.length) addFiles(files);
   });
 
-  // KEYBOARD
+  /* KEYBOARD */
   document.addEventListener('keydown', e => {
     if (e.target.tagName === 'INPUT') return;
+    if (e.key === 'Escape' && state.fullscreen) { exitFullscreen(); return; }
+    if (e.key === 'f' || e.key === 'F') { if (!state.fullscreen) enterFullscreen(); return; }
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
       if (state.activeIndex < state.files.length - 1) { state.activeIndex++; render(); }
     } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
@@ -879,11 +1138,11 @@
       e.preventDefault();
       $('file-input').click();
     } else if ((e.ctrlKey || e.metaKey) && e.key === '=') {
-      e.preventDefault(); adjustZoom(10);
+      e.preventDefault(); state.fullscreen ? adjustFsZoom(10) : adjustZoom(10);
     } else if ((e.ctrlKey || e.metaKey) && e.key === '-') {
-      e.preventDefault(); adjustZoom(-10);
+      e.preventDefault(); state.fullscreen ? adjustFsZoom(-10) : adjustZoom(-10);
     } else if ((e.ctrlKey || e.metaKey) && e.key === '0') {
-      e.preventDefault(); resetZoom();
+      e.preventDefault(); state.fullscreen ? resetFsZoom() : resetZoom();
     } else if (e.key === 'b') {
       toggleSidebar();
     }
