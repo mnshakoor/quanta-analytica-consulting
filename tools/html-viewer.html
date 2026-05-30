@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QA Document Viewer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --obsidian: #0a0c10;
+    --obsidian-2: #10131a;
+    --obsidian-3: #161b24;
+    --obsidian-4: #1e2530;
+    --gold: #c8a96e;
+    --gold-dim: #8a7048;
+    --gold-bright: #e0c080;
+    --text-primary: #e8e4dc;
+    --text-secondary: #8a9aaa;
+    --text-muted: #4a5a6a;
+    --border: rgba(200, 169, 110, 0.15);
+    --border-hover: rgba(200, 169, 110, 0.35);
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+    --radius: 4px;
+    --sidebar: 260px;
+    --header: 52px;
+  }
+
+  body {
+    background: var(--obsidian);
+    color: var(--text-primary);
+    font-family: var(--sans);
+    font-size: 14px;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* HEADER */
+  header {
+    height: var(--header);
+    background: var(--obsidian-2);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    gap: 12px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 10;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 8px;
+  }
+
+  .brand-mark {
+    width: 28px;
+    height: 28px;
+    border: 1.5px solid var(--gold);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .brand-mark svg { display: block; }
+
+  .brand-name {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    line-height: 1.3;
+  }
+
+  .brand-name span {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+  }
+
+  .divider { width: 1px; height: 24px; background: var(--border); flex-shrink: 0; }
+
+  .open-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(200, 169, 110, 0.08);
+    border: 1px solid var(--border-hover);
+    color: var(--gold);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    padding: 6px 14px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    white-space: nowrap;
+  }
+
+  .open-btn:hover {
+    background: rgba(200, 169, 110, 0.14);
+    border-color: var(--gold);
+  }
+
+  .open-btn svg { flex-shrink: 0; }
+
+  #file-input { display: none; }
+
+  .tab-bar {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    flex: 1;
+    overflow-x: auto;
+    scrollbar-width: none;
+    min-width: 0;
+  }
+
+  .tab-bar::-webkit-scrollbar { display: none; }
+
+  .tab {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px 5px 12px;
+    border-radius: var(--radius);
+    border: 1px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-secondary);
+    letter-spacing: 0.04em;
+    transition: all 0.12s;
+    max-width: 200px;
+    flex-shrink: 0;
+  }
+
+  .tab:hover { background: var(--obsidian-3); border-color: var(--border); color: var(--text-primary); }
+
+  .tab.active {
+    background: var(--obsidian-3);
+    border-color: var(--border-hover);
+    color: var(--gold);
+  }
+
+  .tab-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 130px;
+  }
+
+  .tab-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+    opacity: 0.4;
+    flex-shrink: 0;
+    transition: opacity 0.1s, background 0.1s;
+  }
+
+  .tab:hover .tab-close { opacity: 0.7; }
+  .tab-close:hover { opacity: 1 !important; background: rgba(200,169,110,0.15); }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  .icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all 0.12s;
+  }
+
+  .icon-btn:hover { border-color: var(--border); color: var(--text-primary); background: var(--obsidian-3); }
+  .icon-btn.active { border-color: var(--border-hover); color: var(--gold); background: rgba(200,169,110,0.06); }
+
+  .status-pill {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--gold-dim);
+    padding: 3px 8px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+  }
+
+  /* MAIN LAYOUT */
+  .main {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    width: var(--sidebar);
+    background: var(--obsidian-2);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    transition: width 0.2s ease, opacity 0.2s ease;
+    overflow: hidden;
+  }
+
+  .sidebar.collapsed { width: 0; opacity: 0; }
+
+  .sidebar-header {
+    padding: 10px 14px 8px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+
+  .sidebar-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+  }
+
+  .file-count {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--gold-dim);
+    padding: 2px 6px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+  }
+
+  .file-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 6px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--obsidian-4) transparent;
+  }
+
+  .file-list::-webkit-scrollbar { width: 4px; }
+  .file-list::-webkit-scrollbar-track { background: transparent; }
+  .file-list::-webkit-scrollbar-thumb { background: var(--obsidian-4); border-radius: 2px; }
+
+  .file-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.12s;
+    position: relative;
+  }
+
+  .file-item:hover { background: var(--obsidian-3); border-color: var(--border); }
+
+  .file-item.active {
+    background: rgba(200,169,110,0.06);
+    border-color: rgba(200,169,110,0.2);
+  }
+
+  .file-icon { color: var(--gold-dim); flex-shrink: 0; }
+  .file-item.active .file-icon { color: var(--gold); }
+
+  .file-info { flex: 1; min-width: 0; }
+
+  .file-name {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: 0.02em;
+  }
+
+  .file-item.active .file-name { color: var(--gold); }
+
+  .file-size {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--text-muted);
+    margin-top: 1px;
+  }
+
+  .file-remove {
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    color: var(--text-muted);
+    transition: opacity 0.1s, color 0.1s;
+    flex-shrink: 0;
+  }
+
+  .file-item:hover .file-remove { opacity: 1; }
+  .file-remove:hover { color: #e05050; }
+
+  .empty-state {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    gap: 10px;
+  }
+
+  .empty-icon { color: var(--text-muted); }
+
+  .empty-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  .empty-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .drop-zone-hint {
+    margin-top: 8px;
+    padding: 6px 12px;
+    border: 1px dashed var(--border-hover);
+    border-radius: var(--radius);
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--gold-dim);
+    letter-spacing: 0.08em;
+    text-align: center;
+  }
+
+  /* VIEWER */
+  .viewer-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .viewer-toolbar {
+    height: 36px;
+    background: var(--obsidian-2);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+
+  .doc-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-secondary);
+    letter-spacing: 0.06em;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .doc-title strong { color: var(--gold); font-weight: 500; }
+
+  .zoom-controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .zoom-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-family: var(--mono);
+    font-size: 12px;
+    transition: all 0.1s;
+  }
+
+  .zoom-btn:hover { border-color: var(--border); color: var(--text-primary); }
+
+  .zoom-val {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    min-width: 34px;
+    text-align: center;
+  }
+
+  .viewer-frame {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+  }
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+    transform-origin: top left;
+  }
+
+  .no-doc {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 2rem;
+  }
+
+  .no-doc-icon { color: var(--text-muted); }
+
+  .no-doc-title {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    text-align: center;
+  }
+
+  .no-doc-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.6;
+    max-width: 340px;
+  }
+
+  .drop-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 12, 16, 0.88);
+    border: 2px dashed var(--gold);
+    border-radius: 4px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    z-index: 100;
+    pointer-events: none;
+  }
+
+  .drop-overlay.visible { display: flex; }
+
+  .drop-overlay-icon { color: var(--gold); }
+
+  .drop-overlay-text {
+    font-family: var(--mono);
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+  }
+
+  /* STATUSBAR */
+  .statusbar {
+    height: 24px;
+    background: var(--obsidian-2);
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+
+  .status-item {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .status-item .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--gold-dim);
+  }
+
+  .status-item .dot.green { background: #4a9a6a; }
+
+  .status-sep { color: var(--text-muted); opacity: 0.3; }
+
+  /* DRAG HIGHLIGHT */
+  body.drag-active .drop-overlay { display: flex; }
+
+  /* SCROLLBAR global */
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: var(--obsidian); }
+  ::-webkit-scrollbar-thumb { background: var(--obsidian-4); border-radius: 2px; }
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="brand-mark">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <rect x="1" y="1" width="5" height="5" fill="#c8a96e" opacity="0.9"/>
+        <rect x="8" y="1" width="5" height="5" fill="#c8a96e" opacity="0.5"/>
+        <rect x="1" y="8" width="5" height="5" fill="#c8a96e" opacity="0.5"/>
+        <rect x="8" y="8" width="5" height="5" fill="#c8a96e" opacity="0.25"/>
+      </svg>
+    </div>
+    <div class="brand-name">QA VIEWER<span>DOCUMENT READER</span></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <button class="open-btn" onclick="document.getElementById('file-input').click()">
+    <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+      <path d="M2 12V4.5L6 2h8v10H2z" stroke="#c8a96e" stroke-width="1.2" stroke-linejoin="round"/>
+      <path d="M6 2v3H2" stroke="#c8a96e" stroke-width="1.2" stroke-linejoin="round"/>
+    </svg>
+    OPEN FILE
+  </button>
+  <input type="file" id="file-input" accept=".html,.htm" multiple>
+
+  <div class="tab-bar" id="tab-bar"></div>
+
+  <div class="header-actions">
+    <div class="status-pill" id="status-pill">READY</div>
+    <button class="icon-btn active" id="sidebar-toggle" title="Toggle sidebar" onclick="toggleSidebar()">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+        <rect x="1" y="2" width="6" height="12" rx="1" opacity="0.4"/>
+        <rect x="9" y="2" width="6" height="12" rx="1"/>
+      </svg>
+    </button>
+    <button class="icon-btn" title="Open in new window" onclick="openExternal()" id="ext-btn">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+        <path d="M7 3H3v10h10V9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10 2h4v4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M14 2L8 8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<div class="main" id="main-area">
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-label">DOCUMENTS</span>
+      <span class="file-count" id="file-count">0</span>
+    </div>
+    <div id="file-list-container">
+      <div class="empty-state" id="sidebar-empty">
+        <svg class="empty-icon" width="28" height="28" viewBox="0 0 24 24" fill="none">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M14 2v6h6" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M9 13h6M9 17h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span class="empty-title">NO FILES LOADED</span>
+        <span class="empty-sub">Open HTML files to begin reading</span>
+        <div class="drop-zone-hint">DROP FILES HERE</div>
+      </div>
+      <div class="file-list" id="file-list" style="display:none;"></div>
+    </div>
+  </div>
+
+  <div class="viewer-area" id="viewer-area">
+    <div class="viewer-toolbar" id="viewer-toolbar" style="display:none;">
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+        <path d="M14 2H6a2 2 0 00-2 2v.5" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M2 5.5h10v9H2z" stroke="#c8a96e" stroke-width="1.2" stroke-linejoin="round"/>
+      </svg>
+      <span class="doc-title" id="doc-title">No document</span>
+      <div class="zoom-controls">
+        <button class="zoom-btn" onclick="adjustZoom(-10)">-</button>
+        <span class="zoom-val" id="zoom-val">100%</span>
+        <button class="zoom-btn" onclick="adjustZoom(10)">+</button>
+        <button class="zoom-btn" onclick="resetZoom()" title="Reset zoom" style="font-size:9px;letter-spacing:0.05em;width:auto;padding:0 5px;font-family:var(--mono);">RST</button>
+      </div>
+    </div>
+
+    <div class="viewer-frame" id="viewer-frame">
+      <div class="no-doc" id="no-doc">
+        <svg class="no-doc-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <rect x="8" y="4" width="28" height="36" rx="2" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M28 4v10h8" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M15 22h18M15 28h12M15 34h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <div class="no-doc-title">NO DOCUMENT LOADED</div>
+        <div class="no-doc-sub">Open an HTML file using the button above, or drag and drop files anywhere in this window.</div>
+      </div>
+      <iframe id="viewer-iframe" style="display:none;" sandbox="allow-scripts allow-same-origin allow-popups allow-forms" title="Document viewer"></iframe>
+      <div class="drop-overlay" id="drop-overlay">
+        <svg class="drop-overlay-icon" width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <path d="M20 8v16M12 16l8-8 8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 28h24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M8 32h24" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.4"/>
+        </svg>
+        <div class="drop-overlay-text">RELEASE TO OPEN</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="statusbar">
+  <div class="status-item">
+    <div class="dot green" id="status-dot"></div>
+    <span id="status-text">READY</span>
+  </div>
+  <div class="status-sep">|</div>
+  <div class="status-item" id="status-count">0 FILES</div>
+  <div class="status-sep">|</div>
+  <div class="status-item" id="status-zoom">ZOOM 100%</div>
+  <div class="status-sep">|</div>
+  <div class="status-item">QA DOCUMENT VIEWER v1.0</div>
+</div>
+
+<script>
+  const state = {
+    files: [],
+    activeIndex: -1,
+    sidebarOpen: true,
+    zoom: 100
+  };
+
+  const $ = id => document.getElementById(id);
+
+  function formatSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+
+  function truncate(str, max) {
+    return str.length > max ? str.slice(0, max - 1) + '…' : str;
+  }
+
+  function updateStatus(text, active) {
+    $('status-text').textContent = text;
+    $('status-dot').className = 'dot' + (active ? ' green' : '');
+    $('status-pill').textContent = text;
+  }
+
+  function render() {
+    const count = state.files.length;
+    $('file-count').textContent = count;
+    $('status-count').textContent = count + (count === 1 ? ' FILE' : ' FILES');
+    $('status-zoom').textContent = 'ZOOM ' + state.zoom + '%';
+    $('zoom-val').textContent = state.zoom + '%';
+
+    const sidebar = $('sidebar');
+    const toggle = $('sidebar-toggle');
+    if (state.sidebarOpen) {
+      sidebar.classList.remove('collapsed');
+      toggle.classList.add('active');
+    } else {
+      sidebar.classList.add('collapsed');
+      toggle.classList.remove('active');
+    }
+
+    const fileList = $('file-list');
+    const sidebarEmpty = $('sidebar-empty');
+    const tabBar = $('tab-bar');
+    const iframe = $('viewer-iframe');
+    const noDoc = $('no-doc');
+    const toolbar = $('viewer-toolbar');
+
+    if (count === 0) {
+      fileList.style.display = 'none';
+      sidebarEmpty.style.display = 'flex';
+      tabBar.innerHTML = '';
+      iframe.style.display = 'none';
+      noDoc.style.display = 'flex';
+      toolbar.style.display = 'none';
+      updateStatus('READY', false);
+      return;
+    }
+
+    sidebarEmpty.style.display = 'none';
+    fileList.style.display = 'block';
+
+    fileList.innerHTML = state.files.map((f, i) => `
+      <div class="file-item ${i === state.activeIndex ? 'active' : ''}" onclick="setActive(${i})">
+        <svg class="file-icon" width="14" height="14" viewBox="0 0 16 16" fill="none">
+          <path d="M10 1H3a1 1 0 00-1 1v12a1 1 0 001 1h10a1 1 0 001-1V5L10 1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+          <path d="M10 1v4h4" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+        </svg>
+        <div class="file-info">
+          <div class="file-name">${truncate(f.name, 28)}</div>
+          <div class="file-size">${formatSize(f.size)}</div>
+        </div>
+        <div class="file-remove" onclick="removeFile(event, ${i})" title="Remove">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2 2l8 8M10 2L2 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+    `).join('');
+
+    tabBar.innerHTML = state.files.map((f, i) => `
+      <div class="tab ${i === state.activeIndex ? 'active' : ''}" onclick="setActive(${i})">
+        <span class="tab-name">${truncate(f.name, 20)}</span>
+        <div class="tab-close" onclick="removeFile(event, ${i})" title="Close">
+          <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+            <path d="M1 1l6 6M7 1L1 7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+    `).join('');
+
+    if (state.activeIndex >= 0 && state.activeIndex < count) {
+      const f = state.files[state.activeIndex];
+      noDoc.style.display = 'none';
+      iframe.style.display = 'block';
+      toolbar.style.display = 'flex';
+      iframe.src = f.url;
+      applyZoom();
+      $('doc-title').innerHTML = `<strong>${f.name}</strong> &nbsp;·&nbsp; ${formatSize(f.size)}`;
+      updateStatus('VIEWING', true);
+    } else {
+      iframe.style.display = 'none';
+      noDoc.style.display = 'flex';
+      toolbar.style.display = 'none';
+      updateStatus('READY', false);
+    }
+  }
+
+  function setActive(i) {
+    state.activeIndex = i;
+    render();
+  }
+
+  function removeFile(e, i) {
+    e.stopPropagation();
+    const f = state.files[i];
+    URL.revokeObjectURL(f.url);
+    state.files.splice(i, 1);
+    if (state.activeIndex >= state.files.length) {
+      state.activeIndex = state.files.length - 1;
+    } else if (state.activeIndex === i && state.files.length > 0) {
+      state.activeIndex = Math.max(0, i - 1);
+    }
+    render();
+  }
+
+  function addFiles(fileArr) {
+    let added = 0;
+    for (const file of fileArr) {
+      if (!file.name.match(/\.html?$/i)) continue;
+      const url = URL.createObjectURL(file);
+      state.files.push({ name: file.name, size: file.size, url });
+      added++;
+    }
+    if (added > 0 && state.activeIndex < 0) state.activeIndex = 0;
+    else if (added > 0) state.activeIndex = state.files.length - 1;
+    render();
+  }
+
+  $('file-input').addEventListener('change', e => {
+    addFiles(Array.from(e.target.files));
+    e.target.value = '';
+  });
+
+  function toggleSidebar() {
+    state.sidebarOpen = !state.sidebarOpen;
+    render();
+  }
+
+  function adjustZoom(delta) {
+    state.zoom = Math.max(25, Math.min(200, state.zoom + delta));
+    applyZoom();
+    $('zoom-val').textContent = state.zoom + '%';
+    $('status-zoom').textContent = 'ZOOM ' + state.zoom + '%';
+  }
+
+  function resetZoom() {
+    state.zoom = 100;
+    applyZoom();
+    $('zoom-val').textContent = '100%';
+    $('status-zoom').textContent = 'ZOOM 100%';
+  }
+
+  function applyZoom() {
+    const iframe = $('viewer-iframe');
+    const frame = $('viewer-frame');
+    const scale = state.zoom / 100;
+    if (scale === 1) {
+      iframe.style.transform = '';
+      iframe.style.width = '100%';
+      iframe.style.height = '100%';
+    } else {
+      iframe.style.transformOrigin = 'top left';
+      iframe.style.transform = `scale(${scale})`;
+      iframe.style.width = (100 / scale) + '%';
+      iframe.style.height = (100 / scale) + '%';
+    }
+  }
+
+  function openExternal() {
+    if (state.activeIndex < 0 || !state.files[state.activeIndex]) return;
+    window.open(state.files[state.activeIndex].url, '_blank');
+  }
+
+  // DRAG AND DROP
+  let dragCounter = 0;
+
+  document.addEventListener('dragenter', e => {
+    e.preventDefault();
+    dragCounter++;
+    if (dragCounter === 1) $('drop-overlay').classList.add('visible');
+  });
+
+  document.addEventListener('dragleave', e => {
+    dragCounter--;
+    if (dragCounter === 0) $('drop-overlay').classList.remove('visible');
+  });
+
+  document.addEventListener('dragover', e => e.preventDefault());
+
+  document.addEventListener('drop', e => {
+    e.preventDefault();
+    dragCounter = 0;
+    $('drop-overlay').classList.remove('visible');
+    const files = Array.from(e.dataTransfer.files).filter(f => f.name.match(/\.html?$/i));
+    if (files.length) addFiles(files);
+  });
+
+  // KEYBOARD
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT') return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      if (state.activeIndex < state.files.length - 1) { state.activeIndex++; render(); }
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      if (state.activeIndex > 0) { state.activeIndex--; render(); }
+    } else if ((e.ctrlKey || e.metaKey) && e.key === 'o') {
+      e.preventDefault();
+      $('file-input').click();
+    } else if ((e.ctrlKey || e.metaKey) && e.key === '=') {
+      e.preventDefault(); adjustZoom(10);
+    } else if ((e.ctrlKey || e.metaKey) && e.key === '-') {
+      e.preventDefault(); adjustZoom(-10);
+    } else if ((e.ctrlKey || e.metaKey) && e.key === '0') {
+      e.preventDefault(); resetZoom();
+    } else if (e.key === 'b') {
+      toggleSidebar();
+    }
+  });
+
+  render();
+</script>
+</body>
+</html>
