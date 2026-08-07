@@ -1,0 +1,1323 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PU-FEAM is a QAP-compatible method for assessing political civil unrest, flashpoint risk, escalation pathways, triggers, violence, and institutional resilience over rolling 6- to 12-month periods.">
+  <meta name="author" content="Quanta Analytica, MNS Consulting">
+  <meta name="theme-color" content="#0a0b0d">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Political Unrest Flashpoint and Escalation Assessment Method | PU-FEAM">
+  <meta property="og:description" content="A structured warning model for identifying political flashpoints, escalation pathways, violence feedback loops, and resilience factors.">
+  <title>PU-FEAM | Political Unrest Flashpoint and Escalation Assessment Method</title>
+  <style>
+    :root {
+      --bg: #08090b;
+      --bg-soft: #0e1013;
+      --panel: #12151a;
+      --panel-2: #171b21;
+      --ink: #f3f0e8;
+      --muted: #aaa69b;
+      --line: rgba(255,255,255,.11);
+      --gold: #d6a62f;
+      --gold-light: #f0c85c;
+      --gold-dark: #8e6711;
+      --danger: #d76b56;
+      --max: 1320px;
+      --content: 850px;
+      --radius: 16px;
+      --shadow: 0 24px 70px rgba(0,0,0,.28);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 83% 6%, rgba(214,166,47,.13), transparent 28rem),
+        linear-gradient(180deg, #07080a 0%, #0b0d10 36%, #08090b 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.72;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--gold-light); text-decoration-thickness: 1px; text-underline-offset: .2em; }
+    a:hover { color: #fff0b3; }
+    .skip-link { position: fixed; left: 1rem; top: -5rem; z-index: 9999; padding: .7rem 1rem; color: #08090b; background: var(--gold-light); border-radius: 8px; font-weight: 800; }
+    .skip-link:focus { top: 1rem; }
+    .reading-progress { position: fixed; inset: 0 auto auto 0; z-index: 1001; width: 0; height: 3px; background: linear-gradient(90deg, var(--gold-dark), var(--gold-light)); }
+    .site-header { position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--line); background: rgba(8,9,11,.88); backdrop-filter: blur(18px); }
+    .header-inner { width: min(calc(100% - 2rem), var(--max)); margin: auto; min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .brand { display: inline-flex; align-items: center; gap: .78rem; color: var(--ink); text-decoration: none; letter-spacing: .05em; font-weight: 800; }
+    .brand-mark { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid rgba(240,200,92,.55); transform: rotate(45deg); }
+    .brand-mark span { transform: rotate(-45deg); color: var(--gold-light); font-size: .7rem; }
+    .brand small { display: block; color: var(--muted); font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 650; }
+    .primary-nav { display: flex; align-items: center; gap: 1.1rem; font-size: .87rem; }
+    .primary-nav a { color: #dedad0; text-decoration: none; }
+    .primary-nav a:hover { color: var(--gold-light); }
+    .nav-cta { padding: .58rem .85rem; border: 1px solid rgba(240,200,92,.48); border-radius: 999px; }
+    .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+    .hero:before { content: ""; position: absolute; inset: 0; opacity: .21; background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 52px 52px; mask-image: linear-gradient(to bottom, black, transparent 86%); }
+    .hero-inner { position: relative; width: min(calc(100% - 2rem), var(--max)); margin: auto; min-height: 620px; display: grid; align-items: center; padding: 6.5rem 0 5.5rem; }
+    .hero-copy { max-width: 980px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: .65rem; margin-bottom: 1.35rem; color: var(--gold-light); font-size: .75rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 800; }
+    .eyebrow:before { content: ""; width: 42px; height: 1px; background: var(--gold); }
+    h1 { margin: 0; max-width: 1040px; font-family: Georgia, "Times New Roman", serif; font-weight: 500; font-size: clamp(3rem, 7vw, 6.7rem); line-height: .96; letter-spacing: -.045em; }
+    .hero-accent { color: var(--gold-light); }
+    .dek { max-width: 790px; margin: 2rem 0 0; color: #c9c5ba; font-size: clamp(1.05rem, 1.8vw, 1.35rem); line-height: 1.65; }
+    .hero-meta { margin-top: 2.1rem; display: flex; flex-wrap: wrap; gap: .7rem; }
+    .hero-meta span { padding: .48rem .72rem; color: #d9d4c7; background: rgba(255,255,255,.04); border: 1px solid var(--line); border-radius: 999px; font-size: .75rem; letter-spacing: .04em; }
+    .hero-actions { margin-top: 2.3rem; display: flex; flex-wrap: wrap; gap: .8rem; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: .75rem 1rem; border-radius: 8px; text-decoration: none; font-weight: 800; font-size: .86rem; letter-spacing: .02em; cursor: pointer; }
+    .button-primary { color: #0a0b0d; background: var(--gold-light); border: 1px solid var(--gold-light); }
+    .button-primary:hover { color: #0a0b0d; background: #ffe186; }
+    .button-secondary { color: var(--ink); background: transparent; border: 1px solid var(--line); }
+    .button-secondary:hover { border-color: rgba(240,200,92,.55); }
+    .main-grid { width: min(calc(100% - 2rem), var(--max)); margin: auto; display: grid; grid-template-columns: 270px minmax(0, var(--content)); gap: clamp(2.5rem, 6vw, 7rem); justify-content: center; padding: 5rem 0 8rem; }
+    .toc { position: sticky; top: 102px; align-self: start; max-height: calc(100vh - 130px); overflow: auto; padding: 1rem .25rem 1rem 0; scrollbar-width: thin; }
+    .toc-title { margin-bottom: .9rem; color: var(--gold-light); font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; font-weight: 850; }
+    .toc-list { margin: 0; padding: 0; list-style: none; border-left: 1px solid var(--line); }
+    .toc-list li { margin: 0; }
+    .toc-list a { display: block; padding: .36rem .25rem .36rem .8rem; color: #8f8d86; text-decoration: none; font-size: .76rem; line-height: 1.38; border-left: 1px solid transparent; transform: translateX(-1px); }
+    .toc-list a:hover, .toc-list a.active { color: var(--gold-light); border-left-color: var(--gold-light); }
+    .toc-sub a { padding-left: 1.4rem; font-size: .71rem; }
+    article { min-width: 0; }
+    article > *:first-child { margin-top: 0; }
+    article h2 { margin: 0 0 1.25rem; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2rem, 4vw, 3.3rem); line-height: 1.08; font-weight: 500; letter-spacing: -.03em; }
+    article h3 { margin: 3.2rem 0 .7rem; padding-top: .3rem; font-size: clamp(1.25rem, 2.3vw, 1.65rem); line-height: 1.28; letter-spacing: -.015em; }
+    article h4 { margin-top: 2rem; }
+    article p, article li { color: #c7c3b9; }
+    article strong { color: #f7f3e8; }
+    article ul, article ol { padding-left: 1.25rem; }
+    article li { margin: .38rem 0; }
+    article li::marker { color: var(--gold); }
+    .section-index { margin-top: 6rem; margin-bottom: .55rem; color: var(--gold); font-size: .72rem; letter-spacing: .22em; font-weight: 850; }
+    article > .section-index:first-child { margin-top: 0; }
+    blockquote { margin: 1.8rem 0; padding: 1.15rem 1.35rem; background: rgba(214,166,47,.07); border-left: 3px solid var(--gold); border-radius: 0 12px 12px 0; }
+    blockquote p { margin: 0; color: #eee8d9; }
+    .formula-card { border: 1px solid rgba(214,166,47,.22); border-left: 3px solid var(--gold-light); background: linear-gradient(135deg, rgba(214,166,47,.12), rgba(255,255,255,.025)); box-shadow: var(--shadow); }
+    .formula-card strong { color: var(--gold-light); }
+    .weight-chip { display: inline-flex; margin: 0 0 .9rem; padding: .28rem .6rem; color: var(--gold-light); background: rgba(214,166,47,.08); border: 1px solid rgba(214,166,47,.24); border-radius: 999px; font-size: .74rem; font-weight: 850; letter-spacing: .06em; text-transform: uppercase; }
+    .example-judgment { padding: 1.2rem 1.25rem; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; }
+    .table-scroll { width: 100%; margin: 1.7rem 0 2.2rem; overflow-x: auto; border: 1px solid var(--line); border-radius: 13px; box-shadow: 0 16px 50px rgba(0,0,0,.13); }
+    table { width: 100%; min-width: 620px; border-collapse: collapse; background: rgba(17,20,24,.82); font-size: .88rem; }
+    th, td { padding: .85rem .95rem; vertical-align: top; text-align: left; border-bottom: 1px solid var(--line); }
+    th { color: var(--gold-light); background: rgba(214,166,47,.075); font-size: .72rem; letter-spacing: .07em; text-transform: uppercase; }
+    tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: rgba(255,255,255,.025); }
+    .citation { margin-left: .12em; font-size: .72em; }
+    .citation a { color: var(--gold-light); text-decoration: none; }
+    .reference-entry { position: relative; padding: 1rem 3rem 1rem 0; border-bottom: 1px solid var(--line); color: #bdb9af; font-size: .9rem; overflow-wrap: anywhere; }
+    .reference-entry a { overflow-wrap: anywhere; }
+    .ref-number { color: var(--gold-light); font-weight: 850; }
+    .ref-back { position: absolute; right: .5rem; top: 1rem; color: var(--muted); text-decoration: none; }
+    .method-note { width: min(calc(100% - 2rem), var(--max)); margin: 0 auto 5rem; padding: 1.4rem 1.5rem; display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; background: linear-gradient(135deg, rgba(214,166,47,.11), rgba(255,255,255,.025)); border: 1px solid rgba(214,166,47,.24); border-radius: var(--radius); }
+    .method-note .symbol { width: 34px; height: 34px; display: grid; place-items: center; color: #0a0b0d; background: var(--gold-light); border-radius: 50%; font-weight: 900; }
+    .method-note p { margin: 0; color: #d1cdc1; }
+    .site-footer { border-top: 1px solid var(--line); background: #07080a; }
+    .footer-inner { width: min(calc(100% - 2rem), var(--max)); margin: auto; padding: 3rem 0; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.2rem; color: #817f79; font-size: .78rem; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .footer-links a { color: #aaa69b; text-decoration: none; }
+    .mobile-toc { display: none; width: min(calc(100% - 2rem), var(--content)); margin: 2rem auto 0; }
+    .mobile-toc details { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; }
+    .mobile-toc summary { cursor: pointer; padding: .9rem 1rem; color: var(--gold-light); font-weight: 800; }
+    .mobile-toc .toc-list { margin: 0 1rem 1rem; }
+    :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+    @media (max-width: 980px) {
+      .primary-nav a:not(.nav-cta) { display: none; }
+      .hero-inner { min-height: 560px; padding-top: 5rem; }
+      .main-grid { display: block; padding-top: 3.5rem; }
+      .toc { display: none; }
+      .mobile-toc { display: block; }
+      article { max-width: var(--content); margin: auto; }
+    }
+    @media (max-width: 640px) {
+      .header-inner { min-height: 64px; }
+      .brand-text { font-size: .82rem; }
+      .nav-cta { display: none; }
+      .hero-inner { min-height: auto; padding: 5rem 0 4rem; }
+      h1 { font-size: clamp(2.75rem, 14vw, 4.3rem); }
+      .hero-meta { gap: .45rem; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .button { width: 100%; }
+      .main-grid { padding-bottom: 5rem; }
+      .section-index { margin-top: 4.8rem; }
+      article h2 { font-size: 2.15rem; }
+      article p, article li { font-size: .96rem; }
+      .method-note { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; }
+    }
+    @media print {
+      :root { --ink: #111; --muted: #444; --line: #ccc; }
+      body { color: #111; background: #fff; font-size: 10.5pt; }
+      .site-header, .reading-progress, .hero-actions, .toc, .mobile-toc, .method-note, .footer-links { display: none !important; }
+      .hero { border-bottom: 2px solid #a77d15; }
+      .hero:before { display: none; }
+      .hero-inner { min-height: auto; padding: 1.2in 0 .55in; }
+      .eyebrow, .hero-accent, .section-index, .weight-chip, th, .ref-number, a { color: #7d5c0e !important; }
+      h1 { color: #111; font-size: 38pt; }
+      .dek, article p, article li, .reference-entry { color: #222; }
+      .hero-meta span { color: #333; border-color: #bbb; }
+      .main-grid { display: block; width: 100%; padding: .45in 0; }
+      article { max-width: none; }
+      article h2 { break-after: avoid; color: #111; }
+      article h3 { break-after: avoid; color: #111; }
+      .table-scroll { overflow: visible; box-shadow: none; border-color: #bbb; break-inside: avoid; }
+      table { min-width: 0; background: #fff; }
+      th { background: #eee; }
+      blockquote, .formula-card, .example-judgment { background: #f7f4ea; box-shadow: none; }
+      .site-footer { background: #fff; border-top: 1px solid #bbb; }
+      .footer-inner { color: #444; padding: .3in 0; }
+      a { text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/" aria-label="Quanta Analytica home">
+        <span class="brand-mark" aria-hidden="true"><span>QA</span></span>
+        <span class="brand-text">QUANTA ANALYTICA<small>MNS Consulting</small></span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <a href="/about.html">About</a>
+        <a href="/frameworks.html">Frameworks</a>
+        <a href="/qa-process.html">QA Process™</a>
+        <a href="/reports/">Reports</a>
+        <a class="nav-cta" href="/contact.html">Connect</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <div class="eyebrow">Analytic Methodology · Political Stability</div>
+          <h1 id="page-title">Political Unrest <span class="hero-accent">Flashpoint</span> and Escalation Assessment Method</h1>
+          <p class="dek">A QAP-compatible warning model for identifying political flashpoints, escalation pathways, violence feedback loops, and resilience factors using documented event patterns over rolling 6- to 12-month periods.</p>
+          <div class="hero-meta" aria-label="Method attributes">
+            <span>PU-FEAM</span>
+            <span>10 Indicator Domains</span>
+            <span>6 Warning Levels</span>
+            <span>Time-Series Analysis</span>
+            <span>Human-in-the-Loop</span>
+          </div>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#executive-summary">Read the Method</a>
+            <a class="button button-secondary" href="/qa-process.html">View the QA Process™</a>
+            <button class="button button-secondary" type="button" onclick="window.print()">Print / Save PDF</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="mobile-toc">
+      <details>
+        <summary>On this page</summary>
+        <ol class="toc-list">
+<li class="toc-main"><a href="#executive-summary">Executive Summary</a></li>
+<li class="toc-main"><a href="#i-analytic-purpose">I. Analytic Purpose</a></li>
+<li class="toc-main"><a href="#ii-core-analytic-proposition">II. Core Analytic Proposition</a></li>
+<li class="toc-main"><a href="#iii-assessment-structure">III. Assessment Structure</a></li>
+<li class="toc-main"><a href="#iv-indicator-architecture">IV. Indicator Architecture</a></li>
+<li class="toc-sub"><a href="#domain-1-public-grievance-and-legitimacy-crisis">Domain 1: Public Grievance and Legitimacy Crisis</a></li>
+<li class="toc-sub"><a href="#domain-2-protest-frequency-scale-and-geographic-diffusion">Domain 2: Protest Frequency, Scale, and Geographic Diffusion</a></li>
+<li class="toc-sub"><a href="#domain-3-opposition-organization-and-mobilization-capacity">Domain 3: Opposition Organization and Mobilization Capacity</a></li>
+<li class="toc-sub"><a href="#domain-4-political-discourse-polarization-and-threat-narratives">Domain 4: Political Discourse, Polarization, and Threat Narratives</a></li>
+<li class="toc-sub"><a href="#domain-5-state-suppression-and-coercive-escalation">Domain 5: State Suppression and Coercive Escalation</a></li>
+<li class="toc-sub"><a href="#domain-6-protester-and-opposition-tactical-escalation">Domain 6: Protester and Opposition Tactical Escalation</a></li>
+<li class="toc-sub"><a href="#domain-7-security-force-cohesion-and-behavior">Domain 7: Security-Force Cohesion and Behavior</a></li>
+<li class="toc-sub"><a href="#domain-8-elite-fragmentation-and-institutional-breakdown">Domain 8: Elite Fragmentation and Institutional Breakdown</a></li>
+<li class="toc-sub"><a href="#domain-9-information-environment-and-sentiment-acceleration">Domain 9: Information Environment and Sentiment Acceleration</a></li>
+<li class="toc-sub"><a href="#domain-10-trigger-exposure-and-flashpoint-proximity">Domain 10: Trigger Exposure and Flashpoint Proximity</a></li>
+<li class="toc-main"><a href="#v-baseline-weighted-score">V. Baseline Weighted Score</a></li>
+<li class="toc-main"><a href="#vi-temporal-analysis">VI. Temporal Analysis</a></li>
+<li class="toc-sub"><a href="#a-rolling-observation-windows">A. Rolling Observation Windows</a></li>
+<li class="toc-sub"><a href="#b-time-weighting">B. Time Weighting</a></li>
+<li class="toc-main"><a href="#vii-trend-and-acceleration-assessment">VII. Trend and Acceleration Assessment</a></li>
+<li class="toc-sub"><a href="#acceleration-test">Acceleration Test</a></li>
+<li class="toc-main"><a href="#viii-flashpoint-trigger-modifier">VIII. Flashpoint Trigger Modifier</a></li>
+<li class="toc-main"><a href="#ix-containment-and-resilience-modifier">IX. Containment and Resilience Modifier</a></li>
+<li class="toc-main"><a href="#x-final-pu-feam-score">X. Final PU-FEAM Score</a></li>
+<li class="toc-main"><a href="#xi-mandatory-escalation-overrides">XI. Mandatory Escalation Overrides</a></li>
+<li class="toc-sub"><a href="#automatic-level-4-minimum">Automatic Level 4 Minimum</a></li>
+<li class="toc-sub"><a href="#automatic-level-5-minimum">Automatic Level 5 Minimum</a></li>
+<li class="toc-sub"><a href="#automatic-level-6">Automatic Level 6</a></li>
+<li class="toc-main"><a href="#xii-event-coding-template">XII. Event Coding Template</a></li>
+<li class="toc-main"><a href="#xiii-pattern-of-behavior-analysis">XIII. Pattern-of-Behavior Analysis</a></li>
+<li class="toc-main"><a href="#xiv-interaction-matrix">XIV. Interaction Matrix</a></li>
+<li class="toc-main"><a href="#xv-source-and-evidence-requirements">XV. Source and Evidence Requirements</a></li>
+<li class="toc-main"><a href="#xvi-analytic-confidence">XVI. Analytic Confidence</a></li>
+<li class="toc-main"><a href="#xvii-qap-integration">XVII. QAP Integration</a></li>
+<li class="toc-sub"><a href="#1-problem-statement">1. Problem Statement</a></li>
+<li class="toc-sub"><a href="#2-key-intelligence-questions">2. Key Intelligence Questions</a></li>
+<li class="toc-sub"><a href="#3-key-assumptions-check">3. Key Assumptions Check</a></li>
+<li class="toc-sub"><a href="#4-analysis-of-competing-hypotheses">4. Analysis of Competing Hypotheses</a></li>
+<li class="toc-sub"><a href="#5-indicators-and-warnings">5. Indicators and Warnings</a></li>
+<li class="toc-sub"><a href="#6-scenario-development">6. Scenario Development</a></li>
+<li class="toc-sub"><a href="#7-key-judgments">7. Key Judgments</a></li>
+<li class="toc-main"><a href="#xviii-recommended-analytic-output">XVIII. Recommended Analytic Output</a></li>
+<li class="toc-sub"><a href="#bluf">BLUF</a></li>
+<li class="toc-sub"><a href="#dashboard">Dashboard</a></li>
+<li class="toc-sub"><a href="#supporting-components">Supporting Components</a></li>
+<li class="toc-main"><a href="#xix-operational-principle">XIX. Operational Principle</a></li>
+<li class="toc-main"><a href="#references">References</a></li>
+</ol>
+      </details>
+    </div>
+
+    <div class="main-grid">
+      <aside class="toc" aria-label="Table of contents">
+        <div class="toc-title">On this page</div>
+        <ol class="toc-list">
+<li class="toc-main"><a href="#executive-summary">Executive Summary</a></li>
+<li class="toc-main"><a href="#i-analytic-purpose">I. Analytic Purpose</a></li>
+<li class="toc-main"><a href="#ii-core-analytic-proposition">II. Core Analytic Proposition</a></li>
+<li class="toc-main"><a href="#iii-assessment-structure">III. Assessment Structure</a></li>
+<li class="toc-main"><a href="#iv-indicator-architecture">IV. Indicator Architecture</a></li>
+<li class="toc-sub"><a href="#domain-1-public-grievance-and-legitimacy-crisis">Domain 1: Public Grievance and Legitimacy Crisis</a></li>
+<li class="toc-sub"><a href="#domain-2-protest-frequency-scale-and-geographic-diffusion">Domain 2: Protest Frequency, Scale, and Geographic Diffusion</a></li>
+<li class="toc-sub"><a href="#domain-3-opposition-organization-and-mobilization-capacity">Domain 3: Opposition Organization and Mobilization Capacity</a></li>
+<li class="toc-sub"><a href="#domain-4-political-discourse-polarization-and-threat-narratives">Domain 4: Political Discourse, Polarization, and Threat Narratives</a></li>
+<li class="toc-sub"><a href="#domain-5-state-suppression-and-coercive-escalation">Domain 5: State Suppression and Coercive Escalation</a></li>
+<li class="toc-sub"><a href="#domain-6-protester-and-opposition-tactical-escalation">Domain 6: Protester and Opposition Tactical Escalation</a></li>
+<li class="toc-sub"><a href="#domain-7-security-force-cohesion-and-behavior">Domain 7: Security-Force Cohesion and Behavior</a></li>
+<li class="toc-sub"><a href="#domain-8-elite-fragmentation-and-institutional-breakdown">Domain 8: Elite Fragmentation and Institutional Breakdown</a></li>
+<li class="toc-sub"><a href="#domain-9-information-environment-and-sentiment-acceleration">Domain 9: Information Environment and Sentiment Acceleration</a></li>
+<li class="toc-sub"><a href="#domain-10-trigger-exposure-and-flashpoint-proximity">Domain 10: Trigger Exposure and Flashpoint Proximity</a></li>
+<li class="toc-main"><a href="#v-baseline-weighted-score">V. Baseline Weighted Score</a></li>
+<li class="toc-main"><a href="#vi-temporal-analysis">VI. Temporal Analysis</a></li>
+<li class="toc-sub"><a href="#a-rolling-observation-windows">A. Rolling Observation Windows</a></li>
+<li class="toc-sub"><a href="#b-time-weighting">B. Time Weighting</a></li>
+<li class="toc-main"><a href="#vii-trend-and-acceleration-assessment">VII. Trend and Acceleration Assessment</a></li>
+<li class="toc-sub"><a href="#acceleration-test">Acceleration Test</a></li>
+<li class="toc-main"><a href="#viii-flashpoint-trigger-modifier">VIII. Flashpoint Trigger Modifier</a></li>
+<li class="toc-main"><a href="#ix-containment-and-resilience-modifier">IX. Containment and Resilience Modifier</a></li>
+<li class="toc-main"><a href="#x-final-pu-feam-score">X. Final PU-FEAM Score</a></li>
+<li class="toc-main"><a href="#xi-mandatory-escalation-overrides">XI. Mandatory Escalation Overrides</a></li>
+<li class="toc-sub"><a href="#automatic-level-4-minimum">Automatic Level 4 Minimum</a></li>
+<li class="toc-sub"><a href="#automatic-level-5-minimum">Automatic Level 5 Minimum</a></li>
+<li class="toc-sub"><a href="#automatic-level-6">Automatic Level 6</a></li>
+<li class="toc-main"><a href="#xii-event-coding-template">XII. Event Coding Template</a></li>
+<li class="toc-main"><a href="#xiii-pattern-of-behavior-analysis">XIII. Pattern-of-Behavior Analysis</a></li>
+<li class="toc-main"><a href="#xiv-interaction-matrix">XIV. Interaction Matrix</a></li>
+<li class="toc-main"><a href="#xv-source-and-evidence-requirements">XV. Source and Evidence Requirements</a></li>
+<li class="toc-main"><a href="#xvi-analytic-confidence">XVI. Analytic Confidence</a></li>
+<li class="toc-main"><a href="#xvii-qap-integration">XVII. QAP Integration</a></li>
+<li class="toc-sub"><a href="#1-problem-statement">1. Problem Statement</a></li>
+<li class="toc-sub"><a href="#2-key-intelligence-questions">2. Key Intelligence Questions</a></li>
+<li class="toc-sub"><a href="#3-key-assumptions-check">3. Key Assumptions Check</a></li>
+<li class="toc-sub"><a href="#4-analysis-of-competing-hypotheses">4. Analysis of Competing Hypotheses</a></li>
+<li class="toc-sub"><a href="#5-indicators-and-warnings">5. Indicators and Warnings</a></li>
+<li class="toc-sub"><a href="#6-scenario-development">6. Scenario Development</a></li>
+<li class="toc-sub"><a href="#7-key-judgments">7. Key Judgments</a></li>
+<li class="toc-main"><a href="#xviii-recommended-analytic-output">XVIII. Recommended Analytic Output</a></li>
+<li class="toc-sub"><a href="#bluf">BLUF</a></li>
+<li class="toc-sub"><a href="#dashboard">Dashboard</a></li>
+<li class="toc-sub"><a href="#supporting-components">Supporting Components</a></li>
+<li class="toc-main"><a href="#xix-operational-principle">XIX. Operational Principle</a></li>
+<li class="toc-main"><a href="#references">References</a></li>
+</ol>
+      </aside>
+      <article>
+        <div aria-hidden="true" class="section-index">01</div><h2 id="executive-summary">Executive Summary</h2>
+<p>The Political Unrest Flashpoint and Escalation Assessment Method (PU-FEAM) is an event-based, time-series framework for evaluating whether political and civil unrest is stable, intensifying, approaching a flashpoint, transitioning into sustained political violence, or moving toward systemic instability. It examines documented developments over a rolling 6- to 12-month period while assigning greater analytic weight to recent events, behavioral change, interacting escalation mechanisms, and foreseeable triggers.</p>
+<p>PU-FEAM is designed to complement the Quanta Analytic Process (QAP). It does not replace Key Assumptions Checks, Analysis of Competing Hypotheses, indicators and warnings, scenario analysis, or CARVER. Its purpose is to convert disparate political, security, social, and informational events into a structured warning assessment with an explicit score, trajectory, confidence level, and decision-relevant explanation.</p>
+<p>The model is built around a central proposition: political unrest is most likely to escalate when accumulated grievance, organized mobilization, declining restraint, a catalytic event, and weakened containment capacity converge. No single indicator is determinative. Analysts must assess interaction effects, direction of travel, and threshold-crossing behavior.</p>
+<div aria-hidden="true" class="section-index">02</div><h2 id="i-analytic-purpose">I. Analytic Purpose</h2>
+<p>PU-FEAM is intended to answer five principal questions:</p>
+<ul>
+<li>Pressure: How much political and social pressure has accumulated?</li>
+<li>Mobilization: Are political actors becoming increasingly capable and willing to mobilize?</li>
+<li>Friction: Are interactions among protesters, opposition groups, government authorities, and security forces becoming more confrontational?</li>
+<li>Trigger susceptibility: Could a discrete event rapidly convert existing tension into widespread unrest?</li>
+<li>Containment: Do institutions retain the legitimacy, capacity, and willingness to manage the situation without excessive force or political breakdown?</li>
+</ul>
+<p>The model does not simply count protests. Large numbers of peaceful demonstrations may indicate political participation rather than imminent escalation. The more important question is whether the character, frequency, geographic reach, organization, rhetoric, repression, and violence associated with political activity are changing. Event-data methodologies such as ACLED distinguish among peaceful protests, riots, violence against civilians, battles, and strategically important nonviolent developments, providing a useful foundation for this distinction <sup class="citation"><a aria-label="Reference 1" href="#ref-1" id="cite-1-1">[1]</a></sup><sup class="citation"><a aria-label="Reference 2" href="#ref-2" id="cite-2-1">[2]</a></sup>.</p>
+<div aria-hidden="true" class="section-index">03</div><h2 id="ii-core-analytic-proposition">II. Core Analytic Proposition</h2>
+<p>Political unrest is most likely to escalate when five conditions converge:</p>
+<blockquote class="formula-card">
+<p><strong>Accumulated grievance + organized mobilization + declining restraint + catalytic event + weakened containment capacity</strong></p>
+</blockquote>
+<p>Anger without organization may generate sporadic demonstrations. Organization without broad grievance may produce limited partisan activity. Repression without opposition capacity may generate temporary political silence. A trigger without accumulated pressure may produce only a localized reaction. By contrast, strong grievance, mobilization, repression, and an emotionally resonant trigger can produce rapid escalation.</p>
+<div aria-hidden="true" class="section-index">04</div><h2 id="iii-assessment-structure">III. Assessment Structure</h2>
+<div aria-label="Scrollable data table" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Layer 1: Structural Pressure</td>
+<td>Conditions that make unrest more likely but do not establish that escalation is imminent.</td>
+</tr>
+<tr>
+<td>Layer 2: Dynamic Escalation Indicators</td>
+<td>Observable changes in behavior during the 6- to 12-month assessment period.</td>
+</tr>
+<tr>
+<td>Layer 3: Flashpoint Triggers</td>
+<td>Events capable of rapidly accelerating unrest.</td>
+</tr>
+<tr>
+<td>Layer 4: Containment and Resilience</td>
+<td>Factors that can prevent, absorb, redirect, or de-escalate unrest.</td>
+</tr>
+</tbody>
+</table></div>
+<div aria-hidden="true" class="section-index">05</div><h2 id="iv-indicator-architecture">IV. Indicator Architecture</h2>
+<p>PU-FEAM uses 10 indicator domains. Each domain is scored from 0 to 5 and weighted according to its relevance to escalation.</p>
+<div aria-label="Scrollable data table" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Score</th>
+<th>General Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>No meaningful evidence</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Limited or isolated</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Present but generally contained</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Significant and increasing</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Severe, widespread, or accelerating</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Extreme, systemic, or immediately escalatory</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="domain-1-public-grievance-and-legitimacy-crisis">Domain 1: Public Grievance and Legitimacy Crisis</h3>
+<p class="weight-chip">Weight: 10%</p>
+<ul>
+<li>Declining confidence in government</li>
+<li>Perceptions of corruption, exclusion, or elite capture</li>
+<li>Electoral legitimacy disputes</li>
+<li>Economic grievances linked to political blame</li>
+<li>Inflation, unemployment, subsidy removal, or austerity</li>
+<li>Regional, ethnic, religious, or class-based marginalization</li>
+<li>Public-service failures</li>
+<li>Perceived impunity</li>
+<li>Unresolved political scandals</li>
+<li>A widening gap between official narratives and lived conditions</li>
+</ul>
+<p>The key issue is whether hardship is increasingly attributed to political actors, understood as deliberate or unjust, shared across constituencies, incorporated into opposition narratives, and connected to demands for systemic change.</p>
+<h3 id="domain-2-protest-frequency-scale-and-geographic-diffusion">Domain 2: Protest Frequency, Scale, and Geographic Diffusion</h3>
+<p class="weight-chip">Weight: 12%</p>
+<ul>
+<li>Number, frequency, duration, and estimated size of protest events</li>
+<li>Expansion from capitals to secondary cities</li>
+<li>Simultaneous demonstrations in multiple regions</li>
+<li>Recurring protest locations</li>
+<li>Participation by new demographic or occupational groups</li>
+<li>Transition from issue-specific to anti-government demands</li>
+<li>Increased use of strikes, occupations, roadblocks, and sit-ins</li>
+<li>Expansion from symbolic protest to disruption of critical functions</li>
+</ul>
+<p>A high-risk pattern is more frequent protest, wider geographic distribution, broader coalition participation, and increasingly systemic demands. Raw event totals should be normalized against the country’s historical baseline.</p>
+<h3 id="domain-3-opposition-organization-and-mobilization-capacity">Domain 3: Opposition Organization and Mobilization Capacity</h3>
+<p class="weight-chip">Weight: 12%</p>
+<ul>
+<li>Coalition formation among opposition parties</li>
+<li>Coordination among political, labor, student, religious, and civil-society organizations</li>
+<li>Emergence of identifiable protest leadership</li>
+<li>Ability to issue and sustain national calls to action</li>
+<li>Fundraising, transportation, legal defense, medical, and casualty-support networks</li>
+<li>Diaspora financing or advocacy</li>
+<li>Creation of local committees</li>
+<li>Use of resilient communications</li>
+<li>Capacity to sustain activity after arrests</li>
+<li>Development of parallel political structures</li>
+<li>Defections by former government supporters</li>
+</ul>
+<p>The key transition is from spontaneous outrage to coordinated mobilization and then to sustained campaign infrastructure.</p>
+<h3 id="domain-4-political-discourse-polarization-and-threat-narratives">Domain 4: Political Discourse, Polarization, and Threat Narratives</h3>
+<p class="weight-chip">Weight: 10%</p>
+<ul>
+<li>Dehumanizing or exclusionary language</li>
+<li>Treason, enemy, terrorist, or foreign-agent labels</li>
+<li>Claims that political survival is existential</li>
+<li>Public threats against opponents</li>
+<li>Collective blame against communities</li>
+<li>Delegitimization of elections, courts, or constitutional processes</li>
+<li>Political endorsement of vigilantism</li>
+<li>Calls for revenge or purification</li>
+<li>Growing rumor and conspiracy narratives</li>
+<li>Glorification of political violence</li>
+<li>Declining willingness to recognize counterarguments</li>
+</ul>
+<p>V-Dem provides disaggregated measures relevant to political polarization, civil liberties, civil-society repression, reasoned justification, and respect for counterarguments <sup class="citation"><a aria-label="Reference 3" href="#ref-3" id="cite-3-1">[3]</a></sup>. The most concerning combination is existential rhetoric, dehumanization, and claims that peaceful institutions are illegitimate.</p>
+<h3 id="domain-5-state-suppression-and-coercive-escalation">Domain 5: State Suppression and Coercive Escalation</h3>
+<p class="weight-chip">Weight: 14%</p>
+<ul>
+<li>Arrests or preventive detention of opposition figures</li>
+<li>Protest bans and emergency decrees</li>
+<li>Internet shutdowns and media restrictions</li>
+<li>Closure of civil-society organizations</li>
+<li>Surveillance and intimidation</li>
+<li>Use of tear gas, rubber projectiles, live ammunition, or lethal force</li>
+<li>Collective punishment, disappearance, torture, or extrajudicial-killing allegations</li>
+<li>Deployment of military units for public-order functions</li>
+<li>Politicization of police or intelligence services</li>
+<li>Designation of opposition groups as extremist or terrorist entities</li>
+<li>Restrictions on assembly, speech, or association</li>
+<li>Impunity for violence by state-aligned groups</li>
+</ul>
+<p>OHCHR identifies widespread or systematic human-rights violations as potential indicators of increased conflict, violence, or instability <sup class="citation"><a aria-label="Reference 4" href="#ref-4" id="cite-4-1">[4]</a></sup>. Analysts must test whether repression is deterring participation, displacing activity, increasing anger, radicalizing actors, fragmenting the opposition, or unifying previously divided groups.</p>
+<h3 id="domain-6-protester-and-opposition-tactical-escalation">Domain 6: Protester and Opposition Tactical Escalation</h3>
+<p class="weight-chip">Weight: 12%</p>
+<ul>
+<li>Movement from marches to strikes, sit-ins, roadblocks, occupations, and infrastructure disruption</li>
+<li>Use of masks, shields, helmets, or improvised protection</li>
+<li>Construction of barricades</li>
+<li>Use of incendiaries or destructive tactics</li>
+<li>Targeting of government buildings or police facilities</li>
+<li>Sabotage of transport or energy infrastructure</li>
+<li>Formation of neighborhood defense groups</li>
+<li>Retaliatory attacks</li>
+<li>Movement from opportunistic violence to planned operations</li>
+<li>Tactical learning across protest events</li>
+<li>Cross-border transfer of methods, financing, or equipment</li>
+</ul>
+<p>Analysts must distinguish violence by protesters from infiltration, criminal opportunism, state-aligned provocation, organized opposition violence, and communal violence occurring alongside political unrest.</p>
+<h3 id="domain-7-security-force-cohesion-and-behavior">Domain 7: Security-Force Cohesion and Behavior</h3>
+<p class="weight-chip">Weight: 10%</p>
+<ul>
+<li>Refusal to enforce orders</li>
+<li>Uneven enforcement across regions</li>
+<li>Police or military defections</li>
+<li>Public criticism by senior officers</li>
+<li>Replacement or purge of commanders</li>
+<li>Increased use of irregular or party-aligned forces</li>
+<li>Rivalries among police, military, intelligence, and paramilitary organizations</li>
+<li>Delayed salary payments or barracks unrest</li>
+<li>Ethnic, regional, or political divisions within security forces</li>
+<li>Neutrality declarations or competing chains of command</li>
+</ul>
+<p>Security-force fragmentation is often more consequential than the absolute size of demonstrations. A government may withstand large protests while coercive institutions remain cohesive, while smaller unrest can become destabilizing when security forces split.</p>
+<h3 id="domain-8-elite-fragmentation-and-institutional-breakdown">Domain 8: Elite Fragmentation and Institutional Breakdown</h3>
+<p class="weight-chip">Weight: 8%</p>
+<ul>
+<li>Cabinet resignations or ruling-party defections</li>
+<li>Legislative rebellion</li>
+<li>Judicial confrontation with the executive</li>
+<li>Public disputes among senior officials</li>
+<li>Regional leaders rejecting national directives</li>
+<li>Business elites withdrawing support</li>
+<li>Former regime insiders joining opposition campaigns</li>
+<li>Constitutional disputes and institutional paralysis</li>
+<li>Competing claims to political authority</li>
+<li>Delayed or contested succession</li>
+<li>Efforts to alter election rules during crisis</li>
+<li>Collapse of negotiations</li>
+</ul>
+<p>Elite fragmentation can create openings for opposition mobilization while increasing uncertainty over political authority and command.</p>
+<h3 id="domain-9-information-environment-and-sentiment-acceleration">Domain 9: Information Environment and Sentiment Acceleration</h3>
+<p class="weight-chip">Weight: 6%</p>
+<ul>
+<li>Rapid increases in protest-related discussion</li>
+<li>Growth in anger, fear, humiliation, desperation, revenge, or moral-outrage narratives</li>
+<li>Viral images of casualties or abuse</li>
+<li>Coordinated hashtags or calls to action</li>
+<li>Rumors of atrocities or electoral fraud</li>
+<li>Fabricated content intended to provoke retaliation</li>
+<li>Foreign information operations</li>
+<li>Government narrative-control campaigns</li>
+<li>Internet restrictions and circumvention activity</li>
+<li>Movement from complaint to mobilizing language</li>
+<li>Martyrdom symbolism and celebration of violence</li>
+</ul>
+<p>Sentiment should not be reduced to positive or negative. The most escalatory combination is often moral outrage, solidarity, and perceived efficacy. Anger combined with fatalism may not mobilize; anger combined with organization and perceived ability to produce change may.</p>
+<h3 id="domain-10-trigger-exposure-and-flashpoint-proximity">Domain 10: Trigger Exposure and Flashpoint Proximity</h3>
+<p class="weight-chip">Weight: 6%</p>
+<ul>
+<li>Elections or contested results</li>
+<li>Court rulings</li>
+<li>Arrest or assassination of a political figure</li>
+<li>Death of a protester in custody</li>
+<li>Video of security-force abuse</li>
+<li>Removal of subsidies or sudden price increases</li>
+<li>Constitutional amendments or dissolution of parliament</li>
+<li>Religious or ethnic incidents</li>
+<li>Commemorative dates</li>
+<li>Major corruption revelations</li>
+<li>Forced eviction or land seizure</li>
+<li>Labor action</li>
+<li>Highly symbolic funerals</li>
+<li>Failed negotiations</li>
+<li>Coup attempt or foreign intervention</li>
+</ul>
+<p>Each trigger should be evaluated for probability, timing, symbolic resonance, affected population, narrative exploitability, mobilization readiness, and government response options.</p>
+<div aria-hidden="true" class="section-index">06</div><h2 id="v-baseline-weighted-score">V. Baseline Weighted Score</h2>
+<p>Each domain is scored from 0 to 5. The weighted base score is calculated as follows:</p>
+<blockquote class="formula-card">
+<p><strong>Base Risk Score = Σ [(Domain Score ÷ 5) × Domain Weight]</strong></p>
+</blockquote>
+<p>The result ranges from 0 to 100.</p>
+<div aria-label="Scrollable data table" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Score</th>
+<th>Condition</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-19</td>
+<td>Stable</td>
+<td>Political pressure remains limited or institutionally manageable.</td>
+</tr>
+<tr>
+<td>20-34</td>
+<td>Guarded</td>
+<td>Grievances or mobilization are present but escalation remains constrained.</td>
+</tr>
+<tr>
+<td>35-49</td>
+<td>Elevated</td>
+<td>Several escalation mechanisms are active.</td>
+</tr>
+<tr>
+<td>50-64</td>
+<td>High</td>
+<td>Unrest is intensifying or becoming increasingly difficult to contain.</td>
+</tr>
+<tr>
+<td>65-79</td>
+<td>Severe</td>
+<td>A flashpoint or major escalation is plausible in the near term.</td>
+</tr>
+<tr>
+<td>80-100</td>
+<td>Critical</td>
+<td>Escalation is occurring, imminent, or approaching systemic instability.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The base score must be interpreted alongside trend, acceleration, trigger exposure, resilience, and confidence.</p>
+<div aria-hidden="true" class="section-index">07</div><h2 id="vi-temporal-analysis">VI. Temporal Analysis</h2>
+<h3 id="a-rolling-observation-windows">A. Rolling Observation Windows</h3>
+<div aria-label="Scrollable data table" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Window</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Previous 12 months</td>
+<td>Establish structural and behavioral baselines and account for election cycles, seasonal protest patterns, religious periods, annual commemorations, agricultural cycles, and academic calendars.</td>
+</tr>
+<tr>
+<td>Previous 6 months</td>
+<td>Identify sustained directional change.</td>
+</tr>
+<tr>
+<td>Previous 30-90 days</td>
+<td>Detect acceleration and flashpoint proximity.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="b-time-weighting">B. Time Weighting</h3>
+<div aria-label="Scrollable data table" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Event Recency</th>
+<th>Suggested Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-30 days</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>31-90 days</td>
+<td>0.85</td>
+</tr>
+<tr>
+<td>91-180 days</td>
+<td>0.65</td>
+</tr>
+<tr>
+<td>181-365 days</td>
+<td>0.40</td>
+</tr>
+</tbody>
+</table></div>
+<p>Recency weighting prevents a year-old event from carrying the same warning value as a similar event occurring within the previous week.</p>
+<div aria-hidden="true" class="section-index">08</div><h2 id="vii-trend-and-acceleration-assessment">VII. Trend and Acceleration Assessment</h2>
+<div aria-label="Scrollable data table" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+<th>Adjustment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>↓↓</td>
+<td>Rapidly improving</td>
+<td>-2</td>
+</tr>
+<tr>
+<td>↓</td>
+<td>Improving</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>→</td>
+<td>Stable or mixed</td>
+<td>0</td>
+</tr>
+<tr>
+<td>↑</td>
+<td>Deteriorating</td>
+<td>+1</td>
+</tr>
+<tr>
+<td>↑↑</td>
+<td>Rapidly deteriorating</td>
+<td>+2</td>
+</tr>
+</tbody>
+</table></div>
+<p>The combined Trend Adjustment should range from -10 to +10 points.</p>
+<h3 id="acceleration-test">Acceleration Test</h3>
+<p>A situation is accelerating when at least three of the following are present:</p>
+<ul>
+<li>Event frequency increases substantially</li>
+<li>Event severity increases</li>
+<li>Geographic spread expands</li>
+<li>New actors enter</li>
+<li>Tactical sophistication increases</li>
+<li>Repression intensifies</li>
+<li>Political rhetoric becomes more existential</li>
+<li>Time between incidents decreases</li>
+<li>Fatalities or injuries increase</li>
+<li>Previously separate grievances converge</li>
+<li>Institutions show declining control</li>
+<li>Mobilization persists despite suppression</li>
+</ul>
+<div aria-label="Scrollable data table" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Modifier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No acceleration</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Limited acceleration</td>
+<td>+3</td>
+</tr>
+<tr>
+<td>Clear acceleration</td>
+<td>+6</td>
+</tr>
+<tr>
+<td>Rapid nonlinear acceleration</td>
+<td>+10</td>
+</tr>
+</tbody>
+</table></div>
+<p>Nonlinear acceleration means several domains are worsening simultaneously rather than one category increasing gradually.</p>
+<div aria-hidden="true" class="section-index">09</div><h2 id="viii-flashpoint-trigger-modifier">VIII. Flashpoint Trigger Modifier</h2>
+<blockquote class="formula-card">
+<p><strong>Trigger Score (T) = Probability (P) × Resonance (R) × Mobilization Readiness (M)</strong></p>
+</blockquote>
+<p>Each component is scored from 1 to 5, producing a maximum raw trigger score of 125.</p>
+<div aria-label="Scrollable data table" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Trigger Score</th>
+<th>Modifier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1-25</td>
+<td>0</td>
+</tr>
+<tr>
+<td>26-50</td>
+<td>+2</td>
+</tr>
+<tr>
+<td>51-75</td>
+<td>+5</td>
+</tr>
+<tr>
+<td>76-100</td>
+<td>+8</td>
+</tr>
+<tr>
+<td>101-125</td>
+<td>+12</td>
+</tr>
+</tbody>
+</table></div>
+<p>A highly resonant trigger should receive a high modifier only when the surrounding political environment can transmit it into collective action.</p>
+<div aria-hidden="true" class="section-index">10</div><h2 id="ix-containment-and-resilience-modifier">IX. Containment and Resilience Modifier</h2>
+<p>Escalation risk must be balanced against the capacity of political and social systems to absorb shocks.</p>
+<ul>
+<li>Credible electoral institutions</li>
+<li>Independent courts</li>
+<li>Trusted mediators</li>
+<li>Professional and restrained policing</li>
+<li>Opposition access to lawful political channels</li>
+<li>Free and credible media</li>
+<li>Responsive local government</li>
+<li>Functioning legislative oversight</li>
+<li>Internal government reform mechanisms</li>
+<li>Labor dispute-resolution systems</li>
+<li>Religious or traditional mediation networks</li>
+<li>Trusted civil-society organizations</li>
+<li>Government willingness to negotiate</li>
+<li>Public confidence that peaceful action can produce change</li>
+<li>Security-force discipline</li>
+<li>Elite consensus against violence</li>
+</ul>
+<div aria-label="Scrollable data table" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Score</th>
+<th>Resilience Condition</th>
+<th>Modifier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Absent or collapsing</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Very weak</td>
+<td>-2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Weak</td>
+<td>-4</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Moderate</td>
+<td>-7</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Strong</td>
+<td>-10</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Highly resilient</td>
+<td>-15</td>
+</tr>
+</tbody>
+</table></div>
+<p>Resilience should reduce risk only when the institutions are demonstrably capable of functioning during political stress. Formal institutions that exist only on paper should not receive full credit.</p>
+<div aria-hidden="true" class="section-index">11</div><h2 id="x-final-pu-feam-score">X. Final PU-FEAM Score</h2>
+<blockquote class="formula-card">
+<p><strong>Final Score = Base Score + Trend Adjustment + Acceleration Modifier + Trigger Modifier - Resilience Modifier</strong></p>
+</blockquote>
+<p>The final score is capped between 0 and 100.</p>
+<div aria-label="Scrollable data table" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Score</th>
+<th>Warning Level</th>
+<th>Analytic Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-19</td>
+<td>Level 1: Stable</td>
+<td>No significant escalation pathway is active.</td>
+</tr>
+<tr>
+<td>20-34</td>
+<td>Level 2: Watch</td>
+<td>Early pressure indicators require monitoring.</td>
+</tr>
+<tr>
+<td>35-49</td>
+<td>Level 3: Concern</td>
+<td>Multiple reinforcing escalation indicators are present.</td>
+</tr>
+<tr>
+<td>50-64</td>
+<td>Level 4: Flashpoint Risk</td>
+<td>A triggering event could produce substantial unrest.</td>
+</tr>
+<tr>
+<td>65-79</td>
+<td>Level 5: Escalation Probable</td>
+<td>Major unrest or political violence is plausible or developing.</td>
+</tr>
+<tr>
+<td>80-100</td>
+<td>Level 6: Crisis Transition</td>
+<td>Sustained violence, institutional fracture, or systemic instability is imminent or underway.</td>
+</tr>
+</tbody>
+</table></div>
+<div aria-hidden="true" class="section-index">12</div><h2 id="xi-mandatory-escalation-overrides">XI. Mandatory Escalation Overrides</h2>
+<h3 id="automatic-level-4-minimum">Automatic Level 4 Minimum</h3>
+<ul>
+<li>Security forces use live ammunition against demonstrators</li>
+<li>A major opposition leader is arrested immediately before an election</li>
+<li>A nationwide internet shutdown coincides with mass arrests</li>
+<li>Coordinated protests emerge in multiple major cities</li>
+<li>Government declares a broad emergency targeting political activity</li>
+<li>Protester deaths become a central mobilizing narrative</li>
+</ul>
+<h3 id="automatic-level-5-minimum">Automatic Level 5 Minimum</h3>
+<ul>
+<li>Security-force defections</li>
+<li>Organized attacks on police or military facilities</li>
+<li>Armed opposition cells emerge from protest networks</li>
+<li>Multiple fatalities occur across separate demonstrations</li>
+<li>Opposition establishes parallel governing structures</li>
+<li>Large-scale communal or identity-based mobilization accompanies political unrest</li>
+<li>Government deploys military forces with expanded lethal authorities</li>
+</ul>
+<h3 id="automatic-level-6">Automatic Level 6</h3>
+<ul>
+<li>Fragmentation of the armed forces</li>
+<li>Competing claims to national executive authority</li>
+<li>Coup, attempted coup, or military mutiny</li>
+<li>Sustained nationwide violent unrest</li>
+<li>Collapse of central government command</li>
+<li>Coordinated armed seizure of government facilities</li>
+<li>Widespread violence against civilian populations</li>
+</ul>
+<p>Overrides require source validation and contextual review. A single unverified social-media report should never activate an override. The United Nations atrocity-risk framework also demonstrates the value of structured risk factors and observable indicators when assessing pathways from instability to organized violence <sup class="citation"><a aria-label="Reference 5" href="#ref-5" id="cite-5-1">[5]</a></sup>.</p>
+<div aria-hidden="true" class="section-index">13</div><h2 id="xii-event-coding-template">XII. Event Coding Template</h2>
+<div aria-label="Scrollable data table" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Event ID</td>
+<td>Unique identifier</td>
+</tr>
+<tr>
+<td>Date and time</td>
+<td>When the event occurred</td>
+</tr>
+<tr>
+<td>Location</td>
+<td>Country, region, city, and coordinates when available</td>
+</tr>
+<tr>
+<td>Event type</td>
+<td>Protest, riot, strike, arrest, speech, clash, killing, defection, negotiation, or related category</td>
+</tr>
+<tr>
+<td>Actors</td>
+<td>Government, police, military, opposition, civil society, identity group, or external actor</td>
+</tr>
+<tr>
+<td>Trigger</td>
+<td>Immediate precipitating issue</td>
+</tr>
+<tr>
+<td>Grievance</td>
+<td>Underlying political or socioeconomic issue</td>
+</tr>
+<tr>
+<td>Participation</td>
+<td>Estimated size and composition</td>
+</tr>
+<tr>
+<td>Tactics</td>
+<td>Peaceful, disruptive, destructive, violent, or armed</td>
+</tr>
+<tr>
+<td>State response</td>
+<td>None, negotiation, arrest, dispersal, or lethal force</td>
+</tr>
+<tr>
+<td>Casualties</td>
+<td>Deaths and injuries</td>
+</tr>
+<tr>
+<td>Geographic significance</td>
+<td>Local, regional, or national</td>
+</tr>
+<tr>
+<td>Narrative significance</td>
+<td>Low, moderate, high, or iconic</td>
+</tr>
+<tr>
+<td>Verification</td>
+<td>Number and quality of independent sources</td>
+</tr>
+<tr>
+<td>Domain affected</td>
+<td>Relevant PU-FEAM indicator domain</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>0-5</td>
+</tr>
+<tr>
+<td>Novelty</td>
+<td>Routine, unusual, or unprecedented</td>
+</tr>
+<tr>
+<td>Direction</td>
+<td>Stabilizing, neutral, or escalatory</td>
+</tr>
+<tr>
+<td>Related events</td>
+<td>Prior and subsequent linked incidents</td>
+</tr>
+<tr>
+<td>Analyst note</td>
+<td>Context, uncertainty, and alternative explanations</td>
+</tr>
+</tbody>
+</table></div>
+<p>ACLED’s event structure, which records event type, actors, location, date, and political context, provides a useful starting point for the register <sup class="citation"><a aria-label="Reference 1" href="#ref-1" id="cite-1-2">[1]</a></sup>.</p>
+<div aria-hidden="true" class="section-index">14</div><h2 id="xiii-pattern-of-behavior-analysis">XIII. Pattern-of-Behavior Analysis</h2>
+<div aria-label="Scrollable data table" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Analytic Question</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Repetition</td>
+<td>The same behavior occurs repeatedly.</td>
+</tr>
+<tr>
+<td>Expansion</td>
+<td>The behavior spreads geographically or across populations.</td>
+</tr>
+<tr>
+<td>Intensification</td>
+<td>Severity increases.</td>
+</tr>
+<tr>
+<td>Adaptation</td>
+<td>Actors learn and change tactics.</td>
+</tr>
+<tr>
+<td>Coordination</td>
+<td>Formerly separate actors act together.</td>
+</tr>
+<tr>
+<td>Institutionalization</td>
+<td>Temporary activities become enduring structures.</td>
+</tr>
+<tr>
+<td>Retaliation</td>
+<td>Actions are increasingly driven by reciprocal punishment.</td>
+</tr>
+<tr>
+<td>Normalization</td>
+<td>Exceptional behavior becomes routine.</td>
+</tr>
+<tr>
+<td>Threshold Crossing</td>
+<td>An actor uses a tactic it previously avoided.</td>
+</tr>
+<tr>
+<td>Contagion</td>
+<td>Tactics or narratives transfer between regions or countries.</td>
+</tr>
+</tbody>
+</table></div>
+<div aria-hidden="true" class="section-index">15</div><h2 id="xiv-interaction-matrix">XIV. Interaction Matrix</h2>
+<div aria-label="Scrollable data table" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Interaction</th>
+<th>Escalation Significance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>High grievance + low mobilization</td>
+<td>Latent unrest</td>
+</tr>
+<tr>
+<td>High grievance + high mobilization</td>
+<td>Mass-unrest potential</td>
+</tr>
+<tr>
+<td>High mobilization + high repression</td>
+<td>Confrontation and radicalization risk</td>
+</tr>
+<tr>
+<td>High polarization + dehumanizing rhetoric</td>
+<td>Reduced restraint</td>
+</tr>
+<tr>
+<td>Protester tactical escalation + state lethal force</td>
+<td>Violence feedback loop</td>
+</tr>
+<tr>
+<td>Elite fragmentation + security-force division</td>
+<td>Regime-instability risk</td>
+</tr>
+<tr>
+<td>Trigger proximity + high mobilization readiness</td>
+<td>Immediate flashpoint risk</td>
+</tr>
+<tr>
+<td>Information restrictions + casualty rumors</td>
+<td>Misperception and panic risk</td>
+</tr>
+<tr>
+<td>Closure of peaceful channels + organized opposition</td>
+<td>Underground or violent adaptation risk</td>
+</tr>
+<tr>
+<td>Economic shock + contested election</td>
+<td>Grievance convergence</td>
+</tr>
+</tbody>
+</table></div>
+<p>The matrix functions as a qualitative override that identifies reinforcing mechanisms hidden by the aggregate score.</p>
+<div aria-hidden="true" class="section-index">16</div><h2 id="xv-source-and-evidence-requirements">XV. Source and Evidence Requirements</h2>
+<p>Each scored indicator should be supported by a source register containing source identity, publication date, event date, proximity to the event, independence, evidence type, reliability, corroboration status, known interests, information gaps, and confidence.</p>
+<p>Recommended sourcing layers include:</p>
+<ul>
+<li>Local reporting and direct observation</li>
+<li>National media</li>
+<li>International media and wire services</li>
+<li>Government and opposition statements</li>
+<li>Human-rights and civil-society reporting</li>
+<li>Event datasets</li>
+<li>Polling and survey data</li>
+<li>Economic and institutional data</li>
+<li>Verified imagery and geolocation</li>
+<li>Social-media content used as an indicator rather than automatically treated as established fact</li>
+</ul>
+<p>Strategic developments that do not involve immediate violence should still be recorded when they alter actor capabilities, political relationships, or future escalation potential <sup class="citation"><a aria-label="Reference 2" href="#ref-2" id="cite-2-2">[2]</a></sup>.</p>
+<div aria-hidden="true" class="section-index">17</div><h2 id="xvi-analytic-confidence">XVI. Analytic Confidence</h2>
+<p>The PU-FEAM score and the analyst’s confidence must be reported separately. Confidence should be assessed across source reliability, source diversity, geographic coverage, temporal coverage, actor visibility, event verification, measurement consistency, and testing of alternative explanations.</p>
+<div aria-label="Scrollable data table" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Average</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0-1.9</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>2.0-2.9</td>
+<td>Low to moderate</td>
+</tr>
+<tr>
+<td>3.0-3.9</td>
+<td>Moderate</td>
+</tr>
+<tr>
+<td>4.0-4.5</td>
+<td>Moderate to high</td>
+</tr>
+<tr>
+<td>4.6-5.0</td>
+<td>High</td>
+</tr>
+</tbody>
+</table></div>
+<p class="example-judgment">Example judgment: PU-FEAM Score 67, Level 5, Escalation Probable. Confidence: Moderate. Reporting demonstrates clear increases in repression, geographic protest diffusion, and opposition coordination, but security-force cohesion and rural sentiment remain poorly documented.</p>
+<div aria-hidden="true" class="section-index">18</div><h2 id="xvii-qap-integration">XVII. QAP Integration</h2>
+<h3 id="1-problem-statement">1. Problem Statement</h3>
+<p>Define the political system, geographic scope, principal actors, observation period, and decision requirement.</p>
+<h3 id="2-key-intelligence-questions">2. Key Intelligence Questions</h3>
+<ul>
+<li>What mechanisms are most likely to convert existing political grievances into sustained civil unrest?</li>
+<li>Are opposition groups developing the organization, resources, and public legitimacy required for sustained mobilization?</li>
+<li>Is government suppression deterring mobilization or increasing opposition solidarity and radicalization?</li>
+<li>What changes in political discourse indicate declining willingness to resolve disputes peacefully?</li>
+<li>Are security forces likely to remain cohesive under sustained public pressure?</li>
+<li>Which foreseeable events could serve as politically resonant flashpoint triggers?</li>
+<li>What institutional or social mechanisms remain capable of containing escalation?</li>
+<li>What indicators would demonstrate transition from protest activity to sustained political violence?</li>
+<li>Which alternative explanations could account for apparent increases or declines in unrest?</li>
+<li>What is the most likely trajectory over the next 30, 90, and 180 days?</li>
+</ul>
+<h3 id="3-key-assumptions-check">3. Key Assumptions Check</h3>
+<ul>
+<li>Social-media activity reflects wider public sentiment</li>
+<li>Declining protest totals indicate declining grievance</li>
+<li>Opposition groups act as a unified bloc</li>
+<li>Security forces will follow national leadership</li>
+<li>Economic grievances will translate into political mobilization</li>
+<li>Government concessions will reduce unrest</li>
+<li>Violent incidents are attributable to declared actors</li>
+</ul>
+<h3 id="4-analysis-of-competing-hypotheses">4. Analysis of Competing Hypotheses</h3>
+<ul>
+<li>H1: Unrest will remain localized and manageable.</li>
+<li>H2: Demonstrations will expand but remain predominantly nonviolent.</li>
+<li>H3: Repression will generate a cycle of radicalization and political violence.</li>
+<li>H4: Elite or security-force fragmentation will transform civil unrest into a regime crisis.</li>
+<li>H5: Government concessions or mediation will reduce escalation.</li>
+<li>H6: Apparent instability is temporary and driven by a discrete event rather than systemic deterioration.</li>
+</ul>
+<h3 id="5-indicators-and-warnings">5. Indicators and Warnings</h3>
+<p>Translate PU-FEAM domains into observable indicators with predetermined thresholds.</p>
+<h3 id="6-scenario-development">6. Scenario Development</h3>
+<ul>
+<li>Most likely scenario</li>
+<li>Escalatory scenario</li>
+<li>De-escalatory scenario</li>
+<li>High-impact, lower-probability scenario</li>
+</ul>
+<h3 id="7-key-judgments">7. Key Judgments</h3>
+<p>State the assessed trajectory, probability, timeframe, mechanism, and confidence.</p>
+<div aria-hidden="true" class="section-index">19</div><h2 id="xviii-recommended-analytic-output">XVIII. Recommended Analytic Output</h2>
+<h3 id="bluf">BLUF</h3>
+<p>Provide a two- to four-sentence judgment stating the current warning level, direction of movement, principal escalation mechanism, most important trigger, and confidence.</p>
+<h3 id="dashboard">Dashboard</h3>
+<div aria-label="Scrollable data table" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Illustrative Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base score</td>
+<td>58</td>
+</tr>
+<tr>
+<td>Trend</td>
+<td>Rapidly deteriorating</td>
+</tr>
+<tr>
+<td>Acceleration</td>
+<td>Clear</td>
+</tr>
+<tr>
+<td>Trigger modifier</td>
+<td>+8</td>
+</tr>
+<tr>
+<td>Resilience adjustment</td>
+<td>-7</td>
+</tr>
+<tr>
+<td>Final score</td>
+<td>65</td>
+</tr>
+<tr>
+<td>Warning level</td>
+<td>Level 5</td>
+</tr>
+<tr>
+<td>Confidence</td>
+<td>Moderate</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="supporting-components">Supporting Components</h3>
+<ul>
+<li>Key Drivers: the three to five domains contributing most strongly to the score</li>
+<li>Restraining Factors: institutions, behaviors, or conditions preventing further escalation</li>
+<li>Flashpoint Calendar: foreseeable triggers during the next 30, 90, and 180 days</li>
+<li>Indicator Watchlist: developments that would raise or lower the warning level</li>
+<li>Geographic Hotspots: locations where grievance, mobilization, repression, and trigger conditions overlap</li>
+<li>Actor Matrix: intent, capability, cohesion, legitimacy, escalation tolerance, vulnerability, and likely response to triggers</li>
+</ul>
+<div aria-hidden="true" class="section-index">20</div><h2 id="xix-operational-principle">XIX. Operational Principle</h2>
+<p>The central judgment should not be limited to asking how much unrest is occurring. It should determine whether the political system is moving toward a condition in which actors increasingly believe that escalation is necessary, legitimate, effective, or unavoidable.</p>
+<p>That question captures the transition from discontent to mobilization, from mobilization to confrontation, and from confrontation to a political flashpoint.</p>
+<div aria-hidden="true" class="section-index">21</div><h2 id="references">References</h2>
+<p class="reference-entry"><span class="ref-number" id="ref-1">[1]</span> Armed Conflict Location &amp; Event Data Project. (n.d.). ACLED codebook. ACLED. <a href="https://acleddata.com/methodology/acled-codebook">https://acleddata.com/methodology/acled-codebook</a> <a aria-label="Return to citation 1" class="ref-back" href="#cite-1-1">↩</a></p>
+<p class="reference-entry"><span class="ref-number" id="ref-2">[2]</span> Armed Conflict Location &amp; Event Data Project. (2023). Strategic developments in the ACLED dataset. ACLED. <a href="https://acleddata.com/methodology/strategic-developments-acled-dataset">https://acleddata.com/methodology/strategic-developments-acled-dataset</a> <a aria-label="Return to citation 2" class="ref-back" href="#cite-2-1">↩</a></p>
+<p class="reference-entry"><span class="ref-number" id="ref-3">[3]</span> Varieties of Democracy Institute. (2026). V-Dem codebook, version 16. University of Gothenburg. <a href="https://www.v-dem.net/documents/70/codebook_v16.pdf">https://www.v-dem.net/documents/70/codebook_v16.pdf</a> <a aria-label="Return to citation 3" class="ref-back" href="#cite-3-1">↩</a></p>
+<p class="reference-entry"><span class="ref-number" id="ref-4">[4]</span> Office of the United Nations High Commissioner for Human Rights. (n.d.). Human rights and early warning of violations, conflict or crisis. United Nations. <a href="https://www.ohchr.org/en/prevention-and-early-warning/human-rights-and-early-warning-violations-conflict-or-crisis">https://www.ohchr.org/en/prevention-and-early-warning/human-rights-and-early-warning-violations-conflict-or-crisis</a> <a aria-label="Return to citation 4" class="ref-back" href="#cite-4-1">↩</a></p>
+<p class="reference-entry"><span class="ref-number" id="ref-5">[5]</span> United Nations Office on Genocide Prevention and the Responsibility to Protect. (2018). Framework of analysis for atrocity crimes: A tool for prevention. United Nations. <a href="https://www.un.org/en/genocideprevention/documents/publications-and-resources/Genocide_Framework%20of%20Analysis-English.pdf">https://www.un.org/en/genocideprevention/documents/publications-and-resources/Genocide_Framework%20of%20Analysis-English.pdf</a> <a aria-label="Return to citation 5" class="ref-back" href="#cite-5-1">↩</a></p>
+
+      </article>
+    </div>
+
+    <aside class="method-note" aria-label="Methodology note">
+      <div class="symbol" aria-hidden="true">Q</div>
+      <p><strong>Methodological status:</strong> PU-FEAM is designed as a structured warning instrument within the Quanta Analytica Process™. It supports, but does not replace, analyst judgment, source calibration, competing-hypothesis testing, confidence assessment, or expert validation.</p>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>Quanta Analytica · An MNS Consulting Initiative · © 2026 MNS Consulting. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/frameworks.html">Frameworks</a>
+        <a href="/reports/">Reports</a>
+        <a href="https://insights.quanta-analytica.com">Insights ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const progress = document.getElementById('reading-progress');
+      const updateProgress = () => {
+        const doc = document.documentElement;
+        const total = doc.scrollHeight - doc.clientHeight;
+        progress.style.width = (total > 0 ? (doc.scrollTop / total) * 100 : 0) + '%';
+      };
+      updateProgress();
+      document.addEventListener('scroll', updateProgress, { passive: true });
+
+      const links = [...document.querySelectorAll('.toc a')];
+      const sections = links.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+      const observer = new IntersectionObserver(entries => {
+        const visible = entries.filter(entry => entry.isIntersecting).sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (!visible) return;
+        links.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + visible.target.id));
+      }, { rootMargin: '-20% 0px -70% 0px', threshold: [0, .25, .75] });
+      sections.forEach(section => observer.observe(section));
+    })();
+  </script>
+</body>
+</html>
