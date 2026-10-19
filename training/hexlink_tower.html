@@ -1,0 +1,413 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Hexlink Tower</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Manrope:wght@500;700&display=swap">
+<style>
+/* Layout: full-height game. HUD strip on top, one canvas stage below holding the hex tower. Single dark look by choice. */
+:root {
+  --bg: #0b0c10;
+  --panel: #161923;
+  --edge: #272b38;
+  --fg: #f2f1ee;
+  --mute: #8d92a1;
+  --f-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --f-body: 'Manrope', system-ui, sans-serif;
+  color-scheme: dark;
+}
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--f-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+  overflow: hidden;
+}
+.app { height: 100%; display: flex; flex-direction: column; gap: 6px; padding-block: 12px; max-width: 720px; margin: 0 auto; }
+.hud { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.title { min-width: 0; }
+.eyebrow { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--mute); font-weight: 700; }
+.layer { font-family: var(--f-display); font-weight: 800; font-size: 34px; line-height: 1; margin-top: 2px; font-variant-numeric: tabular-nums; text-wrap: balance; }
+.layer small { font-family: var(--f-body); font-weight: 500; font-size: 13px; color: var(--mute); margin-left: 8px; letter-spacing: 0; }
+.btns { display: flex; gap: 8px; }
+button {
+  font: 700 13px var(--f-body);
+  color: var(--fg);
+  background: var(--panel);
+  border: 1px solid var(--edge);
+  border-radius: 999px;
+  padding: 9px 16px;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+button:hover { border-color: #3b4154; }
+button:active { transform: translateY(1px); }
+button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.pips { display: flex; gap: 8px; min-height: 18px; align-items: center; }
+.pip { width: 14px; height: 14px; border-radius: 50%; border: 2px solid; box-sizing: border-box; transition: background .2s; }
+.stage { position: relative; flex: 1; min-height: 0; }
+canvas { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; display: block; cursor: crosshair; }
+.coach {
+  position: absolute; left: 0; right: 0; bottom: 4px; text-align: center;
+  color: var(--mute); font-size: 13px; line-height: 1.4; pointer-events: none; transition: opacity .4s;
+}
+.coach.gone { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { button:active { transform: none; } }
+</style>
+
+<div class="app">
+  <div class="hud">
+    <div class="title">
+      <div class="eyebrow">Hexlink Tower</div>
+      <div class="layer" id="layerLabel">Layer 1<small id="bestLabel"></small></div>
+    </div>
+    <div class="btns">
+      <button type="button" id="undoBtn">Undo</button>
+      <button type="button" id="resetBtn">Reset</button>
+      <button type="button" id="hintBtn">Hint</button>
+    </div>
+  </div>
+  <div class="pips" id="pips" aria-label="Pairs linked"></div>
+  <div class="stage" id="stage">
+    <canvas id="cv" aria-label="Hexagonal puzzle tower. Drag from a ball to its matching ball."></canvas>
+    <div class="coach" id="coach">Drag from a ball to the ball of the same color. Lines cannot cross. Link every pair to drop the layer.</div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var COLORS = [
+    { name: 'red',    l: '#ff9a7e', b: '#ee4326', d: '#a42210' },
+    { name: 'blue',   l: '#8aa3ff', b: '#2e5de8', d: '#192d94' },
+    { name: 'green',  l: '#86e394', b: '#2eb44a', d: '#166a28' },
+    { name: 'yellow', l: '#fff4a6', b: '#f4cc22', d: '#b08808' },
+    { name: 'purple', l: '#d4a8ff', b: '#9a52e0', d: '#5a2399' },
+    { name: 'pink',   l: '#ffb0d4', b: '#ee4f9b', d: '#a52162' }
+  ];
+  var K = 0.6;            // vertical squash of the tilted board
+  var BALL = 0.075;       // ball radius in board units (hexagon radius = 1)
+  var LINE = 0.05;        // line width in board units
+  var SLABS = 8;          // slabs drawn under the active layer
+
+  var cv = document.getElementById('cv');
+  var ctx = cv.getContext('2d');
+  var stage = document.getElementById('stage');
+  var layerLabel = document.getElementById('layerLabel');
+  var pipsEl = document.getElementById('pips');
+  var coach = document.getElementById('coach');
+
+  var W = 0, H = 0, R = 0, T = 0, cx = 0, cy = 0, dpr = 1;
+  var layer = 1, best = 1, balls = [], paths = [], cur = null, pairs = 0;
+  var mode = 'play', fallStart = 0, enterStart = 0, hintUntil = 0, hintColor = -1;
+  var seed = (Math.random() * 1e9) | 0;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  try { best = parseInt(localStorage.getItem('hexlink-best') || '1', 10) || 1; } catch (e) {}
+
+  function rng(a) {
+    return function () {
+      a |= 0; a = a + 0x6D2B79F5 | 0;
+      var t = Math.imul(a ^ a >>> 15, 1 | a);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  var S3 = Math.sqrt(3);
+  function inHex(x, y, m) {
+    return Math.abs(y) <= S3 / 2 - m && S3 * Math.abs(x) + Math.abs(y) <= S3 - 2 * m;
+  }
+  function dist(ax, ay, bx, by) { return Math.hypot(ax - bx, ay - by); }
+  function segDist(px, py, a, b) {
+    var dx = b[0] - a[0], dy = b[1] - a[1];
+    var l2 = dx * dx + dy * dy;
+    var t = l2 ? ((px - a[0]) * dx + (py - a[1]) * dy) / l2 : 0;
+    t = Math.max(0, Math.min(1, t));
+    return dist(px, py, a[0] + t * dx, a[1] + t * dy);
+  }
+
+  function genLevel(n) {
+    var r = rng(n * 2654435761 ^ seed);
+    pairs = Math.min(6, 2 + Math.floor(n / 2));
+    var order = [0, 1, 2, 3, 4, 5];
+    for (var i = order.length - 1; i > 0; i--) {
+      var j = Math.floor(r() * (i + 1)); var tmp = order[i]; order[i] = order[j]; order[j] = tmp;
+    }
+    var minD = pairs <= 3 ? 0.34 : 0.29, fails = 0, pts = [];
+    function place(far) {
+      for (;;) {
+        var x = (r() * 2 - 1) * 0.88, y = (r() * 2 - 1) * 0.72;
+        if (!inHex(x, y, 0.12)) continue;
+        var ok = true;
+        for (var k = 0; k < pts.length; k++) if (dist(x, y, pts[k][0], pts[k][1]) < minD) { ok = false; break; }
+        if (ok && far && dist(x, y, far[0], far[1]) < 0.55) ok = false;
+        if (ok) return [x, y];
+        if (++fails % 300 === 0) minD = Math.max(0.2, minD - 0.01);
+      }
+    }
+    balls = [];
+    for (var p = 0; p < pairs; p++) {
+      var a = place(null); pts.push(a);
+      var b = place(a); pts.push(b);
+      balls.push({ c: order[p], x: a[0], y: a[1], pair: p, linked: false });
+      balls.push({ c: order[p], x: b[0], y: b[1], pair: p, linked: false });
+    }
+    paths = []; cur = null;
+    buildPips(); updateHud();
+  }
+
+  function buildPips() {
+    pipsEl.innerHTML = '';
+    balls.filter(function (b, i) { return i % 2 === 0; }).forEach(function (b) {
+      var d = document.createElement('div');
+      d.className = 'pip'; d.dataset.pair = b.pair;
+      d.style.borderColor = COLORS[b.c].b;
+      pipsEl.appendChild(d);
+    });
+  }
+  function updateHud() {
+    layerLabel.firstChild.nodeValue = 'Layer ' + layer;
+    document.getElementById('bestLabel').textContent = 'best ' + best;
+    Array.prototype.forEach.call(pipsEl.children, function (d) {
+      var linked = paths.some(function (p) { return p.pair === +d.dataset.pair; });
+      d.style.background = linked ? COLORS[balls[+d.dataset.pair * 2].c].b : 'transparent';
+    });
+  }
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = stage.clientWidth; H = stage.clientHeight;
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    R = Math.max(120, Math.min(W * 0.47, (H - 34) / 1.75, 340));
+    T = R * 0.075;
+    cx = W / 2; cy = 0.55 * R + 6;
+  }
+  window.addEventListener('resize', resize);
+
+  function P(x, y, oy) { return [cx + x * R, cy + y * R * K + (oy || 0)]; }
+  function toUnit(px, py) { return [(px - cx) / R, (py - cy) / (R * K)]; }
+
+  /* ---------- input ---------- */
+  function ptr(e) {
+    var rc = cv.getBoundingClientRect();
+    return toUnit(e.clientX - rc.left, e.clientY - rc.top);
+  }
+  cv.addEventListener('pointerdown', function (e) {
+    if (mode !== 'play') return;
+    var u = ptr(e), hit = -1, bd = 0.14;
+    balls.forEach(function (b, i) { var d = dist(u[0], u[1], b.x, b.y); if (d < bd) { bd = d; hit = i; } });
+    if (hit < 0) return;
+    var b = balls[hit];
+    var idx = paths.findIndex(function (p) { return p.pair === b.pair; });
+    if (idx >= 0) { paths.splice(idx, 1); syncLinked(); }
+    cur = { c: b.c, pair: b.pair, start: hit, pts: [[b.x, b.y]] };
+    try { cv.setPointerCapture(e.pointerId); } catch (err) {}
+    e.preventDefault();
+  });
+  cv.addEventListener('pointermove', function (e) {
+    if (!cur || mode !== 'play') return;
+    var u = ptr(e);
+    var evs = e.getCoalescedEvents ? e.getCoalescedEvents() : [e];
+    if (!evs.length) evs = [e];
+    for (var i = 0; i < evs.length && cur; i++) {
+      var rc = cv.getBoundingClientRect();
+      var q = toUnit(evs[i].clientX - rc.left, evs[i].clientY - rc.top);
+      extend(q[0], q[1]);
+    }
+  });
+  function endDrag() { if (cur) { cur = null; updateHud(); } }
+  cv.addEventListener('pointerup', endDrag);
+  cv.addEventListener('pointercancel', endDrag);
+
+  function syncLinked() {
+    balls.forEach(function (b) { b.linked = paths.some(function (p) { return p.pair === b.pair; }); });
+    updateHud();
+  }
+
+  function extend(tx, ty) {
+    var pts = cur.pts, L = pts[pts.length - 1];
+    var d = dist(L[0], L[1], tx, ty);
+    var n = Math.max(1, Math.ceil(d / 0.012));
+    var target = balls[cur.start ^ 1];
+    for (var s = 1; s <= n; s++) {
+      L = pts[pts.length - 1];
+      var qx = L[0] + (tx - L[0]) * (s === 1 ? 1 / n : 1 / (n - s + 1));
+      var qy = L[1] + (ty - L[1]) * (s === 1 ? 1 / n : 1 / (n - s + 1));
+      // retract when the pointer returns onto the line
+      for (var i = 0; i < pts.length - 9; i++) {
+        if (dist(qx, qy, pts[i][0], pts[i][1]) < 0.03) { pts.length = i + 1; break; }
+      }
+      L = pts[pts.length - 1];
+      if (dist(qx, qy, target.x, target.y) < 0.1) {
+        pts.push([target.x, target.y]);
+        lock(); return;
+      }
+      if (!inHex(qx, qy, 0.03)) return;
+      var ok = true;
+      for (var k = 0; k < balls.length && ok; k++) {
+        if (k === cur.start || k === (cur.start ^ 1)) continue;
+        if (dist(qx, qy, balls[k].x, balls[k].y) < BALL + LINE / 2 + 0.03) ok = false;
+      }
+      for (var p = 0; p < paths.length && ok; p++) {
+        var pp = paths[p].pts;
+        for (var m = 0; m < pp.length - 1; m++) {
+          if (segDist(qx, qy, pp[m], pp[m + 1]) < LINE * 1.15) { ok = false; break; }
+        }
+      }
+      if (!ok) return;
+      if (dist(qx, qy, L[0], L[1]) > 0.008) pts.push([qx, qy]);
+    }
+  }
+
+  function lock() {
+    paths.push({ c: cur.c, pair: cur.pair, pts: cur.pts });
+    cur = null;
+    coach.classList.add('gone');
+    syncLinked();
+    if (paths.length === pairs) { mode = 'dropping'; fallStart = performance.now() + 280; }
+  }
+
+  document.getElementById('undoBtn').addEventListener('click', function () {
+    if (mode !== 'play') return;
+    if (cur) cur = null; else paths.pop();
+    syncLinked();
+  });
+  document.getElementById('resetBtn').addEventListener('click', function () {
+    if (mode !== 'play') return;
+    cur = null; paths = []; syncLinked();
+  });
+  document.getElementById('hintBtn').addEventListener('click', function () {
+    if (mode !== 'play') return;
+    var free = balls.filter(function (b) { return !b.linked; });
+    if (!free.length) return;
+    hintColor = free[0].pair; hintUntil = performance.now() + 2200;
+  });
+
+  /* ---------- drawing ---------- */
+  var SIDE = ['#c3c4ce', '#d9dae2', '#b4b5c0'];
+  function slab(oy, alpha, sc) {
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    if (sc && sc !== 1) { ctx.translate(cx, cy + oy); ctx.scale(sc, sc); ctx.translate(-cx, -(cy + oy)); }
+    ctx.lineJoin = 'round';
+    var V = [], i;
+    for (i = 0; i < 6; i++) V.push([Math.cos(i * Math.PI / 3), Math.sin(i * Math.PI / 3)]);
+    for (i = 0; i < 3; i++) {
+      var a = P(V[i][0], V[i][1], oy), b = P(V[i + 1][0], V[i + 1][1], oy);
+      ctx.beginPath();
+      ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.lineTo(b[0], b[1] + T); ctx.lineTo(a[0], a[1] + T);
+      ctx.closePath();
+      ctx.fillStyle = SIDE[i]; ctx.strokeStyle = SIDE[i]; ctx.lineWidth = R * 0.035;
+      ctx.fill(); ctx.stroke();
+    }
+    ctx.beginPath();
+    for (i = 0; i < 6; i++) {
+      var q = P(V[i][0], V[i][1], oy);
+      if (i === 0) ctx.moveTo(q[0], q[1]); else ctx.lineTo(q[0], q[1]);
+    }
+    ctx.closePath();
+    var g = ctx.createLinearGradient(0, cy + oy - R * K, 0, cy + oy + R * K);
+    g.addColorStop(0, '#f4f4f7'); g.addColorStop(1, '#dedfe6');
+    ctx.fillStyle = g; ctx.strokeStyle = '#e8e8ee'; ctx.lineWidth = R * 0.035;
+    ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+  function dots(j, oy) {
+    for (var i = 0; i < 3; i++) {
+      var h = (j * 7 + i * 13 + layer * 3) % 9;
+      if (h > 5) continue;
+      var a0 = i * Math.PI / 3, a1 = (i + 1) * Math.PI / 3;
+      var a = P(Math.cos(a0), Math.sin(a0), oy), b = P(Math.cos(a1), Math.sin(a1), oy);
+      var mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2 + T * 0.5;
+      ctx.beginPath(); ctx.ellipse(mx, my, T * 0.34, T * 0.3, 0, 0, Math.PI * 2);
+      ctx.fillStyle = COLORS[h].b; ctx.fill();
+    }
+  }
+
+  function strokePath(pts, oy) {
+    ctx.beginPath();
+    var p0 = P(pts[0][0], pts[0][1], oy);
+    ctx.moveTo(p0[0], p0[1]);
+    for (var i = 1; i < pts.length - 1; i++) {
+      var a = P(pts[i][0], pts[i][1], oy), b = P(pts[i + 1][0], pts[i + 1][1], oy);
+      ctx.quadraticCurveTo(a[0], a[1], (a[0] + b[0]) / 2, (a[1] + b[1]) / 2);
+    }
+    var e = P(pts[pts.length - 1][0], pts[pts.length - 1][1], oy);
+    ctx.lineTo(e[0], e[1]);
+  }
+  function drawLine(pl, oy) {
+    if (pl.pts.length < 2) return;
+    var c = COLORS[pl.c];
+    ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    ctx.save(); ctx.translate(R * 0.012, R * 0.02);
+    strokePath(pl.pts, oy); ctx.strokeStyle = 'rgba(0,0,0,.2)'; ctx.lineWidth = LINE * R; ctx.stroke(); ctx.restore();
+    strokePath(pl.pts, oy); ctx.strokeStyle = c.b; ctx.lineWidth = LINE * R; ctx.stroke();
+    ctx.save(); ctx.translate(-R * 0.006, -R * 0.008);
+    strokePath(pl.pts, oy); ctx.strokeStyle = c.l; ctx.globalAlpha *= 0.55; ctx.lineWidth = LINE * R * 0.28; ctx.stroke(); ctx.restore();
+  }
+  function drawBall(b, oy, pulse) {
+    var c = COLORS[b.c], r = BALL * R, p = P(b.x, b.y, oy);
+    ctx.beginPath(); ctx.ellipse(p[0] + r * 0.35, p[1] + r * 0.12, r * 1.05, r * 0.6, 0, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(0,0,0,.18)'; ctx.fill();
+    var by = p[1] - r * 0.45;
+    if (pulse) {
+      ctx.beginPath(); ctx.arc(p[0], by, r * (1.5 + 0.25 * Math.sin(performance.now() / 120)), 0, Math.PI * 2);
+      ctx.strokeStyle = c.b; ctx.lineWidth = 3; ctx.stroke();
+    }
+    var g = ctx.createRadialGradient(p[0] - r * 0.35, by - r * 0.4, r * 0.1, p[0], by, r * 1.05);
+    g.addColorStop(0, c.l); g.addColorStop(0.45, c.b); g.addColorStop(1, c.d);
+    ctx.beginPath(); ctx.arc(p[0], by, r, 0, Math.PI * 2); ctx.fillStyle = g; ctx.fill();
+  }
+  function ease(t) { return t * t * (3 - 2 * t); }
+
+  function layerContent(oy, alpha) {
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    paths.forEach(function (pl) { drawLine(pl, oy); });
+    if (cur) drawLine(cur, oy);
+    var now = performance.now();
+    balls.slice().sort(function (a, b) { return a.y - b.y; }).forEach(function (b) {
+      drawBall(b, oy, now < hintUntil && b.pair === hintColor && !b.linked);
+    });
+    ctx.restore();
+  }
+
+  function render(now) {
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, W, H);
+    var glow = ctx.createRadialGradient(cx, cy + R * 0.3, R * 0.2, cx, cy + R * 0.3, R * 1.6);
+    glow.addColorStop(0, 'rgba(120,130,190,.12)'); glow.addColorStop(1, 'rgba(120,130,190,0)');
+    ctx.fillStyle = glow; ctx.fillRect(0, 0, W, H);
+
+    var first = mode === 'entering' ? 2 : 1;
+    for (var j = SLABS; j >= first; j--) { slab(j * T, 1); dots(j, j * T); }
+
+    if (mode === 'play') {
+      slab(0, 1); layerContent(0, 1);
+    } else if (mode === 'entering') {
+      var e = reduce ? 1 : ease(Math.min(1, (now - enterStart) / 380));
+      slab(T * (1 - e), 1); layerContent(T * (1 - e), 1);
+      if (e >= 1) mode = 'play';
+    } else if (mode === 'dropping') {
+      var p = reduce ? 1 : Math.max(0, Math.min(1, (now - fallStart) / 650));
+      var oy = p * p * R * 0.55;
+      slab(oy, 1 - p, 1 - p * 0.04); layerContent(oy, 1 - p);
+      if (p >= 1) {
+        layer++;
+        if (layer > best) { best = layer; try { localStorage.setItem('hexlink-best', String(best)); } catch (er) {} }
+        genLevel(layer); mode = 'entering'; enterStart = now;
+      }
+    }
+    requestAnimationFrame(render);
+  }
+
+  resize();
+  genLevel(layer);
+  requestAnimationFrame(render);
+})();
+</script>
+
+</body></html>
