@@ -1,0 +1,911 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Baize Room Poker</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: lobby (variant tiles + table setup), then a felt table: house seats around the top, hero at the bottom, action bar docked beneath, log and stacks at the side. */
+:root{
+  --ink:#08120e;--panel:#0f1f19;--panel-2:#152a22;--line:#2a433a;--text:#e7efe9;--muted:#8fa89d;
+  --felt:#0f4d3e;--felt-deep:#08352b;--rail:#1a120d;--brass:#d3aa50;--brass-2:#f2d27f;
+  --paper:#f4f1e8;--suit-s:#15191c;--suit-h:#c93a3a;--suit-d:#c93a3a;--suit-c:#15191c;
+  --good:#5cc68d;--warn:#e6a24b;--bad:#e2594f;
+  --f-display:'Bodoni Moda','Didot',Georgia,serif;--f-ui:'IBM Plex Sans',system-ui,sans-serif;--f-mono:'IBM Plex Mono',ui-monospace,monospace;
+  color-scheme:dark;
+}
+body.fourc{--suit-d:#2c66cf;--suit-c:#1f8a4c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--text);font:15px/1.5 var(--f-ui);padding-block:12px 32px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.app{max-width:1280px;margin:0 auto}
+h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance;font-weight:700}
+button{font:inherit;color:inherit}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.brand{display:flex;flex-direction:column}
+.brand b{font:700 26px/1 var(--f-display);letter-spacing:.01em}
+.brand span{font:400 11px var(--f-mono);color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-top:4px}
+.btn{padding:9px 14px;border-radius:10px;border:1px solid var(--line);background:var(--panel-2);cursor:pointer;min-height:40px}
+.btn:hover{border-color:var(--brass)}
+.btn:focus-visible,.variant:focus-visible,.seg button:focus-visible,input:focus-visible{outline:2px solid var(--brass-2);outline-offset:2px}
+.btn:disabled{opacity:.45;cursor:default}
+.btn.primary{background:var(--brass);color:#1b1405;border-color:var(--brass);font-weight:600}
+.btn.fold{border-color:#6b2f2b;background:#2a1513}
+.btn.call{border-color:#2f6b4c;background:#10281d}
+.btn.big{min-height:48px;flex:1 1 110px;font-weight:600}
+kbd{font:500 10px var(--f-mono);opacity:.6;border:1px solid currentColor;border-radius:4px;padding:0 4px;margin-left:6px}
+/* lobby */
+.lobby-head{max-width:760px;margin-bottom:18px}
+.lobby-head h1{font-size:clamp(28px,4.4vw,44px);line-height:1.08}
+.lobby-head p{color:var(--muted);margin:10px 0 0}
+.lobby-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:18px}
+.variants{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-content:start}
+.variant{text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;cursor:pointer;display:flex;flex-direction:column;gap:8px;min-width:0}
+.variant[aria-checked=true]{border-color:var(--brass);background:linear-gradient(160deg,#17302a,#0f1f19);box-shadow:0 0 0 1px var(--brass) inset}
+.v-name{font:700 20px var(--f-display)}
+.v-blurb{font-size:13px;color:var(--muted)}
+.mini{display:flex;gap:3px;align-items:flex-end;flex-wrap:wrap}
+.mini i{display:block;width:13px;height:19px;border-radius:2px;background:var(--paper)}
+.mini i.h{background:var(--brass)}.mini i.u{background:var(--paper);border-top:5px solid var(--brass)}.mini i.gap{width:8px;background:none}
+.v-facts{font:400 11px var(--f-mono);color:var(--brass-2);letter-spacing:.04em}
+.setup{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;gap:14px;align-content:start}
+.flabel{font:500 11px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{flex:1 1 auto;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--panel-2);cursor:pointer;min-height:38px}
+.seg button[aria-checked=true]{background:var(--brass);color:#1b1405;border-color:var(--brass);font-weight:600}
+.hint{font-size:13px;color:var(--muted);min-height:20px}
+.tog{display:flex;gap:10px;align-items:center;font-size:14px}
+.tog input{width:18px;height:18px;accent-color:var(--brass)}
+.sum{font:400 12px var(--f-mono);color:var(--brass-2)}
+/* table view */
+.table-view{display:none}
+body.in-table .lobby{display:none}
+body.in-table .table-view{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px}
+.tbar{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.tinfo{font:500 12px var(--f-mono);letter-spacing:.06em;color:var(--brass-2);text-transform:uppercase}
+.felt{position:relative;height:clamp(580px,60vw,680px)}
+.felt::before{content:'';position:absolute;inset:7% 0 15% 0;border-radius:50%;background:radial-gradient(ellipse at 50% 40%,var(--felt) 0,var(--felt-deep) 80%);border:12px solid var(--rail);box-shadow:0 0 0 2px var(--brass) inset,0 18px 40px rgba(0,0,0,.5)}
+#seats{display:contents}
+.seat{position:absolute;display:flex;flex-direction:column;align-items:center;gap:6px;width:200px;z-index:2}
+.seat .card{--cw:38px}
+.seat.hero{width:min(440px,100%)}
+.seat.hero .card{--cw:62px}
+.pos-top{left:50%;top:0;transform:translateX(-50%)}
+.pos-tl{left:25%;top:1%;transform:translateX(-50%)}
+.pos-tr{left:75%;top:1%;transform:translateX(-50%)}
+.pos-left{left:1%;top:34%}
+.pos-right{right:1%;top:34%}
+.pos-bottom{left:50%;bottom:0;transform:translateX(-50%)}
+.cards{display:flex;justify-content:center;min-height:calc(38px*1.4)}
+.hero .cards{min-height:calc(62px*1.4)}
+.cards .card+.card{margin-left:calc(var(--cw)*-.1)}
+.cards.many .card+.card{margin-left:calc(var(--cw)*-.34)}
+.plate{position:relative;display:flex;align-items:center;gap:8px;background:rgba(7,15,12,.85);border:1px solid var(--line);border-radius:12px;padding:6px 10px}
+.seat.turn .plate{border-color:var(--brass-2);box-shadow:0 0 0 2px rgba(242,210,127,.35);animation:pulse 1.2s ease-in-out infinite}
+.seat.folded{opacity:.5}
+.seat.win .plate{border-color:var(--good);box-shadow:0 0 0 3px rgba(92,198,141,.4)}
+.avatar{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font:700 14px var(--f-display);color:#0b1511;background:var(--av,var(--brass));flex:none}
+.who{display:flex;flex-direction:column;line-height:1.15;min-width:0}
+.nm{font-weight:600;font-size:13px}
+.tg{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.stk{font:500 13px var(--f-mono);color:var(--brass-2);font-variant-numeric:tabular-nums}
+.dbtn{position:absolute;right:-8px;top:-9px;width:20px;height:20px;border-radius:50%;background:var(--brass-2);color:#1a1405;font:700 11px/20px var(--f-mono);text-align:center}
+.bet{min-height:22px;font:500 12px var(--f-mono);display:flex;gap:6px;align-items:center;color:var(--text);font-variant-numeric:tabular-nums}
+.chipdot{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--brass);border:2px dashed rgba(255,255,255,.6);box-shadow:0 0 0 1px #0006}
+.stat{min-height:18px;font-size:12px;color:var(--brass-2);text-align:center}
+.center{position:absolute;left:50%;top:47%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:10px;width:min(520px,70%);z-index:1}
+.street{font:500 11px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--brass-2);min-height:16px}
+.pot{font:700 26px var(--f-display);display:flex;align-items:center;gap:8px;font-variant-numeric:tabular-nums}
+.boardwrap{position:relative;display:none}
+.boardwrap.on{display:block}
+.slots,.board{display:flex;gap:6px}
+.slots{position:absolute;inset:0}
+.slot{width:56px;height:78px;border:1px dashed rgba(242,210,127,.28);border-radius:6px}
+.board .card{--cw:56px}
+.banner{min-height:44px;text-align:center;font:500 15px/1.35 var(--f-display);color:var(--brass-2);max-width:100%}
+.tip{font-size:12px;color:#b9cfc4;text-align:center}
+/* cards */
+.card{--cw:56px;position:relative;flex:none;width:var(--cw);height:calc(var(--cw)*1.4);border-radius:calc(var(--cw)*.11);background:var(--paper);color:var(--suit,#15191c);box-shadow:0 3px 8px rgba(0,0,0,.45);font-family:var(--f-display);font-weight:700;user-select:none}
+.s-S{--suit:var(--suit-s)}.s-H{--suit:var(--suit-h)}.s-D{--suit:var(--suit-d)}.s-C{--suit:var(--suit-c)}
+.card .rk{position:absolute;left:11%;top:6%;font-size:calc(var(--cw)*.36);line-height:1;letter-spacing:-.04em}
+.card .st{position:absolute;left:12%;top:calc(var(--cw)*.43);font-size:calc(var(--cw)*.25);line-height:1}
+.card .pip{position:absolute;right:9%;bottom:5%;font-size:calc(var(--cw)*.55);line-height:1}
+.card.back{background:linear-gradient(135deg,#7a2433,#4a1320);border:2px solid var(--brass)}
+.card.back::after{content:'';position:absolute;inset:12%;background:repeating-linear-gradient(45deg,rgba(242,210,127,.35) 0 2px,transparent 2px 7px),repeating-linear-gradient(-45deg,rgba(242,210,127,.35) 0 2px,transparent 2px 7px)}
+.card.down::before{content:'';position:absolute;left:50%;bottom:-6px;width:6px;height:6px;border-radius:50%;background:var(--brass);transform:translateX(-50%)}
+.card.hl{transform:translateY(-5px);box-shadow:0 0 0 2px var(--brass-2),0 6px 12px rgba(0,0,0,.5)}
+.card.dim{opacity:.4}
+.card.pick{cursor:pointer}
+.card.sel{transform:translateY(-14px);box-shadow:0 0 0 2px var(--bad),0 6px 12px rgba(0,0,0,.5)}
+.card.deal{animation:deal .32s cubic-bezier(.2,.8,.3,1) backwards}
+.card.flip{animation:flip .3s ease-out backwards}
+@keyframes deal{from{opacity:0;transform:translateY(-28px) rotate(-8deg) scale(.9)}}
+@keyframes flip{from{transform:rotateY(90deg)}}
+@keyframes pulse{50%{box-shadow:0 0 0 5px rgba(242,210,127,.15)}}
+/* controls */
+.controls{margin-top:12px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px;display:grid;gap:10px;min-height:110px}
+.ctl-info{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:13px;color:var(--muted)}
+.ctl-info b{color:var(--text);font-family:var(--f-mono);font-weight:500}
+.ctl-row{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch}
+.raisebox{display:grid;gap:8px;flex:2 1 300px}
+.pres{display:flex;flex-wrap:wrap;gap:6px}
+.pres button{padding:4px 10px;border-radius:8px;border:1px solid var(--line);background:var(--panel-2);cursor:pointer;font-size:12px}
+.raisebox input[type=range]{width:100%;accent-color:var(--brass)}
+.odds{display:flex;align-items:center;gap:8px}
+.odds i{display:block;height:6px;border-radius:3px;background:var(--good)}
+.odds span{flex:1;height:6px;background:var(--line);border-radius:3px;overflow:hidden;display:block}
+/* side */
+.side{display:grid;gap:12px;align-content:start;min-width:0}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px}
+.panel h3{font-size:15px;margin-bottom:8px}
+.stks{display:grid;gap:6px}
+.stkrow{display:grid;grid-template-columns:1fr auto;gap:2px 8px;font-size:13px}
+.stkrow .bar{grid-column:1/-1;height:4px;border-radius:2px;background:var(--line);overflow:hidden}
+.stkrow .bar i{display:block;height:100%;background:var(--brass)}
+.stkrow em{font:500 12px var(--f-mono);font-style:normal;color:var(--brass-2)}
+.log{list-style:none;margin:0;padding:0;height:240px;overflow:auto;font-size:13px;display:grid;gap:3px;align-content:start}
+.log li{color:var(--muted)}.log li.win{color:var(--good)}.log li.sys{color:var(--brass-2);margin-top:6px}
+.stats{display:grid;grid-template-columns:1fr auto;gap:4px 10px;font-size:13px;margin:0}
+.stats dt{color:var(--muted)}.stats dd{margin:0;font:500 13px var(--f-mono);text-align:right}
+.overlay{position:fixed;inset:0;background:rgba(3,8,6,.8);display:grid;place-items:center;padding:16px;z-index:50}
+.sheet{background:var(--panel);border:1px solid var(--brass);border-radius:16px;padding:18px;max-width:520px;width:100%;max-height:90vh;overflow:auto}
+.rank{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:12px 0;font-size:14px}
+.rank b{font-family:var(--f-display)}.rank span{font:400 13px var(--f-mono);color:var(--muted)}
+.red{color:#ef6a6a}
+@media (max-width:980px){body.in-table .table-view{grid-template-columns:minmax(0,1fr)}.lobby-grid{grid-template-columns:minmax(0,1fr)}}
+@media (min-width:761px){.felt .seat{position:absolute}}
+@media (max-width:760px){
+  .variants{grid-template-columns:1fr}
+  .felt{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:12px 8px;padding:12px;border-radius:26px;background:radial-gradient(ellipse at 50% 40%,var(--felt) 0,var(--felt-deep) 85%);border:8px solid var(--rail);box-shadow:0 0 0 2px var(--brass) inset}
+  .felt::before{display:none}
+  .felt .seat{position:static;transform:none;width:auto;min-width:0}
+  .felt .seat.opp{order:1}
+  .felt .seat.lastodd{grid-column:1/-1}
+  .felt .center{position:static;transform:none;grid-column:1/-1;order:5;width:100%}
+  .felt .seat.hero{grid-column:1/-1;order:6;width:auto}
+  .seat .card{--cw:30px}.seat.hero .card{--cw:46px}.board .card{--cw:44px}.slot{width:44px;height:62px}
+  .cards{min-height:calc(30px*1.4)}.hero .cards{min-height:calc(46px*1.4)}
+  .plate{padding:5px 8px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="app" id="app">
+  <header class="top">
+    <div class="brand"><b>Baize Room</b><span>Poker against the house</span></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn" id="btnRank" type="button">Hand rankings</button>
+      <button class="btn" id="btnLobby" type="button" hidden>Leave table</button>
+    </div>
+  </header>
+
+  <section class="lobby" id="lobby">
+    <div class="lobby-head">
+      <h1>Four ways to play poker against the house.</h1>
+      <p>Pick a variant, set the stakes, and sit with up to four house players. Each one plays a different style, from tight and patient to loose and aggressive.</p>
+    </div>
+    <div class="lobby-grid">
+      <div class="variants" id="variants" role="radiogroup" aria-label="Poker variant"></div>
+      <form class="setup" id="setup" onsubmit="return false">
+        <div id="segs" style="display:grid;gap:14px"></div>
+        <div class="hint" id="structHint"></div>
+        <label class="tog"><input type="checkbox" id="t-fourc"> Four-color deck</label>
+        <label class="tog"><input type="checkbox" id="t-odds"> Show my win odds on my turn</label>
+        <label class="tog"><input type="checkbox" id="t-sound"> Sound effects</label>
+        <div class="sum" id="sum"></div>
+        <button class="btn primary big" id="btnStart" type="button">Take a seat</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="table-view" id="tableView">
+    <div class="stage">
+      <div class="tbar"><span class="tinfo" id="tinfo"></span></div>
+      <div class="felt" id="felt" data-k="3">
+        <div id="seats"></div>
+        <div class="center">
+          <div class="street" id="street"></div>
+          <div class="pot"><span class="chipdot"></span><span id="pot">0</span></div>
+          <div class="boardwrap" id="boardwrap"><div class="slots"><div class="slot"></div><div class="slot"></div><div class="slot"></div><div class="slot"></div><div class="slot"></div></div><div class="board" id="board"></div></div>
+          <div class="banner" id="banner"></div>
+          <div class="tip" id="tip"></div>
+        </div>
+      </div>
+      <div class="controls" id="controls"></div>
+    </div>
+    <aside class="side">
+      <div class="panel"><h3>Chip counts</h3><div class="stks" id="stks"></div></div>
+      <div class="panel"><h3>Hand log</h3><ul class="log" id="log"></ul></div>
+      <div class="panel"><h3>Session</h3><dl class="stats" id="stats"></dl></div>
+    </aside>
+  </section>
+</div>
+
+<div class="overlay" id="rankings" hidden>
+  <div class="sheet" role="dialog" aria-label="Hand rankings">
+    <h2>Hand rankings</h2>
+    <div class="rank" id="rankList"></div>
+    <p class="hint">Omaha: use exactly two hole cards and three board cards. Stud: best five of seven. Draw: your five cards after one draw.</p>
+    <button class="btn primary" id="rankClose" type="button">Close</button>
+  </div>
+</div>
+<script>
+(()=>{
+'use strict';
+const CFG={auto:false};
+const ABORT=Symbol('abort');
+const $=(s,r=document)=>r.querySelector(s);
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+const fmt=n=>Math.round(n).toLocaleString('en-US');
+const rand=()=>{const a=new Uint32Array(1);crypto.getRandomValues(a);return a[0]/4294967296};
+
+/* ---------- cards ---------- */
+const SUIT_CH=['♠','♥','♦','♣'],SUIT_CLS=['S','H','D','C'],SUIT_RANK=[3,2,1,0];
+const RCH={11:'J',12:'Q',13:'K',14:'A'};
+const rk=r=>RCH[r]||String(r);
+const RN={2:'Two',3:'Three',4:'Four',5:'Five',6:'Six',7:'Seven',8:'Eight',9:'Nine',10:'Ten',11:'Jack',12:'Queen',13:'King',14:'Ace'};
+const pl=r=>r===6?'Sixes':RN[r]+'s';
+const FULL=[];for(let s=0;s<4;s++)for(let r=2;r<=14;r++)FULL.push({r,s,id:r*4+s});
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(rand()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+
+/* ---------- evaluator ---------- */
+const CNT=new Int8Array(15);
+function score5(cs){
+  let flush=true;const s0=cs[0].s;
+  for(let i=0;i<5;i++){CNT[cs[i].r]++;if(cs[i].s!==s0)flush=false}
+  let quad=0,trip=0;const pairs=[],singles=[];
+  for(let r=14;r>=2;r--){const n=CNT[r];if(!n)continue;CNT[r]=0;
+    if(n===4)quad=r;else if(n===3)trip=r;else if(n===2)pairs.push(r);else singles.push(r)}
+  let sh=0;
+  if(singles.length===5){if(singles[0]-singles[4]===4)sh=singles[0];else if(singles[0]===14&&singles[1]===5)sh=5}
+  let cat,tb;
+  if(sh&&flush){cat=8;tb=[sh]}
+  else if(quad){cat=7;tb=[quad,singles[0]]}
+  else if(trip&&pairs.length){cat=6;tb=[trip,pairs[0]]}
+  else if(flush){cat=5;tb=singles}
+  else if(sh){cat=4;tb=[sh]}
+  else if(trip){cat=3;tb=[trip].concat(singles)}
+  else if(pairs.length===2){cat=2;tb=[pairs[0],pairs[1],singles[0]]}
+  else if(pairs.length===1){cat=1;tb=[pairs[0]].concat(singles)}
+  else{cat=0;tb=singles}
+  let sc=cat;for(let i=0;i<5;i++)sc=sc*15+(tb[i]||0);
+  return sc;
+}
+const CMB={};
+function cmb(n,k){const key=n+'_'+k;if(CMB[key])return CMB[key];const out=[],idx=[];
+  (function rec(s){if(idx.length===k){out.push(idx.slice());return}for(let i=s;i<n;i++){idx.push(i);rec(i+1);idx.pop()}})(0);
+  return CMB[key]=out}
+function bestOf(cards,want){
+  const cs=cmb(cards.length,5);let best=-1,bh=null;const tmp=[0,0,0,0,0];
+  for(let c=0;c<cs.length;c++){const cb=cs[c];for(let k=0;k<5;k++)tmp[k]=cards[cb[k]];
+    const s=score5(tmp);if(s>best){best=s;if(want)bh=tmp.slice()}}
+  return want?{score:best,hand:bh}:best;
+}
+function bestOmaha(hole,board,want){
+  let best=-1,bh=null;const tmp=[0,0,0,0,0];const A=cmb(hole.length,2),B=cmb(board.length,3);
+  for(let i=0;i<A.length;i++)for(let j=0;j<B.length;j++){const h=A[i],b=B[j];
+    tmp[0]=hole[h[0]];tmp[1]=hole[h[1]];tmp[2]=board[b[0]];tmp[3]=board[b[1]];tmp[4]=board[b[2]];
+    const s=score5(tmp);if(s>best){best=s;if(want)bh=tmp.slice()}}
+  return want?{score:best,hand:bh}:best;
+}
+function showScore(cards){
+  const cnt={};cards.forEach(c=>cnt[c.r]=(cnt[c.r]||0)+1);
+  const g=Object.keys(cnt).map(r=>[+r,cnt[r]]).sort((a,b)=>b[1]-a[1]||b[0]-a[0]);
+  const cat=g[0][1]===4?7:g[0][1]===3?3:g[0][1]===2?(g[1]&&g[1][1]===2?2:1):0;
+  let s=cat;for(let i=0;i<5;i++)s=s*15+(i<g.length?g[i][0]:0);return s;
+}
+function decode(score){const t=[];for(let i=0;i<5;i++){t.unshift(score%15);score=Math.floor(score/15)}return{cat:score,t}}
+function describe(score){
+  const{cat,t}=decode(score);
+  switch(cat){
+    case 8:return t[0]===14?'Royal Flush':'Straight Flush, '+RN[t[0]]+' high';
+    case 7:return 'Four '+pl(t[0]);
+    case 6:return pl(t[0])+' full of '+pl(t[1]);
+    case 5:return 'Flush, '+RN[t[0]]+' high';
+    case 4:return 'Straight, '+RN[t[0]]+' high';
+    case 3:return 'Three '+pl(t[0]);
+    case 2:return 'Two Pair, '+pl(t[0])+' and '+pl(t[1]);
+    case 1:return 'Pair of '+pl(t[0]);
+    default:return RN[t[0]]+' high';
+  }
+}
+
+/* ---------- settings and tables ---------- */
+const GAMES={holdem:{name:"Texas Hold'em"},omaha:{name:'Omaha'},draw:{name:'Five-Card Draw'},stud:{name:'Seven-Card Stud'}};
+const STRUCT={nl:'No limit',pl:'Pot limit',fl:'Fixed limit'};
+const DEFSTRUCT={holdem:'nl',omaha:'pl',draw:'fl',stud:'fl'};
+const STAKES=[{sb:5,bb:10},{sb:25,bb:50},{sb:100,bb:200}];
+const DIFF=[{n:'Casual',simMul:.4,noise:.14,bluff:.6},{n:'Standard',simMul:1,noise:.05,bluff:1},{n:'Sharp',simMul:1.7,noise:.015,bluff:1.2}];
+const PACEF=[1.6,1,.5];
+const S={game:'holdem',struct:'nl',stakes:0,stackBB:100,opps:3,diff:1,pace:1,fourc:false,odds:true,sound:true};
+const PERSONAS=[
+  {name:'Marlowe',tag:'Tight-aggressive',tight:.65,aggr:.7,bluff:.07,av:'#6fb7a5'},
+  {name:'Dex',tag:'Loose-aggressive',tight:.25,aggr:.92,bluff:.22,av:'#e08a5a'},
+  {name:'Ines',tag:'Tight-passive',tight:.85,aggr:.3,bluff:.03,av:'#a8a0e0'},
+  {name:'Hollis',tag:'Calling station',tight:.2,aggr:.22,bluff:.04,av:'#e0c070'},
+  {name:'Sable',tag:'Balanced',tight:.5,aggr:.6,bluff:.1,av:'#d986a8'},
+  {name:'Rafferty',tag:'Wild card',tight:.35,aggr:.75,bluff:.18,av:'#7fb0e8'}
+];
+const POS={1:['top'],2:['tl','tr'],3:['left','top','right'],4:['left','tl','tr','right']};
+let G=null,RUN=0,AC=null;
+const KEY='baize-room-v1';
+function loadS(){try{const j=JSON.parse(localStorage.getItem(KEY)||'null');if(j)Object.assign(S,j)}catch(e){}}
+function saveS(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+
+function beep(f,d,type,v){
+  if(!S.sound||CFG.auto)return;
+  try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();
+    const o=AC.createOscillator(),g=AC.createGain();o.type=type||'triangle';o.frequency.value=f;g.gain.value=v||.04;
+    o.connect(g);g.connect(AC.destination);o.start();g.gain.exponentialRampToValueAtTime(.0001,AC.currentTime+(d||.07));o.stop(AC.currentTime+(d||.07))}catch(e){}
+}
+async function pause(ms){
+  const run=RUN;const f=PACEF[S.pace]*(G&&G.fast?.35:1);
+  await sleep(ms*f);if(run!==RUN)throw ABORT;
+}
+
+function newTable(){
+  const st=STAKES[S.stakes];
+  const ps=shuffle(PERSONAS.slice()).slice(0,S.opps);
+  const players=[{id:0,name:'You',human:true,av:'#d3aa50'}].concat(ps.map((p,i)=>({id:i+1,name:p.name,prof:p,av:p.av,tag:p.tag})));
+  G={game:S.game,struct:S.struct,sb:st.sb,bb:st.bb,ante:Math.max(1,Math.round(st.bb/10)),unit:st.sb,stack0:st.bb*S.stackBB,
+    players,dealer:-1,hand:0,board:[],pot:0,cur:0,lastRaise:st.bb,raises:0,betSize:st.bb,deck:[],discards:[],
+    phase:'start',street:'',reveal:false,fast:false,turn:-1,pending:null,discard:null,next:null,rebuy:null,drawn:false,
+    banner:'',tip:'',pos:POS[S.opps],winIds:new Set(),log:[],
+    stats:{hands:0,won:0,biggest:0,bestScore:-1,buyins:1}};
+  players.forEach(p=>{p.stack=G.stack0;p.cards=[];p.bet=0;p.total=0;p.won=0});
+}
+const live=()=>G.players.filter(p=>!p.folded);
+const orderFrom=i0=>{const n=G.players.length;return Array.from({length:n},(_,k)=>G.players[(i0+k)%n])};
+function drawCard(){const g=G;if(!g.deck.length)g.deck=shuffle(g.discards.splice(0));return g.deck.pop()}
+function dealTo(p,up){const c=drawCard();p.cards.push({r:c.r,s:c.s,id:c.id,up:!!up});beep(1300,.04,'triangle',.025)}
+function commit(p,amt){amt=Math.max(0,Math.min(amt,p.stack));p.stack-=amt;p.bet+=amt;p.total+=amt;G.pot+=amt;if(p.stack===0)p.allIn=true;return amt}
+function ante(p,amt){amt=Math.min(amt,p.stack);p.stack-=amt;p.total+=amt;G.pot+=amt;if(p.stack===0)p.allIn=true}
+function log(t,c){if(!G)return;G.log.push({t,c});if(G.log.length>300)G.log.shift();UI.log(t,c)}
+
+/* ---------- betting ---------- */
+function legal(p){
+  const g=G,toCall=Math.max(0,g.cur-p.bet),call=Math.min(toCall,p.stack),maxAll=p.bet+p.stack;
+  const others=g.players.filter(q=>q!==p&&!q.folded&&!q.allIn);
+  let canRaise=others.length>0&&maxAll>g.cur,minTo=0,maxTo=0;
+  if(canRaise){
+    if(g.struct==='fl'){
+      if(g.raises>=4)canRaise=false;
+      else{const to=g.cur<g.betSize?g.betSize:g.cur+g.betSize;minTo=maxTo=Math.min(to,maxAll)}
+    }else{
+      minTo=Math.min(g.cur+Math.max(g.lastRaise,g.bb),maxAll);
+      maxTo=g.struct==='pl'?Math.min(maxAll,g.cur+g.pot+call):maxAll;
+      if(maxTo<minTo)maxTo=minTo;
+    }
+  }
+  return{toCall,call,canCheck:toCall===0,canRaise,minTo,maxTo,maxAll,isBet:g.cur===0};
+}
+function applyAction(p,a,L){
+  const g=G;
+  if(a.type==='fold'){p.folded=true;p.acted=true;p.last='Folded';log(p.name+' folds');
+    if(p.human)g.fast=true;beep(300,.08,'sine',.03)}
+  else if(a.type==='check'){p.acted=true;p.last='Check';log(p.name+' checks')}
+  else if(a.type==='call'){const c=commit(p,L.call);p.acted=true;p.last='Call '+fmt(c)+(p.allIn?' (all in)':'');log(p.name+' calls '+fmt(c)+(p.allIn?' and is all in':''));beep(700,.06,'square',.02)}
+  else{
+    const to=clamp(Math.round(a.to),L.minTo,L.maxTo);commit(p,to-p.bet);
+    const inc=p.bet-g.cur;
+    if(p.bet>g.cur){if(inc>=g.lastRaise)g.lastRaise=inc;g.cur=p.bet;g.raises++;g.players.forEach(q=>{if(q!==p)q.acted=false})}
+    p.acted=true;
+    const w=L.isBet?'bets ':'raises to ';
+    p.last=(L.isBet?'Bet ':'Raise ')+fmt(p.bet)+(p.allIn?' (all in)':'');
+    log(p.name+' '+w+fmt(p.bet)+(p.allIn?' and is all in':''));beep(900,.07,'square',.025);
+  }
+}
+async function takeTurn(p){
+  const g=G,L=legal(p);g.turn=p.id;UI.render();
+  let act;
+  if(p.human&&!CFG.auto){
+    if(S.odds){try{L.eq=estimateEquity(p,350)}catch(e){}}
+    act=await UI.askHuman(p,L);
+  }else{await pause(500+rand()*600);act=aiDecide(p,L)}
+  g.turn=-1;applyAction(p,act,L);UI.render();await pause(180);
+}
+async function bettingRound(first,o){
+  o=o||{};const g=G,pls=g.players,n=pls.length;
+  pls.forEach(p=>{p.acted=false});
+  if(!o.keep){pls.forEach(p=>{p.bet=0;if(!p.folded)p.last=''});g.cur=0;g.lastRaise=g.bb;g.raises=0}
+  let i=first;
+  for(let guard=0;guard<600;guard++){
+    const lv=live();if(lv.length<=1)break;
+    const can=lv.filter(p=>!p.allIn);if(!can.length)break;
+    if(can.length===1&&can[0].bet>=g.cur)break;
+    if(!can.some(p=>!p.acted||p.bet<g.cur))break;
+    const p=pls[i];i=(i+1)%n;
+    if(p.folded||p.allIn||(p.acted&&p.bet>=g.cur))continue;
+    await takeTurn(p);
+  }
+  pls.forEach(p=>{p.bet=0;if(!p.folded&&!p.allIn)p.last=''});g.cur=0;UI.render();
+}
+
+/* ---------- AI ---------- */
+function planDiscard(cards){
+  const{cat}=decode(score5(cards));
+  if(cat>=4)return[];
+  const byR={};cards.forEach((c,i)=>(byR[c.r]=byR[c.r]||[]).push(i));
+  const groups=Object.keys(byR).map(k=>byR[k]).sort((a,b)=>b.length-a.length||cards[b[0]].r-cards[a[0]].r);
+  const all=[0,1,2,3,4],keepSet=a=>all.filter(i=>!a.includes(i));
+  if(cat===3||cat===1)return keepSet(groups[0]);
+  if(cat===7)return keepSet(groups[0]);
+  if(cat===2)return keepSet(groups[0].concat(groups[1]));
+  for(let s=0;s<4;s++){const idx=all.filter(i=>cards[i].s===s);if(idx.length===4)return keepSet(idx)}
+  const rs=Array.from(new Set(cards.map(c=>c.r))).sort((a,b)=>a-b);
+  for(let i=0;i+3<rs.length;i++)if(rs[i+3]-rs[i]===3){const set=rs.slice(i,i+4);return all.filter(k=>!set.includes(cards[k].r))}
+  const order=all.slice().sort((a,b)=>cards[b].r-cards[a].r);
+  const keep=cards[order[1]].r>=11?[order[0],order[1]]:[order[0]];
+  return keepSet(keep);
+}
+function estimateEquity(p,sims){
+  const g=G,opps=g.players.filter(q=>q!==p&&!q.folded);
+  if(!opps.length)return 1;
+  const known=new Set();p.cards.forEach(c=>known.add(c.id));
+  const game=g.game;
+  if(game==='holdem'||game==='omaha')g.board.forEach(c=>known.add(c.id));
+  if(game==='stud')g.players.forEach(q=>q.cards.forEach(c=>{if(c.up)known.add(c.id)}));
+  const pool=FULL.filter(c=>!known.has(c.id)),len=pool.length;
+  let win=0,k,hole=0,boardNeed=0,keep=null,need=0;
+  if(game==='holdem'||game==='omaha'){hole=game==='omaha'?4:2;boardNeed=5-g.board.length;k=boardNeed+opps.length*hole}
+  else if(game==='draw'){keep=p.cards;if(!g.drawn){const d=new Set(planDiscard(p.cards));keep=p.cards.filter((_,i)=>!d.has(i));need=d.size}k=need+opps.length*5}
+  else{need=7-p.cards.length;k=need;opps.forEach(q=>{k+=7-q.cards.filter(c=>c.up).length})}
+  for(let s=0;s<sims;s++){
+    const a=pool.slice();
+    for(let i=0;i<k;i++){const j=i+Math.floor(Math.random()*(len-i));const t=a[i];a[i]=a[j];a[j]=t}
+    let mine,pos=0,better=false,ties=0;
+    if(game==='holdem'||game==='omaha'){
+      const board=g.board.concat(a.slice(0,boardNeed));pos=boardNeed;
+      mine=game==='omaha'?bestOmaha(p.cards,board):bestOf(p.cards.concat(board));
+      for(const q of opps){const h=a.slice(pos,pos+hole);pos+=hole;
+        const sc=game==='omaha'?bestOmaha(h,board):bestOf(h.concat(board));
+        if(sc>mine){better=true;break}else if(sc===mine)ties++}
+    }else if(game==='draw'){
+      mine=bestOf(keep.concat(a.slice(0,need)));pos=need;
+      for(const q of opps){const sc=bestOf(a.slice(pos,pos+5));pos+=5;if(sc>mine){better=true;break}else if(sc===mine)ties++}
+    }else{
+      mine=bestOf(p.cards.concat(a.slice(0,need)));pos=need;
+      for(const q of opps){const up=q.cards.filter(c=>c.up),nd=7-up.length;
+        const sc=bestOf(up.concat(a.slice(pos,pos+nd)));pos+=nd;if(sc>mine){better=true;break}else if(sc===mine)ties++}
+    }
+    if(!better)win+=1/(ties+1);
+  }
+  return win/sims;
+}
+function simCount(){const b={holdem:170,omaha:80,draw:150,stud:120}[G.game];return Math.max(30,Math.round(b*DIFF[S.diff].simMul))}
+function aiDecide(p,L){
+  const g=G,pr=p.prof||PERSONAS[4],df=DIFF[S.diff];
+  const opp=g.players.filter(q=>q!==p&&!q.folded).length;
+  let eq=estimateEquity(p,simCount())+(rand()-.5)*2*df.noise;
+  eq=clamp(eq,.01,.99);
+  const fair=1/(opp+1),potOdds=L.toCall>0?L.call/(g.pot+L.call):0;
+  const r=rand(),bluffy=r<pr.bluff*df.bluff;
+  const strong=eq>fair+(1-fair)*(.38+(1-pr.aggr)*.22);
+  const decent=eq>fair+(1-fair)*(.12+pr.tight*.12);
+  const callOk=eq>=potOdds*(1+.15*pr.tight);
+  const loose=pr.tight<.35&&rand()<.3&&L.call<.15*(p.stack+p.bet);
+  const size=()=>{
+    if(g.struct==='fl')return{type:'raise',to:L.minTo};
+    const s=clamp((eq-fair)/(1-fair),0,1),frac=.35+s*.8+(rand()-.5)*.2;
+    let to=Math.round((g.cur+frac*(g.pot+L.call))/g.unit)*g.unit;
+    to=clamp(to,L.minTo,L.maxTo);
+    if(L.maxTo===L.maxAll&&to>=.65*L.maxAll)to=L.maxAll;
+    return{type:'raise',to};
+  };
+  if(L.canCheck){
+    if(L.canRaise&&((strong&&r<.85)||(decent&&r<.45+pr.aggr*.4)||bluffy))return size();
+    return{type:'check'};
+  }
+  if(L.canRaise&&((strong&&rand()<.35+pr.aggr*.55)||(bluffy&&rand()<.25&&potOdds<.4)))return size();
+  if(callOk||loose)return{type:'call'};
+  return{type:'fold'};
+}
+
+/* ---------- hand flow ---------- */
+function blinds(){
+  const g=G,n=g.players.length,P=g.players;let sbI,bbI,first;
+  if(n===2){sbI=g.dealer;bbI=(g.dealer+1)%n;first=sbI}
+  else{sbI=(g.dealer+1)%n;bbI=(g.dealer+2)%n;first=(g.dealer+3)%n}
+  commit(P[sbI],g.sb);commit(P[bbI],g.bb);
+  P[sbI].last='Small blind';P[bbI].last='Big blind';
+  g.cur=g.bb;g.lastRaise=g.bb;g.raises=1;g.betSize=g.bb;
+  log('Blinds: '+P[sbI].name+' '+fmt(g.sb)+', '+P[bbI].name+' '+fmt(g.bb));
+  return first;
+}
+async function dealRound(up){
+  for(const p of orderFrom(G.dealer+1))if(!p.folded){dealTo(p,up);UI.render();await pause(80)}
+}
+async function playFlop(){
+  const g=G,hole=g.game==='omaha'?4:2;
+  const first=blinds();
+  for(let k=0;k<hole;k++)await dealRound(false);
+  g.street='Pre-flop';UI.render();
+  await bettingRound(first,{keep:true});
+  const stages=[['Flop',3],['Turn',1],['River',1]];
+  for(const[name,cnt]of stages){
+    if(live().length<=1)return;
+    const run=g.players.filter(p=>!p.folded&&!p.allIn).length<=1;
+    if(run)await pause(800);
+    g.discards.push(g.deck.pop());
+    for(let i=0;i<cnt;i++){const c=drawCard();g.board.push({r:c.r,s:c.s,id:c.id});UI.render();await pause(120)}
+    g.street=name;g.betSize=name==='Flop'?g.bb:g.bb*2;UI.render();
+    await bettingRound((g.dealer+1)%g.players.length);
+  }
+}
+async function playDraw(){
+  const g=G;const first=blinds();
+  for(let k=0;k<5;k++)await dealRound(false);
+  g.street='First betting';UI.render();
+  await bettingRound(first,{keep:true});
+  if(live().length<=1)return;
+  g.street='Draw';g.betSize=g.bb*2;UI.render();
+  for(const p of orderFrom(g.dealer+1)){
+    if(p.folded)continue;
+    let idx;
+    if(p.human&&!CFG.auto)idx=await UI.askDiscard(p);
+    else{await pause(500);idx=planDiscard(p.cards)}
+    const set=new Set(idx);
+    const kept=p.cards.filter((c,i)=>!set.has(i)),gone=p.cards.filter((c,i)=>set.has(i));
+    g.discards.push(...gone);p.cards=kept;
+    for(let i=0;i<idx.length;i++)dealTo(p,false);
+    p.last=idx.length?'Draws '+idx.length:'Stands pat';
+    log(p.name+(idx.length?' draws '+idx.length:' stands pat'));UI.render();await pause(250);
+  }
+  g.drawn=true;
+  g.street='Second betting';UI.render();
+  await bettingRound((g.dealer+1)%g.players.length);
+}
+function highestShowing(){
+  const g=G,n=g.players.length;let best=-1,who=null;
+  for(let k=1;k<=n;k++){const p=g.players[(g.dealer+k)%n];if(p.folded)continue;
+    const sc=showScore(p.cards.filter(c=>c.up));if(sc>best){best=sc;who=p}}
+  return g.players.indexOf(who);
+}
+async function playStud(){
+  const g=G,n=g.players.length;
+  g.players.forEach(p=>ante(p,g.ante));
+  log('Everyone antes '+fmt(g.ante));
+  await dealRound(false);await dealRound(false);await dealRound(true);
+  let bi=-1,low=999;
+  g.players.forEach((p,i)=>{const c=p.cards[2];const v=c.r*10+SUIT_RANK[c.s];if(v<low){low=v;bi=i}});
+  const bp=g.players[bi],bring=Math.min(g.sb,bp.stack);
+  commit(bp,bring);bp.last='Bring-in';g.cur=bring;g.lastRaise=g.bb;g.raises=0;g.betSize=g.bb;
+  log(bp.name+' has the low card and brings it in for '+fmt(bring));
+  g.street='Third street';UI.render();
+  await bettingRound((bi+1)%n,{keep:true});
+  const names=['Fourth street','Fifth street','Sixth street','Seventh street'];
+  for(let s=0;s<4;s++){
+    if(live().length<=1)return;
+    const run=g.players.filter(p=>!p.folded&&!p.allIn).length<=1;
+    if(run)await pause(700);
+    await dealRound(s<3);
+    g.street=names[s];g.betSize=s===0?g.bb:g.bb*2;UI.render();
+    await bettingRound(highestShowing());
+  }
+}
+function evalPlayer(p){
+  const g=G;
+  if(g.game==='holdem')return bestOf(p.cards.concat(g.board),true);
+  if(g.game==='omaha')return bestOmaha(p.cards,g.board,true);
+  return bestOf(p.cards,true);
+}
+function buildPots(){
+  const P=G.players,rem=P.map(p=>p.total),pots=[];
+  for(;;){
+    const nf=P.filter((p,i)=>!p.folded&&rem[i]>0);if(!nf.length)break;
+    const m=Math.min(...nf.map(p=>rem[P.indexOf(p)]));let amt=0;
+    P.forEach((p,i)=>{const c=Math.min(rem[i],m);amt+=c;rem[i]-=c});
+    pots.push({amt,elig:nf});
+  }
+  const left=rem.reduce((a,b)=>a+b,0);if(left>0&&pots.length)pots[pots.length-1].amt+=left;
+  return pots;
+}
+async function finishHand(){
+  const g=G,P=g.players,n=P.length;
+  P.forEach(p=>{p.bet=0;p.won=0});g.cur=0;g.turn=-1;g.street='';
+  const lv=live();
+  if(lv.length===1){
+    const w=lv[0];w.stack+=g.pot;w.won=g.pot;
+    log(w.name+' wins '+fmt(g.pot)+'. Everyone else folded.','win');
+    g.banner=(w.human?'You win ':w.name+' wins ')+fmt(g.pot)+'. Everyone else folded.';
+  }else{
+    g.reveal=true;UI.render();await pause(700);
+    lv.forEach(p=>{const r=evalPlayer(p);p.score=r.score;p.best=new Set(r.hand.map(c=>c.id));p.handText=describe(r.score)});
+    const pots=buildPots();
+    pots.forEach((pt,k)=>{
+      let top=-1;pt.elig.forEach(p=>{if(p.score>top)top=p.score});
+      const ws=pt.elig.filter(p=>p.score===top).sort((a,b)=>((P.indexOf(a)-g.dealer-1+n)%n)-((P.indexOf(b)-g.dealer-1+n)%n));
+      const share=Math.floor(pt.amt/ws.length);let rest=pt.amt-share*ws.length;
+      ws.forEach(w=>{let a=share;if(rest>0){a++;rest--}w.stack+=a;w.won+=a;g.winIds=new Set([...g.winIds,...w.best])});
+      log((pots.length>1?(k===0?'Main pot ':'Side pot ')+fmt(pt.amt)+': ':'')+ws.map(w=>w.name).join(' and ')+' win'+(ws.length===1?'s':'')+' with '+describe(top),'win');
+    });
+    const winners=P.filter(p=>p.won>0);
+    g.banner=winners.map(w=>(w.human?'You win ':w.name+' wins ')+fmt(w.won)+' with '+w.handText).join('. ');
+  }
+  const h=P[0],st=g.stats;st.hands++;
+  if(h.won>0){st.won++;st.biggest=Math.max(st.biggest,h.won)}
+  if(!h.folded&&h.score!==undefined&&h.score>st.bestScore){st.bestScore=h.score;st.bestText=describe(h.score)}
+  P.forEach(p=>{if(p.won>0)p.last=''});
+  g.phase='over';g.turn=-1;beep(h.won>0?880:330,.2,'sine',.05);UI.render();
+}
+async function playHand(){
+  const g=G,P=g.players;
+  g.hand++;g.reveal=false;g.board=[];g.pot=0;g.cur=0;g.banner='';g.tip='';g.winIds=new Set();g.fast=false;g.drawn=false;g.discard=null;g.pending=null;
+  g.deck=shuffle(FULL.slice());g.discards=[];
+  P.forEach(p=>{
+    if(p.stack<=0&&!p.human){p.stack=g.stack0;log(p.name+' rebuys','sys')}
+    p.cards=[];p.bet=0;p.total=0;p.won=0;p.folded=false;p.allIn=false;p.acted=false;p.best=null;p.handText='';p.last='';p.score=undefined;
+  });
+  if(P[0].stack<=0){
+    g.phase='bust';UI.render();
+    if(CFG.auto)P[0].stack=g.stack0;else await new Promise(res=>{g.rebuy=res;UI.render()});
+    P[0].stack=g.stack0;g.stats.buyins++;P[0].cards=[];
+  }
+  g.dealer=g.dealer<0?Math.floor(rand()*P.length):(g.dealer+1)%P.length;
+  g.phase='play';
+  log('Hand '+g.hand+' · dealer '+P[g.dealer].name+' · '+GAMES[g.game].name,'sys');
+  UI.render();
+  if(g.game==='holdem'||g.game==='omaha')await playFlop();
+  else if(g.game==='draw')await playDraw();
+  else await playStud();
+  await finishHand();
+}
+async function mainLoop(){
+  const g=G;
+  try{
+    for(;;){
+      if(g.maxHands&&g.hand>=g.maxHands)return;
+      g.phase=g.hand===0?'start':'over';
+      if(!CFG.auto)await new Promise(res=>{g.next=res;UI.render()});
+      g.next=null;
+      await playHand();
+    }
+  }catch(e){if(e!==ABORT)console.error(e)}
+}
+
+/* ---------- UI ---------- */
+const VARIANTS=[
+  {id:'holdem',name:"Texas Hold'em",blurb:'Two private cards and five shared. Make the best five of seven.',lay:'hh,.,bbbbb',facts:'2 PRIVATE · 5 BOARD · 4 ROUNDS'},
+  {id:'omaha',name:'Omaha',blurb:'Four private cards. Use exactly two of them with exactly three from the board.',lay:'hhhh,.,bbbbb',facts:'4 PRIVATE · 5 BOARD · 4 ROUNDS'},
+  {id:'draw',name:'Five-Card Draw',blurb:'Five private cards and one chance to swap up to five of them.',lay:'hhhhh',facts:'5 PRIVATE · 1 DRAW · 2 ROUNDS'},
+  {id:'stud',name:'Seven-Card Stud',blurb:'No board. Three cards down, four up, and the low card forces the first bet.',lay:'hhuuuuh',facts:'3 DOWN · 4 UP · 5 ROUNDS'}
+];
+const SEGS=[
+  {key:'struct',label:'Betting',opts:[['nl','No limit'],['pl','Pot limit'],['fl','Fixed limit']]},
+  {key:'stakes',label:'Blinds',opts:[[0,'5 / 10'],[1,'25 / 50'],[2,'100 / 200']]},
+  {key:'stackBB',label:'Starting stack',opts:[[50,'50 BB'],[100,'100 BB'],[200,'200 BB']]},
+  {key:'opps',label:'House players',opts:[[1,'1'],[2,'2'],[3,'3'],[4,'4']]},
+  {key:'diff',label:'House skill',opts:[[0,'Casual'],[1,'Standard'],[2,'Sharp']]},
+  {key:'pace',label:'Pace',opts:[[0,'Relaxed'],[1,'Normal'],[2,'Fast']]}
+];
+const HINTS={nl:'Bet any amount up to your whole stack.',pl:'A raise can be as large as the pot after you call.',fl:'Fixed bet sizes, with a cap of four bets per round.'};
+const RANKS=[['Royal flush','A K Q J 10 of one suit'],['Straight flush','Five in a row, one suit'],['Four of a kind','Four cards of one rank'],['Full house','Three of a kind plus a pair'],['Flush','Five cards of one suit'],['Straight','Five in a row'],['Three of a kind','Three cards of one rank'],['Two pair','Two different pairs'],['Pair','Two cards of one rank'],['High card','Nothing else, highest card plays']];
+let refs=[];
+
+function cardHTML(c,face){
+  if(!face)return '<div class="card back"></div>';
+  return '<div class="card s-'+SUIT_CLS[c.s]+'"><span class="rk">'+rk(c.r)+'</span><span class="st">'+SUIT_CH[c.s]+'</span><span class="pip">'+SUIT_CH[c.s]+'</span></div>';
+}
+function makeCard(it,flip){
+  const d=document.createElement('div');d.innerHTML=cardHTML(it.c,it.face);
+  const el=d.firstElementChild;el.dataset.key=it.key;el.dataset.face=String(it.face);
+  el.classList.add(flip?'flip':'deal');
+  el.addEventListener('animationend',()=>el.classList.remove('deal','flip'),{once:true});
+  return el;
+}
+function syncCards(box,items){
+  const old=new Map();
+  Array.from(box.children).forEach(ch=>{if(ch.dataset&&ch.dataset.key)old.set(ch.dataset.key,ch);else ch.remove()});
+  const keep=new Set(items.map(i=>i.key));
+  old.forEach((el,k)=>{if(!keep.has(k))el.remove()});
+  let prev=null;
+  items.forEach(it=>{
+    let el=old.get(it.key);
+    if(el&&el.dataset.face!==String(it.face)){const n=makeCard(it,true);el.replaceWith(n);el=n}
+    else if(!el){el=makeCard(it,false);box.appendChild(el)}
+    ['hl','dim','sel','pick','down'].forEach(c=>el.classList.toggle(c,!!it.fx[c]));
+    const want=prev?prev.nextSibling:box.firstChild;
+    if(want!==el)box.insertBefore(el,want);
+    prev=el;
+  });
+}
+function currentHand(p){
+  const g=G;let cs=p.cards;
+  if(g.game==='holdem'||g.game==='omaha'){
+    if(g.board.length>=3){
+      if(g.game==='omaha')return describe(bestOmaha(p.cards,g.board));
+      cs=p.cards.concat(g.board);
+    }
+  }
+  if(!cs.length)return '';
+  if(cs.length>=5)return describe(bestOf(cs));
+  return describe(showScore(cs));
+}
+function buildSeats(){
+  const g=G,k=g.players.length-1;
+  $('#felt').dataset.k=String(k);
+  $('#seats').innerHTML=g.players.map((p,i)=>{
+    const pos=p.human?'bottom':g.pos[i-1];
+    return '<div class="seat '+(p.human?'hero':'opp')+' pos-'+pos+(k%2===1&&i===k?' lastodd':'')+'" data-i="'+i+'"><div class="cards"></div><div class="plate"><span class="avatar" style="--av:'+p.av+'">'+p.name[0]+'</span><span class="who"><span class="nm">'+p.name+'</span><span class="tg">'+(p.tag||'You')+'</span></span><span class="stk"></span><span class="dbtn" hidden>D</span></div><div class="bet"></div><div class="stat"></div></div>';
+  }).join('');
+  refs=Array.from($('#seats').children).map(el=>({root:el,cards:$('.cards',el),stk:$('.stk',el),bet:$('.bet',el),stat:$('.stat',el),d:$('.dbtn',el)}));
+  $('#board').innerHTML='';
+  $('#boardwrap').classList.toggle('on',g.game==='holdem'||g.game==='omaha');
+}
+function renderSeats(){
+  const g=G;
+  g.players.forEach((p,i)=>{
+    const r=refs[i];if(!r)return;
+    const showAll=g.reveal&&!p.folded;
+    const items=p.cards.map((c,ci)=>{
+      const face=p.human||c.up||showAll;
+      return{key:p.id+':'+c.id,c,face,fx:{
+        hl:showAll&&p.best&&p.best.has(c.id),dim:showAll&&p.best&&!p.best.has(c.id),
+        sel:p.human&&g.discard&&g.discard.sel.has(ci),pick:p.human&&!!g.discard,down:p.human&&!c.up&&g.game==='stud'}};
+    });
+    syncCards(r.cards,items);
+    r.cards.classList.toggle('many',p.cards.length>=6);
+    r.root.classList.toggle('turn',g.turn===p.id);
+    r.root.classList.toggle('folded',!!p.folded);
+    r.root.classList.toggle('win',g.phase==='over'&&p.won>0);
+    r.stk.textContent=fmt(p.stack);
+    r.d.hidden=i!==g.dealer;
+    r.bet.innerHTML=p.bet>0?'<span class="chipdot"></span>'+fmt(p.bet):'';
+    let st=p.last||'';
+    if(g.phase==='over'&&!p.folded&&p.handText)st=p.handText;
+    else if(p.human&&!p.folded&&p.cards.length&&g.phase==='play')st=currentHand(p)+(st?' · '+st:'');
+    if(p.allIn&&st.indexOf('all in')<0&&g.phase==='play')st=(st?st+' · ':'')+'All in';
+    r.stat.textContent=st;
+  });
+}
+function renderCenter(){
+  const g=G;
+  $('#pot').textContent=fmt(g.pot);
+  $('#street').textContent=g.street;
+  $('#banner').textContent=g.phase==='over'?g.banner:'';
+  let tip='';
+  if(g.discard)tip='Tap the cards you want to discard, then draw.';
+  else if(g.game==='draw'&&g.phase==='play'&&!g.street)tip='';
+  $('#tip').textContent=tip;
+  if(g.game==='holdem'||g.game==='omaha'){
+    const items=g.board.map(c=>({key:'b:'+c.id,c,face:true,fx:{hl:g.reveal&&g.winIds.has(c.id),dim:g.reveal&&g.winIds.size>0&&!g.winIds.has(c.id)}}));
+    syncCards($('#board'),items);
+  }
+}
+function renderSide(){
+  const g=G,max=Math.max(...g.players.map(p=>p.stack),1);
+  $('#stks').innerHTML=g.players.map(p=>'<div class="stkrow"><span>'+p.name+'</span><em>'+fmt(p.stack)+'</em><span class="bar"><i style="width:'+Math.round(100*p.stack/max)+'%"></i></span></div>').join('');
+  const h=g.players[0],s=g.stats;
+  $('#stats').innerHTML='<dt>Hands dealt</dt><dd>'+g.hand+'</dd><dt>Hands won</dt><dd>'+s.won+'</dd><dt>Biggest pot won</dt><dd>'+fmt(s.biggest)+'</dd><dt>Best hand</dt><dd>'+(s.bestText||'None yet')+'</dd><dt>Net result</dt><dd>'+(h.stack-s.buyins*g.stack0>=0?'+':'')+fmt(h.stack-s.buyins*g.stack0)+'</dd>';
+}
+function renderControls(){
+  const g=G,el=$('#controls'),h=g.players[0];
+  let html='';
+  if(g.pending){
+    const L=g.pending.L;
+    html+='<div class="ctl-info"><span>Pot <b>'+fmt(g.pot)+'</b></span><span>To call <b>'+fmt(L.call)+'</b></span><span>Your stack <b>'+fmt(h.stack)+'</b></span></div>';
+    if(L.eq!==undefined)html+='<div class="odds"><span>Win odds</span><span><i style="width:'+Math.round(L.eq*100)+'%"></i></span><b style="font:500 13px var(--f-mono)">'+Math.round(L.eq*100)+'%</b></div>';
+    html+='<div class="ctl-row">';
+    if(!L.canCheck)html+='<button class="btn big fold" data-a="fold" type="button">Fold<kbd>F</kbd></button>';
+    html+='<button class="btn big call" data-a="call" type="button">'+(L.canCheck?'Check':'Call '+fmt(L.call)+(L.call>=h.stack?' (all in)':''))+'<kbd>C</kbd></button>';
+    if(L.canRaise){
+      const word=L.isBet?'Bet':'Raise to';
+      if(L.minTo===L.maxTo)html+='<button class="btn big primary" data-a="raise" type="button" id="rbtn">'+word+' '+fmt(L.minTo)+(L.minTo>=L.maxAll?' (all in)':'')+'<kbd>R</kbd></button>';
+      else html+='<div class="raisebox"><div class="pres"><button type="button" data-f="min">Min</button><button type="button" data-f="0.5">1/2 pot</button><button type="button" data-f="0.75">3/4 pot</button><button type="button" data-f="1">Pot</button><button type="button" data-f="max">All in</button></div><input type="range" id="rng" min="'+L.minTo+'" max="'+L.maxTo+'" step="1" value="'+clamp(Math.round((g.cur+.6*(g.pot+L.call))/g.unit)*g.unit,L.minTo,L.maxTo)+'" aria-label="Raise amount"><button class="btn big primary" data-a="raise" type="button" id="rbtn">'+word+'<kbd>R</kbd></button></div>';
+    }
+    html+='</div>';
+  }else if(g.discard){
+    const n=g.discard.sel.size;
+    html+='<div class="ctl-info"><span>Select the cards to throw away. You can draw up to five.</span></div><div class="ctl-row"><button class="btn big primary" data-a="draw" type="button">'+(n?'Draw '+n+' card'+(n>1?'s':''):'Stand pat')+'</button></div>';
+  }else if(g.phase==='start'||g.phase==='over'){
+    html+='<div class="ctl-info"><span>'+(g.phase==='start'?'Take your seat. Deal when you are ready.':g.banner)+'</span></div><div class="ctl-row"><button class="btn big primary" data-a="deal" type="button">'+(g.phase==='start'?'Deal first hand':'Deal next hand')+'<kbd>Space</kbd></button></div>';
+  }else if(g.phase==='bust'){
+    html+='<div class="ctl-info"><span>You are out of chips.</span></div><div class="ctl-row"><button class="btn big primary" data-a="rebuy" type="button">Rebuy '+fmt(g.stack0)+'</button><button class="btn big" data-a="leave" type="button">Leave table</button></div>';
+  }else{
+    const t=g.turn>=0?g.players[g.turn].name+' is deciding':'Dealing';
+    html+='<div class="ctl-info"><span>'+t+'...</span><span>Pot <b>'+fmt(g.pot)+'</b></span></div>';
+    if(h.folded)html+='<div class="ctl-info"><span>You folded. The hand plays on at a faster pace.</span></div>';
+  }
+  el.innerHTML=html;
+  el.querySelectorAll('[data-a]').forEach(b=>b.addEventListener('click',()=>act(b.dataset.a)));
+  const rng=$('#rng',el),rbtn=$('#rbtn',el);
+  if(rng&&g.pending){
+    const L=g.pending.L,word=L.isBet?'Bet':'Raise to';
+    const upd=()=>{rbtn.innerHTML=word+' '+fmt(+rng.value)+(+rng.value>=L.maxAll?' (all in)':'')+'<kbd>R</kbd>'};
+    upd();rng.addEventListener('input',upd);
+    el.querySelectorAll('[data-f]').forEach(b=>b.addEventListener('click',()=>{
+      const f=b.dataset.f;let to;
+      if(f==='min')to=L.minTo;else if(f==='max')to=L.maxTo;
+      else to=Math.round((g.cur+(+f)*(g.pot+L.call))/g.unit)*g.unit;
+      rng.value=clamp(to,L.minTo,L.maxTo);upd();
+    }));
+  }
+}
+function act(a){
+  const g=G;if(!g)return;
+  if(a==='deal'&&g.next){const r=g.next;g.next=null;r();return}
+  if(a==='rebuy'&&g.rebuy){const r=g.rebuy;g.rebuy=null;r();return}
+  if(a==='leave'){leaveTable();return}
+  if(a==='draw'&&g.discard){const d=g.discard;g.discard=null;d.res(Array.from(d.sel));return}
+  if(!g.pending)return;
+  const{res,L}=g.pending;let m;
+  if(a==='fold')m={type:'fold'};
+  else if(a==='call')m={type:L.canCheck?'check':'call'};
+  else{const r=$('#rng');m={type:'raise',to:r?+r.value:L.minTo}}
+  g.pending=null;res(m);
+}
+const UI={
+  render(){if(!G)return;renderSeats();renderCenter();renderSide();renderControls()},
+  log(t,c){const ul=$('#log');if(!ul)return;const li=document.createElement('li');li.textContent=t;if(c)li.className=c;ul.appendChild(li);ul.scrollTop=ul.scrollHeight},
+  askHuman(p,L){return new Promise(res=>{G.pending={res,L};UI.render();beep(1000,.05,'sine',.03)})},
+  askDiscard(p){return new Promise(res=>{G.discard={sel:new Set(),res};UI.render()})}
+};
+
+/* ---------- lobby and wiring ---------- */
+function summary(){
+  const st=STAKES[S.stakes];
+  return GAMES[S.game].name+' · '+STRUCT[S.struct]+' · blinds '+st.sb+'/'+st.bb+(S.game==='stud'?' · ante '+Math.max(1,Math.round(st.bb/10)):'')+' · stack '+fmt(st.bb*S.stackBB);
+}
+function renderLobby(){
+  $('#variants').innerHTML=VARIANTS.map(v=>'<button type="button" class="variant" role="radio" aria-checked="'+(S.game===v.id)+'" data-id="'+v.id+'"><span class="v-name">'+v.name+'</span><span class="v-blurb">'+v.blurb+'</span><span class="mini">'+v.lay.split('').map(ch=>ch==='.'?'<i class="gap"></i>':'<i class="'+(ch==='b'?'':ch)+'"></i>').join('')+'</span><span class="v-facts">'+v.facts+'</span></button>').join('');
+  $('#segs').innerHTML=SEGS.map(sg=>'<div><div class="flabel">'+sg.label+'</div><div class="seg" role="radiogroup" aria-label="'+sg.label+'">'+sg.opts.map((o,i)=>'<button type="button" role="radio" aria-checked="'+(S[sg.key]===o[0])+'" data-k="'+sg.key+'" data-i="'+i+'">'+o[1]+'</button>').join('')+'</div></div>').join('');
+  $('#structHint').textContent=HINTS[S.struct];
+  $('#sum').textContent=summary();
+  $('#t-fourc').checked=S.fourc;$('#t-odds').checked=S.odds;$('#t-sound').checked=S.sound;
+  document.body.classList.toggle('fourc',S.fourc);
+}
+function startTable(){
+  RUN++;saveS();newTable();
+  document.body.classList.add('in-table');
+  $('#btnLobby').hidden=false;
+  $('#log').innerHTML='';
+  $('#tinfo').textContent=summary();
+  buildSeats();UI.render();
+  mainLoop();
+}
+function leaveTable(){
+  RUN++;G=null;
+  document.body.classList.remove('in-table');
+  $('#btnLobby').hidden=true;
+  renderLobby();
+}
+function init(){
+  loadS();renderLobby();
+  $('#variants').addEventListener('click',e=>{
+    const b=e.target.closest('.variant');if(!b)return;
+    S.game=b.dataset.id;S.struct=DEFSTRUCT[S.game];renderLobby();
+  });
+  $('#segs').addEventListener('click',e=>{
+    const b=e.target.closest('button[data-k]');if(!b)return;
+    const sg=SEGS.find(s=>s.key===b.dataset.k);S[sg.key]=sg.opts[+b.dataset.i][0];renderLobby();
+  });
+  $('#t-fourc').addEventListener('change',e=>{S.fourc=e.target.checked;renderLobby()});
+  $('#t-odds').addEventListener('change',e=>{S.odds=e.target.checked});
+  $('#t-sound').addEventListener('change',e=>{S.sound=e.target.checked});
+  $('#btnStart').addEventListener('click',startTable);
+  $('#btnLobby').addEventListener('click',leaveTable);
+  $('#btnRank').addEventListener('click',()=>{$('#rankings').hidden=false});
+  $('#rankClose').addEventListener('click',()=>{$('#rankings').hidden=true});
+  $('#rankings').addEventListener('click',e=>{if(e.target.id==='rankings')$('#rankings').hidden=true});
+  $('#rankList').innerHTML=RANKS.map(r=>'<b>'+r[0]+'</b><span>'+r[1]+'</span>').join('');
+  $('#felt').addEventListener('click',e=>{
+    const g=G;if(!g||!g.discard)return;
+    const c=e.target.closest('.card.pick');if(!c)return;
+    const idx=Array.from(c.parentNode.children).indexOf(c),sel=g.discard.sel;
+    if(sel.has(idx))sel.delete(idx);else sel.add(idx);
+    UI.render();
+  });
+  document.addEventListener('keydown',e=>{
+    const g=G;if(!g||e.target.tagName==='INPUT'||e.metaKey||e.ctrlKey)return;
+    const k=e.key.toLowerCase();
+    if(g.pending){
+      if(k==='f'&&!g.pending.L.canCheck)act('fold');
+      else if(k==='c')act('call');
+      else if(k==='r'&&g.pending.L.canRaise)act('raise');
+    }else if((k===' '||k==='enter')&&g.next&&e.target.tagName!=='BUTTON'){e.preventDefault();act('deal')}
+  });
+}
+if(typeof __TEST__!=='undefined')__TEST__({S,newTable,mainLoop,CFG,getG:()=>G,legal,estimateEquity,score5,bestOf,describe,STAKES});
+else init();
+})();
+</script>
+
+</body></html>
